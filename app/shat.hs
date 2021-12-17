@@ -119,7 +119,7 @@ edFunction :: EdData
 edFunction eddy = getLine >>= detFun >>= edFunction
   where
   detFun cmd
-    | length cmd == 0 = err
+    | cmd == [] = err
     | last cmd == 'p' = mapM_ (`edPrintLine` m) k >> return eddy
     | last cmd == 'n' = mapM_ (\m -> putStr (show m ++ "\t") >>
       edPrintLine m eddy) k >> return eddy
