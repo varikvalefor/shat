@@ -144,5 +144,4 @@ edFunction eddy = getLine >>= detFun >>= edFunction
     -- \| @n@ is the range of line numbers to which variadic commands
     -- -- are applied.
     k = genRange $ parseNums cmd $ stk eddy
-    party k = init k ++ [last k ++ "\n"]
   err = putStrLn "?" >> return eddy;
