@@ -48,6 +48,7 @@ parseNums n b = haveFun $ map san $ splitOn "," n
 -- If @k@ is a 1-list, then @genRange == id@.
 genRange :: [Int] -> [Int];
 genRange [a,b] = [a..b];
+genRange [a] = [a];
 
 -- | @insertAt n i xs@ is a version of @xs@ which is modified such that
 -- the elements of @i@ immediately precede the @n@th element of @xs@,
