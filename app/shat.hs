@@ -84,12 +84,13 @@ edInsert :: Int
          -- ^ The index of the line which follows the inserted stuff
          -> EdData
          -> IO EdData;
-edInsert n e = isEOF >>= \ a -> if a
-  then return e
-  else getLine >>= \ x ->
-    if x == "."
-      then return e
-      else edInsert (n + 1) $ e {stk = insertAt n [x] (stk e)};
+edInsert n e =
+  isEOF >>= \ a -> if a
+    then return e
+    else getLine >>= \ x ->
+      if x == "."
+        then return e
+        else edInsert (n + 1) $ e {stk = insertAt n [x] (stk e)};
 
 -- | @edWrite buffer finename@ writes the @buffer@ to the file whose
 -- path is @finename@.  The name of the fille need not be fine.
