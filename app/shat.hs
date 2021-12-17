@@ -134,10 +134,15 @@ edFunction eddy = getLine >>= detFun >>= edFunction
     | isJust $ (readMaybe cmd :: Maybe Int) =
       return eddy {currentLine = read cmd}
     | otherwise = err
-    where n | not $ head cmd `elem` ['a'..'z'] = read $ init cmd :: Int
-              -- \^ Parsing commands as numbers is a pretty stupid
-              -- idea.  As such, commands are not parsed as numbers.
-            | otherwise = currentLine eddy
-          k = genRange $ parseNums cmd $ stk eddy
-          party k = init k ++ [last k ++ "\n"]
+    where
+    -- \| @n@ is the number of the line to which monargumental
+    -- commands are applied.
+    n | not $ head cmd `elem` ['a'..'z'] = read $ init cmd :: Int
+        -- \^ Parsing commands as numbers is a pretty stupid
+        -- idea.  As such, commands are not parsed as numbers.
+      | otherwise = currentLine eddy
+    -- \| @n@ is the range of line numbers to which variadic commands
+    -- -- are applied.
+    k = genRange $ parseNums cmd $ stk eddy
+    party k = init k ++ [last k ++ "\n"]
   err = putStrLn "?" >> return eddy;
