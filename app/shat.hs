@@ -63,8 +63,8 @@ insertAt :: Int
 insertAt n x xs = take g xs ++ x ++ drop g xs
   where g = n - 1;
 
--- | @edPrintLine n buffer@ prints the @n@th line of the @buffer@,
--- returning @buffer@.
+-- | @edPrintLine n eddy@ prints the @n@th line of the buffer of @eddy@,
+-- returning the resulting @eddy@.
 --
 -- Lines are 1-indexed.
 edPrintLine :: Int
@@ -75,9 +75,9 @@ edPrintLine :: Int
             -> IO EdData;
 edPrintLine n e = (putStrLn $ stk e !! (n - 1)) >> return e;
 
--- | @edInsert n buffer@ inserts some lines which are read from the
--- standard input immediately before the @n@th line of @buffer@,
--- returning the resulting buffer.
+-- | @edInsert n eddy@ inserts some lines which are read from the
+-- standard input immediately before the @n@th line of the buffer of
+-- @eddy@, returning the resulting @eddy@.
 --
 -- Lines are 1-indexed.
 edInsert :: Int
@@ -92,7 +92,7 @@ edInsert n e =
         then return e
         else edInsert (n + 1) $ e {stk = insertAt n [x] (stk e)};
 
--- | @edWrite buffer finename@ writes the @buffer@ to the file whose
+-- | @edWrite ed finename@ writes the buffer of @ed@ to the file whose
 -- path is @finename@.  The name of the fille need not be fine.
 edWrite :: EdData
         -- ^ The buffer
@@ -112,8 +112,8 @@ edDel n e = return e {stk = take (n - 1) (stk e) ++ drop n (stk e)};
 
 -- | @edFunction@ is the "meat and potatoes" of @shat@.
 --
--- @edFunction buffer@ reads a command from the standard input and
--- operates on the @buffer@.
+-- @edFunction ed@ reads a command from the standard input and
+-- operates on the @ed@.
 edFunction :: EdData
            -- ^ The buffer
            -> IO ();
