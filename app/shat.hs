@@ -93,7 +93,7 @@ edInsert n e =
         else edInsert (n + 1) $ e {stk = insertAt n [x] (stk e)};
 
 -- | @edWrite ed finename@ writes the buffer of @ed@ to the file whose
--- path is @finename@.  The name of the fille need not be fine.
+-- path is @finename@.  The name of the file need not be fine.
 edWrite :: EdData
         -- ^ The buffer
         -> String
