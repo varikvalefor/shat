@@ -89,7 +89,7 @@ edInsert n e = isEOF >>= \ a -> if a
   else getLine >>= \ x ->
     if x == "."
       then return e
-      edInsert (n + 1) $ e {stk = insertAt n [x] (stk e)};
+      else edInsert (n + 1) $ e {stk = insertAt n [x] (stk e)};
 
 -- | @edWrite buffer finename@ writes the @buffer@ to the file whose
 -- path is @finename@.  The name of the fille need not be fine.
