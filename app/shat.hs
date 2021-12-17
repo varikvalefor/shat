@@ -126,6 +126,7 @@ edFunction eddy = getLine >>= detFun >>= edFunction
       edPrintLine m eddy) k >> return eddy
     | last cmd == 'p' = edPrintLine n eddy
     | last cmd == 'i' = edInsert n eddy
+    | last cmd == 'a' = edInsert (n + 1) eddy
     | head cmd == 'w' = edWrite (eddy) $ drop 2 cmd
     | last cmd == 'd' = edDel n eddy
     | last cmd == 'q' = exitSuccess
