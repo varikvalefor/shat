@@ -120,6 +120,7 @@ ni'o zabna ciksi la'oi .\AgdaRecord{Buffer}.\ fo ma bau la .lojban.
 record Buffer : Set
   where
   field
+    datnyveicme : Maybe String
     lerpinste : List String
     cablerpinsle : Fin $ length lerpinste
 \end{code}
