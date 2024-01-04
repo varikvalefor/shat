@@ -68,6 +68,8 @@
 
 open import IO
   using (
+    Main;
+    run;
     IO
   )
 open import Data.Fin
@@ -76,6 +78,8 @@ open import Data.Fin
   )
 open import Data.Sum
   using (
+    inj₂;
+    inj₁;
     _⊎_
   )
 open import Function
@@ -90,11 +94,16 @@ open import Data.Char
   )
 open import Data.List
   using (
-    List
+    List;
+    drop;
+    take
   )
 open import Data.Maybe
   using (
-    Maybe
+    nothing;
+    Maybe;
+    maybe;
+    just
   )
 open import Data.String
   using (
@@ -105,10 +114,19 @@ open import Data.Product
     proj₁;
     Σ
   )
+open import System.Environment
+  using (
+    getArgs
+  )
+open import Data.Unit.Polymorphic
+  using (
+    ⊤
+  )
 open import Truthbrary.Record.LLC
   using (
     length
   )
+import Level
 \end{code}
 
 \chapter{le se ctaipe}
@@ -178,5 +196,46 @@ ni'o la'o zoi.\ \F{kanji} \Sym\{\B x\Sym\} \B s\ .zoi.\ jalge pe'a lo nu co'e la
 \begin{code}
 kanji : {x : Buffer} → Cmd x → Maybe $ Buffer ⊎ IO Buffer
 kanji = {!!}
+\end{code}
+
+\section{la'oi .\F{lupe}.}
+
+\begin{code}
+\end{code}
+
+\section{la'oi .\F{main}.}
+ni'o zabna ciksi la'oi .\F{main}.\ fo ma bau la .lojban.
+
+\begin{code}
+{-# NON_TERMINATING #-}
+main : Main
+main = run $ getArgs IO.>>= uic ∘ Data.List.head
+  where
+  lupe : (x : Buffer) → IO ⊤
+  lupe x = IO.getLine IO.>>= f ∘ reed x
+    where
+    sin : IO {Level.zero} ⊤
+    sin = IO.putStrLn "?"
+    f : Maybe $ Cmd x → IO ⊤
+    f nothing = IO.putStrLn "?" IO.>> lupe x
+    f (just c) with kanji c
+    ... | just (inj₁ x') = lupe x'
+    ... | just (inj₂ x') = x' IO.>>= lupe
+    ... | nothing = lupe x
+  uic : Maybe String → IO ⊤
+  uic nothing = lupe def
+    where
+    def = record {
+      datnyveicme = nothing;
+      lerpinste = "" List.∷ List.[];
+      cablerpinsle = Fin.zero
+      }
+  uic (just c) = {!!} IO.>>= lupe ∘ mkDef
+    where
+    mkDef = λ t → record {
+      datnyveicme = just c;
+      lerpinste = Data.String.lines t;
+      cablerpinsle = {!!}
+      }
 \end{code}
 \end{document}
