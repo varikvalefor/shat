@@ -150,8 +150,7 @@ data Cmd (x : Buffer) : Set where
   -- be le klamburi
   Jmini : BufF x → Cmd x
   Rejgau : String → Cmd x
-  Vimcu : (a : BufF x)
-        → (b : BufF x)
+  Vimcu : (a b : BufF x)
         → a Data.Fin.≤ b
         → Cmd x
   Namcusku : typeOf Vimcu
