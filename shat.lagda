@@ -76,6 +76,10 @@ open import Data.Fin
   using (
     Fin
   )
+open import Data.Nat
+  using (
+    ℕ
+  )
 open import Data.Sum
   using (
     inj₂;
@@ -112,6 +116,7 @@ open import Data.String
 open import Data.Product
   using (
     proj₁;
+    _×_;
     Σ
   )
 open import System.Environment
@@ -182,6 +187,14 @@ data Cmd (x : Buffer) : Set where
 \end{code}
 
 \chapter{le fancu}
+
+\section{la'oi .\F{orsygenturfa'i}.}
+ni'o ro da poi ke'a kacna'u zo'u ro de poi ke'a kacna'u zo'u ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{orsygenturfa'i} \B x\ .zoi.\ gi ga je ko'a me'oi .\IC{just}.\ .orsi li re da de gi la'o zoi.\ \B x.\ .zoi.\ konkatena lo sinxa be da be'o bei lo me'oi .comma.\ be lo sinxa be de
+
+\begin{code}
+orsygenturfa'i : String → Maybe $ ℕ × ℕ
+orsygenturfa'i = ?
+\end{code}
 
 \section{la'oi .reed.}
 ni'o ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{reed} \B x \B s\ .zoi.\ gi ga je la'oi .\B s.\ midnoi fo la'o zoi.\ ed(1) .zoi.\ je cu mapti la'o zoi.\ \D{Cmd} \B x\ .zoi.\ gi ko'a me'oi .\IC{just}.\ lo mapti be la'oi .\B s.\
