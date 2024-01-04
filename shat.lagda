@@ -117,8 +117,11 @@ open import Truthbrary.Record.LLC
 ni'o zabna ciksi la'oi .\F{Buffer}.\ fo ma bau la .lojban.
 
 \begin{code}
-Buffer : Set
-Buffer = Σ (List String) $ Fin ∘ length
+record Buffer : Set
+  where
+  field
+    lerpinste : List String
+    cablerpinsle : Fin $ length lerpinste
 \end{code}
 
 \section{la'oi .\F{BufF}.}
@@ -126,7 +129,7 @@ ni'o zabna ciksi la'oi .\F{Buffer}.\ fo ma bau la .lojban.
 
 \begin{code}
 BufF : Buffer → Set
-BufF = Fin ∘ length ∘ proj₁
+BufF = Fin ∘ length ∘ Buffer.lerpinste
 \end{code}
 
 \section{la'oi .\D{Cmd}.}
