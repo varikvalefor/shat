@@ -113,8 +113,8 @@ open import Truthbrary.Record.LLC
 
 \chapter{le se ctaipe}
 
-\section{la'oi .\F{Buffer}.}
-ni'o zabna ciksi la'oi .\F{Buffer}.\ fo ma bau la .lojban.
+\section{la'oi .\AgdaRecord{Buffer}.}
+ni'o zabna ciksi la'oi .\AgdaRecord{Buffer}.\ fo ma bau la .lojban.
 
 \begin{code}
 record Buffer : Set
@@ -125,7 +125,7 @@ record Buffer : Set
 \end{code}
 
 \section{la'oi .\F{BufF}.}
-ni'o zabna ciksi la'oi .\F{Buffer}.\ fo ma bau la .lojban.
+ni'o zabna ciksi la'oi .\AgdaRecord{Buffer}.\ fo ma bau la .lojban.
 
 \begin{code}
 BufF : Buffer → Set
