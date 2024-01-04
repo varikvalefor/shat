@@ -130,7 +130,7 @@ BufF = Fin ∘ length ∘ proj₁
 \end{code}
 
 \section{la'oi .\D{Cmd}.}
-ni'o ctaipe ko'a goi la'o zoi.\ \D{Cmd} \B x\ .zoi.\ fa lo co'e be lo midnoi be fo la'o zoi.\ ed(1) .zoi.\ ja zo'e be'o poi ctaipe lo su'u racli fa tu'a ke'a
+ni'o ctaipe ko'a goi la'o zoi.\ \D{Cmd} \B x\ .zoi.\ fa lo co'e be lo midnoi be fo la'o zoi.\ ed(1) .zoi.\ ja zo'e be'o poi ctaipe lo su'u tu'a ke'a racli
 
 .i ro da poi ke'a ctaipe ko'a zo'u\ldots
 \begin{itemize}
