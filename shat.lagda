@@ -122,6 +122,10 @@ open import Data.Product
     _,_;
     Σ
   )
+open import Data.Nat.Show
+  using (
+    readMaybe
+  )
 open import System.Environment
   using (
     getArgs
@@ -211,7 +215,7 @@ orsygenturfa'i = prok ∘ Data.List.map ps ∘ spit
   ps = rm ∘ cev ∘ vec
     where
     rm : String → Maybe ℕ
-    rm = {!!}
+    rm = readMaybe 10
 \end{code}
 
 \section{la'oi .reed.}
