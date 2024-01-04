@@ -100,7 +100,9 @@ open import Data.List
   using (
     List;
     drop;
-    take
+    take;
+    _∷_;
+    []
   )
 open import Data.Maybe
   using (
@@ -117,6 +119,7 @@ open import Data.Product
   using (
     proj₁;
     _×_;
+    _,_;
     Σ
   )
 open import System.Environment
@@ -129,7 +132,13 @@ open import Data.Unit.Polymorphic
   )
 open import Truthbrary.Record.LLC
   using (
-    length
+    length;
+    cev;
+    vec
+  )
+open import Truthbrary.Data.List.Split
+  using (
+    splitOn
   )
 import Level
 \end{code}
@@ -193,7 +202,16 @@ ni'o ro da poi ke'a kacna'u zo'u ro de poi ke'a kacna'u zo'u ga jonai la'oi .\IC
 
 \begin{code}
 orsygenturfa'i : String → Maybe $ ℕ × ℕ
-orsygenturfa'i = ?
+orsygenturfa'i = prok ∘ Data.List.map ps ∘ spit
+  where
+  spit = splitOn ⦃ {!!} ⦄ ',' ∘ cev ∘ vec
+  prok : List $ Maybe ℕ → Maybe $ ℕ × ℕ
+  prok (just a ∷ just b ∷ []) = just $ a , b
+  prok _ = nothing
+  ps = rm ∘ cev ∘ vec
+    where
+    rm : String → Maybe ℕ
+    rm = {!!}
 \end{code}
 
 \section{la'oi .reed.}
