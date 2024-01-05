@@ -94,6 +94,10 @@ open import Function
     _$_;
     _∘_
   )
+open import IO.Finite
+  using (
+    readFile
+  )
 open import Data.Bool
   using (
     if_then_else_
@@ -296,7 +300,7 @@ main = run $ getArgs IO.>>= uic ∘ Data.List.head
       cablerpinsle = Data.Unit.Polymorphic.tt
       }
     mkDef : _
-    mkDef c = uit IO.<$> {!!}
+    mkDef c = uit IO.<$> readFile c
       where
       uit = λ t → record {
         datnyveicme = just c;
