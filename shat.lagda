@@ -260,8 +260,8 @@ main = run $ getArgs IO.>>= uic ∘ Data.List.head
     where
     def = record {
       datnyveicme = nothing;
-      lerpinste = "" List.∷ List.[];
-      cablerpinsle = Fin.zero
+      lerpinste = List.[];
+      cablerpinsle = Data.Unit.Polymorphic.tt
       }
   uic (just c) = {!!} IO.>>= lupe ∘ mkDef
     where
