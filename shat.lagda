@@ -92,6 +92,10 @@ open import Function
     _$_;
     _∘_
   )
+open import Data.Bool
+  using (
+    if_then_else_
+  )
 open import Data.Char
   using (
     Char
@@ -158,7 +162,8 @@ record Buffer : Set
   field
     datnyveicme : Maybe String
     lerpinste : List String
-    cablerpinsle : Fin $ length lerpinste
+    cablerpinsle : let L = length lerpinste in
+                   if 0 Data.Nat.<ᵇ L then Fin L else ⊤
 \end{code}
 
 \section{la'oi .\F{BufF}.}
