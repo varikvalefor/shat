@@ -151,6 +151,10 @@ open import Truthbrary.Data.List.Split
   using (
     splitOn
   )
+open import Relation.Binary.PropositionalEquality
+  using (
+    _≡_
+  )
 import Level
 \end{code}
 
@@ -226,6 +230,20 @@ orsygenturfa'i x = prok ∘ Data.List.map ps ∘ spit
   ... | yes x = just $ (a , b) , x
   ... | no _ = nothing
   prok _ = nothing
+\end{code}
+
+\subsection{le me'oi .specification.\ co'e}
+
+\begin{code}
+module Orsygenturfa'iVeritas where
+  pav : (x : Buffer)
+      → (a b : BufF x)
+      → (djb : a Data.Fin.≤ b)
+      → let showF = Data.Nat.Show.show ∘ Data.Fin.toℕ in
+        (_≡_
+          (just $ (a , b) , djb)
+          (orsygenturfa'i x $ showF a ++ "," ++ showF b))
+  pav = {!!}
 \end{code}
 
 \section{la'oi .reed.}
