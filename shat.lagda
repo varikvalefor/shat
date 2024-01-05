@@ -234,11 +234,6 @@ kanji : {x : Buffer} → Cmd x → Maybe $ Buffer ⊎ IO Buffer
 kanji = {!!}
 \end{code}
 
-\section{la'oi .\F{lupe}.}
-
-\begin{code}
-\end{code}
-
 \section{la'oi .\F{main}.}
 ni'o zabna ciksi la'oi .\F{main}.\ fo ma bau la .lojban.
 
