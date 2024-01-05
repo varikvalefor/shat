@@ -256,16 +256,14 @@ main = run $ getArgs IO.>>= uic ∘ Data.List.head
     ... | just (inj₂ x') = x' IO.>>= lupe
     ... | nothing = lupe x
   uic : Maybe String → IO ⊤
-  uic nothing = lupe def
+  uic c = maybe mkDef def c IO.>>= lupe
     where
-    def = record {
+    def = IO.pure record {
       datnyveicme = nothing;
       lerpinste = List.[];
       cablerpinsle = Data.Unit.Polymorphic.tt
       }
-  uic (just c) = {!!} IO.>>= lupe ∘ mkDef
-    where
-    mkDef = λ t → record {
+    mkDef = λ c → {!!} IO.>>= λ t → IO.pure record {
       datnyveicme = just c;
       lerpinste = Data.String.lines t;
       cablerpinsle = {!!}
