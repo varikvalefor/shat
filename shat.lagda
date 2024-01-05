@@ -263,10 +263,13 @@ main = run $ getArgs IO.>>= uic ∘ Data.List.head
       lerpinste = List.[];
       cablerpinsle = Data.Unit.Polymorphic.tt
       }
-    mkDef = λ c → {!!} IO.>>= λ t → IO.pure record {
-      datnyveicme = just c;
-      lerpinste = Data.String.lines t;
-      cablerpinsle = {!!}
-      }
+    mkDef : _
+    mkDef c = uit IO.<$> {!!}
+      where
+      uit = λ t → record {
+        datnyveicme = just c;
+        lerpinste = Data.String.lines t;
+        cablerpinsle = {!!}
+        }
 \end{code}
 \end{document}
