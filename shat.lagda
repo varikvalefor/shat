@@ -36,6 +36,7 @@
 \newunicodechar{≡}{\ensuremath{\mathnormal\equiv}}
 \newunicodechar{∧}{\ensuremath{\mathnormal\land}}
 \newunicodechar{≤}{\ensuremath{\mathnormal\leq}}
+\newunicodechar{∋}{\ensuremath{\mathnormal\ni}}
 \newunicodechar{ₘ}{\ensuremath{\mathnormal{_m}}}
 \newunicodechar{≟}{\ensuremath{\mathnormal{\stackrel{?}{=}}}}
 \newunicodechar{∸}{\ensuremath{\mathnormal\divdot}}
@@ -89,6 +90,7 @@ open import Data.Sum
 open import Function
   using (
     typeOf;
+    _∋_;
     _$_;
     _∘_
   )
@@ -121,6 +123,7 @@ open import Data.String
   )
 open import Data.Product
   using (
+    uncurry;
     proj₁;
     _×_;
     _,_;
@@ -207,16 +210,21 @@ data Cmd (x : Buffer) : Set where
 \chapter{le fancu}
 
 \section{la'oi .\F{orsygenturfa'i}.}
-ni'o ro da poi ke'a kacna'u zo'u ro de poi ke'a kacna'u zo'u ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{orsygenturfa'i} \B x\ .zoi.\ gi ga je ko'a me'oi .\IC{just}.\ .orsi li re da de gi la'o zoi.\ \B x.\ .zoi.\ konkatena lo sinxa be da be'o bei lo me'oi .comma.\ be lo sinxa be de
+ni'o ro da poi ke'a ctaipe ko'a goi la'o zoi.\ \F{BufF} \B x\ .zoi.\ zo'u ro de poi ke'a ctaipe ko'a zo'u ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{orsygenturfa'i} \B x\ \B s\ .zoi.\ gi ga je da dubjavme'a de gi ga je ko'a me'oi .\IC{just}.\ .orsi li ci da de lo ctaipe be lo su'u da dubjavme'a de gi la'o zoi.\ \B s.\ .zoi.\ konkatena lo sinxa be da be'o bei lo me'oi .comma.\ be lo sinxa be de
 
 \begin{code}
-orsygenturfa'i : String → Maybe $ ℕ × ℕ
-orsygenturfa'i = prok ∘ Data.List.map ps ∘ spit
+orsygenturfa'i : (x : Buffer)
+               → String
+               → Maybe $ Σ (BufF x × BufF x) $ uncurry Data.Fin._≤_
+orsygenturfa'i x = prok ∘ Data.List.map ps ∘ spit
   where
-  ps = readMaybe 10 ∘ cev ∘ vec
+  ps = ((String → Maybe $ BufF x) ∋ {!!}) ∘ cev ∘ vec
   spit = splitOn ⦃ {!!} ⦄ ',' ∘ cev ∘ vec
-  prok : List $ Maybe ℕ → Maybe $ ℕ × ℕ
-  prok (just a ∷ just b ∷ []) = just $ a , b
+  prok : List $ Maybe $ BufF x
+       → Maybe $ Σ (BufF x × BufF x) $ uncurry Data.Fin._≤_
+  prok (just a ∷ just b ∷ []) with a Data.Fin.≤? b
+  ... | yes x = just $ (a , b) , x
+  ... | no _ = nothing
   prok _ = nothing
 \end{code}
 
