@@ -133,6 +133,11 @@ open import Data.Nat.Show
   using (
     readMaybe
   )
+open import Relation.Nullary
+  using (
+    yes;
+    no
+  )
 open import System.Environment
   using (
     getArgs
@@ -144,6 +149,7 @@ open import Data.Unit.Polymorphic
 open import Truthbrary.Record.LLC
   using (
     length;
+    _++_;
     cev;
     vec
   )
