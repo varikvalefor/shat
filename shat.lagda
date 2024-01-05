@@ -213,11 +213,11 @@ ni'o ro da poi ke'a kacna'u zo'u ro de poi ke'a kacna'u zo'u ga jonai la'oi .\IC
 orsygenturfa'i : String → Maybe $ ℕ × ℕ
 orsygenturfa'i = prok ∘ Data.List.map ps ∘ spit
   where
+  ps = readMaybe 10 ∘ cev ∘ vec
   spit = splitOn ⦃ {!!} ⦄ ',' ∘ cev ∘ vec
   prok : List $ Maybe ℕ → Maybe $ ℕ × ℕ
   prok (just a ∷ just b ∷ []) = just $ a , b
   prok _ = nothing
-  ps = readMaybe 10 ∘ cev ∘ vec
 \end{code}
 
 \section{la'oi .reed.}
