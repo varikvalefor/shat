@@ -265,10 +265,10 @@ reed = {!!}
 \end{code}
 
 \section{la \F{kanji}.}
-ni'o la'o zoi.\ \F{kanji} \Sym\{\B x\Sym\} \B s\ .zoi.\ jalge pe'a lo nu co'e la'oi .\B s.\ la'oi .\B x.
+ni'o ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{kanji} \Sym\{\B x\Sym\} \B s\ .zoi.\ gi ga je tu'a la'oi .\B s.\ racli gi ko'a me'oi .\IC{just}.\ lo .orsi be li re bei lo jalge be lo nu co'e la'oi .\B s.\ la'oi .\B x.\ be'o bei zo'e poi ga jonai ke'a du la'oi .\IC{nothing}.\ gi ke'a me'oi .\IC{just}.\ zo'e poi cadga fa lo nu cusku ke'a fo lo co'e co mu'oi glibau.\ standard output .glibau.
 
 \begin{code}
-kanji : {x : Buffer} → Cmd x → Maybe $ Buffer ⊎ IO Buffer
+kanji : {x : Buffer} → Cmd x → Maybe $ Buffer × Maybe String
 kanji = {!!}
 \end{code}
 
@@ -288,8 +288,8 @@ main = run $ getArgs IO.>>= uic ∘ Data.List.head
     f : Maybe $ Cmd x → IO ⊤
     f nothing = IO.putStrLn "?" IO.>> lupe x
     f (just c) with kanji c
-    ... | just (inj₁ x') = lupe x'
-    ... | just (inj₂ x') = x' IO.>>= lupe
+    ... | just (x' , nothing) = lupe x'
+    ... | just (x' , just z ) = IO.putStrLn z IO.>> lupe x'
     ... | nothing = lupe x
   uic : Maybe String → IO ⊤
   uic c = maybe mkDef def c IO.>>= lupe
