@@ -212,10 +212,7 @@ orsygenturfa'i = prok ∘ Data.List.map ps ∘ spit
   prok : List $ Maybe ℕ → Maybe $ ℕ × ℕ
   prok (just a ∷ just b ∷ []) = just $ a , b
   prok _ = nothing
-  ps = rm ∘ cev ∘ vec
-    where
-    rm : String → Maybe ℕ
-    rm = readMaybe 10
+  ps = readMaybe 10 ∘ cev ∘ vec
 \end{code}
 
 \section{la'oi .reed.}
