@@ -11,6 +11,7 @@
 \usepackage{newunicodechar}
 
 \newunicodechar{∷}{\ensuremath{\mathnormal\Colon}}
+\newunicodechar{𝔽}{\ensuremath{\mathnormal{\mathbb F}}}
 \newunicodechar{𝕃}{\ensuremath{\mathnormal{\mathbb L}}}
 \newunicodechar{ℕ}{\ensuremath{\mathnormal{\mathbb N}}}
 \newunicodechar{ℤ}{\ensuremath{\mathnormal{\mathbb Z}}}
@@ -75,6 +76,7 @@ open import IO
     IO
   )
 open import Data.Fin
+  as 𝔽
   using (
     Fin
   )
@@ -217,7 +219,7 @@ data Cmd (x : Buffer) : Set where
   Jmini : BufF x → Cmd x
   Rejgau : String → Cmd x
   Vimcu : (a b : BufF x)
-        → a Data.Fin.≤ b
+        → a 𝔽.≤ b
         → Cmd x
   Namcusku : typeOf Vimcu
   Basti : typeOf Vimcu
@@ -232,14 +234,14 @@ ni'o ro da poi ke'a ctaipe ko'a goi la'o zoi.\ \F{BufF} \B x\ .zoi.\ zo'u ro de 
 \begin{code}
 orsygenturfa'i : (x : Buffer)
                → String
-               → Maybe $ Σ (BufF x × BufF x) $ uncurry Data.Fin._≤_
+               → Maybe $ Σ (BufF x × BufF x) $ uncurry 𝔽._≤_
 orsygenturfa'i x = prok ∘ 𝕃.map ps ∘ spit
   where
   ps = ((String → Maybe $ BufF x) ∋ {!!}) ∘ cev ∘ vec
   spit = splitOn ⦃ {!!} ⦄ ',' ∘ cev ∘ vec
   prok : List $ Maybe $ BufF x
-       → Maybe $ Σ (BufF x × BufF x) $ uncurry Data.Fin._≤_
-  prok (just a ∷ just b ∷ []) with a Data.Fin.≤? b
+       → Maybe $ Σ (BufF x × BufF x) $ uncurry 𝔽._≤_
+  prok (just a ∷ just b ∷ []) with a 𝔽.≤? b
   ... | yes x = just $ (a , b) , x
   ... | no _ = nothing
   prok _ = nothing
@@ -251,8 +253,8 @@ orsygenturfa'i x = prok ∘ 𝕃.map ps ∘ spit
 module Orsygenturfa'iVeritas where
   pav : (x : Buffer)
       → (a b : BufF x)
-      → (djb : a Data.Fin.≤ b)
-      → let showF = Data.Nat.Show.show ∘ Data.Fin.toℕ in
+      → (djb : a 𝔽.≤ b)
+      → let showF = Data.Nat.Show.show ∘ 𝔽.toℕ in
         (_≡_
           (just $ (a , b) , djb)
           (orsygenturfa'i x $ showF a ++ "," ++ showF b))
