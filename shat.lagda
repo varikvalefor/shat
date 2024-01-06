@@ -78,6 +78,7 @@ open import Data.Fin
     Fin
   )
 open import Data.Nat
+  as ℕ
   using (
     ℕ
   )
@@ -180,7 +181,7 @@ record Buffer : Set
     datnyveicme : Maybe String
     lerpinste : List String
     cablerpinsle : let L = length lerpinste in
-                   if 0 Data.Nat.<ᵇ L then Fin L else ⊤
+                   if 0 ℕ.<ᵇ L then Fin L else ⊤
 \end{code}
 
 \section{la'oi .\F{BufF}.}
