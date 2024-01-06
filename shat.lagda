@@ -243,7 +243,6 @@ orsygenturfa'i x = prok ∘ 𝕃.map ps ∘ spit
   where
   ps = (Data.Maybe._>>= toBufF) ∘ ℕ.readMaybe 10 ∘ cev ∘ vec
     where
-    toBufF : ℕ → Maybe $ BufF x
     toBufF = Data.Maybe.map 𝔽.fromℕ< ∘ decToMaybe ∘ (ℕ._<? _)
   spit = splitOn ⦃ {!!} ⦄ ',' ∘ cev ∘ vec
   prok : List $ Maybe $ BufF x
