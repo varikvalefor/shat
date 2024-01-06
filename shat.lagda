@@ -248,7 +248,7 @@ orsygenturfa'i x = prok ∘ 𝕃.map ps ∘ spit
   prok : List $ Maybe $ BufF x
        → Maybe $ Σ (BufF x × BufF x) $ uncurry 𝔽._≤_
   prok (just a ∷ just b ∷ []) with a 𝔽.≤? b
-  ... | yes x = just $ (a , b) , x
+  ... | yes x = just $ _ , x
   ... | no _ = nothing
   prok _ = nothing
 \end{code}
