@@ -241,10 +241,10 @@ orsygenturfa'i : (x : Buffer)
                → Maybe $ Σ (BufF x × BufF x) $ uncurry 𝔽._≤_
 orsygenturfa'i x = prok ∘ 𝕃.map ps ∘ spit
   where
+  spit = splitOn ⦃ {!!} ⦄ ',' ∘ cev ∘ vec
   ps = (Data.Maybe._>>= toBufF) ∘ ℕ.readMaybe 10 ∘ cev ∘ vec
     where
     toBufF = Data.Maybe.map 𝔽.fromℕ< ∘ decToMaybe ∘ (ℕ._<? _)
-  spit = splitOn ⦃ {!!} ⦄ ',' ∘ cev ∘ vec
   prok : List $ Maybe $ BufF x
        → Maybe $ Σ (BufF x × BufF x) $ uncurry 𝔽._≤_
   prok (just a ∷ just b ∷ []) with a 𝔽.≤? b
