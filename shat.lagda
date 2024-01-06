@@ -11,6 +11,7 @@
 \usepackage{newunicodechar}
 
 \newunicodechar{∷}{\ensuremath{\mathnormal\Colon}}
+\newunicodechar{𝕃}{\ensuremath{\mathnormal{\mathbb L}}}
 \newunicodechar{ℕ}{\ensuremath{\mathnormal{\mathbb N}}}
 \newunicodechar{ℤ}{\ensuremath{\mathnormal{\mathbb Z}}}
 \newunicodechar{ℚ}{\ensuremath{\mathnormal{\mathbb Q}}}
@@ -108,6 +109,7 @@ open import Data.Char
     Char
   )
 open import Data.List
+  as 𝕃
   using (
     List;
     drop;
@@ -231,7 +233,7 @@ ni'o ro da poi ke'a ctaipe ko'a goi la'o zoi.\ \F{BufF} \B x\ .zoi.\ zo'u ro de 
 orsygenturfa'i : (x : Buffer)
                → String
                → Maybe $ Σ (BufF x × BufF x) $ uncurry Data.Fin._≤_
-orsygenturfa'i x = prok ∘ Data.List.map ps ∘ spit
+orsygenturfa'i x = prok ∘ 𝕃.map ps ∘ spit
   where
   ps = ((String → Maybe $ BufF x) ∋ {!!}) ∘ cev ∘ vec
   spit = splitOn ⦃ {!!} ⦄ ',' ∘ cev ∘ vec
@@ -279,7 +281,7 @@ ni'o zabna ciksi la'oi .\F{main}.\ fo ma bau la .lojban.
 \begin{code}
 {-# NON_TERMINATING #-}
 main : Main
-main = run $ getArgs IO.>>= uic ∘ Data.List.head
+main = run $ getArgs IO.>>= uic ∘ 𝕃.head
   where
   lupe : (x : Buffer) → IO ⊤
   lupe x = IO.getLine IO.>>= f ∘ reed x
