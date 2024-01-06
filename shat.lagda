@@ -170,6 +170,7 @@ open import Relation.Binary.PropositionalEquality
   using (
     _≡_
   )
+
 import Level
 \end{code}
 
