@@ -121,6 +121,7 @@ open import Data.List
   )
 open import Data.Maybe
   using (
+    decToMaybe;
     nothing;
     Maybe;
     maybe;
@@ -240,7 +241,10 @@ orsygenturfa'i : (x : Buffer)
                → Maybe $ Σ (BufF x × BufF x) $ uncurry 𝔽._≤_
 orsygenturfa'i x = prok ∘ 𝕃.map ps ∘ spit
   where
-  ps = ((String → Maybe $ BufF x) ∋ {!!}) ∘ cev ∘ vec
+  ps = (Data.Maybe._>>= toBufF) ∘ ℕ.readMaybe 10 ∘ cev ∘ vec
+    where
+    toBufF : ℕ → Maybe $ BufF x
+    toBufF = Data.Maybe.map 𝔽.fromℕ< ∘ decToMaybe ∘ (ℕ._<? _)
   spit = splitOn ⦃ {!!} ⦄ ',' ∘ cev ∘ vec
   prok : List $ Maybe $ BufF x
        → Maybe $ Σ (BufF x × BufF x) $ uncurry 𝔽._≤_
