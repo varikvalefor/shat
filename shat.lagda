@@ -138,10 +138,6 @@ open import Data.Product
     _,_;
     Σ
   )
-open import Data.Nat.Show
-  using (
-    readMaybe
-  )
 open import Relation.Nullary
   using (
     yes;
@@ -172,6 +168,12 @@ open import Relation.Binary.PropositionalEquality
   )
 
 import Level
+import Data.Nat.Show
+  as ℕ
+  using (
+    readMaybe;
+    show
+  )
 \end{code}
 
 \chapter{le se ctaipe}
@@ -255,7 +257,7 @@ module Orsygenturfa'iVeritas where
   pav : (x : Buffer)
       → (a b : BufF x)
       → (djb : a 𝔽.≤ b)
-      → let showF = Data.Nat.Show.show ∘ 𝔽.toℕ in
+      → let showF = ℕ.show ∘ 𝔽.toℕ in
         (_≡_
           (just $ (a , b) , djb)
           (orsygenturfa'i x $ showF a ++ "," ++ showF b))
