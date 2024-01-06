@@ -137,6 +137,7 @@ open import Data.Product
     proj₁;
     _×_;
     _,_;
+    ∃;
     Σ
   )
 open import Relation.Nullary
@@ -281,6 +282,18 @@ ni'o ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{kanji} \Sym\{\B x\
 \begin{code}
 kanji : {x : Buffer} → Cmd x → Maybe $ Buffer × Maybe String
 kanji = {!!}
+\end{code}
+
+\subsection{le ctaipe be le su'u la \F{kanji}\ cu mapti}
+
+\begin{code}
+module KanjyVeritas where
+  dub₂ : (x : Buffer)
+       → (c : Cmd x)
+       → (∃ $ λ (x , z , d) →
+           c ≡ Cusku x z d ⊎ c ≡ Vimcu x z d)
+       → just x ≡ Data.Maybe.map proj₁ (kanji c)
+  dub₂ = {!!}
 \end{code}
 
 \section{la'oi .\F{main}.}
