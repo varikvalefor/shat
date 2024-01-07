@@ -23,6 +23,7 @@
 \newunicodechar{→}{\ensuremath{\mathnormal\rightarrow}}
 \newunicodechar{∃}{\ensuremath{\mathnormal\exists}}
 \newunicodechar{∈}{\ensuremath{\mathnormal\in}}
+\newunicodechar{∉}{\ensuremath{\mathnormal\notin}}
 \newunicodechar{⦃}{\ensuremath{\mathnormal{\lbrace\hspace{-0.3em}|}}}
 \newunicodechar{⦄}{\ensuremath{\mathnormal{|\hspace{-0.3em}\rbrace}}}
 \newunicodechar{ᵢ}{\ensuremath{\mathnormal{_\AgdaFontStyle{i}}}}
