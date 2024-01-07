@@ -58,7 +58,7 @@
 \newcommand\IC\AgdaInductiveConstructor
 \newcommand\OpF[1]{\AgdaOperator{\F{#1}}}
 
-\title{le me'oi .Agda.\ velcki be le smimlu be la'o zoi.\ ed(1) .zoi.}
+\title{le me'oi .Agda.\ velcki be la'o zoi.\ shat(1) .zoi.\ noi ke'a smimlu la'o zoi.\ ed(1) .zoi.}
 \author{la .varik.\ .VALefor.}
 
 \begin{document}
