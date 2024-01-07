@@ -176,6 +176,7 @@ import Data.Nat.Show
     readMaybe;
     show
   )
+import Data.Fin.Properties as DFP
 \end{code}
 
 \chapter{le se ctaipe}
@@ -281,6 +282,19 @@ ni'o ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{kanji} \Sym\{\B x\
 
 \begin{code}
 kanji : {x : Buffer} → Cmd x → Maybe $ Buffer × Maybe String
+kanji {x} (Cusku a b _) = just $ x ,_ $ just $ cmap i
+  where
+  BL = Buffer.lerpinste x
+  cmap = Data.String.concat ∘ 𝕃.map (𝕃.lookup BL)
+  i = 𝕃.map Fintoℕ $ 𝕃.filter a≤? $ 𝕃.allFin b'
+    where
+    a≤? = ℕ._≤?_ (𝔽.toℕ a) ∘ 𝔽.toℕ
+    b' = 𝔽.toℕ b
+    Fintoℕ : {n : ℕ}
+           → {x : Fin n}
+           → Fin $ 𝔽.toℕ x
+           → Fin n
+    Fintoℕ f = 𝔽.inject≤ f $ DFP.toℕ≤n _
 kanji = {!!}
 \end{code}
 
