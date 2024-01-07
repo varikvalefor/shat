@@ -290,8 +290,10 @@ kanji = {!!}
 module KanjyVeritas where
   dub₂ : (x : Buffer)
        → (c : Cmd x)
-       → (∃ $ λ (x , z , d) →
-           c ≡ Cusku x z d ⊎ c ≡ Vimcu x z d)
+       → (Σ
+           (Σ (BufF x × BufF x) $ uncurry 𝔽._≤_)
+           (λ ((x , z) , d) →
+             c ≡ Cusku x z d ⊎ c ≡ Vimcu x z d))
        → just x ≡ Data.Maybe.map proj₁ (kanji c)
   dub₂ = {!!}
 \end{code}
