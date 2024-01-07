@@ -202,8 +202,7 @@ record Buffer : Set
   field
     datnyveicme : Maybe String
     lerpinste : List String
-    cablerpinsle : let L = length lerpinste in
-                   if 0 ℕ.<ᵇ L then Fin L else ⊤
+    cablerpinsle : Fin $ length lerpinste
 \end{code}
 
 \section{la'oi .\F{BufF}.}
@@ -372,8 +371,8 @@ main = run $ getArgs IO.>>= uic ∘ 𝕃.head
     where
     def = IO.pure record {
       datnyveicme = nothing;
-      lerpinste = List.[];
-      cablerpinsle = Data.Unit.Polymorphic.tt
+      lerpinste = "" ∷ List.[];
+      cablerpinsle = 𝔽.zero
       }
     mkDef : _
     mkDef c = uit IO.<$> readFile c
