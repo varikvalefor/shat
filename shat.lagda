@@ -228,9 +228,7 @@ data Cmd (x : Buffer) : Set where
   -- be le klamburi
   Jmini : BufF x → Cmd x
   Rejgau : String → Cmd x
-  Vimcu : (a b : BufF x)
-        → a 𝔽.≤ b
-        → Cmd x
+  Vimcu : (a b : BufF x) → a 𝔽.≤ b → Cmd x
   Namcusku : typeOf Vimcu
   Basti : typeOf Vimcu
   Cusku : typeOf Vimcu
