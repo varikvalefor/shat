@@ -308,7 +308,8 @@ module KanjyVeritas where
            (λ ((x , z) , d) →
              c ≡ Cusku x z d ⊎ c ≡ Vimcu x z d))
        → just x ≡ Data.Maybe.map proj₁ (kanji c)
-  dub₂ = {!!}
+  dub₂ _ _ (_ , inj₁ _≡_.refl) = _≡_.refl
+  dub₂ _ _ (_ , inj₂ _≡_.refl) = {!!}
 \end{code}
 
 \section{la'oi .\F{main}.}
