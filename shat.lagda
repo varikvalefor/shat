@@ -194,7 +194,8 @@ import Data.Nat.Show
     readMaybe;
     show
   )
-import Data.Fin.Properties as DFP
+import Data.Fin.Properties
+  as DFP
 import Data.Maybe.Instances
 \end{code}
 
