@@ -96,7 +96,8 @@ open import Function
     typeOf;
     _∋_;
     _$_;
-    _∘_
+    _∘_;
+    id
   )
 open import IO.Finite
   using (
@@ -129,11 +130,14 @@ open import Data.Maybe
   )
 open import Data.String
   using (
-    String
+    unlines;
+    String;
+    lines
   )
 open import Data.Product
   using (
     uncurry;
+    proj₂;
     proj₁;
     _×_;
     _,_;
@@ -294,6 +298,14 @@ kanji {x} (Cusku a b _) = just $ x ,_ $ just $ cmap i
            → Fin $ 𝔽.toℕ x
            → Fin n
     Fintoℕ f = 𝔽.inject≤ f $ DFP.toℕ≤n _
+kanji {x} (Namcusku a b m) = Data.Maybe.map (_,_ x ∘ just ∘ viiet) kot
+  where
+  kot = kanji {x} (Cusku a b m) Data.Maybe.>>= proj₂
+  viiet = unlines ∘ 𝕃.map stringCat' ∘ uin ∘ lines
+    where
+    stringCat' = λ (x , z) → ℕ.show x ++ "\t" ++ z
+    uin : List String → List $ ℕ × String
+    uin = 𝕃.zip $ 𝕃.drop (𝔽.toℕ a) $ 𝕃.upTo $ 𝔽.toℕ b
 kanji = {!!}
 \end{code}
 
