@@ -22,6 +22,7 @@
 \newunicodechar{λ}{\ensuremath{\mathnormal\lambda}}
 \newunicodechar{→}{\ensuremath{\mathnormal\rightarrow}}
 \newunicodechar{∃}{\ensuremath{\mathnormal\exists}}
+\newunicodechar{∈}{\ensuremath{\mathnormal\in}}
 \newunicodechar{⦃}{\ensuremath{\mathnormal{\lbrace\hspace{-0.3em}|}}}
 \newunicodechar{⦄}{\ensuremath{\mathnormal{|\hspace{-0.3em}\rbrace}}}
 \newunicodechar{ᵢ}{\ensuremath{\mathnormal{_\AgdaFontStyle{i}}}}
@@ -94,6 +95,7 @@ open import Data.Sum
 open import Function
   using (
     typeOf;
+    flip;
     _∋_;
     _$_;
     _∘_;
@@ -146,12 +148,17 @@ open import Data.Product
   )
 open import Relation.Nullary
   using (
+    Dec;
     yes;
     no
   )
 open import System.Environment
   using (
     getArgs
+  )
+open import Truthbrary.Record.Eq
+  using (
+    _≟_
   )
 open import Data.Unit.Polymorphic
   using (
@@ -161,6 +168,7 @@ open import Truthbrary.Record.LLC
   using (
     length;
     _++_;
+    _∉_;
     cev;
     vec
   )
@@ -303,6 +311,23 @@ kanji {x} (Namcusku a b m) = Data.Maybe.map (_,_ x ∘ just ∘ viiet) kot
     stringCat' = λ (x , z) → ℕ.show x ++ "\t" ++ z
     uin : List String → List $ ℕ × String
     uin = 𝕃.zip $ 𝕃.drop (𝔽.toℕ a) $ 𝕃.upTo $ 𝔽.toℕ b
+kanji {x} (Vimcu a b _) = just $ x' , nothing
+  where
+  x' = record x {
+    cablerpinsle = {!!};
+    lerpinste = 𝕃.map proj₂ $ 𝕃.filter nin $ indice Lz}
+    where
+    Lz = Buffer.lerpinste x
+    indice = λ x → 𝕃.zip (𝕃.allFin $ 𝕃.length x) x
+    nin : (x : _)
+        → (Dec $ _∉_ ⦃ Truthbrary.Record.LLC.liliList ⦄ ⦃ {!!} ⦄
+            (proj₁ x)
+            (𝕃.map
+              (flip 𝔽.inject≤ $ DFP.toℕ≤n _)
+              (𝕃.drop
+                (𝔽.toℕ a)
+                (𝕃.allFin $ 𝔽.toℕ b))))
+    nin _ = _ ≟ _
 kanji = {!!}
 \end{code}
 
