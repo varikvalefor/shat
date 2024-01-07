@@ -251,18 +251,18 @@ ni'o ro da poi ke'a ctaipe ko'a goi la'o zoi.\ \F{BufF} \B x\ .zoi.\ zo'u ro de 
 orsygenturfa'i : (x : Buffer)
                → String
                → Maybe $ Σ (BufF x × BufF x) $ uncurry 𝔽._≤_
-orsygenturfa'i x = prok ∘ 𝕃.map ps ∘ spit
+orsygenturfa'i x = pork ∘ 𝕃.map ps ∘ spit
   where
   spit = splitOn ⦃ {!!} ⦄ ',' ∘ cev ∘ vec
   ps = (Data.Maybe._>>= toBufF) ∘ ℕ.readMaybe 10 ∘ cev ∘ vec
     where
     toBufF = Data.Maybe.map 𝔽.fromℕ< ∘ decToMaybe ∘ (ℕ._<? _)
-  prok : List $ Maybe $ BufF x
+  pork : List $ Maybe $ BufF x
        → Maybe $ Σ (BufF x × BufF x) $ uncurry 𝔽._≤_
-  prok (just a ∷ just b ∷ []) with a 𝔽.≤? b
+  pork (just a ∷ just b ∷ []) with a 𝔽.≤? b
   ... | yes x = just $ _ , x
   ... | no _ = nothing
-  prok _ = nothing
+  pork _ = nothing
 \end{code}
 
 \subsection{le ctaipe be le su'u la'oi .\F{orsygenturfa'i}.\ mapti}
