@@ -291,7 +291,9 @@ reed = {!!}
 ni'o ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{kanji} \Sym\{\B x\Sym\} \B s\ .zoi.\ gi ga je tu'a la'oi .\B s.\ racli gi ko'a me'oi .\IC{just}.\ lo .orsi be li re bei lo jalge be lo nu co'e la'oi .\B s.\ la'oi .\B x.\ be'o bei zo'e poi ga jonai ke'a du la'oi .\IC{nothing}.\ gi ke'a me'oi .\IC{just}.\ zo'e poi cadga fa lo nu cusku ke'a fo lo co'e co mu'oi glibau.\ standard output .glibau.
 
 \begin{code}
-kanji : {x : Buffer} → Cmd x → Maybe $ Buffer × Maybe String
+kanji : {x : Buffer}
+      → Cmd x
+      → Maybe $ Buffer × Maybe String
 kanji {x} (Cusku a b _) = just $ x ,_ $ just $ cmap i
   where
   BL = Buffer.lerpinste x
