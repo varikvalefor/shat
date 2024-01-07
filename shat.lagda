@@ -350,9 +350,9 @@ main = run $ getArgs IO.>>= uic ∘ 𝕃.head
     f : Maybe $ Cmd x → IO ⊤
     f nothing = IO.putStrLn "?" IO.>> lupe x
     f (just c) with kanji c
+    ... | nothing = lupe x
     ... | just (x' , nothing) = lupe x'
     ... | just (x' , just z ) = IO.putStrLn z IO.>> lupe x'
-    ... | nothing = lupe x
   uic : Maybe String → IO ⊤
   uic c = maybe mkDef def c IO.>>= lupe
     where
