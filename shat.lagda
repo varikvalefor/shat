@@ -70,6 +70,7 @@
 
 \begin{code}
 {-# OPTIONS --guardedness #-}
+{-# OPTIONS --overlapping-instances #-}
 
 open import IO
   using (
@@ -173,6 +174,10 @@ open import Truthbrary.Record.LLC
     cev;
     vec
   )
+open import Truthbrary.Category.Monad
+  using (
+    _>>=_
+  )
 open import Truthbrary.Data.List.Split
   using (
     splitOn
@@ -190,6 +195,7 @@ import Data.Nat.Show
     show
   )
 import Data.Fin.Properties as DFP
+import Data.Maybe.Instances
 \end{code}
 
 \chapter{le se ctaipe}
@@ -254,7 +260,7 @@ orsygenturfa'i : (x : Buffer)
 orsygenturfa'i x = pork ∘ 𝕃.map ps ∘ spit
   where
   spit = splitOn ⦃ {!!} ⦄ ',' ∘ cev ∘ vec
-  ps = (Data.Maybe._>>= toBufF) ∘ ℕ.readMaybe 10 ∘ cev ∘ vec
+  ps = (_>>= toBufF) ∘ ℕ.readMaybe 10 ∘ cev ∘ vec
     where
     toBufF = Data.Maybe.map 𝔽.fromℕ< ∘ decToMaybe ∘ (ℕ._<? _)
   pork : List $ Maybe $ BufF x
@@ -307,7 +313,7 @@ kanji {x} (Cusku a b _) = just $ x ,_ $ just $ cmap i
     Fintoℕ f = 𝔽.inject≤ f $ DFP.toℕ≤n _
 kanji {x} (Namcusku a b m) = Data.Maybe.map (_,_ x ∘ just ∘ viiet) kot
   where
-  kot = kanji {x} (Cusku a b m) Data.Maybe.>>= proj₂
+  kot = kanji {x} (Cusku a b m) >>= proj₂
   viiet = unlines ∘ 𝕃.map stringCat' ∘ uin ∘ lines
     where
     stringCat' = λ (x , z) → ℕ.show x ++ "\t" ++ z
@@ -349,12 +355,12 @@ module KanjyVeritas where
            → (a b : _)
            → (d : _)
            → let fff = Data.Maybe.map lines ∘ proj₂ in
-             let L = kanji {x} (Cusku a b d) Data.Maybe.>>= fff in
+             let L = kanji {x} (Cusku a b d) >>= fff in
              (_≡_
-               (L Data.Maybe.>>= 𝕃.head)
+               (L >>= 𝕃.head)
                (just $ 𝕃.lookup (Buffer.lerpinste x) a))
            × (_≡_
-               (L Data.Maybe.>>= 𝕃.head)
+               (L >>= 𝕃.head)
                (just $ 𝕃.lookup (Buffer.lerpinste x) b))
   pindices = {!!}
 \end{code}
