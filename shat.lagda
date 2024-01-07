@@ -288,9 +288,8 @@ kanji {x} (Cusku a b _) = just $ x ,_ $ just $ cmap i
   where
   BL = Buffer.lerpinste x
   cmap = Data.String.concat ∘ 𝕃.map (𝕃.lookup BL)
-  i = 𝕃.filter a≤? $ 𝕃.map Fintoℕ $ 𝕃.allFin $ 𝔽.toℕ b
+  i = 𝕃.filter (a 𝔽.≤?_) $ 𝕃.map Fintoℕ $ 𝕃.allFin $ 𝔽.toℕ b
     where
-    a≤? = 𝔽._≤?_ a
     Fintoℕ : {n : ℕ}
            → {x : Fin n}
            → Fin $ 𝔽.toℕ x
