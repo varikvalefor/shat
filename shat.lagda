@@ -254,7 +254,7 @@ orsygenturfa'i x = prok ∘ 𝕃.map ps ∘ spit
   prok _ = nothing
 \end{code}
 
-\subsection{le me'oi .specification.\ co'e}
+\subsection{le ctaipe be le su'u la'oi .\F{orsygenturfa'i}.\ mapti}
 
 \begin{code}
 module Orsygenturfa'iVeritas where
