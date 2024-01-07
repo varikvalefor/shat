@@ -367,17 +367,6 @@ ni'o zabna ciksi la'oi .\F{main}.\ fo ma bau la .lojban.
 main : Main
 main = run $ getArgs IO.>>= uic ∘ 𝕃.head
   where
-  lupe : (x : Buffer) → IO ⊤
-  lupe x = IO.getLine IO.>>= f ∘ reed x
-    where
-    sin : IO {Level.zero} ⊤
-    sin = IO.putStrLn "?"
-    f : Maybe $ Cmd x → IO ⊤
-    f nothing = IO.putStrLn "?" IO.>> lupe x
-    f (just c) with kanji c
-    ... | nothing = lupe x
-    ... | just (x' , nothing) = lupe x'
-    ... | just (x' , just z ) = IO.putStrLn z IO.>> lupe x'
   uic : Maybe String → IO ⊤
   uic c = maybe mkDef def c IO.>>= lupe
     where
@@ -394,5 +383,16 @@ main = run $ getArgs IO.>>= uic ∘ 𝕃.head
         lerpinste = Data.String.lines t;
         cablerpinsle = {!!}
         }
+    lupe : (x : Buffer) → IO ⊤
+    lupe x = IO.getLine IO.>>= f ∘ reed x
+      where
+      sin : IO {Level.zero} ⊤
+      sin = IO.putStrLn "?"
+      f : Maybe $ Cmd x → IO ⊤
+      f nothing = IO.putStrLn "?" IO.>> lupe x
+      f (just c) with kanji c
+      ... | nothing = lupe x
+      ... | just (x' , nothing) = lupe x'
+      ... | just (x' , just z ) = IO.putStrLn z IO.>> lupe x'
 \end{code}
 \end{document}
