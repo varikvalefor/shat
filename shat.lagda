@@ -322,6 +322,19 @@ module KanjyVeritas where
        → just x ≡ Data.Maybe.map proj₁ (kanji c)
   dub₂ _ _ (_ , inj₁ _≡_.refl) = _≡_.refl
   dub₂ _ _ (_ , inj₂ _≡_.refl) = {!!}
+
+  pindices : (x : Buffer)
+           → (a b : _)
+           → (d : _)
+           → let fff = Data.Maybe.map lines ∘ proj₂ in
+             let L = kanji {x} (Cusku a b d) Data.Maybe.>>= fff in
+             (_≡_
+               (L Data.Maybe.>>= 𝕃.head)
+               (just $ 𝕃.lookup (Buffer.lerpinste x) a))
+           × (_≡_
+               (L Data.Maybe.>>= 𝕃.head)
+               (just $ 𝕃.lookup (Buffer.lerpinste x) b))
+  pindices = {!!}
 \end{code}
 
 \section{la'oi .\F{main}.}
