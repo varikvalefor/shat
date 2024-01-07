@@ -355,8 +355,8 @@ module KanjyVeritas where
   pindices : (x : Buffer)
            → (a b : _)
            → (d : _)
-           → let fff = Data.Maybe.map lines ∘ proj₂ in
-             let L = kanji {x} (Cusku a b d) >>= fff in
+           → let K = kanji {x} $ Cusku a b d in
+             let L = K >>= (Data.Maybe.map lines ∘ proj₂) in
              (_≡_
                (L >>= 𝕃.head)
                (just $ 𝕃.lookup (Buffer.lerpinste x) a))
