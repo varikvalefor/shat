@@ -178,6 +178,9 @@ open import Truthbrary.Category.Monad
   using (
     _>>=_
   )
+  renaming (
+    map to mapₘ
+  )
 open import Truthbrary.Data.List.Split
   using (
     splitOn
@@ -266,7 +269,7 @@ orsygenturfa'i x = pork ∘ 𝕃.map ps ∘ spit
   spit = splitOn ⦃ {!!} ⦄ ',' ∘ cev ∘ vec
   ps = (_>>= toBufF) ∘ ℕ.readMaybe 10 ∘ cev ∘ vec
     where
-    toBufF = Data.Maybe.map 𝔽.fromℕ< ∘ decToMaybe ∘ (ℕ._<? _)
+    toBufF = mapₘ 𝔽.fromℕ< ∘ decToMaybe ∘ (ℕ._<? _)
   pork : List $ Maybe $ BufF x
        → Maybe $ Σ (BufF x × BufF x) $ uncurry 𝔽._≤_
   pork (just a ∷ just b ∷ []) with a 𝔽.≤? b
@@ -315,7 +318,7 @@ kanji {x} (Cusku a b _) = just $ x ,_ $ just $ cmap i
            → Fin $ 𝔽.toℕ x
            → Fin n
     Fintoℕ f = 𝔽.inject≤ f $ DFP.toℕ≤n _
-kanji {x} (Namcusku a b m) = Data.Maybe.map (_,_ x ∘ just ∘ viiet) kot
+kanji {x} (Namcusku a b m) = mapₘ (_,_ x ∘ just ∘ viiet) kot
   where
   kot = kanji {x} (Cusku a b m) >>= proj₂
   viiet = unlines ∘ 𝕃.map stringCat' ∘ uin ∘ lines
@@ -352,7 +355,7 @@ module KanjyVeritas where
            (Σ (BufF x × BufF x) $ uncurry 𝔽._≤_)
            (λ ((x , z) , d) →
              c ≡ Cusku x z d ⊎ c ≡ Namcusku x z d))
-       → just x ≡ Data.Maybe.map proj₁ (kanji c)
+       → just x ≡ mapₘ proj₁ (kanji c)
   dub₂ _ _ (_ , inj₁ _≡_.refl) = _≡_.refl
   dub₂ _ _ (_ , inj₂ _≡_.refl) = _≡_.refl
 
