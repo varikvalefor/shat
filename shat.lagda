@@ -214,7 +214,7 @@ record Buffer : Set
 \end{code}
 
 \subsection{tu'a la'oi .\D{Fin}.}
-ni'o tu'a la'oi .\D{Fin}.\ nibli ko'a goi le su'u ro da poi ke'a ctaipe la'oi .\AgdaRecord{Buffer}.\ zo'u li su'o co'e ja nilzilcmi lo mu'oi zoi.\ \AgdaField{Buffer.lerpinste}\ be da  .i pilno le na'e me mu'oi zoi.\ \F{if\AgdaUnderscore{}then\AgdaUnderscore{}else\AgdaUnderscore} .zoi.\ co'e ki'u le su'u ko'a milxe ko'e goi le ka ce'u fegli la .varik.\ldots kei je ku'i cu mleca fi ko'e je le ka tu'a ce'u frili kei fe lo jalge be lo nu la'o zoi.\ \AgdaField{Buffer.cablerpinsle} .zoi.\ ctaipe la'o zoi.\ \Sym(\B x \Sym \AgdaRecord{Buffer}\Sym) \Sym → \OpF{if} \AgdaNumber 0 \OpF{ℕ.≤} \F{BufF} \B x \OpF{then} \D{Fin} \Sym(\F{BufF} \B x\Sym) \OpF{else} \D{⊤}\ .zoi.
+ni'o tu'a la'oi .\D{Fin}.\ nibli ko'a goi le su'u ro da poi ke'a ctaipe la'oi .\AgdaRecord{Buffer}.\ zo'u li su'o co'e ja nilzilcmi lo mu'oi zoi.\ \AgdaField{Buffer.lerpinste}\ be da  .i pilno le na'e me mu'oi zoi.\ \F{if\AgdaUnderscore{}then\AgdaUnderscore{}else\AgdaUnderscore} .zoi.\ co'e ki'u le su'u ko'a milxe ko'e goi le ka ce'u fegli la .varik.\ldots kei je ku'i cu mleca fi ko'e je le ka tu'a ce'u frili kei fe lo jalge be lo nu la'o zoi.\ \AgdaField{Buffer.cablerpinsle} .zoi.\ ctaipe la'o zoi.\ \Sym(\B x \Sym \AgdaRecord{Buffer}\Sym) \Sym → \OpF{if} \AgdaNumber 0 \OpF{ℕ.≤} \F{𝕃.length} \Sym(\AgdaField{Buffer.lerpinste} \B x\Sym) \OpF{then} \F{BufF} \B x \OpF{else} \D{⊤}\ .zoi.
 
 \section{la'oi .\F{BufF}.}
 ni'o zabna ciksi la'oi .\AgdaRecord{Buffer}.\ fo ma bau la .lojban.
