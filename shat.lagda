@@ -348,7 +348,7 @@ module KanjyVeritas where
        → (Σ
            (Σ (BufF x × BufF x) $ uncurry 𝔽._≤_)
            (λ ((x , z) , d) →
-             c ≡ Cusku x z d ⊎ c ≡ Vimcu x z d))
+             c ≡ Cusku x z d ⊎ c ≡ Namcusku x z d))
        → just x ≡ Data.Maybe.map proj₁ (kanji c)
   dub₂ _ _ (_ , inj₁ _≡_.refl) = _≡_.refl
   dub₂ _ _ (_ , inj₂ _≡_.refl) = {!!}
