@@ -351,7 +351,7 @@ module KanjyVeritas where
              c ≡ Cusku x z d ⊎ c ≡ Namcusku x z d))
        → just x ≡ Data.Maybe.map proj₁ (kanji c)
   dub₂ _ _ (_ , inj₁ _≡_.refl) = _≡_.refl
-  dub₂ _ _ (_ , inj₂ _≡_.refl) = {!!}
+  dub₂ _ _ (_ , inj₂ _≡_.refl) = _≡_.refl
 
   pindices : (x : Buffer)
            → (a b : _)
