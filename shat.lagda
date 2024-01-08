@@ -362,7 +362,7 @@ module KanjyVeritas where
                (L >>= 𝕃.head)
                (just $ 𝕃.lookup (Buffer.lerpinste x) a))
            × (_≡_
-               (L >>= 𝕃.head)
+               (L >>= 𝕃.last)
                (just $ 𝕃.lookup (Buffer.lerpinste x) b))
   pindices = {!!}
 \end{code}
