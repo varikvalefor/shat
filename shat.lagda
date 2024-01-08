@@ -252,7 +252,7 @@ data Cmd (x : Buffer) : Set where
 \chapter{le fancu}
 
 \section{la'oi .\F{orsygenturfa'i}.}
-ni'o ro da poi ke'a ctaipe ko'a goi la'o zoi.\ \F{BufF} \B x\ .zoi.\ zo'u ro de poi ke'a ctaipe ko'a zo'u ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{orsygenturfa'i} \B x\ \B s\ .zoi.\ gi ga je da dubjavme'a de gi ga je ko'a me'oi .\IC{just}.\ lo .orsi be li ci bei da bei de lo ctaipe be lo su'u da dubjavme'a de gi la'o zoi.\ \B s.\ .zoi.\ konkatena lo sinxa be da lo me'oi .comma.\ lo sinxa be de
+ni'o ro da poi ke'a ctaipe ko'a goi la'o zoi.\ \F{BufF} \B x\ .zoi.\ zo'u ro de poi ke'a ctaipe ko'a zo'u ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{orsygenturfa'i} \B x\ \B s\ .zoi.\ gi ga je da dubjavme'a de gi ga je ko'a me'oi .\IC{just}.\ lo .orsi be li ci bei da bei de bei lo ctaipe be lo su'u da dubjavme'a de gi la'o zoi.\ \B s.\ .zoi.\ konkatena lo sinxa be da lo me'oi .comma.\ lo sinxa be de
 
 \begin{code}
 orsygenturfa'i : (x : Buffer)
