@@ -384,6 +384,8 @@ module KanjyVeritas where
                  (_≡_
                    (𝕃.lookup (Buffer.lerpinste x) a)
                    (𝕃.lookup (Buffer.lerpinste x') $ mink a e))))
+           × let L = Buffer.lerpinste in
+             (_≡_ on (𝕃.take (𝔽.toℕ a ℕ.⊓ 𝔽.toℕ b) ∘ L)) x x'
   muvdusin = {!!}
 \end{code}
 
