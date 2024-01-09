@@ -230,7 +230,7 @@ BufF = Fin ∘ length ∘ Buffer.lerpinste
 \section{la'oi .\D{Cmd}.}
 ni'o ctaipe ko'a goi la'o zoi.\ \D{Cmd} \B x\ .zoi.\ fa lo co'e be lo midnoi be fo la'o zoi.\ ed(1) .zoi.\ ja zo'e be'o poi ctaipe lo su'u tu'a ke'a racli
 
-\newcommand\relsumti[2]{ga je da du la'o zoi.\ \IC{#1} \B v \B z \AgdaUnderscore{}\ .zoi.\ gi da mapti lo konkatena be lo sinxa be la'oi .\B v.\ be'o bei lo me'oi .comma.\ bei lo sinxa be la'oi .\B z.\ be'o bei lo sinxa be #2}
+\newcommand\relsumti[2]{ga je da du la'o zoi.\ \IC{#1} \B v \B z \AgdaUnderscore{}\ .zoi.\ gi da mapti lo konkatena be lo sinxa be la'oi .\B v.\ be'o bei lo me'oi .comma.\ bei lo sinxa be la'oi .\B z.\ be'o bei #2}
 .i ro da poi ke'a ctaipe ko'a zo'u\ldots
 \begin{itemize}
 \item ga jonai ga je da du la'o zoi.\ \IC{Jmina} \B v\ .zoi.\ gi da mapti lo konkatena be lo sinxa be la'oi .\B v.\ be'o bei zo'oi .a.\ gi
