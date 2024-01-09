@@ -230,6 +230,7 @@ ni'o ctaipe ko'a goi la'o zoi.\ \D{Cmd} \B x\ .zoi.\ fa lo co'e be lo midnoi be 
 \item ga jonai ga je da du la'o zoi.\ \IC{Jmini} \B v\ .zoi.\ gi da mapti lo konkatena be lo sinxa be la'oi .\B v.\ bei zo'oi .i.\ gi
 \item ga jonai ga je da du la'o zoi.\ \IC{Rejgau} \B v\ .zoi.\ gi da mapti lo konkatena be zo'oi .w.\ bei lo canlu lerfu bei la'oi .\B v.\ gi
 \item ga jonai \relsumti{Vimcu}{zo'oi .d.} gi
+\item ga jonai \relsumti{Muvgau}{zo'oi .m.} gi
 \item ga jonai \relsumti{Basti}{zo'oi .c.} gi
 \item ga jonai \relsumti{Cusku}{zo'oi .p.} gi
 \item \relsumti{Namcusku}{zo'oi .n.}
@@ -246,6 +247,7 @@ data Cmd (x : Buffer) : Set where
   Namcusku : typeOf Vimcu
   Basti : typeOf Vimcu
   Cusku : typeOf Vimcu
+  Muvgau : typeOf Vimcu
 \end{code}
 
 \chapter{le fancu}
