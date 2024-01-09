@@ -350,14 +350,12 @@ kanji = {!!}
 \begin{code}
 module KanjyVeritas where
   dub₂ : (x : Buffer)
-       → (c : Cmd x)
-       → (Σ
-           (Σ (BufF x × BufF x) $ uncurry 𝔽._≤_)
-           (λ ((x , z) , d) →
-             c ≡ Cusku x z d ⊎ c ≡ Namcusku x z d))
-       → just x ≡ mapₘ proj₁ (kanji c)
-  dub₂ _ _ (_ , inj₁ _≡_.refl) = _≡_.refl
-  dub₂ _ _ (_ , inj₂ _≡_.refl) = _≡_.refl
+       → (a b : BufF x)
+       → (d : a 𝔽.≤ b)
+       → let K = λ f → kanji {x} $ f a b d in
+         let i = _≡_ (just x) ∘ mapₘ proj₁ ∘ K in
+         i Cusku × i Namcusku
+  dub₂ _ _ _ _ = _≡_.refl , _≡_.refl
 
   pindices : (x : Buffer)
            → (a b : _)
