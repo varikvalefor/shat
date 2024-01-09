@@ -364,12 +364,12 @@ module KanjyVeritas where
            → (a b : _)
            → (d : _)
            → let K = proj₂ $ kanji {x} $ Cusku a b d in
-             let L = Data.Maybe.map lines K in
+             let L = lines $ from-just K in
              (_≡_
-               (L >>= 𝕃.head)
+               (𝕃.head L)
                (just $ 𝕃.lookup (Buffer.lerpinste x) a))
            × (_≡_
-               (L >>= 𝕃.last)
+               (𝕃.last L)
                (just $ 𝕃.lookup (Buffer.lerpinste x) b))
   pindices = {!!}
 
