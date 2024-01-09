@@ -371,7 +371,6 @@ module KanjyVeritas where
                (just $ 𝕃.lookup (Buffer.lerpinste x) b))
   pindices = {!!}
 
-  open import Data.Maybe.Properties
   muvdusin : (x : Buffer)
            → (a b : Buffer.F x)
            → (d : a 𝔽.≤ b)
