@@ -97,6 +97,7 @@ open import Data.Sum
 open import Function
   using (
     typeOf;
+    _on_;
     flip;
     _∋_;
     _$_;
@@ -158,6 +159,10 @@ open import Relation.Nullary
 open import System.Environment
   using (
     getArgs
+  )
+open import Truthbrary.Data.Fin
+  using (
+    mink
   )
 open import Truthbrary.Record.Eq
   using (
@@ -365,6 +370,19 @@ module KanjyVeritas where
                (L >>= 𝕃.last)
                (just $ 𝕃.lookup (Buffer.lerpinste x) b))
   pindices = {!!}
+
+  open import Data.Maybe.Properties
+  muvdusin : (x : Buffer)
+           → (a b : Buffer.F x)
+           → (d : a 𝔽.≤ b)
+           → let x' = proj₁ $ kanji {x} $ Muvgau a b d in
+             (Σ
+               ((_≡_ on (𝕃.length ∘ Buffer.lerpinste)) x x')
+               (λ e →
+                 (_≡_
+                   (𝕃.lookup (Buffer.lerpinste x) a)
+                   (𝕃.lookup (Buffer.lerpinste x') $ mink a e))))
+  muvdusin = {!!}
 \end{code}
 
 \section{la'oi .\F{main}.}
