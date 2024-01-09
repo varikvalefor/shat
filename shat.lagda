@@ -378,8 +378,7 @@ module KanjyVeritas where
            → (d : a 𝔽.≤ b)
            → let x' = proj₁ $ kanji {x} $ Muvgau a b d in
              (kanji {x} (Muvgau a b d) ≡ (x' , nothing))
-           ×
-             (Σ
+           × (Σ
                ((_≡_ on (𝕃.length ∘ Buffer.lerpinste)) x x')
                (λ e →
                  (_≡_
