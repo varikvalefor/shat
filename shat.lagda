@@ -214,18 +214,11 @@ record Buffer : Set
     datnyveicme : Maybe String
     lerpinste : List String
     cablerpinsle : Fin $ length lerpinste
+  F = typeOf cablerpinsle
 \end{code}
 
 \subsection{tu'a la'oi .\D{Fin}.}
-ni'o tu'a la'oi .\D{Fin}.\ nibli ko'a goi le su'u ro da poi ke'a ctaipe la'oi .\AgdaRecord{Buffer}.\ zo'u li su'o co'e ja nilzilcmi lo mu'oi zoi.\ \AgdaField{Buffer.lerpinste}\ be da  .i pilno le na'e me mu'oi zoi.\ \F{if\AgdaUnderscore{}then\AgdaUnderscore{}else\AgdaUnderscore} .zoi.\ co'e ki'u le su'u ko'a milxe ko'e goi le ka ce'u fegli la .varik.\ldots kei je ku'i cu mleca fi ko'e je le ka tu'a ce'u frili kei fe lo jalge be lo nu la'o zoi.\ \AgdaField{Buffer.cablerpinsle} .zoi.\ ctaipe la'o zoi.\ \Sym(\B x \Sym : \AgdaRecord{Buffer}\Sym) \Sym → \OpF{if} \AgdaNumber 0 \OpF{ℕ.≤} \F{𝕃.length} \Sym(\AgdaField{Buffer.lerpinste} \B x\Sym) \OpF{then} \F{BufF} \B x \OpF{else} \D{⊤}\ .zoi.
-
-\section{la'oi .\F{BufF}.}
-ni'o zabna ciksi la'oi .\AgdaRecord{Buffer}.\ fo ma bau la .lojban.
-
-\begin{code}
-BufF : Buffer → Set
-BufF = Fin ∘ length ∘ Buffer.lerpinste
-\end{code}
+ni'o tu'a la'oi .\D{Fin}.\ nibli ko'a goi le su'u ro da poi ke'a ctaipe la'oi .\AgdaRecord{Buffer}.\ zo'u li su'o co'e ja nilzilcmi lo mu'oi zoi.\ \AgdaField{Buffer.lerpinste}\ be da  .i pilno le na'e me mu'oi zoi.\ \F{if\AgdaUnderscore{}then\AgdaUnderscore{}else\AgdaUnderscore} .zoi.\ co'e ki'u le su'u ko'a milxe ko'e goi le ka ce'u fegli la .varik.\ldots kei je ku'i cu mleca fi ko'e je le ka tu'a ce'u frili kei fe lo jalge be lo nu la'o zoi.\ \AgdaField{Buffer.cablerpinsle} .zoi.\ ctaipe la'o zoi.\ \Sym(\B x \Sym : \AgdaRecord{Buffer}\Sym) \Sym → \OpF{if} \AgdaNumber 0 \OpF{ℕ.≤} \F{𝕃.length} \Sym(\AgdaField{Buffer.lerpinste} \B x\Sym) \OpF{then} \AgdaField{Buffer.F} \B x \OpF{else} \D{⊤}\ .zoi.
 
 \section{la'oi .\D{Cmd}.}
 ni'o ctaipe ko'a goi la'o zoi.\ \D{Cmd} \B x\ .zoi.\ fa lo co'e be lo midnoi be fo la'o zoi.\ ed(1) .zoi.\ ja zo'e be'o poi ctaipe lo su'u tu'a ke'a racli
@@ -244,12 +237,12 @@ ni'o ctaipe ko'a goi la'o zoi.\ \D{Cmd} \B x\ .zoi.\ fa lo co'e be lo midnoi be 
 
 \begin{code}
 data Cmd (x : Buffer) : Set where
-  Jmina : BufF x → Cmd x
+  Jmina : Buffer.F x → Cmd x
   -- | ni'o la .varik. cu cnikansa lo se rigni
   -- be le klamburi
-  Jmini : BufF x → Cmd x
+  Jmini : Buffer.F x → Cmd x
   Rejgau : String → Cmd x
-  Vimcu : (a b : BufF x) → a 𝔽.≤ b → Cmd x
+  Vimcu : (a b : Buffer.F x) → a 𝔽.≤ b → Cmd x
   Namcusku : typeOf Vimcu
   Basti : typeOf Vimcu
   Cusku : typeOf Vimcu
@@ -258,20 +251,20 @@ data Cmd (x : Buffer) : Set where
 \chapter{le fancu}
 
 \section{la'oi .\F{orsygenturfa'i}.}
-ni'o ro da poi ke'a ctaipe ko'a goi la'o zoi.\ \F{BufF} \B x\ .zoi.\ zo'u ro de poi ke'a ctaipe ko'a zo'u ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{orsygenturfa'i} \B x\ \B s\ .zoi.\ gi ga je da dubjavme'a de gi ga je ko'a me'oi .\IC{just}.\ lo .orsi be li ci bei da bei de bei lo ctaipe be lo su'u da dubjavme'a de gi la'o zoi.\ \B s.\ .zoi.\ konkatena lo sinxa be da lo me'oi .comma.\ lo sinxa be de
+ni'o ro da poi ke'a ctaipe ko'a goi la'o zoi.\ \AgdaField{Buffer.F} \B x\ .zoi.\ zo'u ro de poi ke'a ctaipe ko'a zo'u ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{orsygenturfa'i} \B x\ \B s\ .zoi.\ gi ga je da dubjavme'a de gi ga je ko'a me'oi .\IC{just}.\ lo .orsi be li ci bei da bei de bei lo ctaipe be lo su'u da dubjavme'a de gi la'o zoi.\ \B s.\ .zoi.\ konkatena lo sinxa be da lo me'oi .comma.\ lo sinxa be de
 
 \begin{code}
 orsygenturfa'i : (x : Buffer)
                → String
-               → Maybe $ Σ (BufF x × BufF x) $ uncurry 𝔽._≤_
+               → Maybe $ Σ (Buffer.F x × Buffer.F x) $ uncurry 𝔽._≤_
 orsygenturfa'i x = pork ∘ 𝕃.map ps ∘ spit
   where
   spit = splitOn ⦃ {!!} ⦄ ',' ∘ cev ∘ vec
   ps = (_>>= toBufF) ∘ ℕ.readMaybe 10 ∘ cev ∘ vec
     where
     toBufF = mapₘ 𝔽.fromℕ< ∘ decToMaybe ∘ (ℕ._<? _)
-  pork : List $ Maybe $ BufF x
-       → Maybe $ Σ (BufF x × BufF x) $ uncurry 𝔽._≤_
+  pork : List $ Maybe $ Buffer.F x
+       → Maybe $ Σ (Buffer.F x × Buffer.F x) $ uncurry 𝔽._≤_
   pork (just a ∷ just b ∷ []) with a 𝔽.≤? b
   ... | yes x = just $ _ , x
   ... | no _ = nothing
@@ -283,7 +276,7 @@ orsygenturfa'i x = pork ∘ 𝕃.map ps ∘ spit
 \begin{code}
 module Orsygenturfa'iVeritas where
   pav : (x : Buffer)
-      → (a b : BufF x)
+      → (a b : Buffer.F x)
       → (djb : a 𝔽.≤ b)
       → let showF = ℕ.show ∘ 𝔽.toℕ in
         (_≡_
@@ -350,7 +343,7 @@ kanji = {!!}
 \begin{code}
 module KanjyVeritas where
   dub₂ : (x : Buffer)
-       → (a b : BufF x)
+       → (a b : Buffer.F x)
        → (d : a 𝔽.≤ b)
        → let K = λ f → kanji {x} $ f a b d in
          let i = _≡_ (just x) ∘ mapₘ proj₁ ∘ K in
