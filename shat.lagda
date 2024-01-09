@@ -127,6 +127,7 @@ open import Data.List
 open import Data.Maybe
   using (
     decToMaybe;
+    from-just;
     nothing;
     Maybe;
     maybe;
@@ -301,8 +302,8 @@ ni'o ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{kanji} \Sym\{\B x\
 \begin{code}
 kanji : {x : Buffer}
       → Cmd x
-      → Maybe $ Buffer × Maybe String
-kanji {x} (Cusku a b _) = just $ x ,_ $ just $ cmap i
+      → Buffer × Maybe String
+kanji {x} (Cusku a b _) = x ,_ $ just $ cmap i
   where
   BL = Buffer.lerpinste x
   cmap = Data.String.concat ∘ 𝕃.map (𝕃.lookup BL)
@@ -313,15 +314,15 @@ kanji {x} (Cusku a b _) = just $ x ,_ $ just $ cmap i
            → Fin $ 𝔽.toℕ x
            → Fin n
     Fintoℕ f = 𝔽.inject≤ f $ DFP.toℕ≤n _
-kanji {x} (Namcusku a b m) = mapₘ (_,_ x ∘ just ∘ viiet) kot
+kanji {x} (Namcusku a b m) = _,_ x $ just $ viiet kot
   where
-  kot = _>>= proj₂ $ kanji {x} $ Cusku a b m
+  kot = from-just $ proj₂ $ kanji {x} $ Cusku a b m
   viiet = unlines ∘ 𝕃.map stringCat' ∘ uin ∘ lines
     where
     stringCat' = λ (x , z) → ℕ.show x ++ "\t" ++ z
     uin : List String → List $ ℕ × String
     uin = 𝕃.zip $ 𝕃.drop (𝔽.toℕ a) $ 𝕃.upTo $ 𝔽.toℕ b
-kanji {x} (Vimcu a b _) = just $ x' , nothing
+kanji {x} (Vimcu a b _) = x' , nothing
   where
   x' = record x {
     cablerpinsle = {!!};
@@ -348,15 +349,15 @@ module KanjyVeritas where
        → (a b : Buffer.F x)
        → (d : a 𝔽.≤ b)
        → let K = λ f → kanji {x} $ f a b d in
-         let i = _≡_ (just x) ∘ mapₘ proj₁ ∘ K in
+         let i = _≡_ x ∘ proj₁ ∘ K in
          i Cusku × i Namcusku
   dub₂ _ _ _ _ = _≡_.refl , _≡_.refl
 
   pindices : (x : Buffer)
            → (a b : _)
            → (d : _)
-           → let K = kanji {x} $ Cusku a b d in
-             let L = K >>= (Data.Maybe.map lines ∘ proj₂) in
+           → let K = proj₂ $ kanji {x} $ Cusku a b d in
+             let L = Data.Maybe.map lines K in
              (_≡_
                (L >>= 𝕃.head)
                (just $ 𝕃.lookup (Buffer.lerpinste x) a))
@@ -398,8 +399,7 @@ main = run $ getArgs IO.>>= uic ∘ 𝕃.head
       f : Maybe $ Cmd x → IO ⊤
       f nothing = IO.putStrLn "?" IO.>> lupe x
       f (just c) with kanji c
-      ... | nothing = lupe x
-      ... | just (x' , nothing) = lupe x'
-      ... | just (x' , just z ) = IO.putStrLn z IO.>> lupe x'
+      ... | x' , nothing = lupe x'
+      ... | x' , just z = IO.putStrLn z IO.>> lupe x'
 \end{code}
 \end{document}
