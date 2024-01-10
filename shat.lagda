@@ -94,6 +94,8 @@ open import Data.Nat
   )
 open import Data.Sum
   using (
+    from-inj₁;
+    map₁;
     inj₂;
     inj₁;
     _⊎_
@@ -322,13 +324,13 @@ reed = {!!}
 \end{code}
 
 \section{la \F{kanji}}
-ni'o la'o zoi.\ \F{kanji} \Sym\{\B x\Sym\} \B s\ .zoi.\ .orsi li re lo jalge be lo nu co'e la'oi .\B s.\ la'oi .\B x.\ kei zo'e poi ga jonai ke'a du la'oi .\IC{nothing}.\ gi cadga fa lo nu cusku ke'a fo lo co'e co mu'oi glibau.\ standard output .glibau.
+ni'o la'o zoi.\ \F{kanji} \Sym\{\B x\Sym\} \B s\ .zoi.\ .orsi li re lo jalge be lo nu co'e la'oi .\B s.\ la'oi .\B x.\ kei zo'e poi ga jonai ke'a du la'oi .\IC{nothing}.\ gi ga jonai cadga fa lo nu cusku ke'a fo lo co'e co mu'oi glibau.\ standard output .glibau.\ gi\ldots ga je co'e gi la .varik.\ na birti lo du'u zabna ciksi tu'a ma kau bau la .lojban.
 
 \begin{code}
 kanji : {x : Buffer}
       → Cmd x
-      → Buffer × Maybe String
-kanji {x} (Cusku a b _) = x ,_ $ just $ cmap i
+      → Σ Buffer $ λ x → Maybe $ String ⊎ Cmdᵢₒ x
+kanji {x} (Cusku a b _) = x ,_ $ just $ inj₁ $ cmap i
   where
   BL = Buffer.lerpinste x
   cmap = Data.String.concat ∘ 𝕃.map (𝕃.lookup BL)
@@ -339,9 +341,9 @@ kanji {x} (Cusku a b _) = x ,_ $ just $ cmap i
            → Fin $ 𝔽.toℕ x
            → Fin n
     Fintoℕ f = 𝔽.inject≤ f $ DFP.toℕ≤n _
-kanji {x} (Namcusku a b m) = x ,_ $ just $ viiet kot
+kanji {x} (Namcusku a b m) = x ,_ $ just $ inj₁ $ viiet kot
   where
-  kot = from-just $ proj₂ $ kanji {x} $ Cusku a b m
+  kot = from-inj₁ $ from-just $ proj₂ $ kanji {x} $ Cusku a b m
   viiet = unlines ∘ 𝕃.map stringCat' ∘ uin ∘ lines
     where
     stringCat' = λ (x , z) → ℕ.show x ++ "\t" ++ z
@@ -381,7 +383,7 @@ module KanjyVeritas where
            → (a b : Buffer.F x)
            → (d : a 𝔽.≤ b)
            → let K = proj₂ $ kanji {x} $ Cusku a b d in
-             let L = lines $ from-just K in
+             let L = lines $ from-inj₁ $ from-just K in
              (_≡_
                (𝕃.head L)
                (just $ 𝕃.lookup (Buffer.lerpinste x) a))
@@ -438,6 +440,7 @@ main = run $ getArgs IO.>>= uic ∘ 𝕃.head
       f nothing = IO.putStrLn "?" IO.>> lupe x
       f (just c) with kanji c
       ... | x' , nothing = lupe x'
-      ... | x' , just z = IO.putStrLn z IO.>> lupe x'
+      ... | x' , just (inj₁ z) = IO.putStrLn z IO.>> lupe x'
+      ... | x' , just (inj₂ z) = {!!}
 \end{code}
 \end{document}
