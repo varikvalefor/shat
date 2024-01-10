@@ -327,6 +327,15 @@ reed = {!!}
 
 \begin{code}
 module ReedVeritas where
+  private
+    k₃ : (x : Buffer)
+       → (a b : Buffer.F x)
+       → Char
+       → String
+    k₃ _ a b x = f a ++ "," ++ f b ++ Data.String.fromChar x
+      where
+      f = ℕ.show ∘ 𝔽.toℕ
+
   ac : (x : Buffer)
      → (a : Buffer.F x)
      → (_≡_
@@ -346,15 +355,7 @@ module ReedVeritas where
         → (d : a 𝔽.≤ b)
         → (_≡_
             (just $ Muvgau a b d)
-            (reed
-              x
-              (_++_
-                (ℕ.show $ 𝔽.toℕ a)
-                (_++_
-                  ","
-                  (_++_
-                    (ℕ.show $ 𝔽.toℕ b)
-                      "m")))))
+            (reed x $ k₃ x a b 'm'))
   mixer = {!!}
               
 \end{code}
