@@ -337,7 +337,7 @@ kanji {x} (Cusku a b _) = x ,_ $ just $ cmap i
            → Fin $ 𝔽.toℕ x
            → Fin n
     Fintoℕ f = 𝔽.inject≤ f $ DFP.toℕ≤n _
-kanji {x} (Namcusku a b m) = _,_ x $ just $ viiet kot
+kanji {x} (Namcusku a b m) = x ,_ $ just $ viiet kot
   where
   kot = from-just $ proj₂ $ kanji {x} $ Cusku a b m
   viiet = unlines ∘ 𝕃.map stringCat' ∘ uin ∘ lines
