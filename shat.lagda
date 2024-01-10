@@ -432,8 +432,6 @@ main = run $ getArgs IO.>>= uic ∘ 𝕃.head
     lupe : (x : Buffer) → IO ⊤
     lupe x = IO.getLine IO.>>= f ∘ reed x
       where
-      sin : ∀ {a} → IO {a} ⊤
-      sin = IO.putStrLn "?"
       f : Maybe $ Cmd x → IO ⊤
       f nothing = IO.putStrLn "?" IO.>> lupe x
       f (just c) with kanji c
