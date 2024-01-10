@@ -340,6 +340,23 @@ module ReedVeritas where
          (just $ Jmini a)
          (reed x $ ℕ.show (𝔽.toℕ a) ++ "i"))
   ic = {!!}
+
+  mixer : (x : Buffer)
+        → (a b : Buffer.F x)
+        → (d : a 𝔽.≤ b)
+        → (_≡_
+            (just $ Muvgau a b d)
+            (reed
+              x
+              (_++_
+                (ℕ.show $ 𝔽.toℕ a)
+                (_++_
+                  ","
+                  (_++_
+                    (ℕ.show $ 𝔽.toℕ b)
+                      "m")))))
+  mixer = {!!}
+              
 \end{code}
 
 \section{la \F{kanji}}
