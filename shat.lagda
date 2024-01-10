@@ -354,8 +354,7 @@ kanji {x} (Vimcu a b _) = x' , nothing
     Lz = Buffer.lerpinste x
     indice = λ x → 𝕃.zip (𝕃.allFin $ 𝕃.length x) x
     nin : (x : _)
-        → let finek = record {_≟_ = 𝔽._≟_} in
-          (Dec $ _∉_ ⦃ liliList ⦄ ⦃ finek ⦄
+        → (Dec $ _∉_ ⦃ liliList ⦄ ⦃ record {_≟_ = 𝔽._≟_} ⦄
             (proj₁ x)
             (𝕃.map
               (flip 𝔽.inject≤ $ DFP.toℕ≤n _)
