@@ -323,6 +323,18 @@ reed : (x : Buffer) → String → Maybe $ Cmd x
 reed = {!!}
 \end{code}
 
+\subsection{le ctaipe be le su'u la'oi .\F{reed}.\ mapti}
+
+\begin{code}
+module ReedVeritas where
+  ac : (x : Buffer)
+     → (a : Buffer.F x)
+     → (_≡_
+         (just $ Jmina a)
+         (reed x $ ℕ.show (𝔽.toℕ a) ++ "a"))
+  ac = {!!}
+\end{code}
+
 \section{la \F{kanji}}
 ni'o la'o zoi.\ \F{kanji} \Sym\{\B x\Sym\} \B s\ .zoi.\ .orsi li re lo jalge be lo nu co'e la'oi .\B s.\ la'oi .\B x.\ kei zo'e poi ga jonai ke'a du la'oi .\IC{nothing}.\ gi ga jonai cadga fa lo nu cusku ke'a fo lo co'e co mu'oi glibau.\ standard output .glibau.\ gi\ldots ga je co'e gi la .varik.\ na birti lo du'u zabna ciksi tu'a ma kau bau la .lojban.
 
