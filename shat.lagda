@@ -259,7 +259,7 @@ data Cmd (x : Buffer) : Set where
   Muvgau : typeOf Vimcu
 \end{code}
 
-\section{la'oi .\F{Cmdᵢₒ}.}
+\section{la'oi .\D{Cmdᵢₒ}.}
 ni'o ro da poi ke'a ctaipe la'o zoi.\ \D{Cmdᵢₒ} \B x\ .zoi.\ zo'u\ldots
 \begin{itemize}
 	\item ga jonai ga je da du la'o zoi.\ \IC{Rejgauᵢₒ} \B a \B b\ .zoi.\ gi tu'a da rinka lo nu rejgau benji la'oi .\B a.\ lo datnyvei poi ke'a selcme la'oi .\B b.\ gi
