@@ -376,8 +376,8 @@ module KanjyVeritas where
   dub₂ _ _ _ _ = _≡_.refl , _≡_.refl
 
   pindices : (x : Buffer)
-           → (a b : _)
-           → (d : _)
+           → (a b : Buffer.F x)
+           → (d : a 𝔽.≤ b)
            → let K = proj₂ $ kanji {x} $ Cusku a b d in
              let L = lines $ from-just K in
              (_≡_
