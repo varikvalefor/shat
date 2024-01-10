@@ -62,7 +62,9 @@
 \newcommand\IC\AgdaInductiveConstructor
 \newcommand\OpF[1]{\AgdaOperator{\F{#1}}}
 
-\title{le me'oi .Agda.\ velcki be la'o zoi.\ shat(1) .zoi.\ noi ke'a smimlu la'o zoi.\ ed(1) .zoi.}
+\newcommand\Xr[2]{\textrm{#1(#2)}}
+
+\title{le me'oi .Agda.\ velcki be la'o zoi.\ \Xr{shat}{1} .zoi.\ noi ke'a smimlu la'o zoi.\ \Xr{ed}{1} .zoi.}
 \author{la .varik.\ .VALefor.}
 
 \begin{document}
@@ -230,7 +232,7 @@ record Buffer : Set
 ni'o tu'a la'oi .\D{Fin}.\ nibli ko'a goi le su'u ro da poi ke'a ctaipe la'oi .\AgdaRecord{Buffer}.\ zo'u li su'o co'e ja nilzilcmi lo mu'oi zoi.\ \AgdaField{Buffer.lerpinste}\ be da  .i pilno le na'e me mu'oi zoi.\ \F{if\AgdaUnderscore{}then\AgdaUnderscore{}else\AgdaUnderscore} .zoi.\ co'e ki'u le su'u ko'a milxe ko'e goi le ka ce'u fegli la .varik.\ldots kei je ku'i cu mleca fi ko'e je le ka tu'a ce'u frili kei fe lo jalge be lo nu la'o zoi.\ \AgdaField{Buffer.cablerpinsle} .zoi.\ ctaipe la'o zoi.\ \Sym(\B x \Sym : \AgdaRecord{Buffer}\Sym) \Sym → \OpF{if} \AgdaNumber 0 \OpF{ℕ.≤} \F{𝕃.length} \Sym(\AgdaField{Buffer.lerpinste} \B x\Sym) \OpF{then} \AgdaField{Buffer.F} \B x \OpF{else} \D{⊤}\ .zoi.
 
 \section{la'oi .\D{Cmd}.}
-ni'o ctaipe ko'a goi la'o zoi.\ \D{Cmd} \B x\ .zoi.\ fa lo co'e be lo midnoi be fo la'o zoi.\ ed(1) .zoi.\ ja zo'e be'o poi ctaipe lo su'u tu'a ke'a racli
+ni'o ctaipe ko'a goi la'o zoi.\ \D{Cmd} \B x\ .zoi.\ fa lo co'e be lo midnoi be fo la'o zoi.\ \Xr{ed}{1} .zoi.\ ja zo'e be'o poi ctaipe lo su'u tu'a ke'a racli
 
 \newcommand\cibysumti[2]{ga je da du la'o zoi.\ \IC{#1} \B v \B z \AgdaUnderscore{}\ .zoi.\ gi da mapti lo konkatena be lo sinxa be la'oi .\B v.\ be'o bei lo me'oi .comma.\ bei lo sinxa be la'oi .\B z.\ be'o bei #2}
 .i ro da poi ke'a ctaipe ko'a zo'u\ldots
@@ -312,7 +314,7 @@ module Orsygenturfa'iVeritas where
 \end{code}
 
 \section{la'oi .\F{reed}.}
-ni'o ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{reed} \B x \B s\ .zoi.\ gi ga je la'oi .\B s.\ midnoi fo la'o zoi.\ ed(1) .zoi.\ je cu mapti la'o zoi.\ \D{Cmd} \B x\ .zoi.\ gi ko'a me'oi .\IC{just}.\ lo mapti be la'oi .\B s.
+ni'o ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{reed} \B x \B s\ .zoi.\ gi ga je la'oi .\B s.\ midnoi fo la'o zoi.\ \Xr{ed}{1} .zoi.\ je cu mapti la'o zoi.\ \D{Cmd} \B x\ .zoi.\ gi ko'a me'oi .\IC{just}.\ lo mapti be la'oi .\B s.
 
 \begin{code}
 reed : (x : Buffer) → String → Maybe $ Cmd x
