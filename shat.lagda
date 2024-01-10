@@ -333,6 +333,13 @@ module ReedVeritas where
          (just $ Jmina a)
          (reed x $ ℕ.show (𝔽.toℕ a) ++ "a"))
   ac = {!!}
+
+  ic : (x : Buffer)
+     → (a : Buffer.F x)
+     → (_≡_
+         (just $ Jmini a)
+         (reed x $ ℕ.show (𝔽.toℕ a) ++ "i"))
+  ic = {!!}
 \end{code}
 
 \section{la \F{kanji}}
