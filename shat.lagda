@@ -328,6 +328,12 @@ reed = {!!}
 \begin{code}
 module ReedVeritas where
   private
+    k₁ : (x : Buffer)
+       → (a : Buffer.F x)
+       → Char
+       → String
+    k₁ _ a x = ℕ.show (𝔽.toℕ a) ++ Data.String.fromChar x
+
     k₃ : (x : Buffer)
        → (a b : Buffer.F x)
        → Char
@@ -340,14 +346,14 @@ module ReedVeritas where
      → (a : Buffer.F x)
      → (_≡_
          (just $ Jmina a)
-         (reed x $ ℕ.show (𝔽.toℕ a) ++ "a"))
+         (reed x $ k₁ x a 'a'))
   ac = {!!}
 
   ic : (x : Buffer)
      → (a : Buffer.F x)
      → (_≡_
          (just $ Jmini a)
-         (reed x $ ℕ.show (𝔽.toℕ a) ++ "i"))
+         (reed x $ k₁ x a 'i'))
   ic = {!!}
 
   mixer : (x : Buffer)
