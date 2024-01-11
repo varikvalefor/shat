@@ -455,6 +455,13 @@ module KanjyVeritas where
              (_≡_ on (𝕃.take (𝔽.toℕ a ℕ.⊓ 𝔽.toℕ b) ∘ L)) x x'
            × (_≡_ on (𝕃.drop (𝔽.toℕ a ℕ.⊔ 𝔽.toℕ b) ∘ L)) x x'
   muvdusin = {!!}
+
+  jminac : (x : Buffer)
+         → (a : Buffer.F x)
+         → (_≡_
+             (kanji {x} $ Jmina a)
+             (x ,_ $ just $ inj₂ $ Tcidu "/dev/stdin" a))
+  jminac = ?
 \end{code}
 
 \section{la'oi .\F{main}.}
