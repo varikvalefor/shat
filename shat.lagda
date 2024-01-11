@@ -344,32 +344,24 @@ module ReedVeritas where
 
   ac : (x : Buffer)
      → (a : Buffer.F x)
-     → (_≡_
-         (just $ Jmina a)
-         (reed x $ k₁ x a 'a'))
+     → just (Jmina a) ≡ reed x (k₁ x a 'a')
   ac = {!!}
 
   ic : (x : Buffer)
      → (a : Buffer.F x)
-     → (_≡_
-         (just $ Jmini a)
-         (reed x $ k₁ x a 'i'))
+     → just (Jmini a) ≡ reed x (k₁ x a 'i')
   ic = {!!}
 
   mixer : (x : Buffer)
         → (a b : Buffer.F x)
         → (d : a 𝔽.≤ b)
-        → (_≡_
-            (just $ Muvgau a b d)
-            (reed x $ k₃ x a b 'm'))
+        → just (Muvgau a b d) ≡ reed x (k₃ x a b 'm')
   mixer = {!!}
 
   vim : (x : Buffer)
       → (a b : Buffer.F x)
       → (d : a 𝔽.≤ b)
-      → (_≡_
-          (just $ Vimcu a b d)
-          (reed x $ k₃ x a b 'd'))
+      → just (Vimcu a b d) ≡ reed x (k₃ x a b 'd')
   vim = {!!}
 \end{code}
 
