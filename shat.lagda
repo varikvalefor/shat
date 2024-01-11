@@ -289,7 +289,7 @@ orsygenturfa'i : (x : Buffer)
                → Maybe $ Σ (Buffer.F x × Buffer.F x) $ uncurry 𝔽._≤_
 orsygenturfa'i x = pork ∘ 𝕃.map ps ∘ spit
   where
-  spit = splitOn ⦃ {!!} ⦄ ',' ∘ cev ∘ vec
+  spit = splitOn ⦃ record {_≟_ = Data.Char._≟_} ⦄ ',' ∘ cev ∘ vec
   ps = (_>>= toBufF) ∘ ℕ.readMaybe 10 ∘ cev ∘ vec
     where
     toBufF = mapₘ 𝔽.fromℕ< ∘ decToMaybe ∘ (ℕ._<? _)
