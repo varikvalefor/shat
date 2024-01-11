@@ -357,7 +357,14 @@ module ReedVeritas where
             (just $ Muvgau a b d)
             (reed x $ k₃ x a b 'm'))
   mixer = {!!}
-              
+
+  vim : (x : Buffer)
+      → (a b : Buffer.F x)
+      → (d : a 𝔽.≤ b)
+      → (_≡_
+          (just $ Vimcu a b d)
+          (reed x $ k₃ x a b 'd'))
+  vim = {!!}
 \end{code}
 
 \section{la \F{kanji}}
