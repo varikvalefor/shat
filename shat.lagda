@@ -318,7 +318,9 @@ module Orsygenturfa'iVeritas where
     uimla (just a ∷ just b ∷ []) ≡⟨ uimladu a b djb ⟩
     just ((a , b) , djb) ∎
     where
+    showF : {n : ℕ} → Fin n → String
     showF = ℕ.show ∘ 𝔽.toℕ
+    orgentufa : {n : ℕ} → Fin n → Maybe $ Fin n
     orgentufa = (_>>= toBufF) ∘ ℕ.readMaybe 10 ∘ showF
       where
       toBufF = mapₘ 𝔽.fromℕ< ∘ decToMaybe ∘ (ℕ._<? _)
