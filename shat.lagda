@@ -312,7 +312,13 @@ module Orsygenturfa'iVeritas where
         (_≡_
           (just $ (a , b) , djb)
           (orsygenturfa'i x $ showF a ++ "," ++ showF b))
-  pav = {!!}
+  pav x a b djb = sym $ begin
+    orsygenturfa'i x (showF a ++ "," ++ showF b) ≡⟨ {!!} ⟩
+    just ((a , b) , djb) ∎
+    where
+    showF = ℕ.show ∘ 𝔽.toℕ
+    open import Relation.Binary.PropositionalEquality
+    open ≡-Reasoning
 \end{code}
 
 \section{la'oi .\F{reed}.}
