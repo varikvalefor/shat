@@ -314,7 +314,7 @@ module Orsygenturfa'iVeritas where
           (orsygenturfa'i x $ showF a ++ "," ++ showF b))
   pav x a b djb = sym $ begin
     orsygenturfa'i x (showF a ++ "," ++ showF b) ≡⟨ {!!} ⟩
-    uimla (just a ∷ just b ∷ []) ≡⟨ {!!} ⟩
+    uimla (just a ∷ just b ∷ []) ≡⟨ uimladu a b djb ⟩
     just ((a , b) , djb) ∎
     where
     showF = ℕ.show ∘ 𝔽.toℕ
@@ -325,6 +325,13 @@ module Orsygenturfa'iVeritas where
     ... | yes x = just $ (a , b) , x
     ... | no _ = nothing
     uimla _ = nothing
+    uimladu : {n : ℕ}
+            → (x z : Fin n)
+            → (djb : x 𝔽.≤ z)
+            → (_≡_
+                (uimla $ just x ∷ just z ∷ [])
+                (just $ (x , z) , djb))
+    uimladu x z djb = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 \end{code}
