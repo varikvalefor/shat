@@ -318,7 +318,9 @@ module Orsygenturfa'iVeritas where
     just ((a , b) , djb) ∎
     where
     showF = ℕ.show ∘ 𝔽.toℕ
-    uimla : List $ Maybe _ → Maybe _
+    uimla : {n : ℕ}
+          → List $ Maybe $ Fin n
+          → Maybe $ Σ (Fin n × Fin n) $ uncurry 𝔽._≤_
     uimla (just a ∷ just b ∷ []) with a 𝔽.≤? b
     ... | yes x = just $ (a , b) , x
     ... | no _ = nothing
