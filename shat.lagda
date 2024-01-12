@@ -314,9 +314,15 @@ module Orsygenturfa'iVeritas where
           (orsygenturfa'i x $ showF a ++ "," ++ showF b))
   pav x a b djb = sym $ begin
     orsygenturfa'i x (showF a ++ "," ++ showF b) ≡⟨ {!!} ⟩
+    uimla (just a ∷ just b ∷ []) ≡⟨ {!!} ⟩
     just ((a , b) , djb) ∎
     where
     showF = ℕ.show ∘ 𝔽.toℕ
+    uimla : List $ Maybe _ → Maybe _
+    uimla (just a ∷ just b ∷ []) with a 𝔽.≤? b
+    ... | yes x = just $ (a , b) , x
+    ... | no _ = nothing
+    uimla _ = nothing
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 \end{code}
