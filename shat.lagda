@@ -410,7 +410,7 @@ kanji {x} (Muvgau a b _) = x' , nothing
   where
   x' = record x {
     cablerpinsle = mink (Buffer.cablerpinsle x) {!!};
-    lerpinste = ?
+    lerpinste = {!!}
     }
 kanji = {!!}
 \end{code}
@@ -461,7 +461,7 @@ module KanjyVeritas where
          → (_≡_
              (kanji {x} $ Jmina a)
              (x ,_ $ just $ inj₂ $ Tcidu "/dev/stdin" a))
-  jminac = ?
+  jminac = {!!}
 \end{code}
 
 \section{la'oi .\F{main}.}
