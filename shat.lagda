@@ -314,10 +314,14 @@ module Orsygenturfa'iVeritas where
           (orsygenturfa'i x $ showF a ++ "," ++ showF b))
   pav x a b djb = sym $ begin
     orsygenturfa'i x (showF a ++ "," ++ showF b) ≡⟨ {!!} ⟩
+    uimla (readF (showF a) ∷  readF (showF b) ∷ []) ≡⟨ {!!} ⟩
     uimla (just a ∷ just b ∷ []) ≡⟨ uimladu a b djb ⟩
     just ((a , b) , djb) ∎
     where
     showF = ℕ.show ∘ 𝔽.toℕ
+    readF = (_>>= toBufF) ∘ ℕ.readMaybe 10
+      where
+      toBufF = mapₘ 𝔽.fromℕ< ∘ decToMaybe ∘ (ℕ._<? _)
     uimla : {n : ℕ}
           → List $ Maybe $ Fin n
           → Maybe $ Σ (Fin n × Fin n) $ uncurry 𝔽._≤_
