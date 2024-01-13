@@ -456,6 +456,7 @@ kanji {x} (Muvgau a b _) = x' , nothing
     cablerpinsle = mink (Buffer.cablerpinsle x) {!!};
     lerpinste = {!!}
     }
+kanji {x} (Jmina a) = x ,_ $ just $ inj₂ $ Tcidu "/dev/stdin" a
 kanji = {!!}
 \end{code}
 
