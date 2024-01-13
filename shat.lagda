@@ -335,9 +335,6 @@ module Orsygenturfa'iVeritas where
     ... | yes x = just $ (a , b) , x
     ... | no _ = nothing
     uimla _ = nothing
-    -- | ni'o krinu le su'u cmene
-    justF≡just : {n : ℕ} → (x : Fin n) → justF x ≡ just x
-    justF≡just = {!!}
     uimladu : {n : ℕ}
             → (x z : Fin n)
             → (djb : x 𝔽.≤ z)
@@ -356,6 +353,10 @@ module Orsygenturfa'iVeritas where
       just a ∷ justF b ∷ []
         ≡⟨ justF≡just b ▹ cong (λ n → just a ∷ n ∷ []) ⟩
       just a ∷ just b ∷ [] ∎
+      where
+      -- | ni'o krinu le su'u cmene
+      justF≡just : {n : ℕ} → (x : Fin n) → justF x ≡ just x
+      justF≡just = {!!}
 \end{code}
 
 \section{la'oi .\F{reed}.}
