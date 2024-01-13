@@ -110,6 +110,9 @@ open import Function
     _∘_;
     id
   )
+  renaming (
+    _|>_ to _▹_
+  )
 open import IO.Finite
   using (
     readFile
@@ -314,7 +317,7 @@ module Orsygenturfa'iVeritas where
           (orsygenturfa'i x $ showF a ++ "," ++ showF b))
   pav x a b djb = sym $ begin
     orsygenturfa'i x (showF a ++ "," ++ showF b) ≡⟨ {!!} ⟩
-    uimla (justF a ∷  justF b ∷ []) ≡⟨ {!!} ⟩
+    uimla (justF a ∷  justF b ∷ []) ≡⟨ cong uimla $ juste a b ⟩
     uimla (just a ∷ just b ∷ []) ≡⟨ uimladu a b djb ⟩
     just ((a , b) , djb) ∎
     where
@@ -344,6 +347,15 @@ module Orsygenturfa'iVeritas where
     uimladu x z djb = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
+    juste : {n : ℕ}
+          → (x z : Fin n)
+          → justF a ∷ justF b ∷ [] ≡ just a ∷ just b ∷ []
+    juste x z = begin
+      justF a ∷ justF b ∷ []
+        ≡⟨ justF≡just a ▹ cong (λ n → n ∷ justF b ∷ []) ⟩
+      just a ∷ justF b ∷ []
+        ≡⟨ justF≡just b ▹ cong (λ n → just a ∷ n ∷ []) ⟩
+      just a ∷ just b ∷ [] ∎
 \end{code}
 
 \section{la'oi .\F{reed}.}
