@@ -283,6 +283,29 @@ data Cmdᵢₒ (x : Buffer) : Set where
 
 \chapter{le fancu}
 
+\section{la'oi .\F{romoivimcu}.}
+ni'o la .varik.\ na birti lo du'u zabna ciksi la'oi .\F{romoivimcu}.\ bau la .lojban.\ fo ma kau
+
+\begin{code}
+romoivimcu : String → String
+romoivimcu = S $ 𝕃.reverse ∘ 𝕃.drop 1 ∘ 𝕃.reverse
+  where
+  S = λ f → Data.String.fromList ∘ f ∘ Data.String.toList
+\end{code}
+
+\subsectoin{le ctaipe be le su'u la'oi .\F{romoivimcu}.\ mapti}
+
+\begin{code}
+module RomoivimcuVeritas where
+  pav : (x : String)
+      → (_≡_
+          (Data.String.toList $ romoivimcu x)
+          (𝕃.take
+            (Data.String.length x ℕ.∸ 1)
+            (Data.String.toList x)))
+  pav = {!!}
+\end{code}
+
 \section{la'oi .\F{orsygenturfa'i}.}
 ni'o ro da poi ke'a ctaipe ko'a goi la'o zoi.\ \AgdaField{Buffer.F} \B x\ .zoi.\ zo'u ro de poi ke'a ctaipe ko'a zo'u ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{orsygenturfa'i} \B x\ \B s\ .zoi.\ gi ga je da dubjavme'a de gi ga je ko'a me'oi .\IC{just}.\ lo .orsi be li ci bei da bei de bei lo ctaipe be lo su'u da dubjavme'a de gi la'oi .\B s.\ konkatena lo sinxa be da lo me'oi .comma.\ lo sinxa be de
 
