@@ -283,6 +283,25 @@ data Cmdᵢₒ (x : Buffer) : Set where
 
 \chapter{le fancu}
 
+\section{la'oi .\F{binxo𝔽?}.}
+ni'o ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{binxo𝔽?}\ \B x\ .zoi.\ gi la'o zoi.\ \IC{just} B x\ .zoi.\ du la'o zoi.\ \F{mapₘ} \F{𝔽.toℕ} \OpF \$ \F{binxo𝔽?}\ \B x\ .zoi.\
+
+\begin{code}
+binxo𝔽? : {n : ℕ} → ℕ → Maybe $ Fin n
+binxo𝔽? = mapₘ 𝔽.fromℕ< ∘ decToMaybe ∘ (ℕ._<? _)
+\end{code}
+
+\subsection{le ctaipe be le su'u la'oi .\F{binxo𝔽?}.\ mapti}
+
+\begin{code}
+module Binxo𝔽Veritas where
+  pav : {n : ℕ}
+      → (x : ℕ)
+      → x ℕ.< n
+      → just x ≡ mapₘ 𝔽.toℕ (binxo𝔽? x)
+  pav = {!!}
+\end{code}
+
 \section{la'oi .\F{romoivimcu}.}
 ni'o la .varik.\ na birti lo du'u zabna ciksi la'oi .\F{romoivimcu}.\ bau la .lojban.\ fo ma kau
 
@@ -316,9 +335,7 @@ orsygenturfa'i : (x : Buffer)
 orsygenturfa'i x = pork ∘ 𝕃.map ps ∘ spit
   where
   spit = splitOn ⦃ record {_≟_ = Data.Char._≟_} ⦄ ',' ∘ cev ∘ vec
-  ps = (_>>= toBufF) ∘ ℕ.readMaybe 10 ∘ cev ∘ vec
-    where
-    toBufF = mapₘ 𝔽.fromℕ< ∘ decToMaybe ∘ (ℕ._<? _)
+  ps = (_>>= binxo𝔽?) ∘ ℕ.readMaybe 10 ∘ cev ∘ vec
   pork : List $ Maybe $ Buffer.F x
        → Maybe $ Σ (Buffer.F x × Buffer.F x) $ uncurry 𝔽._≤_
   pork (just a ∷ just b ∷ []) with a 𝔽.≤? b
@@ -347,9 +364,7 @@ module Orsygenturfa'iVeritas where
     showF : {n : ℕ} → Fin n → String
     showF = ℕ.show ∘ 𝔽.toℕ
     justF : {n : ℕ} → Fin n → Maybe $ Fin n
-    justF = (_>>= toBufF) ∘ ℕ.readMaybe 10 ∘ showF
-      where
-      toBufF = mapₘ 𝔽.fromℕ< ∘ decToMaybe ∘ (ℕ._<? _)
+    justF = (_>>= binxo𝔽?) ∘ ℕ.readMaybe 10 ∘ showF
 
     uimla : {n : ℕ}
           → List $ Maybe $ Fin n
