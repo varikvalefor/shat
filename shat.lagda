@@ -293,7 +293,7 @@ romoivimcu = S $ 𝕃.reverse ∘ 𝕃.drop 1 ∘ 𝕃.reverse
   S = λ f → Data.String.fromList ∘ f ∘ Data.String.toList
 \end{code}
 
-\subsectoin{le ctaipe be le su'u la'oi .\F{romoivimcu}.\ mapti}
+\subsection{le ctaipe be le su'u la'oi .\F{romoivimcu}.\ mapti}
 
 \begin{code}
 module RomoivimcuVeritas where
