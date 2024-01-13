@@ -324,6 +324,7 @@ module Orsygenturfa'iVeritas where
     justF = (_>>= toBufF) ∘ ℕ.readMaybe 10 ∘ showF
       where
       toBufF = mapₘ 𝔽.fromℕ< ∘ decToMaybe ∘ (ℕ._<? _)
+
     uimla : {n : ℕ}
           → List $ Maybe $ Fin n
           → Maybe $ Σ (Fin n × Fin n) $ uncurry 𝔽._≤_
