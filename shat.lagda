@@ -560,12 +560,11 @@ main = run $ getArgs IO.>>= uic ∘ 𝕃.head
       cablerpinsle = 𝔽.zero
       }
     mkDef : _
-    mkDef c = uit IO.<$> readFile c
+    mkDef c = uit ∘ Data.String.lines IO.<$> readFile c
       where
       uit : _ → _
-      uit t with Data.String.lines t
-      ... | [] = record def {datnyveicme = just c}
-      ... | x@(_ ∷ _) = record {
+      uit [] = record def {datnyveicme = just c}
+      uit x@(_ ∷ _) = record {
         datnyveicme = just c;
         lerpinste = x;
         cablerpinsle = 𝔽.opposite 𝔽.zero
