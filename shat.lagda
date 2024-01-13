@@ -387,18 +387,21 @@ ni'o ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{reed} \B x \B s\ .
 
 \begin{code}
 reed : (x : Buffer) → String → Maybe $ Cmd x
-reed x s with (orsygenturfa'i x r , romoi s)
+reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
   where
   r = romoivimcu s
   romoi = 𝕃.last ∘ Data.String.toList
-... | (just ((a , b) , d) , just 'c') = just $ Basti a b d
-... | (just ((a , b) , d) , just 'd') = just $ Vimcu a b d
-... | (just ((a , b) , d) , just 'm') = just $ Muvgau a b d
-... | (just ((a , b) , d) , just 'n') = just $ Namcusku a b d
-... | (just ((a , b) , d) , just 'p') = just $ Cusku a b d
-... | just _ , _ = nothing
-... | _ , nothing = nothing
-... | nothing , _ = {!!}
+  terp : List $ Maybe $ Cmd x
+  terp = rel ∷ []
+    where
+    rel : Maybe $ Cmd x
+    rel with orsygenturfa'i x r , romoi s
+    ... | (just ((a , b) , d) , just 'c') = just $ Basti a b d
+    ... | (just ((a , b) , d) , just 'd') = just $ Vimcu a b d
+    ... | (just ((a , b) , d) , just 'm') = just $ Muvgau a b d
+    ... | (just ((a , b) , d) , just 'n') = just $ Namcusku a b d
+    ... | (just ((a , b) , d) , just 'p') = just $ Cusku a b d
+    ... | _ , _ = nothing
 \end{code}
 
 \subsection{le ctaipe be le su'u la'oi .\F{reed}.\ mapti}
