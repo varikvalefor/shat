@@ -387,7 +387,18 @@ ni'o ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{reed} \B x \B s\ .
 
 \begin{code}
 reed : (x : Buffer) → String → Maybe $ Cmd x
-reed = {!!}
+reed x s with (orsygenturfa'i x r , romoi s)
+  where
+  r = romoivimcu s
+  romoi = 𝕃.last ∘ Data.String.toList
+... | (just ((a , b) , d) , just 'c') = just $ Basti a b d
+... | (just ((a , b) , d) , just 'd') = just $ Vimcu a b d
+... | (just ((a , b) , d) , just 'm') = just $ Muvgau a b d
+... | (just ((a , b) , d) , just 'n') = just $ Namcusku a b d
+... | (just ((a , b) , d) , just 'p') = just $ Cusku a b d
+... | just _ , _ = nothing
+... | _ , nothing = nothing
+... | nothing , _ = {!!}
 \end{code}
 
 \subsection{le ctaipe be le su'u la'oi .\F{reed}.\ mapti}
