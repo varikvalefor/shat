@@ -206,7 +206,6 @@ open import Relation.Binary.PropositionalEquality
     _≡_
   )
 
-import Level
 import Data.Nat.Show
   as ℕ
   using (
