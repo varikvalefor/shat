@@ -552,9 +552,9 @@ main : Main
 main = run $ getArgs IO.>>= uic ∘ 𝕃.head
   where
   uic : Maybe String → IO ⊤
-  uic c = maybe mkDef def c IO.>>= lupe
+  uic c = maybe mkDef (IO.pure def) c IO.>>= lupe
     where
-    def = IO.pure record {
+    def = record {
       datnyveicme = nothing;
       lerpinste = "" ∷ List.[];
       cablerpinsle = 𝔽.zero
@@ -562,10 +562,13 @@ main = run $ getArgs IO.>>= uic ∘ 𝕃.head
     mkDef : _
     mkDef c = uit IO.<$> readFile c
       where
-      uit = λ t → record {
+      uit : _ → _
+      uit t with Data.String.lines t
+      ... | [] = record def {datnyveicme = just c}
+      ... | x@(_ ∷ _) = record {
         datnyveicme = just c;
-        lerpinste = Data.String.lines t;
-        cablerpinsle = {!!}
+        lerpinste = x;
+        cablerpinsle = 𝔽.opposite 𝔽.zero
         }
     lupe : (x : Buffer) → IO ⊤
     lupe x = IO.getLine IO.>>= f ∘ reed x
