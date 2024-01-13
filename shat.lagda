@@ -333,9 +333,7 @@ module Orsygenturfa'iVeritas where
     ... | no _ = nothing
     uimla _ = nothing
     -- | ni'o krinu le su'u cmene
-    justF≡just : {n : ℕ}
-               → (x : Fin n)
-               → justF x ≡ just x
+    justF≡just : {n : ℕ} → (x : Fin n) → justF x ≡ just x
     justF≡just = {!!}
     uimladu : {n : ℕ}
             → (x z : Fin n)
