@@ -284,7 +284,7 @@ data Cmdᵢₒ (x : Buffer) : Set where
 \chapter{le fancu}
 
 \section{la'oi .\F{binxo𝔽?}.}
-ni'o ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{binxo𝔽?}\ \B x\ .zoi.\ gi la'o zoi.\ \IC{just} B x\ .zoi.\ du la'o zoi.\ \F{mapₘ} \F{𝔽.toℕ} \OpF \$ \F{binxo𝔽?}\ \B x\ .zoi.\
+ni'o ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{binxo𝔽?}\ \B x\ .zoi.\ gi la'o zoi.\ \IC{just} \B x\ .zoi.\ du la'o zoi.\ \F{mapₘ} \F{𝔽.toℕ} \OpF \$ \F{binxo𝔽?}\ \B x\ .zoi.\
 
 \begin{code}
 binxo𝔽? : {n : ℕ} → ℕ → Maybe $ Fin n
