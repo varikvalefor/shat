@@ -558,7 +558,7 @@ module KanjyVeritas where
          → (_≡_
              (kanji {x} $ Jmina a)
              (x ,_ $ just $ inj₂ $ Tcidu "/dev/stdin" a))
-  jminac = {!!}
+  jminac _ _ = _≡_.refl
 \end{code}
 
 \section{la'oi .\F{main}.}
