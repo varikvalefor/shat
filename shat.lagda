@@ -407,7 +407,7 @@ reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
   r = romoivimcu s
   romoi = 𝕃.last ∘ Data.String.toList
   terp : List $ Maybe $ Cmd x
-  terp = rel ∷ []
+  terp = pav ∷ rel ∷ []
     where
     rel : Maybe $ Cmd x
     rel with orsygenturfa'i x r , romoi s
@@ -417,6 +417,18 @@ reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
     ... | (just ((a , b) , d) , just 'n') = just $ Namcusku a b d
     ... | (just ((a , b) , d) , just 'p') = just $ Cusku a b d
     ... | _ , _ = nothing
+    pav : Maybe $ Cmd x
+    pav = pav' t $ romoi s
+      where
+      pav' : Maybe $ Buffer.F x → Maybe Char → Maybe $ Cmd x
+      pav' (just n) (just 'a') = just $ Jmina n
+      pav' (just n) (just 'i') = just $ Jmini n
+      pav' _ _ = nothing
+      t = ℕ.readMaybe 10 i >>= binxo𝔽?
+        where
+        i = Data.String.fromList $ f $ Data.String.toList s
+          where
+          f = λ l → 𝕃.take (𝕃.length l ℕ.∸ 1) l
 \end{code}
 
 \subsection{le ctaipe be le su'u la'oi .\F{reed}.\ mapti}
