@@ -233,7 +233,7 @@ record Buffer : Set
 \end{code}
 
 \subsection{tu'a la'oi .\D{Fin}.}
-ni'o tu'a la'oi .\D{Fin}.\ nibli ko'a goi le su'u ro da poi ke'a ctaipe la'oi .\AgdaRecord{Buffer}.\ zo'u li su'o co'e ja nilzilcmi lo mu'oi zoi.\ \AgdaField{Buffer.lerpinste}\ be da  .i pilno le na'e me mu'oi zoi.\ \F{if\AgdaUnderscore{}then\AgdaUnderscore{}else\AgdaUnderscore} .zoi.\ co'e ki'u le su'u ko'a milxe ko'e goi le ka ce'u fegli la .varik.\ldots kei je ku'i cu mleca fi ko'e je le ka tu'a ce'u frili kei fe lo jalge be lo nu la'o zoi.\ \AgdaField{Buffer.cablerpinsle} .zoi.\ ctaipe la'o zoi.\ \Sym(\B x \Sym : \AgdaRecord{Buffer}\Sym) \Sym → \OpF{if} \AgdaNumber 0 \OpF{ℕ.≤} \F{𝕃.length} \Sym(\AgdaField{Buffer.lerpinste} \B x\Sym) \OpF{then} \AgdaField{Buffer.F} \B x \OpF{else} \D ⊤\ .zoi.
+ni'o tu'a la'oi .\D{Fin}.\ nibli ko'a goi le su'u ro da poi ke'a ctaipe la'oi .\AgdaRecord{Buffer}.\ zo'u li su'o co'e ja nilzilcmi lo mu'oi zoi.\ \AgdaField{Buffer.lerpinste}\ be da  .i pilno le na'e me mu'oi zoi.\ \F{if\AgdaUnderscore{}then\AgdaUnderscore{}else\AgdaUnderscore} .zoi.\ co'e ki'u le su'u ko'a milxe ko'e goi le ka ce'u fegli la .varik.\ldots kei je ku'i cu mleca fi ko'e je le ka tu'a ce'u frili kei fe lo jalge be lo nu la'o zoi.\ \AgdaField{Buffer.cablerpinsle} .zoi.\ ctaipe la'o zoi.\ \Sym(\B x \Sym : \AgdaRecord{Buffer}\Sym) \Sym → \OpF{if} \AgdaNumber 0 \OpF{ℕ.≤} \F{length} \Sym(\AgdaField{Buffer.lerpinste} \B x\Sym) \OpF{then} \AgdaField{Buffer.F} \B x \OpF{else} \D ⊤\ .zoi.
 
 \section{la'oi .\D{Cmd}.}
 ni'o ctaipe ko'a goi la'o zoi.\ \D{Cmd} \B x\ .zoi.\ fa lo co'e be lo midnoi be fo la'o zoi.\ \Xr{ed}{1} .zoi.\ ja zo'e be'o poi ctaipe lo su'u tu'a ke'a racli
@@ -319,7 +319,7 @@ module RomoivimcuVeritas where
       → (_≡_
           (Data.String.toList $ romoivimcu x)
           (𝕃.take
-            (Data.String.length x ℕ.∸ 1)
+            (length x ℕ.∸ 1)
             (Data.String.toList x)))
   pav = {!!}
 \end{code}
@@ -431,7 +431,7 @@ reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
         where
         i = cev $ vec $ f $ cev $ vec s
           where
-          f = λ l → 𝕃.take (𝕃.length l ℕ.∸ 1) l
+          f = λ l → 𝕃.take (length l ℕ.∸ 1) l
 \end{code}
 
 \subsection{le ctaipe be le su'u la'oi .\F{reed}.\ mapti}
@@ -517,7 +517,7 @@ kanji {x} (Vimcu a b _) = x' , nothing
     lerpinste = 𝕃.map proj₂ $ 𝕃.filter nin $ indice Lz}
     where
     Lz = Buffer.lerpinste x
-    indice = λ x → 𝕃.zip (𝕃.allFin $ 𝕃.length x) x
+    indice = λ x → 𝕃.zip (𝕃.allFin $ length x) x
     nin : (x : _)
         → (Dec $ _∉_ ⦃ liliList ⦄ ⦃ record {_≟_ = 𝔽._≟_} ⦄
             (proj₁ x)
@@ -566,7 +566,7 @@ module KanjyVeritas where
            → let x' = proj₁ $ kanji {x} $ Muvgau a b d in
              (kanji {x} (Muvgau a b d) ≡ (x' , nothing))
            × (Σ
-               ((_≡_ on (𝕃.length ∘ Buffer.lerpinste)) x x')
+               ((_≡_ on (length ∘ Buffer.lerpinste)) x x')
                (λ e →
                  (_≡_
                    (𝕃.lookup (Buffer.lerpinste x) a)
