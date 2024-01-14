@@ -396,25 +396,26 @@ module Orsygenturfa'iVeritas where
     jFF' = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
-    juste : {n : ℕ}
-          → (x z : Fin n)
-          → justF x ∷ justF z ∷ [] ≡ just x ∷ just z ∷ []
-    juste x z = begin
-      justF x ∷ justF z ∷ []
-        ≡⟨ justF≡just x ▹ cong (λ n → n ∷ justF z ∷ []) ⟩
-      just x ∷ justF z ∷ []
-        ≡⟨ justF≡just z ▹ cong (λ n → just x ∷ n ∷ []) ⟩
-      just x ∷ just z ∷ [] ∎
-      where
-      -- | ni'o krinu le su'u cmene
-      justF≡just : {n : ℕ} → (x : Fin n) → justF x ≡ just x
-      justF≡just = {!!}
     uimint = begin
-      𝕃.map gentufaF (splitOn ',' a,b) ≡⟨ ? ⟩
+      𝕃.map gentufaF (splitOn ',' a,b) ≡⟨ {!!} ⟩
       𝕃.map justF' (a ∷ b ∷ []) ≡⟨ DLP.map-cong₂ jFF' ⟩
       𝕃.map justF (a ∷ b ∷ []) ≡⟨ _≡_.refl ⟩
       justF a ∷  justF b ∷ [] ≡⟨ juste a b ⟩
       just a ∷  just b ∷ [] ∎
+      where
+      juste : {n : ℕ}
+            → (x z : Fin n)
+            → justF x ∷ justF z ∷ [] ≡ just x ∷ just z ∷ []
+      juste x z = begin
+        justF x ∷ justF z ∷ []
+          ≡⟨ justF≡just x ▹ cong (λ n → n ∷ justF z ∷ []) ⟩
+        just x ∷ justF z ∷ []
+          ≡⟨ justF≡just z ▹ cong (λ n → just x ∷ n ∷ []) ⟩
+        just x ∷ just z ∷ [] ∎
+        where
+        -- | ni'o krinu le su'u cmene
+        justF≡just : {n : ℕ} → (x : Fin n) → justF x ≡ just x
+        justF≡just = {!!}
 \end{code}
 
 \section{la'oi .\F{reed}.}
