@@ -364,7 +364,8 @@ module Orsygenturfa'iVeritas where
   pav x a b djb = sym $ begin
     orsygenturfa'i x (showF a ++ "," ++ showF b) ≡⟨ {!!} ⟩
     uimla (𝕃.map gentufaF $ splitOn ',' a,b) ≡⟨ {!!} ⟩
-    uimla (𝕃.map justF' $ a ∷ b ∷ []) ≡⟨ cong uimla $ DLP.map-cong₂ jFF' ⟩
+    uimla (𝕃.map justF' $ a ∷ b ∷ []) ≡⟨ _≡_.refl ⟩
+    uimla _ ≡⟨ cong uimla $ DLP.map-cong₂ jFF' ⟩
     uimla (𝕃.map justF $ a ∷ b ∷ []) ≡⟨ _≡_.refl ⟩
     uimla (justF a ∷  justF b ∷ []) ≡⟨ cong uimla $ juste a b ⟩
     uimla (just a ∷ just b ∷ []) ≡⟨ uimladu a b djb ⟩
