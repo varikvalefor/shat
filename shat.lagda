@@ -308,7 +308,7 @@ ni'o la .varik.\ na birti lo du'u zabna ciksi la'oi .\F{romoivimcu}.\ bau la .lo
 romoivimcu : String → String
 romoivimcu = S $ 𝕃.reverse ∘ 𝕃.drop 1 ∘ 𝕃.reverse
   where
-  S = λ f → Data.String.fromList ∘ f ∘ Data.String.toList
+  S = λ f → cev ∘ vec ∘ f ∘ cev ∘ vec
 \end{code}
 
 \subsection{le ctaipe be le su'u la'oi .\F{romoivimcu}.\ mapti}
@@ -425,7 +425,7 @@ reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
       pav' _ _ = nothing
       t = ℕ.readMaybe 10 i >>= binxo𝔽?
         where
-        i = Data.String.fromList $ f $ Data.String.toList s
+        i = cev $ vec $ f $ cev $ vec s
           where
           f = λ l → 𝕃.take (𝕃.length l ℕ.∸ 1) l
 \end{code}
