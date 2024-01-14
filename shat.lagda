@@ -357,6 +357,7 @@ module Orsygenturfa'iVeritas where
   pav x a b djb = sym $ begin
     orsygenturfa'i x (showF a ++ "," ++ showF b) ≡⟨ {!!} ⟩
     uimla (𝕃.map gentufaF $ splitOn ',' a,b) ≡⟨ {!!} ⟩
+    uimla (𝕃.map justF' $ a ∷ b ∷ []) ≡⟨ {!!} ⟩
     uimla (𝕃.map justF $ a ∷ b ∷ []) ≡⟨ _≡_.refl ⟩
     uimla (justF a ∷  justF b ∷ []) ≡⟨ cong uimla $ juste a b ⟩
     uimla (just a ∷ just b ∷ []) ≡⟨ uimladu a b djb ⟩
@@ -368,6 +369,8 @@ module Orsygenturfa'iVeritas where
     justF = (_>>= binxo𝔽?) ∘ ℕ.readMaybe 10 ∘ showF
     gentufaF : {n : ℕ} → List Char → Maybe $ Fin n
     gentufaF = (_>>= binxo𝔽?) ∘ ℕ.readMaybe 10 ∘ cev ∘ vec
+    justF' : {n : ℕ} → Fin n → Maybe $ Fin n
+    justF' = gentufaF ∘ cev ∘ vec ∘ showF
 
     a,b = cev $ vec $ showF a ++ "," ++ showF b
 
