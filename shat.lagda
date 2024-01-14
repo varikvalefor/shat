@@ -406,8 +406,12 @@ reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
   r = romoivimcu s
   romoi = 𝕃.last ∘ Data.String.toList
   terp : List $ Maybe $ Cmd x
-  terp = pav ∷ rel ∷ []
+  terp = uux ∷ pav ∷ rel ∷ []
     where
+    uux : Maybe $ Cmd x
+    uux with 𝕃.map Data.String.fromList $ splitOn ' ' $ cev $ vec s
+    ... | "w" ∷ x = just $ Rejgau $ 𝕃.foldr Data.String._<+>_ "" x
+    ... | _ = nothing
     rel : Maybe $ Cmd x
     rel with orsygenturfa'i x r , romoi s
     ... | (just ((a , b) , d) , just 'c') = just $ Basti a b d
