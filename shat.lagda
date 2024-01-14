@@ -470,6 +470,14 @@ module ReedVeritas where
       → (d : a 𝔽.≤ b)
       → just (Vimcu a b d) ≡ reed x (k₃ x a b 'd')
   vim = {!!}
+
+  uip : (x : Buffer)
+      → (s : String)
+      → (' ' ∉ s)
+      → (_≡_
+          (just $ Rejgau s)
+          (reed x $ "w " ++ s))
+  uip = {!!}
 \end{code}
 
 \section{la \F{kanji}}
