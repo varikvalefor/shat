@@ -297,7 +297,7 @@ module Binxo𝔽Veritas where
   pav : {n : ℕ}
       → (x : ℕ)
       → x ℕ.< n
-      → just x ≡ mapₘ 𝔽.toℕ (binxo𝔽? x)
+      → just x ≡ mapₘ 𝔽.toℕ (binxo𝔽? {n} x)
   pav = {!!}
 \end{code}
 
