@@ -363,11 +363,7 @@ module Orsygenturfa'iVeritas where
           (orsygenturfa'i x $ showF a ++ "," ++ showF b))
   pav x a b djb = sym $ begin
     orsygenturfa'i x (showF a ++ "," ++ showF b) ≡⟨ {!!} ⟩
-    uimla (𝕃.map gentufaF $ splitOn ',' a,b) ≡⟨ {!!} ⟩
-    uimla (𝕃.map justF' $ a ∷ b ∷ []) ≡⟨ _≡_.refl ⟩
-    uimla _ ≡⟨ cong uimla $ DLP.map-cong₂ jFF' ⟩
-    uimla (𝕃.map justF $ a ∷ b ∷ []) ≡⟨ _≡_.refl ⟩
-    uimla (justF a ∷  justF b ∷ []) ≡⟨ cong uimla $ juste a b ⟩
+    uimla (𝕃.map gentufaF $ splitOn ',' a,b) ≡⟨ cong uimla uimint ⟩
     uimla (just a ∷ just b ∷ []) ≡⟨ uimladu a b djb ⟩
     just ((a , b) , djb) ∎
     where
@@ -413,6 +409,12 @@ module Orsygenturfa'iVeritas where
       -- | ni'o krinu le su'u cmene
       justF≡just : {n : ℕ} → (x : Fin n) → justF x ≡ just x
       justF≡just = {!!}
+    uimint = begin
+      𝕃.map gentufaF (splitOn ',' a,b) ≡⟨ ? ⟩
+      𝕃.map justF' (a ∷ b ∷ []) ≡⟨ DLP.map-cong₂ jFF' ⟩
+      𝕃.map justF (a ∷ b ∷ []) ≡⟨ _≡_.refl ⟩
+      justF a ∷  justF b ∷ [] ≡⟨ juste a b ⟩
+      just a ∷  just b ∷ [] ∎
 \end{code}
 
 \section{la'oi .\F{reed}.}
