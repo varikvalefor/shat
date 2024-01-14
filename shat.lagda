@@ -383,13 +383,13 @@ module Orsygenturfa'iVeritas where
     open ≡-Reasoning
     juste : {n : ℕ}
           → (x z : Fin n)
-          → justF a ∷ justF b ∷ [] ≡ just a ∷ just b ∷ []
+          → justF x ∷ justF z ∷ [] ≡ just x ∷ just z ∷ []
     juste x z = begin
-      justF a ∷ justF b ∷ []
-        ≡⟨ justF≡just a ▹ cong (λ n → n ∷ justF b ∷ []) ⟩
-      just a ∷ justF b ∷ []
-        ≡⟨ justF≡just b ▹ cong (λ n → just a ∷ n ∷ []) ⟩
-      just a ∷ just b ∷ [] ∎
+      justF x ∷ justF z ∷ []
+        ≡⟨ justF≡just x ▹ cong (λ n → n ∷ justF z ∷ []) ⟩
+      just x ∷ justF z ∷ []
+        ≡⟨ justF≡just z ▹ cong (λ n → just x ∷ n ∷ []) ⟩
+      just x ∷ just z ∷ [] ∎
       where
       -- | ni'o krinu le su'u cmene
       justF≡just : {n : ℕ} → (x : Fin n) → justF x ≡ just x
