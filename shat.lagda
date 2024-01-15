@@ -618,7 +618,7 @@ ni'o zabna ciksi la'oi .\F{main}.\ fo ma bau la .lojban.
 main : Main
 main = run $ snurytcati IO.>> getArgs IO.>>= uic ∘ 𝕃.head
   where
-  snurytcati : _
+  snurytcati : IO ABU.⊤
   snurytcati = IO.lift t
     where
     postulate t : ABIO.IO $ ABU.⊤
