@@ -397,7 +397,7 @@ module Orsygenturfa'iVeritas where
                 (just $ (x , z) , djb))
     uimladu x z djb = {!!}
     jFF' : 𝕃.All (λ x → justF' x ≡ justF x) $ a ∷ b ∷ []
-    jFF' = {!!}
+    jFF' = {!!} 𝕃.All.∷ {!!} 𝕃.All.∷ 𝕃.All.[]
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
     uimint = begin
