@@ -400,7 +400,8 @@ module Orsygenturfa'iVeritas where
     jFF' = justF'≡justF a 𝕃.All.∷ justF'≡justF b 𝕃.All.∷ 𝕃.All.[]
       where
       justF'≡justF : {n : ℕ} → (x : Fin n) → justF' x ≡ justF x
-      justF'≡justF = {!!}
+      justF'≡justF 𝔽.zero = _≡_.refl
+      justF'≡justF (𝔽.suc n) = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
     uimint = begin
