@@ -616,14 +616,11 @@ ni'o zabna ciksi la'oi .\F{main}.\ fo ma bau la .lojban.
 \begin{code}
 {-# NON_TERMINATING #-}
 main : Main
-main = run $ snurytcati IO.>> getArgs IO.>>= uic ∘ 𝕃.head
+main = run $ IO.lift snurytcati IO.>> getArgs IO.>>= uic ∘ 𝕃.head
   where
-  snurytcati : IO ABU.⊤
-  snurytcati = IO.lift t
-    where
-    postulate t : ABIO.IO $ ABU.⊤
-    {-# FOREIGN GHC import System.OpenBSD.Plegg #-}
-    {-# COMPILE GHC t = plegg [RPath, WPath, Stdio] #-}
+  postulate snurytcati : ABIO.IO ABU.⊤
+  {-# FOREIGN GHC import System.OpenBSD.Plegg #-}
+  {-# COMPILE GHC snurytcati = plegg [RPath, WPath, Stdio] #-}
   uic : Maybe String → IO ⊤
   uic c = maybe mkDef (IO.pure def) c IO.>>= lupe
     where
