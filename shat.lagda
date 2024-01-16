@@ -409,12 +409,15 @@ module Orsygenturfa'iVeritas where
       justF = (_>>= binxo𝔽?) ∘ ℕ.readMaybe 10 ∘ showF
       justF' : {n : ℕ} → Fin n → Maybe $ Fin n
       justF' = ps ∘ cev ∘ vec ∘ showF
+      justF≡just : {n : ℕ} → (x : Fin n) → justF x ≡ just x
+      justF≡just = {!!}
+      justF'≡just : {n : ℕ} → (x : Fin n) → justF' x ≡ just x
+      justF'≡just = {!!}
       jFF' : 𝕃.All (λ x → justF' x ≡ justF x) $ a ∷ b ∷ []
       jFF' = justF'≡justF a 𝕃.All.∷ justF'≡justF b 𝕃.All.∷ 𝕃.All.[]
         where
         justF'≡justF : {n : ℕ} → (x : Fin n) → justF' x ≡ justF x
-        justF'≡justF 𝔽.zero = _≡_.refl
-        justF'≡justF (𝔽.suc n) = {!!}
+        justF'≡justF x = step-≡ _ (sym $ justF≡just x) $ justF'≡just x
       juste : {n : ℕ}
             → (x z : Fin n)
             → justF x ∷ justF z ∷ [] ≡ just x ∷ just z ∷ []
@@ -424,10 +427,6 @@ module Orsygenturfa'iVeritas where
         just x ∷ justF z ∷ []
           ≡⟨ justF≡just z ▹ cong (λ n → just x ∷ n ∷ []) ⟩
         just x ∷ just z ∷ [] ∎
-        where
-        -- | ni'o krinu le su'u cmene
-        justF≡just : {n : ℕ} → (x : Fin n) → justF x ≡ just x
-        justF≡just = {!!}
 \end{code}
 
 \section{la'oi .\F{reed}.}
