@@ -338,20 +338,32 @@ module RomoivimcuVeritas where
 \section{la'oi .\F{orsygenturfa'i}.}
 ni'o ro da poi ke'a ctaipe ko'a goi la'o zoi.\ \AgdaField{Buffer.F} \B x\ .zoi.\ zo'u ro de poi ke'a ctaipe ko'a zo'u ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{orsygenturfa'i} \B x\ \B s\ .zoi.\ gi ga je da dubjavme'a de gi ga je ko'a me'oi .\IC{just}.\ lo .orsi be li ci bei da bei de bei lo ctaipe be lo su'u da dubjavme'a de gi la'oi .\B s.\ konkatena lo sinxa be da lo me'oi .comma.\ lo sinxa be de
 
+ni'o pilno ko'a goi le me'oi .module.\ co'e ki'u le su'u tu'a ko'a filri'a lo nu ciksi lo ctaipe be le su'u mapti  .i la .varik.\ na jinvi le du'u sarcu fa lo nu ciksi lo steci be la'oi .\F{orgenturfa'i}.\ jenai zo'e bau la .lojban.
 \begin{code}
-orsygenturfa'i : (x : Buffer)
-               → String
-               → Maybe $ Σ (Buffer.F x × Buffer.F x) $ uncurry 𝔽._≤_
-orsygenturfa'i x = pork ∘ 𝕃.map ps ∘ spit
-  where
-  spit = splitOn ⦃ record {_≟_ = Data.Char._≟_} ⦄ ',' ∘ cev ∘ vec
+module Orsygenturfa'i where
+  ps : {n : ℕ} → List Char → Maybe $ Fin n
   ps = (_>>= binxo𝔽?) ∘ ℕ.readMaybe 10 ∘ cev ∘ vec
-  pork : List $ Maybe $ Buffer.F x
+
+  spit : String → List $ List Char
+  spit = splitOn ⦃ record {_≟_ = Data.Char._≟_} ⦄ ',' ∘ cev ∘ vec
+
+  pork : (x : Buffer)
+       → List $ Maybe $ Buffer.F x
        → Maybe $ Σ (Buffer.F x × Buffer.F x) $ uncurry 𝔽._≤_
-  pork (just a ∷ just b ∷ []) with a 𝔽.≤? b
+  pork x (just a ∷ just b ∷ []) with a 𝔽.≤? b
   ... | yes x = just $ _ , x
   ... | no _ = nothing
-  pork _ = nothing
+  pork _ _ = nothing
+
+  orsygenturfa'i : (x : Buffer)
+                 → String
+                 → Maybe $ Σ (Buffer.F x × Buffer.F x) $ uncurry 𝔽._≤_
+  orsygenturfa'i x = pork x ∘ 𝕃.map ps ∘ spit
+
+open Orsygenturfa'i
+  using (
+    orsygenturfa'i
+  )
 \end{code}
 
 \subsection{le ctaipe be le su'u la'oi .\F{orsygenturfa'i}.\ mapti}
