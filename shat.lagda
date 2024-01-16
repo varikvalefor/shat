@@ -400,7 +400,7 @@ module Orsygenturfa'iVeritas where
     open ≡-Reasoning
     uimint = begin
       𝕃.map ps (spit a,b) ≡⟨ {!!} ⟩
-      𝕃.map ps (showF' a ∷ showF' b ∷ []) ≡⟨ {!!} ⟩
+      𝕃.map ps (showF' a ∷ showF' b ∷ []) ≡⟨ _≡_.refl ⟩
       𝕃.map justF' (a ∷ b ∷ []) ≡⟨ DLP.map-cong₂ jFF' ⟩
       𝕃.map justF (a ∷ b ∷ []) ≡⟨ _≡_.refl ⟩
       justF a ∷  justF b ∷ [] ≡⟨ juste a b ⟩
