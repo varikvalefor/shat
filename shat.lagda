@@ -386,10 +386,6 @@ module Orsygenturfa'iVeritas where
     open Orsygenturfa'i
     showF : {n : ℕ} → Fin n → String
     showF = ℕ.show ∘ 𝔽.toℕ
-    justF : {n : ℕ} → Fin n → Maybe $ Fin n
-    justF = (_>>= binxo𝔽?) ∘ ℕ.readMaybe 10 ∘ showF
-    justF' : {n : ℕ} → Fin n → Maybe $ Fin n
-    justF' = ps ∘ cev ∘ vec ∘ showF
 
     a,b = showF a ++ "," ++ showF b
 
@@ -400,12 +396,6 @@ module Orsygenturfa'iVeritas where
                 (pork $ just x ∷ just z ∷ [])
                 (just $ (x , z) , djb))
     uimladu x z djb = {!!}
-    jFF' : 𝕃.All (λ x → justF' x ≡ justF x) $ a ∷ b ∷ []
-    jFF' = justF'≡justF a 𝕃.All.∷ justF'≡justF b 𝕃.All.∷ 𝕃.All.[]
-      where
-      justF'≡justF : {n : ℕ} → (x : Fin n) → justF' x ≡ justF x
-      justF'≡justF 𝔽.zero = _≡_.refl
-      justF'≡justF (𝔽.suc n) = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
     uimint = begin
@@ -415,6 +405,16 @@ module Orsygenturfa'iVeritas where
       justF a ∷  justF b ∷ [] ≡⟨ juste a b ⟩
       just a ∷  just b ∷ [] ∎
       where
+      justF : {n : ℕ} → Fin n → Maybe $ Fin n
+      justF = (_>>= binxo𝔽?) ∘ ℕ.readMaybe 10 ∘ showF
+      justF' : {n : ℕ} → Fin n → Maybe $ Fin n
+      justF' = ps ∘ cev ∘ vec ∘ showF
+      jFF' : 𝕃.All (λ x → justF' x ≡ justF x) $ a ∷ b ∷ []
+      jFF' = justF'≡justF a 𝕃.All.∷ justF'≡justF b 𝕃.All.∷ 𝕃.All.[]
+        where
+        justF'≡justF : {n : ℕ} → (x : Fin n) → justF' x ≡ justF x
+        justF'≡justF 𝔽.zero = _≡_.refl
+        justF'≡justF (𝔽.suc n) = {!!}
       juste : {n : ℕ}
             → (x z : Fin n)
             → justF x ∷ justF z ∷ [] ≡ just x ∷ just z ∷ []
