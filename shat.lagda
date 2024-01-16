@@ -378,7 +378,7 @@ module Orsygenturfa'iVeritas where
           (just $ (a , b) , djb)
           (orsygenturfa'i $ showF a ++ "," ++ showF b))
   pav a b djb = sym $ begin
-    orsygenturfa'i (showF a ++ "," ++ showF b) ≡⟨ {!!} ⟩
+    orsygenturfa'i (showF a ++ "," ++ showF b) ≡⟨ _≡_.refl ⟩
     pork (𝕃.map ps $ spit a,b) ≡⟨ cong pork uimint ⟩
     pork (just a ∷ just b ∷ []) ≡⟨ uimladu a b djb ⟩
     just ((a , b) , djb) ∎
