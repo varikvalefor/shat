@@ -379,33 +379,25 @@ module Orsygenturfa'iVeritas where
           (orsygenturfa'i $ showF a ++ "," ++ showF b))
   pav a b djb = sym $ begin
     orsygenturfa'i (showF a ++ "," ++ showF b) ≡⟨ {!!} ⟩
-    uimla (𝕃.map gentufaF $ splitOn ',' a,b) ≡⟨ cong uimla uimint ⟩
-    uimla (just a ∷ just b ∷ []) ≡⟨ uimladu a b djb ⟩
+    pork (𝕃.map ps $ spit a,b) ≡⟨ cong pork uimint ⟩
+    pork (just a ∷ just b ∷ []) ≡⟨ uimladu a b djb ⟩
     just ((a , b) , djb) ∎
     where
+    open Orsygenturfa'i
     showF : {n : ℕ} → Fin n → String
     showF = ℕ.show ∘ 𝔽.toℕ
     justF : {n : ℕ} → Fin n → Maybe $ Fin n
     justF = (_>>= binxo𝔽?) ∘ ℕ.readMaybe 10 ∘ showF
-    gentufaF : {n : ℕ} → List Char → Maybe $ Fin n
-    gentufaF = (_>>= binxo𝔽?) ∘ ℕ.readMaybe 10 ∘ cev ∘ vec
     justF' : {n : ℕ} → Fin n → Maybe $ Fin n
-    justF' = gentufaF ∘ cev ∘ vec ∘ showF
+    justF' = ps ∘ cev ∘ vec ∘ showF
 
-    a,b = cev $ vec $ showF a ++ "," ++ showF b
+    a,b = showF a ++ "," ++ showF b
 
-    uimla : {n : ℕ}
-          → List $ Maybe $ Fin n
-          → Maybe $ Σ (Fin n × Fin n) $ uncurry 𝔽._≤_
-    uimla (just a ∷ just b ∷ []) with a 𝔽.≤? b
-    ... | yes x = just $ (a , b) , x
-    ... | no _ = nothing
-    uimla _ = nothing
     uimladu : {n : ℕ}
             → (x z : Fin n)
             → (djb : x 𝔽.≤ z)
             → (_≡_
-                (uimla $ just x ∷ just z ∷ [])
+                (pork $ just x ∷ just z ∷ [])
                 (just $ (x , z) , djb))
     uimladu x z djb = {!!}
     jFF' : 𝕃.All (λ x → justF' x ≡ justF x) $ a ∷ b ∷ []
@@ -417,7 +409,7 @@ module Orsygenturfa'iVeritas where
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
     uimint = begin
-      𝕃.map gentufaF (splitOn ',' a,b) ≡⟨ {!!} ⟩
+      𝕃.map ps (spit a,b) ≡⟨ {!!} ⟩
       𝕃.map justF' (a ∷ b ∷ []) ≡⟨ DLP.map-cong₂ jFF' ⟩
       𝕃.map justF (a ∷ b ∷ []) ≡⟨ _≡_.refl ⟩
       justF a ∷  justF b ∷ [] ≡⟨ juste a b ⟩
