@@ -336,7 +336,7 @@ module RomoivimcuVeritas where
 \end{code}
 
 \section{la'oi .\F{orsygenturfa'i}.}
-ni'o ro da poi ke'a ctaipe ko'a goi la'o zoi.\ \AgdaField{Buffer.F} \B x\ .zoi.\ zo'u ro de poi ke'a ctaipe ko'a zo'u ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{orsygenturfa'i} \B x\ \B s\ .zoi.\ gi ga je da dubjavme'a de gi ga je ko'a me'oi .\IC{just}.\ lo .orsi be li ci bei da bei de bei lo ctaipe be lo su'u da dubjavme'a de gi la'oi .\B s.\ konkatena lo sinxa be da lo me'oi .comma.\ lo sinxa be de
+ni'o ro da poi ke'a ctaipe ko'a goi la'o zoi.\ \D{Fin} \B n\ .zoi.\ zo'u ro de poi ke'a ctaipe ko'a zo'u ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{orsygenturfa'i} \B s\ .zoi.\ gi ga je da dubjavme'a de gi ga je ko'a me'oi .\IC{just}.\ lo .orsi be li ci bei da bei de bei lo ctaipe be lo su'u da dubjavme'a de gi la'oi .\B s.\ konkatena lo sinxa be da lo me'oi .comma.\ lo sinxa be de
 
 ni'o pilno ko'a goi le me'oi .module.\ co'e ki'u le su'u tu'a ko'a filri'a lo nu ciksi lo ctaipe be le su'u mapti  .i la .varik.\ na jinvi le du'u sarcu fa lo nu ciksi lo steci be la'oi .\F{orgenturfa'i}.\ jenai zo'e bau la .lojban.
 \begin{code}
@@ -347,18 +347,18 @@ module Orsygenturfa'i where
   spit : String → List $ List Char
   spit = splitOn ⦃ record {_≟_ = Data.Char._≟_} ⦄ ',' ∘ cev ∘ vec
 
-  pork : (x : Buffer)
-       → List $ Maybe $ Buffer.F x
-       → Maybe $ Σ (Buffer.F x × Buffer.F x) $ uncurry 𝔽._≤_
-  pork x (just a ∷ just b ∷ []) with a 𝔽.≤? b
+  pork : {n : ℕ}
+       → List $ Maybe $ Fin n
+       → Maybe $ Σ (Fin n × Fin n) $ uncurry 𝔽._≤_
+  pork (just a ∷ just b ∷ []) with a 𝔽.≤? b
   ... | yes x = just $ _ , x
   ... | no _ = nothing
-  pork _ _ = nothing
+  pork _ = nothing
 
-  orsygenturfa'i : (x : Buffer)
+  orsygenturfa'i : {n : ℕ}
                  → String
-                 → Maybe $ Σ (Buffer.F x × Buffer.F x) $ uncurry 𝔽._≤_
-  orsygenturfa'i x = pork x ∘ 𝕃.map ps ∘ spit
+                 → Maybe $ Σ (Fin n × Fin n) $ uncurry 𝔽._≤_
+  orsygenturfa'i = pork ∘ 𝕃.map ps ∘ spit
 
 open Orsygenturfa'i
   using (
@@ -370,15 +370,15 @@ open Orsygenturfa'i
 
 \begin{code}
 module Orsygenturfa'iVeritas where
-  pav : (x : Buffer)
-      → (a b : Buffer.F x)
+  pav : {n : ℕ}
+      → (a b : Fin n)
       → (djb : a 𝔽.≤ b)
       → let showF = ℕ.show ∘ 𝔽.toℕ in
         (_≡_
           (just $ (a , b) , djb)
-          (orsygenturfa'i x $ showF a ++ "," ++ showF b))
-  pav x a b djb = sym $ begin
-    orsygenturfa'i x (showF a ++ "," ++ showF b) ≡⟨ {!!} ⟩
+          (orsygenturfa'i $ showF a ++ "," ++ showF b))
+  pav a b djb = sym $ begin
+    orsygenturfa'i (showF a ++ "," ++ showF b) ≡⟨ {!!} ⟩
     uimla (𝕃.map gentufaF $ splitOn ',' a,b) ≡⟨ cong uimla uimint ⟩
     uimla (just a ∷ just b ∷ []) ≡⟨ uimladu a b djb ⟩
     just ((a , b) , djb) ∎
@@ -455,7 +455,7 @@ reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
     ... | "w" ∷ x = just $ Rejgau $ 𝕃.foldr Data.String._<+>_ "" x
     ... | _ = nothing
     rel : Maybe $ Cmd x
-    rel with orsygenturfa'i x r , romoi s
+    rel with orsygenturfa'i r , romoi s
     ... | (just ((a , b) , d) , just 'c') = just $ Basti a b d
     ... | (just ((a , b) , d) , just 'd') = just $ Vimcu a b d
     ... | (just ((a , b) , d) , just 'm') = just $ Muvgau a b d
