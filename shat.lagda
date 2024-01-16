@@ -400,11 +400,14 @@ module Orsygenturfa'iVeritas where
     open ≡-Reasoning
     uimint = begin
       𝕃.map ps (spit a,b) ≡⟨ {!!} ⟩
+      𝕃.map ps (showF' a ∷ showF' b ∷ []) ≡⟨ {!!} ⟩
       𝕃.map justF' (a ∷ b ∷ []) ≡⟨ DLP.map-cong₂ jFF' ⟩
       𝕃.map justF (a ∷ b ∷ []) ≡⟨ _≡_.refl ⟩
       justF a ∷  justF b ∷ [] ≡⟨ juste a b ⟩
       just a ∷  just b ∷ [] ∎
       where
+      showF' : {n : ℕ} → Fin n → List Char
+      showF' = cev ∘ vec ∘ ℕ.show ∘ 𝔽.toℕ
       justF : {n : ℕ} → Fin n → Maybe $ Fin n
       justF = (_>>= binxo𝔽?) ∘ ℕ.readMaybe 10 ∘ showF
       justF' : {n : ℕ} → Fin n → Maybe $ Fin n
