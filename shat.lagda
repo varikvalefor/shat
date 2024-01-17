@@ -659,6 +659,10 @@ main = run $ IO.lift snurytcati IO.>> getArgs IO.>>= uic ∘ 𝕃.head
       f (just c) with kanji c
       ... | x' , nothing = lupe x'
       ... | x' , just (inj₁ z) = IO.putStrLn z IO.>> lupe x'
-      ... | x' , just (inj₂ z) = {!!}
+      ... | x' , just (inj₂ z) with z
+      ... | Sisti = ?
+      ... | Skami a = {!!}
+      ... | Tcidu a b = {!!}
+      ... | Rejgauᵢₒ a b = {!!}
 \end{code}
 \end{document}
