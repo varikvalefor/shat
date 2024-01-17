@@ -526,7 +526,7 @@ ni'o la'o zoi.\ \F{kanji} \Sym\{\B x\Sym\} \B s\ .zoi.\ .orsi li re lo jalge be 
 \begin{code}
 kanji : {x : Buffer}
       → Cmd x
-      → Σ Buffer $ λ x → Maybe $ String ⊎ Cmdᵢₒ x
+      → Σ Buffer $ Maybe ∘ _⊎_ String ∘ Cmdᵢₒ
 kanji {x} (Cusku a b _) = x ,_ $ just $ inj₁ $ cmap i
   where
   BL = Buffer.lerpinste x
