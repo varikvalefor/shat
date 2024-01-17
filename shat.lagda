@@ -660,7 +660,7 @@ main = run $ IO.lift snurytcati IO.>> getArgs IO.>>= uic ∘ 𝕃.head
       ... | x' , nothing = lupe x'
       ... | x' , just (inj₁ z) = IO.putStrLn z IO.>> lupe x'
       ... | x' , just (inj₂ z) with z
-      ... | Sisti = ?
+      ... | Sisti = IO.pure _
       ... | Skami a = {!!}
       ... | Tcidu a b = {!!}
       ... | Rejgauᵢₒ a b = {!!}
