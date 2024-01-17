@@ -340,7 +340,6 @@ module RomoivimcuVeritas where
 \section{la'oi .\F{orsygenturfa'i}.}
 ni'o ro da poi ke'a ctaipe ko'a goi la'o zoi.\ \D{Fin} \B n\ .zoi.\ zo'u ro de poi ke'a ctaipe ko'a zo'u ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{orsygenturfa'i} \B s\ .zoi.\ gi ga je da dubjavme'a de gi ga je ko'a me'oi .\IC{just}.\ lo .orsi be li ci bei da bei de bei lo ctaipe be lo su'u da dubjavme'a de gi la'oi .\B s.\ konkatena lo sinxa be da lo me'oi .comma.\ lo sinxa be de
 
-ni'o pilno ko'a goi le me'oi .module.\ co'e ki'u le su'u tu'a ko'a filri'a lo nu ciksi lo ctaipe be le su'u mapti  .i la .varik.\ na jinvi le du'u sarcu fa lo nu ciksi lo steci be la'oi .\F{orgenturfa'i}.\ jenai zo'e bau la .lojban.
 \begin{code}
 module Orsygenturfa'i where
   ps : {n : ℕ} → List Char → Maybe $ Fin n
@@ -367,6 +366,9 @@ open Orsygenturfa'i
     orsygenturfa'i
   )
 \end{code}
+
+\subsection{le krinu be le me'oi .module.\ co'e}
+ni'o pilno ko'a goi le me'oi .module.\ co'e ki'u le su'u tu'a ko'a filri'a lo nu ciksi lo ctaipe be le su'u mapti  .i la .varik.\ na jinvi le du'u sarcu fa lo nu ciksi lo steci be la'oi .\F{orgenturfa'i}.\ jenai zo'e bau la .lojban.
 
 \subsection{le ctaipe be le su'u la'oi .\F{orsygenturfa'i}.\ mapti}
 
