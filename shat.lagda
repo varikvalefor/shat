@@ -75,7 +75,7 @@
 \begin{code}
 {-# OPTIONS --guardedness #-}
 {-# OPTIONS --overlapping-instances #-}
-{-# OPTIONS --instance-search-depth=10 #-}
+{-# OPTIONS --instance-search-depth=2 #-}
 
 open import IO
   using (
