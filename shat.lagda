@@ -75,6 +75,7 @@
 \begin{code}
 {-# OPTIONS --guardedness #-}
 {-# OPTIONS --overlapping-instances #-}
+{-# OPTIONS --instance-search-depth=10 #-}
 
 open import IO
   using (
@@ -177,6 +178,11 @@ open import Truthbrary.Record.Eq
   using (
     _≟_
   )
+open import Truthbrary.Record.SR
+  using (
+    readMaybe;
+    show
+  )
 open import Data.Unit.Polymorphic
   using (
     ⊤
@@ -206,12 +212,6 @@ open import Relation.Binary.PropositionalEquality
     _≡_
   )
 
-import Data.Nat.Show
-  as ℕ
-  using (
-    readMaybe;
-    show
-  )
 import Agda.Builtin.IO
   as ABIO
 import Agda.Builtin.Unit
@@ -342,7 +342,7 @@ ni'o pilno ko'a goi le me'oi .module.\ co'e ki'u le su'u tu'a ko'a filri'a lo nu
 \begin{code}
 module Orsygenturfa'i where
   ps : {n : ℕ} → List Char → Maybe $ Fin n
-  ps = (_>>= binxo𝔽?) ∘ ℕ.readMaybe 10 ∘ cev ∘ vec
+  ps = (_>>= binxo𝔽?) ∘ readMaybe ∘ cev ∘ vec
 
   spit : String → List $ List Char
   spit = splitOn ⦃ record {_≟_ = Data.Char._≟_} ⦄ ',' ∘ cev ∘ vec
@@ -373,7 +373,7 @@ module Orsygenturfa'iVeritas where
   pav : {n : ℕ}
       → (a b : Fin n)
       → (djb : a 𝔽.≤ b)
-      → let showF = ℕ.show ∘ 𝔽.toℕ in
+      → let showF = show ∘ 𝔽.toℕ in
         (_≡_
           (just $ (a , b) , djb)
           (orsygenturfa'i $ showF a ++ "," ++ showF b))
@@ -385,7 +385,7 @@ module Orsygenturfa'iVeritas where
     where
     open Orsygenturfa'i
     showF : {n : ℕ} → Fin n → String
-    showF = ℕ.show ∘ 𝔽.toℕ
+    showF = show ∘ 𝔽.toℕ
 
     a,b = showF a ++ "," ++ showF b
 
@@ -407,9 +407,9 @@ module Orsygenturfa'iVeritas where
       just a ∷  just b ∷ [] ∎
       where
       showF' : {n : ℕ} → Fin n → List Char
-      showF' = cev ∘ vec ∘ ℕ.show ∘ 𝔽.toℕ
+      showF' = cev ∘ vec ∘ show ∘ 𝔽.toℕ
       justF : {n : ℕ} → Fin n → Maybe $ Fin n
-      justF = (_>>= binxo𝔽?) ∘ ℕ.readMaybe 10 ∘ showF
+      justF = (_>>= binxo𝔽?) ∘ readMaybe ∘ showF
       justF' : {n : ℕ} → Fin n → Maybe $ Fin n
       justF' = ps ∘ cev ∘ vec ∘ showF
       justF≡just : {n : ℕ} → (x : Fin n) → justF x ≡ just x
@@ -463,7 +463,7 @@ reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
       pav' (just n) (just 'a') = just $ Jmina n
       pav' (just n) (just 'i') = just $ Jmini n
       pav' _ _ = nothing
-      t = ℕ.readMaybe 10 i >>= binxo𝔽?
+      t = readMaybe i >>= binxo𝔽?
         where
         i = cev $ vec $ f $ cev $ vec s
           where
@@ -479,7 +479,7 @@ module ReedVeritas where
        → (a : Buffer.F x)
        → Char
        → String
-    k₁ _ a x = ℕ.show (𝔽.toℕ a) ++ Data.String.fromChar x
+    k₁ _ a x = show (𝔽.toℕ a) ++ Data.String.fromChar x
 
     k₃ : (x : Buffer)
        → (a b : Buffer.F x)
@@ -487,7 +487,7 @@ module ReedVeritas where
        → String
     k₃ _ a b x = f a ++ "," ++ f b ++ Data.String.fromChar x
       where
-      f = ℕ.show ∘ 𝔽.toℕ
+      f = show ∘ 𝔽.toℕ
 
   ac : (x : Buffer)
      → (a : Buffer.F x)
@@ -543,7 +543,7 @@ kanji {x} (Namcusku a b m) = x ,_ $ just $ inj₁ $ viiet kot
   kot = from-inj₁ $ from-just $ proj₂ $ kanji {x} $ Cusku a b m
   viiet = unlines ∘ 𝕃.map stringCat' ∘ uin ∘ lines
     where
-    stringCat' = λ (x , z) → ℕ.show x ++ "\t" ++ z
+    stringCat' = λ (x , z) → show x ++ "\t" ++ z
     uin : List String → List $ ℕ × String
     uin = 𝕃.zip $ 𝕃.drop (𝔽.toℕ a) $ 𝕃.upTo $ 𝔽.toℕ b
 kanji {x} (Vimcu a b _) = x' , nothing
