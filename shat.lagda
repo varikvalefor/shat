@@ -365,8 +365,8 @@ open Orsygenturfa'i
   )
 \end{code}
 
-\subsection{le krinu be le me'oi .module.\ co'e}
-ni'o pilno ko'a goi le me'oi .module.\ co'e ki'u le su'u tu'a ko'a filri'a lo nu ciksi lo ctaipe be le su'u mapti  .i la .varik.\ na jinvi le du'u sarcu fa lo nu ciksi lo steci be la'oi .\F{orgenturfa'i}.\ jenai zo'e bau la .lojban.
+\subsection{le krinu be le me'oi .\AgdaKeyword{module}.\ co'e}
+ni'o pilno ko'a goi le me'oi .\AgdaKeyword{module}.\ co'e ki'u le su'u tu'a ko'a filri'a lo nu ciksi lo ctaipe be le su'u mapti  .i la .varik.\ na jinvi le du'u sarcu fa lo nu ciksi lo steci be la'oi .\F{orgenturfa'i}.\ jenai zo'e bau la .lojban.
 
 \subsection{le ctaipe be le su'u la'oi .\F{orsygenturfa'i}.\ mapti}
 
