@@ -240,7 +240,9 @@ record Buffer : Set
     datnyveicme : Maybe String
     lerpinste : List String
     cablerpinsle : Fin $ length lerpinste
+    citri : List $ Σ (typeOf lerpinste) $ Fin ∘ length
   F = typeOf cablerpinsle
+  cninycitri = (lerpinste , cablerpinsle) ∷ citri
 \end{code}
 
 \subsection{tu'a la'oi .\D{Fin}.}
@@ -252,6 +254,7 @@ ni'o ctaipe ko'a goi la'o zoi.\ \D{Cmd} \B x\ .zoi.\ fa lo co'e be lo midnoi be 
 \newcommand\cibysumti[2]{ga je da du la'o zoi.\ \IC{#1} \B v \B z \AgdaUnderscore{}\ .zoi.\ gi da mapti lo konkatena be lo sinxa be la'oi .\B v.\ be'o bei lo me'oi .comma.\ bei lo sinxa be la'oi .\B z.\ be'o bei #2}
 .i ro da poi ke'a ctaipe ko'a zo'u\ldots
 \begin{itemize}
+	\item ga jonai ga je da du la'o zoi.\ \IC{Xruti}\ .zoi.\ gi da mapti zo'oi .u.\ gi
 	\item ga jonai ga je da du la'o zoi.\ \IC{Jmina} \B v\ .zoi.\ gi da mapti lo konkatena be lo sinxa be la'oi .\B v.\ be'o bei zo'oi .a.\ gi
 	\item ga jonai ga je da du la'o zoi.\ \IC{Jmini} \B v\ .zoi.\ gi da mapti lo konkatena be lo sinxa be la'oi .\B v.\ bei zo'oi .i.\ gi
 	\item ga jonai ga je da du la'o zoi.\ \IC{Rejgau} \B v\ .zoi.\ gi da mapti lo konkatena be zo'oi .w.\ bei lo canlu lerfu bei la'oi .\B v.\ gi
@@ -274,6 +277,7 @@ data Cmd (x : Buffer) : Set where
   Basti : typeOf Vimcu
   Cusku : typeOf Vimcu
   Muvgau : typeOf Vimcu
+  Xruti : Cmd x
 \end{code}
 
 \section{la'oi .\D{Cmdᵢₒ}.}
@@ -550,6 +554,7 @@ kanji {x} (Namcusku a b m) = x ,_ $ just $ inj₁ $ viiet kot
 kanji {x} (Vimcu a b _) = x' , nothing
   where
   x' = record x {
+    citri = Buffer.cninycitri x;
     cablerpinsle = {!!};
     lerpinste = 𝕃.map proj₂ $ 𝕃.filter nin $ indice Lz}
     where
@@ -565,6 +570,7 @@ kanji {x} (Vimcu a b _) = x' , nothing
 kanji {x} (Muvgau a b _) = x' , nothing
   where
   x' = record x {
+    citri = Buffer.cninycitri x;
     cablerpinsle = mink (Buffer.cablerpinsle x) {!!};
     lerpinste = {!!}
     }
@@ -638,7 +644,8 @@ main = run $ IO.lift snurytcati IO.>> getArgs IO.>>= uic ∘ 𝕃.head
     def = record {
       datnyveicme = nothing;
       lerpinste = "" ∷ List.[];
-      cablerpinsle = 𝔽.zero
+      cablerpinsle = 𝔽.zero;
+      citri = List.[]
       }
     mkDef : _
     mkDef c = uit ∘ Data.String.lines IO.<$> readFile c
@@ -648,7 +655,8 @@ main = run $ IO.lift snurytcati IO.>> getArgs IO.>>= uic ∘ 𝕃.head
       uit x@(_ ∷ _) = record {
         datnyveicme = just c;
         lerpinste = x;
-        cablerpinsle = 𝔽.opposite 𝔽.zero
+        cablerpinsle = 𝔽.opposite 𝔽.zero;
+        citri = List.[]
         }
     lupe : (x : Buffer) → IO ⊤
     lupe x = IO.getLine IO.>>= f ∘ reed x
