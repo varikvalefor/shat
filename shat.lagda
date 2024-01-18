@@ -439,6 +439,7 @@ ni'o ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{reed} \B x \B s\ .
 
 \begin{code}
 reed : (x : Buffer) → String → Maybe $ Cmd x
+reed x "w" = mapₘ Rejgau $ Buffer.datnyveicme x
 reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
   where
   r = romoivimcu s
