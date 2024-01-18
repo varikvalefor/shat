@@ -447,7 +447,7 @@ reed x "w" = mapₘ Rejgau $ Buffer.datnyveicme x
 reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
   where
   r = romoivimcu s
-  romoi = 𝕃.last ∘ Data.String.toList
+  romoi = 𝕃.last ∘ cev ∘ vec
   terp : List $ Maybe $ Cmd x
   terp = uux ∷ pav ∷ rel ∷ []
     where
