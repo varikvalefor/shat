@@ -457,11 +457,11 @@ reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
     ... | _ = nothing
     rel : Maybe $ Cmd x
     rel with orsygenturfa'i r , romoi s
-    ... | (just ((a , b) , d) , just 'c') = just $ Basti a b d
-    ... | (just ((a , b) , d) , just 'd') = just $ Vimcu a b d
-    ... | (just ((a , b) , d) , just 'm') = just $ Muvgau a b d
-    ... | (just ((a , b) , d) , just 'n') = just $ Namcusku a b d
-    ... | (just ((a , b) , d) , just 'p') = just $ Cusku a b d
+    ... | just ((a , b) , d) , just 'c' = just $ Basti a b d
+    ... | just ((a , b) , d) , just 'd' = just $ Vimcu a b d
+    ... | just ((a , b) , d) , just 'm' = just $ Muvgau a b d
+    ... | just ((a , b) , d) , just 'n' = just $ Namcusku a b d
+    ... | just ((a , b) , d) , just 'p' = just $ Cusku a b d
     ... | _ , _ = nothing
     pav : Maybe $ Cmd x
     pav = pav' t $ romoi s
