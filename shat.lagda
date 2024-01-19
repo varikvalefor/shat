@@ -412,7 +412,7 @@ module Orsygenturfa'iVeritas where
       just a ∷  just b ∷ [] ∎
       where
       showF' : {n : ℕ} → Fin n → List Char
-      showF' = cev ∘ vec ∘ show ∘ 𝔽.toℕ
+      showF' = cev ∘ vec ∘ showF
       justF' : {n : ℕ} → Fin n → Maybe $ Fin n
       justF' = ps ∘ cev ∘ vec ∘ showF
       justF'≡just : {n : ℕ} → (x : Fin n) → justF' x ≡ just x
