@@ -414,7 +414,7 @@ module Orsygenturfa'iVeritas where
       showF' : {n : ℕ} → Fin n → List Char
       showF' = cev ∘ vec ∘ showF
       justF' : {n : ℕ} → Fin n → Maybe $ Fin n
-      justF' = ps ∘ cev ∘ vec ∘ showF
+      justF' = ps ∘ showF'
       justF'≡just : {n : ℕ} → (x : Fin n) → justF' x ≡ just x
       justF'≡just = {!!}
       juste : {n : ℕ}
