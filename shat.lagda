@@ -457,17 +457,14 @@ reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
     ... | just 'p' = just $ Cusku a b d
     ... | _ = nothing
     pav : Maybe $ Cmd x
-    pav = pav' t $ romoi s
+    pav with readMaybe (cev $ vec $ f $ cev $ vec s) >>= binxo𝔽?
       where
-      pav' : Maybe $ Buffer.F x → Maybe Char → Maybe $ Cmd x
-      pav' (just n) (just 'a') = just $ Jmina n
-      pav' (just n) (just 'i') = just $ Jmini n
-      pav' _ _ = nothing
-      t = readMaybe i >>= binxo𝔽?
-        where
-        i = cev $ vec $ f $ cev $ vec s
-          where
-          f = λ l → 𝕃.take (length l ℕ.∸ 1) l
+      f = λ l → 𝕃.take (length l ℕ.∸ 1) l
+    ... | nothing = nothing
+    ... | just n with romoi s
+    ... | just 'a' = just $ Jmina n
+    ... | just 'i' = just $ Jmini n
+    ... | _ = nothing
 \end{code}
 
 \subsection{le ctaipe be le su'u la'oi .\F{reed}.\ mapti}
