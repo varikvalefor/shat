@@ -453,7 +453,7 @@ reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
     where
     uux : Maybe $ Cmd x
     uux with Data.String.words s
-    ... | "w" ∷ x = just $ Rejgau $ 𝕃.foldr Data.String._<+>_ "" x
+    ... | "w" ∷ x = just $ Rejgau $ Data.String.unwords x
     ... | _ = nothing
     rel : Maybe $ Cmd x
     rel with orsygenturfa'i r
