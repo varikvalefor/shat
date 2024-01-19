@@ -513,6 +513,10 @@ module ReedVeritas where
       → (s : String)
       → just (Rejgau s) ≡ reed x ("w " ++ s)
   uip = {!!}
+
+  uin : (x : Buffer)
+      → mapₘ Rejgau (Buffer.datnyveicme x) ≡ reed x "w"
+  uin _ = _≡_.refl
 \end{code}
 
 \section{la \F{kanji}}
