@@ -457,7 +457,7 @@ reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
     ... | just 'p' = just $ Cusku a b d
     ... | _ = nothing
     pav : Maybe $ Cmd x
-    pav with readMaybe (cev $ vec $ f $ cev $ vec s) >>= binxo𝔽?
+    pav with (_>>= binxo𝔽?) $ readMaybe $ cev $ vec $ f $ cev $ vec s
       where
       f = λ l → 𝕃.take (length l ℕ.∸ 1) l
     ... | nothing = nothing
