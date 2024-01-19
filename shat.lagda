@@ -511,7 +511,6 @@ module ReedVeritas where
 
   uip : (x : Buffer)
       → (s : String)
-      → (' ' ∉ s)
       → just (Rejgau s) ≡ reed x ("w " ++ s)
   uip = {!!}
 \end{code}
