@@ -442,7 +442,7 @@ reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
   terp = uux ∷ pav ∷ rel ∷ []
     where
     uux : Maybe $ Cmd x
-    uux with Data.String.words s
+    uux with Data.String.wordsBy (' ' ≟_) s
     ... | "w" ∷ x = just $ Rejgau $ Data.String.unwords x
     ... | _ = nothing
     rel : Maybe $ Cmd x
