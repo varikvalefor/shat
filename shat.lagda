@@ -437,6 +437,11 @@ module Reed where
   reed0 x 'w' = mapₘ Rejgau $ Buffer.datnyveicme x
   reed0 _ _ = nothing
 
+  reed1 : (x : Buffer) → Buffer.F x → Char → Maybe $ Cmd x
+  reed1 x n 'a' = just $ Jmina n
+  reed1 x n 'i' = just $ Jmini n
+  reed1 _ _ _ = nothing
+
   reed : (x : Buffer) → String → Maybe $ Cmd x
   reed x "w" = mapₘ Rejgau $ Buffer.datnyveicme x
   reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
@@ -466,10 +471,7 @@ module Reed where
         init' [] = []
         init' (x ∷ xs) = if Data.Char.isDigit x then x ∷ init' xs else []
       ... | nothing = nothing
-      ... | just n with romoi s
-      ... | just 'a' = just $ Jmina n
-      ... | just 'i' = just $ Jmini n
-      ... | _ = nothing
+      ... | just n = romoi s >>= reed1 x n
 
 open Reed
   using (
