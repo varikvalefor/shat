@@ -454,7 +454,6 @@ module Reed where
   reed2 x a b z 'n' = just $ Namcusku a b z
   reed2 x a b z 'p' = just $ Cusku a b z
   reed2 _ _ _ _ _ = nothing
-        
 
   reed : (x : Buffer) → String → Maybe $ Cmd x
   reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
