@@ -455,7 +455,7 @@ module Reed where
       rel : Maybe $ Cmd x
       rel with orsygenturfa'i r
       ... | nothing = nothing
-      ... | just ((a , b) , d) with romoi r
+      ... | just ((a , b) , d) with romoi s
       ... | nothing = nothing
       ... | just 'c' = just $ Basti a b d
       ... | just 'd' = just $ Vimcu a b d
