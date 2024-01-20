@@ -343,7 +343,7 @@ module RomoivimcuVeritas where
 \end{code}
 
 \section{la'oi .\F{orsygenturfa'i}.}
-ni'o ro da poi ke'a ctaipe ko'a goi la'o zoi.\ \D{Fin} \B n\ .zoi.\ zo'u ro de poi ke'a ctaipe ko'a zo'u ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{orsygenturfa'i} \B s\ .zoi.\ gi ga je da dubjavme'a de gi ga je ko'a me'oi .\IC{just}.\ lo .orsi be li ci bei da bei de bei lo ctaipe be lo su'u da dubjavme'a de gi la'oi .\B s.\ konkatena lo sinxa be da lo me'oi .comma.\ lo sinxa be de
+ni'o ro da poi ke'a ctaipe ko'a goi la'o zoi.\ \D{Fin} \B n\ .zoi.\ zo'u ro de poi ke'a ctaipe ko'a zo'u ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{orsygenturfa'i} \B s\ .zoi.\ gi ga je da dubjavme'a de gi ga je ko'a me'oi .\IC{just}.\ lo .orsi be li re bei lo .orsi be li re bei da bei de be'o bei lo ctaipe be lo su'u da dubjavme'a de gi la'oi .\B s.\ konkatena lo sinxa be da lo me'oi .comma.\ lo sinxa be de
 
 \begin{code}
 module Orsygenturfa'i where
@@ -469,14 +469,16 @@ module Reed where
         where
         P = (Data.Maybe.ap ∘₂ mapₘ) _,_ (romoi s) $ orsygenturfa'i r
       pav : Maybe $ Cmd x
-      pav with (_>>= binxo𝔽?) $ readMaybe $ S init' s
+      pav = Z >>= λ (n , c) → reed1 x n c
         where
-        S = λ f → cev ∘ vec ∘ f ∘ cev ∘ vec
-        init' : List Char → List Char
-        init' [] = []
-        init' (x ∷ xs) = if Data.Char.isDigit x then x ∷ init' xs else []
-      ... | nothing = nothing
-      ... | just n = romoi s >>= reed1 x n
+        Z = (Data.Maybe.ap ∘₂ mapₘ) _,_ n $ romoi s
+          where
+          n = (_>>= binxo𝔽?) $ readMaybe $ S init' s
+            where
+            S = λ f → cev ∘ vec ∘ f ∘ cev ∘ vec
+            init' : List Char → List Char
+            init' [] = []
+            init' (x ∷ xs) = if Data.Char.isDigit x then x ∷ init' xs else []
 
 open Reed
   using (
