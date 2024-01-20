@@ -536,7 +536,7 @@ module ReedVeritas where
   uip = {!!}
 
   uin : (x : Buffer)
-      → mapₘ Rejgau (Buffer.datnyveicme x) ≡ reed x "w"
+      → reed x "w" ≡ mapₘ Rejgau (Buffer.datnyveicme x)
   uin = {!!}
 \end{code}
 
