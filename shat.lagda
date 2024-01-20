@@ -457,7 +457,6 @@ module Reed where
         
 
   reed : (x : Buffer) → String → Maybe $ Cmd x
-  reed x "w" = mapₘ Rejgau $ Buffer.datnyveicme x
   reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
     where
     r = romoivimcu s
@@ -537,7 +536,7 @@ module ReedVeritas where
 
   uin : (x : Buffer)
       → mapₘ Rejgau (Buffer.datnyveicme x) ≡ reed x "w"
-  uin _ = _≡_.refl
+  uin = ?
 \end{code}
 
 \section{la \F{kanji}}
