@@ -433,6 +433,10 @@ ni'o ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{reed} \B x \B s\ .
 
 \begin{code}
 module Reed where
+  reed0 : (x : Buffer) → Char → Maybe $ Cmd x
+  reed0 x 'w' = mapₘ Rejgau $ Buffer.datnyveicme x
+  reed0 _ _ = nothing
+
   reed : (x : Buffer) → String → Maybe $ Cmd x
   reed x "w" = mapₘ Rejgau $ Buffer.datnyveicme x
   reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
@@ -440,12 +444,9 @@ module Reed where
     r = romoivimcu s
     romoi = 𝕃.last ∘ cev ∘ vec
     terp : List $ Maybe $ Cmd x
-    terp = uux ∷ pav ∷ rel ∷ []
+    terp = ridos ∷ pav ∷ rel ∷ []
       where
-      uux : Maybe $ Cmd x
-      uux with Data.String.wordsBy (' ' ≟_) s
-      ... | "w" ∷ x = just $ Rejgau $ Data.String.unwords x
-      ... | _ = nothing
+      ridos = 𝕃.head (cev $ vec s) >>= reed0 x
       rel : Maybe $ Cmd x
       rel with orsygenturfa'i r
       ... | nothing = nothing
