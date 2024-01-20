@@ -537,7 +537,7 @@ module ReedVeritas where
 
   uin : (x : Buffer)
       → mapₘ Rejgau (Buffer.datnyveicme x) ≡ reed x "w"
-  uin = ?
+  uin = {!!}
 \end{code}
 
 \section{la \F{kanji}}
