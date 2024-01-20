@@ -459,10 +459,12 @@ module Reed where
       ... | just 'p' = just $ Cusku a b d
       ... | _ = nothing
       pav : Maybe $ Cmd x
-      pav with (_>>= binxo𝔽?) $ readMaybe $ S init s
+      pav with (_>>= binxo𝔽?) $ readMaybe $ S init' s
         where
         S = λ f → cev ∘ vec ∘ f ∘ cev ∘ vec
-        init = λ l → 𝕃.take (length l ℕ.∸ 1) l
+        init' : List Char → List Char
+        init' [] = []
+        init' (x ∷ xs) = if Data.Char.isDigit x then x ∷ init' xs else []
       ... | nothing = nothing
       ... | just n with romoi s
       ... | just 'a' = just $ Jmina n
