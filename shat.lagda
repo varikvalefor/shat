@@ -432,41 +432,50 @@ module Orsygenturfa'iVeritas where
 ni'o ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{reed} \B x \B s\ .zoi.\ gi ga je la'oi .\B s.\ midnoi fo la'o zoi.\ \Xr{ed}{1} .zoi.\ je cu mapti la'o zoi.\ \D{Cmd} \B x\ .zoi.\ gi ko'a me'oi .\IC{just}.\ lo mapti be la'oi .\B s.
 
 \begin{code}
-reed : (x : Buffer) → String → Maybe $ Cmd x
-reed x "w" = mapₘ Rejgau $ Buffer.datnyveicme x
-reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
-  where
-  r = romoivimcu s
-  romoi = 𝕃.last ∘ cev ∘ vec
-  terp : List $ Maybe $ Cmd x
-  terp = uux ∷ pav ∷ rel ∷ []
+module Reed where
+  reed : (x : Buffer) → String → Maybe $ Cmd x
+  reed x "w" = mapₘ Rejgau $ Buffer.datnyveicme x
+  reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
     where
-    uux : Maybe $ Cmd x
-    uux with Data.String.wordsBy (' ' ≟_) s
-    ... | "w" ∷ x = just $ Rejgau $ Data.String.unwords x
-    ... | _ = nothing
-    rel : Maybe $ Cmd x
-    rel with orsygenturfa'i r
-    ... | nothing = nothing
-    ... | just ((a , b) , d) with romoi r
-    ... | nothing = nothing
-    ... | just 'c' = just $ Basti a b d
-    ... | just 'd' = just $ Vimcu a b d
-    ... | just 'm' = just $ Muvgau a b d
-    ... | just 'n' = just $ Namcusku a b d
-    ... | just 'p' = just $ Cusku a b d
-    ... | _ = nothing
-    pav : Maybe $ Cmd x
-    pav with (_>>= binxo𝔽?) $ readMaybe $ S init s
+    r = romoivimcu s
+    romoi = 𝕃.last ∘ cev ∘ vec
+    terp : List $ Maybe $ Cmd x
+    terp = uux ∷ pav ∷ rel ∷ []
       where
-      S = λ f → cev ∘ vec ∘ f ∘ cev ∘ vec
-      init = λ l → 𝕃.take (length l ℕ.∸ 1) l
-    ... | nothing = nothing
-    ... | just n with romoi s
-    ... | just 'a' = just $ Jmina n
-    ... | just 'i' = just $ Jmini n
-    ... | _ = nothing
+      uux : Maybe $ Cmd x
+      uux with Data.String.wordsBy (' ' ≟_) s
+      ... | "w" ∷ x = just $ Rejgau $ Data.String.unwords x
+      ... | _ = nothing
+      rel : Maybe $ Cmd x
+      rel with orsygenturfa'i r
+      ... | nothing = nothing
+      ... | just ((a , b) , d) with romoi r
+      ... | nothing = nothing
+      ... | just 'c' = just $ Basti a b d
+      ... | just 'd' = just $ Vimcu a b d
+      ... | just 'm' = just $ Muvgau a b d
+      ... | just 'n' = just $ Namcusku a b d
+      ... | just 'p' = just $ Cusku a b d
+      ... | _ = nothing
+      pav : Maybe $ Cmd x
+      pav with (_>>= binxo𝔽?) $ readMaybe $ S init s
+        where
+        S = λ f → cev ∘ vec ∘ f ∘ cev ∘ vec
+        init = λ l → 𝕃.take (length l ℕ.∸ 1) l
+      ... | nothing = nothing
+      ... | just n with romoi s
+      ... | just 'a' = just $ Jmina n
+      ... | just 'i' = just $ Jmini n
+      ... | _ = nothing
+
+open Reed
+  using (
+    reed
+  )
 \end{code}
+
+\subsection{le krinu be le me'oi .\AgdaKeyword{module}.\ co'e}
+ni'o pilno ko'a goi le me'oi .\AgdaKeyword{module}.\ co'e ki'u le su'u tu'a ko'a filri'a lo nu ciksi lo ctaipe be le su'u mapti  .i la .varik.\ na jinvi le du'u sarcu fa lo nu ciksi lo steci be la'oi .\F{reed}.\ jenai zo'e bau la .lojban.
 
 \subsection{le ctaipe be le su'u la'oi .\F{reed}.\ mapti}
 
