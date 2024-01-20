@@ -105,6 +105,7 @@ open import Function
   using (
     typeOf;
     _on_;
+    _∘₂_;
     flip;
     _∋_;
     _$_;
@@ -442,6 +443,19 @@ module Reed where
   reed1 x n 'i' = just $ Jmini n
   reed1 _ _ _ = nothing
 
+  reed2 : (x : Buffer)
+        → (a b : Buffer.F x)
+        → (a 𝔽.≤ b)
+        → Char
+        → Maybe $ Cmd x
+  reed2 x a b z 'c' = just $ Basti a b z
+  reed2 x a b z 'd' = just $ Vimcu a b z
+  reed2 x a b z 'm' = just $ Muvgau a b z
+  reed2 x a b z 'n' = just $ Namcusku a b z
+  reed2 x a b z 'p' = just $ Cusku a b z
+  reed2 _ _ _ _ _ = nothing
+        
+
   reed : (x : Buffer) → String → Maybe $ Cmd x
   reed x "w" = mapₘ Rejgau $ Buffer.datnyveicme x
   reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
@@ -453,16 +467,9 @@ module Reed where
       where
       ridos = 𝕃.head (cev $ vec s) >>= reed0 x
       rel : Maybe $ Cmd x
-      rel with orsygenturfa'i r
-      ... | nothing = nothing
-      ... | just ((a , b) , d) with romoi s
-      ... | nothing = nothing
-      ... | just 'c' = just $ Basti a b d
-      ... | just 'd' = just $ Vimcu a b d
-      ... | just 'm' = just $ Muvgau a b d
-      ... | just 'n' = just $ Namcusku a b d
-      ... | just 'p' = just $ Cusku a b d
-      ... | _ = nothing
+      rel = P >>= λ (r' , ((a , b) , z)) → reed2 x a b z r'
+        where
+        P = (Data.Maybe.ap ∘₂ mapₘ) _,_ (romoi s) $ orsygenturfa'i r
       pav : Maybe $ Cmd x
       pav with (_>>= binxo𝔽?) $ readMaybe $ S init' s
         where
