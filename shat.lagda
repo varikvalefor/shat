@@ -255,7 +255,7 @@ ni'o ctaipe ko'a goi la'o zoi.\ \D{Cmd} \B x\ .zoi.\ fa lo co'e be lo midnoi be 
 \newcommand\cibysumti[2]{ga je da du la'o zoi.\ \IC{#1} \B v \B z \AgdaUnderscore{}\ .zoi.\ gi da mapti lo konkatena be lo sinxa be la'oi .\B v.\ be'o bei lo me'oi .comma.\ bei lo sinxa be la'oi .\B z.\ be'o bei #2}
 .i ro da poi ke'a ctaipe ko'a zo'u\ldots
 \begin{itemize}
-	\item ga jonai ga je da du la'o zoi.\ \IC{Xruti}\ .zoi.\ gi da mapti zo'oi .u.\ gi
+	\item ga jonai ga je da du la'o zoi.\ \IC{Xruti}\ \B z.\ .zoi.\ gi da mapti zo'oi .u.\ldots je ku'i cu mapti le meirmoi be la'oi .\B z.\ bei fo la'o zoi.\ \AgdaField{Buffer.citri} \B x\ .zoi.\ gi
 	\item ga jonai ga je da du la'o zoi.\ \IC{Jmina} \B v\ .zoi.\ gi da mapti lo konkatena be lo sinxa be la'oi .\B v.\ be'o bei zo'oi .a.\ gi
 	\item ga jonai ga je da du la'o zoi.\ \IC{Jmini} \B v\ .zoi.\ gi da mapti lo konkatena be lo sinxa be la'oi .\B v.\ bei zo'oi .i.\ gi
 	\item ga jonai ga je da du la'o zoi.\ \IC{Rejgau} \B v\ .zoi.\ gi da mapti lo konkatena be zo'oi .w.\ bei lo canlu lerfu bei la'oi .\B v.\ gi
@@ -278,7 +278,7 @@ data Cmd (x : Buffer) : Set where
   Basti : typeOf Vimcu
   Cusku : typeOf Vimcu
   Muvgau : typeOf Vimcu
-  Xruti : Cmd x
+  Xruti : Fin (length $ Buffer.citri x) → Cmd x
 \end{code}
 
 \section{la'oi .\D{Cmdᵢₒ}.}
