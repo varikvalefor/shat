@@ -535,7 +535,21 @@ module ReedVeritas where
 
   uin : (x : Buffer)
       → reed x "w" ≡ mapₘ Rejgau (Buffer.datnyveicme x)
-  uin = {!!}
+  uin x = begin
+    reed x "w" ≡⟨ _≡_.refl ⟩
+    𝕃.head (𝕃.mapMaybe id L) ≡⟨ f ⟩
+    𝕃.head (cev $ vec "w") >>= reed0 x ≡⟨ _≡_.refl ⟩
+    mapₘ Rejgau (Buffer.datnyveicme x) ∎
+    where
+    open Reed
+    ridos = 𝕃.head (cev $ vec "w") >>= reed0 x
+    L = ridos ∷ nothing ∷ nothing ∷ []
+    f : 𝕃.head (𝕃.mapMaybe id L) ≡ ridos
+    f with ridos
+    ... | just _ = _≡_.refl
+    ... | nothing = _≡_.refl
+    open import Relation.Binary.PropositionalEquality
+    open ≡-Reasoning
 \end{code}
 
 \section{la \F{kanji}}
