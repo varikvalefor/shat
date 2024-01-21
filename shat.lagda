@@ -432,9 +432,9 @@ ni'o ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{reed} \B x \B s\ .
 
 \begin{code}
 module Reed where
-  reed0 : (x : Buffer) → Char → Maybe $ Cmd x
-  reed0 x 'w' = mapₘ Rejgau $ Buffer.datnyveicme x
-  reed0 _ _ = nothing
+  reed0 : {x : Buffer} → Char → Maybe $ Cmd x
+  reed0 {x} 'w' = mapₘ Rejgau $ Buffer.datnyveicme x
+  reed0 _ = nothing
 
   reed1 : (x : Buffer) → Buffer.F x → Char → Maybe $ Cmd x
   reed1 x n 'a' = just $ Jmina n
@@ -461,7 +461,7 @@ module Reed where
     terp : List $ Maybe $ Cmd x
     terp = ridos ∷ pav ∷ rel ∷ []
       where
-      ridos = 𝕃.head (cev $ vec s) >>= reed0 x
+      ridos = 𝕃.head (cev $ vec s) >>= reed0
       rel : Maybe $ Cmd x
       rel = P >>= λ (r' , ((a , b) , z)) → reed2 x a b z r'
         where
@@ -538,11 +538,11 @@ module ReedVeritas where
   uin x = begin
     reed x "w" ≡⟨ _≡_.refl ⟩
     𝕃.head (𝕃.mapMaybe id L) ≡⟨ f ⟩
-    𝕃.head (cev $ vec "w") >>= reed0 x ≡⟨ _≡_.refl ⟩
+    𝕃.head (cev $ vec "w") >>= reed0 ≡⟨ _≡_.refl ⟩
     mapₘ Rejgau (Buffer.datnyveicme x) ∎
     where
     open Reed
-    ridos = 𝕃.head (cev $ vec "w") >>= reed0 x
+    ridos = 𝕃.head (cev $ vec "w") >>= reed0
     L = ridos ∷ nothing ∷ nothing ∷ []
     f : 𝕃.head (𝕃.mapMaybe id L) ≡ ridos
     f with ridos
