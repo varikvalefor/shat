@@ -553,9 +553,7 @@ module ReedVeritas where
 
   xon : (x : Buffer)
       → (z : Σ ℕ $ λ n → ℕ.suc n ≡ length (Buffer.citri x))
-      → (_≡_
-          (reed x "u")
-          (just $ Xruti $ mink 𝔽.zero $ proj₂ z))
+      → reed x "u" ≡ just (Xruti $ mink 𝔽.zero $ proj₂ z)
   xon = {!!}
 \end{code}
 
