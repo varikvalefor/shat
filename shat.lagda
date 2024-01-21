@@ -550,6 +550,13 @@ module ReedVeritas where
     ... | nothing = _≡_.refl
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
+
+  xon : (x : Buffer)
+      → 0 ℕ.< length (Buffer.citri x)
+      → (_≡_
+          (reed x "u")
+          (just $ Xruti $ mink 𝔽.zero {!!}))
+  xon = {!!}
 \end{code}
 
 \section{la \F{kanji}}
