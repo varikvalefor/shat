@@ -336,9 +336,7 @@ module RomoivimcuVeritas where
   pav : (x : String)
       → (_≡_
           (cev $ vec $ romoivimcu x)
-          (𝕃.take
-            (length x ℕ.∸ 1)
-            (cev $ vec x)))
+          (𝕃.take (length x ℕ.∸ 1) $ cev $ vec x))
   pav = {!!}
 \end{code}
 
