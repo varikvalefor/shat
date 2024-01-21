@@ -552,10 +552,10 @@ module ReedVeritas where
     open ≡-Reasoning
 
   xon : (x : Buffer)
-      → 0 ℕ.< length (Buffer.citri x)
+      → (z : Σ ℕ $ λ n → ℕ.suc n ≡ length (Buffer.citri x))
       → (_≡_
           (reed x "u")
-          (just $ Xruti $ mink 𝔽.zero {!!}))
+          (just $ Xruti $ mink 𝔽.zero $ proj₂ z))
   xon = {!!}
 \end{code}
 
