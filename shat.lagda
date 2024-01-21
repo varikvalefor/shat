@@ -543,7 +543,7 @@ module ReedVeritas where
     where
     open Reed
     ridos = 𝕃.head (cev $ vec "w") >>= reed0
-    L = ridos ∷ nothing ∷ nothing ∷ []
+    L = ridos ∷ _
     f : 𝕃.head (𝕃.mapMaybe id L) ≡ ridos
     f with ridos
     ... | just _ = _≡_.refl
