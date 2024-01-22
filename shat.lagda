@@ -661,6 +661,19 @@ module KanjyVeritas where
              (kanji {x} $ Jmina a)
              (x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" a))
   jminac _ _ = _≡_.refl
+
+  xrutis : (x : Buffer)
+         → (n : Fin $ length $ Buffer.citri x)
+         → (_≡_
+             (kanji {x} $ Xruti n)
+             (let x' = 𝕃.lookup (Buffer.citri x) n in
+              (_,_
+                record x {
+                  lerpinste = proj₁ x';
+                  cablerpinsle = proj₂ x';
+                  citri = {!!}}
+                nothing)))
+  xrutis = {!!}
 \end{code}
 
 \section{la'oi .\F{main}.}
