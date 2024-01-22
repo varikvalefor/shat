@@ -386,7 +386,7 @@ module Orsygenturfa'iVeritas where
   pav a b djb = sym $ begin
     orsygenturfa'i (showF a ++ "," ++ showF b) ≡⟨ _≡_.refl ⟩
     pork (𝕃.map ps $ spit a,b) ≡⟨ cong pork uimint ⟩
-    pork (just a ∷ just b ∷ []) ≡⟨ uimla-du a b djb ⟩
+    pork (just a ∷ just b ∷ []) ≡⟨ pork-du a b djb ⟩
     just ((a , b) , djb) ∎
     where
     open Orsygenturfa'i
@@ -395,13 +395,13 @@ module Orsygenturfa'iVeritas where
 
     a,b = showF a ++ "," ++ showF b
 
-    uimla-du : {n : ℕ}
-             → (x z : Fin n)
-             → (djb : x 𝔽.≤ z)
-             → (_≡_
-                 (pork $ just x ∷ just z ∷ [])
-                 (just $ (x , z) , djb))
-    uimla-du x z djb = {!!}
+    pork-du : {n : ℕ}
+            → (x z : Fin n)
+            → (djb : x 𝔽.≤ z)
+            → (_≡_
+                (pork $ just x ∷ just z ∷ [])
+                (just $ (x , z) , djb))
+    pork-du x z djb = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
     uimint = begin
