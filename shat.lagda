@@ -125,6 +125,7 @@ open import Data.Bool
   )
 open import Data.Char
   using (
+    isDigit;
     Char
   )
 open import Data.List
@@ -479,7 +480,7 @@ module Reed where
             S = λ f → cev ∘ vec ∘ f ∘ cev ∘ vec
             init' : List Char → List Char
             init' [] = []
-            init' (x ∷ xs) = if Data.Char.isDigit x then x ∷ init' xs else []
+            init' (x ∷ xs) = if isDigit x then x ∷ init' xs else []
 
 open Reed
   using (
