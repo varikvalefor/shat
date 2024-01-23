@@ -211,6 +211,7 @@ open import Truthbrary.Data.List.Split
   )
 open import Relation.Binary.PropositionalEquality
   using (
+    refl;
     _≡_
   )
 
@@ -384,7 +385,7 @@ module Orsygenturfa'iVeritas where
           (just $ (a , b) , djb)
           (orsygenturfa'i $ showF a ++ "," ++ showF b))
   pav a b djb = sym $ begin
-    orsygenturfa'i (showF a ++ "," ++ showF b) ≡⟨ _≡_.refl ⟩
+    orsygenturfa'i (showF a ++ "," ++ showF b) ≡⟨ refl ⟩
     pork (𝕃.map ps $ spit a,b) ≡⟨ cong pork uimint ⟩
     pork (just a ∷ just b ∷ []) ≡⟨ pork-du a b djb ⟩
     just ((a , b) , djb) ∎
@@ -406,8 +407,8 @@ module Orsygenturfa'iVeritas where
     open ≡-Reasoning
     uimint = begin
       𝕃.map ps (spit a,b) ≡⟨ {!!} ⟩
-      𝕃.map ps (showF' a ∷ showF' b ∷ []) ≡⟨ _≡_.refl ⟩
-      𝕃.map justF' (a ∷ b ∷ []) ≡⟨ _≡_.refl ⟩
+      𝕃.map ps (showF' a ∷ showF' b ∷ []) ≡⟨ refl ⟩
+      𝕃.map justF' (a ∷ b ∷ []) ≡⟨ refl ⟩
       justF' a ∷  justF' b ∷ [] ≡⟨ juste a b ⟩
       just a ∷  just b ∷ [] ∎
       where
@@ -551,9 +552,9 @@ module ReedVeritas where
   uin : (x : Buffer)
       → reed x "w" ≡ mapₘ Rejgau (Buffer.datnyveicme x)
   uin x = begin
-    reed x "w" ≡⟨ _≡_.refl ⟩
+    reed x "w" ≡⟨ refl ⟩
     𝕃.head (𝕃.mapMaybe id L) ≡⟨ f ⟩
-    𝕃.head (cev $ vec "w") >>= reed0 ≡⟨ _≡_.refl ⟩
+    𝕃.head (cev $ vec "w") >>= reed0 ≡⟨ refl ⟩
     mapₘ Rejgau (Buffer.datnyveicme x) ∎
     where
     open Reed
@@ -561,8 +562,8 @@ module ReedVeritas where
     L = ridos ∷ _
     f : 𝕃.head (𝕃.mapMaybe id L) ≡ ridos
     f with ridos
-    ... | just _ = _≡_.refl
-    ... | nothing = _≡_.refl
+    ... | just _ = refl
+    ... | nothing = refl
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
@@ -635,7 +636,7 @@ module KanjyVeritas where
        → let K = λ f → kanji {x} $ f a b d in
          let i = _≡_ x ∘ proj₁ ∘ K in
          i Cusku × i Namcusku
-  dub₂ _ _ _ _ = _≡_.refl , _≡_.refl
+  dub₂ _ _ _ _ = refl , refl
 
   pindices : (x : Buffer)
            → (a b : Buffer.F x)
@@ -671,7 +672,7 @@ module KanjyVeritas where
          → (_≡_
              (kanji {x} $ Jmina a)
              (x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" a))
-  jminac _ _ = _≡_.refl
+  jminac _ _ = refl
 
   xrutis : (x : Buffer)
          → (n : Fin $ length $ Buffer.citri x)
