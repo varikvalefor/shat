@@ -416,7 +416,15 @@ module Orsygenturfa'iVeritas where
       justF' : {n : ℕ} → Fin n → Maybe $ Fin n
       justF' = ps ∘ showF'
       justF'≡just : {n : ℕ} → (x : Fin n) → justF' x ≡ just x
-      justF'≡just = {!!}
+      justF'≡just x = begin
+        justF' x ≡⟨ refl ⟩
+        ps (showF' x) ≡⟨ refl ⟩
+        ps (cev $ vec $ showF x) ≡⟨ refl ⟩
+        (_>>= binxo𝔽?) (readMaybe $ id' $ showF x) ≡⟨ {!!} ⟩
+        (_>>= binxo𝔽?) (readMaybe $ showF x) ≡⟨ {!!} ⟩
+        just x ∎
+        where
+        id' = (cev ∘ (vec ⦃ liliList ⦄)) ∘ (cev ∘ vec)
       juste : {n : ℕ}
             → (x z : Fin n)
             → justF' x ∷ justF' z ∷ [] ≡ just x ∷ just z ∷ []
