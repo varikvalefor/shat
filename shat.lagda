@@ -482,7 +482,7 @@ module Reed where
         where
         P = (Data.Maybe.ap ∘₂ mapₘ) _,_ (romoi s) $ orsygenturfa'i r
       pav : Maybe $ Cmd x
-      pav = Z >>= λ (n , c) → reed1 x n c
+      pav = Z >>= uncurry (reed1 x)
         where
         Z = (Data.Maybe.ap ∘₂ mapₘ) _,_ n $ romoi s
           where
