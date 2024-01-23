@@ -420,12 +420,14 @@ module Orsygenturfa'iVeritas where
         justF' x ≡⟨ refl ⟩
         ps (showF' x) ≡⟨ refl ⟩
         ps (cev $ vec $ showF x) ≡⟨ refl ⟩
-        b𝔽 (readMaybe $ id' $ showF x) ≡⟨ {!!} ⟩
+        b𝔽 (readMaybe $ id' $ showF x) ≡⟨ cvd ▹ cong (b𝔽 ∘ readMaybe) ⟩
         b𝔽 (readMaybe $ showF x) ≡⟨ {!!} ⟩
         just x ∎
         where
         b𝔽 = _>>= binxo𝔽?
         id' = (cev ∘ (vec ⦃ liliList ⦄)) ∘ (cev ∘ vec)
+        cvd : id' (showF x) ≡ showF x
+        cvd = {!!}
       juste : {n : ℕ}
             → (x z : Fin n)
             → justF' x ∷ justF' z ∷ [] ≡ just x ∷ just z ∷ []
