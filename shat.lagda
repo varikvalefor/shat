@@ -430,7 +430,10 @@ module Orsygenturfa'iVeritas where
         b𝔽 = _>>= binxo𝔽?
         id' = (cev ∘ (vec ⦃ liliList ⦄)) ∘ (cev ∘ vec)
         cvd : id' (showF x) ≡ showF x
-        cvd = {!!}
+        cvd = istu $ showF x
+          where
+          istu : (x : String) → id' x ≡ x
+          istu = ?
       juste : {n : ℕ}
             → (x z : Fin n)
             → justF' x ∷ justF' z ∷ [] ≡ just x ∷ just z ∷ []
