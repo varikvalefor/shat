@@ -121,7 +121,9 @@ open import IO.Finite
   )
 open import Data.Bool
   using (
-    if_then_else_
+  )
+  renaming (
+    if_then_else_ to if
   )
 open import Data.Char
   using (
@@ -492,7 +494,7 @@ module Reed where
             S = λ f → cev ∘ vec ∘ f ∘ cev ∘ vec
             init' : List Char → List Char
             init' [] = []
-            init' (x ∷ xs) = if isDigit x then x ∷ init' xs else []
+            init' (x ∷ xs) = if (isDigit x) (x ∷ init' xs) []
 
 open Reed
   using (
