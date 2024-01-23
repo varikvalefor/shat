@@ -302,6 +302,14 @@ data Cmdᵢₒ (x : Buffer) : Set where
   Sistiᵢₒ : Cmdᵢₒ x
 \end{code}
 
+\section{la'oi .\F{Reject}.}
+ni'o lo jvame'o cu ctaipe la'oi .\F{Reject}.
+
+\begin{code}
+Reject : Set
+Reject = {!!}
+\end{code}
+
 \chapter{le fancu}
 
 \section{la'oi .\F{binxo𝔽?}.}
