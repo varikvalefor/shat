@@ -478,7 +478,7 @@ module Reed where
       where
       ridos = 𝕃.head (cev $ vec s) >>= reed0
       rel : Maybe $ Cmd x
-      rel = P >>= λ (r' , ((a , b) , z)) → reed2 x a b z r'
+      rel = P >>= λ (r' , (a , b) , z) → reed2 x a b z r'
         where
         P = (Data.Maybe.ap ∘₂ mapₘ) _,_ (romoi s) $ orsygenturfa'i r
       pav : Maybe $ Cmd x
