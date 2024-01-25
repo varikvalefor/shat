@@ -610,6 +610,7 @@ ni'o la'o zoi.\ \F{kanji} \Sym\{\B x\Sym\} \B s\ .zoi.\ .orsi li re lo jalge be 
 kanji : {x : Buffer}
       → Cmd x
       → Σ Buffer $ Maybe ∘ _⊎_ String ∘ Cmdᵢₒ
+kanji {x} (Jmina a) = x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" a
 kanji {x} (Cusku a b _) = x ,_ $ just $ inj₁ $ cmap i
   where
   BL = Buffer.lerpinste x
@@ -652,7 +653,6 @@ kanji {x} (Muvgau a b _) = x' , nothing
     cablerpinsle = mink (Buffer.cablerpinsle x) {!!};
     lerpinste = {!!}
     }
-kanji {x} (Jmina a) = x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" a
 kanji = {!!}
 \end{code}
 
