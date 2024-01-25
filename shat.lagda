@@ -679,7 +679,7 @@ module KanjyVeritas where
            × (_≡_
                (𝕃.last L)
                (just $ 𝕃.lookup (Buffer.lerpinste x) b))
-  pindices = {!!}
+  pindices x a b d = {!!} , {!!}
 
   muvdusin : (x : Buffer)
            → (a b : Buffer.F x)
