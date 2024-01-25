@@ -290,7 +290,7 @@ data Cmd (x : Buffer) : Set where
   Basti : typeOf Vimcu
   Cusku : typeOf Vimcu
   Muvgau : typeOf Vimcu
-  Xruti : Fin (length $ Buffer.citri x) → Cmd x
+  Xruti : Fin $ length $ Buffer.citri x → Cmd x
 \end{code}
 
 \section{la'oi .\D{Cmdᵢₒ}.}
