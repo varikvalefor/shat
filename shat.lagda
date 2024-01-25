@@ -617,10 +617,7 @@ kanji {x} (Cusku a b _) = x ,_ $ just $ inj₁ $ cmap i
   cmap = Data.String.concat ∘ 𝕃.map (𝕃.lookup BL)
   i = 𝕃.filter (a 𝔽.≤?_) $ 𝕃.map Fintoℕ $ 𝕃.allFin $ 𝔽.toℕ b
     where
-    Fintoℕ : {n : ℕ}
-           → {x : Fin n}
-           → Fin $ 𝔽.toℕ x
-           → Fin n
+    Fintoℕ : {n : ℕ} → {x : Fin n} → Fin $ 𝔽.toℕ x → Fin n
     Fintoℕ f = 𝔽.inject≤ f $ DFP.toℕ≤n _
 kanji {x} (Namcusku a b m) = x ,_ $ just $ inj₁ $ viiet kot
   where
