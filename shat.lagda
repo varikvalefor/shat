@@ -727,7 +727,7 @@ main = run $ IO.lift snurytcati IO.>> getArgs IO.>>= uic ∘ 𝕃.head
   {-# FOREIGN GHC import System.OpenBSD.Plegg #-}
   {-# COMPILE GHC snurytcati = plegg [RPath, WPath, Stdio] #-}
   uic : Maybe String → IO ⊤
-  uic c = IO._>>= lupe $ maybe mkDef (IO.pure def) c
+  uic = (IO._>>= lupe) ∘ maybe mkDef (IO.pure def)
     where
     def = record {
       datnyveicme = nothing;
