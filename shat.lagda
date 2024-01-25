@@ -675,7 +675,7 @@ module KanjyVeritas where
                (Σ
                  (nn ≡ length (Buffer.lerpinste x))
                  (λ d →
-                   ((n : Fin $ ℕ.suc nn) →
+                   ((n : Fin nn) →
                     (Σ
                       (𝔽.toℕ n ℕ.+ 𝔽.toℕ a ℕ.< nn)
                       (λ ℓ →
