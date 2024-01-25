@@ -387,6 +387,14 @@ ni'o pilno ko'a goi le me'oi .\AgdaKeyword{module}.\ co'e ki'u le su'u tu'a ko'a
 
 \begin{code}
 module Orsygenturfa'iVeritas where
+  spit-du : (x z : String)
+          → ',' ∉_ $ List Char ∋ cev (vec x)
+          → ',' ∉_ $ List Char ∋ cev (vec z)
+          → (_≡_
+              (Orsygenturfa'i.spit $ x ++ "," ++ z)
+              (cev (vec x) ∷ cev (vec z) ∷ []))
+  spit-du = {!!}
+
   pav : {n : ℕ}
       → (a b : Fin n)
       → (djb : a 𝔽.≤ b)
