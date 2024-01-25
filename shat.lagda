@@ -419,6 +419,14 @@ module Orsygenturfa'iVeritas where
       istu : (x : String) → id' x ≡ x
       istu = {!!}
 
+  pork-du : {n : ℕ}
+          → (x z : Fin n)
+          → (djb : x 𝔽.≤ z)
+          → (_≡_
+              (pork $ just x ∷ just z ∷ [])
+              (just $ (x , z) , djb))
+  pork-du x z djb = {!!}
+
   pav : {n : ℕ}
       → (a b : Fin n)
       → (djb : a 𝔽.≤ b)
@@ -437,13 +445,6 @@ module Orsygenturfa'iVeritas where
 
     a,b = showF a ++ "," ++ showF b
 
-    pork-du : {n : ℕ}
-            → (x z : Fin n)
-            → (djb : x 𝔽.≤ z)
-            → (_≡_
-                (pork $ just x ∷ just z ∷ [])
-                (just $ (x , z) , djb))
-    pork-du x z djb = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
     uimint = begin
