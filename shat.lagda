@@ -671,9 +671,10 @@ module KanjyVeritas where
            → (d : a 𝔽.≤ b)
            → let K = proj₂ $ kanji {x} $ Cusku a b d in
              let L = lines $ from-inj₁ $ from-just K in
-             (n : Fin $ length $ Buffer.lerpinste x)
+             let Lx = length $ Buffer.lerpinste x in
+             (n : Fin $ Lx)
            → (Σ
-               (𝔽.toℕ n ℕ.+ 𝔽.toℕ a ℕ.< length (Buffer.lerpinste x))
+               (𝔽.toℕ n ℕ.+ 𝔽.toℕ a ℕ.< Lx)
                (λ ℓ →
                  (flip 𝕃.All
                    (𝕃.allFin _)
