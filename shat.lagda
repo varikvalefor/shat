@@ -661,7 +661,7 @@ module KanjyVeritas where
   dub₂ : (x : Buffer)
        → (a b : Buffer.F x)
        → (d : a 𝔽.≤ b)
-       → let K = λ f → kanji {x} $ f a b d in
+       → let K = λ f → kanji $ f a b d in
          let i = _≡_ x ∘ proj₁ ∘ K in
          i Cusku × i Namcusku
   dub₂ _ _ _ _ = refl , refl
