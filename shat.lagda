@@ -400,7 +400,24 @@ module Orsygenturfa'iVeritas where
   ps-du : {n : ℕ}
         → (x : Fin n)
         → just x ≡ ps (cev $ vec $ show $ 𝔽.toℕ x)
-  ps-du = {!!}
+  ps-du x = sym $ begin
+    ps (cev $ vec $ showF x) ≡⟨ refl ⟩
+    b𝔽 (rM $ id' $ showF x) ≡⟨ cvd ▹ cong (b𝔽 ∘ readMaybe) ⟩
+    b𝔽 (rM $ showF x) ≡⟨ {!!} ⟩
+    just x ∎
+    where
+    open import Relation.Binary.PropositionalEquality
+    open ≡-Reasoning
+    rM = readMaybe
+    b𝔽 = _>>= binxo𝔽?
+    id' = (cev ∘ (vec ⦃ liliList ⦄)) ∘ (cev ∘ vec)
+    showF : {n : ℕ} → Fin n → String
+    showF = show ∘ 𝔽.toℕ
+    cvd : id' (showF x) ≡ showF x
+    cvd = istu $ showF x
+      where
+      istu : (x : String) → id' x ≡ x
+      istu = {!!}
 
   pav : {n : ℕ}
       → (a b : Fin n)
@@ -441,21 +458,7 @@ module Orsygenturfa'iVeritas where
       justF' : {n : ℕ} → Fin n → Maybe $ Fin n
       justF' = ps ∘ showF'
       justF'≡just : {n : ℕ} → (x : Fin n) → justF' x ≡ just x
-      justF'≡just x = begin
-        justF' x ≡⟨ refl ⟩
-        ps (showF' x) ≡⟨ refl ⟩
-        ps (cev $ vec $ showF x) ≡⟨ refl ⟩
-        b𝔽 (readMaybe $ id' $ showF x) ≡⟨ cvd ▹ cong (b𝔽 ∘ readMaybe) ⟩
-        b𝔽 (readMaybe $ showF x) ≡⟨ {!!} ⟩
-        just x ∎
-        where
-        b𝔽 = _>>= binxo𝔽?
-        id' = (cev ∘ (vec ⦃ liliList ⦄)) ∘ (cev ∘ vec)
-        cvd : id' (showF x) ≡ showF x
-        cvd = istu $ showF x
-          where
-          istu : (x : String) → id' x ≡ x
-          istu = {!!}
+      justF'≡just x = sym $ ps-du x
       juste : {n : ℕ}
             → (x z : Fin n)
             → justF' x ∷ justF' z ∷ [] ≡ just x ∷ just z ∷ []
