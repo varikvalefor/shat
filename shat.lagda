@@ -387,11 +387,13 @@ ni'o pilno ko'a goi le me'oi .\AgdaKeyword{module}.\ co'e ki'u le su'u tu'a ko'a
 
 \begin{code}
 module Orsygenturfa'iVeritas where
+  open Orsygenturfa'i
+
   spit-du : (x z : String)
           → ',' ∉_ $ List Char ∋ cev (vec x)
           → ',' ∉_ $ List Char ∋ cev (vec z)
           → (_≡_
-              (Orsygenturfa'i.spit $ x ++ "," ++ z)
+              (spit $ x ++ "," ++ z)
               (cev (vec x) ∷ cev (vec z) ∷ []))
   spit-du = {!!}
 
@@ -408,7 +410,6 @@ module Orsygenturfa'iVeritas where
     pork (just a ∷ just b ∷ []) ≡⟨ pork-du a b djb ⟩
     just ((a , b) , djb) ∎
     where
-    open Orsygenturfa'i
     showF : {n : ℕ} → Fin n → String
     showF = show ∘ 𝔽.toℕ
 
