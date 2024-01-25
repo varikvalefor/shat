@@ -671,13 +671,24 @@ module KanjyVeritas where
            → (d : a 𝔽.≤ b)
            → let K = proj₂ $ kanji {x} $ Cusku a b d in
              let L = lines $ from-inj₁ $ from-just K in
-             (_≡_
-               (𝕃.head L)
-               (just $ 𝕃.lookup (Buffer.lerpinste x) a))
-           × (_≡_
-               (𝕃.last L)
-               (just $ 𝕃.lookup (Buffer.lerpinste x) b))
-  pindices x a b d = {!!} , {!!}
+             (Σ
+               ℕ
+               (λ nn →
+                 (Σ
+                   (nn ≡ length (Buffer.lerpinste x))
+                   (λ d →
+                     ((n : Fin $ ℕ.suc nn) →
+                      (Σ
+                        (𝔽.toℕ n ℕ.+ 𝔽.toℕ a ℕ.< nn)
+                        (λ ℓ →
+                          (flip 𝕃.All
+                            (𝕃.allFin _)
+                            (λ n → (_≡_
+                              (𝕃.lookup L n)
+                              (𝕃.lookup
+                                (Buffer.lerpinste x)
+                                (mink (𝔽.fromℕ< ℓ) d))))))))))))
+  pindices x a b d = {!!}
 
   muvdusin : (x : Buffer)
            → (a b : Buffer.F x)
