@@ -441,7 +441,7 @@ module Orsygenturfa'iVeritas where
         cvd = istu $ showF x
           where
           istu : (x : String) → id' x ≡ x
-          istu = ?
+          istu = {!!}
       juste : {n : ℕ}
             → (x z : Fin n)
             → justF' x ∷ justF' z ∷ [] ≡ just x ∷ just z ∷ []
