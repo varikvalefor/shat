@@ -397,6 +397,13 @@ module Orsygenturfa'iVeritas where
               (cev (vec x) ∷ cev (vec z) ∷ []))
   spit-du = {!!}
 
+  ps-du : {n : ℕ}
+        → (x : Fin n)
+        → (_≡_
+            (just x)
+            (ps $ cev $ vec $ show $ 𝔽.toℕ x))
+  ps-du = {!!}
+
   pav : {n : ℕ}
       → (a b : Fin n)
       → (djb : a 𝔽.≤ b)
