@@ -399,9 +399,7 @@ module Orsygenturfa'iVeritas where
 
   ps-du : {n : ℕ}
         → (x : Fin n)
-        → (_≡_
-            (just x)
-            (ps $ cev $ vec $ show $ 𝔽.toℕ x))
+        → just x ≡ ps (cev $ vec $ show $ 𝔽.toℕ x)
   ps-du = {!!}
 
   pav : {n : ℕ}
