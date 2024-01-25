@@ -630,6 +630,13 @@ kanji {x} (Namcusku a b m) = x ,_ $ just $ inj₁ $ viiet kot
     stringCat' = λ (x , z) → show x ++ "\t" ++ z
     uin : List String → List $ ℕ × String
     uin = 𝕃.zip $ 𝕃.drop (𝔽.toℕ a) $ 𝕃.upTo $ 𝔽.toℕ b
+kanji {x} (Muvgau a b _) = x' , nothing
+  where
+  x' = record x {
+    citri = Buffer.cninycitri x;
+    cablerpinsle = mink (Buffer.cablerpinsle x) {!!};
+    lerpinste = {!!}
+    }
 kanji {x} (Vimcu a b _) = x' , nothing
   where
   x' = record x {
@@ -646,13 +653,6 @@ kanji {x} (Vimcu a b _) = x' , nothing
               (flip 𝔽.inject≤ $ DFP.toℕ≤n _)
               (𝕃.drop (𝔽.toℕ a) $ 𝕃.allFin $ 𝔽.toℕ b)))
     nin _ = _ ≟ _
-kanji {x} (Muvgau a b _) = x' , nothing
-  where
-  x' = record x {
-    citri = Buffer.cninycitri x;
-    cablerpinsle = mink (Buffer.cablerpinsle x) {!!};
-    lerpinste = {!!}
-    }
 kanji = {!!}
 \end{code}
 
