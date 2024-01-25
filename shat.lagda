@@ -235,6 +235,14 @@ import Data.List.Relation.Unary.All
 
 \chapter{le se ctaipe}
 
+\section{la'oi .\F{Reject}.}
+ni'o lo jvame'o cu ctaipe la'oi .\F{Reject}.
+
+\begin{code}
+Reject : Set
+Reject = {!!}
+\end{code}
+
 \section{la'oi .\AgdaRecord{Buffer}.}
 ni'o zabna ciksi la'oi .\AgdaRecord{Buffer}.\ fo ma bau la .lojban.
 
@@ -300,14 +308,6 @@ data Cmdᵢₒ (x : Buffer) : Set where
   Tciduᵢₒ : String → Buffer.F x → Cmdᵢₒ x
   Skamiᵢₒ : String → Cmdᵢₒ x
   Sistiᵢₒ : Cmdᵢₒ x
-\end{code}
-
-\section{la'oi .\F{Reject}.}
-ni'o lo jvame'o cu ctaipe la'oi .\F{Reject}.
-
-\begin{code}
-Reject : Set
-Reject = {!!}
 \end{code}
 
 \chapter{le fancu}
