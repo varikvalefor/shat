@@ -676,13 +676,11 @@ module KanjyVeritas where
            → (Σ
                (𝔽.toℕ n ℕ.+ 𝔽.toℕ a ℕ.< Lx)
                (λ ℓ →
-                 (flip 𝕃.All
-                   (𝕃.allFin _)
-                   (λ n → (_≡_
-                     (𝕃.lookup L n)
-                     (𝕃.lookup
-                       (Buffer.lerpinste x)
-                       (𝔽.fromℕ< ℓ)))))))
+               (_≡_
+                 (𝕃.lookup L n)
+                 (𝕃.lookup
+                   (Buffer.lerpinste x)
+                   (𝔽.fromℕ< ℓ)))))
   pindices x a b d = {!!}
 
   muvdusin : (x : Buffer)
