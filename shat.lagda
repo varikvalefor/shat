@@ -349,13 +349,13 @@ pamoinamcu = readMaybe ∘ cev ∘ vec ∘ f ∘ cev ∘ vec
 \begin{code}
 module PamoinamcuVeritas where
   pav : (n : ℕ)
-      → (x : Char)
-      → Data.Bool.false ≡ isDigit x
-      → (s : String)
+      → (x : String)
+      → (j : Data.Maybe.Is-just $ Data.String.head x)
+      → Data.Bool.false ≡_ $ isDigit $ Data.Maybe.to-witness j
       → (_≡_
           (just n)
           (pamoinamcu
-            (show n ++ Data.String.fromChar x ++ s)))
+            (show n ++ x)))
   pav = {!!}
 \end{code}
 
