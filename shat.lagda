@@ -352,10 +352,7 @@ module PamoinamcuVeritas where
       → (x : String)
       → (j : Data.Maybe.Is-just $ Data.String.head x)
       → Data.Bool.false ≡_ $ isDigit $ Data.Maybe.to-witness j
-      → (_≡_
-          (just n)
-          (pamoinamcu
-            (show n ++ x)))
+      → just n ≡ pamoinamcu (show n ++ x)
   pav = {!!}
 \end{code}
 
