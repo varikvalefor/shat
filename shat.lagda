@@ -681,9 +681,7 @@ module KanjyVeritas where
                (λ ℓ →
                  (_≡_
                    (L ! n)
-                   (_!_
-                     Lx
-                     (𝔽.fromℕ< ℓ)))))
+                   (Lx ! 𝔽.fromℕ< ℓ))))
   pindices x a b d n = {!!}
 
   muvdusin : (x : Buffer)
