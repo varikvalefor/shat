@@ -678,10 +678,7 @@ module KanjyVeritas where
              (n : Fin $ length L)
            → (Σ
                (𝔽.toℕ n ℕ.+ 𝔽.toℕ a ℕ.< length Lx)
-               (λ ℓ →
-                 (_≡_
-                   (L ! n)
-                   (Lx ! 𝔽.fromℕ< ℓ))))
+               (λ ℓ → L ! n ≡ Lx ! 𝔽.fromℕ< ℓ))
   pindices x a b d n = {!!}
 
   muvdusin : (x : Buffer)
