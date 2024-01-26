@@ -139,6 +139,9 @@ open import Data.List
     _∷_;
     []
   )
+  renaming (
+    lookup to _!_
+  )
 open import Data.Maybe
   using (
     decToMaybe;
@@ -615,7 +618,7 @@ kanji {x} (Jmina a) = x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" a
 kanji {x} (Cusku a b _) = x ,_ $ just $ inj₁ $ cmap i
   where
   BL = Buffer.lerpinste x
-  cmap = Data.String.concat ∘ 𝕃.map (𝕃.lookup BL)
+  cmap = Data.String.concat ∘ 𝕃.map (BL !_)
   i = 𝕃.filter (a 𝔽.≤?_) $ 𝕃.map Fintoℕ $ 𝕃.allFin $ 𝔽.toℕ b
     where
     Fintoℕ : {n : ℕ} → {x : Fin n} → Fin $ 𝔽.toℕ x → Fin n
@@ -677,8 +680,8 @@ module KanjyVeritas where
                (𝔽.toℕ n ℕ.+ 𝔽.toℕ a ℕ.< Lx)
                (λ ℓ →
                  (_≡_
-                   (𝕃.lookup L n)
-                   (𝕃.lookup
+                   (L ! n)
+                   (_!_
                      (Buffer.lerpinste x)
                      (𝔽.fromℕ< ℓ)))))
   pindices x a b d n = {!!}
@@ -692,8 +695,8 @@ module KanjyVeritas where
                ((_≡_ on (length ∘ Buffer.lerpinste)) x x')
                (λ e →
                  (_≡_
-                   (𝕃.lookup (Buffer.lerpinste x) a)
-                   (𝕃.lookup (Buffer.lerpinste x') $ mink a e))))
+                   (Buffer.lerpinste x ! a)
+                   (Buffer.lerpinste x' ! mink a e))))
            × let L = Buffer.lerpinste in
              (_≡_ on (𝕃.take (𝔽.toℕ a ℕ.⊓ 𝔽.toℕ b) ∘ L)) x x'
            × (_≡_ on (𝕃.drop (𝔽.toℕ a ℕ.⊔ 𝔽.toℕ b) ∘ L)) x x'
@@ -710,7 +713,7 @@ module KanjyVeritas where
          → (n : Fin $ length $ Buffer.citri x)
          → (_≡_
              (kanji {x} $ Xruti n)
-             (let x' = 𝕃.lookup (Buffer.citri x) n in
+             (let x' = Buffer.citri x ! n in
               (_,_
                 record x {
                   lerpinste = proj₁ x';
