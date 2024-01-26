@@ -543,12 +543,7 @@ module Reed where
         where
         Z = (Data.Maybe.ap ∘₂ mapₘ) _,_ n $ romoi s
           where
-          n = (_>>= binxo𝔽?) $ readMaybe $ S init' s
-            where
-            S = λ f → cev ∘ vec ∘ f ∘ cev ∘ vec
-            init' : List Char → List Char
-            init' [] = []
-            init' (x ∷ xs) = if (isDigit x) (x ∷ init' xs) []
+          n = (_>>= binxo𝔽?) $ pamoinamcu s
 
 open Reed
   using (
