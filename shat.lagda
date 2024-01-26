@@ -681,7 +681,7 @@ module KanjyVeritas where
                    (𝕃.lookup
                      (Buffer.lerpinste x)
                      (𝔽.fromℕ< ℓ)))))
-  pindices x a b d = {!!}
+  pindices x a b d n = {!!}
 
   muvdusin : (x : Buffer)
            → (a b : Buffer.F x)
