@@ -331,7 +331,18 @@ module Binxo𝔽Veritas where
       → (x : ℕ)
       → x ℕ.< n
       → just x ≡ mapₘ 𝔽.toℕ (binxo𝔽? {n} x)
-  pav = {!!}
+  pav {n} x m = sym $ begin
+    mapₘ 𝔽.toℕ (binxo𝔽? {n} x) ≡⟨ refl ⟩
+    mapₘ 𝔽.toℕ (mapₘ 𝔽.fromℕ< $ c? x) ≡⟨ {!!} ⟩
+    mapₘ (𝔽.toℕ ∘ 𝔽.fromℕ<) (c? x) ≡⟨ {!!} ⟩
+    mapₘ (𝔽.toℕ ∘ 𝔽.fromℕ<) (just m) ≡⟨ {!!} ⟩
+    just (𝔽.toℕ $ 𝔽.fromℕ< m) ≡⟨ {!!} ⟩
+    just x ∎
+    where
+    c? : (x : ℕ) → Maybe $ x ℕ.< n
+    c? = decToMaybe ∘ (ℕ._<? _)
+    open import Relation.Binary.PropositionalEquality
+    open ≡-Reasoning
 \end{code}
 
 \section{la'oi .\F{pamoinamcu}.}
