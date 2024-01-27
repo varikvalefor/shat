@@ -459,13 +459,13 @@ module Orsygenturfa'iVeritas where
     binxo𝔽? (𝔽.toℕ x) ≡⟨ {!!} ⟩
     just x ∎
     where
-    open import Relation.Binary.PropositionalEquality
-    open ≡-Reasoning
     rM = readMaybe
     b𝔽 = _>>= binxo𝔽?
     id' = (cev ∘ (vec ⦃ liliList ⦄)) ∘ (cev ∘ vec)
     showF : {n : ℕ} → Fin n → String
     showF = show ∘ 𝔽.toℕ
+    open import Relation.Binary.PropositionalEquality
+    open ≡-Reasoning
     cvd : id' (showF x) ≡ showF x
     cvd = istu $ showF x
       where
