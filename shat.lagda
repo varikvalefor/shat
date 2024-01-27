@@ -334,7 +334,7 @@ module Binxo𝔽Veritas where
   pav {n} x m = sym $ begin
     mapₘ 𝔽.toℕ (binxo𝔽? {n} x) ≡⟨ refl ⟩
     mapₘ 𝔽.toℕ (mapₘ 𝔽.fromℕ< $ c? x) ≡⟨ {!!} ⟩
-    mapₘ id' (c? x) ≡⟨ {!!} ⟩
+    mapₘ id' (c? x) ≡⟨ tcmupli _ _ _ ▹ cong (mapₘ id') ⟩
     mapₘ id' (just m) ≡⟨ {!!} ⟩
     just (id' m) ≡⟨ {!!} ⟩
     just x ∎
@@ -342,6 +342,10 @@ module Binxo𝔽Veritas where
     id' = 𝔽.toℕ ∘ 𝔽.fromℕ<
     c? : (x : ℕ) → Maybe $ x ℕ.< n
     c? = decToMaybe ∘ (ℕ._<? _)
+    tcmupli : (x n : ℕ)
+            → (m : x ℕ.< n)
+            → decToMaybe (x ℕ.<? n) ≡ just m
+    tcmupli = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 \end{code}
