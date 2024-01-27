@@ -229,6 +229,8 @@ import Data.Fin.Properties
 import Data.List.Properties
   as DLP
 import Data.Maybe.Instances
+import Data.Maybe.Properties
+  as DMP
 import Data.List.Relation.Unary.All
   as 𝕃
   using (
@@ -335,7 +337,7 @@ module Binxo𝔽Veritas where
     mapₘ 𝔽.toℕ (binxo𝔽? {n} x) ≡⟨ refl ⟩
     mapₘ 𝔽.toℕ (mapₘ 𝔽.fromℕ< $ c? x) ≡⟨ {!!} ⟩
     mapₘ id' (c? x) ≡⟨ tcmupli _ _ _ ▹ cong (mapₘ id') ⟩
-    mapₘ id' (just m) ≡⟨ {!!} ⟩
+    mapₘ id' (just m) ≡⟨ DMP.map-just {f = id'} refl ⟩
     just (id' m) ≡⟨ {!!} ⟩
     just x ∎
     where
