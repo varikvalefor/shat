@@ -454,7 +454,9 @@ module Orsygenturfa'iVeritas where
     ps (cev $ vec $ showF x) ≡⟨ refl ⟩
     b𝔽 (rM $ id' $ showF x) ≡⟨ cvd ▹ cong (b𝔽 ∘ readMaybe) ⟩
     b𝔽 (rM $ showF x) ≡⟨ {!!} ⟩
-    b𝔽 (just $ 𝔽.toℕ x) ≡⟨ {!!} ⟩
+    b𝔽 (just $ 𝔽.toℕ x) ≡⟨ refl ⟩
+    just (𝔽.toℕ x) >>= binxo𝔽? ≡⟨ refl ⟩
+    binxo𝔽? (𝔽.toℕ x) ≡⟨ {!!} ⟩
     just x ∎
     where
     open import Relation.Binary.PropositionalEquality
