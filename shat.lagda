@@ -475,7 +475,7 @@ module Orsygenturfa'iVeritas where
           → (_≡_
               (pork $ just x ∷ just z ∷ [])
               (just $ (x , z) , djb))
-  pork-du x z djb = {!!}
+  pork-du = {!!}
 
   pav : {n : ℕ}
       → (a b : Fin n)
