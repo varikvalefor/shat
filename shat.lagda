@@ -360,7 +360,7 @@ module Binxo𝔽Veritas where
 \end{code}
 
 \section{la'oi .\F{pamoinamcu}.}
-ni'o ro da xi pa poi ke'a lerfu jenai ku'i cu degji lerfu zo'u ro da xi re poi ke'a ctaipe la'oi .\AgdaPostulate{String}.\ zo'u ga jonai la'oi .\AgdaInductiveConstructor{nothing}.\ du ko'a goi la'o zoi.\ \F{pamoinamcu} \B x\ .zoi.\ gi su'o de poi ke'a kacna'u zo'u ga je la'oi .\B x.\ konkatena lo sinxa be de bei de xi pa bei de xi re gi ko'a me'oi .\AgdaInductiveConstructor{just}.\ de
+ni'o ro da xi pa poi ke'a na'e degji lerfu zo'u ro da xi re poi ke'a ctaipe la'oi .\AgdaPostulate{String}.\ zo'u ga jonai la'oi .\AgdaInductiveConstructor{nothing}.\ du ko'a goi la'o zoi.\ \F{pamoinamcu} \B x\ .zoi.\ gi su'o de poi ke'a kacna'u zo'u ga je la'oi .\B x.\ konkatena lo sinxa be de bei de xi pa bei de xi re gi ko'a me'oi .\AgdaInductiveConstructor{just}.\ de
 
 \begin{code}
 pamoinamcu : String → Maybe ℕ
