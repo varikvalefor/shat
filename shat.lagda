@@ -775,6 +775,23 @@ module KanjyVeritas where
                   citri = {!!}}
                 nothing)))
   xrutis = {!!}
+
+  vimcus : (x : Buffer)
+         → (a b : Buffer.F x)
+         → (d : a 𝔽.≤ b)
+         → (_≡_
+             (kanji {x} $ Vimcu a b d)
+             (_,_
+               record x {
+                 lerpinste =
+                   (let L = Buffer.lerpinste x in
+                    (_++_
+                      (𝕃.take (𝔽.toℕ a) L)
+                      (𝕃.drop (𝔽.toℕ b ℕ.+ 1) L)));
+                 cablerpinsle = ?
+                 }
+               nothing))
+  vimcus = {!!}
 \end{code}
 
 \section{la'oi .\F{main}.}
