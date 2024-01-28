@@ -328,7 +328,7 @@ fromℕ? = mapₘ 𝔽.fromℕ< ∘ decToMaybe ∘ (ℕ._<? _)
 \subsection{le ctaipe be le su'u la'oi .\F{fromℕ?}.\ mapti}
 
 \begin{code}
-module Binxo𝔽Veritas where
+module Binxo𝔽?Veritas where
   pav : {n : ℕ}
       → (x : ℕ)
       → x ℕ.< n
