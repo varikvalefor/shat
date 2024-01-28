@@ -587,7 +587,7 @@ module Reed where
         where
         Z = (Data.Maybe.ap ∘₂ mapₘ) _,_ n $ romoi s
           where
-          n = (_>>= fromℕ?) $ pamoinamcu s
+          n = pamoinamcu s >>= fromℕ?
 
 open Reed
   using (
