@@ -505,12 +505,13 @@ module Orsygenturfa'iVeritas where
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
     uimint = begin
-      𝕃.map ps (spit a,b) ≡⟨ {!!} ⟩
+      𝕃.map ps (spit a,b) ≡⟨ spidus ▹ cong (𝕃.map ps) ⟩
       𝕃.map ps (showF' a ∷ showF' b ∷ []) ≡⟨ refl ⟩
       𝕃.map justF' (a ∷ b ∷ []) ≡⟨ refl ⟩
       justF' a ∷  justF' b ∷ [] ≡⟨ juste a b ⟩
       just a ∷  just b ∷ [] ∎
       where
+      spidus = spit-du (showF a) (showF b) {!!} {!!}
       showF' : {n : ℕ} → Fin n → List Char
       showF' = cev ∘ vec ∘ showF
       justF' : {n : ℕ} → Fin n → Maybe $ Fin n
