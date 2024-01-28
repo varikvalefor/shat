@@ -779,13 +779,11 @@ module KanjyVeritas where
   vimcus : (x : Buffer)
          → (a b : Buffer.F x)
          → (d : a 𝔽.≤ b)
-         → let K = kanji {x} $ Vimcu a b d in
-           proj₂ K ≡ nothing
-         × (Σ
+         → (Σ
              (∃ $ Fin ∘ length)
              (λ (L , I)
                → (_≡_
-                   K
+                   (kanji {x} $ Vimcu a b d)
                    (_,_
                      record x {
                        lerpinste = L;
