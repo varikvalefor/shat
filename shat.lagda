@@ -378,7 +378,13 @@ module PamoinamcuVeritas where
       → (j : Data.Maybe.Is-just $ Data.String.head x)
       → Data.Bool.false ≡_ $ isDigit $ Data.Maybe.to-witness j
       → just n ≡ pamoinamcu (show n ++ x)
-  pav = {!!}
+  pav n x j f = sym $ begin
+   pamoinamcu (show n ++ x) ≡⟨ {!!} ⟩
+   readMaybe (show n) ≡⟨ {!!} ⟩
+   just n ∎
+   where
+   open import Relation.Binary.PropositionalEquality
+   open ≡-Reasoning
 \end{code}
 
 \section{la'oi .\F{romoivimcu}.}
