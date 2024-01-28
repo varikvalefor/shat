@@ -542,9 +542,7 @@ ni'o ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{reed} \B x \B s\ .
 module Reed where
   reed0 : {x : Buffer} → Char → Maybe $ Cmd x
   reed0 {x} 'w' = mapₘ Rejgau $ Buffer.datnyveicme x
-  reed0 {x} 'u' = mapₘ Xruti $ 𝕃.head $ 𝕃.allFin citril
-    where
-    citril = length (Buffer.citri x)
+  reed0 {x} 'u' = mapₘ Xruti $ 𝕃.head $ 𝕃.allFin _
   reed0 _ = nothing
 
   reed0a : {x : Buffer} → List String → Maybe $ Cmd x
