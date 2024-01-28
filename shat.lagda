@@ -574,7 +574,7 @@ module Reed where
     terp : List $ Maybe $ Cmd x
     terp = ridos ∷ pav ∷ rel ∷ reed0a s' ∷ []
       where
-      ridos = 𝕃.head (cev $ vec s) >>= reed0
+      ridos = _>>= reed0 $ 𝕃.head $ cev $ vec s
       s' = Data.String.wordsBy (_≟ ' ') s
       rel : Maybe $ Cmd x
       rel = P >>= λ (r' , (a , b) , z) → reed2 x a b z r'
