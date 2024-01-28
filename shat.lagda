@@ -609,11 +609,11 @@ module ReedVeritas where
        → String
     k₁ _ a x = show (𝔽.toℕ a) ++ Data.String.fromChar x
 
-    k₃ : (x : Buffer)
+    k₂ : (x : Buffer)
        → (a b : Buffer.F x)
        → Char
        → String
-    k₃ _ a b x = f a ++ "," ++ f b ++ Data.String.fromChar x
+    k₂ _ a b x = f a ++ "," ++ f b ++ Data.String.fromChar x
       where
       f = show ∘ 𝔽.toℕ
 
@@ -630,13 +630,13 @@ module ReedVeritas where
   mixer : (x : Buffer)
         → (a b : Buffer.F x)
         → (d : a 𝔽.≤ b)
-        → just (Muvgau a b d) ≡ reed x (k₃ x a b 'm')
+        → just (Muvgau a b d) ≡ reed x (k₂ x a b 'm')
   mixer = {!!}
 
   vim : (x : Buffer)
       → (a b : Buffer.F x)
       → (d : a 𝔽.≤ b)
-      → just (Vimcu a b d) ≡ reed x (k₃ x a b 'd')
+      → just (Vimcu a b d) ≡ reed x (k₂ x a b 'd')
   vim = {!!}
 
   uip : (x : Buffer)
