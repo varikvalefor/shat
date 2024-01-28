@@ -317,24 +317,24 @@ data Cmdᵢₒ (x : Buffer) : Set where
 
 \chapter{le fancu}
 
-\section{la'oi .\F{binxo𝔽?}.}
-ni'o ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{binxo𝔽?}\ \B x\ .zoi.\ gi la'o zoi.\ \IC{just} \B x\ .zoi.\ du la'o zoi.\ \F{mapₘ} \F{𝔽.toℕ} \OpF \$ \F{binxo𝔽?}\ \B x\ .zoi.\
+\section{la'oi .\F{fromℕ?}.}
+ni'o ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{fromℕ?}\ \B x\ .zoi.\ gi la'o zoi.\ \IC{just} \B x\ .zoi.\ du la'o zoi.\ \F{mapₘ} \F{𝔽.toℕ} \OpF \$ \F{fromℕ?}\ \B x\ .zoi.\
 
 \begin{code}
-binxo𝔽? : {n : ℕ} → ℕ → Maybe $ Fin n
-binxo𝔽? = mapₘ 𝔽.fromℕ< ∘ decToMaybe ∘ (ℕ._<? _)
+fromℕ? : {n : ℕ} → ℕ → Maybe $ Fin n
+fromℕ? = mapₘ 𝔽.fromℕ< ∘ decToMaybe ∘ (ℕ._<? _)
 \end{code}
 
-\subsection{le ctaipe be le su'u la'oi .\F{binxo𝔽?}.\ mapti}
+\subsection{le ctaipe be le su'u la'oi .\F{fromℕ?}.\ mapti}
 
 \begin{code}
 module Binxo𝔽Veritas where
   pav : {n : ℕ}
       → (x : ℕ)
       → x ℕ.< n
-      → just x ≡ mapₘ 𝔽.toℕ (binxo𝔽? {n} x)
+      → just x ≡ mapₘ 𝔽.toℕ (fromℕ? {n} x)
   pav {n} x m = sym $ begin
-    mapₘ 𝔽.toℕ (binxo𝔽? {n} x) ≡⟨ refl ⟩
+    mapₘ 𝔽.toℕ (fromℕ? {n} x) ≡⟨ refl ⟩
     mapₘ 𝔽.toℕ (mapₘ 𝔽.fromℕ< $ c? x) ≡⟨ mapmapi _ _ $ c? x ⟩
     mapₘ id' (c? x) ≡⟨ tcmupli _ _ _ ▹ cong (mapₘ id') ⟩
     mapₘ id' (just m) ≡⟨ DMP.map-just {f = id'} refl ⟩
@@ -414,7 +414,7 @@ ni'o ro da poi ke'a ctaipe ko'a goi la'o zoi.\ \D{Fin} \B n\ .zoi.\ zo'u ro de p
 \begin{code}
 module Orsygenturfa'i where
   ps : {n : ℕ} → List Char → Maybe $ Fin n
-  ps = (_>>= binxo𝔽?) ∘ readMaybe ∘ cev ∘ vec
+  ps = (_>>= fromℕ?) ∘ readMaybe ∘ cev ∘ vec
 
   spit : String → List $ List Char
   spit = splitOn ⦃ record {_≟_ = Data.Char._≟_} ⦄ ',' ∘ cev ∘ vec
@@ -461,12 +461,12 @@ module Orsygenturfa'iVeritas where
     b𝔽 (rM $ id' $ showF x) ≡⟨ cvd ▹ cong (b𝔽 ∘ readMaybe) ⟩
     b𝔽 (rM $ showF x) ≡⟨ rimdu x ▹ cong b𝔽 ⟩
     b𝔽 (just $ 𝔽.toℕ x) ≡⟨ refl ⟩
-    just (𝔽.toℕ x) >>= binxo𝔽? ≡⟨ refl ⟩
-    binxo𝔽? (𝔽.toℕ x) ≡⟨ {!!} ⟩
+    just (𝔽.toℕ x) >>= fromℕ? ≡⟨ refl ⟩
+    fromℕ? (𝔽.toℕ x) ≡⟨ {!!} ⟩
     just x ∎
     where
     rM = readMaybe
-    b𝔽 = _>>= binxo𝔽?
+    b𝔽 = _>>= fromℕ?
     id' = (cev ∘ (vec ⦃ liliList ⦄)) ∘ (cev ∘ vec)
     showF : {n : ℕ} → Fin n → String
     showF = show ∘ 𝔽.toℕ
@@ -587,7 +587,7 @@ module Reed where
         where
         Z = (Data.Maybe.ap ∘₂ mapₘ) _,_ n $ romoi s
           where
-          n = (_>>= binxo𝔽?) $ pamoinamcu s
+          n = (_>>= fromℕ?) $ pamoinamcu s
 
 open Reed
   using (
