@@ -183,6 +183,7 @@ open import Truthbrary.Data.Fin
   )
 open import Truthbrary.Record.Eq
   using (
+    _≡ᵇ_;
     _≟_
   )
 open import Truthbrary.Record.SR
@@ -852,7 +853,10 @@ main = run $ IO.lift snurytcati IO.>> getArgs IO.>>= uic ∘ 𝕃.head
       ... | x' , nothing = lupe x'
       ... | x' , just (inj₁ z) = IO.putStrLn z IO.>> lupe x'
       ... | x' , just (inj₂ z) with z
-      ... | Sistiᵢₒ = IO.pure _
+      ... | Sistiᵢₒ = if (r ≡ᵇ c₁) (IO.pure _) $ f nothing
+        where
+        r = Buffer.rejgaudatni x'
+        c₁ = mapₘ (unlines ∘ proj₁) $ 𝕃.head $ Buffer.citri x'
       ... | Skamiᵢₒ a = {!!}
       ... | Tciduᵢₒ a b = {!!}
       ... | Rejgauᵢₒ a b = {!!}
