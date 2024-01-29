@@ -366,9 +366,10 @@ ni'o ro da xi pa poi ke'a na'e degji lerfu zo'u ro da xi re poi ke'a ctaipe la'o
 
 \begin{code}
 pamoinamcu : String → Maybe ℕ
-pamoinamcu = readMaybe ∘ cev ∘ vec ∘ f ∘ cev ∘ vec
+pamoinamcu = (_>>= readMaybe) ∘ 𝕃.head ∘ wordsBy aintDigit?
   where
-  f = 𝕃.foldr (λ n l → if (isDigit n) (n ∷ l) []) []
+  wordsBy = Data.String.wordsBy
+  aintDigit? = Data.Bool.T? ∘ Data.Bool.not ∘ isDigit
 \end{code}
 
 \subsection{le ctaipe be le su'u la'oi .\F{pamoiveritas}.\ mapti}
