@@ -259,6 +259,7 @@ record Buffer : Set
     lerpinste : List String
     cablerpinsle : Fin $ length lerpinste
     citri : List $ Σ (typeOf lerpinste) $ Fin ∘ length
+    rejgaudatni : Maybe String
   F = typeOf cablerpinsle
   cninycitri = (lerpinste , cablerpinsle) ∷ citri
 \end{code}
@@ -827,7 +828,8 @@ main = run $ IO.lift snurytcati IO.>> getArgs IO.>>= uic ∘ 𝕃.head
       datnyveicme = nothing;
       lerpinste = "" ∷ List.[];
       cablerpinsle = 𝔽.zero;
-      citri = List.[]
+      citri = List.[];
+      rejgaudatni = nothing
       }
     mkDef : _
     mkDef c = uit ∘ Data.String.lines IO.<$> readFile c
@@ -838,7 +840,8 @@ main = run $ IO.lift snurytcati IO.>> getArgs IO.>>= uic ∘ 𝕃.head
         datnyveicme = just c;
         lerpinste = x;
         cablerpinsle = 𝔽.opposite 𝔽.zero;
-        citri = List.[]
+        citri = List.[];
+        rejgaudatni = just c
         }
     lupe : (x : Buffer) → IO ⊤
     lupe x = IO.getLine IO.>>= f ∘ reed x
