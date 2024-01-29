@@ -687,7 +687,7 @@ kanji {x} (Jmina a) = x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" a
 kanji {x} (Cusku a b _) = x ,_ $ just $ inj₁ $ cmap i
   where
   BL = Buffer.lerpinste x
-  cmap = Data.String.concat ∘ 𝕃.map (BL !_)
+  cmap = Data.String.unlines ∘ 𝕃.map (BL !_)
   i = 𝕃.filter (a 𝔽.≤?_) $ 𝕃.map Fintoℕ $ 𝕃.allFin $ 𝔽.toℕ b
     where
     Fintoℕ : {n : ℕ} → {x : Fin n} → Fin $ 𝔽.toℕ x → Fin n
