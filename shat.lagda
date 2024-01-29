@@ -406,8 +406,13 @@ romoivimcu = S $ 𝕃.reverse ∘ 𝕃.drop 1 ∘ 𝕃.reverse
 module RomoivimcuVeritas where
   pav : (x : String)
       → (_≡_
-          (cev $ vec $ romoivimcu x)
-          (𝕃.take (length x ℕ.∸ 1) $ cev $ vec x))
+          x
+          (_++_
+            (cev $ vec $ romoivimcu x)
+            (maybe
+              Data.String.fromChar
+              ""
+              (𝕃.last $ cev $ vec x))))
   pav = {!!}
 \end{code}
 
