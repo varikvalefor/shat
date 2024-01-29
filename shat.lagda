@@ -552,6 +552,7 @@ module Reed where
   reed0 : {x : Buffer} → Char → Maybe $ Cmd x
   reed0 {x} 'w' = mapₘ Rejgau $ Buffer.datnyveicme x
   reed0 'u' = mapₘ Xruti $ 𝕃.head $ 𝕃.allFin _
+  reed0 'q' = just Sisti
   reed0 _ = nothing
 
   reed0a : {x : Buffer} → List String → Maybe $ Cmd x
