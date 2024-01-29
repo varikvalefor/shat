@@ -471,6 +471,7 @@ module Orsygenturfa'iVeritas where
     b𝔽 (just $ 𝔽.toℕ x) ≡⟨ refl ⟩
     just (𝔽.toℕ x) >>= fromℕ? ≡⟨ refl ⟩
     fromℕ? (𝔽.toℕ x) ≡⟨ {!!} ⟩
+    mapₘ 𝔽.fromℕ< (just $ DFP.toℕ<n x) ≡⟨ {!!} ⟩
     just x ∎
     where
     rM = readMaybe
