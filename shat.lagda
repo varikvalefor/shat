@@ -857,7 +857,7 @@ main = run $ IO.lift snurytcati IO.>> getArgs IO.>>= uic ∘ 𝕃.head
       ... | x' , nothing = lupe x'
       ... | x' , just (inj₁ z) = IO.putStrLn z IO.>> lupe x'
       ... | x' , just (inj₂ z) with z
-      ... | Sistiᵢₒ = if (r ≡ᵇ c₁) (f $ just Sisti!) $ f nothing
+      ... | Sistiᵢₒ = f $ mapₘ (λ _ → Sisti!) $ decToMaybe $ r ≟ c₁
         where
         r = Buffer.rejgaudatni x'
         c₁ = mapₘ (unlines ∘ proj₁) $ 𝕃.head $ Buffer.citri x'
