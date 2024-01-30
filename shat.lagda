@@ -685,7 +685,9 @@ module ReedVeritas where
 
   kybin' : (x : Buffer)
          → reed x "Q" ≡ just Sisti!
-  kybin' = {!!}
+  kybin' x with _>>= Reed.reed0 $ 𝕃.head $ cev $ vec "Q"
+  ... | just _ = refl
+  ... | nothing = refl
 
   xon : (x : Buffer)
       → (z : Σ ℕ $ λ n → ℕ.suc n ≡ length (Buffer.citri x))
