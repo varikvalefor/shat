@@ -676,6 +676,12 @@ module ReedVeritas where
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
+  kybin : (x : Buffer)
+        → reed x "q" ≡ just Sisti
+  kybin x with 𝕃.head (cev $ vec "q") >>= Reed.reed0
+  ... | just _ = refl
+  ... | nothing = refl
+
   xon : (x : Buffer)
       → (z : Σ ℕ $ λ n → ℕ.suc n ≡ length (Buffer.citri x))
       → reed x "u" ≡ just (Xruti $ mink 𝔽.zero $ proj₂ z)
