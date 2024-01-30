@@ -695,6 +695,7 @@ ni'o la'o zoi.\ \F{kanji} \Sym\{\B x\Sym\} \B s\ .zoi.\ .orsi li re lo jalge be 
 kanji : {x : Buffer}
       → Cmd x
       → Σ Buffer $ Maybe ∘ _⊎_ String ∘ Cmdᵢₒ
+kanji {x} Sisti = x ,_ $ just $ inj₂ Sistiᵢₒ
 kanji {x} (Jmina a) = x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" a
 kanji {x} (Cusku a b _) = x ,_ $ just $ inj₁ $ unlines $ i BL
   where
