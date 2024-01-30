@@ -690,14 +690,10 @@ kanji : {x : Buffer}
       → Cmd x
       → Σ Buffer $ Maybe ∘ _⊎_ String ∘ Cmdᵢₒ
 kanji {x} (Jmina a) = x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" a
-kanji {x} (Cusku a b _) = x ,_ $ just $ inj₁ $ cmap i
+kanji {x} (Cusku a b _) = x ,_ $ just $ inj₁ $ unlines $ i BL
   where
   BL = Buffer.lerpinste x
-  cmap = Data.String.unlines ∘ 𝕃.map (BL !_)
-  i = 𝕃.filter (a 𝔽.≤?_) $ 𝕃.map Fintoℕ $ 𝕃.allFin $ 𝔽.toℕ b ℕ.+ 1
-    where
-    Fintoℕ : {n : ℕ} → {x : Fin n} → Fin $ 𝔽.toℕ x ℕ.+ 1 → Fin n
-    Fintoℕ f = 𝔽.inject≤ f ?
+  i = 𝕃.drop (𝔽.toℕ a) ∘ 𝕃.take (𝔽.toℕ b ℕ.+ 1)
 kanji {x} (Namcusku a b m) = x ,_ $ just $ inj₁ $ viiet kot
   where
   kot = from-inj₁ $ from-just $ proj₂ $ kanji {x} $ Cusku a b m
