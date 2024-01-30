@@ -679,13 +679,13 @@ module ReedVeritas where
 
   kybin : (x : Buffer)
         → reed x "q" ≡ just Sisti
-  kybin x with _>>= Reed.reed0 {x} $ 𝕃.head $ cev $ vec "q"
+  kybin x with 𝕃.head (cev $ vec "q") >>= Reed.reed0 {x}
   ... | just _ = refl
   ... | nothing = refl
 
   kybin' : (x : Buffer)
          → reed x "Q" ≡ just Sisti!
-  kybin' x with _>>= Reed.reed0 {x} $ 𝕃.head $ cev $ vec "Q"
+  kybin' x with 𝕃.head (cev $ vec "Q") >>= Reed.reed0 {x}
   ... | just _ = refl
   ... | nothing = refl
 
