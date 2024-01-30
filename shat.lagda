@@ -692,7 +692,13 @@ module ReedVeritas where
   xon : (x : Buffer)
       → (z : Σ ℕ $ λ n → ℕ.suc n ≡ length (Buffer.citri x))
       → reed x "u" ≡ just (Xruti $ mink 𝔽.zero $ proj₂ z)
-  xon = {!!}
+  xon x z = begin
+    reed x "u" ≡⟨ {!!} ⟩
+    mapₘ Xruti (𝕃.head $ 𝕃.allFin _) ≡⟨ {!!} ⟩
+    just (Xruti $ mink 𝔽.zero $ proj₂ z) ∎
+    where
+    open import Relation.Binary.PropositionalEquality
+    open ≡-Reasoning
 \end{code}
 
 \section{la \F{kanji}}
