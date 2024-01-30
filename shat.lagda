@@ -694,10 +694,10 @@ kanji {x} (Cusku a b _) = x ,_ $ just $ inj₁ $ cmap i
   where
   BL = Buffer.lerpinste x
   cmap = Data.String.unlines ∘ 𝕃.map (BL !_)
-  i = 𝕃.filter (a 𝔽.≤?_) $ 𝕃.map Fintoℕ $ 𝕃.allFin $ 𝔽.toℕ b
+  i = 𝕃.filter (a 𝔽.≤?_) $ 𝕃.map Fintoℕ $ 𝕃.allFin $ 𝔽.toℕ b ℕ.+ 1
     where
-    Fintoℕ : {n : ℕ} → {x : Fin n} → Fin $ 𝔽.toℕ x → Fin n
-    Fintoℕ f = 𝔽.inject≤ f $ DFP.toℕ≤n _
+    Fintoℕ : {n : ℕ} → {x : Fin n} → Fin $ 𝔽.toℕ x ℕ.+ 1 → Fin n
+    Fintoℕ f = 𝔽.inject≤ f ?
 kanji {x} (Namcusku a b m) = x ,_ $ just $ inj₁ $ viiet kot
   where
   kot = from-inj₁ $ from-just $ proj₂ $ kanji {x} $ Cusku a b m
@@ -705,7 +705,7 @@ kanji {x} (Namcusku a b m) = x ,_ $ just $ inj₁ $ viiet kot
     where
     stringCat' = λ (x , z) → show x ++ "\t" ++ z
     uin : List String → List $ ℕ × String
-    uin = 𝕃.zip $ 𝕃.drop (𝔽.toℕ a) $ 𝕃.upTo $ 𝔽.toℕ b
+    uin = 𝕃.zip $ 𝕃.drop (𝔽.toℕ a) $ 𝕃.upTo $ 𝔽.toℕ b ℕ.+ 1
 kanji {x} (Muvgau a b _) = x' , nothing
   where
   x' = record x {
