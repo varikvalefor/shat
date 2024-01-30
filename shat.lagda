@@ -657,7 +657,17 @@ module ReedVeritas where
   uip : (x : Buffer)
       → (s : String)
       → just (Rejgau s) ≡ reed x ("w " ++ s)
-  uip = {!!}
+  uip x s = sym $ begin
+    reed x ("w " ++ s) ≡⟨ {!!} ⟩
+    reed x (unwords $ "w" ∷ " " ∷ f s) ≡⟨ {!!} ⟩
+    reed0a ("w" ∷ f s) ≡⟨ {!!} ⟩
+    just (Rejgau s) ∎
+    where
+    f = Data.String.wordsBy (_≟ ' ')
+    unwords = Data.String.unwords
+    open Reed
+    open import Relation.Binary.PropositionalEquality
+    open ≡-Reasoning
 
   uin : (x : Buffer)
       → reed x "w" ≡ mapₘ Rejgau (Buffer.datnyveicme x)
