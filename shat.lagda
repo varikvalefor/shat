@@ -54,6 +54,7 @@
 \newunicodechar{▹}{\ensuremath{\mathnormal\triangleright}}
 \newunicodechar{⊔}{\ensuremath{\mathnormal\sqcup}}
 \newunicodechar{⊓}{\ensuremath{\mathnormal\sqcap}}
+\newunicodechar{⟲}{\ensuremath{\mathnormal\circlearrowleft}}
 
 \newcommand\Sym\AgdaSymbol
 \newcommand\D\AgdaDatatype
@@ -845,7 +846,7 @@ main = run $ IO.lift snurytcati IO.>> getArgs IO.>>= uic ∘ 𝕃.head
   {-# FOREIGN GHC import System.OpenBSD.Plegg #-}
   {-# COMPILE GHC snurytcati = plegg [RPath, WPath, Stdio] #-}
   uic : Maybe String → IO ⊤
-  uic = (IO._>>= lupe) ∘ maybe mkDef (IO.pure def)
+  uic = (IO._>>= ⟲) ∘ maybe mkDef (IO.pure def)
     where
     def = record {
       datnyveicme = nothing;
@@ -866,14 +867,14 @@ main = run $ IO.lift snurytcati IO.>> getArgs IO.>>= uic ∘ 𝕃.head
         citri = List.[];
         rejgaudatni = just c
         }
-    lupe : (x : Buffer) → IO ⊤
-    lupe x = IO.getLine IO.>>= f ∘ reed x
+    ⟲ : (x : Buffer) → IO ⊤
+    ⟲ x = IO.getLine IO.>>= f ∘ reed x
       where
       f : Maybe $ Cmd x → IO ⊤
-      f nothing = IO.putStrLn "?" IO.>> lupe x
+      f nothing = IO.putStrLn "?" IO.>> ⟲ x
       f (just c) with kanji c
-      ... | x' , nothing = lupe x'
-      ... | x' , just (inj₁ z) = IO.putStrLn z IO.>> lupe x'
+      ... | x' , nothing = ⟲ x'
+      ... | x' , just (inj₁ z) = IO.putStrLn z IO.>> ⟲ x'
       ... | x' , just (inj₂ z) with z
       ... | Sistiᵢₒ = f $ mapₘ (λ _ → Sisti!) $ decToMaybe $ r ≟ c₁
         where
