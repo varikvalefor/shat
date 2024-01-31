@@ -546,7 +546,7 @@ module Orsygenturfa'iVeritas where
 ni'o ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{reed} \B x \B s\ .zoi.\ gi ga je la'oi .\B s.\ midnoi fo la'o zoi.\ \Xr{ed}{1} .zoi.\ je cu mapti la'o zoi.\ \D{Cmd} \B x\ .zoi.\ gi ko'a me'oi .\IC{just}.\ lo mapti be la'oi .\B s.
 
 \begin{code}
-module Riley where
+module Reed where
   reed0 : {x : Buffer} → Char → Maybe $ Cmd x
   reed0 {x} 'w' = mapₘ Rejgau $ Buffer.datnyveicme x
   reed0 'u' = mapₘ Xruti $ 𝕃.head $ 𝕃.allFin _
@@ -596,7 +596,7 @@ module Riley where
           where
           n = pamoinamcu s >>= fromℕ?
 
-open Riley
+open Reed
   using (
     reed
   )
@@ -608,7 +608,7 @@ ni'o pilno ko'a goi le me'oi .\AgdaKeyword{module}.\ co'e ki'u le su'u tu'a ko'a
 \subsection{le ctaipe be le su'u la'oi .\F{reed}.\ mapti}
 
 \begin{code}
-module RileyVeritas where
+module ReedVeritas where
   private
     k₁ : (x : Buffer)
        → (a : Buffer.F x)
@@ -657,7 +657,7 @@ module RileyVeritas where
     where
     f = Data.String.wordsBy (_≟ ' ')
     unwords = Data.String.unwords
-    open Riley
+    open Reed
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
@@ -669,7 +669,7 @@ module RileyVeritas where
     𝕃.head (cev $ vec "w") >>= reed0 ≡⟨ refl ⟩
     mapₘ Rejgau (Buffer.datnyveicme x) ∎
     where
-    open Riley
+    open Reed
     ridos = 𝕃.head (cev $ vec "w") >>= reed0
     L = ridos ∷ _
     duridos : 𝕃.head (𝕃.mapMaybe id L) ≡ ridos
@@ -681,13 +681,13 @@ module RileyVeritas where
 
   kybin : (x : Buffer)
         → reed x "q" ≡ just Sisti
-  kybin x with 𝕃.head (cev $ vec "q") >>= Riley.reed0 {x}
+  kybin x with 𝕃.head (cev $ vec "q") >>= Reed.reed0 {x}
   ... | just _ = refl
   ... | nothing = refl
 
   kybin' : (x : Buffer)
          → reed x "Q" ≡ just Sisti!
-  kybin' x with 𝕃.head (cev $ vec "Q") >>= Riley.reed0 {x}
+  kybin' x with 𝕃.head (cev $ vec "Q") >>= Reed.reed0 {x}
   ... | just _ = refl
   ... | nothing = refl
 
