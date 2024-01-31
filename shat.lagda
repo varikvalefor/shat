@@ -336,7 +336,7 @@ module Binxo𝔽?Veritas where
   pav {n} x m = sym $ begin
     mapₘ 𝔽.toℕ (fromℕ? {n} x) ≡⟨ refl ⟩
     mapₘ 𝔽.toℕ (mapₘ 𝔽.fromℕ< $ c? x) ≡⟨ mapmapi _ _ $ c? x ⟩
-    mapₘ id' (c? x) ≡⟨ tcmupli _ _ _ ▹ cong (mapₘ id') ⟩
+    mapₘ id' (c? x) ≡⟨ dekdu _ _ _ ▹ cong (mapₘ id') ⟩
     mapₘ id' (just m) ≡⟨ DMP.map-just {f = id'} refl ⟩
     just (id' m) ≡⟨ DFP.toℕ-fromℕ< m ▹ cong just ⟩
     just x ∎
@@ -344,10 +344,10 @@ module Binxo𝔽?Veritas where
     id' = 𝔽.toℕ ∘ 𝔽.fromℕ<
     c? : (x : ℕ) → Maybe $ x ℕ.< n
     c? = decToMaybe ∘ (ℕ._<? _)
-    tcmupli : (x n : ℕ)
+    dekdu : (x n : ℕ)
             → (m : x ℕ.< n)
             → decToMaybe (x ℕ.<? n) ≡ just m
-    tcmupli = {!!}
+    dekdu = {!!}
     mapmapi : ∀ {a} → {A B C : Set a}
             → (f : A → B)
             → (g : B → C)
