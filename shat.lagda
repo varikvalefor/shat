@@ -655,13 +655,16 @@ module ReedVeritas where
 
   uip : (x : Buffer)
       → (s : String)
-      → just (Rejgau s) ≡ reed x ("w " ++ s)
-  uip x s = sym $ begin
-    reed x ("w " ++ s) ≡⟨ {!!} ⟩
-    reed x (unwords $ "w" ∷ " " ∷ f s) ≡⟨ {!!} ⟩
-    reed0a ("w" ∷ f s) ≡⟨ {!!} ⟩
-    just (Rejgau s) ∎
+      → (c : Char)
+      → (let s' = Data.String.fromChar c ++ s in
+         just (Rejgau s') ≡ reed x ("w " ++ s'))
+  uip x s c = sym $ begin
+    reed x ("w " ++ s') ≡⟨ {!!} ⟩
+    reed x (unwords $ "w" ∷ " " ∷ f s') ≡⟨ {!!} ⟩
+    reed0a ("w" ∷ f s') ≡⟨ {!!} ⟩
+    just (Rejgau s') ∎
     where
+    s' = Data.String.fromChar c ++ s
     f = Data.String.wordsBy (_≟ ' ')
     unwords = Data.String.unwords
     open Reed
