@@ -172,6 +172,7 @@ open import Relation.Nullary
   using (
     Dec;
     yes;
+    ¬_;
     no
   )
 open import System.Environment
@@ -656,9 +657,10 @@ module ReedVeritas where
   uip : (x : Buffer)
       → (s : String)
       → (c : Char)
+      → ¬ (c ≡ ' ')
       → (let s' = Data.String.fromChar c ++ s in
          just (Rejgau s') ≡ reed x ("w " ++ s'))
-  uip x s c = sym $ begin
+  uip x s c n = sym $ begin
     reed x ("w " ++ s') ≡⟨ {!!} ⟩
     reed x (unwords $ "w" ∷ " " ∷ f s') ≡⟨ {!!} ⟩
     reed0a ("w" ∷ f s') ≡⟨ {!!} ⟩
