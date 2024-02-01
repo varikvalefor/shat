@@ -664,6 +664,7 @@ module ReedVeritas where
     reed x ("w " ++ s') ≡⟨ {!!} ⟩
     reed x (unwords $ "w" ∷ " " ∷ f s') ≡⟨ {!!} ⟩
     reed0a ("w" ∷ f s') ≡⟨ {!!} ⟩
+    just (Rejgau $ unwords $ f s') ≡⟨ {!!} ⟩
     just (Rejgau s') ∎
     where
     s' = Data.String.fromChar c ++ s
