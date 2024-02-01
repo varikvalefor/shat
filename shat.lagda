@@ -526,7 +526,12 @@ module Orsygenturfa'iVeritas where
       justF' a ∷  justF' b ∷ [] ≡⟨ juste a b ⟩
       just a ∷  just b ∷ [] ∎
       where
-      spidus = spit-du (showF a) (showF b) {!!} {!!}
+      spidus = spit-du (showF a) (showF b) (nokom a) (nokom b)
+        where
+        nokom : {n : ℕ}
+              → (x : Fin n)
+              → ',' ∉ (List Char ∋ cev (vec $ showF x))
+        nokom = {!!}
       showF' : {n : ℕ} → Fin n → List Char
       showF' = cev ∘ vec ∘ showF
       justF' : {n : ℕ} → Fin n → Maybe $ Fin n
