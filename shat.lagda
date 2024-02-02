@@ -415,7 +415,7 @@ module RomoivimcuVeritas where
               (𝕃.last $ cev $ vec x))))
   pav x = sym $ begin
     cever ++ r ≡⟨ {!!} ⟩
-    cev (vec x'') ≡⟨ {!!} ⟩
+    cev (vec x'') ≡⟨ x''≡x' ▹ cong (cev ∘ vec) ⟩
     cev (vec x') ≡⟨ {!!} ⟩
     x ∎
     where
@@ -425,6 +425,8 @@ module RomoivimcuVeritas where
     x'' = 𝕃.take lx x' ++ 𝕃.drop lx x'
       where
       lx = length x' ℕ.∸ 1
+    x''≡x' : x'' ≡ x'
+    x''≡x' = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 \end{code}
