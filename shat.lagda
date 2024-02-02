@@ -665,7 +665,7 @@ module ReedVeritas where
     reed x (unwords $ "w" ∷ " " ∷ f s') ≡⟨ {!!} ⟩
     reed0a ("w" ∷ f s') ≡⟨ fs'≡v₁++v₂ ▹ cong (reed0a ∘ _∷_ "w") ⟩
     reed0a ("w" ∷ v₁ ∷ v₂) ≡⟨ {!!} ⟩
-    just (Rejgau $ unwords $ f s') ≡⟨ {!!} ⟩
+    just (Rejgau $ unwords $ f s') ≡⟨ unwords∘f' s' ▹ cong (just ∘ Rejgau) ⟩
     just (Rejgau s') ∎
     where
     s' = Data.String.fromChar c ++ s
@@ -675,6 +675,9 @@ module ReedVeritas where
     fs'≡v₁++v₂ : f s' ≡ v₁ ∷ v₂
     fs'≡v₁++v₂ = {!!}
     unwords = Data.String.unwords
+    unwords∘f' : (s : String)
+               → unwords (f s) ≡ s
+    unwords∘f' = {!!}
     open Reed
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
