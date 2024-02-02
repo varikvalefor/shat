@@ -663,7 +663,7 @@ module ReedVeritas where
   uip x s c n = sym $ begin
     reed x ("w " ++ s') ≡⟨ {!!} ⟩
     reed x (unwords $ "w" ∷ " " ∷ f s') ≡⟨ {!!} ⟩
-    reed0a ("w" ∷ f s') ≡⟨ fs'≡v₁++v₂ ▹ cong (reed0a ∘ ("w" ∷_)) ⟩
+    reed0a ("w" ∷ f s') ≡⟨ fs'≡v₁++v₂ ▹ cong (reed0a ∘ _∷_ "w") ⟩
     reed0a ("w" ∷ v₁ ∷ v₂) ≡⟨ {!!} ⟩
     just (Rejgau $ unwords $ f s') ≡⟨ {!!} ⟩
     just (Rejgau s') ∎
