@@ -416,7 +416,7 @@ module RomoivimcuVeritas where
   pav x = sym $ begin
     cever ++ r ≡⟨ {!!} ⟩
     cev (vec x'') ≡⟨ x''≡x' ▹ cong (cev ∘ vec) ⟩
-    cev (vec x') ≡⟨ {!!} ⟩
+    cev (vec x') ≡⟨ [cev∘vec]² x ▹ sym ⟩
     x ∎
     where
     cever = cev $ vec $ romoivimcu x
@@ -427,6 +427,12 @@ module RomoivimcuVeritas where
       lx = length x' ℕ.∸ 1
     x''≡x' : x'' ≡ x'
     x''≡x' = DLP.take++drop (length x' ℕ.∸ 1) x'
+    [cev∘vec]² : (x : String)
+               → (_≡_
+                   x
+                   ((cev ∘ (vec ⦃ liliList ⦄))
+                     (cev $ vec x)))
+    [cev∘vec]² = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 \end{code}
