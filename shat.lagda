@@ -430,8 +430,7 @@ module RomoivimcuVeritas where
     [cev∘vec]² : (x : String)
                → (_≡_
                    x
-                   ((cev ∘ (vec ⦃ liliList ⦄))
-                     (cev $ vec x)))
+                   (cev $ (vec ⦃ liliList ⦄) $ cev $ vec x))
     [cev∘vec]² = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
