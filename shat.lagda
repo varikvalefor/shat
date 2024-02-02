@@ -663,12 +663,17 @@ module ReedVeritas where
   uip x s c n = sym $ begin
     reed x ("w " ++ s') ≡⟨ {!!} ⟩
     reed x (unwords $ "w" ∷ " " ∷ f s') ≡⟨ {!!} ⟩
-    reed0a ("w" ∷ f s') ≡⟨ {!!} ⟩
+    reed0a ("w" ∷ f s') ≡⟨ fs'≡v₁++v₂ ▹ cong (reed0a ∘ ("w" ∷_)) ⟩
+    reed0a ("w" ∷ v₁ ∷ v₂) ≡⟨ {!!} ⟩
     just (Rejgau $ unwords $ f s') ≡⟨ {!!} ⟩
     just (Rejgau s') ∎
     where
     s' = Data.String.fromChar c ++ s
     f = Data.String.wordsBy (_≟ ' ')
+    v₁ = {!!}
+    v₂ = {!!}
+    fs'≡v₁++v₂ : f s' ≡ v₁ ∷ v₂
+    fs'≡v₁++v₂ = {!!}
     unwords = Data.String.unwords
     open Reed
     open import Relation.Binary.PropositionalEquality
