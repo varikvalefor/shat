@@ -426,7 +426,7 @@ module RomoivimcuVeritas where
       where
       lx = length x' ℕ.∸ 1
     x''≡x' : x'' ≡ x'
-    x''≡x' = {!!}
+    x''≡x' = DLP.take++drop (length x' ℕ.∸ 1) x'
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 \end{code}
