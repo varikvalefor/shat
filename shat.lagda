@@ -723,6 +723,10 @@ module ReedVeritas where
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
+  -- ni'o la .varik. cu stidi lo nu tcidu le velcki be
+  -- la .uin. fa lo na jimpe be fi la .kybin. je la'oi
+  -- .kybin'.
+
   kybin : (x : Buffer)
         → reed x "q" ≡ just Sisti
   kybin x with 𝕃.head (cev $ vec "q") >>= Reed.reed0 {x}
