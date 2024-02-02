@@ -685,7 +685,7 @@ module ReedVeritas where
     j∘R s' ∎
     where
     s' = Data.String.fromChar c ++ s
-    f = Data.String.wordsBy (_≟ ' ')
+    f = Data.String.wordsBy $ _≟ ' '
     v₁ = {!!}
     v₂ = {!!}
     j∘R = just ∘ Rejgau
