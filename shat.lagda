@@ -413,7 +413,20 @@ module RomoivimcuVeritas where
               Data.String.fromChar
               ""
               (𝕃.last $ cev $ vec x))))
-  pav = {!!}
+  pav x = sym $ begin
+    cever ++ r ≡⟨ {!!} ⟩
+    cev (vec x'') ≡⟨ {!!} ⟩
+    cev (vec x') ≡⟨ {!!} ⟩
+    x ∎
+    where
+    cever = cev $ vec $ romoivimcu x
+    r = maybe Data.String.fromChar "" $ 𝕃.last $ cev $ vec x
+    x' = cev $ vec x
+    x'' = 𝕃.take lx x' ++ 𝕃.drop lx x'
+      where
+      lx = length x' ℕ.∸ 1
+    open import Relation.Binary.PropositionalEquality
+    open ≡-Reasoning
 \end{code}
 
 \section{la'oi .\F{orsygenturfa'i}.}
