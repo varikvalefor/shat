@@ -665,13 +665,14 @@ module ReedVeritas where
     reed x (unwords $ "w" ∷ " " ∷ f s') ≡⟨ {!!} ⟩
     reed0a ("w" ∷ f s') ≡⟨ fs'≡v₁++v₂ ▹ cong (reed0a ∘ _∷_ "w") ⟩
     reed0a ("w" ∷ v₁ ∷ v₂) ≡⟨ {!!} ⟩
-    just (Rejgau $ unwords $ f s') ≡⟨ unwords∘f' s' ▹ cong (just ∘ Rejgau) ⟩
-    just (Rejgau s') ∎
+    j∘R (unwords $ f s') ≡⟨ unwords∘f' s' ▹ cong j∘R ⟩
+    j∘R s' ∎
     where
     s' = Data.String.fromChar c ++ s
     f = Data.String.wordsBy (_≟ ' ')
     v₁ = {!!}
     v₂ = {!!}
+    j∘R = just ∘ Rejgau
     fs'≡v₁++v₂ : f s' ≡ v₁ ∷ v₂
     fs'≡v₁++v₂ = {!!}
     unwords = Data.String.unwords
