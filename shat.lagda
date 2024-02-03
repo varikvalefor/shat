@@ -710,7 +710,7 @@ module ReedVeritas where
     reed x (unwords $ "w" ∷ " " ∷ f s') ≡⟨ {!!} ⟩
     reed0a ("w" ∷ f s') ≡⟨ fs'≡v₁++v₂ ▹ cong (reed0a ∘ _∷_ "w") ⟩
     reed0a ("w" ∷ v₁ ∷ v₂) ≡⟨ refl ⟩
-    j∘R (unwords $ v₁ ∷ v₂) ≡⟨ {!!} ⟩
+    j∘R (unwords $ v₁ ∷ v₂) ≡⟨ {!!} ▹ cong j∘R ⟩
     j∘R s' ∎
     where
     s' = Data.String.fromChar c ++ s
