@@ -929,6 +929,6 @@ main = run $ IO.lift snurytcati IO.>> getArgs IO.>>= uic ∘ 𝕃.head
       ... | Sisti!ᵢₒ = IO.pure _
       ... | Skamiᵢₒ a = {!!}
       ... | Tciduᵢₒ a b = {!!}
-      ... | Rejgauᵢₒ a b = {!!}
+      ... | Rejgauᵢₒ a b = IO.writeFile a b IO.>> ⟲ x
 \end{code}
 \end{document}
