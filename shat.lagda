@@ -597,12 +597,13 @@ module Reed where
         → (a 𝔽.≤ b)
         → Char
         → Maybe $ Cmd x
-  reed2 x a b z 'c' = just $ Basti a b z
-  reed2 x a b z 'd' = just $ Vimcu a b z
-  reed2 x a b z 'm' = just $ Muvgau a b z
-  reed2 x a b z 'n' = just $ Namcusku a b z
-  reed2 x a b z 'p' = just $ Cusku a b z
-  reed2 _ _ _ _ _ = nothing
+  reed2 x a b z j with j
+  ... | 'c' = just $ Basti a b z
+  ... | 'd' = just $ Vimcu a b z
+  ... | 'm' = just $ Muvgau a b z
+  ... | 'n' = just $ Namcusku a b z
+  ... | 'p' = just $ Cusku a b z
+  ... | _ = nothing
 
   reed : (x : Buffer) → String → Maybe $ Cmd x
   reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
