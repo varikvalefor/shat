@@ -596,6 +596,15 @@ module Reed where
   reed1 x n 'i' = just $ Jmini n
   reed1 _ _ _ = nothing
 
+  reed1t : (x : Buffer) → String → Maybe $ Cmd x
+  reed1t x s = Z >>= uncurry (reed1 x)
+    where
+    r = romoivimcu s
+    romoi = 𝕃.last ∘ cev ∘ vec
+    Z = (Data.Maybe.ap ∘₂ mapₘ) _,_ n $ romoi s
+      where
+      n = pamoinamcu s >>= fromℕ?
+
   reed2 : (x : Buffer)
         → (a b : Buffer.F x)
         → (a 𝔽.≤ b)
@@ -619,18 +628,10 @@ module Reed where
   reed : (x : Buffer) → String → Maybe $ Cmd x
   reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
     where
-    r = romoivimcu s
-    romoi = 𝕃.last ∘ cev ∘ vec
     terp : List $ Maybe $ Cmd x
-    terp = reed0t s ∷ pav ∷ reed2t x s ∷ reed0a s' ∷ []
+    terp = reed0t s ∷ reed1t x s ∷ reed2t x s ∷ reed0a s' ∷ []
       where
       s' = Data.String.wordsBy (_≟ ' ') s
-      pav : Maybe $ Cmd x
-      pav = Z >>= uncurry (reed1 x)
-        where
-        Z = (Data.Maybe.ap ∘₂ mapₘ) _,_ n $ romoi s
-          where
-          n = pamoinamcu s >>= fromℕ?
 
 open Reed
   using (
