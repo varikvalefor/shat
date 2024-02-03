@@ -609,19 +609,22 @@ module Reed where
   ... | 'p' = just $ Cusku a b z
   ... | _ = nothing
 
+  reed2t : (x : Buffer) → String → Maybe $ Cmd x
+  reed2t x s = P >>= λ (r' , (a , b) , z) → reed2 x a b z r'
+    where
+    r = romoivimcu s
+    romoi = 𝕃.last ∘ cev ∘ vec
+    P = (Data.Maybe.ap ∘₂ mapₘ) _,_ (romoi s) $ orsygenturfa'i r
+
   reed : (x : Buffer) → String → Maybe $ Cmd x
   reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
     where
     r = romoivimcu s
     romoi = 𝕃.last ∘ cev ∘ vec
     terp : List $ Maybe $ Cmd x
-    terp = reed0t s ∷ pav ∷ rel ∷ reed0a s' ∷ []
+    terp = reed0t s ∷ pav ∷ reed2t x s ∷ reed0a s' ∷ []
       where
       s' = Data.String.wordsBy (_≟ ' ') s
-      rel : Maybe $ Cmd x
-      rel = P >>= λ (r' , (a , b) , z) → reed2 x a b z r'
-        where
-        P = (Data.Maybe.ap ∘₂ mapₘ) _,_ (romoi s) $ orsygenturfa'i r
       pav : Maybe $ Cmd x
       pav = Z >>= uncurry (reed1 x)
         where
