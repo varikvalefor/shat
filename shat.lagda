@@ -667,7 +667,13 @@ module ReedVeritas where
         → (a b : Buffer.F x)
         → (d : a 𝔽.≤ b)
         → just (Muvgau a b d) ≡ reed x (k₂ x a b 'm')
-  mixer = {!!}
+  mixer x a b d = sym $ begin
+    reed x (k₂ x a b 'm') ≡⟨ {!!} ⟩
+    Reed.reed2 x a b d 'm' ≡⟨ refl ⟩
+    just (Muvgau a b d) ∎
+    where
+    open import Relation.Binary.PropositionalEquality
+    open ≡-Reasoning
 
   vim : (x : Buffer)
       → (a b : Buffer.F x)
