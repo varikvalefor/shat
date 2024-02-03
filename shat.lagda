@@ -490,7 +490,8 @@ module Orsygenturfa'iVeritas where
     b𝔽 (rM $ showF x) ≡⟨ rimdu x ▹ cong b𝔽 ⟩
     b𝔽 (just $ 𝔽.toℕ x) ≡⟨ refl ⟩
     just (𝔽.toℕ x) >>= fromℕ? ≡⟨ refl ⟩
-    fromℕ? (𝔽.toℕ x) ≡⟨ {!!} ⟩
+    fromℕ? (𝔽.toℕ x) ≡⟨ refl ⟩
+    mapₘ 𝔽.fromℕ< (decToMaybe $ _ ℕ.<? _) ≡⟨ {!!} ⟩
     mapₘ 𝔽.fromℕ< (just $ DFP.toℕ<n x) ≡⟨ refl ⟩
     mapₘ 𝔽.fromℕ< _ ≡⟨ DMP.map-just {f = 𝔽.fromℕ<} refl ⟩
     just (𝔽.fromℕ< $ DFP.toℕ<n x) ≡⟨ {!!} ⟩
