@@ -669,10 +669,17 @@ module ReedVeritas where
         → (d : a 𝔽.≤ b)
         → just (Muvgau a b d) ≡ reed x (k₂ x a b 'm')
   mixer x a b d = sym $ begin
-    reed x (k₂ x a b 'm') ≡⟨ {!!} ⟩
+    reed x (k₂ x a b 'm') ≡⟨ refl ⟩
+    reed x k2 ≡⟨ {!!} ⟩
+    usra (romoi $ cev $ vec k2) oglok >>= r2og ≡⟨ {!!} ⟩
     Reed.reed2 x a b d 'm' ≡⟨ refl ⟩
     just (Muvgau a b d) ∎
     where
+    romoi = 𝕃.last
+    r2og = λ (r' , (a , b) , z) → Reed.reed2 x a b z r'
+    usra = (Data.Maybe.ap ∘₂ mapₘ) _,_
+    k2 = k₂ x a b 'm'
+    oglok = orsygenturfa'i $ romoivimcu k2
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
