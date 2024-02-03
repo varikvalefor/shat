@@ -577,59 +577,62 @@ ni'o ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{reed} \B x \B s\ .
 
 \begin{code}
 module Reed where
-  reed0 : {x : Buffer} → Char → Maybe $ Cmd x
-  reed0 {x} 'w' = mapₘ Rejgau $ Buffer.datnyveicme x
-  reed0 'u' = mapₘ Xruti $ 𝕃.head $ 𝕃.allFin _
-  reed0 'q' = just Sisti
-  reed0 'Q' = just Sisti!
-  reed0 _ = nothing
+  module No where
+    g : {x : Buffer} → Char → Maybe $ Cmd x
+    g {x} 'w' = mapₘ Rejgau $ Buffer.datnyveicme x
+    g 'u' = mapₘ Xruti $ 𝕃.head $ 𝕃.allFin _
+    g 'q' = just Sisti
+    g 'Q' = just Sisti!
+    g _ = nothing
 
-  reed0a : {x : Buffer} → List String → Maybe $ Cmd x
-  reed0a ("w" ∷ xs@(_ ∷ _)) = just $ Rejgau $ Data.String.unwords xs
-  reed0a _ = nothing
+    a : {x : Buffer} → List String → Maybe $ Cmd x
+    a ("w" ∷ xs@(_ ∷ _)) = just $ Rejgau $ Data.String.unwords xs
+    a _ = nothing
 
-  reed0t : {x : Buffer} → String → Maybe $ Cmd x
-  reed0t {x} s = _>>= reed0 $ 𝕃.head $ cev $ vec s
+    t : {x : Buffer} → String → Maybe $ Cmd x
+    t {x} s = _>>= g $ 𝕃.head $ cev $ vec s
 
-  reed1 : (x : Buffer) → Buffer.F x → Char → Maybe $ Cmd x
-  reed1 x n 'a' = just $ Jmina n
-  reed1 x n 'i' = just $ Jmini n
-  reed1 _ _ _ = nothing
+  module Pa where
+    g : (x : Buffer) → Buffer.F x → Char → Maybe $ Cmd x
+    g x n 'a' = just $ Jmina n
+    g x n 'i' = just $ Jmini n
+    g _ _ _ = nothing
 
-  reed1t : (x : Buffer) → String → Maybe $ Cmd x
-  reed1t x s = Z >>= uncurry (reed1 x)
-    where
-    r = romoivimcu s
-    romoi = 𝕃.last ∘ cev ∘ vec
-    Z = (Data.Maybe.ap ∘₂ mapₘ) _,_ n $ romoi s
+    t : (x : Buffer) → String → Maybe $ Cmd x
+    t x s = Z >>= uncurry (g x)
       where
-      n = pamoinamcu s >>= fromℕ?
+      r = romoivimcu s
+      romoi = 𝕃.last ∘ cev ∘ vec
+      Z = (Data.Maybe.ap ∘₂ mapₘ) _,_ n $ romoi s
+        where
+        n = pamoinamcu s >>= fromℕ?
 
-  reed2 : (x : Buffer)
-        → (a b : Buffer.F x)
-        → (a 𝔽.≤ b)
-        → Char
-        → Maybe $ Cmd x
-  reed2 x a b z j with j
-  ... | 'c' = just $ Basti a b z
-  ... | 'd' = just $ Vimcu a b z
-  ... | 'm' = just $ Muvgau a b z
-  ... | 'n' = just $ Namcusku a b z
-  ... | 'p' = just $ Cusku a b z
-  ... | _ = nothing
+  module Re where
+    g : (x : Buffer)
+      → (a b : Buffer.F x)
+      → (a 𝔽.≤ b)
+      → Char
+      → Maybe $ Cmd x
+    g x a b z j with j
+    ... | 'c' = just $ Basti a b z
+    ... | 'd' = just $ Vimcu a b z
+    ... | 'm' = just $ Muvgau a b z
+    ... | 'n' = just $ Namcusku a b z
+    ... | 'p' = just $ Cusku a b z
+    ... | _ = nothing
 
-  reed2t : (x : Buffer) → String → Maybe $ Cmd x
-  reed2t x s = P >>= λ (r' , (a , b) , z) → reed2 x a b z r'
-    where
-    r = romoivimcu s
-    romoi = 𝕃.last ∘ cev ∘ vec
-    P = (Data.Maybe.ap ∘₂ mapₘ) _,_ (romoi s) $ orsygenturfa'i r
+    t : (x : Buffer) → String → Maybe $ Cmd x
+    t x s = P >>= λ (r' , (a , b) , z) → g x a b z r'
+      where
+      r = romoivimcu s
+      romoi = 𝕃.last ∘ cev ∘ vec
+      P = (Data.Maybe.ap ∘₂ mapₘ) _,_ (romoi s) $ orsygenturfa'i r
 
   reed : (x : Buffer) → String → Maybe $ Cmd x
   reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
     where
     terp : List $ Maybe $ Cmd x
-    terp = reed0t s ∷ reed1t x s ∷ reed2t x s ∷ reed0a s' ∷ []
+    terp = No.t s ∷ Pa.t x s ∷ Re.t x s ∷ No.a s' ∷ []
       where
       s' = Data.String.wordsBy (_≟ ' ') s
 
@@ -680,11 +683,11 @@ module ReedVeritas where
     reed x k2 ≡⟨ {!!} ⟩
     _,ₘ_ (romoi k2) oglok >>= r2og ≡⟨ sidju₁ romoim joglok ⟩
     _,ₘ_ (just 'm') (just $ (a , b) , d) >>= r2og ≡⟨ refl ⟩
-    Reed.reed2 x a b d 'm' ≡⟨ refl ⟩
+    Reed.Re.g x a b d 'm' ≡⟨ refl ⟩
     just (Muvgau a b d) ∎
     where
     romoi = 𝕃.last ∘ cev ∘ vec
-    r2og = λ (r' , (a , b) , z) → Reed.reed2 x a b z r'
+    r2og = λ (r' , (a , b) , z) → Reed.Re.g x a b z r'
     _,ₘ_ = (Data.Maybe.ap ∘₂ mapₘ) _,_
     k2 = k₂ x a b 'm'
     oglok = orsygenturfa'i $ romoivimcu k2
@@ -715,8 +718,8 @@ module ReedVeritas where
   uip x s c n = sym $ begin
     reed x ("w " ++ s') ≡⟨ {!!} ⟩
     reed x (unwords $ "w" ∷ " " ∷ f s') ≡⟨ {!!} ⟩
-    reed0a ("w" ∷ f s') ≡⟨ fs'≡v₁++v₂ ▹ cong (reed0a ∘ _∷_ "w") ⟩
-    reed0a ("w" ∷ v₁ ∷ v₂) ≡⟨ refl ⟩
+    Reed.No.a ("w" ∷ f s') ≡⟨ fs'≡v₁++v₂ ▹ cong (Reed.No.a ∘ _∷_ "w") ⟩
+    Reed.No.a ("w" ∷ v₁ ∷ v₂) ≡⟨ refl ⟩
     j∘R (unwords $ v₁ ∷ v₂) ≡⟨ {!!} ▹ cong j∘R ⟩
     j∘R s' ∎
     where
@@ -740,11 +743,11 @@ module ReedVeritas where
   uin x = begin
     reed x "w" ≡⟨ refl ⟩
     𝕃.head (𝕃.mapMaybe id L) ≡⟨ duridos ⟩
-    𝕃.head (cev $ vec "w") >>= reed0 ≡⟨ refl ⟩
+    𝕃.head (cev $ vec "w") >>= Reed.No.g ≡⟨ refl ⟩
     mapₘ Rejgau (Buffer.datnyveicme x) ∎
     where
     open Reed
-    ridos = 𝕃.head (cev $ vec "w") >>= reed0
+    ridos = 𝕃.head (cev $ vec "w") >>= Reed.No.g
     L = ridos ∷ _
     duridos : 𝕃.head (𝕃.mapMaybe id L) ≡ ridos
     duridos with ridos
@@ -759,13 +762,13 @@ module ReedVeritas where
 
   kybin : (x : Buffer)
         → reed x "q" ≡ just Sisti
-  kybin x with 𝕃.head (cev $ vec "q") >>= Reed.reed0 {x}
+  kybin x with 𝕃.head (cev $ vec "q") >>= Reed.No.g {x}
   ... | just _ = refl
   ... | nothing = refl
 
   kybin' : (x : Buffer)
          → reed x "Q" ≡ just Sisti!
-  kybin' x with 𝕃.head (cev $ vec "Q") >>= Reed.reed0 {x}
+  kybin' x with 𝕃.head (cev $ vec "Q") >>= Reed.No.g {x}
   ... | just _ = refl
   ... | nothing = refl
 
