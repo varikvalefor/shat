@@ -588,6 +588,9 @@ module Reed where
   reed0a ("w" ∷ xs@(_ ∷ _)) = just $ Rejgau $ Data.String.unwords xs
   reed0a _ = nothing
 
+  reed0t : {x : Buffer} → String → Maybe $ Cmd x
+  reed0t {x} s = _>>= reed0 $ 𝕃.head $ cev $ vec s
+
   reed1 : (x : Buffer) → Buffer.F x → Char → Maybe $ Cmd x
   reed1 x n 'a' = just $ Jmina n
   reed1 x n 'i' = just $ Jmini n
@@ -612,9 +615,8 @@ module Reed where
     r = romoivimcu s
     romoi = 𝕃.last ∘ cev ∘ vec
     terp : List $ Maybe $ Cmd x
-    terp = ridos ∷ pav ∷ rel ∷ reed0a s' ∷ []
+    terp = reed0t s ∷ pav ∷ rel ∷ reed0a s' ∷ []
       where
-      ridos = _>>= reed0 $ 𝕃.head $ cev $ vec s
       s' = Data.String.wordsBy (_≟ ' ') s
       rel : Maybe $ Cmd x
       rel = P >>= λ (r' , (a , b) , z) → reed2 x a b z r'
