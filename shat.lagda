@@ -671,11 +671,11 @@ module ReedVeritas where
   mixer x a b d = sym $ begin
     reed x (k₂ x a b 'm') ≡⟨ refl ⟩
     reed x k2 ≡⟨ {!!} ⟩
-    _,ₘ_ (romoi $ cev $ vec k2) oglok >>= r2og ≡⟨ {!!} ⟩
+    _,ₘ_ (romoi k2) oglok >>= r2og ≡⟨ {!!} ⟩
     Reed.reed2 x a b d 'm' ≡⟨ refl ⟩
     just (Muvgau a b d) ∎
     where
-    romoi = 𝕃.last
+    romoi = 𝕃.last ∘ cev ∘ vec
     r2og = λ (r' , (a , b) , z) → Reed.reed2 x a b z r'
     _,ₘ_ = (Data.Maybe.ap ∘₂ mapₘ) _,_
     k2 = k₂ x a b 'm'
