@@ -585,9 +585,9 @@ module Reed where
     g 'Q' = just Sisti!
     g _ = nothing
 
-    a : {x : Buffer} → List String → Maybe $ Cmd x
-    a ("w" ∷ xs@(_ ∷ _)) = just $ Rejgau $ Data.String.unwords xs
-    a _ = nothing
+    k : {x : Buffer} → List String → Maybe $ Cmd x
+    k ("w" ∷ xs@(_ ∷ _)) = just $ Rejgau $ Data.String.unwords xs
+    k _ = nothing
 
     t : {x : Buffer} → String → Maybe $ Cmd x
     t {x} s = _>>= g $ 𝕃.head $ cev $ vec s
@@ -632,7 +632,7 @@ module Reed where
   reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
     where
     terp : List $ Maybe $ Cmd x
-    terp = No.t s ∷ Pa.t x s ∷ Re.t x s ∷ No.a s' ∷ []
+    terp = No.t s ∷ Pa.t x s ∷ Re.t x s ∷ No.k s' ∷ []
       where
       s' = Data.String.wordsBy (_≟ ' ') s
 
@@ -718,8 +718,8 @@ module ReedVeritas where
   uip x s c n = sym $ begin
     reed x ("w " ++ s') ≡⟨ {!!} ⟩
     reed x (unwords $ "w" ∷ " " ∷ f s') ≡⟨ {!!} ⟩
-    Reed.No.a ("w" ∷ f s') ≡⟨ fs'≡v₁++v₂ ▹ cong (Reed.No.a ∘ _∷_ "w") ⟩
-    Reed.No.a ("w" ∷ v₁ ∷ v₂) ≡⟨ refl ⟩
+    Reed.No.k ("w" ∷ f s') ≡⟨ fs'≡v₁++v₂ ▹ cong (Reed.No.k ∘ _∷_ "w") ⟩
+    Reed.No.k ("w" ∷ v₁ ∷ v₂) ≡⟨ refl ⟩
     j∘R (unwords $ v₁ ∷ v₂) ≡⟨ {!!} ▹ cong j∘R ⟩
     j∘R s' ∎
     where
