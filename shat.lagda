@@ -320,7 +320,7 @@ data Cmdᵢₒ (x : Buffer) : Set where
 \chapter{le fancu}
 
 \section{la'oi .\F{fromℕ?}.}
-ni'o ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{fromℕ?}\ \B x\ .zoi.\ gi la'o zoi.\ \IC{just} \B x\ .zoi.\ du la'o zoi.\ \F{mapₘ} \F{𝔽.toℕ} \OpF \$ \F{fromℕ?}\ \B x\ .zoi.\
+ni'o ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{fromℕ?}\ \B x\ .zoi.\ gi la'o zoi.\ \F{mapₘ} \F{𝔽.toℕ} \OpF \$ \F{fromℕ?}\ \B x\ .zoi.\ du zo'e poi la'oi .\B x.\ mu'oi zoi.\ \F{𝔽.toℕ}\ .zoi.\ ke'a
 
 \begin{code}
 fromℕ? : {n : ℕ} → ℕ → Maybe $ Fin n
