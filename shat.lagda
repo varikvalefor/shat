@@ -964,13 +964,13 @@ main = run $ IO.lift snurytcati IO.>> getArgs IO.>>= uic ∘ 𝕃.head
       ... | x' , nothing = ⟲ x'
       ... | x' , just (inj₁ z) = IO.putStrLn z IO.>> ⟲ x'
       ... | x' , just (inj₂ z) with z
-      ... | Sistiᵢₒ = f $ mapₘ (λ _ → Sisti!) $ decToMaybe $ r ≟ c₁
-        where
-        r = Buffer.rejgaudatni x'
-        c₁ = mapₘ (unlines ∘ proj₁) $ 𝕃.head $ Buffer.citri x'
       ... | Sisti!ᵢₒ = IO.pure _
       ... | Skamiᵢₒ a = {!!}
       ... | Tciduᵢₒ a b = {!!}
       ... | Rejgauᵢₒ a b = IO.writeFile a b IO.>> ⟲ x
+      ... | Sistiᵢₒ = f $ mapₘ (λ _ → Sisti!) $ decToMaybe $ r ≟ c₁
+        where
+        r = Buffer.rejgaudatni x'
+        c₁ = mapₘ (unlines ∘ proj₁) $ 𝕃.head $ Buffer.citri x'
 \end{code}
 \end{document}
