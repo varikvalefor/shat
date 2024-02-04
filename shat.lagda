@@ -718,11 +718,12 @@ module ReedVeritas where
   uip x s c n = sym $ begin
     reed x ("w " ++ s') ≡⟨ {!!} ⟩
     reed x (unwords $ "w" ∷ " " ∷ f s') ≡⟨ {!!} ⟩
-    Reed.No.k ("w" ∷ f s') ≡⟨ fs'≡v₁++v₂ ▹ cong (Reed.No.k ∘ _∷_ "w") ⟩
-    Reed.No.k ("w" ∷ v₁ ∷ v₂) ≡⟨ refl ⟩
+    k ("w" ∷ f s') ≡⟨ fs'≡v₁++v₂ ▹ cong (k ∘ _∷_ "w") ⟩
+    k ("w" ∷ v₁ ∷ v₂) ≡⟨ refl ⟩
     j∘R (unwords $ v₁ ∷ v₂) ≡⟨ {!!} ▹ cong j∘R ⟩
     j∘R s' ∎
     where
+    open Reed.No using (k)
     s' = Data.String.fromChar c ++ s
     f = Data.String.wordsBy $ _≟ ' '
     v₁ = {!!}
