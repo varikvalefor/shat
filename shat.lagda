@@ -593,13 +593,13 @@ module Reed where
     t s = _>>= g $ 𝕃.head $ cev $ vec s
 
   module Pa where
-    g : (x : Buffer) → Buffer.F x → Char → Maybe $ Cmd x
-    g x n 'a' = just $ Jmina n
-    g x n 'i' = just $ Jmini n
-    g _ _ _ = nothing
+    g : {x : Buffer} → Buffer.F x → Char → Maybe $ Cmd x
+    g {x} n 'a' = just $ Jmina n
+    g {x} n 'i' = just $ Jmini n
+    g _ _ = nothing
 
     t : (x : Buffer) → String → Maybe $ Cmd x
-    t x s = _,ₘ_ n (romoi s) >>= uncurry (g x)
+    t x s = _,ₘ_ n (romoi s) >>= uncurry (g {x})
       where
       romoi = 𝕃.last ∘ cev ∘ vec
       n = pamoinamcu s >>= fromℕ?
