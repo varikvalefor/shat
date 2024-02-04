@@ -598,8 +598,8 @@ module Reed where
     g n 'i' = just $ Jmini n
     g _ _ = nothing
 
-    t : (x : Buffer) → String → Maybe $ Cmd x
-    t x s = _,ₘ_ n (romoi s) >>= uncurry g
+    t : {x : Buffer} → String → Maybe $ Cmd x
+    t {x} s = _,ₘ_ n (romoi s) >>= uncurry g
       where
       romoi = 𝕃.last ∘ cev ∘ vec
       n = pamoinamcu s >>= fromℕ?
@@ -630,7 +630,7 @@ module Reed where
   reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
     where
     terp : List $ Maybe $ Cmd x
-    terp = No.t s ∷ Pa.t x s ∷ Re.t x s ∷ No.k s' ∷ []
+    terp = No.t s ∷ Pa.t s ∷ Re.t x s ∷ No.k s' ∷ []
       where
       s' = Data.String.wordsBy (_≟ ' ') s
 
