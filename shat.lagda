@@ -599,7 +599,7 @@ module Reed where
     g _ _ = nothing
 
     t : (x : Buffer) → String → Maybe $ Cmd x
-    t x s = _,ₘ_ n (romoi s) >>= uncurry (g {x})
+    t x s = _,ₘ_ n (romoi s) >>= uncurry g
       where
       romoi = 𝕃.last ∘ cev ∘ vec
       n = pamoinamcu s >>= fromℕ?
