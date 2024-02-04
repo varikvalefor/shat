@@ -186,7 +186,8 @@ open import Truthbrary.Data.Fin
 open import Truthbrary.Record.Eq
   using (
     _≡ᵇ_;
-    _≟_
+    _≟_;
+    Eq
   )
 open import Truthbrary.Record.SR
   using (
@@ -204,7 +205,9 @@ open import Truthbrary.Record.LLC
     _++_;
     _∉_;
     cev;
-    vec
+    vec;
+    LC;
+    LL
   )
 open import Truthbrary.Category.Monad
   using (
@@ -474,8 +477,7 @@ module Orsygenturfa'iVeritas where
   open Orsygenturfa'i
 
   spit-du : (x z : String)
-          → ',' ∉_ $ List Char ∋ cev (vec x)
-          → ',' ∉_ $ List Char ∋ cev (vec z)
+          → ',' ∉_ $ List Char ∋ cev (vec x) ++ cev (vec z)
           → (_≡_
               (spit $ x ++ "," ++ z)
               (cev (vec x) ∷ cev (vec z) ∷ []))
@@ -555,12 +557,20 @@ module Orsygenturfa'iVeritas where
       justF' = ps ∘ showF'
       justF'≡just : {n : ℕ} → (x : Fin n) → justF' x ≡ just x
       justF'≡just x = sym $ ps-du x
-      spidus = spit-du (showF a) (showF b) (nokom a) (nokom b)
+      spidus = spit-du sa sb $ nf sa sb ',' (nokom a) (nokom b)
         where
+        sa = showF a
+        sb = showF b
         nokom : {n : ℕ}
               → (x : Fin n)
               → ',' ∉ (List Char ∋ cev (vec $ showF x))
         nokom = {!!}
+        nf : (x z : String)
+           → (e : Char)
+           → e ∉_ $ List Char ∋ cev (vec x)
+           → e ∉_ $ List Char ∋ cev (vec z)
+           → e ∉_ $ List Char ∋ cev (vec x) ++ cev (vec z)
+        nf = {!!}
       juste : {n : ℕ}
             → (x z : Fin n)
             → justF' x ∷ justF' z ∷ [] ≡ just x ∷ just z ∷ []
