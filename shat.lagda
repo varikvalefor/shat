@@ -601,7 +601,6 @@ module Reed where
     t : (x : Buffer) → String → Maybe $ Cmd x
     t x s = Z >>= uncurry (g x)
       where
-      r = romoivimcu s
       romoi = 𝕃.last ∘ cev ∘ vec
       Z = (Data.Maybe.ap ∘₂ mapₘ) _,_ n $ romoi s
         where
