@@ -594,8 +594,8 @@ module Reed where
 
   module Pa where
     g : {x : Buffer} → Buffer.F x → Char → Maybe $ Cmd x
-    g {x} n 'a' = just $ Jmina n
-    g {x} n 'i' = just $ Jmini n
+    g n 'a' = just $ Jmina n
+    g n 'i' = just $ Jmini n
     g _ _ = nothing
 
     t : (x : Buffer) → String → Maybe $ Cmd x
