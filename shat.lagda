@@ -622,11 +622,12 @@ module Reed where
     ... | _ = nothing
 
     t : (x : Buffer) → String → Maybe $ Cmd x
-    t x s = P >>= λ (r' , (a , b) , z) → g x a b z r'
+    t x s = (Data.Maybe.ap ∘₂ mapₘ) _,_ (romoi s) og >>= g'
       where
       r = romoivimcu s
+      og = orsygenturfa'i r
       romoi = 𝕃.last ∘ cev ∘ vec
-      P = (Data.Maybe.ap ∘₂ mapₘ) _,_ (romoi s) $ orsygenturfa'i r
+      g' = λ (r' , (a , b) , z) → g x a b z r'
 
   reed : (x : Buffer) → String → Maybe $ Cmd x
   reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
