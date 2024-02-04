@@ -599,12 +599,11 @@ module Reed where
     g _ _ _ = nothing
 
     t : (x : Buffer) → String → Maybe $ Cmd x
-    t x s = Z >>= uncurry (g x)
+    t x s = _,ₘ_ n (romoi s) >>= uncurry (g x)
       where
       romoi = 𝕃.last ∘ cev ∘ vec
-      Z = (Data.Maybe.ap ∘₂ mapₘ) _,_ n $ romoi s
-        where
-        n = pamoinamcu s >>= fromℕ?
+      n = pamoinamcu s >>= fromℕ?
+      _,ₘ_ = (Data.Maybe.ap ∘₂ mapₘ) _,_
 
   module Re where
     g : (x : Buffer)
