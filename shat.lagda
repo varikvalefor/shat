@@ -870,11 +870,12 @@ module KanjyVeritas where
            → (d : a 𝔽.≤ b)
            → let K = proj₂ $ kanji {x} $ Cusku a b d in
              let L = lines $ from-inj₁ $ from-just K in
+             let L' = 𝕃.take (𝔽.toℕ a) L in
              let Lx = Buffer.lerpinste x in
-             (n : Fin $ length L)
+             (n : Fin $ length L')
            → (Σ
-               (𝔽.toℕ n ℕ.+ 𝔽.toℕ a ℕ.< length Lx)
-               (λ ℓ → L ! n ≡ Lx ! 𝔽.fromℕ< ℓ))
+               (𝔽.toℕ n ℕ.< length Lx)
+               (λ ℓ → L' ! n ≡ Lx ! 𝔽.fromℕ< ℓ))
   pindices x a b d n = {!!} , {!!}
 
   muvdusin : (x : Buffer)
