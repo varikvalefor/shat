@@ -865,6 +865,17 @@ module KanjyVeritas where
          i Cusku × i Namcusku
   dub₂ _ _ _ _ = refl , refl
 
+  nilzilcmip : (x : Buffer)
+             → (a b : Buffer.F x)
+             → (d : a 𝔽.≤ b)
+             → (_≡_
+                 (length $ Buffer.lerpinste
+                   (proj₁ $ kanji {x} $ Vimcu a b d))
+                 (ℕ._∸_
+                   (length $ Buffer.lerpinste x)
+                   (ℕ.suc $ 𝔽.toℕ a ℕ.∸ 𝔽.toℕ b)))
+  nilzilcmip = {!!}
+
   pindices : (x : Buffer)
            → (a b : Buffer.F x)
            → (d : a 𝔽.≤ b)
