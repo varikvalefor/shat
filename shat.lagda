@@ -415,10 +415,15 @@ module RomoivimcuVeritas where
               (𝕃.last $ cev $ vec x))))
   pav x = sym $ begin
     cever ++ r ≡⟨ {!!} ⟩
+    cev (vec $ init $ cev $ vec x) ++ r ≡⟨ takedrop ⟩
+    cev (vec $ 𝕃.take (length x' ℕ.∸ 1) x') ++ r ≡⟨ {!!} ⟩
     cev (vec x'') ≡⟨ x''≡x' ▹ cong (cev ∘ vec) ⟩
     cev (vec x') ≡⟨ [cev∘vec]² x ▹ sym ⟩
     x ∎
     where
+    init = 𝕃.reverse ∘ 𝕃.drop 1 ∘ 𝕃.reverse
+    RV = 𝕃.reverse
+    cever : String
     cever = cev $ vec $ romoivimcu x
     r = maybe Data.String.fromChar "" $ 𝕃.last $ cev $ vec x
     x' = cev $ vec x
@@ -434,6 +439,15 @@ module RomoivimcuVeritas where
     [cev∘vec]² = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
+    takedrop = f 1 x' ▹_ $ cong $ λ z → cev (vec z) Data.String.++ r
+      where
+      f : ∀ {a} → {A : Set a}
+        → (m : ℕ)
+        → (x : List A)
+        → (_≡_
+            (𝕃.reverse $ 𝕃.drop m $ 𝕃.reverse x)
+            (𝕃.take (𝕃.length x ℕ.∸ m) x))
+      f = {!!}
 \end{code}
 
 \section{la'oi .\F{orsygenturfa'i}.}
