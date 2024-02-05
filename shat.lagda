@@ -347,8 +347,8 @@ module Binxo𝔽?Veritas where
     c? : (x : ℕ) → Maybe $ x ℕ.< n
     c? = decToMaybe ∘ (ℕ._<? _)
     dekdu : (x n : ℕ)
-            → (m : x ℕ.< n)
-            → decToMaybe (x ℕ.<? n) ≡ just m
+          → (m : x ℕ.< n)
+          → decToMaybe (x ℕ.<? n) ≡ just m
     dekdu = {!!}
     mapmapi : ∀ {a} → {A B C : Set a}
             → {f : A → B}
