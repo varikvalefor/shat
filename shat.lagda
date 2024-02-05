@@ -875,7 +875,7 @@ module KanjyVeritas where
            → (Σ
                (𝔽.toℕ n ℕ.+ 𝔽.toℕ a ℕ.< length Lx)
                (λ ℓ → L ! n ≡ Lx ! 𝔽.fromℕ< ℓ))
-  pindices = {!!}
+  pindices x a b d n = {!!} , {!!}
 
   muvdusin : (x : Buffer)
            → (a b : Buffer.F x)
