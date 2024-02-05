@@ -969,7 +969,7 @@ main = run $ IO.lift snurytcati IO.>> getArgs IO.>>= uic ∘ 𝕃.head
         citri = List.[];
         rejgaudatni = just c
         }
-    ⟲ : (x : Buffer) → IO ⊤
+    ⟲ : Buffer → IO ⊤
     ⟲ x = IO.getLine IO.>>= f ∘ reed x
       where
       f : Maybe $ Cmd x → IO ⊤
