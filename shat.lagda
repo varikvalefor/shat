@@ -567,6 +567,10 @@ module Orsygenturfa'iVeritas where
       justF' = ps ∘ showF'
       justF'≡just : {n : ℕ} → (x : Fin n) → justF' x ≡ just x
       justF'≡just x = sym $ ps-du x
+      justymapdu : {n : ℕ}
+                 → (L : List $ Fin n)
+                 → 𝕃.map justF' L ≡ 𝕃.map just L
+      justymapdu = DLP.map-cong justF'≡just
       spidus : {n : ℕ}
              → (a b : Fin n)
              → (_≡_
@@ -578,10 +582,6 @@ module Orsygenturfa'iVeritas where
               → (x : Fin n)
               → ',' ∉ (List Char ∋ cev (vec $ showF x))
         nokom = {!!}
-      justymapdu : {n : ℕ}
-                 → (L : List $ Fin n)
-                 → 𝕃.map justF' L ≡ 𝕃.map just L
-      justymapdu = DLP.map-cong justF'≡just
 \end{code}
 
 \section{la'oi .\F{reed}.}
