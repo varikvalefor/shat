@@ -557,8 +557,8 @@ module Orsygenturfa'iVeritas where
     uimint = begin
       𝕃.map ps (spit a,b) ≡⟨ spidus a b ▹ cong (𝕃.map ps) ⟩
       𝕃.map ps (showF' a ∷ showF' b ∷ []) ≡⟨ refl ⟩
-      𝕃.map justF' (a ∷ b ∷ []) ≡⟨ refl ⟩
-      justF' a ∷  justF' b ∷ [] ≡⟨ juste a b ⟩
+      𝕃.map justF' (a ∷ b ∷ []) ≡⟨ justymapdu $ a ∷ b ∷ [] ⟩
+      𝕃.map just (a ∷ b ∷ []) ≡⟨ refl ⟩
       just a ∷  just b ∷ [] ∎
       where
       showF' : {n : ℕ} → Fin n → List Char
@@ -578,15 +578,10 @@ module Orsygenturfa'iVeritas where
               → (x : Fin n)
               → ',' ∉ (List Char ∋ cev (vec $ showF x))
         nokom = {!!}
-      juste : {n : ℕ}
-            → (x z : Fin n)
-            → justF' x ∷ justF' z ∷ [] ≡ just x ∷ just z ∷ []
-      juste x z = begin
-        justF' x ∷ justF' z ∷ []
-          ≡⟨ justF'≡just x ▹ cong (λ n → n ∷ justF' z ∷ []) ⟩
-        just x ∷ justF' z ∷ []
-          ≡⟨ justF'≡just z ▹ cong (λ n → just x ∷ n ∷ []) ⟩
-        just x ∷ just z ∷ [] ∎
+      justymapdu : {n : ℕ}
+                 → (L : List $ Fin n)
+                 → 𝕃.map justF' L ≡ 𝕃.map just L
+      justymapdu = DLP.map-cong justF'≡just
 \end{code}
 
 \section{la'oi .\F{reed}.}
