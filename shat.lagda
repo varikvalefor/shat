@@ -500,7 +500,7 @@ module Orsygenturfa'iVeritas where
         → just x ≡ ps (cev $ vec $ show $ 𝔽.toℕ x)
   ps-du x = sym $ begin
     ps (cev $ vec $ showF x) ≡⟨ refl ⟩
-    b𝔽 (rM $ id' $ showF x) ≡⟨ cvd ▹ cong (b𝔽 ∘ readMaybe) ⟩
+    b𝔽 (rM $ id' $ showF x) ≡⟨ cvd x ▹ cong (b𝔽 ∘ readMaybe) ⟩
     b𝔽 (rM $ showF x) ≡⟨ rimdu x ▹ cong b𝔽 ⟩
     b𝔽 (just $ 𝔽.toℕ x) ≡⟨ refl ⟩
     just (𝔽.toℕ x) >>= fromℕ? ≡⟨ refl ⟩
@@ -522,8 +522,8 @@ module Orsygenturfa'iVeritas where
           → (f : Fin n)
           → rM (showF x) ≡ just (𝔽.toℕ x)
     rimdu = {!!}
-    cvd : id' (showF x) ≡ showF x
-    cvd = istu $ showF x
+    cvd : {n : ℕ} → (x : Fin n) → id' (showF x) ≡ showF x
+    cvd x = istu $ showF x
       where
       istu : (x : String) → id' x ≡ x
       istu = {!!}
