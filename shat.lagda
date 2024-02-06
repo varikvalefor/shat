@@ -518,9 +518,7 @@ module Orsygenturfa'iVeritas where
     showF = show ∘ 𝔽.toℕ
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
-    rimdu : {n : ℕ}
-          → (f : Fin n)
-          → rM (showF x) ≡ just (𝔽.toℕ x)
+    rimdu : {n : ℕ} → (f : Fin n) → rM (showF x) ≡ just (𝔽.toℕ x)
     rimdu = {!!}
     cvd : {n : ℕ} → (x : Fin n) → id' (showF x) ≡ showF x
     cvd x = istu $ showF x
