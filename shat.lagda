@@ -554,6 +554,10 @@ module Orsygenturfa'iVeritas where
 
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
+    -- | ni'o la .varik. na birti lo du'u ma kau zmadu
+    -- zo .uimint. fi zo'e ja le ka ce'u .indika... je le
+    -- ka ce'u banzuka le ka ce'u xi re cmalu kei lo nu
+    -- tu'a ce'u frili cumki
     uimint = begin
       𝕃.map ps (spit a,b) ≡⟨ spidus a b ▹ cong (𝕃.map ps) ⟩
       𝕃.map ps (showF' a ∷ showF' b ∷ []) ≡⟨ refl ⟩
