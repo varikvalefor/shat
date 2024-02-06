@@ -557,7 +557,7 @@ module Orsygenturfa'iVeritas where
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
     uimint = begin
-      𝕃.map ps (spit a,b) ≡⟨ spidus ▹ cong (𝕃.map ps) ⟩
+      𝕃.map ps (spit a,b) ≡⟨ spidus a b ▹ cong (𝕃.map ps) ⟩
       𝕃.map ps (showF' a ∷ showF' b ∷ []) ≡⟨ refl ⟩
       𝕃.map justF' (a ∷ b ∷ []) ≡⟨ refl ⟩
       justF' a ∷  justF' b ∷ [] ≡⟨ juste a b ⟩
@@ -569,7 +569,12 @@ module Orsygenturfa'iVeritas where
       justF' = ps ∘ showF'
       justF'≡just : {n : ℕ} → (x : Fin n) → justF' x ≡ just x
       justF'≡just x = sym $ ps-du x
-      spidus = spit-du (showF a) (showF b) (nokom a) (nokom b)
+      spidus : {n : ℕ}
+             → (a b : Fin n)
+             → (_≡_
+                 (spit $ showF a ++ "," ++ showF b)
+                 (showF' a ∷ showF' b ∷ []))
+      spidus a b = spit-du (showF a) (showF b) (nokom a) (nokom b)
         where
         nokom : {n : ℕ}
               → (x : Fin n)
