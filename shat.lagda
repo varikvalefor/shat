@@ -527,7 +527,7 @@ module Orsygenturfa'iVeritas where
       istu = {!!}
 
   pork-du : {n : ℕ}
-          → (x z : Fin n)
+          → {x z : Fin n}
           → (djb : x 𝔽.≤ z)
           → (_≡_
               (pork $ just x ∷ just z ∷ [])
@@ -544,7 +544,7 @@ module Orsygenturfa'iVeritas where
   pav a b djb = sym $ begin
     orsygenturfa'i (showF a ++ "," ++ showF b) ≡⟨ refl ⟩
     pork (𝕃.map ps $ spit a,b) ≡⟨ cong pork uimint ⟩
-    pork (just a ∷ just b ∷ []) ≡⟨ pork-du a b djb ⟩
+    pork (just a ∷ just b ∷ []) ≡⟨ pork-du djb ⟩
     just ((a , b) , djb) ∎
     where
     showF : {n : ℕ} → Fin n → String
