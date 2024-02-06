@@ -702,7 +702,7 @@ module ReedVeritas where
   mixer x a b d = sym $ begin
     reed x (k₂ x a b 'm') ≡⟨ refl ⟩
     reed x k2 ≡⟨ {!!} ⟩
-    Reed.Re.t x (k₂ x a b 'm') ≡⟨ refl ⟩
+    Reed.Re.t x k2 ≡⟨ refl ⟩
     _,ₘ_ (romoi k2) oglok >>= r2og ≡⟨ sidju₁ romoim joglok ⟩
     _,ₘ_ (just 'm') (just $ (a , b) , d) >>= r2og ≡⟨ refl ⟩
     Reed.Re.g x a b d 'm' ≡⟨ refl ⟩
