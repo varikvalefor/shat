@@ -865,7 +865,7 @@ module KanjyVeritas where
          i Cusku × i Namcusku
   dub₂ _ _ _ _ = refl , refl
 
-  nilzilcmip : (x : Buffer)
+  nilzilcmiv : (x : Buffer)
              → (a b : Buffer.F x)
              → (d : a 𝔽.≤ b)
              → (_≡_
@@ -874,7 +874,7 @@ module KanjyVeritas where
                  (ℕ._∸_
                    (length $ Buffer.lerpinste x)
                    (ℕ.suc $ 𝔽.toℕ a ℕ.∸ 𝔽.toℕ b)))
-  nilzilcmip = {!!}
+  nilzilcmiv = {!!}
 
   pindices : (x : Buffer)
            → (a b : Buffer.F x)
