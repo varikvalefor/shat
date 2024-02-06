@@ -513,7 +513,7 @@ module Orsygenturfa'iVeritas where
     where
     rM = readMaybe
     b𝔽 = _>>= fromℕ?
-    id' = (cev ∘ (vec ⦃ liliList ⦄)) ∘ (cev ∘ vec)
+    id' = (cev ∘ vec ⦃ liliList ⦄) ∘ (cev ∘ vec)
     showF : {n : ℕ} → Fin n → String
     showF = show ∘ 𝔽.toℕ
     open import Relation.Binary.PropositionalEquality
