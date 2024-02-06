@@ -508,7 +508,7 @@ module Orsygenturfa'iVeritas where
     mapₘ 𝔽.fromℕ< (decToMaybe $ _ ℕ.<? _) ≡⟨ {!!} ⟩
     mapₘ 𝔽.fromℕ< (just $ DFP.toℕ<n x) ≡⟨ refl ⟩
     mapₘ 𝔽.fromℕ< _ ≡⟨ DMP.map-just {f = 𝔽.fromℕ<} refl ⟩
-    just (𝔽.fromℕ< $ DFP.toℕ<n x) ≡⟨ {!!} ⟩
+    just (𝔽.fromℕ< $ DFP.toℕ<n x) ≡⟨ {!!} ▹ cong just ⟩
     just x ∎
     where
     rM = readMaybe
