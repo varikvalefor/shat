@@ -380,7 +380,13 @@ pamoinamcu = (_>>= readMaybe) ∘ 𝕃.head ∘ wordsBy aintDigit?
 module PamoinamcuVeritas where
   non : (n : ℕ)
       → just n ≡ pamoinamcu (show n)
-  non = {!!}
+  non n = sym $ begin
+    pamoinamcu (show n) ≡⟨ {!!} ⟩
+    readMaybe (show n) ≡⟨ {!!} ⟩
+    just n ∎
+    where
+    open import Relation.Binary.PropositionalEquality
+    open ≡-Reasoning
 
   pav : (n : ℕ)
       → (x : String)
