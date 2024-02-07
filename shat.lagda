@@ -396,9 +396,11 @@ module PamoinamcuVeritas where
       → just n ≡ pamoinamcu (show n ++ x)
   pav n x j f = sym $ begin
    pamoinamcu (show n ++ x) ≡⟨ {!!} ⟩
+   𝕃.head (show n ∷ s x) >>= readMaybe ≡⟨ refl ⟩
    readMaybe (show n) ≡⟨ {!!} ⟩
    just n ∎
    where
+   s = 𝕊.wordsBy (_≟ ' ')
    open import Relation.Binary.PropositionalEquality
    open ≡-Reasoning
 \end{code}
