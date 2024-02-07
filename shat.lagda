@@ -403,7 +403,7 @@ ni'o la .varik.\ na birti lo du'u zabna ciksi la'oi .\F{romoivimcu}.\ bau la .lo
 romoivimcu : String → String
 romoivimcu = S $ 𝕃.reverse ∘ 𝕃.drop 1 ∘ 𝕃.reverse
   where
-  S = λ f → cev ∘ vec ∘ f ∘ cev ∘ vec
+  S = λ f → 𝕊.fromList ∘ f ∘ 𝕊.toList
 \end{code}
 
 \subsection{le ctaipe be le su'u la'oi .\F{romoivimcu}.\ mapti}
@@ -418,21 +418,21 @@ module RomoivimcuVeritas where
             (maybe
               𝕊.fromChar
               ""
-              (𝕃.last $ cev $ vec x))))
+              (𝕃.last $ 𝕊.toList x))))
   pav x = sym $ begin
     cever ++ r ≡⟨ {!!} ⟩
-    cev (vec $ init $ cev $ vec x) ++ r ≡⟨ takedrop ⟩
-    cev (vec $ 𝕃.take (length x' ℕ.∸ 1) x') ++ r ≡⟨ {!!} ⟩
-    cev (vec x'') ≡⟨ x''≡x' ▹ cong (cev ∘ vec) ⟩
-    cev (vec x') ≡⟨ [cev∘vec]² x ▹ sym ⟩
+    𝕊.fromList (init $ 𝕊.toList x) ++ r ≡⟨ takedrop ⟩
+    𝕊.fromList (𝕃.take (length x' ℕ.∸ 1) x') ++ r ≡⟨ {!!} ⟩
+    𝕊.fromList x'' ≡⟨ x''≡x' ▹ cong 𝕊.fromList ⟩
+    𝕊.fromList x' ≡⟨ [cev∘vec]² x ▹ sym ⟩
     x ∎
     where
     init = 𝕃.reverse ∘ 𝕃.drop 1 ∘ 𝕃.reverse
     RV = 𝕃.reverse
     cever : String
     cever = romoivimcu x
-    r = maybe 𝕊.fromChar "" $ 𝕃.last $ cev $ vec x
-    x' = cev $ vec x
+    r = maybe 𝕊.fromChar "" $ 𝕃.last $ 𝕊.toList x
+    x' = 𝕊.toList x
     x'' = 𝕃.take lx x' ++ 𝕃.drop lx x'
       where
       lx = length x' ℕ.∸ 1
@@ -441,11 +441,11 @@ module RomoivimcuVeritas where
     [cev∘vec]² : (x : String)
                → (_≡_
                    x
-                   (cev $ (vec ⦃ liliList ⦄) $ cev $ vec x))
+                   (𝕊.fromList $ 𝕊.toList x))
     [cev∘vec]² = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
-    takedrop = f 1 x' ▹ cong ((𝕊._++ r) ∘ cev ∘ vec)
+    takedrop = f 1 x' ▹ cong ((𝕊._++ r) ∘ 𝕊.fromList)
       where
       f : ∀ {a} → {A : Set a}
         → (m : ℕ)
@@ -462,10 +462,10 @@ ni'o ro da poi ke'a ctaipe ko'a goi la'o zoi.\ \D{Fin} \B n\ .zoi.\ zo'u ro de p
 \begin{code}
 module Orsygenturfa'i where
   ps : {n : ℕ} → List Char → Maybe $ Fin n
-  ps = (_>>= fromℕ?) ∘ readMaybe ∘ cev ∘ vec
+  ps = (_>>= fromℕ?) ∘ readMaybe ∘ 𝕊.fromList
 
   spit : String → List $ List Char
-  spit = splitOn ⦃ record {_≟_ = Data.Char._≟_} ⦄ ',' ∘ cev ∘ vec
+  spit = splitOn ⦃ record {_≟_ = Data.Char._≟_} ⦄ ',' ∘ 𝕊.toList
 
   pork : {n : ℕ}
        → List $ Maybe $ Fin n
@@ -498,14 +498,14 @@ module Orsygenturfa'iVeritas where
           → ',' ∉ 𝕊.toList z
           → (_≡_
               (spit $ x ++ "," ++ z)
-              (cev (vec x) ∷ cev (vec z) ∷ []))
+              (𝕊.toList x ∷ 𝕊.toList z ∷ []))
   spit-du = {!!}
 
   ps-du : {n : ℕ}
         → (x : Fin n)
-        → just x ≡ ps (cev $ vec $ show $ 𝔽.toℕ x)
+        → just x ≡ ps (𝕊.toList $ show $ 𝔽.toℕ x)
   ps-du x = sym $ begin
-    ps (cev $ vec $ showF x) ≡⟨ refl ⟩
+    ps (𝕊.toList $ showF x) ≡⟨ refl ⟩
     b𝔽 (rM $ id' $ showF x) ≡⟨ cvd x ▹ cong (b𝔽 ∘ readMaybe) ⟩
     b𝔽 (rM $ showF x) ≡⟨ rimdu x ▹ cong b𝔽 ⟩
     b𝔽 (just $ 𝔽.toℕ x) ≡⟨ refl ⟩
@@ -572,7 +572,7 @@ module Orsygenturfa'iVeritas where
       just a ∷  just b ∷ [] ∎
       where
       showF' : {n : ℕ} → Fin n → List Char
-      showF' = cev ∘ vec ∘ showF
+      showF' = 𝕊.toList ∘ showF
       justF' : {n : ℕ} → Fin n → Maybe $ Fin n
       justF' = ps ∘ showF'
       justF'≡just : {n : ℕ} → (x : Fin n) → justF' x ≡ just x
@@ -612,7 +612,7 @@ module Reed where
     k _ = nothing
 
     t : {x : Buffer} → String → Maybe $ Cmd x
-    t s = _>>= g $ 𝕃.head $ cev $ vec s
+    t s = _>>= g $ 𝕃.head $ 𝕊.toList s
 
   module Pa where
     g : {x : Buffer} → Buffer.F x → Char → Maybe $ Cmd x
@@ -623,7 +623,7 @@ module Reed where
     t : {x : Buffer} → String → Maybe $ Cmd x
     t {x} s = _,ₘ_ n (romoi s) >>= uncurry g
       where
-      romoi = 𝕃.last ∘ cev ∘ vec
+      romoi = 𝕃.last ∘ 𝕊.toList
       n = pamoinamcu s >>= fromℕ?
       _,ₘ_ = (Data.Maybe.ap ∘₂ mapₘ) _,_
 
@@ -645,7 +645,7 @@ module Reed where
     t x s = _>>= g' $ (Data.Maybe.ap ∘₂ mapₘ) _,_ (romoi s) og
       where
       og = orsygenturfa'i $ romoivimcu s
-      romoi = 𝕃.last ∘ cev ∘ vec
+      romoi = 𝕃.last ∘ 𝕊.toList
       g' = λ (r' , (a , b) , z) → g x a b z r'
 
   reed : (x : Buffer) → String → Maybe $ Cmd x
@@ -714,7 +714,7 @@ module ReedVeritas where
     Reed.Re.g x a b d 'm' ≡⟨ refl ⟩
     just (Muvgau a b d) ∎
     where
-    romoi = 𝕃.last ∘ cev ∘ vec
+    romoi = 𝕃.last ∘ 𝕊.toList
     r2og = λ (r' , (a , b) , z) → Reed.Re.g x a b z r'
     _,ₘ_ = (Data.Maybe.ap ∘₂ mapₘ) _,_
     k2 = k₂ x a b 'm'
@@ -774,11 +774,11 @@ module ReedVeritas where
   uin x = begin
     reed x "w" ≡⟨ refl ⟩
     𝕃.head (𝕃.mapMaybe id L) ≡⟨ duridos ⟩
-    𝕃.head (cev $ vec "w") >>= Reed.No.g ≡⟨ refl ⟩
+    𝕃.head (𝕊.toList "w") >>= Reed.No.g ≡⟨ refl ⟩
     mapₘ Rejgau (Buffer.datnyveicme x) ∎
     where
     open Reed
-    ridos = 𝕃.head (cev $ vec "w") >>= Reed.No.g
+    ridos = 𝕃.head (𝕊.toList "w") >>= Reed.No.g
     L = ridos ∷ _
     duridos : 𝕃.head (𝕃.mapMaybe id L) ≡ ridos
     duridos with ridos
@@ -793,13 +793,13 @@ module ReedVeritas where
 
   kybin : (x : Buffer)
         → reed x "q" ≡ just Sisti
-  kybin x with 𝕃.head (cev $ vec "q") >>= Reed.No.g {x}
+  kybin x with 𝕃.head (𝕊.toList "q") >>= Reed.No.g {x}
   ... | just _ = refl
   ... | nothing = refl
 
   kybin' : (x : Buffer)
          → reed x "Q" ≡ just Sisti!
-  kybin' x with 𝕃.head (cev $ vec "Q") >>= Reed.No.g {x}
+  kybin' x with 𝕃.head (𝕊.toList "Q") >>= Reed.No.g {x}
   ... | just _ = refl
   ... | nothing = refl
 
