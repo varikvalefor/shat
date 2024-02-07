@@ -14,6 +14,7 @@
 \newunicodechar{𝔽}{\ensuremath{\mathnormal{\mathbb F}}}
 \newunicodechar{𝕃}{\ensuremath{\mathnormal{\mathbb L}}}
 \newunicodechar{ℕ}{\ensuremath{\mathnormal{\mathbb N}}}
+\newunicodechar{𝕊}{\ensuremath{\mathnormal{\mathbb S}}}
 \newunicodechar{ℤ}{\ensuremath{\mathnormal{\mathbb Z}}}
 \newunicodechar{ℚ}{\ensuremath{\mathnormal{\mathbb Q}}}
 \newunicodechar{∘}{\ensuremath{\mathnormal\circ}}
