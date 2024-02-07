@@ -642,7 +642,7 @@ module Reed where
     ... | _ = nothing
 
     t : (x : Buffer) → String → Maybe $ Cmd x
-    t x s = (Data.Maybe.ap ∘₂ mapₘ) _,_ (romoi s) og >>= g'
+    t x s = _>>= g' $ (Data.Maybe.ap ∘₂ mapₘ) _,_ (romoi s) og
       where
       og = orsygenturfa'i $ romoivimcu s
       romoi = 𝕃.last ∘ cev ∘ vec
