@@ -400,7 +400,7 @@ module PamoinamcuVeritas where
    readMaybe (show n) ≡⟨ {!!} ⟩
    just n ∎
    where
-   s = 𝕊.wordsBy (_≟ ' ')
+   s = 𝕊.wordsBy $ Data.Bool.T? ∘ Data.Bool.not ∘ Data.Char.isDigit
    open import Relation.Binary.PropositionalEquality
    open ≡-Reasoning
 \end{code}
