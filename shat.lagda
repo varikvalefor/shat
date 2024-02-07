@@ -382,6 +382,7 @@ module PamoinamcuVeritas where
       → just n ≡ pamoinamcu (show n)
   non n = sym $ begin
     pamoinamcu (show n) ≡⟨ {!!} ⟩
+    𝕃.head (show n ∷ []) >>= readMaybe ≡⟨ refl ⟩
     readMaybe (show n) ≡⟨ {!!} ⟩
     just n ∎
     where
