@@ -410,7 +410,7 @@ module RomoivimcuVeritas where
       → (_≡_
           x
           (_++_
-            (cev $ vec $ romoivimcu x)
+            (romoivimcu x)
             (maybe
               𝕊.fromChar
               ""
@@ -426,7 +426,7 @@ module RomoivimcuVeritas where
     init = 𝕃.reverse ∘ 𝕃.drop 1 ∘ 𝕃.reverse
     RV = 𝕃.reverse
     cever : String
-    cever = cev $ vec $ romoivimcu x
+    cever = romoivimcu x
     r = maybe 𝕊.fromChar "" $ 𝕃.last $ cev $ vec x
     x' = cev $ vec x
     x'' = 𝕃.take lx x' ++ 𝕃.drop lx x'
