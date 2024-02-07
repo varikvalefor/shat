@@ -494,8 +494,8 @@ module Orsygenturfa'iVeritas where
   open Orsygenturfa'i
 
   spit-du : (x z : String)
-          → ',' ∉_ $ 𝕊.toList x
-          → ',' ∉_ $ 𝕊.toList z
+          → ',' ∉ 𝕊.toList x
+          → ',' ∉ 𝕊.toList z
           → (_≡_
               (spit $ x ++ "," ++ z)
               (cev (vec x) ∷ cev (vec z) ∷ []))
