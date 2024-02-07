@@ -441,7 +441,7 @@ module RomoivimcuVeritas where
     [cev∘vec]² = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
-    takedrop = f 1 x' ▹_ $ cong $ (𝕊._++ r) ∘ cev ∘ vec
+    takedrop = f 1 x' ▹ cong ((𝕊._++ r) ∘ cev ∘ vec)
       where
       f : ∀ {a} → {A : Set a}
         → (m : ℕ)
