@@ -378,6 +378,10 @@ pamoinamcu = (_>>= readMaybe) ∘ 𝕃.head ∘ wordsBy aintDigit?
 
 \begin{code}
 module PamoinamcuVeritas where
+  non : (n : ℕ)
+      → just n ≡ pamoinamcu (show n)
+  non = {!!}
+
   pav : (n : ℕ)
       → (x : String)
       → (j : Data.Maybe.Is-just $ 𝕊.head x)
