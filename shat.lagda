@@ -590,7 +590,7 @@ module Orsygenturfa'iVeritas where
         where
         nokom : {n : ℕ}
               → (x : Fin n)
-              → ',' ∉ (List Char ∋ cev (vec $ showF x))
+              → ',' ∉ 𝕊.toList (showF x)
         nokom = {!!}
 \end{code}
 
