@@ -153,6 +153,7 @@ open import Data.Maybe
     just
   )
 open import Data.String
+  as 𝕊
   using (
     unlines;
     String;
@@ -368,7 +369,7 @@ ni'o ro da xi pa poi ke'a na'e degji lerfu zo'u ro da xi re poi ke'a ctaipe la'o
 pamoinamcu : String → Maybe ℕ
 pamoinamcu = (_>>= readMaybe) ∘ 𝕃.head ∘ wordsBy aintDigit?
   where
-  wordsBy = Data.String.wordsBy
+  wordsBy = 𝕊.wordsBy
   aintDigit? = Data.Bool.T? ∘ Data.Bool.not ∘ isDigit
 \end{code}
 
@@ -378,7 +379,7 @@ pamoinamcu = (_>>= readMaybe) ∘ 𝕃.head ∘ wordsBy aintDigit?
 module PamoinamcuVeritas where
   pav : (n : ℕ)
       → (x : String)
-      → (j : Data.Maybe.Is-just $ Data.String.head x)
+      → (j : Data.Maybe.Is-just $ 𝕊.head x)
       → Data.Bool.false ≡_ $ isDigit $ Data.Maybe.to-witness j
       → just n ≡ pamoinamcu (show n ++ x)
   pav n x j f = sym $ begin
@@ -410,7 +411,7 @@ module RomoivimcuVeritas where
           (_++_
             (cev $ vec $ romoivimcu x)
             (maybe
-              Data.String.fromChar
+              𝕊.fromChar
               ""
               (𝕃.last $ cev $ vec x))))
   pav x = sym $ begin
@@ -425,7 +426,7 @@ module RomoivimcuVeritas where
     RV = 𝕃.reverse
     cever : String
     cever = cev $ vec $ romoivimcu x
-    r = maybe Data.String.fromChar "" $ 𝕃.last $ cev $ vec x
+    r = maybe 𝕊.fromChar "" $ 𝕃.last $ cev $ vec x
     x' = cev $ vec x
     x'' = 𝕃.take lx x' ++ 𝕃.drop lx x'
       where
@@ -439,7 +440,7 @@ module RomoivimcuVeritas where
     [cev∘vec]² = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
-    takedrop = f 1 x' ▹_ $ cong $ λ z → cev (vec z) Data.String.++ r
+    takedrop = f 1 x' ▹_ $ cong $ λ z → cev (vec z) 𝕊.++ r
       where
       f : ∀ {a} → {A : Set a}
         → (m : ℕ)
@@ -602,7 +603,7 @@ module Reed where
     g _ = nothing
 
     k : {x : Buffer} → List String → Maybe $ Cmd x
-    k ("w" ∷ xs@(_ ∷ _)) = just $ Rejgau $ Data.String.unwords xs
+    k ("w" ∷ xs@(_ ∷ _)) = just $ Rejgau $ 𝕊.unwords xs
     k _ = nothing
 
     t : {x : Buffer} → String → Maybe $ Cmd x
@@ -648,7 +649,7 @@ module Reed where
     terp : List $ Maybe $ Cmd x
     terp = No.t s ∷ Pa.t s ∷ Re.t x s ∷ No.k s' ∷ []
       where
-      s' = Data.String.wordsBy (_≟ ' ') s
+      s' = 𝕊.wordsBy (_≟ ' ') s
 
 open Reed
   using (
@@ -675,13 +676,13 @@ module ReedVeritas where
        → (a : Buffer.F x)
        → Char
        → String
-    k₁ _ a x = show (𝔽.toℕ a) ++ Data.String.fromChar x
+    k₁ _ a x = show (𝔽.toℕ a) ++ 𝕊.fromChar x
 
     k₂ : (x : Buffer)
        → (a b : Buffer.F x)
        → Char
        → String
-    k₂ _ a b x = f a ++ "," ++ f b ++ Data.String.fromChar x
+    k₂ _ a b x = f a ++ "," ++ f b ++ 𝕊.fromChar x
       where
       f = show ∘ 𝔽.toℕ
 
@@ -735,7 +736,7 @@ module ReedVeritas where
       → (s : String)
       → (c : Char)
       → ¬ (c ≡ ' ')
-      → (let s' = Data.String.fromChar c ++ s in
+      → (let s' = 𝕊.fromChar c ++ s in
          just (Rejgau s') ≡ reed x ("w " ++ s'))
   uip x s c n = sym $ begin
     reed x ("w " ++ s') ≡⟨ w++s≡w++fs ▹ cong (reed x) ⟩
@@ -746,14 +747,14 @@ module ReedVeritas where
     j∘R s' ∎
     where
     open Reed.No using (k)
-    s' = Data.String.fromChar c ++ s
-    f = Data.String.wordsBy $ _≟ ' '
+    s' = 𝕊.fromChar c ++ s
+    f = 𝕊.wordsBy $ _≟ ' '
     v₁ = {!!}
     v₂ = {!!}
     j∘R = just ∘ Rejgau
     fs'≡v₁++v₂ : f s' ≡ v₁ ∷ v₂
     fs'≡v₁++v₂ = {!!}
-    unwords = Data.String.unwords
+    unwords = 𝕊.unwords
     unwords∘f' : (s : String)
                → unwords (f s) ≡ s
     unwords∘f' = {!!}
@@ -972,7 +973,7 @@ main = run $ IO.lift snurytcati IO.>> getArgs IO.>>= uic ∘ 𝕃.head
       rejgaudatni = nothing
       }
     mkDef : _
-    mkDef c = uit ∘ Data.String.lines IO.<$> readFile c
+    mkDef c = uit ∘ 𝕊.lines IO.<$> readFile c
       where
       uit : _ → _
       uit [] = record def {datnyveicme = just c}
