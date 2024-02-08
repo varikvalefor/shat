@@ -424,10 +424,7 @@ module RomoivimcuVeritas where
           x
           (_++_
             (romoivimcu x)
-            (maybe
-              𝕊.fromChar
-              ""
-              (𝕃.last $ 𝕊.toList x))))
+            (maybe 𝕊.fromChar "" $ 𝕃.last $ 𝕊.toList x)))
   pav x = sym $ begin
     cever ++ r ≡⟨ {!!} ⟩
     𝕊.fromList (init $ 𝕊.toList x) ++ r ≡⟨ takedrop ⟩
