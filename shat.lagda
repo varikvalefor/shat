@@ -426,7 +426,7 @@ module RomoivimcuVeritas where
             (romoivimcu x)
             (maybe 𝕊.fromChar "" $ 𝕃.last $ 𝕊.toList x)))
   pav x = sym $ begin
-    cever ++ r ≡⟨ {!!} ⟩
+    rovis ++ r ≡⟨ {!!} ⟩
     𝕊.fromList (init $ 𝕊.toList x) ++ r ≡⟨ takedrop ⟩
     𝕊.fromList (𝕃.take (length x' ℕ.∸ 1) x') ++ r ≡⟨ {!!} ⟩
     𝕊.fromList x'' ≡⟨ x''≡x' ▹ cong 𝕊.fromList ⟩
@@ -435,8 +435,8 @@ module RomoivimcuVeritas where
     where
     init = 𝕃.reverse ∘ 𝕃.drop 1 ∘ 𝕃.reverse
     RV = 𝕃.reverse
-    cever : String
-    cever = romoivimcu x
+    rovis : String
+    rovis = romoivimcu x
     r = maybe 𝕊.fromChar "" $ 𝕃.last $ 𝕊.toList x
     x' = 𝕊.toList x
     x'' = 𝕃.take lx x' ++ 𝕃.drop lx x'
