@@ -434,7 +434,6 @@ module RomoivimcuVeritas where
     x ∎
     where
     init = 𝕃.reverse ∘ 𝕃.drop 1 ∘ 𝕃.reverse
-    RV = 𝕃.reverse
     rovis : String
     rovis = romoivimcu x
     r = maybe 𝕊.fromChar "" $ 𝕃.last $ 𝕊.toList x
