@@ -825,7 +825,7 @@ module ReedVeritas where
     dzeroxe : {n : ℕ}
             → (z : Σ ℕ $ (_≡ n) ∘ ℕ.suc)
             → 𝕃.head (𝕃.allFin n) ≡ just (mink 𝔽.zero $ proj₂ z)
-    dzeroxe = {!!}
+    dzeroxe (_ , refl) = refl
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 \end{code}
