@@ -756,7 +756,8 @@ module ReedVeritas where
     reed x (unwords $ "w" ∷ " " ∷ f s') ≡⟨ {!!} ⟩
     k ("w" ∷ f s') ≡⟨ fs'≡v₁++v₂ ▹ cong (k ∘ _∷_ "w") ⟩
     k ("w" ∷ v₁ ∷ v₂) ≡⟨ refl ⟩
-    j∘R (unwords $ v₁ ∷ v₂) ≡⟨ {!!} ▹ cong j∘R ⟩
+    j∘R (unwords $ v₁ ∷ v₂) ≡⟨ refl ⟩
+    j∘R _ ≡⟨ fs'≡v₁++v₂ ▹ sym ▹ cong (j∘R ∘ unwords) ⟩
     j∘R (unwords $ f s') ≡⟨ {!!} ▹ cong j∘R ⟩
     j∘R s' ∎
     where
