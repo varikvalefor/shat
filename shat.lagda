@@ -754,6 +754,7 @@ module ReedVeritas where
     k ("w" ∷ f s') ≡⟨ fs'≡v₁++v₂ ▹ cong (k ∘ _∷_ "w") ⟩
     k ("w" ∷ v₁ ∷ v₂) ≡⟨ refl ⟩
     j∘R (unwords $ v₁ ∷ v₂) ≡⟨ {!!} ▹ cong j∘R ⟩
+    j∘R (unwords $ f s') ≡⟨ {!!} ▹ cong j∘R ⟩
     j∘R s' ∎
     where
     open Reed.No using (k)
