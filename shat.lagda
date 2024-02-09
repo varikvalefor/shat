@@ -772,9 +772,9 @@ module ReedVeritas where
     fs'≡v₁++v₂ : f s' ≡ v₁ ∷ v₂
     fs'≡v₁++v₂ = {!!}
     unwords = 𝕊.unwords
-    unwords∘f' : (s : String)
-               → unwords (f s) ≡ s
-    unwords∘f' = {!!}
+    unwords∘f : (s : String)
+              → unwords (f s) ≡ s
+    unwords∘f = {!!}
     open Reed
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
