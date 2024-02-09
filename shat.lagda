@@ -818,7 +818,7 @@ module ReedVeritas where
     just (Xruti $ mink 𝔽.zero $ proj₂ z) ∎
     where
     dzeroxe : {n : ℕ}
-            → (z : Σ ℕ $ λ m → ℕ.suc m ≡ n)
+            → (z : Σ ℕ $ (_≡ n) ∘ ℕ.suc)
             → 𝕃.head (𝕃.allFin n) ≡ just (mink 𝔽.zero $ proj₂ z)
     dzeroxe = {!!}
     open import Relation.Binary.PropositionalEquality
