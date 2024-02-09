@@ -72,6 +72,8 @@
 \begin{document}
 \maketitle
 
+\tableofcontents
+
 \chapter{le vrici}
 
 \begin{code}
