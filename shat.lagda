@@ -397,7 +397,8 @@ module PamoinamcuVeritas where
       → Data.Bool.false ≡_ $ isDigit $ Data.Maybe.to-witness j
       → just n ≡ pamoinamcu (show n ++ x)
   pav n x j f = sym $ begin
-   pamoinamcu (show n ++ x) ≡⟨ {!!} ⟩
+   pamoinamcu (show n ++ x) ≡⟨ refl ⟩
+   𝕃.head (s $ show n ++ x) >>= readMaybe ≡⟨ {!!} ⟩
    𝕃.head (show n ∷ s x) >>= readMaybe ≡⟨ refl ⟩
    readMaybe (show n) ≡⟨ {!!} ⟩
    just n ∎
