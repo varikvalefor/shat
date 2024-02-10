@@ -323,7 +323,7 @@ data Cmdᵢₒ (x : Buffer) : Set where
 
 \chapter{le fancu}
 
-\section{la \F{dekydu'i}
+\section{la \F{dekydu'i}}
 ni'o xu sarcu fa lo nu la .varik.\ cu ciksi la \F{dekydu'i} bau la .lojban.
 
 \begin{code}
