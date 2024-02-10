@@ -724,7 +724,9 @@ module ReedVeritas where
         → just (Muvgau a b d) ≡ reed x (k₂ x a b 'm')
   mixer x a b d = sym $ begin
     reed x (k₂ x a b 'm') ≡⟨ refl ⟩
-    reed x k2 ≡⟨ {!!} ⟩
+    reed x k2 ≡⟨ refl ⟩
+    𝕃.head (𝕃.mapMaybe id RL) ≡⟨ {!!} ⟩
+    𝕃.head (𝕃.mapMaybe id RL') ≡⟨ {!!} ⟩
     Reed.Re.t x k2 ≡⟨ refl ⟩
     _,ₘ_ (romoi k2) oglok >>= r2og ≡⟨ reldunsi'u romoim joglok ⟩
     _,ₘ_ (just 'm') (just $ (a , b) , d) >>= r2og ≡⟨ refl ⟩
@@ -735,6 +737,10 @@ module ReedVeritas where
     r2og = λ (r' , (a , b) , z) → Reed.Re.g x a b z r'
     _,ₘ_ = (Data.Maybe.ap ∘₂ mapₘ) _,_
     k2 = k₂ x a b 'm'
+    RL = Reed.No.t k2 ∷ Reed.Pa.t k2 ∷ Reed.Re.t x k2 ∷ nok ∷ []
+      where
+      nok = Reed.No.k $ 𝕊.wordsBy (_≟ ' ') k2
+    RL' = nothing ∷ nothing ∷ Reed.Re.t x k2 ∷ nothing ∷ []
     oglok = orsygenturfa'i $ romoivimcu k2
     reldunsi'u : {a b : _} → {x z : _}
                → a ≡ b
