@@ -517,7 +517,7 @@ module Orsygenturfa'iVeritas where
   ps-du x = sym $ begin
     ps (𝕊.toList $ showF x) ≡⟨ refl ⟩
     b𝔽 (rM $ id' $ showF x) ≡⟨ cvd x ▹ cong (b𝔽 ∘ readMaybe) ⟩
-    b𝔽 (rM $ showF x) ≡⟨ rimdu x ▹ cong b𝔽 ⟩
+    b𝔽 (rM $ showF x) ≡⟨ rimco x ▹ cong b𝔽 ⟩
     b𝔽 (just $ 𝔽.toℕ x) ≡⟨ refl ⟩
     just (𝔽.toℕ x) >>= fromℕ? ≡⟨ refl ⟩
     fromℕ? (𝔽.toℕ x) ≡⟨ refl ⟩
@@ -534,8 +534,8 @@ module Orsygenturfa'iVeritas where
     showF = show ∘ 𝔽.toℕ
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
-    rimdu : {n : ℕ} → (f : Fin n) → rM (showF x) ≡ just (𝔽.toℕ x)
-    rimdu = {!!}
+    rimco : {n : ℕ} → (f : Fin n) → rM (showF x) ≡ just (𝔽.toℕ x)
+    rimco = {!!}
     cvd : {n : ℕ} → (x : Fin n) → id' (showF x) ≡ showF x
     cvd x = istu $ showF x
       where
