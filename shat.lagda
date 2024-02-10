@@ -768,7 +768,7 @@ module ReedVeritas where
          just (Rejgau s') ≡ reed x ("w " ++ s'))
   uip x s c n = sym $ begin
     reed x ("w " ++ s') ≡⟨ w++s≡w++fs ▹ cong (reed x) ⟩
-    reed x (unwords $ "w" ∷ " " ∷ f s') ≡⟨ {!!} ⟩
+    reed x (unwords $ "w" ∷ f s') ≡⟨ {!!} ⟩
     k ("w" ∷ f s') ≡⟨ fs'≡v₁++v₂ ▹ cong (k ∘ _∷_ "w") ⟩
     k ("w" ∷ v₁ ∷ v₂) ≡⟨ refl ⟩
     j∘R (unwords $ v₁ ∷ v₂) ≡⟨ refl ⟩
@@ -790,7 +790,7 @@ module ReedVeritas where
     open Reed
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
-    w++s≡w++fs : "w " ++ s' ≡ unwords ("w" ∷ " " ∷ f s')
+    w++s≡w++fs : "w " ++ s' ≡ unwords ("w" ∷ f s')
     w++s≡w++fs = {!!}
 
   uin : (x : Buffer)
