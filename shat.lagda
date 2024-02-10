@@ -366,7 +366,7 @@ module Binxo𝔽?Veritas where
 \end{code}
 
 \section{la'oi .\F{pamoinamcu}.}
-ni'o rodaxipapoike'a na'e degji lerfu zo'u rodaxirepoike'a ctaipe la'oi .\AgdaPostulate{String}.\ zo'u gajonaila'oi .\IC{nothing}.\ duko'a goila'o zoi.\ \F{pamoinamcu} \B x\ .zoi.\ gisu'o depoike'a kacna'u zo'u gajela'oi .\B x.\ konkatena losinxa bedebeidexipabeidexiregiko'a me'oi .\IC{just}.\ de
+ni'o ro da xi pa poi ke'a na'e degji lerfu zo'u ro da xi re poi ke'a ctaipe la'oi .\AgdaPostulate{String}.\ zo'u ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{pamoinamcu} \B x\ .zoi.\ gi su'o de poi ke'a kacna'u zo'u ga je la'oi .\B x.\ konkatena lo sinxa be de bei de xi pa bei de xi re gi ko'a me'oi .\IC{just}.\ de
 
 \begin{code}
 pamoinamcu : String → Maybe ℕ
