@@ -527,7 +527,7 @@ module Orsygenturfa'iVeritas where
     b𝔽 (just $ 𝔽.toℕ x) ≡⟨ refl ⟩
     just (𝔽.toℕ x) >>= fromℕ? ≡⟨ refl ⟩
     fromℕ? (𝔽.toℕ x) ≡⟨ refl ⟩
-    mapₘ 𝔽.fromℕ< (decToMaybe $ _ ℕ.<? _) ≡⟨ {!!} ⟩
+    mapₘ 𝔽.fromℕ< (decToMaybe $ _ ℕ.<? _) ≡⟨ dekydu'is ⟩
     mapₘ 𝔽.fromℕ< (just $ DFP.toℕ<n x) ≡⟨ refl ⟩
     mapₘ 𝔽.fromℕ< _ ≡⟨ DMP.map-just {f = 𝔽.fromℕ<} refl ⟩
     just (𝔽.fromℕ< $ DFP.toℕ<n x) ≡⟨ {!!} ▹ cong just ⟩
@@ -540,6 +540,7 @@ module Orsygenturfa'iVeritas where
     showF = show ∘ 𝔽.toℕ
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
+    dekydu'is = dekydu'i ▹ cong (mapₘ 𝔽.fromℕ<)
     rimco : {n : ℕ} → (f : Fin n) → rM (showF x) ≡ just (𝔽.toℕ x)
     rimco = {!!}
     cvd : {n : ℕ} → (x : Fin n) → id' (showF x) ≡ showF x
