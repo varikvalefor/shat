@@ -323,6 +323,16 @@ data Cmdᵢₒ (x : Buffer) : Set where
 
 \chapter{le fancu}
 
+\section{la \F{dekydu'i}
+ni'o xu sarcu fa lo nu la .varik.\ cu ciksi la \F{dekydu'i} bau la .lojban.
+
+\begin{code}
+dekydu'i : {x n : ℕ}
+         → {m : x ℕ.< n}
+         → decToMaybe (x ℕ.<? n) ≡ just m
+dekydu'i = {!!}
+\end{code}
+
 \section{la'oi .\F{fromℕ?}.}
 ni'o ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{fromℕ?}\ \B x\ .zoi.\ gi la'o zoi.\ \F{mapₘ} \F{𝔽.toℕ} \OpF \$ \F{fromℕ?}\ \B x\ .zoi.\ du zo'e poi la'oi .\B x.\ mu'oi zoi.\ \F{𝔽.toℕ}\ .zoi.\ ke'a
 
@@ -342,7 +352,7 @@ module Binxo𝔽?Veritas where
   pav {n} x m = sym $ begin
     mapₘ 𝔽.toℕ (fromℕ? {n} x) ≡⟨ refl ⟩
     mapₘ 𝔽.toℕ (mapₘ 𝔽.fromℕ< $ c? x) ≡⟨ mapmapi $ c? x ⟩
-    mapₘ id' (c? x) ≡⟨ dekdu ▹ cong (mapₘ id') ⟩
+    mapₘ id' (c? x) ≡⟨ dekydu'i ▹ cong (mapₘ id') ⟩
     mapₘ id' (just m) ≡⟨ DMP.map-just {f = id'} refl ⟩
     just (id' m) ≡⟨ DFP.toℕ-fromℕ< m ▹ cong just ⟩
     just x ∎
@@ -350,10 +360,6 @@ module Binxo𝔽?Veritas where
     id' = 𝔽.toℕ ∘ 𝔽.fromℕ<
     c? : (x : ℕ) → Maybe $ x ℕ.< n
     c? = decToMaybe ∘ (ℕ._<? _)
-    dekdu : {x n : ℕ}
-          → {m : x ℕ.< n}
-          → decToMaybe (x ℕ.<? n) ≡ just m
-    dekdu = {!!}
     mapmapi : ∀ {a} → {A B C : Set a}
             → {f : A → B}
             → {g : B → C}
