@@ -463,7 +463,7 @@ module RomoivimcuVeritas where
         → (m : ℕ)
         → (x : List A)
         → (_≡_
-            (𝕃.reverse $ _↓_ m $ 𝕃.reverse x)
+            (𝕃.reverse $ m ↓ 𝕃.reverse x)
             (_↑_ (𝕃.length x ℕ.∸ m) x))
       f = {!!}
 \end{code}
