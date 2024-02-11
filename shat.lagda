@@ -138,13 +138,13 @@ open import Data.List
   as 𝕃
   using (
     List;
-    drop;
-    take;
     _∷_;
     []
   )
   renaming (
-    lookup to _!_
+    lookup to _!_;
+    drop to _↓_;
+    take to _↑_
   )
 open import Data.Maybe
   using (
@@ -421,7 +421,7 @@ ni'o la .varik.\ na birti lo du'u zabna ciksi la'oi .\F{romoivimcu}.\ bau la .lo
 
 \begin{code}
 romoivimcu : String → String
-romoivimcu = S $ 𝕃.reverse ∘ 𝕃.drop 1 ∘ 𝕃.reverse
+romoivimcu = S $ 𝕃.reverse ∘ _↓_ 1 ∘ 𝕃.reverse
   where
   S = λ f → 𝕊.fromList ∘ f ∘ 𝕊.toList
 \end{code}
@@ -439,15 +439,15 @@ module RomoivimcuVeritas where
   pav x = sym $ begin
     romoivimcu x ++ r ≡⟨ refl ⟩
     𝕊.fromList (rinit $ 𝕊.toList x) ++ r ≡⟨ takedrop ⟩
-    𝕊.fromList (𝕃.take (length x' ℕ.∸ 1) x') ++ r ≡⟨ {!!} ⟩
+    𝕊.fromList (_↑_ (length x' ℕ.∸ 1) x') ++ r ≡⟨ {!!} ⟩
     𝕊.fromList x'' ≡⟨ x''≡x' ▹ cong 𝕊.fromList ⟩
     𝕊.fromList x' ≡⟨ [cev∘vec]² x ▹ sym ⟩
     x ∎
     where
-    rinit = 𝕃.reverse ∘ 𝕃.drop 1 ∘ 𝕃.reverse
+    rinit = 𝕃.reverse ∘ _↓_ 1 ∘ 𝕃.reverse
     r = maybe 𝕊.fromChar "" $ 𝕃.last $ 𝕊.toList x
     x' = 𝕊.toList x
-    x'' = 𝕃.take lx x' ++ 𝕃.drop lx x'
+    x'' = _↑_ lx x' ++ _↓_ lx x'
       where
       lx = length x' ℕ.∸ 1
     x''≡x' : x'' ≡ x'
@@ -463,8 +463,8 @@ module RomoivimcuVeritas where
         → (m : ℕ)
         → (x : List A)
         → (_≡_
-            (𝕃.reverse $ 𝕃.drop m $ 𝕃.reverse x)
-            (𝕃.take (𝕃.length x ℕ.∸ m) x))
+            (𝕃.reverse $ _↓_ m $ 𝕃.reverse x)
+            (_↑_ (𝕃.length x ℕ.∸ m) x))
       f = {!!}
 \end{code}
 
@@ -853,7 +853,7 @@ kanji {x} (Jmina a) = x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" a
 kanji {x} (Cusku a b _) = x ,_ $ just $ inj₁ $ unlines $ i BL
   where
   BL = Buffer.lerpinste x
-  i = 𝕃.drop (𝔽.toℕ a) ∘ 𝕃.take (𝔽.toℕ b ℕ.+ 1)
+  i = _↓_ (𝔽.toℕ a) ∘ _↑_ (𝔽.toℕ b ℕ.+ 1)
 kanji {x} (Namcusku a b m) = x ,_ $ just $ inj₁ $ viiet kot
   where
   kot = from-inj₁ $ from-just $ proj₂ $ kanji {x} $ Cusku a b m
@@ -861,7 +861,7 @@ kanji {x} (Namcusku a b m) = x ,_ $ just $ inj₁ $ viiet kot
     where
     stringCat' = λ (x , z) → show x ++ "\t" ++ z
     uin : List String → List $ ℕ × String
-    uin = 𝕃.zip $ 𝕃.drop (𝔽.toℕ a) $ 𝕃.upTo $ 𝔽.toℕ b ℕ.+ 1
+    uin = 𝕃.zip $ _↓_ (𝔽.toℕ a) $ 𝕃.upTo $ 𝔽.toℕ b ℕ.+ 1
 kanji {x} (Muvgau a b _) = x' , nothing
   where
   x' = record x {
@@ -883,7 +883,7 @@ kanji {x} (Vimcu a b _) = x' , nothing
             (proj₁ x)
             (𝕃.map
               (flip 𝔽.inject≤ $ DFP.toℕ≤n _)
-              (𝕃.drop (𝔽.toℕ a) $ 𝕃.allFin $ 𝔽.toℕ b)))
+              (_↓_ (𝔽.toℕ a) $ 𝕃.allFin $ 𝔽.toℕ b)))
     nin _ = _ ≟ _
 kanji = {!!}
 \end{code}
@@ -935,8 +935,8 @@ module KanjyVeritas where
                    (Buffer.lerpinste x ! a)
                    (Buffer.lerpinste x' ! mink a e))))
            × let L = Buffer.lerpinste in
-             (_≡_ on (𝕃.take (𝔽.toℕ a ℕ.⊓ 𝔽.toℕ b) ∘ L)) x x'
-           × (_≡_ on (𝕃.drop (𝔽.toℕ a ℕ.⊔ 𝔽.toℕ b) ∘ L)) x x'
+             (_≡_ on (_↑_ (𝔽.toℕ a ℕ.⊓ 𝔽.toℕ b) ∘ L)) x x'
+           × (_≡_ on (_↓_ (𝔽.toℕ a ℕ.⊔ 𝔽.toℕ b) ∘ L)) x x'
   muvdusin = {!!}
 
   jminac : (x : Buffer)
