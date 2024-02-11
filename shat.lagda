@@ -455,9 +455,7 @@ module RomoivimcuVeritas where
     x''≡x' : x'' ≡ x'
     x''≡x' = DLP.take++drop (length x' ℕ.∸ 1) x'
     [cev∘vec]² : (x : String)
-               → (_≡_
-                   x
-                   (𝕊.fromList $ 𝕊.toList x))
+               → x ≡ 𝕊.fromList (𝕊.toList x)
     [cev∘vec]² = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
