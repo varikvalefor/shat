@@ -382,7 +382,7 @@ pamoinamcu = (_>>= readMaybe) ∘ 𝕃.head ∘ wordsBy aintDigit?
   aintDigit? = Data.Bool.T? ∘ Data.Bool.not ∘ isDigit
 \end{code}
 
-\subsection{le ctaipe be le su'u la'oi .\F{pamoiveritas}.\ mapti}
+\subsection{le ctaipe be le su'u la'oi .\F{pamoinamcu}.\ mapti}
 
 \begin{code}
 module PamoinamcuVeritas where
