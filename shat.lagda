@@ -387,6 +387,17 @@ degjygirzu = 𝕊.wordsBy aintDigit?
 module DegjygirzuVeritas where
   pav : (n : ℕ) → degjygirzu (show n) ≡ show n ∷ []
   pav = {!!}
+
+  rel : (L : List String)
+      → (s : String)
+      → (t : ℕ)
+      → (c : Char)
+      → degjygirzu s ≡ L
+      → Data.Bool.false ≡ isDigit c
+      → (_≡_
+          (show t ∷ L)
+          (degjygirzu $ show t ++ 𝕊.fromChar c ++ s))
+  rel = {!!}
 \end{code}
 
 \section{la'oi .\F{pamoinamcu}.}
