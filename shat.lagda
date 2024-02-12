@@ -371,15 +371,22 @@ module Binxo𝔽?Veritas where
     open ≡-Reasoning
 \end{code}
 
+\section{la'oi .\F{degjygirzu}.}
+ni'o la .varik.\ na birti lo du'u ma kau zabna ciksi la \F{degjygirzu}\ fo mo kau bau la .lojban.
+
+\begin{code}
+degjygirzu : String → List String
+degjygirzu = 𝕊.wordsBy aintDigit?
+  where
+  aintDigit? = Data.Bool.T? ∘ Data.Bool.not ∘ isDigit 
+\end{code}
+
 \section{la'oi .\F{pamoinamcu}.}
 ni'o ro da xi pa poi ke'a na'e degji lerfu zo'u ro da xi re poi ke'a ctaipe la'oi .\AgdaPostulate{String}.\ zo'u ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{pamoinamcu} \B x\ .zoi.\ gi su'o de poi ke'a kacna'u zo'u ga je la'oi .\B x.\ konkatena lo sinxa be de bei de xi pa bei de xi re gi ko'a de me'oi .\IC{just}.
 
 \begin{code}
 pamoinamcu : String → Maybe ℕ
-pamoinamcu = (_>>= readMaybe) ∘ 𝕃.head ∘ wordsBy aintDigit?
-  where
-  wordsBy = 𝕊.wordsBy
-  aintDigit? = Data.Bool.T? ∘ Data.Bool.not ∘ isDigit
+pamoinamcu = (_>>= readMaybe) ∘ 𝕃.head ∘ degjygirzu
 \end{code}
 
 \subsection{le ctaipe be le su'u la'oi .\F{pamoinamcu}.\ mapti}
