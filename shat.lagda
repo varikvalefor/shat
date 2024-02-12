@@ -56,6 +56,7 @@
 \newunicodechar{⊔}{\ensuremath{\mathnormal\sqcup}}
 \newunicodechar{⊓}{\ensuremath{\mathnormal\sqcap}}
 \newunicodechar{⟲}{\ensuremath{\mathnormal\circlearrowleft}}
+\newunicodechar{𝓰}{\ensuremath{\mathcal g}}
 
 \newcommand\Sym\AgdaSymbol
 \newcommand\D\AgdaDatatype
@@ -416,11 +417,14 @@ module PamoinamcuVeritas where
       → just n ≡ pamoinamcu (show n)
   non n = sym $ begin
     pamoinamcu (show n) ≡⟨ refl ⟩
-    𝕃.head (s $ show n) >>= readMaybe ≡⟨ {!!} ⟩
+    𝕃.head (s $ show n) >>= readMaybe ≡⟨ refl ⟩
+    𝓰 (s $ show n) ≡⟨ {!!} ⟩
+    𝓰 (show n ∷ []) ≡⟨ refl ⟩
     𝕃.head (show n ∷ []) >>= readMaybe ≡⟨ refl ⟩
     readMaybe (show n) ≡⟨ {!!} ⟩
     just n ∎
     where
+    𝓰 = (_>>= readMaybe) ∘ 𝕃.head
     s = 𝕊.wordsBy $ Data.Bool.T? ∘ Data.Bool.not ∘ Data.Char.isDigit
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
