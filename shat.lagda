@@ -418,7 +418,7 @@ module PamoinamcuVeritas where
   non n = sym $ begin
     pamoinamcu (show n) ≡⟨ refl ⟩
     𝕃.head (s $ show n) >>= readMaybe ≡⟨ refl ⟩
-    𝓰 (s $ show n) ≡⟨ {!!} ⟩
+    𝓰 (s $ show n) ≡⟨ DegjygirzuVeritas.pav n ▹ cong 𝓰 ⟩
     𝓰 (show n ∷ []) ≡⟨ refl ⟩
     𝕃.head (show n ∷ []) >>= readMaybe ≡⟨ refl ⟩
     readMaybe (show n) ≡⟨ {!!} ⟩
