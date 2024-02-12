@@ -439,7 +439,7 @@ module RomoivimcuVeritas where
   pav x = sym $ begin
     romoivimcu x ++ r ≡⟨ refl ⟩
     𝕊.fromList (rinit $ 𝕊.toList x) ++ r ≡⟨ takedrop ⟩
-    𝕊.fromList (_↑_ (length x' ℕ.∸ 1) x') ++ r ≡⟨ {!!} ⟩
+    𝕊.fromList (_↑ x' $ length x' ℕ.∸ 1) ++ r ≡⟨ {!!} ⟩
     𝕊.fromList x'' ≡⟨ x''≡x' ▹ cong 𝕊.fromList ⟩
     𝕊.fromList x' ≡⟨ [cev∘vec]² x ▹ sym ⟩
     x ∎
