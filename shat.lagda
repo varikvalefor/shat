@@ -381,6 +381,14 @@ degjygirzu = 𝕊.wordsBy aintDigit?
   aintDigit? = Data.Bool.T? ∘ Data.Bool.not ∘ isDigit 
 \end{code}
 
+\subsection{le ctaipe be le su'u la \F{degjygirzu}\ cu mapti}
+
+\begin{code}
+module DegjygirzuVeritas where
+  pav : (n : ℕ) → degjygirzu (show n) ≡ show n ∷ []
+  pav = {!!}
+\end{code}
+
 \section{la'oi .\F{pamoinamcu}.}
 ni'o ro da xi pa poi ke'a na'e degji lerfu zo'u ro da xi re poi ke'a ctaipe la'oi .\AgdaPostulate{String}.\ zo'u ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{pamoinamcu} \B x\ .zoi.\ gi su'o de poi ke'a kacna'u zo'u ga je la'oi .\B x.\ konkatena lo sinxa be de bei de xi pa bei de xi re gi ko'a de me'oi .\IC{just}.
 
