@@ -446,7 +446,7 @@ module PamoinamcuVeritas where
    c = {!!}
    c' = 𝕊.fromChar c
    𝓰 = (_>>= readMaybe) ∘ 𝕃.head
-   s = 𝕊.wordsBy $ Data.Bool.T? ∘ Data.Bool.not ∘ Data.Char.isDigit
+   s = degjygirzu
    open import Relation.Binary.PropositionalEquality
    open ≡-Reasoning
 \end{code}
