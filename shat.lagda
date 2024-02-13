@@ -438,10 +438,13 @@ module PamoinamcuVeritas where
    pamoinamcu (show n ++ x) ≡⟨ refl ⟩
    𝕃.head (s $ show n ++ x) >>= readMaybe ≡⟨ refl ⟩
    𝓰 (s $ show n ++ x) ≡⟨ {!!} ⟩
+   𝓰 (s $ show n ++ c' ++ x) ≡⟨ ? ⟩
    𝓰 (show n ∷ s x) ≡⟨ refl ⟩
    readMaybe (show n) ≡⟨ {!!} ⟩
    just n ∎
    where
+   c = {!!}
+   c' = 𝕊.fromChar c
    𝓰 = (_>>= readMaybe) ∘ 𝕃.head
    s = 𝕊.wordsBy $ Data.Bool.T? ∘ Data.Bool.not ∘ Data.Char.isDigit
    open import Relation.Binary.PropositionalEquality
