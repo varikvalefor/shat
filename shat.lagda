@@ -7,6 +7,7 @@
 \usepackage{amssymb}
 \usepackage{parskip}
 \usepackage{mathabx}
+\usepackage{fontspec}
 \usepackage{unicode-math}
 \usepackage{newunicodechar}
 
@@ -57,6 +58,10 @@
 \newunicodechar{⊓}{\ensuremath{\mathnormal\sqcap}}
 \newunicodechar{⟲}{\ensuremath{\mathnormal\circlearrowleft}}
 \newunicodechar{𝓰}{\ensuremath{\mathcal g}}
+
+\newfontface{\ayyplcihartai}{APL333}
+\DeclareTextFontCommand{\ayypl}{\ayyplcihartai}
+\newunicodechar{⌽}{\ensuremath{\ayypl{⌽}}}
 
 \newcommand\Sym\AgdaSymbol
 \newcommand\D\AgdaDatatype
@@ -473,13 +478,13 @@ module RomoivimcuVeritas where
             (maybe 𝕊.fromChar "" $ 𝕃.last $ 𝕊.toList x)))
   pav x = sym $ begin
     romoivimcu x ++ r ≡⟨ refl ⟩
-    𝕊.fromList (rinit $ 𝕊.toList x) ++ r ≡⟨ takedrop ⟩
+    𝕊.fromList (⌽1↓⌽ $ 𝕊.toList x) ++ r ≡⟨ takedrop ⟩
     𝕊.fromList (_↑ x' $ length x' ℕ.∸ 1) ++ r ≡⟨ {!!} ⟩
     𝕊.fromList x'' ≡⟨ x''≡x' ▹ cong 𝕊.fromList ⟩
     𝕊.fromList x' ≡⟨ [cev∘vec]² x ▹ sym ⟩
     x ∎
     where
-    rinit = 𝕃.reverse ∘ _↓_ 1 ∘ 𝕃.reverse
+    ⌽1↓⌽ = 𝕃.reverse ∘ _↓_ 1 ∘ 𝕃.reverse
     r = maybe 𝕊.fromChar "" $ 𝕃.last $ 𝕊.toList x
     x' = 𝕊.toList x
     x'' = _↑_ lx x' ++ _↓_ lx x'
