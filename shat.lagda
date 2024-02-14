@@ -443,7 +443,7 @@ module PamoinamcuVeritas where
    pamoinamcu (show n ++ x) ≡⟨ refl ⟩
    𝕃.head (s $ show n ++ x) >>= readMaybe ≡⟨ refl ⟩
    𝓰 (s $ show n ++ x) ≡⟨ {!!} ⟩
-   𝓰 (s $ show n ++ c' ++ x) ≡⟨ ? ⟩
+   𝓰 (s $ show n ++ c' ++ x) ≡⟨ {!!} ⟩
    𝓰 (show n ∷ s x) ≡⟨ refl ⟩
    readMaybe (show n) ≡⟨ {!!} ⟩
    just n ∎
