@@ -441,12 +441,13 @@ module PamoinamcuVeritas where
   pav rimco n c t j = sym $ begin
    pamoinamcu (show n ++ c' ++ t) ≡⟨ refl ⟩
    𝕃.head (s $ show n ++ c' ++ t) >>= readMaybe ≡⟨ refl ⟩
-   𝓰 (s $ show n ++ c' ++ t) ≡⟨ {!!} ⟩
+   𝓰 (s $ show n ++ c' ++ t) ≡⟨ dvr t n c j ▹ sym ▹ cong 𝓰 ⟩
    𝓰 (show n ∷ s (c' ++ t)) ≡⟨ refl ⟩
    𝕃.head (show n ∷ s (c' ++ t)) >>= readMaybe ≡⟨ refl ⟩
    readMaybe (show n) ≡⟨ rimco n ⟩
    just n ∎
    where
+   dvr = DegjygirzuVeritas.rel
    c' = 𝕊.fromChar c
    𝓰 = (_>>= readMaybe) ∘ 𝕃.head
    s = degjygirzu
