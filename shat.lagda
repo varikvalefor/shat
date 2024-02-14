@@ -435,26 +435,22 @@ module PamoinamcuVeritas where
 
   pav : ((n : ℕ) → readMaybe (show n) ≡ just n)
       → (n : ℕ)
-      → (x : String)
-      → (j : Data.Maybe.Is-just $ 𝕊.uncons x)
-      → let j' = Data.Maybe.to-witness j in
-        Data.Bool.false ≡_ $ isDigit $ proj₁ j'
-      → just n ≡ pamoinamcu (show n ++ x)
-  pav rimco n x j f = sym $ begin
-   pamoinamcu (show n ++ x) ≡⟨ refl ⟩
-   𝕃.head (s $ show n ++ x) >>= readMaybe ≡⟨ refl ⟩
-   𝓰 (s $ show n ++ x) ≡⟨ {!!} ⟩
-   𝓰 (s $ show n ++ c' ++ 1↓x) ≡⟨ {!!} ⟩
-   𝓰 (show n ∷ s x) ≡⟨ refl ⟩
-   𝕃.head (show n ∷ s x) >>= readMaybe ≡⟨ refl ⟩
+      → (c : Char)
+      → (s : String)
+      → Data.Bool.false ≡_ $ isDigit c
+      → just n ≡ pamoinamcu (show n ++ 𝕊.fromChar c ++ s)
+  pav rimco n c t j = sym $ begin
+   pamoinamcu (show n ++ c' ++ t) ≡⟨ refl ⟩
+   𝕃.head (s $ show n ++ c' ++ t) >>= readMaybe ≡⟨ refl ⟩
+   𝓰 (s $ show n ++ c' ++ t) ≡⟨ {!!} ⟩
+   𝓰 (show n ∷ s (c' ++ t)) ≡⟨ refl ⟩
+   𝕃.head (show n ∷ s (c' ++ t)) >>= readMaybe ≡⟨ refl ⟩
    readMaybe (show n) ≡⟨ rimco n ⟩
    just n ∎
    where
-   c = Data.Maybe.to-witness j
-   c' = 𝕊.fromChar $ proj₁ c
+   c' = 𝕊.fromChar c
    𝓰 = (_>>= readMaybe) ∘ 𝕃.head
    s = degjygirzu
-   1↓x = proj₂ c
    open import Relation.Binary.PropositionalEquality
    open ≡-Reasoning
 \end{code}
