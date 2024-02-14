@@ -447,7 +447,7 @@ module PamoinamcuVeritas where
    readMaybe (show n) ≡⟨ {!!} ⟩
    just n ∎
    where
-   c = {!!}
+   c = Data.Maybe.to-witness j
    c' = 𝕊.fromChar c
    𝓰 = (_>>= readMaybe) ∘ 𝕃.head
    s = degjygirzu
