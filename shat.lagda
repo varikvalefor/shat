@@ -720,11 +720,11 @@ open Reed
 ni'o pilno ko'a goi le me'oi .\AgdaKeyword{module}.\ co'e ki'u le su'u tu'a ko'a filri'a lo nu ciksi lo ctaipe be le su'u mapti  .i la .varik.\ na jinvi le du'u sarcu fa lo nu ciksi lo steci be la'oi .\F{reed}.\ jenai zo'e bau la .lojban.
 
 \subsection{le cmene be le me'oi .\AgdaKeyword{module}.\ fancu}
-ni'o zo'oi .k.\ cmavlaka'i zo konkatena
+ni'o zo .k.\ cmavlaka'i zo konkatena
 
-.i zo'oi .t.\ cmavlaka'i zo tolsti
+.i zo .t.\ cmavlaka'i zo tolsti
 
-.i cumki fa lo nu su'o da zo'u zo'oi .g.\ cmavlaka'i da
+.i cumki fa lo nu su'o da zo'u zo .g.\ cmavlaka'i da
 
 \subsection{le ctaipe be le su'u la'oi .\F{reed}.\ mapti}
 
