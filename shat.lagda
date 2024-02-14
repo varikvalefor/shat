@@ -418,8 +418,7 @@ pamoinamcu = (_>>= readMaybe) ∘ 𝕃.head ∘ degjygirzu
 \begin{code}
 module PamoinamcuVeritas where
   non : ((n : ℕ) → readMaybe (show n) ≡ just n)
-      → (n : ℕ)
-      → just n ≡ pamoinamcu (show n)
+      → (n : ℕ) → just n ≡ pamoinamcu (show n)
   non rimco n = sym $ begin
     pamoinamcu (show n) ≡⟨ refl ⟩
     𝕃.head (s $ show n) >>= readMaybe ≡⟨ refl ⟩
