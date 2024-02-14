@@ -456,7 +456,7 @@ module PamoinamcuVeritas where
 \end{code}
 
 \section{la'oi .\F{romoivimcu}.}
-ni'o la .varik.\ na birti lo du'u ciksi la'oi .\F{romoivimcu}.\ bau la .lojban.\ fo ma kau poi ke'a zabna
+ni'o la .varik.\ na birti lo du'u ciksi la'oi .\F{romoivimcu}.\ fo ma kau poi ke'a zabna je cu te gerna la .lojban.
 
 \begin{code}
 romoivimcu : String → String
