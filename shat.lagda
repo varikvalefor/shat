@@ -434,19 +434,20 @@ module PamoinamcuVeritas where
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
-  pav : (n : ℕ)
+  pav : ((n : ℕ) → readMaybe (show n) ≡ just n)
+      → (n : ℕ)
       → (x : String)
       → (j : Data.Maybe.Is-just $ 𝕊.head x)
       → Data.Bool.false ≡_ $ isDigit $ Data.Maybe.to-witness j
       → just n ≡ pamoinamcu (show n ++ x)
-  pav n x j f = sym $ begin
+  pav rimco n x j f = sym $ begin
    pamoinamcu (show n ++ x) ≡⟨ refl ⟩
    𝕃.head (s $ show n ++ x) >>= readMaybe ≡⟨ refl ⟩
    𝓰 (s $ show n ++ x) ≡⟨ {!!} ⟩
    𝓰 (s $ show n ++ c' ++ 1↓x) ≡⟨ {!!} ⟩
    𝓰 (show n ∷ s x) ≡⟨ refl ⟩
    𝕃.head (show n ∷ s x) >>= readMaybe ≡⟨ refl ⟩
-   readMaybe (show n) ≡⟨ {!!} ⟩
+   readMaybe (show n) ≡⟨ rimco n ⟩
    just n ∎
    where
    c = Data.Maybe.to-witness j
