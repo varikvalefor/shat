@@ -436,8 +436,9 @@ module PamoinamcuVeritas where
   pav : ((n : ℕ) → readMaybe (show n) ≡ just n)
       → (n : ℕ)
       → (x : String)
-      → (j : Data.Maybe.Is-just $ 𝕊.head x)
-      → Data.Bool.false ≡_ $ isDigit $ Data.Maybe.to-witness j
+      → (j : Data.Maybe.Is-just $ 𝕊.uncons x)
+      → let j' = Data.Maybe.to-witness j in
+        Data.Bool.false ≡_ $ isDigit $ proj₁ j'
       → just n ≡ pamoinamcu (show n ++ x)
   pav rimco n x j f = sym $ begin
    pamoinamcu (show n ++ x) ≡⟨ refl ⟩
@@ -450,10 +451,10 @@ module PamoinamcuVeritas where
    just n ∎
    where
    c = Data.Maybe.to-witness j
-   c' = 𝕊.fromChar c
+   c' = 𝕊.fromChar $ proj₁ c
    𝓰 = (_>>= readMaybe) ∘ 𝕃.head
    s = degjygirzu
-   1↓x = 𝕊.fromList $ 1 ↓_ $ 𝕊.toList x
+   1↓x = proj₂ c
    open import Relation.Binary.PropositionalEquality
    open ≡-Reasoning
 \end{code}
