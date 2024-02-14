@@ -445,6 +445,7 @@ module PamoinamcuVeritas where
    𝓰 (s $ show n ++ x) ≡⟨ {!!} ⟩
    𝓰 (s $ show n ++ c' ++ 1↓x) ≡⟨ {!!} ⟩
    𝓰 (show n ∷ s x) ≡⟨ refl ⟩
+   𝕃.head (show n ∷ s x) >>= readMaybe ≡⟨ refl ⟩
    readMaybe (show n) ≡⟨ {!!} ⟩
    just n ∎
    where
