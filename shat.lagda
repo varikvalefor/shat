@@ -398,10 +398,9 @@ module DegjygirzuVeritas where
       → (s : String)
       → (t : ℕ)
       → (c : Char)
-      → degjygirzu s ≡ L
       → Data.Bool.false ≡ isDigit c
       → (_≡_
-          (show t ∷ L)
+          (show t ∷ degjygirzu s)
           (degjygirzu $ show t ++ 𝕊.fromChar c ++ s))
   rel = {!!}
 \end{code}
