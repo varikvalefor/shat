@@ -939,6 +939,13 @@ module KanjyVeritas where
          i Cusku × i Namcusku
   dub₂ _ _ _ _ = refl , refl
 
+  jminac : (x : Buffer)
+         → (a : Buffer.F x)
+         → (_≡_
+             (kanji {x} $ Jmina a)
+             (x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" a))
+  jminac _ _ = refl
+
   nilzilcmiv : (x : Buffer)
              → (a b : Buffer.F x)
              → (d : a 𝔽.≤ b)
@@ -977,13 +984,6 @@ module KanjyVeritas where
              (_≡_ on (_↑_ (𝔽.toℕ a ℕ.⊓ 𝔽.toℕ b) ∘ L)) x x'
            × (_≡_ on (_↓_ (𝔽.toℕ a ℕ.⊔ 𝔽.toℕ b) ∘ L)) x x'
   muvdusin = {!!}
-
-  jminac : (x : Buffer)
-         → (a : Buffer.F x)
-         → (_≡_
-             (kanji {x} $ Jmina a)
-             (x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" a))
-  jminac _ _ = refl
 
   xrutis : (x : Buffer)
          → (n : Fin $ length $ Buffer.citri x)
