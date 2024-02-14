@@ -442,7 +442,7 @@ module PamoinamcuVeritas where
    pamoinamcu (show n ++ x) ≡⟨ refl ⟩
    𝕃.head (s $ show n ++ x) >>= readMaybe ≡⟨ refl ⟩
    𝓰 (s $ show n ++ x) ≡⟨ {!!} ⟩
-   𝓰 (s $ show n ++ c' ++ x) ≡⟨ {!!} ⟩
+   𝓰 (s $ show n ++ c' ++ 1↓x) ≡⟨ {!!} ⟩
    𝓰 (show n ∷ s x) ≡⟨ refl ⟩
    readMaybe (show n) ≡⟨ {!!} ⟩
    just n ∎
@@ -451,6 +451,7 @@ module PamoinamcuVeritas where
    c' = 𝕊.fromChar c
    𝓰 = (_>>= readMaybe) ∘ 𝕃.head
    s = degjygirzu
+   1↓x = 𝕊.fromList $ 1 ↓_ $ 𝕊.toList x
    open import Relation.Binary.PropositionalEquality
    open ≡-Reasoning
 \end{code}
