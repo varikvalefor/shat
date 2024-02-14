@@ -394,8 +394,7 @@ module DegjygirzuVeritas where
   pav : (n : ℕ) → degjygirzu (show n) ≡ show n ∷ []
   pav = {!!}
 
-  rel : (L : List String)
-      → (s : String)
+  rel : (s : String)
       → (t : ℕ)
       → (c : Char)
       → Data.Bool.false ≡ isDigit c
