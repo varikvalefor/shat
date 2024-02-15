@@ -926,7 +926,7 @@ kanji {x} (Vimcu a b _) = x' , nothing
             (proj₁ x)
             (𝕃.map
               (flip 𝔽.inject≤ $ DFP.toℕ≤n _)
-              (_↓_ (𝔽.toℕ a) $ 𝕃.allFin $ 𝔽.toℕ b)))
+              (𝔽.toℕ a ↓_ $ 𝕃.allFin $ 𝔽.toℕ b)))
     nin _ = _ ≟ _
 kanji = {!!}
 \end{code}
