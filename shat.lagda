@@ -937,7 +937,7 @@ kanji = {!!}
 module KanjyVeritas where
   sistid : (x : Buffer)
          → kanji {x} Sisti ≡_ $ x , just (inj₂ Sistiᵢₒ)
-  sistid = {!!}
+  sistid x = refl
 
   sistik : (x : Buffer)
          → kanji {x} Sisti! ≡_ $ x , just (inj₂ Sisti!ᵢₒ)
