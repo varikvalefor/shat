@@ -382,9 +382,7 @@ ni'o la .varik.\ na birti lo du'u ma kau zabna ciksi la \F{degjygirzu}\ fo mo ka
 
 \begin{code}
 degjygirzu : String → List String
-degjygirzu = 𝕊.wordsBy aintDigit?
-  where
-  aintDigit? = Data.Bool.T? ∘ Data.Bool.not ∘ isDigit 
+degjygirzu = 𝕊.wordsBy $ Data.Bool.T? ∘ Data.Bool.not ∘ isDigit
 \end{code}
 
 \subsection{le ctaipe be le su'u la \F{degjygirzu}\ cu mapti}
