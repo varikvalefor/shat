@@ -935,6 +935,10 @@ kanji = {!!}
 
 \begin{code}
 module KanjyVeritas where
+  sistid : (x : Buffer)
+         → kanji {x} Sisti ≡_ $ x , just (inj₂ Sistiᵢₒ)
+  sistid = {!!}
+
   dub₂ : (x : Buffer)
        → (a b : Buffer.F x)
        → (d : a 𝔽.≤ b)
