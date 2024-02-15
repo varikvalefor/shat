@@ -929,7 +929,10 @@ kanji {x} (Vimcu a b _) = x' , nothing
               (flip 𝔽.inject≤ $ DFP.toℕ≤n _)
               (𝔽.toℕ a ↓_ $ 𝕃.allFin $ 𝔽.toℕ b)))
     nin _ = _ ≟ _
-kanji = {!!}
+kanji {x} (Jmini a) = {!!}
+kanji {x} (Rejgau d) = {!!}
+kanji {x} (Basti a b _) = {!!}
+kanji {x} (Xruti n) = {!!}
 \end{code}
 
 \subsection{le ctaipe be le su'u la \F{kanji}\ cu mapti}
