@@ -412,7 +412,7 @@ pamoinamcu : String → Maybe ℕ
 pamoinamcu = (_>>= readMaybe) ∘ 𝕃.head ∘ degjygirzu
 \end{code}
 
-\subsection{le ctaipe be le su'u la'oi .\F{pamoinamcu}.\ mapti}
+\subsection{le ctaipe be le su'u mapti fa la'oi .\F{pamoinamcu}.}
 
 \begin{code}
 module PamoinamcuVeritas where
