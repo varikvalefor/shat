@@ -336,7 +336,13 @@ ni'o xu sarcu fa lo nu la .varik.\ cu ciksi la \F{dekydu'i} bau la .lojban.
 dekydu'i : {x n : ℕ}
          → {m : x ℕ.< n}
          → decToMaybe (x ℕ.<? n) ≡ just m
-dekydu'i = {!!}
+dekydu'i {x} {n} {m} = begin
+  decToMaybe (x ℕ.<? n) ≡⟨ {!!} ⟩
+  decToMaybe (yes m) ≡⟨ refl ⟩
+  just m ∎
+  where
+  open import Relation.Binary.PropositionalEquality
+  open ≡-Reasoning
 \end{code}
 
 \section{la'oi .\F{fromℕ?}.}
