@@ -1051,8 +1051,15 @@ main = run $ IO.lift snurytcati IO.>> getArgs IO.>>= uic ∘ 𝕃.head
   {-# FOREIGN GHC import System.OpenBSD.Plegg #-}
   {-# COMPILE GHC snurytcati = plegg [RPath, WPath, Stdio] #-}
   uic : Maybe String → IO ⊤
-  uic = (IO._>>= ⟲) ∘ maybe mkDef (IO.pure def)
+  uic = ⟲ <=<ᵢₒ_ $ maybe mkDef (IO.pure def)
     where
+    _<=<ᵢₒ_ : ∀ {a}
+            → {A B C : Set a}
+            → (B → IO C)
+            → (A → IO B)
+            → A
+            → IO C
+    _<=<ᵢₒ_ g f = (IO._>>= g) ∘ f
     def = record {
       datnyveicme = nothing;
       lerpinste = "" ∷ List.[];
