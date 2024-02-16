@@ -936,6 +936,8 @@ kanji {x} (Basti a b d) = kanji {x'} $ Jmina a∸1'
   where
   a∸1' = {!!}
   x' = proj₁ $ kanji {x} $ Vimcu a b d
+  a∸1'≡z : 𝔽.toℕ a∸1' ≡ 𝔽.toℕ a ℕ.∸ 1
+  a∸1'≡z = {!!}
 kanji {x} (Xruti n) = {!!}
 \end{code}
 
