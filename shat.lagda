@@ -932,8 +932,9 @@ kanji {x} (Vimcu a b _) = x' , nothing
     nin _ = _ ≟ _
 kanji {x} (Jmini a) = {!!}
 kanji {x} (Rejgau d) = {!!}
-kanji {x} (Basti a b d) = kanji {x'} $ Jmina {!!}
+kanji {x} (Basti a b d) = kanji {x'} $ Jmina a∸1'
   where
+  a∸1' = {!!}
   x' = proj₁ $ kanji {x} $ Vimcu a b d
 kanji {x} (Xruti n) = {!!}
 \end{code}
