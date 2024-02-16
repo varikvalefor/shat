@@ -922,7 +922,7 @@ kanji {x} (Vimcu a b _) = x' , nothing
     lerpinste = 𝕃.map proj₂ $ 𝕃.filter nin $ indice Lz}
     where
     Lz = Buffer.lerpinste x
-    indice = λ x → 𝕃.zip (𝕃.allFin $ length x) x
+    indice = λ x → x ▹ 𝕃.zip (𝕃.allFin $ length x)
     nin : (x : _)
         → (Dec $ _∉_ ⦃ liliList ⦄ ⦃ record {_≟_ = 𝔽._≟_} ⦄
             (proj₁ x)
