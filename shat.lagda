@@ -906,7 +906,7 @@ kanji {x} (Namcusku a b m) = x ,_ $ just $ inj₁ $ viiet kot
     where
     stringCat' = λ (x , z) → show x ++ "\t" ++ z
     uin : List String → List $ ℕ × String
-    uin = 𝕃.zip $ _↓_ (𝔽.toℕ a) $ 𝕃.upTo $ 𝔽.toℕ b ℕ.+ 1
+    uin = 𝕃.zip $ 𝔽.toℕ a ↓_ $ 𝕃.upTo $ 𝔽.toℕ b ℕ.+ 1
 kanji {x} (Muvgau a b _) = x' , nothing
   where
   x' = record x {
