@@ -819,8 +819,9 @@ module ReedVeritas where
     open Reed.No using (k)
     s' = 𝕊.fromChar c ++ s
     f = 𝕊.wordsBy $ _≟ ' '
-    v₁ = {!!}
-    v₂ = {!!}
+    v = Data.Maybe.to-witness {m = 𝕃.uncons $ f s'} {!!}
+    v₁ = proj₁ v
+    v₂ = proj₂ v
     j∘R = just ∘ Rejgau
     fs'≡v₁++v₂ : f s' ≡ v₁ ∷ v₂
     fs'≡v₁++v₂ = {!!}
