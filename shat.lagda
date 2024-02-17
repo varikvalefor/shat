@@ -814,7 +814,7 @@ module ReedVeritas where
       → just (Vimcu a b d) ≡ reed x (k₂ x a b 'd')
   vim = {!!}
 
-  uip : ((s : String) → 𝕊.unwords (𝕊.wordsBy (_≟ ' ') s) ≡ s)
+  uip : ((s : String) → s ≡ 𝕊.unwords (𝕊.wordsBy (_≟ ' ') s))
       → (x : Buffer)
       → (s : String)
       → (c : Char)
@@ -828,7 +828,7 @@ module ReedVeritas where
     k ("w" ∷ v₁ ∷ v₂) ≡⟨ refl ⟩
     j∘R (unwords $ v₁ ∷ v₂) ≡⟨ refl ⟩
     j∘R _ ≡⟨ fs'≡v₁++v₂ ▹ sym ▹ cong (j∘R ∘ unwords) ⟩
-    j∘R (unwords $ f s') ≡⟨ unwords∘f s' ▹ cong j∘R ⟩
+    j∘R (unwords $ f s') ≡⟨ unwords∘f s' ▹ sym ▹ cong j∘R ⟩
     j∘R s' ∎
     where
     open Reed.No using (k)
