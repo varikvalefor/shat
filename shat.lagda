@@ -1114,6 +1114,6 @@ main = run $ IO.lift snurytcati IO.>> getArgs IO.>>= uic ∘ 𝕃.head
       ... | Sistiᵢₒ = f $ mapₘ (λ _ → Sisti!) $ decToMaybe $ r ≟ c₁
         where
         r = Buffer.rejgaudatni x'
-        c₁ = mapₘ (unlines ∘ proj₁) $ 𝕃.head $ Buffer.citri x'
+        c₁ = just $ unlines $ Buffer.lerpinste x'
 \end{code}
 \end{document}
