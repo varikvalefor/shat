@@ -1001,6 +1001,13 @@ module KanjyVeritas where
             (_≡_ on ((𝔽.toℕ a) ↑_ ∘ Buffer.lerpinste)) x x₂
   takeduv = {!!}
 
+  dropyduv : (x : Buffer)
+           → (a b : Buffer.F x)
+           → (d : a 𝔽.≤ b)
+           → let x₂ = proj₁ $ kanji {x} $ Vimcu a b d in
+             (_≡_ on ((ℕ.suc $ 𝔽.toℕ b) ↑_ ∘ Buffer.lerpinste)) x x₂
+  dropyduv = {!!}
+
   pindices : (x : Buffer)
            → (a b : Buffer.F x)
            → (d : a 𝔽.≤ b)
