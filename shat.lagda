@@ -984,15 +984,22 @@ module KanjyVeritas where
                    (length $ Buffer.lerpinste x)
                    (ℕ.suc $ 𝔽.toℕ a ℕ.∸ 𝔽.toℕ b)))
   nilzilcmiv x a b d = begin
-    𝓵𝓫 x₂ ≡⟨ {!!} ⟩
-    𝓵𝓫 x ℕ.∸ ℕ.suc (a' ℕ.∸ b') ∎
+    lb x₂ ≡⟨ {!!} ⟩
+    lb x ℕ.∸ ℕ.suc (a' ℕ.∸ b') ∎
     where
     x₂ = proj₁ $ kanji {x} $ Vimcu a b d
-    𝓵𝓫 = length ∘ Buffer.lerpinste
+    lb = length ∘ Buffer.lerpinste
     a' = 𝔽.toℕ a
     b' = 𝔽.toℕ b
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
+
+  takeduv : (x : Buffer)
+          → (a b : Buffer.F x)
+          → (d : a 𝔽.≤ b)
+          → let x₂ = proj₁ $ kanji {x} $ Vimcu a b d in
+            (_≡_ on ((𝔽.toℕ a) ↑_ ∘ Buffer.lerpinste)) x x₂
+  takeduv = {!!}
 
   pindices : (x : Buffer)
            → (a b : Buffer.F x)
