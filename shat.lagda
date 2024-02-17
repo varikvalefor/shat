@@ -57,7 +57,9 @@
 \newunicodechar{⊔}{\ensuremath{\mathnormal\sqcup}}
 \newunicodechar{⊓}{\ensuremath{\mathnormal\sqcap}}
 \newunicodechar{⟲}{\ensuremath{\mathnormal\circlearrowleft}}
+\newunicodechar{𝓫}{\ensuremath{\mathcal b}}
 \newunicodechar{𝓰}{\ensuremath{\mathcal g}}
+\newunicodechar{𝓵}{\ensuremath{\mathcal l}}
 
 \newfontface{\ayyplcihartai}{APL333}
 \DeclareTextFontCommand{\ayypl}{\ayyplcihartai}
@@ -989,7 +991,16 @@ module KanjyVeritas where
                  (ℕ._∸_
                    (length $ Buffer.lerpinste x)
                    (ℕ.suc $ 𝔽.toℕ a ℕ.∸ 𝔽.toℕ b)))
-  nilzilcmiv = {!!}
+  nilzilcmiv x a b d = begin
+    𝓵𝓫 x₂ ≡⟨ {!!} ⟩
+    𝓵𝓫 x ℕ.∸ ℕ.suc (a' ℕ.∸ b') ∎
+    where
+    x₂ = proj₁ $ kanji {x} $ Vimcu a b d
+    𝓵𝓫 = length ∘ Buffer.lerpinste
+    a' = 𝔽.toℕ a
+    b' = 𝔽.toℕ b
+    open import Relation.Binary.PropositionalEquality
+    open ≡-Reasoning
 
   pindices : (x : Buffer)
            → (a b : Buffer.F x)
