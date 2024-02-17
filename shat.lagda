@@ -824,10 +824,10 @@ module ReedVeritas where
   uip unwords∘f x s c n = sym $ begin
     reed x ("w " ++ s') ≡⟨ w++s≡w++fs ▹ cong (reed x) ⟩
     reed x (unwords $ "w" ∷ f s') ≡⟨ {!!} ⟩
-    k ("w" ∷ f s') ≡⟨ fs'≡v₁++v₂ ▹ cong (k ∘ _∷_ "w") ⟩
+    k ("w" ∷ f s') ≡⟨ fs'≡v₁∷v₂ ▹ cong (k ∘ _∷_ "w") ⟩
     k ("w" ∷ v₁ ∷ v₂) ≡⟨ refl ⟩
     j∘R (unwords $ v₁ ∷ v₂) ≡⟨ refl ⟩
-    j∘R _ ≡⟨ fs'≡v₁++v₂ ▹ sym ▹ cong (j∘R ∘ unwords) ⟩
+    j∘R _ ≡⟨ fs'≡v₁∷v₂ ▹ sym ▹ cong (j∘R ∘ unwords) ⟩
     j∘R (unwords $ f s') ≡⟨ unwords∘f s' ▹ sym ▹ cong j∘R ⟩
     j∘R s' ∎
     where
@@ -838,8 +838,8 @@ module ReedVeritas where
     v₁ = proj₁ v
     v₂ = proj₂ v
     j∘R = just ∘ Rejgau
-    fs'≡v₁++v₂ : f s' ≡ v₁ ∷ v₂
-    fs'≡v₁++v₂ = {!!}
+    fs'≡v₁∷v₂ : f s' ≡ v₁ ∷ v₂
+    fs'≡v₁∷v₂ = {!!}
     unwords = 𝕊.unwords
     open Reed
     open import Relation.Binary.PropositionalEquality
