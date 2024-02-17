@@ -887,10 +887,12 @@ module ReedVeritas where
       → reed x "u" ≡ just (Xruti $ mink 𝔽.zero $ proj₂ z)
   xon x z = begin
     reed x "u" ≡⟨ {!!} ⟩
+    𝕃.head (𝕃.mapMaybe id terp') ≡⟨ {!!} ⟩
     mapₘ X (𝕃.head $ 𝕃.allFin _) ≡⟨ dzeroxe z ▹ cong (mapₘ X) ⟩
     just (X $ mink 𝔽.zero $ proj₂ z) ∎
     where
     X = Xruti
+    terp' = Reed.No.t "u" ∷ nothing ∷ nothing ∷ nothing ∷ []
     dzeroxe : {n : ℕ}
             → (z : Σ ℕ $ (_≡ n) ∘ ℕ.suc)
             → 𝕃.head (𝕃.allFin n) ≡ just (mink 𝔽.zero $ proj₂ z)
