@@ -839,7 +839,14 @@ module ReedVeritas where
     v₂ = proj₂ v
     j∘R = just ∘ Rejgau
     fs'≡v₁∷v₂ : f s' ≡ v₁ ∷ v₂
-    fs'≡v₁∷v₂ = {!!}
+    fs'≡v₁∷v₂ = consunwords (f s') {!!}
+      where
+      consunwords : ∀ {a} → {A : Set a}
+                  → (xs : List A)
+                  → (j : Data.Maybe.Is-just $ 𝕃.uncons xs)
+                  → let j' = Data.Maybe.to-witness j in
+                    xs ≡ proj₁ j' ∷ proj₂ j'
+      consunwords xs j = {!!}
     unwords = 𝕊.unwords
     open Reed
     open import Relation.Binary.PropositionalEquality
