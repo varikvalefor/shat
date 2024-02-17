@@ -933,17 +933,9 @@ kanji {x} (Vimcu a b _) = x' , nothing
   x' = record x {
     citri = Buffer.cninycitri x;
     cablerpinsle = {!!};
-    lerpinste = 𝕃.map proj₂ $ 𝕃.filter nin $ indice Lz}
+    lerpinste = 𝔽.toℕ a ↑ Lz ++ ℕ.suc (𝔽.toℕ b) ↓ Lz}
     where
     Lz = Buffer.lerpinste x
-    indice = λ x → x ▹ 𝕃.zip (𝕃.allFin $ length x)
-    nin : (x : _)
-        → (Dec $ _∉_ ⦃ liliList ⦄ ⦃ record {_≟_ = 𝔽._≟_} ⦄
-            (proj₁ x)
-            (𝕃.map
-              (flip 𝔽.inject≤ $ DFP.toℕ≤n _)
-              (𝔽.toℕ a ↓_ $ 𝕃.allFin $ 𝔽.toℕ b)))
-    nin _ = _ ≟ _
 kanji {x} (Jmini a) = {!!}
 kanji {x} (Rejgau d) = {!!}
 kanji {x} (Basti a b d) = kanji {x'} $ Jmina a∸1'
