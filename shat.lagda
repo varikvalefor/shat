@@ -1008,6 +1008,28 @@ module KanjyVeritas where
              (_≡_ on ((ℕ.suc $ 𝔽.toℕ b) ↑_ ∘ Buffer.lerpinste)) x x₂
   dropyduv = {!!}
 
+  vimcus : (x : Buffer)
+         → (a b : Buffer.F x)
+         → (d : a 𝔽.≤ b)
+         → (Σ
+             (∃ $ Fin ∘ length)
+             (λ (L , I)
+               → (_≡_
+                   (kanji {x} $ Vimcu a b d)
+                   (_,_
+                     record x {
+                       lerpinste = L;
+                       cablerpinsle = I
+                     }
+                     nothing))
+               × (_≡_
+                   (length L)
+                   (ℕ._∸_
+                     (length $ Buffer.lerpinste x)
+                     (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a ℕ.+ 1)))
+               × I ≡ {!!}))
+  vimcus = {!!}
+
   pindices : (x : Buffer)
            → (a b : Buffer.F x)
            → (d : a 𝔽.≤ b)
@@ -1048,28 +1070,6 @@ module KanjyVeritas where
                   citri = {!!}}
                 nothing)))
   xrutis = {!!}
-
-  vimcus : (x : Buffer)
-         → (a b : Buffer.F x)
-         → (d : a 𝔽.≤ b)
-         → (Σ
-             (∃ $ Fin ∘ length)
-             (λ (L , I)
-               → (_≡_
-                   (kanji {x} $ Vimcu a b d)
-                   (_,_
-                     record x {
-                       lerpinste = L;
-                       cablerpinsle = I
-                     }
-                     nothing))
-               × (_≡_
-                   (length L)
-                   (ℕ._∸_
-                     (length $ Buffer.lerpinste x)
-                     (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a ℕ.+ 1)))
-               × I ≡ {!!}))
-  vimcus = {!!}
 \end{code}
 
 \section{la'oi .\F{main}.}
