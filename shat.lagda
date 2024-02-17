@@ -814,13 +814,14 @@ module ReedVeritas where
       → just (Vimcu a b d) ≡ reed x (k₂ x a b 'd')
   vim = {!!}
 
-  uip : (x : Buffer)
+  uip : ((s : String) → 𝕊.unwords (𝕊.wordsBy (_≟ ' ') s) ≡ s)
+      → (x : Buffer)
       → (s : String)
       → (c : Char)
       → ¬ (c ≡ ' ')
       → (let s' = 𝕊.fromChar c ++ s in
          just (Rejgau s') ≡ reed x ("w " ++ s'))
-  uip x s c n = sym $ begin
+  uip unwords∘f x s c n = sym $ begin
     reed x ("w " ++ s') ≡⟨ w++s≡w++fs ▹ cong (reed x) ⟩
     reed x (unwords $ "w" ∷ f s') ≡⟨ {!!} ⟩
     k ("w" ∷ f s') ≡⟨ fs'≡v₁++v₂ ▹ cong (k ∘ _∷_ "w") ⟩
@@ -840,8 +841,6 @@ module ReedVeritas where
     fs'≡v₁++v₂ : f s' ≡ v₁ ∷ v₂
     fs'≡v₁++v₂ = {!!}
     unwords = 𝕊.unwords
-    unwords∘f : (s : String) → unwords (f s) ≡ s
-    unwords∘f = {!!}
     open Reed
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
