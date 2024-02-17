@@ -406,6 +406,13 @@ module DegjygirzuVeritas where
           (show t ∷ degjygirzu s)
           (degjygirzu $ show t ++ 𝕊.fromChar c ++ s))
   rel = {!!}
+
+  rybic : (s : String)
+        → (J : Data.Maybe.Is-just $ 𝕊.uncons s)
+        → (let J' = Data.Maybe.to-witness J in
+            Data.Bool.false ≡ isDigit (proj₁ J')
+          → degjygirzu s ≡ degjygirzu (proj₂ J'))
+  rybic = {!!}
 \end{code}
 
 \section{la'oi .\F{pamoinamcu}.}
