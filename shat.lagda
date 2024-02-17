@@ -408,10 +408,11 @@ module DegjygirzuVeritas where
   rel = {!!}
 
   rybic : (s : String)
-        → (J : Data.Maybe.Is-just $ 𝕊.uncons s)
-        → (let J' = Data.Maybe.to-witness J in
-            Data.Bool.false ≡ isDigit (proj₁ J')
-          → degjygirzu s ≡ degjygirzu (proj₂ J'))
+        → (c : Char)
+        → Data.Bool.false ≡ isDigit c
+        → (_≡_
+            (degjygirzu s)
+            (degjygirzu $ 𝕊.fromChar c ++ s))
   rybic = {!!}
 \end{code}
 
