@@ -774,7 +774,7 @@ module ReedVeritas where
     reed x (k₂ x a b 'm') ≡⟨ refl ⟩
     reed x k2 ≡⟨ refl ⟩
     𝕃.head (𝕃.mapMaybe id RL) ≡⟨ {!!} ⟩
-    𝕃.head (𝕃.mapMaybe id RL') ≡⟨ {!!} ⟩
+    𝕃.head (𝕃.mapMaybe id RL') ≡⟨ RL'≡Ret ⟩
     Reed.Re.t x k2 ≡⟨ refl ⟩
     _,ₘ_ (romoi k2) oglok >>= r2og ≡⟨ reldunsi'u romoim joglok ⟩
     _,ₘ_ (just 'm') (just $ (a , b) , d) >>= r2og ≡⟨ refl ⟩
@@ -795,6 +795,10 @@ module ReedVeritas where
                → x ≡ z
                → _,ₘ_ a x >>= r2og ≡ _,ₘ_ b z >>= r2og
     reldunsi'u refl refl = refl
+    RL'≡Ret : 𝕃.head (𝕃.mapMaybe id RL') ≡ Reed.Re.t x k2
+    RL'≡Ret with Reed.Re.t x k2
+    ... | just _ = refl
+    ... | nothing = refl
     romoim : romoi k2 ≡ just 'm'
     romoim = {!!}
     joglok : oglok ≡_ $ just $ (a , b) , d
