@@ -493,6 +493,7 @@ module RomoivimcuVeritas where
     romoivimcu x ++ r ≡⟨ refl ⟩
     𝕊.fromList (⌽1↓⌽ $ 𝕊.toList x) ++ r ≡⟨ takedrop ⟩
     𝕊.fromList (_↑ x' $ length x' ℕ.∸ 1) ++ r ≡⟨ {!!} ⟩
+    𝕊.fromList ((_↑ x' $ length x' ℕ.∸ 1) ++ r') ≡⟨ {!!} ⟩
     𝕊.fromList x'' ≡⟨ x''≡x' ▹ cong 𝕊.fromList ⟩
     𝕊.fromList x' ≡⟨ [cev∘vec]² x ▹ sym ⟩
     x ∎
@@ -503,6 +504,7 @@ module RomoivimcuVeritas where
     x'' = _↑_ lx x' ++ _↓_ lx x'
       where
       lx = length x' ℕ.∸ 1
+    r' = _↓ x' $ length x' ℕ.∸ 1
     x''≡x' : x'' ≡ x'
     x''≡x' = DLP.take++drop (length x' ℕ.∸ 1) x'
     [cev∘vec]² : (x : String)
