@@ -818,7 +818,7 @@ module ReedVeritas where
       → just (Vimcu a b d) ≡ reed x (k₂ x a b 'd')
   vim = {!!}
 
-  uip : ((s : String) → s ≡ 𝕊.unwords (𝕊.wordsBy (_≟ ' ') s))
+  uip : ((s : String) → s ≡_ $ 𝕊.unwords $ 𝕊.wordsBy (_≟ ' ') s)
       → (x : Buffer)
       → (s : String)
       → (c : Char)
