@@ -931,7 +931,7 @@ kanji {x} (Jmina a) = x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" a
 kanji {x} (Cusku a b _) = x ,_ $ just $ inj₁ $ unlines $ i BL
   where
   BL = Buffer.lerpinste x
-  i = _↓_ (𝔽.toℕ a) ∘ _↑_ (𝔽.toℕ b ℕ.+ 1)
+  i = (𝔽.toℕ a) ↓_ ∘ (𝔽.toℕ b ℕ.+ 1) ↑_
 kanji {x} (Namcusku a b m) = x ,_ $ just $ inj₁ $ viiet kot
   where
   kot = from-inj₁ $ from-just $ proj₂ $ kanji {x} $ Cusku a b m
