@@ -1008,8 +1008,10 @@ module KanjyVeritas where
                    (ℕ.suc $ 𝔽.toℕ a ℕ.∸ 𝔽.toℕ b)))
   nilzilcmiv x a b d = begin
     lb x₂ ≡⟨ {!!} ⟩
+    length (𝔽.toℕ a ↑ Lz ++ ℕ.suc (𝔽.toℕ b) ↓ Lz) ≡⟨ {!!} ⟩
     lb x ℕ.∸ ℕ.suc (𝔽.toℕ a ℕ.∸ 𝔽.toℕ b) ∎
     where
+    Lz = Buffer.lerpinste x
     x₂ = proj₁ $ kanji {x} $ Vimcu a b d
     lb = length ∘ Buffer.lerpinste
     open import Relation.Binary.PropositionalEquality
