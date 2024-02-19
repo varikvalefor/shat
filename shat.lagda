@@ -1010,6 +1010,7 @@ module KanjyVeritas where
     lb x₂ ≡⟨ {!!} ⟩
     length (𝔽.toℕ a ↑ Lz ++ ℕ.suc (𝔽.toℕ b) ↓ Lz) ≡⟨ refl ⟩
     length (a' ↑ Lz ++ b'++ ↓ Lz) ≡⟨ {!!} ⟩
+    length (a' ↑ Lz) ℕ.+ length (b'++ ↓ Lz) ≡⟨ {!!} ⟩
     lb x ℕ.∸ ℕ.suc (a' ℕ.∸ b') ≡⟨ refl ⟩
     lb x ℕ.∸ ℕ.suc (𝔽.toℕ a ℕ.∸ 𝔽.toℕ b) ∎
     where
