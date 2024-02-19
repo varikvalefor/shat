@@ -783,6 +783,7 @@ module ReedVeritas where
     Reed.Re.t x k2 ≡⟨ refl ⟩
     _,ₘ_ (romoi k2) oglok >>= r2og ≡⟨ reldunsi'u romoim joglok ⟩
     _,ₘ_ (just 'm') (just $ (a , b) , d) >>= r2og ≡⟨ refl ⟩
+    just ('m' , (a , b) , d) >>= r2og ≡⟨ refl ⟩
     Reed.Re.g x a b d 'm' ≡⟨ refl ⟩
     just (Muvgau a b d) ∎
     where
