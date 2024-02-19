@@ -913,7 +913,7 @@ module ReedVeritas where
     X = Xruti
     terp' = Reed.No.t "u" ∷ nothing ∷ nothing ∷ nothing ∷ []
     dzeroxe : {n : ℕ}
-            → (z : Σ ℕ $ (_≡ n) ∘ ℕ.suc)
+            → (z : ∃ $ (_≡ n) ∘ ℕ.suc)
             → 𝕃.head (𝕃.allFin n) ≡ just (mink 𝔽.zero $ proj₂ z)
     dzeroxe (_ , refl) = refl
     open import Relation.Binary.PropositionalEquality
