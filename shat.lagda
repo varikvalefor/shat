@@ -777,7 +777,8 @@ module ReedVeritas where
   mixer x a b d = sym $ begin
     reed x (k₂ x a b 'm') ≡⟨ refl ⟩
     reed x k2 ≡⟨ refl ⟩
-    𝕃.head (𝕃.mapMaybe id RL) ≡⟨ RL≡RL' ▹ cong (𝕃.head ∘ 𝕃.mapMaybe id) ⟩
+    𝕃.head (𝕃.mapMaybe id RL) ≡⟨ refl ⟩
+    _ ≡⟨ RL≡RL' ▹ cong (𝕃.head ∘ 𝕃.mapMaybe id) ⟩
     𝕃.head (𝕃.mapMaybe id RL') ≡⟨ RL'≡Ret ⟩
     Reed.Re.t x k2 ≡⟨ refl ⟩
     _,ₘ_ (romoi k2) oglok >>= r2og ≡⟨ reldunsi'u romoim joglok ⟩
