@@ -1089,7 +1089,7 @@ main = run $ IO.lift snurytcati IO.>> getArgs IO.>>= uic ∘ 𝕃.head
             → (A → IO B)
             → A
             → IO C
-    _<=<ᵢₒ_ g f = (IO._>>= g) ∘ f
+    _<=<ᵢₒ_ g = _∘_ $ IO._>>= g
     def = record {
       datnyveicme = nothing;
       lerpinste = "" ∷ List.[];
