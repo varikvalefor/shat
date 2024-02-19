@@ -1008,9 +1008,14 @@ module KanjyVeritas where
                    (ℕ.suc $ 𝔽.toℕ a ℕ.∸ 𝔽.toℕ b)))
   nilzilcmiv x a b d = begin
     lb x₂ ≡⟨ {!!} ⟩
-    length (𝔽.toℕ a ↑ Lz ++ ℕ.suc (𝔽.toℕ b) ↓ Lz) ≡⟨ {!!} ⟩
+    length (𝔽.toℕ a ↑ Lz ++ ℕ.suc (𝔽.toℕ b) ↓ Lz) ≡⟨ refl ⟩
+    length (a' ↑ Lz ++ b'++ ↓ Lz) ≡⟨ {!!} ⟩
+    lb x ℕ.∸ ℕ.suc (a' ℕ.∸ b') ≡⟨ refl ⟩
     lb x ℕ.∸ ℕ.suc (𝔽.toℕ a ℕ.∸ 𝔽.toℕ b) ∎
     where
+    b' = 𝔽.toℕ b
+    b'++ = ℕ.suc b'
+    a' = 𝔽.toℕ a
     Lz = Buffer.lerpinste x
     x₂ = proj₁ $ kanji {x} $ Vimcu a b d
     lb = length ∘ Buffer.lerpinste
