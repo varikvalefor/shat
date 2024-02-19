@@ -836,12 +836,14 @@ module ReedVeritas where
     open Reed.No using (k)
     s' = 𝕊.fromChar c ++ s
     f = 𝕊.wordsBy $ _≟ ' '
-    v = Data.Maybe.to-witness {m = 𝕃.uncons $ f s'} {!!}
+    uj : Data.Maybe.Is-just $ 𝕃.uncons $ f s'
+    uj = {!!}
+    v = Data.Maybe.to-witness uj
     v₁ = proj₁ v
     v₂ = proj₂ v
     j∘R = just ∘ Rejgau
     fs'≡v₁∷v₂ : f s' ≡ v₁ ∷ v₂
-    fs'≡v₁∷v₂ = consunwords (f s') {!!}
+    fs'≡v₁∷v₂ = consunwords (f s') uj
       where
       consunwords : ∀ {a} → {A : Set a}
                   → (xs : List A)
