@@ -947,7 +947,9 @@ kanji {x} (Vimcu a b _) = x' , nothing
     where
     Lz = Buffer.lerpinste x
 kanji {x} (Jmini a) = {!!}
-kanji {x} (Rejgau d) = {!!}
+kanji {x} (Rejgau d) = x ,_ $ just $ inj₂ $ Rejgauᵢₒ xl d
+  where
+  xl = unlines $ Buffer.lerpinste x
 kanji {x} (Basti a b d) = kanji {x'} $ Jmina a∸1'
   where
   a∸1' = {!!}
