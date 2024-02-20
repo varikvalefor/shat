@@ -770,7 +770,12 @@ module ReedVeritas where
   ac : (x : Buffer)
      → (a : Buffer.F x)
      → just (Jmina a) ≡ reed x (k₁ x a 'a')
-  ac = {!!}
+  ac x a = sym $ begin
+    reed x (k₁ x a 'a') ≡⟨ {!!} ⟩
+    just (Jmina a) ∎
+    where
+    open import Relation.Binary.PropositionalEquality
+    open ≡-Reasoning
 
   ic : (x : Buffer)
      → (a : Buffer.F x)
