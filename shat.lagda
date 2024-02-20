@@ -1039,6 +1039,13 @@ module KanjyVeritas where
                (λ ℓ → L ! n ≡ Lx ! 𝔽.fromℕ< ℓ))
   pindices x a b d n = {!!} , {!!}
 
+  muvduzilcmi : (x : Buffer)
+              → (a b c : Buffer.F x)
+              → (d : a 𝔽.≤ b)
+              → let x' = kanji {x} $ Muvgau a b c d in
+                (_≡_ on (length ∘ Buffer.lerpinste)) x $ proj₁ x'
+  muvduzilcmi = {!!}
+
   muvdusin : (x : Buffer)
            → (a b : Buffer.F x)
            → let R = DFP.≤-reflexive refl in
