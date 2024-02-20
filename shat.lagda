@@ -1009,7 +1009,7 @@ module KanjyVeritas where
                    (length $ Buffer.lerpinste x)
                    (ℕ.suc $ 𝔽.toℕ a ℕ.∸ 𝔽.toℕ b)))
   nilzilcmiv x a b d = begin
-    lb x₂ ≡⟨ {!!} ⟩
+    lb x₂ ≡⟨ refl ⟩
     length (𝔽.toℕ a ↑ Lz ++ ℕ.suc (𝔽.toℕ b) ↓ Lz) ≡⟨ refl ⟩
     length (a' ↑ Lz ++ b'++ ↓ Lz) ≡⟨ DLP.length-++ $ a' ↑ Lz ⟩
     length (a' ↑ Lz) ℕ.+ length (b'++ ↓ Lz) ≡⟨ {!!} ⟩
