@@ -391,12 +391,13 @@ degjygirzu = 𝕊.wordsBy $ Data.Bool.T? ∘ Data.Bool.not ∘ isDigit
 
 \begin{code}
 module DegjygirzuVeritas where
-  pav : (n : ℕ) → degjygirzu (show n) ≡ show n ∷ []
-  pav n = begin
+  pav : ((x : String) → x ≡ 𝕊.fromList (𝕊.toList x))
+      → (n : ℕ) → degjygirzu (show n) ≡ show n ∷ []
+  pav fromList∘toList n = begin
     degjygirzu (show n) ≡⟨ refl ⟩
     𝕃.map 𝕊.fromList (d $ 𝕊.toList $ show n) ≡⟨ refl ⟩
     mL (d $ show' n) ≡⟨ {!!} ⟩
-    mL (show' n ∷ []) ≡⟨ {!!} ⟩
+    mL (show' n ∷ []) ≡⟨ fromList∘toList (show n) ▹ sym ▹ cong (_∷ []) ⟩
     show n ∷ [] ∎
     where
     mL = 𝕃.map 𝕊.fromList
@@ -436,11 +437,12 @@ pamoinamcu = (_>>= readMaybe) ∘ 𝕃.head ∘ degjygirzu
 \begin{code}
 module PamoinamcuVeritas where
   non : ((n : ℕ) → readMaybe (show n) ≡ just n)
+      → ((x : String) → x ≡ 𝕊.fromList (𝕊.toList x))
       → (n : ℕ) → just n ≡ pamoinamcu (show n)
-  non rimco n = sym $ begin
+  non rimco fL∘tL n = sym $ begin
     pamoinamcu (show n) ≡⟨ refl ⟩
     𝕃.head (s $ show n) >>= readMaybe ≡⟨ refl ⟩
-    𝓰 (s $ show n) ≡⟨ DegjygirzuVeritas.pav n ▹ cong 𝓰 ⟩
+    𝓰 (s $ show n) ≡⟨ DegjygirzuVeritas.pav fL∘tL n ▹ cong 𝓰 ⟩
     𝓰 (show n ∷ []) ≡⟨ refl ⟩
     𝕃.head (show n ∷ []) >>= readMaybe ≡⟨ refl ⟩
     readMaybe (show n) ≡⟨ rimco n ⟩
