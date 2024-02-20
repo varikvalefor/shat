@@ -393,11 +393,11 @@ degjygirzu = 𝕊.wordsBy $ Data.Bool.T? ∘ Data.Bool.not ∘ isDigit
 module DegjygirzuVeritas where
   pav : ((x : String) → x ≡ 𝕊.fromList (𝕊.toList x))
       → (n : ℕ) → degjygirzu (show n) ≡ show n ∷ []
-  pav fromList∘toList n = begin
+  pav fL∘tL n = begin
     degjygirzu (show n) ≡⟨ refl ⟩
     𝕃.map 𝕊.fromList (d $ 𝕊.toList $ show n) ≡⟨ refl ⟩
     mL (d $ show' n) ≡⟨ {!!} ⟩
-    mL (show' n ∷ []) ≡⟨ fromList∘toList (show n) ▹ sym ▹ cong (_∷ []) ⟩
+    mL (show' n ∷ []) ≡⟨ fL∘tL (show n) ▹ sym ▹ cong (_∷ []) ⟩
     show n ∷ [] ∎
     where
     mL = 𝕃.map 𝕊.fromList
