@@ -393,9 +393,11 @@ degjygirzu = 𝕊.wordsBy $ Data.Bool.T? ∘ Data.Bool.not ∘ isDigit
 module DegjygirzuVeritas where
   pav : (n : ℕ) → degjygirzu (show n) ≡ show n ∷ []
   pav n = begin
-    degjygirzu (show n) ≡⟨ {!!} ⟩
+    degjygirzu (show n) ≡⟨ refl ⟩
+    𝕃.map 𝕊.fromList (d $ 𝕊.toList $ show n) ≡⟨ {!!} ⟩
     show n ∷ [] ∎
     where
+    d = 𝕃.wordsBy $ Data.Bool.T? ∘ Data.Bool.not ∘ isDigit
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
