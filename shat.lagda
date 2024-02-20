@@ -767,6 +767,58 @@ module ReedVeritas where
       where
       f = show ∘ 𝔽.toℕ
 
+  uin : (x : Buffer)
+      → reed x "w" ≡ mapₘ Rejgau (Buffer.datnyveicme x)
+  uin x = begin
+    reed x "w" ≡⟨ refl ⟩
+    𝕃.head (𝕃.mapMaybe id L) ≡⟨ duridos ⟩
+    𝕃.head (𝕊.toList "w") >>= Reed.No.g ≡⟨ refl ⟩
+    mapₘ Rejgau (Buffer.datnyveicme x) ∎
+    where
+    open Reed
+    ridos = 𝕃.head (𝕊.toList "w") >>= Reed.No.g
+    L = ridos ∷ _
+    duridos : 𝕃.head (𝕃.mapMaybe id L) ≡ ridos
+    duridos with ridos
+    ... | just _ = refl
+    ... | nothing = refl
+    open import Relation.Binary.PropositionalEquality
+    open ≡-Reasoning
+
+  -- ni'o la .varik. cu stidi lo nu tcidu le velcki be
+  -- la .uin. fa lo na jimpe be fi la .kybin. je la'oi
+  -- .kybin'.
+
+  kybin : (x : Buffer)
+        → reed x "q" ≡ just Sisti
+  kybin _ with 𝕃.head (𝕊.toList "q") >>= Reed.No.g
+  ... | just _ = refl
+  ... | nothing = refl
+
+  kybin' : (x : Buffer)
+         → reed x "Q" ≡ just Sisti!
+  kybin' _ with 𝕃.head (𝕊.toList "Q") >>= Reed.No.g
+  ... | just _ = refl
+  ... | nothing = refl
+
+  xon : (x : Buffer)
+      → (z : ∃ λ n → ℕ.suc n ≡ length (Buffer.citri x))
+      → reed x "u" ≡ just (Xruti $ mink 𝔽.zero $ proj₂ z)
+  xon x z = begin
+    reed x "u" ≡⟨ {!!} ⟩
+    𝕃.head (𝕃.mapMaybe id terp') ≡⟨ {!!} ⟩
+    mapₘ X (𝕃.head $ 𝕃.allFin _) ≡⟨ dzeroxe z ▹ cong (mapₘ X) ⟩
+    just (X $ mink 𝔽.zero $ proj₂ z) ∎
+    where
+    X = Xruti
+    terp' = Reed.No.t "u" ∷ nothing ∷ nothing ∷ nothing ∷ []
+    dzeroxe : {n : ℕ}
+            → (z : ∃ $ (_≡ n) ∘ ℕ.suc)
+            → 𝕃.head (𝕃.allFin n) ≡ just (mink 𝔽.zero $ proj₂ z)
+    dzeroxe (_ , refl) = refl
+    open import Relation.Binary.PropositionalEquality
+    open ≡-Reasoning
+
   ac : (x : Buffer)
      → (a : Buffer.F x)
      → just (Jmina a) ≡ reed x (k₁ x a 'a')
@@ -880,58 +932,6 @@ module ReedVeritas where
     open ≡-Reasoning
     w++s≡w++fs : "w " ++ s' ≡ unwords ("w" ∷ f s')
     w++s≡w++fs = {!!}
-
-  uin : (x : Buffer)
-      → reed x "w" ≡ mapₘ Rejgau (Buffer.datnyveicme x)
-  uin x = begin
-    reed x "w" ≡⟨ refl ⟩
-    𝕃.head (𝕃.mapMaybe id L) ≡⟨ duridos ⟩
-    𝕃.head (𝕊.toList "w") >>= Reed.No.g ≡⟨ refl ⟩
-    mapₘ Rejgau (Buffer.datnyveicme x) ∎
-    where
-    open Reed
-    ridos = 𝕃.head (𝕊.toList "w") >>= Reed.No.g
-    L = ridos ∷ _
-    duridos : 𝕃.head (𝕃.mapMaybe id L) ≡ ridos
-    duridos with ridos
-    ... | just _ = refl
-    ... | nothing = refl
-    open import Relation.Binary.PropositionalEquality
-    open ≡-Reasoning
-
-  -- ni'o la .varik. cu stidi lo nu tcidu le velcki be
-  -- la .uin. fa lo na jimpe be fi la .kybin. je la'oi
-  -- .kybin'.
-
-  kybin : (x : Buffer)
-        → reed x "q" ≡ just Sisti
-  kybin _ with 𝕃.head (𝕊.toList "q") >>= Reed.No.g
-  ... | just _ = refl
-  ... | nothing = refl
-
-  kybin' : (x : Buffer)
-         → reed x "Q" ≡ just Sisti!
-  kybin' _ with 𝕃.head (𝕊.toList "Q") >>= Reed.No.g
-  ... | just _ = refl
-  ... | nothing = refl
-
-  xon : (x : Buffer)
-      → (z : ∃ λ n → ℕ.suc n ≡ length (Buffer.citri x))
-      → reed x "u" ≡ just (Xruti $ mink 𝔽.zero $ proj₂ z)
-  xon x z = begin
-    reed x "u" ≡⟨ {!!} ⟩
-    𝕃.head (𝕃.mapMaybe id terp') ≡⟨ {!!} ⟩
-    mapₘ X (𝕃.head $ 𝕃.allFin _) ≡⟨ dzeroxe z ▹ cong (mapₘ X) ⟩
-    just (X $ mink 𝔽.zero $ proj₂ z) ∎
-    where
-    X = Xruti
-    terp' = Reed.No.t "u" ∷ nothing ∷ nothing ∷ nothing ∷ []
-    dzeroxe : {n : ℕ}
-            → (z : ∃ $ (_≡ n) ∘ ℕ.suc)
-            → 𝕃.head (𝕃.allFin n) ≡ just (mink 𝔽.zero $ proj₂ z)
-    dzeroxe (_ , refl) = refl
-    open import Relation.Binary.PropositionalEquality
-    open ≡-Reasoning
 \end{code}
 
 \section{la \F{kanji}}
