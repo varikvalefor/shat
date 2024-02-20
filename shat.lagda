@@ -306,7 +306,7 @@ data Cmd (x : Buffer) : Set where
   Namcusku : typeOf Vimcu
   Basti : typeOf Vimcu
   Cusku : typeOf Vimcu
-  Muvgau : typeOf Vimcu
+  Muvgau : (a b c : Buffer.F x) → a 𝔽.≤ b → Cmd x
   Xruti : Fin $ length $ Buffer.citri x → Cmd x
 \end{code}
 
@@ -712,7 +712,6 @@ module Reed where
     g x a b z j with j
     ... | 'c' = just $ Basti a b z
     ... | 'd' = just $ Vimcu a b z
-    ... | 'm' = just $ Muvgau a b z
     ... | 'n' = just $ Namcusku a b z
     ... | 'p' = just $ Cusku a b z
     ... | _ = nothing
@@ -723,6 +722,15 @@ module Reed where
       og = orsygenturfa'i $ romoivimcu s
       romoi = 𝕃.last ∘ 𝕊.toList
       g' = λ (r' , (a , b) , z) → g x a b z r'
+
+  module Ci where
+    g : (x : Buffer)
+      → (a b c : Buffer.F x)
+      → (a 𝔽.≤ b)
+      → Char
+      → Maybe $ Cmd x
+    g _ a b c d 'm' = just $ Muvgau a b c d
+    g _ _ _ _ _ _ = nothing
 
   reed : (x : Buffer) → String → Maybe $ Cmd x
   reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
@@ -766,6 +774,12 @@ module ReedVeritas where
     k₂ _ a b x = f a ++ "," ++ f b ++ 𝕊.fromChar x
       where
       f = show ∘ 𝔽.toℕ
+
+    k₃ : (x : Buffer)
+       → (a b c : Buffer.F x)
+       → Char
+       → String
+    k₃ x a b c s = k₂ x a b s ++ show (𝔽.toℕ c)
 
   uin : (x : Buffer)
       → reed x "w" ≡ mapₘ Rejgau (Buffer.datnyveicme x)
@@ -835,48 +849,10 @@ module ReedVeritas where
   ic = {!!}
 
   mixer : (x : Buffer)
-        → (a b : Buffer.F x)
+        → (a b c : Buffer.F x)
         → (d : a 𝔽.≤ b)
-        → just (Muvgau a b d) ≡ reed x (k₂ x a b 'm')
-  mixer x a b d = sym $ begin
-    reed x (k₂ x a b 'm') ≡⟨ refl ⟩
-    reed x k2 ≡⟨ refl ⟩
-    𝕃.head (𝕃.mapMaybe id RL) ≡⟨ refl ⟩
-    _ ≡⟨ RL≡RL' ▹ cong (𝕃.head ∘ 𝕃.mapMaybe id) ⟩
-    𝕃.head (𝕃.mapMaybe id RL') ≡⟨ RL'≡Ret ⟩
-    Reed.Re.t x k2 ≡⟨ refl ⟩
-    _,ₘ_ (romoi k2) oglok >>= r2og ≡⟨ reldunsi'u romoim joglok ⟩
-    _,ₘ_ (just 'm') (just $ (a , b) , d) >>= r2og ≡⟨ refl ⟩
-    just ('m' , (a , b) , d) >>= r2og ≡⟨ refl ⟩
-    Reed.Re.g x a b d 'm' ≡⟨ refl ⟩
-    just (Muvgau a b d) ∎
-    where
-    romoi = 𝕃.last ∘ 𝕊.toList
-    r2og = λ (r' , (a , b) , z) → Reed.Re.g x a b z r'
-    _,ₘ_ = (Data.Maybe.ap ∘₂ mapₘ) _,_
-    k2 = k₂ x a b 'm'
-    RL = Reed.No.t k2 ∷ Reed.Pa.t k2 ∷ Reed.Re.t x k2 ∷ nok ∷ []
-      where
-      nok = Reed.No.k $ 𝕊.wordsBy (_≟ ' ') k2
-    RL' = nothing ∷ nothing ∷ Reed.Re.t x k2 ∷ nothing ∷ []
-    oglok = orsygenturfa'i $ romoivimcu k2
-    reldunsi'u : {a b : _} → {x z : _}
-               → a ≡ b
-               → x ≡ z
-               → _,ₘ_ a x >>= r2og ≡ _,ₘ_ b z >>= r2og
-    reldunsi'u refl refl = refl
-    RL'≡Ret : 𝕃.head (𝕃.mapMaybe id RL') ≡ Reed.Re.t x k2
-    RL'≡Ret with Reed.Re.t x k2
-    ... | just _ = refl
-    ... | nothing = refl
-    romoim : romoi k2 ≡ just 'm'
-    romoim = {!!}
-    joglok : oglok ≡_ $ just $ (a , b) , d
-    joglok = {!!}
-    RL≡RL' : RL ≡ RL'
-    RL≡RL' = {!!}
-    open import Relation.Binary.PropositionalEquality
-    open ≡-Reasoning
+        → just (Muvgau a b c d) ≡ reed x (k₂ x a b 'm')
+  mixer x a b c d = {!!}
 
   vim : (x : Buffer)
       → (a b : Buffer.F x)
@@ -956,7 +932,7 @@ kanji {x} (Namcusku a b m) = x ,_ $ just $ inj₁ $ viiet kot
     stringCat' = λ (x , z) → show x ++ "\t" ++ z
     uin : List String → List $ ℕ × String
     uin = 𝕃.zip $ 𝔽.toℕ a ↓_ $ 𝕃.upTo $ 𝔽.toℕ b ℕ.+ 1
-kanji {x} (Muvgau a b _) = x' , nothing
+kanji {x} (Muvgau a b c _) = x' , nothing
   where
   x' = record x {
     citri = Buffer.cninycitri x;
@@ -1065,9 +1041,9 @@ module KanjyVeritas where
 
   muvdusin : (x : Buffer)
            → (a b : Buffer.F x)
-           → (d : a 𝔽.≤ b)
-           → let x' = proj₁ $ kanji {x} $ Muvgau a b d in
-             (kanji {x} (Muvgau a b d) ≡ (x' , nothing))
+           → let R = DFP.≤-reflexive refl in
+             let x' = proj₁ $ kanji {x} $ Muvgau a a b R in
+             kanji {x} (Muvgau a a b R) ≡ (x' , nothing)
            × let L = Buffer.lerpinste in
              ∃ $ λ e → L x ! a ≡ L x' ! mink a e
            × (_≡_ on (_↑_ (𝔽.toℕ a ℕ.⊓ 𝔽.toℕ b) ∘ L)) x x'
