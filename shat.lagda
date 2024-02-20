@@ -373,7 +373,7 @@ module Binxo𝔽?Veritas where
     where
     id' = 𝔽.toℕ ∘ 𝔽.fromℕ<
     c? : (x : ℕ) → Maybe $ x ℕ.< n
-    c? = decToMaybe ∘ (ℕ._<? _)
+    c? = decToMaybe ∘ (ℕ._<? n)
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
     mapmapi = sym ∘ DMP.map-compose
