@@ -1042,15 +1042,17 @@ module KanjyVeritas where
   muvduzilcmi : (x : Buffer)
               → (a b c : Buffer.F x)
               → (d : a 𝔽.≤ b)
-              → let x' = kanji {x} $ Muvgau a b c d in
-                (_≡_ on (length ∘ Buffer.lerpinste)) x $ proj₁ x'
+              → ((_≡_ on (length ∘ Buffer.lerpinste))
+                  x
+                  (proj₁ $ kanji {x} $ Muvgau a b c d))
   muvduzilcmi = {!!}
 
   muvipas : (x : Buffer)
           → (a b c : Buffer.F x)
           → (d : a 𝔽.≤ b)
-          → let x' = kanji {x} $ Muvgau a b c d in
-            (_≡_ on (𝔽.toℕ a ↑_ ∘ Buffer.lerpinste)) x $ proj₁ x'
+          → ((_≡_ on (𝔽.toℕ a ↑_ ∘ Buffer.lerpinste))
+              x
+              (proj₁ $ kanji {x} $ Muvgau a b c d))
   muvipas = {!!}
 
   muvdusin : (x : Buffer)
