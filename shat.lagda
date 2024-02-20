@@ -374,15 +374,9 @@ module Binxo𝔽?Veritas where
     id' = 𝔽.toℕ ∘ 𝔽.fromℕ<
     c? : (x : ℕ) → Maybe $ x ℕ.< n
     c? = decToMaybe ∘ (ℕ._<? _)
-    mapmapi : ∀ {a} → {A B C : Set a}
-            → {f : A → B}
-            → {g : B → C}
-            → (x : Maybe A)
-            → mapₘ g (mapₘ f x) ≡ mapₘ (g ∘ f) x
-    mapmapi (just _) = refl
-    mapmapi nothing = refl
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
+    mapmapi = sym ∘ DMP.map-compose
 \end{code}
 
 \section{la'oi .\F{degjygirzu}.}
