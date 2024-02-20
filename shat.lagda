@@ -1052,7 +1052,8 @@ module KanjyVeritas where
              let x' = proj₁ $ kanji {x} $ Muvgau a a b R in
              kanji {x} (Muvgau a a b R) ≡ (x' , nothing)
            × let L = Buffer.lerpinste in
-             ∃ $ λ e → L x ! a ≡ L x' ! mink a e
+             let e = muvduzilcmi x a a b R in
+             L x ! a ≡ L x' ! mink a e
            × (_≡_ on (_↑_ (𝔽.toℕ a ℕ.⊓ 𝔽.toℕ b) ∘ L)) x x'
            × (_≡_ on (_↓_ (𝔽.toℕ a ℕ.⊔ 𝔽.toℕ b) ∘ L)) x x'
   muvdusin = {!!}
