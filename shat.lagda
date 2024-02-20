@@ -396,6 +396,7 @@ module DegjygirzuVeritas where
     degjygirzu (show n) ≡⟨ refl ⟩
     𝕃.map 𝕊.fromList (d $ 𝕊.toList $ show n) ≡⟨ refl ⟩
     mL (d $ show' n) ≡⟨ {!!} ⟩
+    mL (show' n ∷ []) ≡⟨ {!!} ⟩
     show n ∷ [] ∎
     where
     mL = 𝕃.map 𝕊.fromList
