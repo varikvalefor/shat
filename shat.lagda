@@ -367,7 +367,7 @@ module Binxo𝔽?Veritas where
     mapₘ 𝔽.toℕ (fromℕ? {n} x) ≡⟨ refl ⟩
     mapₘ 𝔽.toℕ (mapₘ 𝔽.fromℕ< $ c? x) ≡⟨ mapmapi $ c? x ⟩
     mapₘ id' (c? x) ≡⟨ dekydu'i ▹ cong (mapₘ id') ⟩
-    mapₘ id' (just m) ≡⟨ DMP.map-just {f = id'} refl ⟩
+    mapₘ id' (just m) ≡⟨ refl ⟩
     just (id' m) ≡⟨ DFP.toℕ-fromℕ< m ▹ cong just ⟩
     just x ∎
     where
