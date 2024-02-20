@@ -394,9 +394,12 @@ module DegjygirzuVeritas where
   pav : (n : ℕ) → degjygirzu (show n) ≡ show n ∷ []
   pav n = begin
     degjygirzu (show n) ≡⟨ refl ⟩
-    𝕃.map 𝕊.fromList (d $ 𝕊.toList $ show n) ≡⟨ {!!} ⟩
+    𝕃.map 𝕊.fromList (d $ 𝕊.toList $ show n) ≡⟨ refl ⟩
+    mL (d $ show' n) ≡⟨ ? ⟩
     show n ∷ [] ∎
     where
+    mL = 𝕃.map 𝕊.fromList
+    show' = 𝕊.toList ∘ show
     d = 𝕃.wordsBy $ Data.Bool.T? ∘ Data.Bool.not ∘ isDigit
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
