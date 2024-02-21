@@ -1069,6 +1069,16 @@ module KanjyVeritas where
               (proj₁ $ kanji {x} $ Muvgau a b c d))
   muvipas = {!!}
 
+  muvisez : (x : Buffer)
+          → (a b c : Buffer.F x)
+          → (d : a 𝔽.≤ b)
+          → let n = ℕ.suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a) in
+            let x' = proj₁ $ kanji {x} $ Muvgau a b c d in
+            (_≡_
+              (n ↑_ $ 𝔽.toℕ a ↓_ $ Buffer.lerpinste x)
+              (n ↑_ $ 𝔽.toℕ c ↓_ $ Buffer.lerpinste x'))
+  muvisez = {!!}
+
   muvdusin : (x : Buffer)
            → (a b : Buffer.F x)
            → let R = DFP.≤-reflexive refl in
