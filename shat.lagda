@@ -235,6 +235,8 @@ open import Relation.Binary.PropositionalEquality
     _≡_
   )
 
+import Data.Fin.Show
+  as 𝔽
 import Agda.Builtin.IO
   as ABIO
 import Agda.Builtin.Unit
@@ -251,6 +253,13 @@ import Data.List.Relation.Unary.All
   using (
     All
   )
+\end{code}
+
+\chapter{le me'oi .instance.\ pe le na se ciksi fo le velcki be le la'o zoi.\ \Xr{shat}{1}\ .zoi.}
+
+\begin{code}
+showF : {n : ℕ} → Truthbrary.Record.SR.Show $ Fin n
+showF = record {show = 𝔽.show}
 \end{code}
 
 \chapter{le se ctaipe}
@@ -579,9 +588,9 @@ module Orsygenturfa'iVeritas where
         → (x : Fin n)
         → just x ≡ ps (𝕊.toList $ show $ 𝔽.toℕ x)
   ps-du x = sym $ begin
-    ps (𝕊.toList $ showF x) ≡⟨ refl ⟩
-    b𝔽 (rM $ id' $ showF x) ≡⟨ cvd x ▹ cong (b𝔽 ∘ readMaybe) ⟩
-    b𝔽 (rM $ showF x) ≡⟨ rimco (𝔽.toℕ x) ▹ cong b𝔽 ⟩
+    ps (𝕊.toList $ show x) ≡⟨ refl ⟩
+    b𝔽 (rM $ id' $ show x) ≡⟨ cvd x ▹ cong (b𝔽 ∘ readMaybe) ⟩
+    b𝔽 (rM $ show x) ≡⟨ rimco (𝔽.toℕ x) ▹ cong b𝔽 ⟩
     b𝔽 (just $ 𝔽.toℕ x) ≡⟨ refl ⟩
     just (𝔽.toℕ x) >>= fromℕ? ≡⟨ refl ⟩
     fromℕ? (𝔽.toℕ x) ≡⟨ refl ⟩
@@ -595,15 +604,13 @@ module Orsygenturfa'iVeritas where
     rM = readMaybe
     b𝔽 = _>>= fromℕ?
     id' = 𝕊.fromList ∘ 𝕊.toList
-    showF : {n : ℕ} → Fin n → String
-    showF = show ∘ 𝔽.toℕ
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
     dekydu'is = dekydu'i ▹ cong (mapₘ 𝔽.fromℕ<)
     rimco : (n : ℕ) → rM (show n) ≡ just n
     rimco = {!!}
-    cvd : {n : ℕ} → (x : Fin n) → id' (showF x) ≡ showF x
-    cvd x = istu $ showF x
+    cvd : {n : ℕ} → (x : Fin n) → id' (show x) ≡ show x
+    cvd x = istu $ show x
       where
       istu : (x : String) → id' x ≡ x
       istu = {!!}
@@ -619,20 +626,16 @@ module Orsygenturfa'iVeritas where
   pav : {n : ℕ}
       → (a b : Fin n)
       → (djb : a 𝔽.≤ b)
-      → let showF = show ∘ 𝔽.toℕ in
-        (_≡_
+      → (_≡_
           (just $ (a , b) , djb)
-          (orsygenturfa'i $ showF a ++ "," ++ showF b))
+          (orsygenturfa'i $ show a ++ "," ++ show b))
   pav a b djb = sym $ begin
-    orsygenturfa'i (showF a ++ "," ++ showF b) ≡⟨ refl ⟩
+    orsygenturfa'i (show a ++ "," ++ show b) ≡⟨ refl ⟩
     pork (𝕃.map ps $ spit a,b) ≡⟨ cong pork uimint ⟩
     pork (just a ∷ just b ∷ []) ≡⟨ pork-du djb ⟩
     just ((a , b) , djb) ∎
     where
-    showF : {n : ℕ} → Fin n → String
-    showF = show ∘ 𝔽.toℕ
-
-    a,b = showF a ++ "," ++ showF b
+    a,b = show a ++ "," ++ show b
 
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
@@ -648,7 +651,7 @@ module Orsygenturfa'iVeritas where
       just a ∷  just b ∷ [] ∎
       where
       showF' : {n : ℕ} → Fin n → List Char
-      showF' = 𝕊.toList ∘ showF
+      showF' = 𝕊.toList ∘ show
       justF' : {n : ℕ} → Fin n → Maybe $ Fin n
       justF' = ps ∘ showF'
       justF'≡just : {n : ℕ} → (x : Fin n) → justF' x ≡ just x
@@ -660,13 +663,13 @@ module Orsygenturfa'iVeritas where
       spidus : {n : ℕ}
              → (a b : Fin n)
              → (_≡_
-                 (spit $ showF a ++ "," ++ showF b)
+                 (spit $ show a ++ "," ++ show b)
                  (showF' a ∷ showF' b ∷ []))
-      spidus a b = spit-du (showF a) (showF b) (nokom a) (nokom b)
+      spidus a b = spit-du (show a) (show b) (nokom a) (nokom b)
         where
         nokom : {n : ℕ}
               → (x : Fin n)
-              → ',' ∉ 𝕊.toList (showF x)
+              → ',' ∉ 𝕊.toList (show x)
         nokom = {!!}
 \end{code}
 
