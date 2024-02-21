@@ -1079,7 +1079,7 @@ module KanjyVeritas where
               (n ↑_ $ 𝔽.toℕ c ↓_ $ Buffer.lerpinste x'))
   muvisez = {!!}
 
-  muvyvimcus : (x : Buffer)
+  muvivimcus : (x : Buffer)
              → (a b c : Buffer.F x)
              → (d : a 𝔽.≤ b)
              → let n = ℕ.suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a) in
@@ -1088,7 +1088,7 @@ module KanjyVeritas where
                (_≡_
                  (𝔽.toℕ a ↑ L x ++ ℕ.suc (𝔽.toℕ b) ↓ L x)
                  (𝔽.toℕ c ↑ L x' ++ n ↓ L x'))
-  muvyvimcus = ?
+  muvivimcus = {!!}
 
   muvdusin : (x : Buffer)
            → (a b : Buffer.F x)
