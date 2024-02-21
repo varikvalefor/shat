@@ -670,6 +670,17 @@ module Orsygenturfa'iVeritas where
         nokom = {!!}
 \end{code}
 
+\section{la'oi .\F{orsygenturfa'i₃}.}
+ni'o ro da xi pa poi ke'a ctaipe ko'a goi la'o zoi.\ \D{Fin} \B n\ .zoi.\ zo'u ro da xi re poi ke'a ctaipe ko'a zo'u do da xi ci poi ke'a ctaipe ko'a zo'u ro de poi ctaipe lo su'u ke'a cmima lo'i ro lerfu po le glibau ge'u poi ke'a me'oi .minuscule.\ zo'u ga jonai ko'e goi la'o zoi.\ \F{orsygenturfa'i₃} \B x\ .zoi.\ du la'oi .\IC{nothing}.\ gi ga je la'oi .\B x.\ konkatena lo sinxa be da xi pa lo me'oi .comma.\ lo sinxa be da xi re de lo sinxa be da xi ci gi ko'e me'oi .\IC{just}.\ lo .orsi be li re bei lo .orsi be li re bei lo .orsi be li re bei da xi pa bei da xi re be'o bei zo'e be'o bei da xi ci
+
+\begin{code}
+orsygenturfa'i₃ : {n : ℕ}
+                → String
+                → Maybe $ Σ (Fin n × Fin n) (uncurry 𝔽._≤_) × Fin n
+orsygenturfa'i₃ = {!!}
+\end{code}
+
+
 \section{la'oi .\F{reed}.}
 ni'o ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{reed} \B x \B s\ .zoi.\ gi ga je la'oi .\B s.\ midnoi fo la'o zoi.\ \Xr{ed}{1} .zoi.\ je cu mapti la'o zoi.\ \D{Cmd} \B x\ .zoi.\ gi ko'a me'oi .\IC{just}.\ lo mapti be la'oi .\B s.
 
