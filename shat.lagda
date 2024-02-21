@@ -1099,8 +1099,8 @@ module KanjyVeritas where
              let L = Buffer.lerpinste in
              let e = muvduzilcmi x a a b R in
              L x ! a ≡ L x' ! mink a e
-           × (_≡_ on (_↑_ (𝔽.toℕ a ℕ.⊓ 𝔽.toℕ b) ∘ L)) x x'
-           × (_≡_ on (_↓_ (𝔽.toℕ a ℕ.⊔ 𝔽.toℕ b) ∘ L)) x x'
+           × (_≡_ on ((𝔽.toℕ a ℕ.⊓ 𝔽.toℕ b) ↑_ ∘ L)) x x'
+           × (_≡_ on ((𝔽.toℕ a ℕ.⊔ 𝔽.toℕ b) ↑_ ∘ L)) x x'
   muvdusin = {!!}
 
   xrutis : (x : Buffer)
