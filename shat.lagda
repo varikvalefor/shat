@@ -683,7 +683,6 @@ orsygenturfa'i₃ : {n : ℕ}
 orsygenturfa'i₃ = {!!}
 \end{code}
 
-
 \section{la'oi .\F{reed}.}
 ni'o ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{reed} \B x \B s\ .zoi.\ gi ga je la'oi .\B s.\ midnoi fo la'o zoi.\ \Xr{ed}{1} .zoi.\ je cu mapti la'o zoi.\ \D{Cmd} \B x\ .zoi.\ gi ko'a me'oi .\IC{just}.\ lo mapti be la'oi .\B s.
 
