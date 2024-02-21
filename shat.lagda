@@ -584,10 +584,11 @@ module Orsygenturfa'iVeritas where
               (𝕊.toList x ∷ 𝕊.toList z ∷ []))
   spit-du = {!!}
 
-  ps-du : {n : ℕ}
+  ps-du : ((x : ℕ) → readMaybe (show x) ≡ just x)
+        → {n : ℕ}
         → (x : Fin n)
         → just x ≡ ps (𝕊.toList $ show $ 𝔽.toℕ x)
-  ps-du x = sym $ begin
+  ps-du rimco x = sym $ begin
     ps (𝕊.toList $ show x) ≡⟨ refl ⟩
     b𝔽 (rM $ id' $ show x) ≡⟨ cvd x ▹ cong (b𝔽 ∘ readMaybe) ⟩
     b𝔽 (rM $ show x) ≡⟨ rimco (𝔽.toℕ x) ▹ cong b𝔽 ⟩
@@ -607,8 +608,6 @@ module Orsygenturfa'iVeritas where
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
     dekydu'is = dekydu'i ▹ cong (mapₘ 𝔽.fromℕ<)
-    rimco : (n : ℕ) → rM (show n) ≡ just n
-    rimco = {!!}
     cvd : {n : ℕ} → (x : Fin n) → id' (show x) ≡ show x
     cvd x = istu $ show x
       where
@@ -623,13 +622,14 @@ module Orsygenturfa'iVeritas where
               (just $ (x , z) , djb))
   pork-du = {!!}
 
-  pav : {n : ℕ}
+  pav : ((x : ℕ) → readMaybe (show x) ≡ just x)
+      → {n : ℕ}
       → (a b : Fin n)
       → (djb : a 𝔽.≤ b)
       → (_≡_
           (just $ (a , b) , djb)
           (orsygenturfa'i $ show a ++ "," ++ show b))
-  pav a b djb = sym $ begin
+  pav rimco a b djb = sym $ begin
     orsygenturfa'i (show a ++ "," ++ show b) ≡⟨ refl ⟩
     pork (𝕃.map ps $ spit a,b) ≡⟨ cong pork uimint ⟩
     pork (just a ∷ just b ∷ []) ≡⟨ pork-du djb ⟩
@@ -655,7 +655,7 @@ module Orsygenturfa'iVeritas where
       justF' : {n : ℕ} → Fin n → Maybe $ Fin n
       justF' = ps ∘ showF'
       justF'≡just : {n : ℕ} → (x : Fin n) → justF' x ≡ just x
-      justF'≡just x = sym $ ps-du x
+      justF'≡just x = sym $ ps-du rimco x
       justymapdu : {n : ℕ}
                  → (L : List $ Fin n)
                  → 𝕃.map justF' L ≡ 𝕃.map just L
