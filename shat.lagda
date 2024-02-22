@@ -500,12 +500,12 @@ romoivimcu = S $ λ n → _↑ n $ 𝕃.length n ℕ.∸ 1
 \begin{code}
 module RomoivimcuVeritas where
   pav : (x : String)
-      → (_≡_
+      → let -1↑x = 𝕊.fromList $ (length x ℕ.∸ 1) ↓_ $ 𝕊.toList x in
+        (_≡_
           x
           (_++_
             (romoivimcu x)
-            (𝕊.fromList
-              ((length x ℕ.∸ 1) ↓_ $ 𝕊.toList x))))
+            -1↑x))
   pav x = sym $ begin
     romoivimcu x ++ 𝕊.fromList r ≡⟨ refl ⟩
     𝕊.fromList (_↑ x' $ length x' ℕ.∸ 1) ++ 𝕊.fromList r ≡⟨ refl ⟩
