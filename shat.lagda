@@ -674,6 +674,21 @@ orsygenturfa'i₃ : {n : ℕ}
 orsygenturfa'i₃ = {!!}
 \end{code}
 
+\subsection{le ctaipe be le su'u la'oi .\F{orsygenturfa'i₃}.\ mapti}
+
+\begin{code}
+module Orsygenturfa'i₃Veritas where
+  pav : {n : ℕ}
+      → (v x z : Fin n)
+      → (d : v 𝔽.≤ x)
+      → (c : Char)
+      → (_≡_
+          (just $ ((v , x) , d) , z)
+          (orsygenturfa'i₃
+            (show v ++ "," ++ show x ++ 𝕊.fromChar c ++ show z)))
+  pav = {!!}
+\end{code}
+
 \section{la'oi .\F{reed}.}
 ni'o ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{reed} \B x \B s\ .zoi.\ gi ga je la'oi .\B s.\ midnoi fo la'o zoi.\ \Xr{ed}{1} .zoi.\ je cu mapti la'o zoi.\ \D{Cmd} \B x\ .zoi.\ gi ko'a me'oi .\IC{just}.\ lo mapti be la'oi .\B s.
 
