@@ -509,17 +509,16 @@ module RomoivimcuVeritas where
   pav x = sym $ begin
     romoivimcu x ++ 𝕊.fromList r ≡⟨ refl ⟩
     𝕊.fromList (_↑ x' $ length x' ℕ.∸ 1) ++ 𝕊.fromList r ≡⟨ {!!} ⟩
-    𝕊.fromList ((_↑ x' $ length x' ℕ.∸ 1) ++ rL) ≡⟨ refl ⟩
+    𝕊.fromList ((_↑ x' $ length x' ℕ.∸ 1) ++ r) ≡⟨ refl ⟩
     𝕊.fromList x'' ≡⟨ x''≡x' ▹ cong 𝕊.fromList ⟩
     𝕊.fromList x' ≡⟨ [cev∘vec]² x ▹ sym ⟩
     x ∎
     where
     x' = 𝕊.toList x
-    r = (length x ℕ.∸ 1) ↓_ $ 𝕊.toList x
+    r = _↓ x' $ length x' ℕ.∸ 1
     x'' = _↑_ lx x' ++ _↓_ lx x'
       where
       lx = length x' ℕ.∸ 1
-    rL = _↓ x' $ length x' ℕ.∸ 1
     x''≡x' : x'' ≡ x'
     x''≡x' = DLP.take++drop (length x' ℕ.∸ 1) x'
     [cev∘vec]² : (x : String)
