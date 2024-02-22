@@ -504,7 +504,7 @@ module RomoivimcuVeritas where
           x
           (_++_
             (romoivimcu x)
-            (maybe 𝕊.fromChar "" $ 𝕃.last $ 𝕊.toList x)))
+            (𝕊.fromList $ (length x ℕ.∸ 1) ↓_ $ 𝕊.toList x)))
   pav x = sym $ begin
     romoivimcu x ++ r ≡⟨ refl ⟩
     𝕊.fromList (_↑ x' $ length x' ℕ.∸ 1) ++ r ≡⟨ {!!} ⟩
@@ -513,8 +513,8 @@ module RomoivimcuVeritas where
     𝕊.fromList x' ≡⟨ [cev∘vec]² x ▹ sym ⟩
     x ∎
     where
-    r = maybe 𝕊.fromChar "" $ 𝕃.last $ 𝕊.toList x
     x' = 𝕊.toList x
+    r = 𝕊.fromList $ (length x ℕ.∸ 1) ↓_ $ 𝕊.toList x
     x'' = _↑_ lx x' ++ _↓_ lx x'
       where
       lx = length x' ℕ.∸ 1
