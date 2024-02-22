@@ -528,8 +528,7 @@ module RomoivimcuVeritas where
                 (𝕊.fromList a ++ 𝕊.fromList b)
                 (𝕊.fromList $ a ++ b))
     frokonk = {!!}
-    [cev∘vec]² : (x : String)
-               → x ≡ 𝕊.fromList (𝕊.toList x)
+    [cev∘vec]² : (x : String) → x ≡ 𝕊.fromList (𝕊.toList x)
     [cev∘vec]² = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
