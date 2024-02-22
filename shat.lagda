@@ -490,7 +490,7 @@ ni'o la .varik.\ na birti lo du'u ciksi la'oi .\F{romoivimcu}.\ fo ma kau poi ke
 
 \begin{code}
 romoivimcu : String → String
-romoivimcu = S $ 𝕃.reverse ∘ _↓_ 1 ∘ 𝕃.reverse
+romoivimcu = S $ λ n → _↑ n $ 𝕃.length n ℕ.∸ 1
   where
   S = λ f → 𝕊.fromList ∘ f ∘ 𝕊.toList
 \end{code}
@@ -507,14 +507,12 @@ module RomoivimcuVeritas where
             (maybe 𝕊.fromChar "" $ 𝕃.last $ 𝕊.toList x)))
   pav x = sym $ begin
     romoivimcu x ++ r ≡⟨ refl ⟩
-    𝕊.fromList (⌽1↓⌽ $ 𝕊.toList x) ++ r ≡⟨ takedrop ⟩
     𝕊.fromList (_↑ x' $ length x' ℕ.∸ 1) ++ r ≡⟨ {!!} ⟩
     𝕊.fromList ((_↑ x' $ length x' ℕ.∸ 1) ++ r') ≡⟨ {!!} ⟩
     𝕊.fromList x'' ≡⟨ x''≡x' ▹ cong 𝕊.fromList ⟩
     𝕊.fromList x' ≡⟨ [cev∘vec]² x ▹ sym ⟩
     x ∎
     where
-    ⌽1↓⌽ = 𝕃.reverse ∘ _↓_ 1 ∘ 𝕃.reverse
     r = maybe 𝕊.fromChar "" $ 𝕃.last $ 𝕊.toList x
     x' = 𝕊.toList x
     x'' = _↑_ lx x' ++ _↓_ lx x'
@@ -528,15 +526,6 @@ module RomoivimcuVeritas where
     [cev∘vec]² = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
-    takedrop = f 1 x' ▹ cong ((𝕊._++ r) ∘ 𝕊.fromList)
-      where
-      f : ∀ {a} → {A : Set a}
-        → (m : ℕ)
-        → (x : List A)
-        → (_≡_
-            (𝕃.reverse $ m ↓ 𝕃.reverse x)
-            (_↑ x $ 𝕃.length x ℕ.∸ m))
-      f = {!!}
 \end{code}
 
 \section{la'oi .\F{orsygenturfa'i}.}
