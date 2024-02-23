@@ -758,10 +758,7 @@ module Reed where
     t {x} s = F >>= g'
       where
       g' = λ (z , ((a , b) , d) , c) → g x a b c d z
-      F : (Maybe
-            (_×_
-              Char
-              (∃ (uncurry 𝔽._≤_) × Buffer.F x)))
+      F : Maybe $ Char × ∃ (uncurry 𝔽._≤_) × Buffer.F x
       F = {!!}
 
   reed : (x : Buffer) → String → Maybe $ Cmd x
