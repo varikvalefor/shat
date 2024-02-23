@@ -701,6 +701,17 @@ open Orsygenturfa'i₃
 module Orsygenturfa'i₃Veritas where
   open Orsygenturfa'i₃
 
+  orspiv : (a b c : ℕ)
+         → (x : Char)
+         → Data.Bool.false ≡ isDigit x
+         → (_≡_
+             (just $ (show a , show b) , show c)
+             (orsispita
+               (_++_
+                 (show a ++ "," ++ show b)
+                 (𝕊.fromChar x ++ show x))))
+  orspiv = ?
+
   porkcos : {n : ℕ}
           → (a b : Fin n)
           → (d : a 𝔽.≤ b)
