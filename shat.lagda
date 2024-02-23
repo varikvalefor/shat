@@ -767,9 +767,8 @@ module Reed where
           where
           aintDigit? = Data.Bool.T? ∘ Data.Bool.not ∘ Data.Char.isDigit
           f : _ → _
-          f [] = nothing
-          f (_ ∷ _ ∷ _) = nothing
           f (x ∷ []) = just x
+          f _ = nothing
 
   reed : (x : Buffer) → String → Maybe $ Cmd x
   reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
