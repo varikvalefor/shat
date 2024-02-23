@@ -591,7 +591,6 @@ module Orsygenturfa'iVeritas where
     fromℕ? (𝔽.toℕ x) ≡⟨ refl ⟩
     mapₘ 𝔽.fromℕ< (decToMaybe $ _ ℕ.<? _) ≡⟨ dekydu'is ⟩
     mapₘ 𝔽.fromℕ< (just $ DFP.toℕ<n x) ≡⟨ refl ⟩
-    mapₘ 𝔽.fromℕ< _ ≡⟨ refl ⟩
     just (𝔽.fromℕ< $ DFP.toℕ<n x) ≡⟨ refl ⟩
     just _ ≡⟨ DFP.fromℕ<-toℕ _ _ ▹ cong just ⟩
     just x ∎
