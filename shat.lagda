@@ -248,6 +248,7 @@ import Data.List.Properties
 import Data.Maybe.Instances
 import Data.Maybe.Properties
   as DMP
+import Relation.Nullary.Decidable
 import Data.List.Relation.Unary.All
   as 𝕃
   using (
@@ -348,10 +349,12 @@ dekydu'i : {x n : ℕ}
          → {m : x ℕ.< n}
          → decToMaybe (x ℕ.<? n) ≡ just m
 dekydu'i {x} {n} {m} = begin
-  decToMaybe (x ℕ.<? n) ≡⟨ {!!} ⟩
+  decToMaybe (x ℕ.<? n) ≡⟨ dec-yes _ m ▹ proj₂ ▹ cong decToMaybe ⟩
+  decToMaybe (yes $ proj₁ $ dec-yes (x ℕ.<? n) m) ≡⟨ {!!} ⟩
   decToMaybe (yes m) ≡⟨ refl ⟩
   just m ∎
   where
+  dec-yes = Relation.Nullary.Decidable.dec-yes
   open import Relation.Binary.PropositionalEquality
   open ≡-Reasoning
 \end{code}
