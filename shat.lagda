@@ -754,6 +754,16 @@ module Reed where
     ... | 'm' = just $ Muvgau a b c d
     ... | _ = nothing
 
+    t : {x : Buffer} → String → Maybe $ Cmd x
+    t {x} s = F >>= g'
+      where
+      g' = λ (((a , b) , d) , c , z) → g x a b c d z
+      F : (Maybe
+            (_×_
+              (∃ $ uncurry 𝔽._≤_)
+              (Buffer.F x × Char)))
+      F = {!!}
+
   reed : (x : Buffer) → String → Maybe $ Cmd x
   reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
     where
