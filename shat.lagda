@@ -762,7 +762,6 @@ module Reed where
       F = _,ₘ_ c $ orsygenturfa'i₃ s
         where
         _,ₘ_ = Data.Maybe.ap ∘ mapₘ _,_
-        c : Maybe Char
         c = f $ 𝕃.filter aintDigit? $ 𝕊.toList s
           where
           aintDigit? = Data.Bool.T? ∘ Data.Bool.not ∘ Data.Char.isDigit
