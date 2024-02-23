@@ -710,7 +710,7 @@ module Orsygenturfa'i₃Veritas where
                (_++_
                  (show a ++ "," ++ show b)
                  (𝕊.fromChar x ++ show x))))
-  orspiv = ?
+  orspiv = {!!}
 
   porkcos : {n : ℕ}
           → (a b : Fin n)
