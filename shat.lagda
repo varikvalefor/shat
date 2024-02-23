@@ -679,10 +679,15 @@ module Orsygenturfa'i₃ where
     f ((a ∷ b ∷ []) ∷ (c ∷ []) ∷ []) = just $ (a , b) , c
     f _ = nothing
 
+  pork : {n : ℕ}
+       → (String × String) × String
+       → Maybe $ Σ (Fin n × Fin n) (uncurry 𝔽._≤_) × Fin n
+  pork = {!!}
+
   orsygenturfa'i₃ : {n : ℕ}
                   → String
                   → Maybe $ Σ (Fin n × Fin n) (uncurry 𝔽._≤_) × Fin n
-  orsygenturfa'i₃ = {!!} ∘ orsispita
+  orsygenturfa'i₃ = (_>>= pork) ∘ orsispita
 
 open Orsygenturfa'i₃
   using (
