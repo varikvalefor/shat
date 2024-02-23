@@ -699,12 +699,14 @@ open Orsygenturfa'i₃
 
 \begin{code}
 module Orsygenturfa'i₃Veritas where
+  open Orsygenturfa'i₃
+
   porkcos : {n : ℕ}
           → (a b : Fin n)
           → (d : a 𝔽.≤ b)
           → (c : Fin n)
           → (_≡_
-              (Orsygenturfa'i₃.pork $ (show a , show b) , show c)
+              (pork $ (show a , show b) , show c)
               (just $ ((a , b) , d) , c))
   porkcos = {!!}
 
