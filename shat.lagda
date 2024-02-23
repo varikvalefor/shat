@@ -671,10 +671,18 @@ ni'o ro da xi pa poi ke'a ctaipe ko'a goi la'o zoi.\ \D{Fin} \B n\ .zoi.\ zo'u r
 
 \begin{code}
 module Orsygenturfa'i₃ where
+  orsispita : String → Maybe $ (String × String) × String
+  orsispita = f ∘ 𝕃.map (𝕊.wordsBy aintDigit?) ∘ 𝕊.wordsBy (_≟ ',')
+    where
+    aintDigit? = Data.Bool.T? ∘ Data.Bool.not ∘ isDigit
+    f : List $ List String → Maybe $ (String × String) × String
+    f ((a ∷ b ∷ []) ∷ (c ∷ []) ∷ []) = just $ (a , b) , c
+    f _ = nothing
+
   orsygenturfa'i₃ : {n : ℕ}
                   → String
                   → Maybe $ Σ (Fin n × Fin n) (uncurry 𝔽._≤_) × Fin n
-  orsygenturfa'i₃ = {!!}
+  orsygenturfa'i₃ = {!!} ∘ orsispita
 
 open Orsygenturfa'i₃
   using (
