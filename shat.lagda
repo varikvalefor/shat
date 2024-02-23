@@ -770,7 +770,7 @@ module Reed where
         _,ₘ_ = Data.Maybe.ap ∘ mapₘ _,_
         c = f $ 𝕃.filter aintDigit? $ 𝕊.toList s
           where
-          aintDigit? = Data.Bool.T? ∘ Data.Bool.not ∘ Data.Char.isDigit
+          aintDigit? = Data.Bool.T? ∘ Data.Bool.not ∘ isDigit
           f : _ → _
           f (x ∷ []) = just x
           f _ = nothing
