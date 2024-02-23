@@ -750,8 +750,9 @@ module Reed where
       → (a 𝔽.≤ b)
       → Char
       → Maybe $ Cmd x
-    g _ a b c d 'm' = just $ Muvgau a b c d
-    g _ _ _ _ _ _ = nothing
+    g _ a b c d x with x
+    ... | 'm' = just $ Muvgau a b c d
+    ... | _ = nothing
 
   reed : (x : Buffer) → String → Maybe $ Cmd x
   reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
