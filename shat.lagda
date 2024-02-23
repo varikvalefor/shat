@@ -704,12 +704,11 @@ module Orsygenturfa'i₃Veritas where
   orspiv : (a b c : ℕ)
          → (x : Char)
          → Data.Bool.false ≡ isDigit x
-         → (_≡_
+         → let x' = 𝕊.fromChar x in
+           (_≡_
              (just $ (show a , show b) , show c)
              (orsispita
-               (_++_
-                 (show a ++ "," ++ show b)
-                 (𝕊.fromChar x ++ show x))))
+               (show a ++ "," ++ show b ++ x' ++ show x)))
   orspiv = {!!}
 
   porkcos : {n : ℕ}
