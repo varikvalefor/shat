@@ -759,7 +759,9 @@ module Reed where
       where
       g' = λ (z , ((a , b) , d) , c) → g x a b c d z
       F : Maybe $ Char × ∃ (uncurry 𝔽._≤_) × Buffer.F x
-      F = {!!}
+      F = _,ₘ_ {!!} $ orsygenturfa'i₃ s
+        where
+        _,ₘ_ = (Data.Maybe.ap ∘₂ mapₘ) _,_
 
   reed : (x : Buffer) → String → Maybe $ Cmd x
   reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
