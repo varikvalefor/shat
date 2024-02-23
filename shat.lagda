@@ -757,7 +757,7 @@ module Reed where
     t : {x : Buffer} → String → Maybe $ Cmd x
     t {x} s = F >>= g'
       where
-      g' = λ (z , ((a , b) , d) , c ) → g x a b c d z
+      g' = λ (z , ((a , b) , d) , c) → g x a b c d z
       F : (Maybe
             (_×_
               Char
