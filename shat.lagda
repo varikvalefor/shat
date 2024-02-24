@@ -517,7 +517,7 @@ module RomoivimcuVeritas where
     x' = 𝕊.toList x
     r = _↓ x' $ length x' ℕ.∸ 1
     -1↓x' = _↑ x' $ length x' ℕ.∸ 1
-    x'' = _↑_ lx x' ++ _↓_ lx x'
+    x'' = -1↓x' ++ _↓_ lx x'
       where
       lx = length x' ℕ.∸ 1
     x''≡x' : x'' ≡ x'
