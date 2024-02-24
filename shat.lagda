@@ -706,7 +706,7 @@ module Orsygenturfa'i₃Veritas where
            (_≡_
              (just $ (show a , show b) , show c)
              (orsispita
-               (show a ++ "," ++ show b ++ x' ++ show x)))
+               (show a ++ "," ++ show b ++ x' ++ show c)))
   orspiv = {!!}
 
   porkcos : {n : ℕ}
