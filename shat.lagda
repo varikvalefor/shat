@@ -731,10 +731,14 @@ module Orsygenturfa'i₃Veritas where
     orsygenturfa'i₃ K ≡⟨ refl ⟩
     orsispita K >>= pork ≡⟨ {!!} ⟩
     orsispita K' >>= pork ≡⟨ {!!} ⟩
-    just ((show v' , show x') , show z') >>= pork ≡⟨ {!!} ⟩
-    just ((show v , show x) , show z) >>= pork ≡⟨ porkcos v x d z ⟩
+    just (S v' x' z') >>= pork ≡⟨ {!!} ⟩
+    just (S v x z) >>= pork ≡⟨ porkcos v x d z ⟩
     just (((v , x) , d) , z) ∎
     where
+    S : ∀ {a} → {A : Set a}
+      → ⦃ Truthbrary.Record.SR.Show A ⦄
+      → A → A → A → (String × String) × String
+    S a b c = (show a , show b) , show c
     K = show v ++ "," ++ show x ++ 𝕊.fromChar c ++ show z
     v' = 𝔽.toℕ v
     x' = 𝔽.toℕ x
