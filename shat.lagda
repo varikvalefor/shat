@@ -730,9 +730,14 @@ module Orsygenturfa'i₃Veritas where
   pav v x z d c j = sym $ begin
     orsygenturfa'i₃ K ≡⟨ refl ⟩
     orsispita K >>= pork ≡⟨ {!!} ⟩
+    orsispita K' >>= pork ≡⟨ {!!} ⟩
     just (((v , x) , d) , z) ∎
     where
+    v' = 𝔽.toℕ v
+    x' = 𝔽.toℕ x
+    z' = 𝔽.toℕ z
     K = show v ++ "," ++ show x ++ 𝕊.fromChar c ++ show z
+    K' = show v' ++ "," ++ show x' ++ 𝕊.fromChar c ++ show z'
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 \end{code}
