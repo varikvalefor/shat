@@ -726,7 +726,13 @@ module Orsygenturfa'i₃Veritas where
           (just $ ((v , x) , d) , z)
           (orsygenturfa'i₃
             (show v ++ "," ++ show x ++ 𝕊.fromChar c ++ show z)))
-  pav = {!!}
+  pav v x z d c = sym $ begin
+    orsygenturfa'i₃ K ≡⟨ {!!} ⟩
+    just (((v , x) , d) , z) ∎
+    where
+    K = show v ++ "," ++ show x ++ 𝕊.fromChar c ++ show z
+    open import Relation.Binary.PropositionalEquality
+    open ≡-Reasoning
 \end{code}
 
 \section{la'oi .\F{reed}.}
