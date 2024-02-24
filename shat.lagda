@@ -731,6 +731,7 @@ module Orsygenturfa'i₃Veritas where
     orsygenturfa'i₃ K ≡⟨ refl ⟩
     orsispita K >>= pork ≡⟨ {!!} ⟩
     orsispita K' >>= pork ≡⟨ {!!} ⟩
+    just ((show v' , show x') , show z') >>= pork ≡⟨ {!!} ⟩
     just (((v , x) , d) , z) ∎
     where
     K = show v ++ "," ++ show x ++ 𝕊.fromChar c ++ show z
