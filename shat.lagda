@@ -730,7 +730,7 @@ module Orsygenturfa'i₃Veritas where
   pav v x z d c j = sym $ begin
     orsygenturfa'i₃ K ≡⟨ refl ⟩
     orsispita K >>= pork ≡⟨ {!!} ⟩
-    orsispita K' >>= pork ≡⟨ {!!} ⟩
+    orsispita K' >>= pork ≡⟨ orspiv v' x' z' c j ▹ sym ▹ cong (_>>= pork) ⟩
     just (S v' x' z') >>= pork ≡⟨ refl ⟩
     pork (S v' x' z') ≡⟨ S𝔽ℕ v x z ▹ sym ▹ cong pork ⟩
     pork (S v x z) ≡⟨ porkcos v x d z ⟩
