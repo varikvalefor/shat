@@ -726,7 +726,8 @@ module Orsygenturfa'i₃Veritas where
       → (_≡_
           (just $ ((v , x) , d) , z)
           (orsygenturfa'i₃
-            (show v ++ "," ++ show x ++ 𝕊.fromChar c ++ show z)))
+            (let c' = 𝕊.fromChar c in
+             show v ++ "," ++ show x ++ c' ++ show z)))
   pav v x z d c j = sym $ begin
     orsygenturfa'i₃ K ≡⟨ refl ⟩
     orsispita K >>= pork ≡⟨ {!!} ⟩
