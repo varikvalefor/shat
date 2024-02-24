@@ -795,19 +795,16 @@ module Reed where
     ... | _ = nothing
 
     t : {x : Buffer} → String → Maybe $ Cmd x
-    t {x} s = F >>= g'
+    t {x} s = _,ₘ_ c (orsygenturfa'i₃ s) >>= g'
       where
       g' = λ (z , (_ , d) , c) → g x _ _ c d z
-      F : Maybe $ Char × ∃ (uncurry 𝔽._≤_) × Buffer.F x
-      F = _,ₘ_ c $ orsygenturfa'i₃ s
+      _,ₘ_ = Data.Maybe.ap ∘ mapₘ _,_
+      c = f $ 𝕃.filter aintDigit? $ 𝕊.toList s
         where
-        _,ₘ_ = Data.Maybe.ap ∘ mapₘ _,_
-        c = f $ 𝕃.filter aintDigit? $ 𝕊.toList s
-          where
-          aintDigit? = Data.Bool.T? ∘ Data.Bool.not ∘ isDigit
-          f : _ → _
-          f (x ∷ []) = just x
-          f _ = nothing
+        aintDigit? = Data.Bool.T? ∘ Data.Bool.not ∘ isDigit
+        f : _ → _
+        f (x ∷ []) = just x
+        f _ = nothing
 
   reed : (x : Buffer) → String → Maybe $ Cmd x
   reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
