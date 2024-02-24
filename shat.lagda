@@ -722,11 +722,12 @@ module Orsygenturfa'i₃Veritas where
       → (v x z : Fin n)
       → (d : v 𝔽.≤ x)
       → (c : Char)
+      → Data.Bool.false ≡ isDigit c
       → (_≡_
           (just $ ((v , x) , d) , z)
           (orsygenturfa'i₃
             (show v ++ "," ++ show x ++ 𝕊.fromChar c ++ show z)))
-  pav v x z d c = sym $ begin
+  pav v x z d c j = sym $ begin
     orsygenturfa'i₃ K ≡⟨ refl ⟩
     orsispita K >>= pork ≡⟨ ? ⟩
     just (((v , x) , d) , z) ∎
