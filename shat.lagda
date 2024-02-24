@@ -731,8 +731,9 @@ module Orsygenturfa'i₃Veritas where
     orsygenturfa'i₃ K ≡⟨ refl ⟩
     orsispita K >>= pork ≡⟨ {!!} ⟩
     orsispita K' >>= pork ≡⟨ {!!} ⟩
-    just (S v' x' z') >>= pork ≡⟨ {!!} ⟩
-    just (S v x z) >>= pork ≡⟨ porkcos v x d z ⟩
+    just (S v' x' z') >>= pork ≡⟨ refl ⟩
+    pork (S v' x' z') ≡⟨ {!!} ⟩
+    pork (S v x z) ≡⟨ porkcos v x d z ⟩
     just (((v , x) , d) , z) ∎
     where
     S : ∀ {a} → {A : Set a}
