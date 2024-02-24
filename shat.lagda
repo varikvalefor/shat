@@ -897,7 +897,7 @@ module ReedVeritas where
     just (X $ mink 𝔽.zero $ proj₂ z) ∎
     where
     X = Xruti
-    terp' = Reed.No.t "u" ∷ nothing ∷ nothing ∷ nothing ∷ []
+    terp' = Reed.No.t "u" ∷ 𝕃.replicate 3 nothing
     dzeroxe : {n : ℕ}
             → (z : ∃ $ (_≡ n) ∘ ℕ.suc)
             → 𝕃.head (𝕃.allFin n) ≡ just (mink 𝔽.zero $ proj₂ z)
