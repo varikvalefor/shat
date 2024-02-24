@@ -732,7 +732,7 @@ module Orsygenturfa'i₃Veritas where
     orsispita K >>= pork ≡⟨ {!!} ⟩
     orsispita K' >>= pork ≡⟨ {!!} ⟩
     just (S v' x' z') >>= pork ≡⟨ refl ⟩
-    pork (S v' x' z') ≡⟨ {!!} ⟩
+    pork (S v' x' z') ≡⟨ S𝔽ℕ v x z ▹ sym ▹ cong pork ⟩
     pork (S v x z) ≡⟨ porkcos v x d z ⟩
     just (((v , x) , d) , z) ∎
     where
@@ -745,6 +745,10 @@ module Orsygenturfa'i₃Veritas where
     x' = 𝔽.toℕ x
     z' = 𝔽.toℕ z
     K' = show v' ++ "," ++ show x' ++ 𝕊.fromChar c ++ show z'
+    S𝔽ℕ : {n : ℕ}
+        → (a b c : Fin n)
+        → S a b c ≡ S (𝔽.toℕ a) (𝔽.toℕ b) (𝔽.toℕ c)
+    S𝔽ℕ = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 \end{code}
