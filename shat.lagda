@@ -794,6 +794,7 @@ module Orsygenturfa'i₃Veritas where
       (show' a , show' b) , show' c ≡⟨ refl ⟩
       S (𝔽.toℕ a) (𝔽.toℕ b) (𝔽.toℕ c) ∎
       where
+      show' : {n : ℕ} → Fin n → String
       show' = show ∘ 𝔽.toℕ
 \end{code}
 
