@@ -709,7 +709,7 @@ module Orsygenturfa'i₃Veritas where
              (orsispita
                (show a ++ "," ++ show b ++ x' ++ show c)))
   orspiv a b c x j = sym $ begin
-    orsispita K ≡⟨ {!!} ⟩
+    orsispita K ≡⟨ refl ⟩
     lispork (𝕃.map (w aintDigit?) $ w (_≟ ',') $ K) ≡⟨ {!!} ⟩
     just ((show a , show b) , show c) ∎
     where
