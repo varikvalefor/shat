@@ -669,13 +669,14 @@ ni'o ro da xi pa poi ke'a ctaipe ko'a goi la'o zoi.\ \D{Fin} \B n\ .zoi.\ zo'u r
 
 \begin{code}
 module Orsygenturfa'i₃ where
+  lispork : List $ List String → Maybe $ (String × String) × String
+  lispork ((a ∷ b ∷ []) ∷ (c ∷ []) ∷ []) = just $ (a , b) , c
+  lispork _ = nothing
+
   orsispita : String → Maybe $ (String × String) × String
-  orsispita = f ∘ 𝕃.map (𝕊.wordsBy aintDigit?) ∘ 𝕊.wordsBy (_≟ ',')
+  orsispita = lispork ∘ 𝕃.map (𝕊.wordsBy aintDigit?) ∘ 𝕊.wordsBy (_≟ ',')
     where
     aintDigit? = Data.Bool.T? ∘ Data.Bool.not ∘ isDigit
-    f : List $ List String → Maybe $ (String × String) × String
-    f ((a ∷ b ∷ []) ∷ (c ∷ []) ∷ []) = just $ (a , b) , c
-    f _ = nothing
 
   pork : {n : ℕ}
        → (String × String) × String
