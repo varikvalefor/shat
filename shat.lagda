@@ -718,15 +718,15 @@ module Orsygenturfa'i₃Veritas where
     orsispita K ≡⟨ refl ⟩
     lispork (𝕃.map (w aintDigit?) $ w (_≟ ',') $ K) ≡⟨ {!!} ⟩
     lispork' (𝕃.map (w' aintDigit?) $ w' (_≟ ',') $ K') ≡⟨ {!!} ⟩
-    lispork' ((show' a ∷ show' b ∷ []) ∷ (show' c ∷ []) ∷ []) ≡⟨ {!!} ⟩
+    lispork' ((s' a ∷ s' b ∷ []) ∷ (s' c ∷ []) ∷ []) ≡⟨ {!!} ⟩
     just ((show a , show b) , show c) ∎
     where
     w = 𝕊.wordsBy
     w' = 𝕃.wordsBy
     aintDigit? = Data.Bool.T? ∘ Data.Bool.not ∘ isDigit
     K = show a ++ "," ++ show b ++ 𝕊.fromChar x ++ show c
-    show' = 𝕊.toList ∘ show
-    K' = show' a ++ ',' ∷ show' b ++ x ∷ show' c
+    s' = 𝕊.toList ∘ show
+    K' = s' a ++ ',' ∷ s' b ++ x ∷ s' c
     lispork' : List $ List $ List $ Char
              → Maybe $ (String × String) × String
     lispork' = lispork ∘ 𝕃.map (𝕃.map 𝕊.fromList)
