@@ -718,6 +718,7 @@ module Orsygenturfa'i₃Veritas where
     orsispita K ≡⟨ refl ⟩
     lispork (𝕃.map (w aintDigit?) $ w (_≟ ',') $ K) ≡⟨ {!!} ⟩
     lispork' (𝕃.map (w' aintDigit?) $ w' (_≟ ',') $ K') ≡⟨ {!!} ⟩
+    lispork' ((show' a ∷ show' b ∷ []) ∷ (show' c ∷ []) ∷ []) ≡⟨ {!!} ⟩
     just ((show a , show b) , show c) ∎
     where
     w = 𝕊.wordsBy
