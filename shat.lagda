@@ -710,8 +710,11 @@ module Orsygenturfa'i₃Veritas where
                (show a ++ "," ++ show b ++ x' ++ show c)))
   orspiv a b c x j = sym $ begin
     orsispita K ≡⟨ {!!} ⟩
+    lispork (𝕃.map (w aintDigit?) $ w (_≟ ',') $ K) ≡⟨ {!!} ⟩
     just ((show a , show b) , show c) ∎
     where
+    w = 𝕊.wordsBy
+    aintDigit? = Data.Bool.T? ∘ Data.Bool.not ∘ isDigit
     K = show a ++ "," ++ show b ++ 𝕊.fromChar x ++ show c
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
