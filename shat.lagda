@@ -718,9 +718,10 @@ module Orsygenturfa'i₃Veritas where
     orsispita K ≡⟨ refl ⟩
     lispork (𝕃.map (w aintDigit?) $ w (_≟ ',') $ K) ≡⟨ {!!} ⟩
     lispork' (𝕃.map (w' aintDigit?) $ w' (_≟ ',') $ K') ≡⟨ {!!} ⟩
-    lispork' ((s' a ∷ s' b ∷ []) ∷ (s' c ∷ []) ∷ []) ≡⟨ {!!} ⟩
+    lispork' ((s' a ∷ [ s' b ]) ∷ [ [ s' c ] ]) ≡⟨ {!!} ⟩
     just ((show a , show b) , show c) ∎
     where
+    [_] = 𝕃.[_]
     w = 𝕊.wordsBy
     w' = 𝕃.wordsBy
     aintDigit? = Data.Bool.T? ∘ Data.Bool.not ∘ isDigit
@@ -731,6 +732,9 @@ module Orsygenturfa'i₃Veritas where
              → Maybe $ (String × String) × String
     lispork' = lispork ∘ 𝕃.map (𝕃.map 𝕊.fromList)
     open import Relation.Binary.PropositionalEquality
+      hiding (
+        [_]
+      )
     open ≡-Reasoning
 
   porkcos : {n : ℕ}
