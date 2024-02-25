@@ -767,9 +767,11 @@ module Orsygenturfa'i₃Veritas where
     pork (S v x z) ≡⟨ porkcos v x d z ⟩
     just (((v , x) , d) , z) ∎
     where
-    S : ∀ {a} → {A : Set a}
+    S : ∀ {a b c} → {A : Set a} → {B : Set b} → {C : Set c}
       → ⦃ Truthbrary.Record.SR.Show A ⦄
-      → A → A → A → (String × String) × String
+      → ⦃ Truthbrary.Record.SR.Show B ⦄
+      → ⦃ Truthbrary.Record.SR.Show C ⦄
+      → A → B → C → (String × String) × String
     S a b c = (show a , show b) , show c
     K = show v ++ "," ++ show x ++ 𝕊.fromChar c ++ show z
     v' = 𝔽.toℕ v
