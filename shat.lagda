@@ -753,7 +753,7 @@ module Orsygenturfa'i₃Veritas where
         → S a b c ≡ S (𝔽.toℕ a) (𝔽.toℕ b) (𝔽.toℕ c)
     S𝔽ℕ = {!!}
     K≡K' : K ≡ K'
-    K≡K' = ?
+    K≡K' = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 \end{code}
