@@ -779,14 +779,14 @@ module Orsygenturfa'i₃Veritas where
     z' = 𝔽.toℕ z
     K' = show v' ++ "," ++ show x' ++ 𝕊.fromChar c ++ show z'
     vorspiv = orspiv v' x' z' c j
-    S𝔽ℕ : {n : ℕ}
-        → (a b c : Fin n)
-        → S a b c ≡ S (𝔽.toℕ a) (𝔽.toℕ b) (𝔽.toℕ c)
-    S𝔽ℕ = {!!}
     K≡K' : K ≡ K'
     K≡K' = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
+    S𝔽ℕ : {n : ℕ}
+        → (a b c : Fin n)
+        → S a b c ≡ S (𝔽.toℕ a) (𝔽.toℕ b) (𝔽.toℕ c)
+    S𝔽ℕ = {!!}
 \end{code}
 
 \section{la'oi .\F{reed}.}
