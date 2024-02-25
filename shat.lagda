@@ -787,9 +787,11 @@ module Orsygenturfa'i₃Veritas where
         → (a b c : Fin n)
         → S a b c ≡ S (𝔽.toℕ a) (𝔽.toℕ b) (𝔽.toℕ c)
     S𝔽ℕ a b c = begin
-      S a b c ≡⟨ ? ⟩
-      S (𝔽.toℕ a) b c ≡⟨ ? ⟩
-      S (𝔽.toℕ a) (𝔽.toℕ b) c ≡⟨ ? ⟩
+      S a b c ≡⟨ refl ⟩
+      (show a , show b) , show c ≡⟨ {!!} ⟩
+      (show (𝔽.toℕ a) , show b) , show c ≡⟨ {!!} ⟩
+      (show (𝔽.toℕ a) , show (𝔽.toℕ b)) , show c ≡⟨ {!!} ⟩
+      (show (𝔽.toℕ a) , show (𝔽.toℕ b)) , show (𝔽.toℕ c) ≡⟨ refl ⟩
       S (𝔽.toℕ a) (𝔽.toℕ b) (𝔽.toℕ c) ∎
 \end{code}
 
