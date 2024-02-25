@@ -708,7 +708,13 @@ module Orsygenturfa'i₃Veritas where
              (just $ (show a , show b) , show c)
              (orsispita
                (show a ++ "," ++ show b ++ x' ++ show c)))
-  orspiv = {!!}
+  orspiv a b c x j = sym $ begin
+    orsispita K ≡⟨ {!!} ⟩
+    just ((show a , show b) , show c) ∎
+    where
+    K = show a ++ "," ++ show b ++ 𝕊.fromChar x ++ show c
+    open import Relation.Binary.PropositionalEquality
+    open ≡-Reasoning
 
   porkcos : {n : ℕ}
           → (a b : Fin n)
