@@ -786,7 +786,11 @@ module Orsygenturfa'i₃Veritas where
     S𝔽ℕ : {n : ℕ}
         → (a b c : Fin n)
         → S a b c ≡ S (𝔽.toℕ a) (𝔽.toℕ b) (𝔽.toℕ c)
-    S𝔽ℕ = {!!}
+    S𝔽ℕ a b c = begin
+      S a b c ≡⟨ ? ⟩
+      S (𝔽.toℕ a) b c ≡⟨ ? ⟩
+      S (𝔽.toℕ a) (𝔽.toℕ b) c ≡⟨ ? ⟩
+      S (𝔽.toℕ a) (𝔽.toℕ b) (𝔽.toℕ c) ∎
 \end{code}
 
 \section{la'oi .\F{reed}.}
