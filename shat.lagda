@@ -700,6 +700,12 @@ open Orsygenturfa'i₃
 module Orsygenturfa'i₃Veritas where
   open Orsygenturfa'i₃
 
+  lisporv : (a b c : String)
+          → (_≡_
+              (lispork $ (a ∷ b ∷ []) ∷ (c ∷ []) ∷ [])
+              (just $ (a , b) , c))
+  lisporv = ?
+
   orspiv : (a b c : ℕ)
          → (x : Char)
          → Data.Bool.false ≡ isDigit x
