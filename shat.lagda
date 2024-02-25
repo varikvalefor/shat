@@ -781,12 +781,12 @@ module Orsygenturfa'i₃Veritas where
     vorspiv = orspiv v' x' z' c j
     K≡K' : K ≡ K'
     K≡K' = {!!}
-    open import Relation.Binary.PropositionalEquality
-    open ≡-Reasoning
     S𝔽ℕ : {n : ℕ}
         → (a b c : Fin n)
         → S a b c ≡ S (𝔽.toℕ a) (𝔽.toℕ b) (𝔽.toℕ c)
     S𝔽ℕ a b c = refl
+    open import Relation.Binary.PropositionalEquality
+    open ≡-Reasoning
 \end{code}
 
 \section{la'oi .\F{reed}.}
