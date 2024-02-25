@@ -789,10 +789,12 @@ module Orsygenturfa'i₃Veritas where
     S𝔽ℕ a b c = begin
       S a b c ≡⟨ refl ⟩
       (show a , show b) , show c ≡⟨ {!!} ⟩
-      (show (𝔽.toℕ a) , show b) , show c ≡⟨ {!!} ⟩
-      (show (𝔽.toℕ a) , show (𝔽.toℕ b)) , show c ≡⟨ {!!} ⟩
-      (show (𝔽.toℕ a) , show (𝔽.toℕ b)) , show (𝔽.toℕ c) ≡⟨ refl ⟩
+      (show' a , show b) , show c ≡⟨ {!!} ⟩
+      (show' a , show' b) , show c ≡⟨ {!!} ⟩
+      (show' a , show' b) , show' c ≡⟨ refl ⟩
       S (𝔽.toℕ a) (𝔽.toℕ b) (𝔽.toℕ c) ∎
+      where
+      show' = show ∘ 𝔽.toℕ
 \end{code}
 
 \section{la'oi .\F{reed}.}
