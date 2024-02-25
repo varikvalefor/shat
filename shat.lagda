@@ -711,11 +711,18 @@ module Orsygenturfa'i₃Veritas where
   orspiv a b c x j = sym $ begin
     orsispita K ≡⟨ refl ⟩
     lispork (𝕃.map (w aintDigit?) $ w (_≟ ',') $ K) ≡⟨ {!!} ⟩
+    lispork' (𝕃.map (w' aintDigit?) $ w' (_≟ ',') $ K') ≡⟨ {!!} ⟩
     just ((show a , show b) , show c) ∎
     where
     w = 𝕊.wordsBy
+    w' = 𝕃.wordsBy
     aintDigit? = Data.Bool.T? ∘ Data.Bool.not ∘ isDigit
     K = show a ++ "," ++ show b ++ 𝕊.fromChar x ++ show c
+    show' = 𝕊.toList ∘ show
+    K' = show' a ++ ',' ∷ show' b ++ x ∷ show' c
+    lispork' : List $ List $ List $ Char
+             → Maybe $ (String × String) × String
+    lispork' = lispork ∘ 𝕃.map (𝕃.map 𝕊.fromList)
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
