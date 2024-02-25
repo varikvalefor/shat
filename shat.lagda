@@ -719,6 +719,7 @@ module Orsygenturfa'i₃Veritas where
     lispork (𝕃.map (w aintDigit?) $ w (_≟ ',') $ K) ≡⟨ {!!} ⟩
     lispork' (𝕃.map (w' aintDigit?) $ w' (_≟ ',') $ K') ≡⟨ {!!} ⟩
     lispork' ((s' a ∷ [ s' b ]) ∷ [ [ s' c ] ]) ≡⟨ {!!} ⟩
+    lispork ((s a ∷ [ s b ]) ∷ [ [ s c ] ]) ≡⟨ ? ⟩
     just ((show a , show b) , show c) ∎
     where
     [_] = 𝕃.[_]
@@ -726,6 +727,7 @@ module Orsygenturfa'i₃Veritas where
     w' = 𝕃.wordsBy
     aintDigit? = Data.Bool.T? ∘ Data.Bool.not ∘ isDigit
     K = show a ++ "," ++ show b ++ 𝕊.fromChar x ++ show c
+    s = show
     s' = 𝕊.toList ∘ show
     K' = s' a ++ ',' ∷ s' b ++ x ∷ s' c
     lispork' : List $ List $ List $ Char
