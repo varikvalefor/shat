@@ -712,7 +712,7 @@ module Orsygenturfa'i₃Veritas where
           → (_≡_
               (lispork $ (a ∷ b ∷ []) ∷ (c ∷ []) ∷ [])
               (just $ (a , b) , c))
-  lisporv = {!!}
+  lisporv _ _ _ = refl
 
   orspiv : (a b c : ℕ)
          → (x : Char)
