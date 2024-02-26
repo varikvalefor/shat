@@ -1201,7 +1201,14 @@ module KanjyVeritas where
               → ((_≡_ on (length ∘ Buffer.lerpinste))
                   x
                   (proj₁ $ kanji {x} $ Muvgau a b c d))
-  muvduzilcmi = {!!}
+  muvduzilcmi x a b c d = sym $ begin
+    𝓁 (proj₁ K) ≡⟨ {!!} ⟩
+    𝓁 x ∎
+    where
+    K = kanji {x} $ Muvgau a b c d
+    𝓁 = length ∘ Buffer.lerpinste
+    open import Relation.Binary.PropositionalEquality
+    open ≡-Reasoning
 
   muvipas : (x : Buffer)
           → (a b c : Buffer.F x)
