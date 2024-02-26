@@ -133,6 +133,7 @@ open import IO.Finite
   )
 open import Data.Bool
   using (
+    false
   )
   renaming (
     if_then_else_ to if
@@ -421,7 +422,7 @@ module DegjygirzuVeritas where
   rel : (s : String)
       → (t : ℕ)
       → (c : Char)
-      → Data.Bool.false ≡ isDigit c
+      → false ≡ isDigit c
       → (_≡_
           (show t ∷ degjygirzu s)
           (degjygirzu $ show t ++ 𝕊.fromChar c ++ s))
@@ -429,7 +430,7 @@ module DegjygirzuVeritas where
 
   rybic : (s : String)
         → (c : Char)
-        → Data.Bool.false ≡ isDigit c
+        → false ≡ isDigit c
         → (_≡_
             (degjygirzu s)
             (degjygirzu $ 𝕊.fromChar c ++ s))
@@ -469,7 +470,7 @@ module PamoinamcuVeritas where
       → (n : ℕ)
       → (c : Char)
       → (s : String)
-      → Data.Bool.false ≡ isDigit c
+      → false ≡ isDigit c
       → just n ≡ pamoinamcu (show n ++ 𝕊.fromChar c ++ s)
   pav rimco n c t j = sym $ begin
    pamoinamcu (show n ++ c' ++ t) ≡⟨ refl ⟩
@@ -716,7 +717,7 @@ module Orsygenturfa'i₃Veritas where
 
   orspiv : (a b c : ℕ)
          → (x : Char)
-         → Data.Bool.false ≡ isDigit x
+         → false ≡ isDigit x
          → let x' = 𝕊.fromChar x in
            (_≡_
              (just $ (show a , show b) , show c)
@@ -760,7 +761,7 @@ module Orsygenturfa'i₃Veritas where
       → (v x z : Fin n)
       → (d : v 𝔽.≤ x)
       → (c : Char)
-      → Data.Bool.false ≡ isDigit c
+      → false ≡ isDigit c
       → (_≡_
           (just $ ((v , x) , d) , z)
           (orsygenturfa'i₃
