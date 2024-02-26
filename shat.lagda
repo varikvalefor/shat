@@ -684,10 +684,12 @@ module Orsygenturfa'i₃ where
   pork ((a , b) , c)= _,ₘ_ ax $ readMaybe c
     where
     _,ₘ_ = Data.Maybe.ap ∘ mapₘ _,_
-    ax = r a >>= λ a' → r b >>= λ b' → mapₘ (f a' b') $ decToMaybe $ a' 𝔽.≤? b'
+    ax = V >>= λ (a' , b') → mapₘ (f a' b') $ decToMaybe $ a' 𝔽.≤? b'
       where
       f = λ a b x → (a , b) , x
-      r = readMaybe
+      V = (Data.Maybe.ap ∘₂ mapₘ) _,_ (r a) $ r b
+        where
+        r = readMaybe
 
   orsygenturfa'i₃ : {n : ℕ}
                   → String
