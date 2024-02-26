@@ -877,7 +877,7 @@ module Reed where
     t : {x : Buffer} → String → Maybe $ Cmd x
     t {x} s = _,ₘ_ c (orsygenturfa'i₃ s) >>= g'
       where
-      g' = λ (z , (_ , d) , c) → g x _ _ c d z
+      g' = λ (z , (_ , d) , c) → g _ _ _ c d z
       _,ₘ_ = Data.Maybe.ap ∘ mapₘ _,_
       c = f $ 𝕃.filter aintDigit? $ 𝕊.toList s
         where
