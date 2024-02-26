@@ -426,7 +426,12 @@ module DegjygirzuVeritas where
       → (_≡_
           (show t ∷ degjygirzu s)
           (degjygirzu $ show t ++ 𝕊.fromChar c ++ s))
-  rel = {!!}
+  rel s t c j = sym $ begin
+    degjygirzu (show t ++ 𝕊.fromChar c ++ s) ≡⟨ {!!} ⟩
+    show t ∷ degjygirzu s ∎
+    where
+    open import Relation.Binary.PropositionalEquality
+    open ≡-Reasoning
 
   rybic : (s : String)
         → (c : Char)
