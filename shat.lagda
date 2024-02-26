@@ -469,7 +469,7 @@ module PamoinamcuVeritas where
       → (n : ℕ)
       → (c : Char)
       → (s : String)
-      → Data.Bool.false ≡_ $ isDigit c
+      → Data.Bool.false ≡ isDigit c
       → just n ≡ pamoinamcu (show n ++ 𝕊.fromChar c ++ s)
   pav rimco n c t j = sym $ begin
    pamoinamcu (show n ++ c' ++ t) ≡⟨ refl ⟩
