@@ -689,7 +689,7 @@ module Orsygenturfa'i₃ where
     ax = V >>= λ (a' , b') → mapₘ (f a' b') $ decToMaybe $ a' 𝔽.≤? b'
       where
       f = λ a b x → (a , b) , x
-      V = (Data.Maybe.ap ∘₂ mapₘ) _,_ (r a) $ r b
+      V = _,ₘ_ (r a) $ r b
         where
         r = readMaybe
 
