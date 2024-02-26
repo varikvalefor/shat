@@ -686,10 +686,10 @@ module Orsygenturfa'i₃ where
     _,ₘ_ : ∀ {a} → {A B : Set a}
          → Maybe A → Maybe B → Maybe $ A × B
     _,ₘ_ = (Data.Maybe.ap ∘₂ mapₘ) _,_
-    ax = V >>= λ (a' , b') → mapₘ (f a' b') $ decToMaybe $ a' 𝔽.≤? b'
+    ax = R >>= λ (a' , b') → mapₘ (f a' b') $ decToMaybe $ a' 𝔽.≤? b'
       where
       f = λ a b x → (a , b) , x
-      V = readMaybe a ,ₘ readMaybe b
+      R = readMaybe a ,ₘ readMaybe b
 
   orsygenturfa'i₃ : {n : ℕ}
                   → String
