@@ -428,8 +428,12 @@ module DegjygirzuVeritas where
           (degjygirzu $ show t ++ 𝕊.fromChar c ++ s))
   rel s t c j = sym $ begin
     degjygirzu (show t ++ 𝕊.fromChar c ++ s) ≡⟨ {!!} ⟩
+    degjygirzu' (𝕊.toList $ show t ++ 𝕊.fromChar c ++ s) ≡⟨ {!!} ⟩
     show t ∷ degjygirzu s ∎
     where
+    degjygirzu' = 𝕃.map 𝕊.fromList ∘_ $ 𝕃.wordsBy $ F? ∘ isDigit
+      where
+      F? = Data.Bool.T? ∘ Data.Bool.not
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
