@@ -865,19 +865,19 @@ module Reed where
       g' = λ (r' , (a , b) , z) → g x a b z r'
 
   module Ci where
-    g : (x : Buffer)
+    g : {x : Buffer}
       → (a b c : Buffer.F x)
       → (a 𝔽.≤ b)
       → Char
       → Maybe $ Cmd x
-    g _ a b c d x with x
+    g a b c d x with x
     ... | 'm' = just $ Muvgau a b c d
     ... | _ = nothing
 
     t : {x : Buffer} → String → Maybe $ Cmd x
     t {x} s = _,ₘ_ c (orsygenturfa'i₃ s) >>= g'
       where
-      g' = λ (z , (_ , d) , c) → g _ _ _ c d z
+      g' = λ (z , (_ , d) , c) → g _ _ c d z
       _,ₘ_ = Data.Maybe.ap ∘ mapₘ _,_
       c = f $ 𝕃.filter aintDigit? $ 𝕊.toList s
         where
