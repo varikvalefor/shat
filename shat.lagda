@@ -427,7 +427,7 @@ module DegjygirzuVeritas where
           (show t ∷ degjygirzu s)
           (degjygirzu $ show t ++ 𝕊.fromChar c ++ s))
   rel s t c j = sym $ begin
-    degjygirzu (show t ++ 𝕊.fromChar c ++ s) ≡⟨ {!!} ⟩
+    degjygirzu (show t ++ 𝕊.fromChar c ++ s) ≡⟨ refl ⟩
     degjygirzu' (𝕊.toList $ show t ++ 𝕊.fromChar c ++ s) ≡⟨ {!!} ⟩
     show t ∷ degjygirzu s ∎
     where
