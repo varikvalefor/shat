@@ -683,7 +683,9 @@ module Orsygenturfa'i₃ where
        → Maybe $ Σ (Fin n × Fin n) (uncurry 𝔽._≤_) × Fin n
   pork ((a , b) , c)= _,ₘ_ ax $ readMaybe c
     where
-    _,ₘ_ = Data.Maybe.ap ∘ mapₘ _,_
+    _,ₘ_ : ∀ {a} → {A B : Set a}
+         → Maybe A → Maybe B → Maybe $ A × B
+    _,ₘ_ = (Data.Maybe.ap ∘₂ mapₘ) _,_
     ax = V >>= λ (a' , b') → mapₘ (f a' b') $ decToMaybe $ a' 𝔽.≤? b'
       where
       f = λ a b x → (a , b) , x
