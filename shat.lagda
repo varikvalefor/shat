@@ -1206,7 +1206,7 @@ module KanjyVeritas where
   muvipas : (x : Buffer)
           → (a b c : Buffer.F x)
           → (d : a 𝔽.≤ b)
-          → ((_≡_ on (𝔽.toℕ a ↑_ ∘ Buffer.lerpinste))
+          → ((_≡_ on_ $ 𝔽.toℕ a ↑_ ∘ Buffer.lerpinste)
               x
               (proj₁ $ kanji {x} $ Muvgau a b c d))
   muvipas = {!!}
