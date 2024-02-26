@@ -429,6 +429,7 @@ module DegjygirzuVeritas where
   rel s t c j = sym $ begin
     degjygirzu (show t ++ 𝕊.fromChar c ++ s) ≡⟨ refl ⟩
     degjygirzu' (tL $ show t ++ 𝕊.fromChar c ++ s) ≡⟨ {!!} ⟩
+    degjygirzu' (tL (show t) ++ c ∷ tL s) ≡⟨ {!!} ⟩
     fL (tL $ show t) ∷ degjygirzu s ≡⟨ {!!} ⟩
     show t ∷ degjygirzu s ∎
     where
