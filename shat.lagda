@@ -428,10 +428,11 @@ module DegjygirzuVeritas where
           (degjygirzu $ show t ++ 𝕊.fromChar c ++ s))
   rel s t c j = sym $ begin
     degjygirzu (show t ++ 𝕊.fromChar c ++ s) ≡⟨ refl ⟩
-    degjygirzu' (𝕊.toList $ show t ++ 𝕊.fromChar c ++ s) ≡⟨ {!!} ⟩
-    𝕊.fromList (𝕊.toList $ show t) ∷ degjygirzu s ≡⟨ {!!} ⟩
+    degjygirzu' (tL $ show t ++ 𝕊.fromChar c ++ s) ≡⟨ {!!} ⟩
+    𝕊.fromList (tL $ show t) ∷ degjygirzu s ≡⟨ {!!} ⟩
     show t ∷ degjygirzu s ∎
     where
+    tL = 𝕊.toList
     degjygirzu' = 𝕃.map 𝕊.fromList ∘_ $ 𝕃.wordsBy $ F? ∘ isDigit
       where
       F? = Data.Bool.T? ∘ Data.Bool.not
