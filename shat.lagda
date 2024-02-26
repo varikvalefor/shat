@@ -727,7 +727,7 @@ module Orsygenturfa'i₃Veritas where
     lispork (𝕃.map (w aintDigit?) $ w (_≟ ',') $ K) ≡⟨ {!!} ⟩
     lispork' (𝕃.map (w' aintDigit?) $ w' (_≟ ',') $ K') ≡⟨ {!!} ⟩
     lispork' ((s' a ∷ [ s' b ]) ∷ [ [ s' c ] ]) ≡⟨ {!!} ⟩
-    lispork ((s a ∷ [ s b ]) ∷ [ [ s c ] ]) ≡⟨ {!!} ⟩
+    lispork ((s a ∷ [ s b ]) ∷ [ [ s c ] ]) ≡⟨ refl ⟩
     just ((show a , show b) , show c) ∎
     where
     [_] = 𝕃.[_]
