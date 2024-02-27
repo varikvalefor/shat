@@ -133,7 +133,8 @@ open import IO.Finite
   )
 open import Data.Bool
   using (
-    false
+    false;
+    T?
   )
   renaming (
     if_then_else_ to if
@@ -397,7 +398,7 @@ ni'o la .varik.\ na birti lo du'u ma kau zabna ciksi la \F{degjygirzu}\ fo ma ka
 
 \begin{code}
 degjygirzu : String → List String
-degjygirzu = 𝕊.wordsBy $ Data.Bool.T? ∘ Data.Bool.not ∘ isDigit
+degjygirzu = 𝕊.wordsBy $ T? ∘ Data.Bool.not ∘ isDigit
 \end{code}
 
 \subsection{le ctaipe be le su'u la \F{degjygirzu}\ cu mapti}
@@ -415,7 +416,7 @@ module DegjygirzuVeritas where
     where
     mL = 𝕃.map 𝕊.fromList
     show' = 𝕊.toList ∘ show
-    d = 𝕃.wordsBy $ Data.Bool.T? ∘ Data.Bool.not ∘ isDigit
+    d = 𝕃.wordsBy $ T? ∘ Data.Bool.not ∘ isDigit
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
@@ -437,7 +438,7 @@ module DegjygirzuVeritas where
     fL = 𝕊.fromList
     degjygirzu' = 𝕃.map fL ∘_ $ 𝕃.wordsBy $ F? ∘ isDigit
       where
-      F? = Data.Bool.T? ∘ Data.Bool.not
+      F? = T? ∘ Data.Bool.not
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
@@ -475,7 +476,7 @@ module PamoinamcuVeritas where
     just n ∎
     where
     𝓰 = (_>>= readMaybe) ∘ 𝕃.head
-    s = 𝕊.wordsBy $ Data.Bool.T? ∘ Data.Bool.not ∘ Data.Char.isDigit
+    s = 𝕊.wordsBy $ T? ∘ Data.Bool.not ∘ Data.Char.isDigit
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
@@ -690,7 +691,7 @@ module Orsygenturfa'i₃ where
   orsispita : String → Maybe $ (String × String) × String
   orsispita = lispork ∘ 𝕃.map (𝕊.wordsBy aintDigit?) ∘ 𝕊.wordsBy (_≟ ',')
     where
-    aintDigit? = Data.Bool.T? ∘ Data.Bool.not ∘ isDigit
+    aintDigit? = T? ∘ Data.Bool.not ∘ isDigit
 
   pork : {n : ℕ}
        → (String × String) × String
@@ -750,7 +751,7 @@ module Orsygenturfa'i₃Veritas where
     [_] = 𝕃.[_]
     w = 𝕊.wordsBy
     w' = 𝕃.wordsBy
-    aintDigit? = Data.Bool.T? ∘ Data.Bool.not ∘ isDigit
+    aintDigit? = T? ∘ Data.Bool.not ∘ isDigit
     K = show a ++ "," ++ show b ++ 𝕊.fromChar x ++ show c
     s = show
     s' = 𝕊.toList ∘ show
@@ -896,7 +897,7 @@ module Reed where
       _,ₘ_ = Data.Maybe.ap ∘ mapₘ _,_
       c = f $ 𝕃.filter aintDigit? $ 𝕊.toList s
         where
-        aintDigit? = Data.Bool.T? ∘ Data.Bool.not ∘ isDigit
+        aintDigit? = T? ∘ Data.Bool.not ∘ isDigit
         f : _ → _
         f (x ∷ []) = just x
         f _ = nothing
