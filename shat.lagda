@@ -1167,15 +1167,15 @@ module KanjyVeritas where
   nilzilcmiv x a b d = begin
     lb x₂ ≡⟨ refl ⟩
     length (𝔽.toℕ a ↑ Lz ++ ℕ.suc (𝔽.toℕ b) ↓ Lz) ≡⟨ refl ⟩
-    length (a' ↑ Lz ++ b'++ ↓ Lz) ≡⟨ DLP.length-++ $ a' ↑ Lz ⟩
-    length (a' ↑ Lz) ℕ.+ length (b'++ ↓ Lz) ≡⟨ {!!} ⟩
-    length (a' ↑ Lz) ℕ.+ (length Lz ℕ.∸ b'++) ≡⟨ {!!} ⟩
-    (length Lz ℕ.∸ {!!}) ℕ.+ (length Lz ℕ.∸ b'++) ≡⟨ {!!} ⟩
+    length (a' ↑ Lz ++ b'+1 ↓ Lz) ≡⟨ DLP.length-++ $ a' ↑ Lz ⟩
+    length (a' ↑ Lz) ℕ.+ length (b'+1 ↓ Lz) ≡⟨ {!!} ⟩
+    length (a' ↑ Lz) ℕ.+ (length Lz ℕ.∸ b'+1) ≡⟨ {!!} ⟩
+    (length Lz ℕ.∸ {!!}) ℕ.+ (length Lz ℕ.∸ b'+1) ≡⟨ {!!} ⟩
     lb x ℕ.∸ ℕ.suc (a' ℕ.∸ b') ≡⟨ refl ⟩
     lb x ℕ.∸ ℕ.suc (𝔽.toℕ a ℕ.∸ 𝔽.toℕ b) ∎
     where
     b' = 𝔽.toℕ b
-    b'++ = ℕ.suc b'
+    b'+1 = ℕ.suc b'
     a' = 𝔽.toℕ a
     Lz = Buffer.lerpinste x
     x₂ = proj₁ $ kanji {x} $ Vimcu a b d
