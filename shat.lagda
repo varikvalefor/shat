@@ -1187,7 +1187,14 @@ module KanjyVeritas where
           → (d : a 𝔽.≤ b)
           → let x₂ = proj₁ $ kanji {x} $ Vimcu a b d in
             (_≡_ on ((𝔽.toℕ a) ↑_ ∘ Buffer.lerpinste)) x x₂
-  takeduv = {!!}
+  takeduv x a b d = sym $ begin
+    BLT x₂ ≡⟨ {!!} ⟩
+    BLT x ∎
+    where
+    BLT = (𝔽.toℕ a) ↑_ ∘ Buffer.lerpinste
+    x₂ = proj₁ $ kanji {x} $ Vimcu a b d
+    open import Relation.Binary.PropositionalEquality
+    open ≡-Reasoning
 
   dropyduv : (x : Buffer)
            → (a b : Buffer.F x)
