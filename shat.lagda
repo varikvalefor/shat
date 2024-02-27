@@ -1339,7 +1339,7 @@ main = run $ IO.lift snurytcati IO.>> getArgs IO.>>= uic ∘ 𝕃.head
       ... | Sisti!ᵢₒ = IO.pure _
       ... | Skamiᵢₒ a = {!!}
       ... | Tciduᵢₒ a b = {!!}
-      ... | Rejgauᵢₒ a b = IO.writeFile a b IO.>> ⟲ x
+      ... | Rejgauᵢₒ a b = IO.writeFile b a IO.>> ⟲ x
       ... | Sistiᵢₒ = f $ mapₘ (λ _ → Sisti!) $ decToMaybe $ r ≟ c₁
         where
         r = Buffer.rejgaudatni x'
