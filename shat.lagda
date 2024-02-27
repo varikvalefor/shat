@@ -740,8 +740,9 @@ module Orsygenturfa'i₃Veritas where
     orsispita K ≡⟨ refl ⟩
     lispork (𝕃.map (w aintDigit?) $ w (_≟ ',') $ K) ≡⟨ {!!} ⟩
     lispork' (𝕃.map (w' aintDigit?) $ w' (_≟ ',') $ K') ≡⟨ {!!} ⟩
-    lispork' ((s' a ∷ [ s' b ]) ∷ [ [ s' c ] ]) ≡⟨ {!!} ⟩
-    lispork ((s a ∷ [ s b ]) ∷ [ [ s c ] ]) ≡⟨ refl ⟩
+    lispork' ((s' a ∷ [ s' b ]) ∷ [ [ s' c ] ]) ≡⟨ refl ⟩
+    lispork' (map₂ s' abj) ≡⟨ {!!} ⟩
+    lispork (map₂ s abj) ≡⟨ refl ⟩
     just ((show a , show b) , show c) ∎
     where
     [_] = 𝕃.[_]
@@ -752,6 +753,10 @@ module Orsygenturfa'i₃Veritas where
     s = show
     s' = 𝕊.toList ∘ show
     K' = s' a ++ ',' ∷ s' b ++ x ∷ s' c
+    abj = (a ∷ [ b ]) ∷ [ [ c ] ]
+    map₂ : ∀ {a b} → {A : Set a} → {B : Set b}
+         → (A → B) → List $ List A → List $ List B
+    map₂ = 𝕃.map ∘ 𝕃.map
     lispork' : List $ List $ List $ Char
              → Maybe $ (String × String) × String
     lispork' = lispork ∘ 𝕃.map (𝕃.map 𝕊.fromList)
