@@ -805,7 +805,7 @@ module Orsygenturfa'i₃Veritas where
              show v ++ "," ++ show x ++ c' ++ show z)))
   pav v x z d c j = sym $ begin
     orsygenturfa'i₃ K ≡⟨ refl ⟩
-    orsispita K >>= pork ≡⟨ K≡K' ▹ cong ((_>>= pork) ∘ orsispita) ⟩
+    orsispita K >>= pork ≡⟨ refl ▹ cong ((_>>= pork) ∘ orsispita) ⟩
     orsispita K' >>= pork ≡⟨ vorspiv ▹ sym ▹ cong (_>>= pork) ⟩
     just (S v' x' z') >>= pork ≡⟨ refl ⟩
     pork (S v' x' z') ≡⟨ S𝔽ℕ v x z ▹ sym ▹ cong pork ⟩
@@ -824,8 +824,6 @@ module Orsygenturfa'i₃Veritas where
     z' = 𝔽.toℕ z
     K' = show v' ++ "," ++ show x' ++ 𝕊.fromChar c ++ show z'
     vorspiv = orspiv v' x' z' c j
-    K≡K' : K ≡ K'
-    K≡K' = refl
     S𝔽ℕ : {n : ℕ}
         → (a b c : Fin n)
         → S a b c ≡ S (𝔽.toℕ a) (𝔽.toℕ b) (𝔽.toℕ c)
