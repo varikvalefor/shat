@@ -1009,6 +1009,7 @@ module ReedVeritas where
      → just (Jmina a) ≡ reed x (k₁ x a 'a')
   ac x a = sym $ begin
     reed x (k₁ x a 'a') ≡⟨ {!!} ⟩
+    Reed.Pa.t (k₁ x a 'a') ≡⟨ {!!} ⟩
     just (Jmina a) ∎
     where
     open import Relation.Binary.PropositionalEquality
