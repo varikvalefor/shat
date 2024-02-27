@@ -850,7 +850,7 @@ module Reed where
     k _ = nothing
 
     t : {x : Buffer} → String → Maybe $ Cmd x
-    t s = _>>= g $ 𝕃.head $ 𝕊.toList s
+    t = (_>>= g) ∘ 𝕃.head ∘ 𝕊.toList
 
   module Pa where
     g : {x : Buffer} → Buffer.F x → Char → Maybe $ Cmd x
