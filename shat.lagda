@@ -825,7 +825,7 @@ module Orsygenturfa'i₃Veritas where
     K' = show v' ++ "," ++ show x' ++ 𝕊.fromChar c ++ show z'
     vorspiv = orspiv v' x' z' c j
     K≡K' : K ≡ K'
-    K≡K' = {!!}
+    K≡K' = refl
     S𝔽ℕ : {n : ℕ}
         → (a b c : Fin n)
         → S a b c ≡ S (𝔽.toℕ a) (𝔽.toℕ b) (𝔽.toℕ c)
