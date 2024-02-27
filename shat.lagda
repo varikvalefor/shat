@@ -1159,12 +1159,10 @@ module KanjyVeritas where
   nilzilcmiv : (x : Buffer)
              → (a b : Buffer.F x)
              → (d : a 𝔽.≤ b)
-             → (_≡_
-                 (length $ Buffer.lerpinste
-                   (proj₁ $ kanji {x} $ Vimcu a b d))
-                 (ℕ._∸_
-                   (length $ Buffer.lerpinste x)
-                   (ℕ.suc $ 𝔽.toℕ a ℕ.∸ 𝔽.toℕ b)))
+             → let BLT = length ∘ Buffer.lerpinste in
+               (_≡_
+                 (BLT $ proj₁ $ kanji {x} $ Vimcu a b d)
+                 (BLT x ℕ.∸_ $ ℕ.suc $ 𝔽.toℕ a ℕ.∸ 𝔽.toℕ b))
   nilzilcmiv x a b d = begin
     lb x₂ ≡⟨ refl ⟩
     length (𝔽.toℕ a ↑ Lz ++ ℕ.suc (𝔽.toℕ b) ↓ Lz) ≡⟨ refl ⟩
