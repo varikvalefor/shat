@@ -205,6 +205,7 @@ open import Truthbrary.Record.Eq
 open import Truthbrary.Record.SR
   using (
     readMaybe;
+    Show;
     show
   )
 open import Data.Unit.Polymorphic
@@ -261,7 +262,7 @@ import Data.List.Relation.Unary.All
 \chapter{le me'oi .instance.\ pe le na se ciksi fo le velcki be le la'o zoi.\ \Xr{shat}{1}\ .zoi.}
 
 \begin{code}
-showF : {n : ℕ} → Truthbrary.Record.SR.Show $ Fin n
+showF : {n : ℕ} → Show $ Fin n
 showF = record {show = 𝔽.show}
 \end{code}
 
@@ -806,9 +807,9 @@ module Orsygenturfa'i₃Veritas where
     just (((v , x) , d) , z) ∎
     where
     S : ∀ {a b c} → {A : Set a} → {B : Set b} → {C : Set c}
-      → ⦃ Truthbrary.Record.SR.Show A ⦄
-      → ⦃ Truthbrary.Record.SR.Show B ⦄
-      → ⦃ Truthbrary.Record.SR.Show C ⦄
+      → ⦃ Show A ⦄
+      → ⦃ Show B ⦄
+      → ⦃ Show C ⦄
       → A → B → C → (String × String) × String
     S a b c = (show a , show b) , show c
     K = show v ++ "," ++ show x ++ 𝕊.fromChar c ++ show z
