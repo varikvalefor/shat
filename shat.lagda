@@ -80,6 +80,10 @@
 \begin{document}
 \maketitle
 
+\begin{abstract}
+ni'o skicu bau la'oi .Agda.\ fe ko'a goi le milxe be le ka ce'u smimlu be la'o zoi.\ \Xr{ed}{1}\ .zoi.\ pe la'o zoi.\ Version 1 AT\&T UNIX\ .zoi.\ldots kei poi ke'a selcme zoi zoi.\ \Xr{shat}{1}\ .zoi.\ldots ku'o je cu ciksi bau la'oi .Agda.\ le ctaipe be le su'u ko'a co'e ja mapti
+\end{abstract}
+
 \tableofcontents
 
 \chapter{le vrici}
