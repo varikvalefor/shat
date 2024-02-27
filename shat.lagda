@@ -774,7 +774,7 @@ module Orsygenturfa'i₃Veritas where
               → {g : A → B}
               → f ≗ g
               → map₂ f ≗ map₂ g
-    map₂-cong = {!!}
+    map₂-cong = DLP.map-cong ∘ DLP.map-cong
 
   porkcos : {n : ℕ}
           → (a b : Fin n)
