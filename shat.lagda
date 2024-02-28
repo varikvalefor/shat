@@ -1054,8 +1054,9 @@ module ReedVeritas where
       → (c : Char)
       → ¬ (c ≡ ' ')
       → (let s' = 𝕊.fromChar c ++ s in
-         just (Rejgau s') ≡ reed x ("w " ++ s'))
-  uip unwords∘f x s c n = sym $ begin
+        Data.Maybe.Is-just $ 𝕃.uncons $ 𝕊.wordsBy (_≟ ' ') s'
+      → just (Rejgau s') ≡ reed x ("w " ++ s'))
+  uip unwords∘f x s c n uj = sym $ begin
     reed x ("w " ++ s') ≡⟨ w++s≡w++fs ▹ cong (reed x) ⟩
     reed x (unwords $ "w" ∷ f s') ≡⟨ {!!} ⟩
     k (f $ unwords $ "w" ∷ f s') ≡⟨ {!!} ⟩
@@ -1069,8 +1070,6 @@ module ReedVeritas where
     open Reed.No using (k)
     s' = 𝕊.fromChar c ++ s
     f = 𝕊.wordsBy $ _≟ ' '
-    uj : Data.Maybe.Is-just $ 𝕃.uncons $ f s'
-    uj = {!!}
     v = Data.Maybe.to-witness uj
     v₁ = proj₁ v
     v₂ = proj₂ v
