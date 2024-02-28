@@ -1075,7 +1075,7 @@ module ReedVeritas where
     v₂ = proj₂ v
     j∘R = just ∘ Rejgau
     fs'≡v₁∷v₂ : f s' ≡ v₁ ∷ v₂
-    fs'≡v₁∷v₂ = consunwords (f s') uj
+    fs'≡v₁∷v₂ = consunwords _ uj
       where
       consunwords : ∀ {a} → {A : Set a}
                   → (xs : List A)
