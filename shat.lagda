@@ -1019,6 +1019,7 @@ module ReedVeritas where
   ac x a = sym $ begin
     reed x (k₁ x a 'a') ≡⟨ {!!} ⟩
     Reed.Pa.t (k₁ x a 'a') ≡⟨ {!!} ⟩
+    just (a , 'a') >>= uncurry Reed.Pa.g ≡⟨ refl ⟩
     Reed.Pa.g a 'a' ≡⟨ refl ⟩
     just (Jmina a) ∎
     where
