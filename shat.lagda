@@ -1006,6 +1006,7 @@ module ReedVeritas where
   xon x z = begin
     reed x "u" ≡⟨ refl ⟩
     𝕃.head (𝕃.mapMaybe id terp') ≡⟨ {!!} ⟩
+    Reed.No.t "u" ≡⟨ refl ⟩
     mapₘ X (𝕃.head $ 𝕃.allFin _) ≡⟨ dzeroxe z ▹ cong (mapₘ X) ⟩
     just (X $ mink 𝔽.zero $ proj₂ z) ∎
     where
