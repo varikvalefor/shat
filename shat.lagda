@@ -439,7 +439,7 @@ module DegjygirzuVeritas where
     degjygirzu (show t ++ 𝕊.fromChar c ++ s) ≡⟨ refl ⟩
     degjygirzu' (tL $ show t ++ 𝕊.fromChar c ++ s) ≡⟨ {!!} ⟩
     degjygirzu' (tL (show t) ++ c ∷ tL s) ≡⟨ {!!} ⟩
-    fL (tL $ show t) ∷ degjygirzu s ≡⟨ {!!} ▹ cong (_∷ degjygirzu s) ⟩
+    fL (tL $ show t) ∷ degjygirzu s ≡⟨ fL∘tL _ ▹ cong (_∷ degjygirzu s) ⟩
     show t ∷ degjygirzu s ∎
     where
     tL = 𝕊.toList
@@ -447,6 +447,8 @@ module DegjygirzuVeritas where
     degjygirzu' = 𝕃.map fL ∘_ $ 𝕃.wordsBy $ F? ∘ isDigit
       where
       F? = T? ∘ Data.Bool.not
+    fL∘tL : (s : String) → fL (tL s) ≡ s
+    fL∘tL = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
