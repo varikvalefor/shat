@@ -227,6 +227,7 @@ open import Truthbrary.Record.LLC
   )
 open import Truthbrary.Category.Monad
   using (
+    _=<<_;
     _>>=_
   )
   renaming (
@@ -896,7 +897,7 @@ module Reed where
     ... | _ = nothing
 
     t : {x : Buffer} → String → Maybe $ Cmd x
-    t {x} s = _,ₘ_ c (orsygenturfa'i₃ s) >>= g'
+    t {x} s = g' =<< _,ₘ_ c (orsygenturfa'i₃ s)
       where
       g' = λ (z , (_ , d) , c) → g _ _ c d z
       _,ₘ_ = Data.Maybe.ap ∘ mapₘ _,_
