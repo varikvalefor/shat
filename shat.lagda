@@ -40,6 +40,7 @@
 \newunicodechar{₃}{\ensuremath{\mathnormal{_3}}}
 \newunicodechar{⊎}{\ensuremath{\mathnormal\uplus}}
 \newunicodechar{≡}{\ensuremath{\mathnormal\equiv}}
+\newunicodechar{≗}{\ensuremath{\mathnormal\circeq}}
 \newunicodechar{∧}{\ensuremath{\mathnormal\land}}
 \newunicodechar{≤}{\ensuremath{\mathnormal\leq}}
 \newunicodechar{∋}{\ensuremath{\mathnormal\ni}}
