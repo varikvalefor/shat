@@ -1058,6 +1058,7 @@ module ReedVeritas where
   uip unwords∘f x s c n = sym $ begin
     reed x ("w " ++ s') ≡⟨ w++s≡w++fs ▹ cong (reed x) ⟩
     reed x (unwords $ "w" ∷ f s') ≡⟨ {!!} ⟩
+    k (f $ unwords $ "w" ∷ f s') ≡⟨ {!!} ⟩
     k ("w" ∷ f s') ≡⟨ fs'≡v₁∷v₂ ▹ cong (k ∘ _∷_ "w") ⟩
     k ("w" ∷ v₁ ∷ v₂) ≡⟨ refl ⟩
     j∘R (unwords $ v₁ ∷ v₂) ≡⟨ refl ⟩
