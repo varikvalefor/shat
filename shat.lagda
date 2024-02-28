@@ -1075,14 +1075,14 @@ module ReedVeritas where
     v₂ = proj₂ v
     j∘R = just ∘ Rejgau
     fs'≡v₁∷v₂ : f s' ≡ v₁ ∷ v₂
-    fs'≡v₁∷v₂ = consunwords _ uj
+    fs'≡v₁∷v₂ = consunwords uj
       where
       consunwords : ∀ {a} → {A : Set a}
-                  → (xs : List A)
+                  → {xs : List A}
                   → (j : Data.Maybe.Is-just $ 𝕃.uncons xs)
                   → let j' = Data.Maybe.to-witness j in
                     xs ≡ proj₁ j' ∷ proj₂ j'
-      consunwords X@(x ∷ xs) j = sym $ begin
+      consunwords {xs = X@(x ∷ xs)} j = sym $ begin
         proj₁ j' ∷ proj₂ j' ≡⟨ {!!} ⟩
         x ∷ xs ≡⟨ refl ⟩
         X ∎
