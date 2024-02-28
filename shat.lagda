@@ -460,7 +460,12 @@ module DegjygirzuVeritas where
         → (_≡_
             (degjygirzu s)
             (degjygirzu $ 𝕊.fromChar c ++ s))
-  rybic = {!!}
+  rybic s c j = sym $ begin
+    degjygirzu (𝕊.fromChar c ++ s) ≡⟨ {!!} ⟩
+    degjygirzu s ∎
+    where
+    open import Relation.Binary.PropositionalEquality
+    open ≡-Reasoning
 \end{code}
 
 \section{la'oi .\F{pamoinamcu}.}
