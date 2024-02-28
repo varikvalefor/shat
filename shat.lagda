@@ -1004,7 +1004,7 @@ module ReedVeritas where
       → (z : ∃ λ n → ℕ.suc n ≡ length (Buffer.citri x))
       → reed x "u" ≡ just (Xruti $ mink 𝔽.zero $ proj₂ z)
   xon x z = begin
-    reed x "u" ≡⟨ {!!} ⟩
+    reed x "u" ≡⟨ refl ⟩
     𝕃.head (𝕃.mapMaybe id terp') ≡⟨ {!!} ⟩
     mapₘ X (𝕃.head $ 𝕃.allFin _) ≡⟨ dzeroxe z ▹ cong (mapₘ X) ⟩
     just (X $ mink 𝔽.zero $ proj₂ z) ∎
