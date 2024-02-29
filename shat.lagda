@@ -1267,9 +1267,11 @@ module KanjyVeritas where
               (proj₁ $ kanji {x} $ Muvgau a b c d))
   muvipas x a b c d = sym $ begin
     T (BL x') ≡⟨ {!!} ⟩
+    T (T (BL x) ++ D (BL x)) ≡⟨ {!!} ⟩
     T (BL x) ∎
     where
     T = 𝔽.toℕ a ↑_
+    D = 𝔽.toℕ a ↓_
     BL = Buffer.lerpinste
     x' = proj₁ $ kanji {x} $ Muvgau a b c d
     open import Relation.Binary.PropositionalEquality
