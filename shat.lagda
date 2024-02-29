@@ -1195,7 +1195,7 @@ module KanjyVeritas where
     length (a' ↑ Lz ++ b'+1 ↓ Lz) ≡⟨ DLP.length-++ $ a' ↑ Lz ⟩
     length (a' ↑ Lz) ℕ.+ length (b'+1 ↓ Lz) ≡⟨ {!!} ⟩
     length (a' ↑ Lz) ℕ.+ (length Lz ℕ.∸ b'+1) ≡⟨ {!!} ⟩
-    (length Lz ℕ.∸ {!!}) ℕ.+ (length Lz ℕ.∸ b'+1) ≡⟨ {!!} ⟩
+    a' ℕ.+ (length Lz ℕ.∸ b'+1) ≡⟨ {!!} ⟩
     lb x ℕ.∸ ℕ.suc (b' ℕ.∸ a') ≡⟨ refl ⟩
     lb x ℕ.∸ ℕ.suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a) ∎
     where
