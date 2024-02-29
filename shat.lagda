@@ -906,7 +906,7 @@ module Reed where
     ... | _ = nothing
 
     t : {x : Buffer} → String → Maybe $ Cmd x
-    t {x} s = g' =<< _,ₘ_ c (orsygenturfa'i₃ s)
+    t {x} s = g' =<<_ $ _,ₘ_ c $ orsygenturfa'i₃ s
       where
       g' = λ (z , (_ , d) , c) → g _ _ c d z
       _,ₘ_ = Data.Maybe.ap ∘ mapₘ _,_
