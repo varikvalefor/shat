@@ -1265,7 +1265,15 @@ module KanjyVeritas where
           → ((_≡_ on_ $ 𝔽.toℕ a ↑_ ∘ Buffer.lerpinste)
               x
               (proj₁ $ kanji {x} $ Muvgau a b c d))
-  muvipas = {!!}
+  muvipas x a b c d = sym $ begin
+    T (BL x') ≡⟨ {!!} ⟩
+    T (BL x) ∎
+    where
+    T = 𝔽.toℕ a ↑_
+    BL = Buffer.lerpinste
+    x' = proj₁ $ kanji {x} $ Muvgau a b c d
+    open import Relation.Binary.PropositionalEquality
+    open ≡-Reasoning
 
   muvisez : (x : Buffer)
           → (a b c : Buffer.F x)
