@@ -1266,7 +1266,7 @@ module KanjyVeritas where
               x
               (proj₁ $ kanji {x} $ Muvgau a b c d))
   muvipas x a b c d = sym $ begin
-    T (BL x') ≡⟨ {!!} ⟩
+    T (BL x') ≡⟨ refl ⟩
     T (T (BL x) ++ D (BL x)) ≡⟨ {!!} ⟩
     T (BL x) ∎
     where
