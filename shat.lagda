@@ -1266,8 +1266,8 @@ module KanjyVeritas where
               x
               (proj₁ $ kanji {x} $ Muvgau a b c d))
   muvipas x a b c d = sym $ begin
-    T (BL x') ≡⟨ refl ⟩
-    T (T (BL x) ++ D (BL x)) ≡⟨ {!!} ⟩
+    T (BL x') ≡⟨ DLP.take++drop (𝔽.toℕ a) (BL x') ▹ sym ▹ cong T ⟩
+    T (T (BL x') ++ D (BL x')) ≡⟨ {!!} ⟩
     T (BL x) ∎
     where
     T = 𝔽.toℕ a ↑_
