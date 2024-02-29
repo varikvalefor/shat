@@ -1282,7 +1282,8 @@ module KanjyVeritas where
              → (n : Fin $ length x)
              → let n' = 𝔽.toℕ n in
                𝕃.take n' (𝕃.take n' x ++ z) ≡ 𝕃.take n' x
-    teikteik = ?
+    teikteik (_ ∷ _) _ 𝔽.zero = refl
+    teikteik (x ∷ xs) g (𝔽.suc n) = teikteik xs g n ▹ cong (x ∷_)
 
   muvisez : (x : Buffer)
           → (a b c : Buffer.F x)
