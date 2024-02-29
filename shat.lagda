@@ -1270,7 +1270,7 @@ module KanjyVeritas where
   muvipas x a b c d = sym $ begin
     T (BL x') ≡⟨ DLP.take++drop (𝔽.toℕ a) (BL x') ▹ sym ▹ cong T ⟩
     T (T (BL x') ++ D (BL x')) ≡⟨ {!!} ⟩
-    T (T (BL x) ++ D (BL x')) ≡⟨ teikteik (BL x) _ a ⟩
+    T (T (BL x) ++ D (BL x')) ≡⟨ teikteik (BL x) a ⟩
     T (BL x) ∎
     where
     T = 𝔽.toℕ a ↑_
@@ -1280,12 +1280,13 @@ module KanjyVeritas where
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
     teikteik : ∀ {a} → {A : Set a}
-             → (x z : List A)
+             → (x : List A)
+             → {z : List A}
              → (n : Fin $ length x)
              → let n' = 𝔽.toℕ n in
                𝕃.take n' (𝕃.take n' x ++ z) ≡ 𝕃.take n' x
-    teikteik (_ ∷ _) _ 𝔽.zero = refl
-    teikteik (x ∷ xs) _ (𝔽.suc n) = teikteik xs _ n ▹ cong (x ∷_)
+    teikteik (_ ∷ _) 𝔽.zero = refl
+    teikteik (x ∷ xs) (𝔽.suc n) = teikteik xs n ▹ cong (x ∷_)
 
   muvisez : (x : Buffer)
           → (a b c : Buffer.F x)
