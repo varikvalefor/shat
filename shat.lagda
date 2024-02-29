@@ -1029,12 +1029,14 @@ module ReedVeritas where
      → (a : Buffer.F x)
      → just (Jmina a) ≡ reed x (k₁ x a 'a')
   ac x a = sym $ begin
-    reed x (k₁ x a 'a') ≡⟨ {!!} ⟩
-    Reed.Pa.t (k₁ x a 'a') ≡⟨ {!!} ⟩
+    reed x (k₁ x a 'a') ≡⟨ refl ⟩
+    reed x K ≡⟨ {!!} ⟩
+    Reed.Pa.t K ≡⟨ {!!} ⟩
     just (a , 'a') >>= uncurry Reed.Pa.g ≡⟨ refl ⟩
     Reed.Pa.g a 'a' ≡⟨ refl ⟩
     just (Jmina a) ∎
     where
+    K = k₁ x a 'a'
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
