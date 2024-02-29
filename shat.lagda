@@ -1188,7 +1188,7 @@ module KanjyVeritas where
              → let BLT = length ∘ Buffer.lerpinste in
                (_≡_
                  (BLT $ proj₁ $ kanji {x} $ Vimcu a b d)
-                 (BLT x ℕ.∸_ $ ℕ.suc $ 𝔽.toℕ a ℕ.∸ 𝔽.toℕ b))
+                 (BLT x ℕ.∸_ $ ℕ.suc $ 𝔽.toℕ b ℕ.∸ 𝔽.toℕ a))
   nilzilcmiv x a b d = begin
     lb x₂ ≡⟨ refl ⟩
     length (𝔽.toℕ a ↑ Lz ++ ℕ.suc (𝔽.toℕ b) ↓ Lz) ≡⟨ refl ⟩
@@ -1196,8 +1196,8 @@ module KanjyVeritas where
     length (a' ↑ Lz) ℕ.+ length (b'+1 ↓ Lz) ≡⟨ {!!} ⟩
     length (a' ↑ Lz) ℕ.+ (length Lz ℕ.∸ b'+1) ≡⟨ {!!} ⟩
     (length Lz ℕ.∸ {!!}) ℕ.+ (length Lz ℕ.∸ b'+1) ≡⟨ {!!} ⟩
-    lb x ℕ.∸ ℕ.suc (a' ℕ.∸ b') ≡⟨ refl ⟩
-    lb x ℕ.∸ ℕ.suc (𝔽.toℕ a ℕ.∸ 𝔽.toℕ b) ∎
+    lb x ℕ.∸ ℕ.suc (b' ℕ.∸ a') ≡⟨ refl ⟩
+    lb x ℕ.∸ ℕ.suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a) ∎
     where
     b' = 𝔽.toℕ b
     b'+1 = ℕ.suc b'
