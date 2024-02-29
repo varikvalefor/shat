@@ -1006,7 +1006,7 @@ module ReedVeritas where
   xon x z = begin
     reed x "u" ≡⟨ refl ⟩
     𝕃.head (𝕃.mapMaybe id terp') ≡⟨ {!!} ⟩
-    𝕃.head (𝕃.mapMaybe id $ Reed.No.t "u" ∷ []) ≡⟨ {!!} ⟩
+    𝕃.head (𝕃.mapMaybe id $ Reed.No.t "u" ∷ []) ≡⟨ noxed _ ▹ sym ⟩
     Reed.No.t "u" ≡⟨ refl ⟩
     mapₘ X (𝕃.head $ 𝕃.allFin _) ≡⟨ dzeroxe z ▹ cong (mapₘ X) ⟩
     just (X $ mink 𝔽.zero $ proj₂ z) ∎
@@ -1017,6 +1017,11 @@ module ReedVeritas where
             → (z : ∃ $ (_≡ n) ∘ ℕ.suc)
             → 𝕃.head (𝕃.allFin n) ≡ just (mink 𝔽.zero $ proj₂ z)
     dzeroxe (_ , refl) = refl
+    noxed : ∀ {a} → {A : Set a}
+          → (x : Maybe A)
+          → x ≡ 𝕃.head (𝕃.mapMaybe id $ x ∷ [])
+    noxed nothing = refl
+    noxed (just _) = refl
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
