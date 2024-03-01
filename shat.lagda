@@ -1272,7 +1272,7 @@ module KanjyVeritas where
   muvipas x a b c d = sym $ begin
     T (BL x') ≡⟨ DLP.take++drop (𝔽.toℕ a) (BL x') ▹ sym ▹ cong T ⟩
     T (T (BL x') ++ D (BL x')) ≡⟨ refl ⟩
-    _ ≡⟨ {!!} ▹ cong (T ∘ (_++ D (BL x')) ∘ T) ⟩
+    _ ≡⟨ TBLdu ▹ cong (T ∘ (_++ D (BL x'))) ⟩
     T (T (BL x) ++ D (BL x')) ≡⟨ teikteik (BL x) a ⟩
     T (BL x) ∎
     where
@@ -1280,6 +1280,8 @@ module KanjyVeritas where
     D = 𝔽.toℕ a ↓_
     BL = Buffer.lerpinste
     x' = proj₁ $ kanji {x} $ Muvgau a b c d
+    TBLdu : T (BL x') ≡ T (BL x)
+    TBLdu = ?
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
     teikteik : ∀ {a} → {A : Set a}
