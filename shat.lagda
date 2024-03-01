@@ -1041,7 +1041,6 @@ module ReedVeritas where
     K = k₁ x a 'a'
     rms : {n : ℕ} → Fin n → Maybe $ Fin n
     rms = readMaybe ∘ show
-    sl : String → Maybe Char
     sl = 𝕃.last ∘ 𝕊.toList
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
