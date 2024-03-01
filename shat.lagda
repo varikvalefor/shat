@@ -1272,7 +1272,7 @@ module KanjyVeritas where
   muvipas x a b c d = sym $ begin
     T (BL x') ≡⟨ DLP.take++drop (𝔽.toℕ a) (BL x') ▹ sym ▹ cong T ⟩
     T (T (BL x') ++ D (BL x')) ≡⟨ refl ⟩
-    _ ≡⟨ TBLdu ▹ cong (T ∘ (_++ D (BL x'))) ⟩
+    _ ≡⟨ teikteik _ _ ▹ cong (T ∘ (_++ D (BL x'))) ⟩
     T (T (BL x) ++ D (BL x')) ≡⟨ teikteik (BL x) a ⟩
     T (BL x) ∎
     where
@@ -1290,8 +1290,6 @@ module KanjyVeritas where
                𝕃.take n' (𝕃.take n' x ++ z) ≡ 𝕃.take n' x
     teikteik (_ ∷ _) 𝔽.zero = refl
     teikteik (x ∷ xs) (𝔽.suc n) = teikteik xs n ▹ cong (x ∷_)
-    TBLdu : T (BL x') ≡ T (BL x)
-    TBLdu = teikteik _ _
 
   muvisez : (x : Buffer)
           → (a b c : Buffer.F x)
