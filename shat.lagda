@@ -1221,11 +1221,12 @@ module KanjyVeritas where
   takeduv x a b d = sym $ begin
     BLT x₂ ≡⟨ refl ⟩
     𝔽.toℕ a ↑ (BLT x ++ BLD x) ≡⟨ refl ⟩
-    𝔽.toℕ a ↑ ((𝔽.toℕ a ↑ Buffer.lerpinste x) ++ BLD x) ≡⟨ teikteik _ _ ⟩
+    𝔽.toℕ a ↑ ((𝔽.toℕ a ↑ BL x) ++ BLD x) ≡⟨ teikteik _ _ ⟩
     BLT x ∎
     where
-    BLT = (𝔽.toℕ a) ↑_ ∘ Buffer.lerpinste
-    BLD = ℕ.suc (𝔽.toℕ b) ↓_ ∘ Buffer.lerpinste
+    BL = Buffer.lerpinste
+    BLT = (𝔽.toℕ a) ↑_ ∘ BL
+    BLD = ℕ.suc (𝔽.toℕ b) ↓_ ∘ BL
     x₂ = proj₁ $ kanji {x} $ Vimcu a b d
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
