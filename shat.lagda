@@ -64,7 +64,7 @@
 
 \newfontface{\ayyplcihartai}{APL333}
 \DeclareTextFontCommand{\ayypl}{\ayyplcihartai}
-\newunicodechar{⌽}{\ensuremath{\ayypl{⌽}}}
+\newunicodechar{⌽}{\ensuremath{\ayypl ⌽}}
 
 \newcommand\Sym\AgdaSymbol
 \newcommand\D\AgdaDatatype
