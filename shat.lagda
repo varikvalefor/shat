@@ -417,14 +417,14 @@ module DegjygirzuVeritas where
   pav fL∘tL n = begin
     degjygirzu (show n) ≡⟨ refl ⟩
     𝕃.map 𝕊.fromList (d $ 𝕊.toList $ show n) ≡⟨ refl ⟩
-    mL (d $ show' n) ≡⟨ didus ▹ cong mL ⟩
+    mL (d $ show' n) ≡⟨ didus n ▹ cong mL ⟩
     mL (show' n ∷ []) ≡⟨ fL∘tL (show n) ▹ sym ▹ cong (_∷ []) ⟩
     show n ∷ [] ∎
     where
     mL = 𝕃.map 𝕊.fromList
     show' = 𝕊.toList ∘ show
     d = 𝕃.wordsBy $ T? ∘ Data.Bool.not ∘ isDigit
-    didus : d (show' n) ≡ show' n ∷ []
+    didus : (n : ℕ) → d (show' n) ≡ show' n ∷ []
     didus = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
