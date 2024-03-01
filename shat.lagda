@@ -1221,7 +1221,7 @@ module KanjyVeritas where
   takeduv x a b d = sym $ begin
     BLT x₂ ≡⟨ refl ⟩
     𝔽.toℕ a ↑ (BLT x ++ BLD x) ≡⟨ refl ⟩
-    𝔽.toℕ a ↑ ((𝔽.toℕ a ↑ Buffer.lerpinste x) ++ BLD x) ≡⟨ {!!} ⟩
+    𝔽.toℕ a ↑ ((𝔽.toℕ a ↑ Buffer.lerpinste x) ++ BLD x) ≡⟨ teikteik _ _ ⟩
     BLT x ∎
     where
     BLT = (𝔽.toℕ a) ↑_ ∘ Buffer.lerpinste
@@ -1229,6 +1229,14 @@ module KanjyVeritas where
     x₂ = proj₁ $ kanji {x} $ Vimcu a b d
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
+    teikteik : ∀ {a} → {A : Set a}
+             → (x : List A)
+             → {z : List A}
+             → (n : Fin $ length x)
+             → let n' = 𝔽.toℕ n in
+               𝕃.take n' (𝕃.take n' x ++ z) ≡ 𝕃.take n' x
+    teikteik (_ ∷ _) 𝔽.zero = refl
+    teikteik (x ∷ xs) (𝔽.suc n) = teikteik xs n ▹ cong (x ∷_)
 
   dropyduv : (x : Buffer)
            → (a b : Buffer.F x)
