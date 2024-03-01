@@ -660,7 +660,7 @@ module Orsygenturfa'iVeritas where
           (orsygenturfa'i $ show a ++ "," ++ show b))
   pav rimco a b djb = sym $ begin
     orsygenturfa'i (show a ++ "," ++ show b) ≡⟨ refl ⟩
-    pork (𝕃.map ps $ spit a,b) ≡⟨ cong pork uimint ⟩
+    pork (𝕃.map ps $ spit a,b) ≡⟨ cong pork mapyjus ⟩
     pork (just a ∷ just b ∷ []) ≡⟨ pork-du djb ⟩
     just ((a , b) , djb) ∎
     where
@@ -668,11 +668,7 @@ module Orsygenturfa'iVeritas where
 
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
-    -- | ni'o la .varik. na birti lo du'u ma kau zmadu
-    -- zo .uimint. fi zo'e ja le ka ce'u .indika... je le
-    -- ka ce'u banzuka le ka ce'u xi re cmalu kei lo nu
-    -- tu'a ce'u frili cumki
-    uimint = begin
+    mapyjus = begin
       𝕃.map ps (spit a,b) ≡⟨ spidus a b ▹ cong (𝕃.map ps) ⟩
       𝕃.map ps (showF' a ∷ showF' b ∷ []) ≡⟨ refl ⟩
       𝕃.map justF' (a ∷ b ∷ []) ≡⟨ justymapdu $ a ∷ b ∷ [] ⟩
