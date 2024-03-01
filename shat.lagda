@@ -1280,8 +1280,6 @@ module KanjyVeritas where
     D = 𝔽.toℕ a ↓_
     BL = Buffer.lerpinste
     x' = proj₁ $ kanji {x} $ Muvgau a b c d
-    TBLdu : T (BL x') ≡ T (BL x)
-    TBLdu = ?
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
     teikteik : ∀ {a} → {A : Set a}
@@ -1292,6 +1290,8 @@ module KanjyVeritas where
                𝕃.take n' (𝕃.take n' x ++ z) ≡ 𝕃.take n' x
     teikteik (_ ∷ _) 𝔽.zero = refl
     teikteik (x ∷ xs) (𝔽.suc n) = teikteik xs n ▹ cong (x ∷_)
+    TBLdu : T (BL x') ≡ T (BL x)
+    TBLdu = teikteik _ _
 
   muvisez : (x : Buffer)
           → (a b c : Buffer.F x)
