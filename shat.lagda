@@ -359,7 +359,7 @@ dekydu'i : {x n : ℕ}
          → decToMaybe (x ℕ.<? n) ≡ just m
 dekydu'i {x} {n} {m} = begin
   decToMaybe (x ℕ.<? n) ≡⟨ dec-yes _ m ▹ proj₂ ▹ cong decToMaybe ⟩
-  decToMaybe (yes $ proj₁ $ dec-yes (x ℕ.<? n) m) ≡⟨ {!!} ⟩
+  decToMaybe (yes $ proj₁ $ dec-yes (x ℕ.<? n) m) ≡⟨ {!!} ▹ cong (decToMaybe ∘ yes) ⟩
   decToMaybe (yes m) ≡⟨ refl ⟩
   just m ∎
   where
