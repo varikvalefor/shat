@@ -1032,11 +1032,12 @@ module ReedVeritas where
     reed x (k₁ x a 'a') ≡⟨ refl ⟩
     reed x K ≡⟨ {!!} ⟩
     Reed.Pa.t K ≡⟨ {!!} ⟩
-    _,ₘ_ (rms a) (sl "a") >>= uncurry Reed.Pa.g ≡⟨ ? ⟩
-    just (a , 'a') >>= uncurry Reed.Pa.g ≡⟨ refl ⟩
+    _,ₘ_ (rms a) (sl "a") >>= g' ≡⟨ {!!} ⟩
+    just (a , 'a') >>= g' ≡⟨ refl ⟩
     Reed.Pa.g a 'a' ≡⟨ refl ⟩
     just (Jmina a) ∎
     where
+    g' = uncurry Reed.Pa.g
     _,ₘ_ = Data.Maybe.ap ∘ mapₘ _,_
     K = k₁ x a 'a'
     rms : {n : ℕ} → Fin n → Maybe $ Fin n
