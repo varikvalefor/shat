@@ -1032,11 +1032,17 @@ module ReedVeritas where
     reed x (k₁ x a 'a') ≡⟨ refl ⟩
     reed x K ≡⟨ {!!} ⟩
     Reed.Pa.t K ≡⟨ {!!} ⟩
+    _,ₘ_ (rms a) (sl "a") >>= uncurry Reed.Pa.g ≡⟨ ? ⟩
     just (a , 'a') >>= uncurry Reed.Pa.g ≡⟨ refl ⟩
     Reed.Pa.g a 'a' ≡⟨ refl ⟩
     just (Jmina a) ∎
     where
+    _,ₘ_ = Data.Maybe.ap ∘ mapₘ _,_
     K = k₁ x a 'a'
+    rms : {n : ℕ} → Fin n → Maybe $ Fin n
+    rms = readMaybe ∘ show
+    sl : String → Maybe Char
+    sl = 𝕃.last ∘ 𝕊.toList
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
