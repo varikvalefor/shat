@@ -805,7 +805,7 @@ module Orsygenturfa'i₃Veritas where
               (just $ ((a , b) , d) , c))
   porkcos a b d c = begin
     pork ((show a , show b) , show c) ≡⟨ refl ⟩
-    _,ₘ_ ax (readMaybe $ show c) ≡⟨ ? ⟩
+    _,ₘ_ ax (readMaybe $ show c) ≡⟨ {!!} ⟩
     _,ₘ_ (just $ (a , b) , d) (just c) ≡⟨ refl ⟩
     just (((a , b) , d) , c) ∎
     where
