@@ -803,7 +803,12 @@ module Orsygenturfa'i₃Veritas where
           → (_≡_
               (pork $ (show a , show b) , show c)
               (just $ ((a , b) , d) , c))
-  porkcos = {!!}
+  porkcos a b d c = begin
+    pork ((show a , show b) , show c) ≡⟨ {!!} ⟩
+    just (((a , b) , d) , c) ∎
+    where
+    open import Relation.Binary.PropositionalEquality
+    open ≡-Reasoning
 
   pav : {n : ℕ}
       → (v x z : Fin n)
