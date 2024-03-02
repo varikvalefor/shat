@@ -825,17 +825,11 @@ module Orsygenturfa'i₃Veritas where
     orsispita K >>= pork ≡⟨ refl ⟩
     orsispita K' >>= pork ≡⟨ refl ⟩
     _ ≡⟨ orspiv v' x' z' c j ▹ sym ▹ cong (_>>= pork) ⟩
-    just (S v' x' z') >>= pork ≡⟨ refl ⟩
-    pork (S v' x' z') ≡⟨ refl ⟩
-    pork (S v x z) ≡⟨ porkcos v x d z ⟩
+    just ((show v' , show x') , show z') >>= pork ≡⟨ refl ⟩
+    pork ((show v' , show x') , show z') ≡⟨ refl ⟩
+    pork ((show v , show x) , show z) ≡⟨ porkcos v x d z ⟩
     just (((v , x) , d) , z) ∎
     where
-    S : ∀ {a b c} → {A : Set a} → {B : Set b} → {C : Set c}
-      → ⦃ Show A ⦄
-      → ⦃ Show B ⦄
-      → ⦃ Show C ⦄
-      → A → B → C → (String × String) × String
-    S a b c = (show a , show b) , show c
     K = show v ++ "," ++ show x ++ 𝕊.fromChar c ++ show z
     v' = 𝔽.toℕ v
     x' = 𝔽.toℕ x
