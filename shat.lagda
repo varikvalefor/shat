@@ -823,7 +823,8 @@ module Orsygenturfa'i₃Veritas where
   pav v x z d c j = sym $ begin
     orsygenturfa'i₃ K ≡⟨ refl ⟩
     orsispita K >>= pork ≡⟨ refl ⟩
-    orsispita K' >>= pork ≡⟨ vorspiv ▹ sym ▹ cong (_>>= pork) ⟩
+    orsispita K' >>= pork ≡⟨ refl ⟩
+    _ ≡⟨ orspiv v' x' z' c j ▹ sym ▹ cong (_>>= pork) ⟩
     just (S v' x' z') >>= pork ≡⟨ refl ⟩
     pork (S v' x' z') ≡⟨ refl ⟩
     pork (S v x z) ≡⟨ porkcos v x d z ⟩
@@ -840,7 +841,6 @@ module Orsygenturfa'i₃Veritas where
     x' = 𝔽.toℕ x
     z' = 𝔽.toℕ z
     K' = show v' ++ "," ++ show x' ++ 𝕊.fromChar c ++ show z'
-    vorspiv = orspiv v' x' z' c j
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 \end{code}
