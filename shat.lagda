@@ -1268,7 +1268,7 @@ module KanjyVeritas where
            → let x₂ = proj₁ $ kanji {x} $ Vimcu a b d in
              (_≡_ on ((ℕ.suc $ 𝔽.toℕ b) ↑_ ∘ Buffer.lerpinste)) x x₂
   dropyduv x a b d = sym $ begin
-    b'++ ↑ BL x₂ ≡⟨ ? ⟩
+    b'++ ↑ BL x₂ ≡⟨ {!!} ⟩
     b'++ ↑ BL x ∎
     where
     b'++ = ℕ.suc $ 𝔽.toℕ b
