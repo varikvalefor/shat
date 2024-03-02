@@ -805,8 +805,17 @@ module Orsygenturfa'i₃Veritas where
               (just $ ((a , b) , d) , c))
   porkcos a b d c = begin
     pork ((show a , show b) , show c) ≡⟨ {!!} ⟩
+    _,ₘ_ ax (readMaybe $ show c) ≡⟨ ? ⟩
     just (((a , b) , d) , c) ∎
     where
+    _,ₘ_ : ∀ {a} → {A B : Set a}
+         → Maybe A → Maybe B → Maybe $ A × B
+    _,ₘ_ = (Data.Maybe.ap ∘₂ mapₘ) _,_
+    ax : Maybe $ Σ (Fin _ × Fin _) $ uncurry 𝔽._≤_
+    ax = R >>= λ (a' , b') → mapₘ (f a' b') $ decToMaybe $ a' 𝔽.≤? b'
+      where
+      f = λ a b x → (a , b) , x
+      R = readMaybe (show a) ,ₘ readMaybe (show b)
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
