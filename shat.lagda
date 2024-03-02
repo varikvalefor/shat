@@ -806,6 +806,7 @@ module Orsygenturfa'i₃Veritas where
   porkcos a b d c = begin
     pork ((show a , show b) , show c) ≡⟨ {!!} ⟩
     _,ₘ_ ax (readMaybe $ show c) ≡⟨ ? ⟩
+    _,ₘ_ (just $ (a , b) , d) (just c) ≡⟨ refl ⟩
     just (((a , b) , d) , c) ∎
     where
     _,ₘ_ : ∀ {a} → {A B : Set a}
