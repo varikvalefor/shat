@@ -1260,7 +1260,7 @@ module KanjyVeritas where
              → let n' = 𝔽.toℕ n in
                𝕃.take n' (𝕃.take n' x ++ z) ≡ 𝕃.take n' x
     teikteik (_ ∷ _) 𝔽.zero = refl
-    teikteik (x ∷ xs) (𝔽.suc n) = teikteik xs n ▹ cong (x ∷_)
+    teikteik (_ ∷ _) (𝔽.suc _) = teikteik _ _ ▹ cong (_ ∷_)
 
   dropyduv : (x : Buffer)
            → (a b : Buffer.F x)
