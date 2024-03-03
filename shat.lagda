@@ -624,12 +624,14 @@ module Orsygenturfa'iVeritas where
               (𝕊.toList x ∷ 𝕊.toList z ∷ []))
   spit-du x z inx inz = begin
     spit (x ++ "," ++ z) ≡⟨ {!!} ⟩
+    w (𝕊.toList x ++ ',' ∷ 𝕊.toList z) ≡⟨ {!!} ⟩
     spit x ++ spit z ≡⟨ spit-non x inx ▹ cong (_++ spit z) ⟩
     (𝕊.toList x ∷ []) ++ spit z ≡⟨ refl ⟩
     _ ≡⟨ spit-non z inz ▹ cong ((𝕊.toList x ∷ []) ++_) ⟩
     (𝕊.toList x ∷ []) ++ (𝕊.toList z ∷ []) ≡⟨ refl ⟩
     𝕊.toList x ∷ 𝕊.toList z ∷ [] ∎
     where
+    w = 𝕃.wordsBy $ _≟ ','
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
