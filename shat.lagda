@@ -628,7 +628,7 @@ module Orsygenturfa'iVeritas where
     w (𝕊.toList x ++ ',' ∷ 𝕊.toList z) ≡⟨ {!!} ⟩
     spit x ++ spit z ≡⟨ spit-non x inx ▹ cong (_++ spit z) ⟩
     (𝕊.toList x ∷ []) ++ spit z ≡⟨ refl ⟩
-    _ ≡⟨ spit-non z inz ▹ cong ((𝕊.toList x ∷ []) ++_) ⟩
+    _ ≡⟨ spit-non z inz ▹ cong (_++_ $ 𝕊.toList x ∷ []) ⟩
     (𝕊.toList x ∷ []) ++ (𝕊.toList z ∷ []) ≡⟨ refl ⟩
     𝕊.toList x ∷ 𝕊.toList z ∷ [] ∎
     where
