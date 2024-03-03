@@ -464,13 +464,15 @@ module DegjygirzuVeritas where
             (degjygirzu $ 𝕊.fromChar c ++ s))
   rybic s c j = sym $ begin
     degjygirzu (𝕊.fromChar c ++ s) ≡⟨ {!!} ⟩
-    degjygirzu' (𝕊.toList $ 𝕊.fromChar c ++ s) ≡⟨ {!!} ⟩
-    degjygirzu' (𝕊.toList (𝕊.fromChar c) ++ 𝕊.toList s) ≡⟨ {!!} ⟩
-    degjygirzu' ((c ∷ []) ++ 𝕊.toList s) ≡⟨ refl ⟩
-    degjygirzu' (c ∷ 𝕊.toList s) ≡⟨ {!!} ⟩
+    degjygirzu' (tL $ 𝕊.fromChar c ++ s) ≡⟨ {!!} ⟩
+    degjygirzu' (tL (𝕊.fromChar c) ++ tL s) ≡⟨ {!!} ⟩
+    degjygirzu' ((c ∷ []) ++ tL s) ≡⟨ refl ⟩
+    degjygirzu' (c ∷ tL s) ≡⟨ {!!} ⟩
     degjygirzu s ∎
     where
-    degjygirzu' = 𝕃.map 𝕊.fromList ∘_ $ 𝕃.wordsBy $ F? ∘ isDigit
+    tL = 𝕊.toList
+    fL = 𝕊.fromList
+    degjygirzu' = 𝕃.map fL ∘_ $ 𝕃.wordsBy $ F? ∘ isDigit
       where
       F? = T? ∘ Data.Bool.not
     open import Relation.Binary.PropositionalEquality
