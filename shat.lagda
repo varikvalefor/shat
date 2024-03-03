@@ -463,15 +463,17 @@ module DegjygirzuVeritas where
             (degjygirzu s)
             (degjygirzu $ 𝕊.fromChar c ++ s))
   rybic s c j = sym $ begin
-    degjygirzu (𝕊.fromChar c ++ s) ≡⟨ {!!} ⟩
-    degjygirzu' (tL $ 𝕊.fromChar c ++ s) ≡⟨ {!!} ⟩
-    degjygirzu' (tL (𝕊.fromChar c) ++ tL s) ≡⟨ {!!} ⟩
+    degjygirzu (𝕊.fromChar c ++ s) ≡⟨ refl ⟩
+    degjygirzu (fC c ++ s) ≡⟨ {!!} ⟩
+    degjygirzu' (tL $ fC c ++ s) ≡⟨ {!!} ⟩
+    degjygirzu' (tL (fC c) ++ tL s) ≡⟨ {!!} ⟩
     degjygirzu' ((c ∷ []) ++ tL s) ≡⟨ refl ⟩
     degjygirzu' (c ∷ tL s) ≡⟨ {!!} ⟩
     degjygirzu s ∎
     where
     tL = 𝕊.toList
     fL = 𝕊.fromList
+    fC = 𝕊.fromChar
     degjygirzu' = 𝕃.map fL ∘_ $ 𝕃.wordsBy $ F? ∘ isDigit
       where
       F? = T? ∘ Data.Bool.not
