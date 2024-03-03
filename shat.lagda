@@ -626,7 +626,7 @@ module Orsygenturfa'iVeritas where
     spit (x ++ "," ++ z) ≡⟨ {!!} ⟩
     spit x ++ spit z ≡⟨ {!!} ⟩
     (𝕊.toList x ∷ []) ++ spit z ≡⟨ {!!} ⟩
-    (𝕊.toList x ∷ []) ++ (𝕊.toList z ∷ []) ≡⟨ {!!} ⟩
+    (𝕊.toList x ∷ []) ++ (𝕊.toList z ∷ []) ≡⟨ refl ⟩
     𝕊.toList x ∷ 𝕊.toList z ∷ [] ∎
     where
     open import Relation.Binary.PropositionalEquality
