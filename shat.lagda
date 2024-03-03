@@ -512,17 +512,17 @@ module PamoinamcuVeritas where
       → just n ≡ pamoinamcu (show n ++ 𝕊.fromChar c ++ s)
   pav rimco n c t j = sym $ begin
    pamoinamcu (show n ++ c' ++ t) ≡⟨ refl ⟩
-   𝕃.head (s $ show n ++ c' ++ t) >>= readMaybe ≡⟨ refl ⟩
-   𝓰 (s $ show n ++ c' ++ t) ≡⟨ dvr t n c j ▹ sym ▹ cong 𝓰 ⟩
-   𝓰 (show n ∷ s (c' ++ t)) ≡⟨ refl ⟩
-   𝕃.head (show n ∷ s (c' ++ t)) >>= readMaybe ≡⟨ refl ⟩
+   𝕃.head (d $ show n ++ c' ++ t) >>= readMaybe ≡⟨ refl ⟩
+   𝓰 (d $ show n ++ c' ++ t) ≡⟨ dvr t n c j ▹ sym ▹ cong 𝓰 ⟩
+   𝓰 (show n ∷ d (c' ++ t)) ≡⟨ refl ⟩
+   𝕃.head (show n ∷ d (c' ++ t)) >>= readMaybe ≡⟨ refl ⟩
    readMaybe (show n) ≡⟨ rimco n ⟩
    just n ∎
    where
    dvr = DegjygirzuVeritas.rel
    c' = 𝕊.fromChar c
    𝓰 = (_>>= readMaybe) ∘ 𝕃.head
-   s = degjygirzu
+   d = degjygirzu
    open import Relation.Binary.PropositionalEquality
    open ≡-Reasoning
 \end{code}
