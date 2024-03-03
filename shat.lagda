@@ -465,6 +465,7 @@ module DegjygirzuVeritas where
   rybic s c j = sym $ begin
     degjygirzu (𝕊.fromChar c ++ s) ≡⟨ {!!} ⟩
     degjygirzu' (𝕊.toList $ 𝕊.fromChar c ++ s) ≡⟨ {!!} ⟩
+    degjygirzu' (𝕊.toList (𝕊.fromChar c) ++ 𝕊.toList s) ≡⟨ {!!} ⟩
     degjygirzu' (c ∷ 𝕊.toList s) ≡⟨ {!!} ⟩
     degjygirzu s ∎
     where
