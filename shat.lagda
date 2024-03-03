@@ -585,7 +585,7 @@ module Orsygenturfa'i where
   ps = (_>>= fromℕ?) ∘ readMaybe ∘ 𝕊.fromList
 
   spit : String → List $ List Char
-  spit = splitOn ⦃ record {_≟_ = Data.Char._≟_} ⦄ ',' ∘ 𝕊.toList
+  spit = 𝕃.wordsBy (_≟ ',') ∘ 𝕊.toList
 
   pork : {n : ℕ}
        → List $ Maybe $ Fin n
