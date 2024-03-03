@@ -474,9 +474,8 @@ module DegjygirzuVeritas where
     tL = 𝕊.toList
     fL = 𝕊.fromList
     fC = 𝕊.fromChar
+    F? = T? ∘ Data.Bool.not
     degjygirzu' = 𝕃.map fL ∘_ $ 𝕃.wordsBy $ F? ∘ isDigit
-      where
-      F? = T? ∘ Data.Bool.not
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 \end{code}
