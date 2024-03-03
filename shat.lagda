@@ -619,7 +619,12 @@ module Orsygenturfa'iVeritas where
           → (_≡_
               (spit $ x ++ "," ++ z)
               (𝕊.toList x ∷ 𝕊.toList z ∷ []))
-  spit-du = {!!}
+  spit-du x z inx inz = begin
+    spit (x ++ "," ++ z) ≡⟨ {!!} ⟩
+    𝕊.toList x ∷ 𝕊.toList z ∷ [] ∎
+    where
+    open import Relation.Binary.PropositionalEquality
+    open ≡-Reasoning
 
   ps-du : ((x : ℕ) → readMaybe (show x) ≡ just x)
         → {n : ℕ}
