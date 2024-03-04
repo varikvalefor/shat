@@ -931,7 +931,7 @@ module Reed where
       where
       og = orsygenturfa'i $ romoivimcu s
       romoi = 𝕃.last ∘ 𝕊.toList
-      g' = λ (r' , (a , b) , z) → g x a b z r'
+      g' = λ (r' , _ , z) → g x _ _ z r'
 
   module Ci where
     g : {x : Buffer}
