@@ -1287,7 +1287,7 @@ module KanjyVeritas where
                (ℕ.suc (𝔽.toℕ b) ↓ Buffer.lerpinste x)
                (𝔽.toℕ a ↓ Buffer.lerpinste x₂))
   dropyduv x a b d = sym $ begin
-    𝔽.toℕ a ↓ BL x₂ ≡⟨ ? ⟩
+    𝔽.toℕ a ↓ BL x₂ ≡⟨ {!!} ⟩
     b'++ ↓ BL x ∎
     where
     b'++ = ℕ.suc $ 𝔽.toℕ b
