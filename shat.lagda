@@ -443,7 +443,8 @@ module DegjygirzuVeritas where
     _ ≡⟨ tildist (show t) (𝕊.fromChar c ++ s) ▹ cong d' ⟩
     d' (tL (show t) ++ tL (𝕊.fromChar c ++ s)) ≡⟨ {!!} ⟩
     d' (tL (show t) ++ c ∷ tL s) ≡⟨ {!!} ⟩
-    d' (tL $ show t) ++ d' (tL s) ≡⟨ {!!} ⟩
+    d' (tL $ show t) ++ d' (tL s) ≡⟨ refl ⟩
+    d (show t) ++ d' (tL s) ≡⟨ {!!} ⟩
     (show t ∷ []) ++ d' (tL s) ≡⟨ refl ⟩
     show t ∷ d s ∎
     where
