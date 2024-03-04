@@ -811,11 +811,6 @@ module Orsygenturfa'i₃Veritas where
         [_]
       )
     open ≡-Reasoning
-    map₂-cong : ∀ {a b} → {A : Set a} → {B : Set b}
-              → {f : A → B}
-              → {g : A → B}
-              → f ≗ g
-              → map₂ f ≗ map₂ g
     map₂-cong = DLP.map-cong ∘ DLP.map-cong
 
   porkcos : {n : ℕ}
