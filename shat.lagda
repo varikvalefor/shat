@@ -466,7 +466,7 @@ module DegjygirzuVeritas where
     degjygirzu (𝕊.fromChar c ++ s) ≡⟨ refl ⟩
     degjygirzu (fC c ++ s) ≡⟨ refl ⟩
     degjygirzu' (tL $ fC c ++ s) ≡⟨ tldist (fC c) s ▹ cong degjygirzu' ⟩
-    degjygirzu' (tL (fC c) ++ tL s) ≡⟨ {!!} ⟩
+    degjygirzu' (tL (fC c) ++ tL s) ≡⟨ tilfic c ▹ cong (degjygirzu' ∘ (_++ tL s)) ⟩
     degjygirzu' ((c ∷ []) ++ tL s) ≡⟨ refl ⟩
     degjygirzu' (c ∷ tL s) ≡⟨ refl ⟩
     𝕃.map fL (𝕃.wordsBy (F? ∘ isDigit) $ c ∷ tL s) ≡⟨ {!!} ⟩
@@ -478,6 +478,8 @@ module DegjygirzuVeritas where
     F? = T? ∘ Data.Bool.not
     tldist : (x z : String) → tL (x ++ z) ≡ tL x ++ tL z
     tldist = {!!}
+    tilfic : (c : Char) → tL (fC c) ≡ c ∷ []
+    tilfic = {!!}
     degjygirzu' = 𝕃.map fL ∘_ $ 𝕃.wordsBy $ F? ∘ isDigit
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
