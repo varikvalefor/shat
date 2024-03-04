@@ -439,7 +439,8 @@ module DegjygirzuVeritas where
           (degjygirzu $ show t ++ 𝕊.fromChar c ++ s))
   rel s t c j = sym $ begin
     degjygirzu (show t ++ 𝕊.fromChar c ++ s) ≡⟨ refl ⟩
-    degjygirzu' (tL $ show t ++ 𝕊.fromChar c ++ s) ≡⟨ tildist (show t) (𝕊.fromChar c ++ s) ▹ cong degjygirzu' ⟩
+    degjygirzu' (tL $ show t ++ 𝕊.fromChar c ++ s) ≡⟨ refl ⟩
+    _ ≡⟨ tildist (show t) (𝕊.fromChar c ++ s) ▹ cong degjygirzu' ⟩
     degjygirzu' ((tL $ show t) ++ tL (𝕊.fromChar c ++ s)) ≡⟨ {!!} ⟩
     degjygirzu' (tL (show t) ++ c ∷ tL s) ≡⟨ {!!} ⟩
     degjygirzu' (tL $ show t) ++ degjygirzu' (tL s) ≡⟨ {!!} ⟩
