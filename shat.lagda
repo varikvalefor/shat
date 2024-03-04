@@ -465,7 +465,7 @@ module DegjygirzuVeritas where
   rybic s c j = sym $ begin
     degjygirzu (𝕊.fromChar c ++ s) ≡⟨ refl ⟩
     degjygirzu (fC c ++ s) ≡⟨ refl ⟩
-    degjygirzu' (tL $ fC c ++ s) ≡⟨ {!!} ⟩
+    degjygirzu' (tL $ fC c ++ s) ≡⟨ tldist (fC c) s ▹ cong degjygirzu' ⟩
     degjygirzu' (tL (fC c) ++ tL s) ≡⟨ {!!} ⟩
     degjygirzu' ((c ∷ []) ++ tL s) ≡⟨ refl ⟩
     degjygirzu' (c ∷ tL s) ≡⟨ refl ⟩
@@ -476,6 +476,8 @@ module DegjygirzuVeritas where
     fL = 𝕊.fromList
     fC = 𝕊.fromChar
     F? = T? ∘ Data.Bool.not
+    tldist : (x z : String) → tL (x ++ z) ≡ tL x ++ tL z
+    tldist = {!!}
     degjygirzu' = 𝕃.map fL ∘_ $ 𝕃.wordsBy $ F? ∘ isDigit
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
