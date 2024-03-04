@@ -438,20 +438,21 @@ module DegjygirzuVeritas where
           (show t ∷ degjygirzu s)
           (degjygirzu $ show t ++ 𝕊.fromChar c ++ s))
   rel s t c j = sym $ begin
-    degjygirzu (show t ++ 𝕊.fromChar c ++ s) ≡⟨ refl ⟩
-    degjygirzu' (tL $ show t ++ 𝕊.fromChar c ++ s) ≡⟨ refl ⟩
-    _ ≡⟨ tildist (show t) (𝕊.fromChar c ++ s) ▹ cong degjygirzu' ⟩
-    degjygirzu' ((tL $ show t) ++ tL (𝕊.fromChar c ++ s)) ≡⟨ {!!} ⟩
-    degjygirzu' (tL (show t) ++ c ∷ tL s) ≡⟨ {!!} ⟩
-    degjygirzu' (tL $ show t) ++ degjygirzu' (tL s) ≡⟨ {!!} ⟩
-    fL (tL $ show t) ∷ degjygirzu s ≡⟨ fL∘tL _ ▹ cong (_∷ degjygirzu s) ⟩
-    show t ∷ degjygirzu s ∎
+    d (show t ++ 𝕊.fromChar c ++ s) ≡⟨ refl ⟩
+    d' (tL $ show t ++ 𝕊.fromChar c ++ s) ≡⟨ refl ⟩
+    _ ≡⟨ tildist (show t) (𝕊.fromChar c ++ s) ▹ cong d' ⟩
+    d' ((tL $ show t) ++ tL (𝕊.fromChar c ++ s)) ≡⟨ {!!} ⟩
+    d' (tL (show t) ++ c ∷ tL s) ≡⟨ {!!} ⟩
+    d' (tL $ show t) ++ d' (tL s) ≡⟨ {!!} ⟩
+    fL (tL $ show t) ∷ d s ≡⟨ fL∘tL _ ▹ cong (_∷ d s) ⟩
+    show t ∷ d s ∎
     where
+    d = degjygirzu
     tL = 𝕊.toList
     fL = 𝕊.fromList
     tildist : (x z : String) → tL (x ++ z) ≡ tL x ++ tL z
     tildist = {!!}
-    degjygirzu' = 𝕃.map fL ∘_ $ 𝕃.wordsBy $ F? ∘ isDigit
+    d' = 𝕃.map fL ∘_ $ 𝕃.wordsBy $ F? ∘ isDigit
       where
       F? = T? ∘ Data.Bool.not
     fL∘tL : (s : String) → fL (tL s) ≡ s
