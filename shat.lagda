@@ -439,7 +439,7 @@ module DegjygirzuVeritas where
           (degjygirzu $ show t ++ 𝕊.fromChar c ++ s))
   rel s t c j = sym $ begin
     degjygirzu (show t ++ 𝕊.fromChar c ++ s) ≡⟨ refl ⟩
-    degjygirzu' (tL $ show t ++ 𝕊.fromChar c ++ s) ≡⟨ {!!} ⟩
+    degjygirzu' (tL $ show t ++ 𝕊.fromChar c ++ s) ≡⟨ tildist (show t) (𝕊.fromChar c ++ s) ▹ cong degjygirzu' ⟩
     degjygirzu' ((tL $ show t) ++ tL (𝕊.fromChar c ++ s)) ≡⟨ {!!} ⟩
     degjygirzu' (tL (show t) ++ c ∷ tL s) ≡⟨ {!!} ⟩
     degjygirzu' (tL $ show t) ++ degjygirzu' (tL s) ≡⟨ {!!} ⟩
@@ -448,6 +448,8 @@ module DegjygirzuVeritas where
     where
     tL = 𝕊.toList
     fL = 𝕊.fromList
+    tildist : (x z : String) → tL (x ++ z) ≡ tL x ++ tL z
+    tildist = {!!}
     degjygirzu' = 𝕃.map fL ∘_ $ 𝕃.wordsBy $ F? ∘ isDigit
       where
       F? = T? ∘ Data.Bool.not
