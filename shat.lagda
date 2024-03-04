@@ -1104,13 +1104,13 @@ module ReedVeritas where
       → (s : String)
       → (c : Char)
       → ¬ (c ≡ ' ')
-      → (let s' = 𝕊.fromChar c ++ s in
+      → let s' = 𝕊.fromChar c ++ s in
         Data.Maybe.Is-just $ 𝕃.uncons $ 𝕊.wordsBy (_≟ ' ') s'
-      → just (Rejgau s') ≡ reed x ("w " ++ s'))
+      → just (Rejgau s') ≡ reed x ("w " ++ s')
   uip unwords∘f x s c n uj = sym $ begin
     reed x ("w " ++ s') ≡⟨ w++s≡w++fs ▹ cong (reed x) ⟩
     reed x (unwords $ "w" ∷ f s') ≡⟨ {!!} ⟩
-    k (f $ unwords $ "w" ∷ f s') ≡⟨ {!!} ⟩
+    k (f $ unwords $ "w" ∷ f s') ≡⟨ {!!} ▹ cong k ⟩
     k ("w" ∷ f s') ≡⟨ fs'≡v₁∷v₂ ▹ cong (k ∘ _∷_ "w") ⟩
     k ("w" ∷ v₁ ∷ v₂) ≡⟨ refl ⟩
     j∘R (unwords $ v₁ ∷ v₂) ≡⟨ refl ⟩
