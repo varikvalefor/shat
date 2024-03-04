@@ -441,7 +441,8 @@ module DegjygirzuVeritas where
     d (show t ++ 𝕊.fromChar c ++ s) ≡⟨ refl ⟩
     d' (tL $ show t ++ 𝕊.fromChar c ++ s) ≡⟨ refl ⟩
     _ ≡⟨ tildist (show t) (𝕊.fromChar c ++ s) ▹ cong d' ⟩
-    d' (tL (show t) ++ tL (𝕊.fromChar c ++ s)) ≡⟨ {!!} ▹ cong (d' ∘ _++_ (tL (show t))) ⟩
+    d' (tL (show t) ++ tL (𝕊.fromChar c ++ s)) ≡⟨ refl ⟩
+    _ ≡⟨ {!!} ▹ cong (d' ∘ _++_ (tL (show t))) ⟩
     d' (tL (show t) ++ c ∷ tL s) ≡⟨ {!!} ⟩
     d' (tL $ show t) ++ d' (tL s) ≡⟨ refl ⟩
     d' (tL $ show t) ++ d s ≡⟨ refl ⟩
