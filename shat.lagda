@@ -470,6 +470,7 @@ module DegjygirzuVeritas where
     degjygirzu' ((c ∷ []) ++ tL s) ≡⟨ refl ⟩
     degjygirzu' (c ∷ tL s) ≡⟨ refl ⟩
     𝕃.map fL (𝕃.wordsBy (F? ∘ isDigit) $ c ∷ tL s) ≡⟨ {!!} ⟩
+    𝕃.map fL (𝕃.wordsBy (F? ∘ isDigit) $ tL s) ≡⟨ refl ⟩
     degjygirzu s ∎
     where
     tL = 𝕊.toList
