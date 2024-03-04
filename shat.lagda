@@ -466,7 +466,8 @@ module DegjygirzuVeritas where
     degjygirzu (𝕊.fromChar c ++ s) ≡⟨ refl ⟩
     degjygirzu (fC c ++ s) ≡⟨ refl ⟩
     degjygirzu' (tL $ fC c ++ s) ≡⟨ tldist (fC c) s ▹ cong degjygirzu' ⟩
-    degjygirzu' (tL (fC c) ++ tL s) ≡⟨ tilfic c ▹ cong (degjygirzu' ∘ (_++ tL s)) ⟩
+    degjygirzu' (tL (fC c) ++ tL s) ≡⟨ refl ⟩
+    _ ≡⟨ tilfic c ▹ cong (degjygirzu' ∘ (_++ tL s)) ⟩
     degjygirzu' ((c ∷ []) ++ tL s) ≡⟨ refl ⟩
     degjygirzu' (c ∷ tL s) ≡⟨ refl ⟩
     𝕃.map fL (𝕃.wordsBy (F? ∘ isDigit) $ c ∷ tL s) ≡⟨ {!!} ⟩
