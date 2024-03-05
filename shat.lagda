@@ -1267,11 +1267,11 @@ module KanjyVeritas where
     Lz = Buffer.lerpinste x
     x₂ = proj₁ $ kanji {x} $ Vimcu a b d
     lb = length ∘ Buffer.lerpinste
+    open import Relation.Binary.PropositionalEquality
     v∸x+z≡v∸[x∸z] : {v x z : ℕ}
                  → z ℕ.≤ x
                  → v ℕ.∸ x ℕ.+ z ≡ v ℕ.∸ (x ℕ.∸ z)
     v∸x+z≡v∸[x∸z] = {!!}
-    open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
   takeduv : (x : Buffer)
