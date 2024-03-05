@@ -744,8 +744,9 @@ module Orsygenturfa'i₃ where
   lispork _ = nothing
 
   orsispita : String → Maybe $ (String × String) × String
-  orsispita = lispork ∘ 𝕃.map (𝕊.wordsBy aintDigit?) ∘ 𝕊.wordsBy (_≟ ',')
+  orsispita = lispork ∘ 𝕃.map (w aintDigit?) ∘ w (_≟ ',')
     where
+    w = 𝕊.wordsBy
     aintDigit? = T? ∘ Data.Bool.not ∘ isDigit
 
   pork : {n : ℕ}
