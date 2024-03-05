@@ -1279,6 +1279,7 @@ module KanjyVeritas where
       n+0≡n (ℕ.suc n) = n+0≡n n ▹ cong ℕ.suc
     v∸x+z≡v∸[x∸z] {v} {x} {z = ℕ.suc z} (ℕ.s≤s s) = begin
       v ℕ.∸ x ℕ.+ ℕ.suc z ≡⟨ {!!} ⟩
+      v ℕ.∸ ℕ.suc (x ℕ.+ z) ≡⟨ {!!} ⟩
       v ℕ.∸ (x ℕ.∸ ℕ.suc z) ∎
 
   takeduv : (x : Buffer)
