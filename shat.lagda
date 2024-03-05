@@ -299,6 +299,7 @@ ni'o tu'a la'oi .\D{Fin}.\ nibli ko'a goi le su'u ro da poi ke'a ctaipe la'oi .\
 ni'o ctaipe ko'a goi la'o zoi.\ \D{Cmd} \B x\ .zoi.\ fa lo co'e be lo midnoi be fo la'o zoi.\ \Xr{ed}{1} .zoi.\ ja zo'e be'o poi ctaipe lo su'u tu'a ke'a racli
 
 \newcommand\cibysumti[2]{ga je da du la'o zoi.\ \IC{#1} \B v \B z \AgdaUnderscore{}\ .zoi.\ gi da mapti lo konkatena be lo sinxa be la'oi .\B v.\ be'o bei lo me'oi .comma.\ bei lo sinxa be la'oi .\B z.\ be'o bei #2}
+\newcommand\vonsumti[2]{ga je da du la'o zoi.\ \IC{#1} \B v \B x \B z\ \AgdaUnderscore{}\ .zoi.\ gi da mapti lo konkatena be lo sinxa be la'oi .\B v.\ be'o bei lo me'oi .comma.\ bei lo sinxa be la'oi .\B x.\ be'o bei #2\ bei lo sinxa be la'oi .\B z.}
 .i ro da poi ke'a ctaipe ko'a zo'u\ldots
 \begin{itemize}
 	\item ga jonai ga je da du la'oi .\IC{Sisti}.\ gi da mapti zo'oi .q.\ gi
@@ -309,9 +310,9 @@ ni'o ctaipe ko'a goi la'o zoi.\ \D{Cmd} \B x\ .zoi.\ fa lo co'e be lo midnoi be 
 	\item ga jonai ga je da du la'o zoi.\ \IC{Rejgau} \B v\ .zoi.\ gi da mapti lo konkatena be zo'oi .w.\ bei lo canlu lerfu bei la'oi .\B v.\ gi
 	\item ga jonai \cibysumti{Vimcu}{zo'oi .d.} gi
 	\item ga jonai \cibysumti{Muvgau}{zo'oi .m.} gi
-	\item ga jonai \cibysumti{Basti}{zo'oi .c.} gi
 	\item ga jonai \cibysumti{Cusku}{zo'oi .p.} gi
-	\item \cibysumti{Namcusku}{zo'oi .n.}
+	\item ga jonai \cibysumti{Namcusku}{zo'oi .n.} gi
+	\item \vonsumti{Basti}{zo'oi .c.}
 \end{itemize}
 
 \begin{code}
