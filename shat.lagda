@@ -260,11 +260,6 @@ import Data.Maybe.Instances
 import Data.Maybe.Properties
   as DMP
 import Relation.Nullary.Decidable
-import Data.List.Relation.Unary.All
-  as 𝕃
-  using (
-    All
-  )
 \end{code}
 
 \chapter{le me'oi .instance.\ pe le na se ciksi fo le velcki be le la'o zoi.\ \Xr{shat}{1}\ .zoi.}
