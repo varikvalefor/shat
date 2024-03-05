@@ -252,6 +252,8 @@ import Agda.Builtin.Unit
   as ABU
 import Data.Fin.Properties
   as DFP
+import Data.Nat.Properties
+  as DNP
 import Data.List.Properties
   as DLP
 import Data.Maybe.Instances
@@ -1253,7 +1255,7 @@ module KanjyVeritas where
     length (a' ↑ Lz) ℕ.+ length (b'+1 ↓ Lz) ≡⟨ refl ⟩
     _ ≡⟨ DLP.length-drop b'+1 Lz ▹ cong (ℕ._+_ _) ⟩
     length (a' ↑ Lz) ℕ.+ (length Lz ℕ.∸ b'+1) ≡⟨ {!!} ⟩
-    a' ℕ.+ (length Lz ℕ.∸ b'+1) ≡⟨ {!!} ⟩
+    a' ℕ.+ (length Lz ℕ.∸ b'+1) ≡⟨ DNP.+-comm a' _ ⟩
     length Lz ℕ.∸ b'+1 ℕ.+ a' ≡⟨ {!!} ⟩
     lb x ℕ.∸ ℕ.suc (b' ℕ.∸ a') ≡⟨ refl ⟩
     lb x ℕ.∸ ℕ.suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a) ∎
