@@ -460,7 +460,6 @@ module DegjygirzuVeritas where
     d' = 𝕃.map fL ∘_ $ 𝕃.wordsBy $ F? ∘ isDigit
       where
       F? = T? ∘ Data.Bool.not
-    fL∘tL : (s : String) → fL (tL s) ≡ s
     fL∘tL = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
