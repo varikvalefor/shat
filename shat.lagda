@@ -1268,6 +1268,7 @@ module KanjyVeritas where
     x₂ = proj₁ $ kanji {x} $ Vimcu a b d
     lb = length ∘ Buffer.lerpinste
     open import Relation.Binary.PropositionalEquality
+    open ≡-Reasoning
     v∸x+z≡v∸[x∸z] : {v x z : ℕ}
                  → z ℕ.≤ x
                  → v ℕ.∸ x ℕ.+ z ≡ v ℕ.∸ (x ℕ.∸ z)
@@ -1276,8 +1277,9 @@ module KanjyVeritas where
       n+0≡n : (n : ℕ) → n ℕ.+ 0 ≡ n
       n+0≡n 0 = refl
       n+0≡n (ℕ.suc n) = n+0≡n n ▹ cong ℕ.suc
-    v∸x+z≡v∸[x∸z] {z = ℕ.suc z} (ℕ.s≤s s) = {!!}
-    open ≡-Reasoning
+    v∸x+z≡v∸[x∸z] {v} {x} {z = ℕ.suc z} (ℕ.s≤s s) = begin
+      v ℕ.∸ x ℕ.+ ℕ.suc z ≡⟨ {!!} ⟩
+      v ℕ.∸ (x ℕ.∸ ℕ.suc z) ∎
 
   takeduv : (x : Buffer)
           → (a b : Buffer.F x)
