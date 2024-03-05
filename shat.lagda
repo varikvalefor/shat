@@ -1303,13 +1303,19 @@ module KanjyVeritas where
                (𝔽.toℕ a ↓ Buffer.lerpinste x₂))
   dropyduv x a b d = sym $ begin
     𝔽.toℕ a ↓ BL x₂ ≡⟨ refl ⟩
-    𝔽.toℕ a ↓ (𝔽.toℕ a ↑ BL x ++ b'++ ↓ BL x) ≡⟨ {!!} ⟩
+    𝔽.toℕ a ↓ (𝔽.toℕ a ↑ BL x ++ b'++ ↓ BL x) ≡⟨ teikteikdrop (BL x) _ a ⟩
     b'++ ↓ BL x ∎
     where
     b'++ = ℕ.suc $ 𝔽.toℕ b
     BL = Buffer.lerpinste
     x₂ = proj₁ $ kanji {x} $ Vimcu a b d
     open import Relation.Binary.PropositionalEquality
+    teikteikdrop : ∀ {a} → {A : Set a}
+                 → (x z : List A)
+                 → (n : Fin $ length x)
+                 → 𝔽.toℕ n ↓ (𝔽.toℕ n ↑ x ++ z) ≡ z
+    teikteikdrop (_ ∷ _) _ 𝔽.zero = refl
+    teikteikdrop (_ ∷ xs) z (𝔽.suc n) = teikteikdrop xs z n
     open ≡-Reasoning
 
   pindices : (x : Buffer)
