@@ -1256,7 +1256,7 @@ module KanjyVeritas where
     length (a' ↑ Lz) ℕ.+ (length Lz ℕ.∸ b'+1) ≡⟨ refl ⟩
     length (a' ↑ Lz) ℕ.+ (lb x ℕ.∸ b'+1) ≡⟨ {!!} ⟩
     a' ℕ.+ (lb x ℕ.∸ b'+1) ≡⟨ DNP.+-comm a' _ ⟩
-    lb x ℕ.∸ b'+1 ℕ.+ a' ≡⟨ v∸x+z≡v∸[x∸z] $ a' ℕ.≤ b'+1 ∋ {!!} ⟩
+    lb x ℕ.∸ b'+1 ℕ.+ a' ≡⟨ v∸x+z≡v∸[x∸z] $ flex d ⟩
     lb x ℕ.∸ (b'+1 ℕ.∸ a') ≡⟨ {!!} ⟩
     lb x ℕ.∸ ℕ.suc (b' ℕ.∸ a') ≡⟨ refl ⟩
     lb x ℕ.∸ ℕ.suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a) ∎
@@ -1267,6 +1267,11 @@ module KanjyVeritas where
     Lz = Buffer.lerpinste x
     x₂ = proj₁ $ kanji {x} $ Vimcu a b d
     lb = length ∘ Buffer.lerpinste
+    flex : {a : ℕ}
+         → {m n : Fin a}
+         → n 𝔽.≤ m
+         → 𝔽.toℕ n ℕ.≤ ℕ.suc (𝔽.toℕ m)
+    flex = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
     v∸x+z≡v∸[x∸z] : {v x z : ℕ}
