@@ -850,7 +850,7 @@ module Orsygenturfa'i₃Veritas where
               (just $ ((a , b) , d) , c))
   porkcos a b d c = begin
     pork ((show a , show b) , show c) ≡⟨ refl ⟩
-    _,ₘ_ ax (readMaybe $ show c) ≡⟨ {!!} ▹ cong (_,ₘ_ ax) ⟩
+    _,ₘ_ ax (readMaybe $ show c) ≡⟨ rimcos c ▹ cong (_,ₘ_ ax) ⟩
     _,ₘ_ ax (just c) ≡⟨ ax≡justabd ▹ cong (flip _,ₘ_ $ just c) ⟩
     _,ₘ_ (just $ (a , b) , d) (just c) ≡⟨ refl ⟩
     just (((a , b) , d) , c) ∎
@@ -862,6 +862,8 @@ module Orsygenturfa'i₃Veritas where
       R = readMaybe (show a) ,ₘ readMaybe (show b)
     ax≡justabd : ax ≡ just ((a , b) , d)
     ax≡justabd = {!!}
+    rimcos : {n : ℕ} → (x : Fin n) → readMaybe (show x) ≡ just x
+    rimcos = ?
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
