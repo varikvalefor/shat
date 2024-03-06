@@ -691,7 +691,8 @@ module Orsygenturfa'iVeritas where
               (pork $ just x ∷ just z ∷ [])
               (just $ (x , z) , djb))
   pork-du {n} {x} {z} djb = begin
-    pork (just x ∷ just z ∷ []) ≡⟨ {!!} ⟩
+    pork (just x ∷ just z ∷ []) ≡⟨ refl ⟩
+    mapₘ (_ ,_) (decToMaybe $ x 𝔽.≤? z) ≡⟨ {!!} ⟩
     just ((x , z) , djb) ∎
     where
     open import Relation.Binary.PropositionalEquality
