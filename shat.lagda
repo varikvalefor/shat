@@ -910,9 +910,8 @@ module Reed where
     g _ _ = nothing
 
     t : {x : Buffer} → String → Maybe $ Cmd x
-    t {x} s = uncurry g =<<_ $ _,ₘ_ n $ romoi s
+    t {x} s = uncurry g =<<_ $ _,ₘ_ n $ 𝕃.last $ 𝕊.toList s
       where
-      romoi = 𝕃.last ∘ 𝕊.toList
       n = pamoinamcu s >>= fromℕ?
 
   module Re where
