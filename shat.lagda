@@ -1093,6 +1093,7 @@ module ReedVeritas where
     reed x K ≡⟨ {!!} ⟩
     Reed.Pa.t K ≡⟨ {!!} ⟩
     _,ₘ_ (rms a) (sl "a") >>= g' ≡⟨ {!!} ⟩
+    _,ₘ_ (just a) (just 'a') >>= g' ≡⟨ refl ⟩
     just (a , 'a') >>= g' ≡⟨ refl ⟩
     Reed.Pa.g a 'a' ≡⟨ refl ⟩
     just (Jmina a) ∎
