@@ -348,6 +348,15 @@ data Cmdᵢₒ (x : Buffer) : Set where
 
 \chapter{le fancu}
 
+\section{la'o zoi.\ \F{\AgdaUnderscore{},ₘ\AgdaUnderscore}\ .zoi.}
+ni'o xu sarcu fa lo nu ciksi bau la .lojban.
+
+\begin{code}
+_,ₘ_ : ∀ {a} → {A B : Set a}
+     → Maybe A → Maybe B → Maybe $ A × B
+_,ₘ_ = Data.Maybe.ap ∘₂ mapₘ $ _,_
+\end{code}
+
 \section{la \F{dekydu'i}}
 ni'o xu sarcu fa lo nu la .varik.\ cu ciksi la \F{dekydu'i} bau la .lojban.
 
@@ -750,9 +759,6 @@ module Orsygenturfa'i₃ where
        → Maybe $ Σ (Fin n × Fin n) (uncurry 𝔽._≤_) × Fin n
   pork ((a , b) , c)= _,ₘ_ ax $ readMaybe c
     where
-    _,ₘ_ : ∀ {a} → {A B : Set a}
-         → Maybe A → Maybe B → Maybe $ A × B
-    _,ₘ_ = (Data.Maybe.ap ∘₂ mapₘ) _,_
     ax = R >>= λ (a' , b') → mapₘ (f a' b') $ decToMaybe $ a' 𝔽.≤? b'
       where
       f = λ a b x → (a , b) , x
@@ -838,9 +844,6 @@ module Orsygenturfa'i₃Veritas where
     _,ₘ_ (just $ (a , b) , d) (just c) ≡⟨ refl ⟩
     just (((a , b) , d) , c) ∎
     where
-    _,ₘ_ : ∀ {a} → {A B : Set a}
-         → Maybe A → Maybe B → Maybe $ A × B
-    _,ₘ_ = (Data.Maybe.ap ∘₂ mapₘ) _,_
     ax : Maybe $ Σ (Fin _ × Fin _) $ uncurry 𝔽._≤_
     ax = R >>= λ (a' , b') → mapₘ (f a' b') $ decToMaybe $ a' 𝔽.≤? b'
       where
@@ -911,7 +914,6 @@ module Reed where
       where
       romoi = 𝕃.last ∘ 𝕊.toList
       n = pamoinamcu s >>= fromℕ?
-      _,ₘ_ = (Data.Maybe.ap ∘₂ mapₘ) _,_
 
   module Re where
     g : (x : Buffer)
@@ -947,7 +949,6 @@ module Reed where
     t {x} s = g' =<<_ $ c ,ₘ orsygenturfa'i₃ s
       where
       g' = λ (z , (_ , d) , c) → g _ _ c d z
-      _,ₘ_ = Data.Maybe.ap ∘ mapₘ _,_
       c = f $ 𝕃.filter aintDigit? $ 𝕊.toList s
         where
         aintDigit? = T? ∘ Data.Bool.not ∘ isDigit
@@ -1085,7 +1086,6 @@ module ReedVeritas where
     just (Jmina a) ∎
     where
     g' = uncurry Reed.Pa.g
-    _,ₘ_ = Data.Maybe.ap ∘ mapₘ _,_
     K = k₁ x a 'a'
     rms : {n : ℕ} → Fin n → Maybe $ Fin n
     rms = readMaybe ∘ show
