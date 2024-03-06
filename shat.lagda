@@ -643,7 +643,7 @@ module Orsygenturfa'iVeritas where
               (spit $ x ++ "," ++ z)
               (𝕊.toList x ∷ 𝕊.toList z ∷ []))
   spit-du x z inx inz = begin
-    spit (x ++ "," ++ z) ≡⟨ {!!} ⟩
+    spit (x ++ "," ++ z) ≡⟨ refl ⟩
     w (𝕊.toList $ x ++ "," ++ z) ≡⟨ {!!} ⟩
     w (𝕊.toList x ++ ',' ∷ 𝕊.toList z) ≡⟨ {!!} ⟩
     spit x ++ spit z ≡⟨ spit-non x inx ▹ cong (_++ spit z) ⟩
