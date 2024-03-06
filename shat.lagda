@@ -863,7 +863,7 @@ module Orsygenturfa'i₃Veritas where
     ax≡justabd : ax ≡ just ((a , b) , d)
     ax≡justabd = {!!}
     rimcos : {n : ℕ} → (x : Fin n) → readMaybe (show x) ≡ just x
-    rimcos = ?
+    rimcos = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
