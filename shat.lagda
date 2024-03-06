@@ -880,16 +880,14 @@ module Orsygenturfa'i₃Veritas where
   pav v x z d c j = sym $ begin
     orsygenturfa'i₃ (k₃ v x c z) ≡⟨ refl ⟩
     orsispita (k₃ v x c z) >>= pork ≡⟨ refl ⟩
-    orsispita (k₃ v' x' c z') >>= pork ≡⟨ refl ⟩
-    _ ≡⟨ orspiv v' x' z' c j ▹ sym ▹ cong (_>>= pork) ⟩
-    just ((show v' , show x') , show z') >>= pork ≡⟨ refl ⟩
-    pork ((show v' , show x') , show z') ≡⟨ refl ⟩
+    orsispita (k₃ (t v) (t x) c $ t z) >>= pork ≡⟨ refl ⟩
+    _ ≡⟨ orspiv (t v) (t x) (t z) c j ▹ sym ▹ cong (_>>= pork) ⟩
+    just ((show (t v) , show (t x)) , show (t z)) >>= pork ≡⟨ refl ⟩
+    pork ((show (t v) , show (t x)) , show (t z)) ≡⟨ refl ⟩
     pork ((show v , show x) , show z) ≡⟨ porkcos v x d z ⟩
     just (((v , x) , d) , z) ∎
     where
-    v' = 𝔽.toℕ v
-    x' = 𝔽.toℕ x
-    z' = 𝔽.toℕ z
+    t = 𝔽.toℕ
     k₃ : ∀ {a b c} → {A : Set a} → {B : Set b} → {C : Set c}
        → ⦃ Show A ⦄ → ⦃ Show B ⦄ → ⦃ Show C ⦄
        → A → B → Char → C → String
