@@ -1076,9 +1076,9 @@ module ReedVeritas where
     xedrenod : ∀ {a} → {A : Set a}
              → (n : ℕ)
              → (x : Maybe A)
-             → (_≡_
-                 (𝕃.head $ 𝕃.mapMaybe id $ x ∷ 𝕃.replicate n nothing)
-                 (𝕃.head $ 𝕃.mapMaybe id $ x ∷ []))
+             → ((_≡_ on_ $ 𝕃.head ∘ 𝕃.mapMaybe id ∘ _∷_ x)
+                 (𝕃.replicate n nothing)
+                 [])
     xedrenod _ (just _) = refl
     xedrenod 0 nothing = refl
     xedrenod (ℕ.suc n) nothing = xedrenod n nothing
