@@ -646,9 +646,6 @@ module Orsygenturfa'iVeritas where
     spit (x ++ "," ++ z) ≡⟨ refl ⟩
     w (tL $ x ++ "," ++ z) ≡⟨ {!!} ⟩
     w (tL x ++ ',' ∷ tL z) ≡⟨ {!!} ⟩
-    spit x ++ spit z ≡⟨ spit-non x inx ▹ cong (_++ spit z) ⟩
-    (tL x ∷ []) ++ spit z ≡⟨ refl ⟩
-    _ ≡⟨ spit-non z inz ▹ cong (_++_ $ tL x ∷ []) ⟩
     (tL x ∷ []) ++ (tL z ∷ []) ≡⟨ refl ⟩
     tL x ∷ tL z ∷ [] ∎
     where
