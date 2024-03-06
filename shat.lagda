@@ -878,20 +878,24 @@ module Orsygenturfa'i₃Veritas where
             (let c' = 𝕊.fromChar c in
              show v ++ "," ++ show x ++ c' ++ show z)))
   pav v x z d c j = sym $ begin
-    orsygenturfa'i₃ K ≡⟨ refl ⟩
-    orsispita K >>= pork ≡⟨ refl ⟩
-    orsispita K' >>= pork ≡⟨ refl ⟩
+    orsygenturfa'i₃ (k₃ v x c z) ≡⟨ refl ⟩
+    orsispita (k₃ v x c z) >>= pork ≡⟨ refl ⟩
+    orsispita (k₃ v' x' c z') >>= pork ≡⟨ refl ⟩
     _ ≡⟨ orspiv v' x' z' c j ▹ sym ▹ cong (_>>= pork) ⟩
     just ((show v' , show x') , show z') >>= pork ≡⟨ refl ⟩
     pork ((show v' , show x') , show z') ≡⟨ refl ⟩
     pork ((show v , show x) , show z) ≡⟨ porkcos v x d z ⟩
     just (((v , x) , d) , z) ∎
     where
-    K = show v ++ "," ++ show x ++ 𝕊.fromChar c ++ show z
     v' = 𝔽.toℕ v
     x' = 𝔽.toℕ x
     z' = 𝔽.toℕ z
-    K' = show v' ++ "," ++ show x' ++ 𝕊.fromChar c ++ show z'
+    k₃ : ∀ {a b c} → {A : Set a} → {B : Set b} → {C : Set c}
+       → ⦃ Show A ⦄ → ⦃ Show B ⦄ → ⦃ Show C ⦄
+       → A → B → Char → C → String
+    k₃ v x c z = show v ++ "," ++ show x ++ c' ++ show z
+      where
+      c' = 𝕊.fromChar c
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 \end{code}
