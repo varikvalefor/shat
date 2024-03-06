@@ -228,6 +228,7 @@ open import Truthbrary.Record.LLC
   )
 open import Truthbrary.Category.Monad
   using (
+    _<=<_;
     _=<<_;
     _>>=_
   )
@@ -505,7 +506,7 @@ ni'o ro da xi pa poi ke'a na'e degji lerfu zo'u ro da xi re poi ke'a ctaipe la'o
 
 \begin{code}
 pamoinamcu : String → Maybe ℕ
-pamoinamcu = (_>>= readMaybe) ∘ 𝕃.head ∘ degjygirzu
+pamoinamcu = readMaybe <=< (𝕃.head ∘ degjygirzu)
 \end{code}
 
 \subsection{le ctaipe be le su'u mapti fa la'oi .\F{pamoinamcu}.}
@@ -524,7 +525,7 @@ module PamoinamcuVeritas where
     readMaybe (show n) ≡⟨ rimco n ⟩
     just n ∎
     where
-    𝓰 = (_>>= readMaybe) ∘ 𝕃.head
+    𝓰 = readMaybe <=< 𝕃.head
     s = 𝕊.wordsBy $ T? ∘ Data.Bool.not ∘ Data.Char.isDigit
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
@@ -546,7 +547,7 @@ module PamoinamcuVeritas where
    where
    dvr = DegjygirzuVeritas.rel
    c' = 𝕊.fromChar c
-   𝓰 = (_>>= readMaybe) ∘ 𝕃.head
+   𝓰 = readMaybe <=< 𝕃.head
    d = degjygirzu
    open import Relation.Binary.PropositionalEquality
    open ≡-Reasoning
@@ -601,7 +602,7 @@ ni'o ro da poi ke'a ctaipe ko'a goi la'o zoi.\ \D{Fin} \B n\ .zoi.\ zo'u ro de p
 \begin{code}
 module Orsygenturfa'i where
   ps : {n : ℕ} → List Char → Maybe $ Fin n
-  ps = (_>>= fromℕ?) ∘ readMaybe ∘ 𝕊.fromList
+  ps = fromℕ? <=< (readMaybe ∘ 𝕊.fromList)
 
   spit : String → List $ List Char
   spit = 𝕃.wordsBy (_≟ ',') ∘ 𝕊.toList
@@ -767,7 +768,7 @@ module Orsygenturfa'i₃ where
   orsygenturfa'i₃ : {n : ℕ}
                   → String
                   → Maybe $ Σ (Fin n × Fin n) (uncurry 𝔽._≤_) × Fin n
-  orsygenturfa'i₃ = (_>>= pork) ∘ orsispita
+  orsygenturfa'i₃ = pork <=< orsispita
 
 open Orsygenturfa'i₃
   using (
@@ -901,7 +902,7 @@ module Reed where
     k _ = nothing
 
     t : {x : Buffer} → String → Maybe $ Cmd x
-    t = (_>>= g) ∘ 𝕃.head ∘ 𝕊.toList
+    t = g <=< (𝕃.head ∘ 𝕊.toList)
 
   module Pa where
     g : {x : Buffer} → Buffer.F x → Char → Maybe $ Cmd x
