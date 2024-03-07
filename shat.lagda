@@ -1458,6 +1458,8 @@ module KanjyVeritas where
   xrutis = {!!}
 \end{code}
 
+\chapter{le skami co'e}
+
 \section{la'oi .\F{main}.}
 ni'o zabna ciksi la'oi .\F{main}.\ fo ma bau la .lojban.
 
