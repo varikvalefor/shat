@@ -455,7 +455,6 @@ module DegjygirzuVeritas where
     d' (tL (show t) ++ c ∷ tL s) ≡⟨ {!!} ⟩
     d' (tL (show t)) ++ d' (tL s) ≡⟨ refl ⟩
     d' (tL $ show t) ++ d' (tL s) ≡⟨ refl ⟩
-    d' (tL $ show t) ++ d s ≡⟨ refl ⟩
     d (show t) ++ d s ≡⟨ pav (sym ∘ fL∘tL) t ▹ cong (_++ d s) ⟩
     (show t ∷ []) ++ d s ≡⟨ refl ⟩
     show t ∷ d s ∎
