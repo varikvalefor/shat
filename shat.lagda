@@ -757,7 +757,7 @@ ni'o ro da xi pa poi ke'a ctaipe ko'a goi la'o zoi.\ \D{Fin} \B n\ .zoi.\ zo'u r
 \begin{code}
 module Orsygenturfa'i₃ where
   lispork : List $ List String → Maybe $ (String × String) × String
-  lispork ((a ∷ b ∷ []) ∷ (c ∷ []) ∷ []) = just $ (a , b) , c
+  lispork ((a ∷ []) ∷ (b ∷ c ∷ []) ∷ []) = just $ (a , b) , c
   lispork _ = nothing
 
   orsispita : String → Maybe $ (String × String) × String
@@ -795,7 +795,7 @@ module Orsygenturfa'i₃Veritas where
 
   lisporv : (a b c : String)
           → (_≡_
-              (lispork $ (a ∷ b ∷ []) ∷ (c ∷ []) ∷ [])
+              (lispork $ (a ∷ []) ∷ (b ∷ c ∷ []) ∷ [])
               (just $ (a , b) , c))
   lisporv _ _ _ = refl
 
@@ -811,7 +811,7 @@ module Orsygenturfa'i₃Veritas where
     orsispita K ≡⟨ refl ⟩
     lispork (𝕃.map (w aintDigit?) $ w (_≟ ',') $ K) ≡⟨ {!!} ⟩
     lispork' (𝕃.map (w' aintDigit?) $ w' (_≟ ',') $ K') ≡⟨ {!!} ⟩
-    lispork' ((s' a ∷ [ s' b ]) ∷ [ [ s' c ] ]) ≡⟨ refl ⟩
+    lispork' ([ s' a ] ∷ [ s' b ∷ [ s' c ] ]) ≡⟨ refl ⟩
     lispork' (map₂ s' abj) ≡⟨ refl ⟩
     lispork (map₂ (𝕊.fromList ∘ s') abj) ≡⟨ refl ⟩
     lispork _ ≡⟨ map₂-cong fL∘s'≡s abj ▹ cong lispork ⟩
@@ -828,7 +828,7 @@ module Orsygenturfa'i₃Veritas where
     fL∘s'≡s : (n : ℕ) → 𝕊.fromList (s' n) ≡ s n
     fL∘s'≡s = {!!}
     K' = s' a ++ ',' ∷ s' b ++ x ∷ s' c
-    abj = (a ∷ [ b ]) ∷ [ [ c ] ]
+    abj = [ a ] ∷ [ b ∷ [ c ] ]
     map₂ : ∀ {a b} → {A : Set a} → {B : Set b}
          → (A → B) → List $ List A → List $ List B
     map₂ = 𝕃.map ∘ 𝕃.map
