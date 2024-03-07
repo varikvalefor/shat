@@ -814,8 +814,7 @@ module Orsygenturfa'i₃Veritas where
     L' (𝕃.map (w' aintDigit?) $ s' a ∷ [ s' b ++ x ∷ s' c ]) ≡⟨ ? ⟩
     L' ([ s' a ] ∷ [ s' b ∷ [ s' c ] ]) ≡⟨ refl ⟩
     L' (map₂ s' abj) ≡⟨ refl ⟩
-    L (map₂ (𝕊.fromList ∘ s') abj) ≡⟨ refl ⟩
-    L _ ≡⟨ map₂-cong fL∘s'≡s abj ▹ cong L ⟩
+    L (map₂ (𝕊.fromList ∘ s') abj) ≡⟨ map₂-cong fL∘s'≡s abj ▹ cong L ⟩
     L (map₂ s abj) ≡⟨ refl ⟩
     just ((show a , show b) , show c) ∎
     where
