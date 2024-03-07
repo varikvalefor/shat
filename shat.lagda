@@ -811,6 +811,7 @@ module Orsygenturfa'i₃Veritas where
     orsispita K ≡⟨ refl ⟩
     lispork (𝕃.map (w aintDigit?) $ w (_≟ ',') $ K) ≡⟨ {!!} ⟩
     lispork' (𝕃.map (w' aintDigit?) $ w' (_≟ ',') $ K') ≡⟨ {!!} ⟩
+    lispork' (𝕃.map (w' aintDigit?) $ s' a ∷ [ s' b ++ x ∷ s' c ]) ≡⟨ ? ⟩
     lispork' ([ s' a ] ∷ [ s' b ∷ [ s' c ] ]) ≡⟨ refl ⟩
     lispork' (map₂ s' abj) ≡⟨ refl ⟩
     lispork (map₂ (𝕊.fromList ∘ s') abj) ≡⟨ refl ⟩
