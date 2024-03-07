@@ -1096,7 +1096,7 @@ module ReedVeritas where
     reed x K ≡⟨ {!!} ⟩
     Reed.Pa.t K ≡⟨ {!!} ⟩
     _,ₘ_ (pamoinamcu K >>= fromℕ?) (sl "a") >>= g' ≡⟨ {!!} ⟩
-    _,ₘ_ (rms a) (sl "a") >>= g' ≡⟨ {!!} ⟩
+    _,ₘ_ (rms a) (sl "a") >>= g' ≡⟨ refl ⟩
     _,ₘ_ (rms a) (just 'a') >>= g' ≡⟨ {!!} ⟩
     _,ₘ_ (just a) (just 'a') >>= g' ≡⟨ refl ⟩
     just (a , 'a') >>= g' ≡⟨ refl ⟩
