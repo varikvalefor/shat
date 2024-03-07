@@ -411,7 +411,7 @@ module fromℕ?Veritas where
 \end{code}
 
 \section{la'oi .\F{degjygirzu}.}
-ni'o la .varik.\ na birti lo du'u ciksi la \F{degjygirzu}\ fo ma kau poi ke'a zabna ku'o bau la .lojban.
+ni'o la .varik.\ na birti lo du'u ciksi bau la .lojban.\ fe la \F{degjygirzu}\ fo ma kau poi ke'a zabna
 
 \begin{code}
 degjygirzu : String → List String
