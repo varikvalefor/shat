@@ -862,12 +862,12 @@ module Orsygenturfa'i₃Veritas where
       where
       f = λ a b x → (a , b) , x
       R = readMaybe (show a) ,ₘ readMaybe (show b)
-    ax≡justabd : ax ≡ just ((a , b) , d)
-    ax≡justabd = {!!}
     rimcos : {n : ℕ} → (x : Fin n) → readMaybe (show x) ≡ just x
     rimcos = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
+    ax≡justabd : ax ≡ just ((a , b) , d)
+    ax≡justabd = {!!}
 
   pav : {n : ℕ}
       → (v x z : Fin n)
