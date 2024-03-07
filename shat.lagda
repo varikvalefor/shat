@@ -809,16 +809,17 @@ module Orsygenturfa'i₃Veritas where
                (show a ++ "," ++ show b ++ x' ++ show c)))
   orspiv a b c x j = sym $ begin
     orsispita K ≡⟨ refl ⟩
-    lispork (𝕃.map (w aintDigit?) $ w (_≟ ',') $ K) ≡⟨ {!!} ⟩
+    L (𝕃.map (w aintDigit?) $ w (_≟ ',') $ K) ≡⟨ {!!} ⟩
     lispork' (𝕃.map (w' aintDigit?) $ w' (_≟ ',') $ K') ≡⟨ {!!} ⟩
     lispork' (𝕃.map (w' aintDigit?) $ s' a ∷ [ s' b ++ x ∷ s' c ]) ≡⟨ ? ⟩
     lispork' ([ s' a ] ∷ [ s' b ∷ [ s' c ] ]) ≡⟨ refl ⟩
     lispork' (map₂ s' abj) ≡⟨ refl ⟩
-    lispork (map₂ (𝕊.fromList ∘ s') abj) ≡⟨ refl ⟩
-    lispork _ ≡⟨ map₂-cong fL∘s'≡s abj ▹ cong lispork ⟩
-    lispork (map₂ s abj) ≡⟨ refl ⟩
+    L (map₂ (𝕊.fromList ∘ s') abj) ≡⟨ refl ⟩
+    L _ ≡⟨ map₂-cong fL∘s'≡s abj ▹ cong L ⟩
+    L (map₂ s abj) ≡⟨ refl ⟩
     just ((show a , show b) , show c) ∎
     where
+    L = lispork
     [_] = 𝕃.[_]
     w = 𝕊.wordsBy
     w' = 𝕃.wordsBy
@@ -835,7 +836,7 @@ module Orsygenturfa'i₃Veritas where
     map₂ = 𝕃.map ∘ 𝕃.map
     lispork' : List $ List $ List $ Char
              → Maybe $ (String × String) × String
-    lispork' = lispork ∘ 𝕃.map (𝕃.map 𝕊.fromList)
+    lispork' = L ∘ 𝕃.map (𝕃.map 𝕊.fromList)
     open import Relation.Binary.PropositionalEquality
       hiding (
         [_]
