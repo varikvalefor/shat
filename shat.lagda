@@ -809,9 +809,9 @@ module Orsygenturfa'i₃Veritas where
                (show a ++ "," ++ show b ++ x' ++ show c)))
   orspiv a b c x j = sym $ begin
     orsispita K ≡⟨ refl ⟩
-    L (𝕃.map (w aintDigit?) $ w (_≟ ',') $ K) ≡⟨ {!!} ⟩
-    L' (𝕃.map (w' aintDigit?) $ w' (_≟ ',') $ K') ≡⟨ {!!} ⟩
-    L' (𝕃.map (w' aintDigit?) $ s' a ∷ [ s' b ++ x ∷ s' c ]) ≡⟨ ? ⟩
+    L (𝕃.map (w aD?) $ w (_≟ ',') $ K) ≡⟨ {!!} ⟩
+    L' (𝕃.map (w' aD?) $ w' (_≟ ',') $ K') ≡⟨ {!!} ⟩
+    L' (𝕃.map (w' aD?) $ s' a ∷ [ s' b ++ x ∷ s' c ]) ≡⟨ ? ⟩
     L' ([ s' a ] ∷ [ s' b ∷ [ s' c ] ]) ≡⟨ refl ⟩
     L' (map₂ s' abj) ≡⟨ refl ⟩
     L (map₂ (𝕊.fromList ∘ s') abj) ≡⟨ map₂-cong fL∘s'≡s abj ▹ cong L ⟩
@@ -822,7 +822,7 @@ module Orsygenturfa'i₃Veritas where
     [_] = 𝕃.[_]
     w = 𝕊.wordsBy
     w' = 𝕃.wordsBy
-    aintDigit? = T? ∘ Data.Bool.not ∘ isDigit
+    aD? = T? ∘ Data.Bool.not ∘ isDigit
     K = show a ++ "," ++ show b ++ 𝕊.fromChar x ++ show c
     s = show
     s' = 𝕊.toList ∘ show
