@@ -810,10 +810,10 @@ module Orsygenturfa'i₃Veritas where
   orspiv a b c x j = sym $ begin
     orsispita K ≡⟨ refl ⟩
     L (𝕃.map (w aintDigit?) $ w (_≟ ',') $ K) ≡⟨ {!!} ⟩
-    lispork' (𝕃.map (w' aintDigit?) $ w' (_≟ ',') $ K') ≡⟨ {!!} ⟩
-    lispork' (𝕃.map (w' aintDigit?) $ s' a ∷ [ s' b ++ x ∷ s' c ]) ≡⟨ ? ⟩
-    lispork' ([ s' a ] ∷ [ s' b ∷ [ s' c ] ]) ≡⟨ refl ⟩
-    lispork' (map₂ s' abj) ≡⟨ refl ⟩
+    L' (𝕃.map (w' aintDigit?) $ w' (_≟ ',') $ K') ≡⟨ {!!} ⟩
+    L' (𝕃.map (w' aintDigit?) $ s' a ∷ [ s' b ++ x ∷ s' c ]) ≡⟨ ? ⟩
+    L' ([ s' a ] ∷ [ s' b ∷ [ s' c ] ]) ≡⟨ refl ⟩
+    L' (map₂ s' abj) ≡⟨ refl ⟩
     L (map₂ (𝕊.fromList ∘ s') abj) ≡⟨ refl ⟩
     L _ ≡⟨ map₂-cong fL∘s'≡s abj ▹ cong L ⟩
     L (map₂ s abj) ≡⟨ refl ⟩
@@ -834,9 +834,9 @@ module Orsygenturfa'i₃Veritas where
     map₂ : ∀ {a b} → {A : Set a} → {B : Set b}
          → (A → B) → List $ List A → List $ List B
     map₂ = 𝕃.map ∘ 𝕃.map
-    lispork' : List $ List $ List $ Char
-             → Maybe $ (String × String) × String
-    lispork' = L ∘ 𝕃.map (𝕃.map 𝕊.fromList)
+    L' : List $ List $ List $ Char
+       → Maybe $ (String × String) × String
+    L' = L ∘ 𝕃.map (𝕃.map 𝕊.fromList)
     open import Relation.Binary.PropositionalEquality
       hiding (
         [_]
