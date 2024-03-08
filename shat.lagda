@@ -669,8 +669,7 @@ module Orsygenturfa'iVeritas where
     tildist = {!!}
     F : {x : List Char} → ',' ∉ x → 𝕃.All (¬_ ∘ (_≡ ',')) x
     F = {!!}
-    uit : ∀ {a p} → {A : Set a}
-        → {P : Pred A p}
+    uit : ∀ {a p} → {A : Set a} → {P : Pred A p}
         → (P? : Decidable P)
         → (x z : List A)
         → 𝕃.All (¬_ ∘ P) x
@@ -681,8 +680,7 @@ module Orsygenturfa'iVeritas where
             (𝕃.wordsBy P? $ x ++ e ∷ z)
             (𝕃.wordsBy P? x ++ 𝕃.wordsBy P? z))
     uit = {!!}
-    uon : ∀ {a p} → {A : Set a}
-        → {P : Pred A p}
+    uon : ∀ {a p} → {A : Set a} → {P : Pred A p}
         → (P? : Decidable P)
         → (x z : List A)
         → 𝕃.All (¬_ ∘ P) x
