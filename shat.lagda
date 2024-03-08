@@ -647,7 +647,7 @@ module Orsygenturfa'iVeritas where
     w (tL $ x ++ "," ++ z) ≡⟨ tildist x ("," ++ z) ▹ cong w ⟩
     w (tL x ++ tL ("," ++ z)) ≡⟨ tildist "," z ▹ cong (w ∘ _++_ (tL x)) ⟩
     w (tL x ++ tL "," ++ tL z) ≡⟨ refl ⟩
-    w (tL x ++ ',' ∷ tL z) ≡⟨ {!!} ⟩
+    w (tL x ++ ',' ∷ tL z) ≡⟨ uit (tL x) (tL z) inx inz ⟩
     w (tL x) ++ w (tL z) ≡⟨ {!!} ⟩
     (tL x ∷ []) ++ (tL z ∷ []) ≡⟨ refl ⟩
     tL x ∷ tL z ∷ [] ∎
@@ -656,6 +656,11 @@ module Orsygenturfa'iVeritas where
     w = 𝕃.wordsBy $ _≟ ','
     tildist : (x z : String) → tL (x ++ z) ≡ tL x ++ tL z
     tildist = {!!}
+    uit : (x z : List Char)
+        → ',' ∉ x
+        → ',' ∉ z
+        → w (x ++ ',' ∷ z) ≡ w x ++ w z
+    uit = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
