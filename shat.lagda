@@ -465,9 +465,7 @@ module DegjygirzuVeritas where
     fL = 𝕊.fromList
     tildist : (x z : String) → tL (x ++ z) ≡ tL x ++ tL z
     tildist = {!!}
-    d' = 𝕃.map fL ∘_ $ 𝕃.wordsBy $ F? ∘ isDigit
-      where
-      F? = T? ∘ Data.Bool.not
+    d' = 𝕃.map fL ∘_ $ 𝕃.wordsBy $ T? ∘ Data.Bool.not ∘ isDigit
     fL∘tL = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
