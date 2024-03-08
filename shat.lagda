@@ -658,7 +658,7 @@ module Orsygenturfa'iVeritas where
     w (tL x ++ tL ("," ++ z)) ≡⟨ tildist "," z ▹ cong (w ∘ _++_ (tL x)) ⟩
     w (tL x ++ tL "," ++ tL z) ≡⟨ refl ⟩
     w (tL x ++ ',' ∷ tL z) ≡⟨ uit _ (tL x) _ (F inx) (F inz) _ refl ⟩
-    w (tL x) ++ w (tL z) ≡⟨ {!!} ⟩
+    w (tL x) ++ w (tL z) ≡⟨ uon _ (tL x) _ (F inx) (F inz) ⟩
     (tL x ∷ []) ++ (tL z ∷ []) ≡⟨ refl ⟩
     tL x ∷ tL z ∷ [] ∎
     where
@@ -680,6 +680,14 @@ module Orsygenturfa'iVeritas where
             (𝕃.wordsBy P? $ x ++ e ∷ z)
             (𝕃.wordsBy P? x ++ 𝕃.wordsBy P? z))
     uit = {!!}
+    uon : ∀ {a p} → {A : Set a}
+        → {P : Pred A p}
+        → (P? : Decidable P)
+        → (x z : List A)
+        → 𝕃.All (¬_ ∘ P) x
+        → 𝕃.All (¬_ ∘ P) z
+        → 𝕃.wordsBy P? x ++ 𝕃.wordsBy P? z ≡ x ∷ z ∷ []
+    uon = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
