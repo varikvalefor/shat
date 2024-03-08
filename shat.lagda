@@ -187,6 +187,11 @@ open import Data.Product
     ∃;
     Σ
   )
+open import Relation.Unary
+  using (
+    Decidable;
+    Pred
+  )
 open import Relation.Nullary
   using (
     Dec;
@@ -261,6 +266,11 @@ import Data.Maybe.Instances
 import Data.Maybe.Properties
   as DMP
 import Relation.Nullary.Decidable
+import Data.List.Relation.Unary.All
+  as 𝕃
+  using (
+    All
+  )
 \end{code}
 
 \chapter{le me'oi .instance.\ pe le na se ciksi fo le velcki be le la'o zoi.\ \Xr{shat}{1}\ .zoi.}
@@ -647,7 +657,7 @@ module Orsygenturfa'iVeritas where
     w (tL $ x ++ "," ++ z) ≡⟨ tildist x ("," ++ z) ▹ cong w ⟩
     w (tL x ++ tL ("," ++ z)) ≡⟨ tildist "," z ▹ cong (w ∘ _++_ (tL x)) ⟩
     w (tL x ++ tL "," ++ tL z) ≡⟨ refl ⟩
-    w (tL x ++ ',' ∷ tL z) ≡⟨ uit (tL x) (tL z) inx inz ⟩
+    w (tL x ++ ',' ∷ tL z) ≡⟨ uit (_≟ ',') (tL x) (tL z) {!!} {!!} ',' refl ⟩
     w (tL x) ++ w (tL z) ≡⟨ {!!} ⟩
     (tL x ∷ []) ++ (tL z ∷ []) ≡⟨ refl ⟩
     tL x ∷ tL z ∷ [] ∎
@@ -656,10 +666,17 @@ module Orsygenturfa'iVeritas where
     w = 𝕃.wordsBy $ _≟ ','
     tildist : (x z : String) → tL (x ++ z) ≡ tL x ++ tL z
     tildist = {!!}
-    uit : (x z : List Char)
-        → ',' ∉ x
-        → ',' ∉ z
-        → w (x ++ ',' ∷ z) ≡ w x ++ w z
+    uit : ∀ {a p} → {A : Set a}
+        → {P : Pred A p}
+        → (P? : Decidable P)
+        → (x z : List A)
+        → 𝕃.All (¬_ ∘ P) x
+        → 𝕃.All (¬_ ∘ P) z
+        → (e : A)
+        → P e
+        → (_≡_
+            (𝕃.wordsBy P? $ x ++ e ∷ z)
+            (𝕃.wordsBy P? x ++ 𝕃.wordsBy P? z))
     uit = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
