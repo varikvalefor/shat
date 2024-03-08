@@ -646,6 +646,7 @@ module Orsygenturfa'iVeritas where
   spit-du x z inx inz = begin
     spit (x ++ "," ++ z) ≡⟨ refl ⟩
     w (tL $ x ++ "," ++ z) ≡⟨ {!!} ⟩
+    w (tL x ++ tL "," ++ tL z) ≡⟨ refl ⟩
     w (tL x ++ ',' ∷ tL z) ≡⟨ {!!} ⟩
     w (tL x) ++ w (tL z) ≡⟨ {!!} ⟩
     (tL x ∷ []) ++ (tL z ∷ []) ≡⟨ refl ⟩
