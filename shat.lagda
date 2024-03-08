@@ -453,6 +453,7 @@ module DegjygirzuVeritas where
     d' (tL (show t) ++ tL (𝕊.fromChar c ++ s)) ≡⟨ refl ⟩
     _ ≡⟨ {!!} ▹ cong (d' ∘ _++_ (tL (show t))) ⟩
     d' (tL (show t) ++ c ∷ tL s) ≡⟨ {!!} ⟩
+    d' (tL (show t)) ++ d' (c ∷ tL s) ≡⟨ {!!} ⟩
     d' (tL (show t)) ++ d' (tL s) ≡⟨ refl ⟩
     d' (tL $ show t) ++ d' (tL s) ≡⟨ refl ⟩
     d (show t) ++ d s ≡⟨ pav (sym ∘ fL∘tL) t ▹ cong (_++ d s) ⟩
