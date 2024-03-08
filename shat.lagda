@@ -655,7 +655,8 @@ module Orsygenturfa'iVeritas where
   spit-du x z inx inz = begin
     spit (x ++ "," ++ z) ≡⟨ refl ⟩
     w (tL $ x ++ "," ++ z) ≡⟨ tildist x ("," ++ z) ▹ cong w ⟩
-    w (tL x ++ tL ("," ++ z)) ≡⟨ tildist "," z ▹ cong (w ∘ _++_ (tL x)) ⟩
+    w (tL x ++ tL ("," ++ z)) ≡⟨ refl ⟩
+    _ ≡⟨ tildist "," z ▹ cong (w ∘ _++_ (tL x)) ⟩
     w (tL x ++ tL "," ++ tL z) ≡⟨ refl ⟩
     w (tL x ++ ',' ∷ tL z) ≡⟨ uit _ (tL x) _ (F inx) (F inz) _ refl ⟩
     w (tL x) ++ w (tL z) ≡⟨ uon _ (tL x) _ (F inx) (F inz) ⟩
