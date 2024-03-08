@@ -644,8 +644,8 @@ module Orsygenturfa'iVeritas where
               (𝕊.toList x ∷ 𝕊.toList z ∷ []))
   spit-du x z inx inz = begin
     spit (x ++ "," ++ z) ≡⟨ refl ⟩
-    w (tL $ x ++ "," ++ z) ≡⟨ {!!} ⟩
-    w (tL x ++ tL ("," ++ z)) ≡⟨ {!!} ⟩
+    w (tL $ x ++ "," ++ z) ≡⟨ tildist x ("," ++ z) ▹ cong w ⟩
+    w (tL x ++ tL ("," ++ z)) ≡⟨ tildist "," z ▹ cong (w ∘ _++_ (tL x)) ⟩
     w (tL x ++ tL "," ++ tL z) ≡⟨ refl ⟩
     w (tL x ++ ',' ∷ tL z) ≡⟨ {!!} ⟩
     w (tL x) ++ w (tL z) ≡⟨ {!!} ⟩
@@ -654,6 +654,8 @@ module Orsygenturfa'iVeritas where
     where
     tL = 𝕊.toList
     w = 𝕃.wordsBy $ _≟ ','
+    tildist : (x z : String) → tL (x ++ z) ≡ tL x ++ tL z
+    tildist = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
