@@ -657,7 +657,7 @@ module Orsygenturfa'iVeritas where
     w (tL $ x ++ "," ++ z) ≡⟨ tildist x ("," ++ z) ▹ cong w ⟩
     w (tL x ++ tL ("," ++ z)) ≡⟨ tildist "," z ▹ cong (w ∘ _++_ (tL x)) ⟩
     w (tL x ++ tL "," ++ tL z) ≡⟨ refl ⟩
-    w (tL x ++ ',' ∷ tL z) ≡⟨ uit (_≟ ',') (tL x) (tL z) {!!} {!!} ',' refl ⟩
+    w (tL x ++ ',' ∷ tL z) ≡⟨ uit (_≟ ',') (tL x) (tL z) (F inx) (F inz) ',' refl ⟩
     w (tL x) ++ w (tL z) ≡⟨ {!!} ⟩
     (tL x ∷ []) ++ (tL z ∷ []) ≡⟨ refl ⟩
     tL x ∷ tL z ∷ [] ∎
@@ -666,6 +666,8 @@ module Orsygenturfa'iVeritas where
     w = 𝕃.wordsBy $ _≟ ','
     tildist : (x z : String) → tL (x ++ z) ≡ tL x ++ tL z
     tildist = {!!}
+    F : {x : List Char} → ',' ∉ x → 𝕃.All (¬_ ∘ (_≡ ',')) x
+    F = {!!}
     uit : ∀ {a p} → {A : Set a}
         → {P : Pred A p}
         → (P? : Decidable P)
