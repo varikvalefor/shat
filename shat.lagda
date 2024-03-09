@@ -592,7 +592,7 @@ module RomoivimcuVeritas where
     x' = 𝕊.toList x
     r = _↓ x' $ length x' ℕ.∸ 1
     -1↓x' = _↑ x' $ length x' ℕ.∸ 1
-    x'' = -1↓x' ++_ $ r
+    x'' = -1↓x' ++ r
     x''≡x' : x'' ≡ x'
     x''≡x' = DLP.take++drop (length x' ℕ.∸ 1) x'
     frokonk : (a b : List Char)
