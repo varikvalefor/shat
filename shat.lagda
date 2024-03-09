@@ -726,13 +726,13 @@ module Orsygenturfa'iVeritas where
     mapₘ (_ ,_) (just djb) ≡⟨ refl ⟩
     just ((x , z) , djb) ∎
     where
+    open import Relation.Binary.PropositionalEquality
+    open ≡-Reasoning
     fizdu : {m : ℕ}
           → {a b : Fin m}
           → {d : a 𝔽.≤ b}
           → decToMaybe (a 𝔽.≤? b) ≡ just d
     fizdu = {!!}
-    open import Relation.Binary.PropositionalEquality
-    open ≡-Reasoning
 
   pav : ((x : ℕ) → readMaybe (show x) ≡ just x)
       → {n : ℕ}
