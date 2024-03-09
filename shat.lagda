@@ -722,15 +722,14 @@ module Orsygenturfa'iVeritas where
   pork-du {n} {x} {z} djb = begin
     pork (just x ∷ just z ∷ []) ≡⟨ refl ⟩
     mapₘ (_ ,_) (decToMaybe $ x 𝔽.≤? z) ≡⟨ refl ⟩
-    _ ≡⟨ fizdu {d = djb} ▹ cong (mapₘ (_ ,_) ∘ decToMaybe) ⟩
-    mapₘ (_ ,_) (decToMaybe $ yes djb) ≡⟨ refl ⟩
+    _ ≡⟨ fizdu {d = djb} ▹ cong (mapₘ (_ ,_)) ⟩
     mapₘ (_ ,_) (just djb) ≡⟨ refl ⟩
     just ((x , z) , djb) ∎
     where
     fizdu : {m : ℕ}
           → {a b : Fin m}
           → {d : a 𝔽.≤ b}
-          → (a 𝔽.≤? b) ≡ yes d
+          → decToMaybe (a 𝔽.≤? b) ≡ just d
     fizdu = {!!}
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
