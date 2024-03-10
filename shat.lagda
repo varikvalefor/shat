@@ -418,6 +418,12 @@ module fromℕ?Veritas where
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
     mapmapi = sym ∘ DMP.map-compose
+
+  rel : {n : ℕ}
+      → (x : ℕ)
+      → ¬_ $ x ℕ.< n
+      → nothing ≡ mapₘ 𝔽.toℕ (fromℕ? {n} x)
+  rel = {!!}
 \end{code}
 
 \section{la'oi .\F{degjygirzu}.}
