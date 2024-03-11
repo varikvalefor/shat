@@ -745,6 +745,7 @@ module Orsygenturfa'iVeritas where
           → decToMaybe (a 𝔽.≤? b) ≡ just d
     fizdu {m} {a} {b} {d} = begin
       decToMaybe (a 𝔽.≤? b) ≡⟨ {!!} ⟩
+      decToMaybe (yes d) ≡⟨ refl ⟩
       just d ∎
 
   pav : ((x : ℕ) → readMaybe (show x) ≡ just x)
