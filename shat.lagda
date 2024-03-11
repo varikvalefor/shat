@@ -423,7 +423,12 @@ module fromℕ?Veritas where
       → (x : ℕ)
       → ¬_ $ x ℕ.< n
       → nothing ≡ mapₘ 𝔽.toℕ (fromℕ? {n} x)
-  rel = {!!}
+  rel {n} x J = sym $ begin
+    mapₘ 𝔽.toℕ (fromℕ? {n} x) ≡⟨ {!!} ⟩
+    nothing ∎
+    where
+    open import Relation.Binary.PropositionalEquality
+    open ≡-Reasoning
 \end{code}
 
 \section{la'oi .\F{degjygirzu}.}
