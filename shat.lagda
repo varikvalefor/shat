@@ -789,9 +789,7 @@ module Orsygenturfa'iVeritas where
                  (showF' a ∷ showF' b ∷ []))
       spidus a b = spit-du (show a) (show b) (nokom a) (nokom b)
         where
-        nokom : {n : ℕ}
-              → (x : Fin n)
-              → ',' ∉ 𝕊.toList (show x)
+        nokom : {n : ℕ} → (x : Fin n) → ',' ∉ 𝕊.toList (show x)
         nokom = {!!}
 \end{code}
 
