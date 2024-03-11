@@ -460,6 +460,36 @@ module DegjygirzuVeritas where
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
+  rybic : (s : String)
+        → (c : Char)
+        → false ≡ isDigit c
+        → (_≡_
+            (degjygirzu s)
+            (degjygirzu $ 𝕊.fromChar c ++ s))
+  rybic s c j = sym $ begin
+    degjygirzu (𝕊.fromChar c ++ s) ≡⟨ refl ⟩
+    degjygirzu (fC c ++ s) ≡⟨ refl ⟩
+    degjygirzu' (tL $ fC c ++ s) ≡⟨ tldist (fC c) s ▹ cong degjygirzu' ⟩
+    degjygirzu' (tL (fC c) ++ tL s) ≡⟨ refl ⟩
+    _ ≡⟨ tilfic c ▹ cong (degjygirzu' ∘ (_++ tL s)) ⟩
+    degjygirzu' ((c ∷ []) ++ tL s) ≡⟨ refl ⟩
+    degjygirzu' (c ∷ tL s) ≡⟨ refl ⟩
+    𝕃.map fL (𝕃.wordsBy (F? ∘ isDigit) $ c ∷ tL s) ≡⟨ {!!} ⟩
+    𝕃.map fL (𝕃.wordsBy (F? ∘ isDigit) $ tL s) ≡⟨ refl ⟩
+    degjygirzu s ∎
+    where
+    tL = 𝕊.toList
+    fL = 𝕊.fromList
+    fC = 𝕊.fromChar
+    F? = T? ∘ Data.Bool.not
+    tldist : (x z : String) → tL (x ++ z) ≡ tL x ++ tL z
+    tldist = {!!}
+    tilfic : (c : Char) → tL (fC c) ≡ c ∷ []
+    tilfic = {!!}
+    degjygirzu' = 𝕃.map fL ∘_ $ 𝕃.wordsBy $ F? ∘ isDigit
+    open import Relation.Binary.PropositionalEquality
+    open ≡-Reasoning
+
   rel : (s : String)
       → (t : ℕ)
       → (c : Char)
@@ -488,36 +518,6 @@ module DegjygirzuVeritas where
     tildist = {!!}
     d' = 𝕃.map fL ∘_ $ 𝕃.wordsBy $ T? ∘ Data.Bool.not ∘ isDigit
     fL∘tL = {!!}
-    open import Relation.Binary.PropositionalEquality
-    open ≡-Reasoning
-
-  rybic : (s : String)
-        → (c : Char)
-        → false ≡ isDigit c
-        → (_≡_
-            (degjygirzu s)
-            (degjygirzu $ 𝕊.fromChar c ++ s))
-  rybic s c j = sym $ begin
-    degjygirzu (𝕊.fromChar c ++ s) ≡⟨ refl ⟩
-    degjygirzu (fC c ++ s) ≡⟨ refl ⟩
-    degjygirzu' (tL $ fC c ++ s) ≡⟨ tldist (fC c) s ▹ cong degjygirzu' ⟩
-    degjygirzu' (tL (fC c) ++ tL s) ≡⟨ refl ⟩
-    _ ≡⟨ tilfic c ▹ cong (degjygirzu' ∘ (_++ tL s)) ⟩
-    degjygirzu' ((c ∷ []) ++ tL s) ≡⟨ refl ⟩
-    degjygirzu' (c ∷ tL s) ≡⟨ refl ⟩
-    𝕃.map fL (𝕃.wordsBy (F? ∘ isDigit) $ c ∷ tL s) ≡⟨ {!!} ⟩
-    𝕃.map fL (𝕃.wordsBy (F? ∘ isDigit) $ tL s) ≡⟨ refl ⟩
-    degjygirzu s ∎
-    where
-    tL = 𝕊.toList
-    fL = 𝕊.fromList
-    fC = 𝕊.fromChar
-    F? = T? ∘ Data.Bool.not
-    tldist : (x z : String) → tL (x ++ z) ≡ tL x ++ tL z
-    tldist = {!!}
-    tilfic : (c : Char) → tL (fC c) ≡ c ∷ []
-    tilfic = {!!}
-    degjygirzu' = 𝕃.map fL ∘_ $ 𝕃.wordsBy $ F? ∘ isDigit
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 \end{code}
