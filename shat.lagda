@@ -1474,6 +1474,15 @@ module KanjyVeritas where
               (n ↑_ $ 𝔽.toℕ c ↓_ $ Buffer.lerpinste x'))
   muvisez = {!!}
 
+  muviros : (x : Buffer)
+          → (a b c : Buffer.F x)
+          → (d : a 𝔽.≤ b)
+          → let x₂ = proj₂ $ kanji {x} $ Muvgau a b c d in
+            (_≡_
+              (𝕃.drop (𝔽.toℕ b) $ Buffer.lerpinste x)
+              {!!})
+  muviros = {!!}
+
   muvivimcus : (x : Buffer)
              → (a b c : Buffer.F x)
              → (d : a 𝔽.≤ b)
