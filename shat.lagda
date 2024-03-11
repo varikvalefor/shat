@@ -1426,10 +1426,15 @@ module KanjyVeritas where
                   (proj₁ $ kanji {x} $ Muvgau a b c d))
   muvduzilcmi x a b c d = sym $ begin
     𝓁 (proj₁ K) ≡⟨ {!!} ⟩
+    length x'₁ ℕ.+ length x'₂ ℕ.+ length x'₃ ≡⟨ {!!} ⟩
     𝓁 x ∎
     where
     K = kanji {x} $ Muvgau a b c d
     𝓁 = length ∘ Buffer.lerpinste
+    x' = Buffer.lerpinste x
+    x'₁ = 𝔽.toℕ a ↑ x'
+    x'₂ = ℕ.suc (𝔽.toℕ b) ↓ x'
+    x'₃ = 𝔽.toℕ a ↓_ $ ℕ.suc (𝔽.toℕ b) ↑ x'
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
