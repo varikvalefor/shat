@@ -729,11 +729,11 @@ module Orsygenturfa'iVeritas where
       istu : (x : String) → id' x ≡ x
       istu = {!!}
 
-  ps-nada : (j : List Char)
+  ps-nada : (j : String)
           → (¬_ $ Σ
               (Σ _ Fin)
-              (_≡_ j ∘ 𝕊.toList ∘ show ∘ 𝔽.toℕ ∘ proj₂)))
-          → nothing ≡ ps j
+              (_≡_ j ∘ show ∘ 𝔽.toℕ ∘ proj₂))
+          → nothing ≡ ps (𝕊.toList j)
   ps-nada = {!!}
 
   pork-du : {n : ℕ}
