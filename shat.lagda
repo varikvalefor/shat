@@ -733,7 +733,8 @@ module Orsygenturfa'iVeritas where
           → (¬_ $ Σ
               (∃ Fin)
               (_≡_ j ∘ show ∘ 𝔽.toℕ ∘ proj₂))
-          → nothing ≡ ps (𝕊.toList j)
+          → {n : ℕ}
+          → nothing ≡ ps {n = n} (𝕊.toList j)
   ps-nada = {!!}
 
   pork-du : {n : ℕ}
