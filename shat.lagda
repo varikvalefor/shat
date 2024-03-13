@@ -768,6 +768,7 @@ module Orsygenturfa'iVeritas where
   pork-nada {_} {x} {z} j = begin
     pork (just x ∷ just z ∷ []) ≡⟨ refl ⟩
     mapₘ (_ ,_) (decToMaybe $ x 𝔽.≤? z) ≡⟨ {!!} ⟩
+    mapₘ (_ ,_) (decToMaybe $ no j) ≡⟨ {!!} ⟩
     nothing ∎
     where
     open import Relation.Binary.PropositionalEquality
