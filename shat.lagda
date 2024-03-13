@@ -765,7 +765,12 @@ module Orsygenturfa'iVeritas where
             → (_≡_
                 (pork $ just x ∷ just z ∷ [])
                 nothing)
-  pork-nada = {!!}
+  pork-nada {_} {x} {z} j = begin
+    pork (just x ∷ just z ∷ []) ≡⟨ {!!} ⟩
+    nothing ∎
+    where
+    open import Relation.Binary.PropositionalEquality
+    open ≡-Reasoning
 
   pav : ((x : ℕ) → readMaybe (show x) ≡ just x)
       → {n : ℕ}
