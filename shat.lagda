@@ -485,6 +485,7 @@ module DegjygirzuVeritas where
     F? = T? ∘ Data.Bool.not
     tldist : (x z : String) → tL (x ++ z) ≡ tL x ++ tL z
     tldist = {!!}
+    -- | .i cicna finpe
     tilfic : (c : Char) → tL (fC c) ≡ c ∷ []
     tilfic = {!!}
     degjygirzu' = 𝕃.map fL ∘_ $ 𝕃.wordsBy $ F? ∘ isDigit
