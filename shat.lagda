@@ -731,7 +731,7 @@ module Orsygenturfa'iVeritas where
 
   ps-nada : (j : String)
           → (¬_ $ Σ
-              (Σ _ Fin)
+              (∃ Fin)
               (_≡_ j ∘ show ∘ 𝔽.toℕ ∘ proj₂))
           → nothing ≡ ps (𝕊.toList j)
   ps-nada = {!!}
