@@ -761,6 +761,14 @@ module Orsygenturfa'iVeritas where
       decToMaybe (yes d) ≡⟨ refl ⟩
       just d ∎
 
+  pork-nada : {n : ℕ}
+            → {x z : Fin n}
+            → ¬_ $ x 𝔽.≤ z
+            → (_≡_
+                (pork $ just x ∷ just z ∷ [])
+                nothing)
+  pork-nada = {!!}
+
   pav : ((x : ℕ) → readMaybe (show x) ≡ just x)
       → {n : ℕ}
       → (a b : Fin n)
