@@ -767,10 +767,14 @@ module Orsygenturfa'iVeritas where
                 nothing)
   pork-nada {_} {x} {z} j = begin
     pork (just x ∷ just z ∷ []) ≡⟨ refl ⟩
-    mapₘ (_ ,_) (decToMaybe $ x 𝔽.≤? z) ≡⟨ {!!} ⟩
-    mapₘ (_ ,_) (decToMaybe $ no j) ≡⟨ refl ⟩
+    mapₘ (_ ,_) (decToMaybe $ x 𝔽.≤? z) ≡⟨ refl ⟩
+    _ ≡⟨ DN ▹ proj₂ ▹ cong (mapₘ (_ ,_) ∘ decToMaybe) ⟩
+    mapₘ (_ ,_) (decToMaybe $ no $ proj₁ DN) ≡⟨ refl ⟩
     nothing ∎
     where
+    DN = dec-no (x 𝔽.≤? z) j
+      where
+      dec-no = Relation.Nullary.Decidable.dec-no
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
