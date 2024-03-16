@@ -841,7 +841,7 @@ module Orsygenturfa'i₃ where
   pork : {n : ℕ}
        → (String × String) × String
        → Maybe $ Σ (Fin n × Fin n) (uncurry 𝔽._≤_) × Fin n
-  pork ((a , b) , c)= _,ₘ_ ax $ readMaybe c
+  pork ((a , b) , c)= ax ,ₘ readMaybe c
     where
     ax = R >>= λ (a' , b') → mapₘ (f a' b') $ decToMaybe $ a' 𝔽.≤? b'
       where
