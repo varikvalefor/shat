@@ -850,7 +850,9 @@ module Orsygenturfa'i₃ where
 
   orsygenturfa'i₃ : {n : ℕ}
                   → String
-                  → Maybe $ Σ (Fin n × Fin n) (uncurry 𝔽._≤_) × Fin n
+                  → (Maybe $ _×_
+                      (Σ (Fin n × Fin n) (uncurry 𝔽._≤_))
+                      (Fin n))
   orsygenturfa'i₃ = pork <=< orsispita
 
 open Orsygenturfa'i₃
