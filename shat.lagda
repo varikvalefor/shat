@@ -247,6 +247,7 @@ open import Truthbrary.Data.List.Split
 open import Relation.Binary.PropositionalEquality
   using (
     refl;
+    _≗_;
     _≡_
   )
 
@@ -487,7 +488,7 @@ module DegjygirzuVeritas where
     tldist : (x z : String) → tL (x ++ z) ≡ tL x ++ tL z
     tldist = {!!}
     -- | .i cicna finpe
-    tilfic : (c : Char) → tL (fC c) ≡ c ∷ []
+    tilfic : tL ∘ fC ≗ 𝕃.[_]
     tilfic = {!!}
     degjygirzu' = 𝕃.map fL ∘_ $ 𝕃.wordsBy $ F? ∘ isDigit
     open import Relation.Binary.PropositionalEquality
