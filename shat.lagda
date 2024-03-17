@@ -871,6 +871,14 @@ module Orsygenturfa'i₃Veritas where
               (just $ (a , b) , c))
   lisporv _ _ _ = refl
 
+  lisporn : (x : List $ List String)
+          → (¬_
+              (Σ (String × String × String)
+              (λ (a , b , c) →
+                (x ≡ (a ∷ []) ∷ (b ∷ c ∷ []) ∷ []))))
+          → lispork x ≡ nothing
+  lisporn = {!!}
+
   orspiv : (a b c : ℕ)
          → (x : Char)
          → false ≡ isDigit x
