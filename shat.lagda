@@ -772,9 +772,7 @@ module Orsygenturfa'iVeritas where
     mapₘ (_ ,_) (decToMaybe $ no $ proj₁ DN) ≡⟨ refl ⟩
     nothing ∎
     where
-    DN = dec-no (x 𝔽.≤? z) j
-      where
-      dec-no = Relation.Nullary.Decidable.dec-no
+    DN = Relation.Nullary.Decidable.dec-no (x 𝔽.≤? z) j
     open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
