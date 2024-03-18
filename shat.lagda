@@ -246,9 +246,12 @@ open import Truthbrary.Data.List.Split
   )
 open import Relation.Binary.PropositionalEquality
   using (
+    module ≡-Reasoning;
+    cong;
     refl;
     _≗_;
-    _≡_
+    _≡_;
+    sym
   )
 
 import Data.Fin.Show
@@ -385,7 +388,6 @@ dekydu'i {x} {n} {m} = begin
   just m ∎
   where
   dec-yes = Relation.Nullary.Decidable.dec-yes
-  open import Relation.Binary.PropositionalEquality
   open ≡-Reasoning
 \end{code}
 
@@ -416,7 +418,6 @@ module fromℕ?Veritas where
     id' = 𝔽.toℕ ∘ 𝔽.fromℕ<
     c? : (x : ℕ) → Maybe $ x ℕ.< n
     c? = decToMaybe ∘ (ℕ._<? n)
-    open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
     mapmapi = sym ∘ DMP.map-compose
 
@@ -429,7 +430,6 @@ module fromℕ?Veritas where
     mapₘ (𝔽.toℕ ∘ 𝔽.fromℕ<) (decToMaybe $ x ℕ.<? n) ≡⟨ {!!} ⟩
     nothing ∎
     where
-    open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 \end{code}
 
@@ -459,7 +459,6 @@ module DegjygirzuVeritas where
     d = 𝕃.wordsBy $ T? ∘ Data.Bool.not ∘ isDigit
     didus : (n : ℕ) → d (show' n) ≡ show' n ∷ []
     didus = {!!}
-    open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
   rybic : (s : String)
@@ -491,7 +490,6 @@ module DegjygirzuVeritas where
     tilfic : tL ∘ fC ≗ 𝕃.[_]
     tilfic = {!!}
     degjygirzu' = 𝕃.map fL ∘_ $ 𝕃.wordsBy $ F? ∘ isDigit
-    open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
     uobis : ∀ {a p} → {A : Set a}
           → {P : Pred A p}
@@ -524,7 +522,6 @@ module DegjygirzuVeritas where
     tildist = {!!}
     d' = 𝕃.map fL ∘_ $ 𝕃.wordsBy $ T? ∘ Data.Bool.not ∘ isDigit
     fL∘tL = {!!}
-    open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 \end{code}
 
@@ -554,7 +551,6 @@ module PamoinamcuVeritas where
     where
     𝓰 = readMaybe <=< 𝕃.head
     s = 𝕊.wordsBy $ T? ∘ Data.Bool.not ∘ Data.Char.isDigit
-    open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
   pav : ((n : ℕ) → readMaybe (show n) ≡ just n)
@@ -576,7 +572,6 @@ module PamoinamcuVeritas where
    c' = 𝕊.fromChar c
    𝓰 = readMaybe <=< 𝕃.head
    d = degjygirzu
-   open import Relation.Binary.PropositionalEquality
    open ≡-Reasoning
 \end{code}
 
@@ -619,7 +614,6 @@ module RomoivimcuVeritas where
     frokonk = {!!}
     [cev∘vec]² : (x : String) → x ≡ 𝕊.fromList (𝕊.toList x)
     [cev∘vec]² = {!!}
-    open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 \end{code}
 
@@ -698,7 +692,6 @@ module Orsygenturfa'iVeritas where
             (𝕃.wordsBy P? $ x ++ e ∷ z)
             (𝕃.wordsBy P? x ++ 𝕃.wordsBy P? z))
     uit = {!!}
-    open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
   ps-du : ((x : ℕ) → readMaybe (show x) ≡ just x)
@@ -721,7 +714,6 @@ module Orsygenturfa'iVeritas where
     rM = readMaybe
     b𝔽 = _>>= fromℕ?
     id' = 𝕊.fromList ∘ 𝕊.toList
-    open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
     dekydu'is = dekydu'i ▹ cong (mapₘ 𝔽.fromℕ<)
     cvd : {n : ℕ} → (x : Fin n) → id' (show x) ≡ show x
@@ -749,7 +741,6 @@ module Orsygenturfa'iVeritas where
     mapₘ (_ ,_) (just djb) ≡⟨ refl ⟩
     just ((x , z) , djb) ∎
     where
-    open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
     fizdu : {m : ℕ}
           → {a b : Fin m}
@@ -774,7 +765,6 @@ module Orsygenturfa'iVeritas where
     nothing ∎
     where
     DN = Relation.Nullary.Decidable.dec-no (x 𝔽.≤? z) j
-    open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
   pav : ((x : ℕ) → readMaybe (show x) ≡ just x)
@@ -792,7 +782,6 @@ module Orsygenturfa'iVeritas where
     where
     a,b = show a ++ "," ++ show b
 
-    open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
     mapyjus = begin
       𝕃.map ps (spit a,b) ≡⟨ spidus a b ▹ cong (𝕃.map ps) ⟩
@@ -920,10 +909,6 @@ module Orsygenturfa'i₃Veritas where
     L' : List $ List $ List $ Char
        → Maybe $ (String × String) × String
     L' = L ∘ 𝕃.map (𝕃.map 𝕊.fromList)
-    open import Relation.Binary.PropositionalEquality
-      hiding (
-        [_]
-      )
     open ≡-Reasoning
     map₂-cong = DLP.map-cong ∘ DLP.map-cong
 
@@ -948,7 +933,6 @@ module Orsygenturfa'i₃Veritas where
       R = readMaybe (show a) ,ₘ readMaybe (show b)
     rimcos : {n : ℕ} → (x : Fin n) → readMaybe (show x) ≡ just x
     rimcos = {!!}
-    open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
     ax≡justabd : ax ≡ just ((a , b) , d)
     ax≡justabd = {!!}
@@ -980,7 +964,6 @@ module Orsygenturfa'i₃Veritas where
     k₃ v x c z = show v ++ "," ++ show x ++ c' ++ show z
       where
       c' = 𝕊.fromChar c
-    open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 \end{code}
 
@@ -1120,7 +1103,6 @@ module ReedVeritas where
     duridos with ridos
     ... | just _ = refl
     ... | nothing = refl
-    open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
   -- ni'o la .varik. cu stidi lo nu tcidu le velcki be
@@ -1170,7 +1152,6 @@ module ReedVeritas where
     xedrenod _ (just _) = refl
     xedrenod 0 nothing = refl
     xedrenod (ℕ.suc n) nothing = xedrenod n nothing
-    open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
   ac : (x : Buffer)
@@ -1196,7 +1177,6 @@ module ReedVeritas where
     sl = 𝕃.last ∘ 𝕊.toList
     rimco : {n : ℕ} → (x : Fin n) → rms x ≡ just x
     rimco = {!!}
-    open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
   ic : (x : Buffer)
@@ -1256,11 +1236,9 @@ module ReedVeritas where
         X ∎
         where
         j' = Data.Maybe.to-witness j
-        open import Relation.Binary.PropositionalEquality
         open ≡-Reasoning
     unwords = 𝕊.unwords
     open Reed
-    open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
     w++s≡w++fs : "w " ++ s' ≡ unwords ("w" ∷ f s')
     w++s≡w++fs = {!!}
@@ -1378,7 +1356,6 @@ module KanjyVeritas where
          → n 𝔽.≤ m
          → 𝔽.toℕ n ℕ.≤ ℕ.suc (𝔽.toℕ m)
     flex = {!!}
-    open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
     v∸x+z≡v∸[x∸z] : {v x z : ℕ}
                  → z ℕ.≤ x
@@ -1407,7 +1384,6 @@ module KanjyVeritas where
     BL = Buffer.lerpinste
     BLT = (𝔽.toℕ a) ↑_ ∘ BL
     BLD = ℕ.suc (𝔽.toℕ b) ↓_ ∘ BL
-    open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
     teikteik : ∀ {a} → {A : Set a}
              → (x : List A)
@@ -1440,7 +1416,6 @@ module KanjyVeritas where
                  → 𝔽.toℕ n ↓ (𝔽.toℕ n ↑ x ++ z) ≡ z
     teikteikdrop (_ ∷ _) _ 𝔽.zero = refl
     teikteikdrop (_ ∷ xs) z (𝔽.suc n) = teikteikdrop xs z n
-    open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
   pindices : (x : Buffer)
@@ -1472,7 +1447,6 @@ module KanjyVeritas where
     x'₁ = 𝔽.toℕ a ↑ x'
     x'₂ = ℕ.suc (𝔽.toℕ b) ↓ x'
     x'₃ = 𝔽.toℕ a ↓_ $ ℕ.suc (𝔽.toℕ b) ↑ x'
-    open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
 
   muvipas : (x : Buffer)
@@ -1492,7 +1466,6 @@ module KanjyVeritas where
     D = 𝔽.toℕ a ↓_
     BL = Buffer.lerpinste
     x' = proj₁ $ kanji {x} $ Muvgau a b c d
-    open import Relation.Binary.PropositionalEquality
     open ≡-Reasoning
     teikteik : ∀ {a} → {A : Set a}
              → (x : List A)
