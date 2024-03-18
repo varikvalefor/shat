@@ -737,16 +737,16 @@ module Orsygenturfa'iVeritas where
   pork-du {n} {x} {z} djb = begin
     pork (just x ∷ just z ∷ []) ≡⟨ refl ⟩
     mapₘ (_ ,_) (decToMaybe $ x 𝔽.≤? z) ≡⟨ refl ⟩
-    _ ≡⟨ fizdu {d = djb} ▹ cong (mapₘ (_ ,_)) ⟩
+    _ ≡⟨ fizdu djb ▹ cong (mapₘ (_ ,_)) ⟩
     mapₘ (_ ,_) (just djb) ≡⟨ refl ⟩
     just ((x , z) , djb) ∎
     where
     open ≡-Reasoning
     fizdu : {m : ℕ}
           → {a b : Fin m}
-          → {d : a 𝔽.≤ b}
+          → (d : a 𝔽.≤ b)
           → decToMaybe (a 𝔽.≤? b) ≡ just d
-    fizdu {m} {a} {b} {d} = begin
+    fizdu {m} {a} {b} d = begin
       decToMaybe (a 𝔽.≤? b) ≡⟨ {!!} ⟩
       decToMaybe (yes d) ≡⟨ refl ⟩
       just d ∎
