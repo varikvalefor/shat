@@ -1215,25 +1215,25 @@ module ReedVeritas where
         Data.Maybe.Is-just $ 𝕃.uncons $ 𝕊.wordsBy (_≟ ' ') c∷s
       → just (Rejgau c∷s) ≡ reed x ("w " ++ c∷s)
   uip unwords∘f x s c n uj = sym $ begin
-    reed x ("w " ++ s') ≡⟨ w++s≡w++fs ▹ cong (reed x) ⟩
-    reed x (unwords $ "w" ∷ f s') ≡⟨ {!!} ⟩
-    k (f $ unwords $ "w" ∷ f s') ≡⟨ f∘unwords _ ▹ cong k ⟩
-    k ("w" ∷ f s') ≡⟨ fs'≡v₁∷v₂ ▹ cong (k ∘ _∷_ "w") ⟩
+    reed x ("w " ++ c∷s) ≡⟨ w++s≡w++fs ▹ cong (reed x) ⟩
+    reed x (unwords $ "w" ∷ f c∷s) ≡⟨ {!!} ⟩
+    k (f $ unwords $ "w" ∷ f c∷s) ≡⟨ f∘unwords _ ▹ cong k ⟩
+    k ("w" ∷ f c∷s) ≡⟨ f[c∷s]≡v₁∷v₂ ▹ cong (k ∘ _∷_ "w") ⟩
     k ("w" ∷ v₁ ∷ v₂) ≡⟨ refl ⟩
     j∘R (unwords $ v₁ ∷ v₂) ≡⟨ refl ⟩
-    j∘R _ ≡⟨ fs'≡v₁∷v₂ ▹ sym ▹ cong (j∘R ∘ unwords) ⟩
-    j∘R (unwords $ f s') ≡⟨ unwords∘f s' ▹ sym ▹ cong j∘R ⟩
-    j∘R s' ∎
+    j∘R _ ≡⟨ f[c∷s]≡v₁∷v₂ ▹ sym ▹ cong (j∘R ∘ unwords) ⟩
+    j∘R (unwords $ f c∷s) ≡⟨ unwords∘f c∷s ▹ sym ▹ cong j∘R ⟩
+    j∘R c∷s ∎
     where
     open Reed.No using (k)
-    s' = 𝕊.fromChar c ++ s
+    c∷s = 𝕊.fromChar c ++ s
     f = 𝕊.wordsBy $ _≟ ' '
     v = Data.Maybe.to-witness uj
     v₁ = proj₁ v
     v₂ = proj₂ v
     j∘R = just ∘ Rejgau
-    fs'≡v₁∷v₂ : f s' ≡ v₁ ∷ v₂
-    fs'≡v₁∷v₂ = consunwords uj
+    f[c∷s]≡v₁∷v₂ : f c∷s ≡ v₁ ∷ v₂
+    f[c∷s]≡v₁∷v₂ = consunwords uj
       where
       consunwords : ∀ {a} → {A : Set a}
                   → {xs : List A}
@@ -1252,7 +1252,7 @@ module ReedVeritas where
     open ≡-Reasoning
     f∘unwords : (x : List String) → f (unwords x) ≡ x
     f∘unwords = {!!}
-    w++s≡w++fs : "w " ++ s' ≡ unwords ("w" ∷ f s')
+    w++s≡w++fs : "w " ++ c∷s ≡ unwords ("w" ∷ f c∷s)
     w++s≡w++fs = {!!}
 \end{code}
 
