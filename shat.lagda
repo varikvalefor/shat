@@ -1200,7 +1200,11 @@ module ReedVeritas where
       → (a b : Buffer.F x)
       → (d : a 𝔽.≤ b)
       → just (Vimcu a b d) ≡ reed x (k₂ x a b 'd')
-  vim = {!!}
+  vim x a b d = sym $ begin
+    reed x (k₂ x a b 'd') ≡⟨ {!!} ⟩
+    just (Vimcu a b d) ∎
+    where
+    open ≡-Reasoning
 
   uip : ((s : String) → s ≡_ $ 𝕊.unwords $ 𝕊.wordsBy (_≟ ' ') s)
       → (x : Buffer)
