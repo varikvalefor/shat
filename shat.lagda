@@ -884,7 +884,8 @@ module Orsygenturfa'i₃Veritas where
     L' (𝕃.map (w' aD?) $ s' a ∷ [ s' b ++ x ∷ s' c ]) ≡⟨ refl ⟩
     L' (w' aD? (s' a) ∷ 𝕃.map (w' aD?) [ s' b ++ x ∷ s' c ]) ≡⟨ {!!} ⟩
     L' ([ s' a ] ∷ 𝕃.map (w' aD?) [ s' b ++ x ∷ s' c ]) ≡⟨ refl ⟩
-    L' ([ s' a ] ∷ [ w' aD? $ s' b ++ x ∷ s' c ])  ≡⟨ sabus ▹ cong (L' ∘ _∷_ ([ s' a ]) ∘ [_]) ⟩
+    L' ([ s' a ] ∷ [ w' aD? $ s' b ++ x ∷ s' c ])  ≡⟨ refl ⟩
+    _ ≡⟨ sabus ▹ cong (L' ∘ _∷_ ([ s' a ]) ∘ [_]) ⟩
     L' ([ s' a ] ∷ [ s' b ∷ [ s' c ] ]) ≡⟨ refl ⟩
     L' (map₂ s' abj) ≡⟨ refl ⟩
     L (map₂ (𝕊.fromList ∘ s') abj) ≡⟨ map₂-cong fL∘s'≡s abj ▹ cong L ⟩
