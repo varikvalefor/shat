@@ -882,7 +882,7 @@ module Orsygenturfa'i₃Veritas where
     L (𝕃.map (w aD?) $ w (_≟ ',') $ K) ≡⟨ {!!} ⟩
     L' (𝕃.map (w' aD?) $ w' (_≟ ',') $ K') ≡⟨ {!!} ⟩
     L' (𝕃.map (w' aD?) $ s' a ∷ [ s' b ++ x ∷ s' c ]) ≡⟨ refl ⟩
-    L' (w' aD? (s' a) ∷ 𝕃.map (w' aD?) [ s' b ++ x ∷ s' c ]) ≡⟨ {!!} ⟩
+    L' (w' aD? (s' a) ∷ 𝕃.map (w' aD?) [ s' b ++ x ∷ s' c ]) ≡⟨ uadysas ▹ cong (L' ∘ (_∷ (𝕃.map (w' aD?) [ s' b ++ x ∷ s' c ]))) ⟩
     L' ([ s' a ] ∷ 𝕃.map (w' aD?) [ s' b ++ x ∷ s' c ]) ≡⟨ refl ⟩
     L' ([ s' a ] ∷ [ w' aD? $ s' b ++ x ∷ s' c ])  ≡⟨ refl ⟩
     _ ≡⟨ sabus ▹ cong (L' ∘ _∷_ ([ s' a ]) ∘ [_]) ⟩
@@ -906,6 +906,8 @@ module Orsygenturfa'i₃Veritas where
     abj = [ a ] ∷ [ b ∷ [ c ] ]
     sabus : w' aD? (s' b ++ x ∷ s' c) ≡ s' b ∷ [ s' c ]
     sabus = {!!}
+    uadysas : w' aD? (s' a) ≡ [ s' a ]
+    uadysas = {!!}
     map₂ : ∀ {a b} → {A : Set a} → {B : Set b}
          → (A → B) → List $ List A → List $ List B
     map₂ = 𝕃.map ∘ 𝕃.map
