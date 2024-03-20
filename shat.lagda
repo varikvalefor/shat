@@ -58,9 +58,9 @@
 \newunicodechar{⊔}{\ensuremath{\mathnormal\sqcup}}
 \newunicodechar{⊓}{\ensuremath{\mathnormal\sqcap}}
 \newunicodechar{⟲}{\ensuremath{\mathnormal\circlearrowleft}}
-\newunicodechar{𝓫}{\ensuremath{\mathcal b}}
-\newunicodechar{𝓰}{\ensuremath{\mathcal g}}
-\newunicodechar{𝓵}{\ensuremath{\mathcal l}}
+\newunicodechar{𝓫}{\ensuremath{\mathnormal{\mathcal b}}}
+\newunicodechar{𝓰}{\ensuremath{\mathnormal{\mathcal g}}}
+\newunicodechar{𝓵}{\ensuremath{\mathnormal{\mathcal l}}}
 
 \newfontface{\ayyplcihartai}{APL333}
 \DeclareTextFontCommand{\ayypl}{\ayyplcihartai}
