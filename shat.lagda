@@ -715,9 +715,8 @@ module Orsygenturfa'iVeritas where
     b𝔽 (just $ 𝔽.toℕ x) ≡⟨ refl ⟩
     just (𝔽.toℕ x) >>= fromℕ? ≡⟨ refl ⟩
     fromℕ? (𝔽.toℕ x) ≡⟨ refl ⟩
-    mapₘ 𝔽.fromℕ< (decToMaybe $ _ ℕ.<? _) ≡⟨ dekydu'is ⟩
-    mapₘ 𝔽.fromℕ< (just $ DFP.toℕ<n x) ≡⟨ refl ⟩
-    just (𝔽.fromℕ< $ DFP.toℕ<n x) ≡⟨ refl ⟩
+    mapₘ 𝔽.fromℕ< (decToMaybe $ _ ℕ.<? _) ≡⟨ proj₂ DY ▹ cong (mapₘ 𝔽.fromℕ< ∘ decToMaybe) ⟩
+    mapₘ 𝔽.fromℕ< (just $ proj₁ DY) ≡⟨ refl ⟩
     just _ ≡⟨ DFP.fromℕ<-toℕ _ _ ▹ cong just ⟩
     just x ∎
     where
@@ -725,7 +724,9 @@ module Orsygenturfa'iVeritas where
     b𝔽 = _>>= fromℕ?
     id' = 𝕊.fromList ∘ 𝕊.toList
     open ≡-Reasoning
-    dekydu'is = dekydu'i ▹ cong (mapₘ 𝔽.fromℕ<)
+    DY = dec-yes (_ ℕ.<? _) $ DFP.toℕ<n x
+      where
+      dec-yes = Relation.Nullary.Decidable.dec-yes
     cvd : {n : ℕ} → (x : Fin n) → id' (show x) ≡ show x
     cvd x = istu $ show x
       where
