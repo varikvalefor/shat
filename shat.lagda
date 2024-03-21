@@ -684,7 +684,12 @@ module Orsygenturfa'iVeritas where
     w = 𝕃.wordsBy $ _≟ ','
     tildist : (x z : String) → tL (x ++ z) ≡ tL x ++ tL z
     tildist = {!!}
-    F : {x : List Char} → ',' ∉ x → 𝕃.All (¬_ ∘ (_≡ ',')) x
+    F : ∀ {a} → {A : Set a}
+      → ⦃ _ : Truthbrary.Record.Eq.Eq A ⦄
+      → {e : A}
+      → {x : List A}
+      → e ∉ x
+      → 𝕃.All (¬_ ∘ (_≡ e)) x
     F = {!!}
     uit : ∀ {a p} → {A : Set a} → {P : Pred A p}
         → (P? : Decidable P)
