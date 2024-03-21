@@ -470,11 +470,11 @@ module DegjygirzuVeritas where
   rybic s c j = sym $ begin
     degjygirzu (𝕊.fromChar c ++ s) ≡⟨ refl ⟩
     degjygirzu (fC c ++ s) ≡⟨ refl ⟩
-    degjygirzu' (tL $ fC c ++ s) ≡⟨ tldist (fC c) s ▹ cong degjygirzu' ⟩
-    degjygirzu' (tL (fC c) ++ tL s) ≡⟨ refl ⟩
-    _ ≡⟨ tilfic c ▹ cong (degjygirzu' ∘ (_++ tL s)) ⟩
-    degjygirzu' ((c ∷ []) ++ tL s) ≡⟨ refl ⟩
-    degjygirzu' (c ∷ tL s) ≡⟨ refl ⟩
+    d' (tL $ fC c ++ s) ≡⟨ tldist (fC c) s ▹ cong d' ⟩
+    d' (tL (fC c) ++ tL s) ≡⟨ refl ⟩
+    _ ≡⟨ tilfic c ▹ cong (d' ∘ (_++ tL s)) ⟩
+    d' ((c ∷ []) ++ tL s) ≡⟨ refl ⟩
+    d' (c ∷ tL s) ≡⟨ refl ⟩
     𝕃.map fL (𝕃.wordsBy (F? ∘ isDigit) $ c ∷ tL s) ≡⟨ refl ⟩
     _ ≡⟨ uobis c (tL s) {!!} ▹ cong (𝕃.map fL) ⟩
     𝕃.map fL (𝕃.wordsBy (F? ∘ isDigit) $ tL s) ≡⟨ refl ⟩
@@ -489,7 +489,7 @@ module DegjygirzuVeritas where
     -- | .i cicna finpe
     tilfic : tL ∘ fC ≗ 𝕃.[_]
     tilfic = {!!}
-    degjygirzu' = 𝕃.map fL ∘_ $ 𝕃.wordsBy $ F? ∘ isDigit
+    d' = 𝕃.map fL ∘_ $ 𝕃.wordsBy $ F? ∘ isDigit
     open ≡-Reasoning
     uobis : ∀ {a p} → {A : Set a}
           → {P : Pred A p}
