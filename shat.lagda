@@ -428,8 +428,10 @@ module fromℕ?Veritas where
   rel {n} x J = sym $ begin
     mapₘ 𝔽.toℕ (fromℕ? {n} x) ≡⟨ {!!} ⟩
     mapₘ (𝔽.toℕ ∘ 𝔽.fromℕ<) (decToMaybe $ x ℕ.<? n) ≡⟨ {!!} ⟩
+    mapₘ (𝔽.toℕ ∘ 𝔽.fromℕ<) (decToMaybe $ no N) ≡⟨ refl ⟩
     nothing ∎
     where
+    N = ¬ (x ℕ.< n) ∋ {!!}
     open ≡-Reasoning
 \end{code}
 
