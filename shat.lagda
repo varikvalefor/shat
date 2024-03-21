@@ -496,7 +496,7 @@ module DegjygirzuVeritas where
           → {P? : Decidable P}
           → (x : A)
           → (xs : List A)
-          → ¬ P x
+          → P x
           → 𝕃.wordsBy P? (x ∷ xs) ≡ 𝕃.wordsBy P? xs
     uobis = {!!}
 
