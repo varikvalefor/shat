@@ -783,9 +783,9 @@ module Orsygenturfa'iVeritas where
       → (a b : Fin n)
       → (djb : a 𝔽.≤ b)
       → (_≡_
-          (just $ (a , b) , djb)
-          (orsygenturfa'i $ show a ++ "," ++ show b))
-  pav rimco a b djb = sym $ begin
+          (orsygenturfa'i $ show a ++ "," ++ show b)
+          (just $ (a , b) , djb))
+  pav rimco a b djb = begin
     orsygenturfa'i (show a ++ "," ++ show b) ≡⟨ refl ⟩
     pork (𝕃.map ps $ spit a,b) ≡⟨ cong pork mapyjus ⟩
     pork (just a ∷ just b ∷ []) ≡⟨ pork-du djb ⟩
