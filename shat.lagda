@@ -900,7 +900,7 @@ module Orsygenturfa'i₃Veritas where
     _ ≡⟨ sabus ▹ cong (L' ∘ _∷_ ([ s' a ]) ∘ [_]) ⟩
     L' ([ s' a ] ∷ [ s' b ∷ [ s' c ] ]) ≡⟨ refl ⟩
     L' (map₂ s' abj) ≡⟨ refl ⟩
-    L (map₂ (𝕊.fromList ∘ s') abj) ≡⟨ map₂-cong fL∘s'≡s abj ▹ cong L ⟩
+    L (map₂ (𝕊.fromList ∘ s') abj) ≡⟨ map₂-cong fL∘tL _ ▹ cong L ⟩
     L (map₂ s abj) ≡⟨ refl ⟩
     just ((show a , show b) , show c) ∎
     where
@@ -912,8 +912,8 @@ module Orsygenturfa'i₃Veritas where
     K = show a ++ "," ++ show b ++ 𝕊.fromChar x ++ show c
     s = show
     s' = 𝕊.toList ∘ show
-    fL∘s'≡s : (n : ℕ) → 𝕊.fromList (s' n) ≡ s n
-    fL∘s'≡s = {!!}
+    fL∘tL : (x : String) → 𝕊.fromList (𝕊.toList x) ≡ x
+    fL∘tL = {!!}
     K' = s' a ++ ',' ∷ s' b ++ x ∷ s' c
     abj = [ a ] ∷ [ b ∷ [ c ] ]
     sabus : w' aD? (s' b ++ x ∷ s' c) ≡ s' b ∷ [ s' c ]
