@@ -1214,6 +1214,7 @@ module ReedVeritas where
   vim x a b d = sym $ begin
     reed x (k₂ x a b 'd') ≡⟨ {!!} ⟩
     Reed.Re.t x (k₂ x a b 'd') ≡⟨ {!!} ⟩
+    Reed.Re.g x a b d 'd' ≡⟨ refl ⟩
     just (Vimcu a b d) ∎
     where
     open ≡-Reasoning
