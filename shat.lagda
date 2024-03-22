@@ -1332,7 +1332,7 @@ module KanjyVeritas where
   sistik : (x : Buffer)
          → kanji {x} Sisti! ≡_ $ x , just (inj₂ Sisti!ᵢₒ)
   sistik x = refl
-         
+
   dub₂ : (x : Buffer)
        → (a b : Buffer.F x)
        → (d : a 𝔽.≤ b)
