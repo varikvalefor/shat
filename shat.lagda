@@ -364,6 +364,20 @@ data Cmdᵢₒ (x : Buffer) : Set where
 
 \chapter{le fancu}
 
+\section{la'oi .\F{insert}.}
+ni'o la .varik.\ na birti lo du'u ma kau zabna je cu lojbo je cu velcki la'oi .\F{insert}.
+
+\begin{code}
+insert : ∀ {a} → {A : Set a}
+       → (x i : List A)
+       → Maybe $ Fin $ length x
+       → List A
+insert x i nothing = x ++ i
+insert x i (just n) = 𝕃.take n' x ++ i ++ 𝕃.drop n' x
+  where
+  n' = 𝔽.toℕ n
+\end{code}
+
 \section{la'o zoi.\ \F{\AgdaUnderscore{},ₘ\AgdaUnderscore}\ .zoi.}
 ni'o xu sarcu fa lo nu ciksi bau la .lojban.
 
