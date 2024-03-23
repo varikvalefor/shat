@@ -378,6 +378,20 @@ insert x i (just n) = 𝕃.take n' x ++ i ++ 𝕃.drop n' x
   n' = 𝔽.toℕ n
 \end{code}
 
+\subsection{le ctaipe be le su'u la'oi .\F{insert}.\ mapti}
+
+\begin{code}
+module InsertVeritas where
+  pamois : ∀ {a} → {A : Set a}
+         → (x i : List A)
+         → (n : Maybe $ Fin $ length x)
+         → let n' = maybe 𝔽.toℕ (length x) n in
+           ((_≡_ on (𝕃.take n'))
+             x
+             (insert x i n))
+  pamois = {!!}
+\end{code}
+
 \section{la'o zoi.\ \F{\AgdaUnderscore{},ₘ\AgdaUnderscore}\ .zoi.}
 ni'o xu sarcu fa lo nu ciksi bau la .lojban.
 
