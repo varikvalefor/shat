@@ -402,7 +402,7 @@ module InsertVeritas where
          → (x i : List A)
          → (n : Maybe $ Fin $ length x)
          → let n' = maybe 𝔽.toℕ (length x) n in
-           ((_≡_ on (𝕃.take n'))
+           ((_≡_ on (_↑_ n'))
              x
              (insert x i n))
   pamois = {!!}
@@ -1473,7 +1473,7 @@ module KanjyVeritas where
              → {z : List A}
              → (n : Fin $ length x)
              → let n' = 𝔽.toℕ n in
-               𝕃.take n' (𝕃.take n' x ++ z) ≡ 𝕃.take n' x
+               n' ↑ (n' ↑ x ++ z) ≡ n' ↑ x
     teikteik (_ ∷ _) 𝔽.zero = refl
     teikteik (_ ∷ _) (𝔽.suc _) = teikteik _ _ ▹ cong (_ ∷_)
 
@@ -1555,7 +1555,7 @@ module KanjyVeritas where
              → {z : List A}
              → (n : Fin $ length x)
              → let n' = 𝔽.toℕ n in
-               𝕃.take n' (𝕃.take n' x ++ z) ≡ 𝕃.take n' x
+               n' ↑ (n' ↑ x ++ z) ≡ n' ↑ x
     teikteik (_ ∷ _) 𝔽.zero = refl
     teikteik (x ∷ xs) (𝔽.suc n) = teikteik xs n ▹ cong (x ∷_)
 
@@ -1584,7 +1584,7 @@ module KanjyVeritas where
           → (d : a 𝔽.≤ b)
           → let x₂ = proj₂ $ kanji {x} $ Muvgau a b c d in
             (_≡_
-              (𝕃.drop (𝔽.toℕ b) $ Buffer.lerpinste x)
+              ((𝔽.toℕ b) ↓ Buffer.lerpinste x)
               {!!})
   muviros = {!!}
 
