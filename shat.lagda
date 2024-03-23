@@ -382,6 +382,12 @@ insert x i (just n) = 𝕃.take n' x ++ i ++ 𝕃.drop n' x
 
 \begin{code}
 module InsertVeritas where
+  lynyrd : ∀ {a} → {A : Set a}
+         → (x i : List A)
+         → (n : Maybe $ Fin $ length x)
+         → length x ℕ.+ length i ≡ length (insert x i n)
+  lynyrd = {!!}
+
   pamois : ∀ {a} → {A : Set a}
          → (x i : List A)
          → (n : Maybe $ Fin $ length x)
