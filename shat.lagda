@@ -387,7 +387,11 @@ module InsertVeritas where
          → (n : Maybe $ Fin $ length x)
          → length x ℕ.+ length i ≡ length (insert x i n)
   lynyrd x i nothing = DLP.length-++ x ▹ sym
-  lynyrd x i (just n) = {!!}
+  lynyrd x i (just n) = sym $ begin
+    length (insert x i $ just n) ≡⟨ {!!} ⟩
+    length x ℕ.+ length i ∎
+    where
+    open ≡-Reasoning
 
   pamois : ∀ {a} → {A : Set a}
          → (x i : List A)
