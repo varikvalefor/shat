@@ -1509,7 +1509,17 @@ module KanjyVeritas where
             (_≡_
               (n ↑_ $ 𝔽.toℕ a ↓_ $ Buffer.lerpinste x)
               (n ↑_ $ 𝔽.toℕ c ↓_ $ Buffer.lerpinste x'))
-  muvisez = {!!}
+  muvisez x a b c d = begin
+    n ↑ (a' ↓ BLT x) ≡⟨ {!!} ⟩
+    n ↑ (c' ↓ BLT x') ∎
+    where
+    a' = 𝔽.toℕ a
+    b' = 𝔽.toℕ b
+    c' = 𝔽.toℕ c
+    n = ℕ.suc $ b' ℕ.∸ a'
+    x' = proj₁ $ kanji {x} $ Muvgau a b c d
+    BLT = Buffer.lerpinste
+    open ≡-Reasoning
 
   muviros : (x : Buffer)
           → (a b c : Buffer.F x)
