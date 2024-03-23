@@ -397,6 +397,13 @@ module InsertVeritas where
          → let n' = maybe 𝔽.toℕ (length x) n in
            i ≡_ $ length i ↑_ $ n' ↓_ $ insert x i n
   remois = {!!}
+
+  romois : ∀ {a} → {A : Set a}
+         → (x i : List A)
+         → (n : Maybe $ Fin $ length x)
+         → let n' = maybe 𝔽.toℕ (length x) n in
+           n' ↓ x ≡ (n' ℕ.+ length i) ↓ insert x i n
+  romois = {!!}
 \end{code}
 
 \section{la'o zoi.\ \F{\AgdaUnderscore{},ₘ\AgdaUnderscore}\ .zoi.}
