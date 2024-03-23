@@ -373,7 +373,7 @@ insert : ∀ {a} → {A : Set a}
        → Maybe $ Fin $ length x
        → List A
 insert x i nothing = x ++ i
-insert x i (just n) = 𝕃.take n' x ++ i ++ 𝕃.drop n' x
+insert x i (just n) = (n' ↑ x) ++ i ++ (n' ↓ x)
   where
   n' = 𝔽.toℕ n
 \end{code}
