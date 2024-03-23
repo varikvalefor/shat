@@ -391,6 +391,7 @@ module InsertVeritas where
     length (insert x i $ just n) ≡⟨ refl ⟩
     length ((n' ↑ x) ++ i ++ (n' ↓ x)) ≡⟨ {!!} ⟩
     length (n' ↑ x) ℕ.+ length i ℕ.+ length (n' ↓ x) ≡⟨ {!!} ⟩
+    length (n' ↑ x) ℕ.+ length (n' ↓ x) ℕ.+ length i ≡⟨ {!!} ⟩
     length x ℕ.+ length i ∎
     where
     n' = 𝔽.toℕ n
