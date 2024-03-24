@@ -393,7 +393,7 @@ module InsertVeritas where
     L (n' ↑ x) ℕ.+ L (i ++ (n' ↓ x)) ≡⟨ {!!} ⟩
     L (n' ↑ x) ℕ.+ (L i ℕ.+ L (n' ↓ x)) ≡⟨ refl ⟩
     _ ≡⟨ DNP.+-comm (L i) _ ▹ cong (ℕ._+_ $ L $ n' ↑ x) ⟩
-    L (n' ↑ x) ℕ.+ (L (n' ↓ x) ℕ.+ L i) ≡⟨ {!!} ⟩
+    L (n' ↑ x) ℕ.+ (L (n' ↓ x) ℕ.+ L i) ≡⟨ DNP.+-assoc (L $ n' ↑ x) _ _ ▹ sym ⟩
     L (n' ↑ x) ℕ.+ L (n' ↓ x) ℕ.+ L i ≡⟨ refl ⟩
     _ ≡⟨ DLP.length-++ (n' ↑ x) ▹ sym ▹ cong (ℕ._+ L i) ⟩
     L (n' ↑ x ++ n' ↓ x) ℕ.+ L i ≡⟨ refl ⟩
