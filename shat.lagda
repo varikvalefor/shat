@@ -423,13 +423,15 @@ module InsertVeritas where
          → let n' = maybe 𝔽.toℕ (length x) n in
            i ≡_ $ length i ↑_ $ n' ↓ insert x i n
   remois x i nothing = sym $ begin
-    L i ↑ (L x ↓ insert x i nothing) ≡⟨ {!!} ⟩
+    L i ↑ (L x ↓ insert x i nothing) ≡⟨ refl ⟩
+    L i ↑ (L x ↓_ $ x ++ i) ≡⟨ {!!} ⟩
     i ∎
     where
     L = length
     open ≡-Reasoning
   remois x i (just n) = sym $ begin
-    L i ↑ (n' ↓ insert x i (just n)) ≡⟨ {!!} ⟩
+    L i ↑ (n' ↓ insert x i (just n)) ≡⟨ refl ⟩
+    L i ↑ (n' ↓_ $ (n' ↑ x) ++ i ++ (n' ↓ x)) ≡⟨ {!!} ⟩
     i ∎
     where
     L = length
