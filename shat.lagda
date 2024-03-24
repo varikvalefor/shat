@@ -390,6 +390,7 @@ module InsertVeritas where
   lynyrd x i (just n) = sym $ begin
     L (insert x i $ just n) ≡⟨ refl ⟩
     L ((n' ↑ x) ++ i ++ (n' ↓ x)) ≡⟨ {!!} ⟩
+    L (n' ↑ x) ℕ.+ L (i ++ (n' ↓ x)) ≡⟨ {!!} ⟩
     L (n' ↑ x) ℕ.+ L i ℕ.+ L (n' ↓ x) ≡⟨ {!!} ⟩
     L (n' ↑ x) ℕ.+ L (n' ↓ x) ℕ.+ L i ≡⟨ refl ⟩
     _ ≡⟨ DLP.length-++ (n' ↑ x) ▹ sym ▹ cong (ℕ._+ L i) ⟩
