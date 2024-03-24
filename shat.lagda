@@ -439,6 +439,7 @@ module InsertVeritas where
     L i ↑ (L x ↓ insert x i nothing) ≡⟨ refl ⟩
     L i ↑ (L x ↓_ $ x ++ i) ≡⟨ lendrop x i ▹ sym ▹ cong (_ ↑_) ⟩
     L i ↑ i ≡⟨ {!!} ⟩
+    L i ↑ (i ++ []) ≡⟨ lenteik i [] ▹ sym ⟩
     i ∎
     where
     L = length
