@@ -395,6 +395,13 @@ module InsertVeritas where
             → x ≡_ $ length x ↑_ $ x ++ z
     lenteik [] _ = refl
     lenteik (x ∷ xs) z = lenteik xs z ▹ cong (x ∷_)
+
+    finlen : ∀ {a} → {A : Set a}
+           → (xs : List A)
+           → (n : Fin $ length xs)
+           → 𝔽.toℕ n ≡ length (𝔽.toℕ n ↑ xs)
+    finlen (_ ∷ _) 𝔽.zero = refl
+    finlen (_ ∷ xs) (𝔽.suc n) = finlen xs n ▹ cong ℕ.suc
        
   lynyrd : ∀ {a} → {A : Set a}
          → (x i : List A)
@@ -447,7 +454,7 @@ module InsertVeritas where
     open ≡-Reasoning
   remois x i (just n) = sym $ begin
     L i ↑ (n' ↓ insert x i (just n)) ≡⟨ refl ⟩
-    L i ↑ (n' ↓_ $ x₁ ++ i ++ x₂) ≡⟨ {!!} ⟩
+    L i ↑ (n' ↓_ $ x₁ ++ i ++ x₂) ≡⟨ finlen x n ▹ cong (λ n → L i ↑ (n ↓_ $ x₁ ++ i ++ x₂)) ⟩
     L i ↑ (L x₁ ↓_ $ x₁ ++ i ++ x₂) ≡⟨ {!!} ⟩
     L i ↑ (i ++ x₂) ≡⟨ lenteik i x₂ ▹ sym ⟩
     i ∎
