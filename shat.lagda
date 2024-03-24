@@ -392,7 +392,7 @@ module InsertVeritas where
     L ((n' ↑ x) ++ i ++ (n' ↓ x)) ≡⟨ {!!} ⟩
     L (n' ↑ x) ℕ.+ L i ℕ.+ L (n' ↓ x) ≡⟨ {!!} ⟩
     L (n' ↑ x) ℕ.+ L (n' ↓ x) ℕ.+ L i ≡⟨ {!!} ⟩
-    L (n' ↑ x ++ n' ↓ x) ℕ.+ L i ≡⟨ {!!} ⟩
+    L (n' ↑ x ++ n' ↓ x) ℕ.+ L i ≡⟨ DLP.take++drop n' x ▹ cong ((ℕ._+ L i) ∘ L) ⟩
     L x ℕ.+ L i ∎
     where
     L = length
