@@ -433,6 +433,7 @@ module InsertVeritas where
   remois x i (just n) = sym $ begin
     L i ↑ (n' ↓ insert x i (just n)) ≡⟨ refl ⟩
     L i ↑ (n' ↓_ $ (n' ↑ x) ++ i ++ (n' ↓ x)) ≡⟨ {!!} ⟩
+    L i ↑ (L (n' ↑ x) ↓_ $ (n' ↑ x) ++ i ++ (n' ↓ x)) ≡⟨ {!!} ⟩
     L i ↑ (i ++ (n' ↓ x)) ≡⟨ {!!} ⟩
     i ∎
     where
