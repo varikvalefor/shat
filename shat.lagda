@@ -383,11 +383,11 @@ insert x i (just n) = (n' ↑ x) ++ i ++ (n' ↓ x)
 \begin{code}
 module InsertVeritas where
   private
-    lenteik : ∀ {a} → {A : Set a}
+    lendrop : ∀ {a} → {A : Set a}
             → (x z : List A)
             → z ≡_ $ length x ↓_ $ x ++ z
-    lenteik [] _ = refl
-    lenteik (_ ∷ xs) z = lenteik xs z
+    lendrop [] _ = refl
+    lendrop (_ ∷ xs) z = lendrop xs z
        
   lynyrd : ∀ {a} → {A : Set a}
          → (x i : List A)
@@ -431,7 +431,7 @@ module InsertVeritas where
            i ≡_ $ length i ↑_ $ n' ↓ insert x i n
   remois x i nothing = sym $ begin
     L i ↑ (L x ↓ insert x i nothing) ≡⟨ refl ⟩
-    L i ↑ (L x ↓_ $ x ++ i) ≡⟨ lenteik x i ▹ sym ▹ cong (_ ↑_) ⟩
+    L i ↑ (L x ↓_ $ x ++ i) ≡⟨ lendrop x i ▹ sym ▹ cong (_ ↑_) ⟩
     L i ↑ i ≡⟨ {!!} ⟩
     i ∎
     where
