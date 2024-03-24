@@ -439,13 +439,15 @@ module InsertVeritas where
     open ≡-Reasoning
   remois x i (just n) = sym $ begin
     L i ↑ (n' ↓ insert x i (just n)) ≡⟨ refl ⟩
-    L i ↑ (n' ↓_ $ (n' ↑ x) ++ i ++ (n' ↓ x)) ≡⟨ {!!} ⟩
-    L i ↑ (L (n' ↑ x) ↓_ $ (n' ↑ x) ++ i ++ (n' ↓ x)) ≡⟨ {!!} ⟩
-    L i ↑ (i ++ (n' ↓ x)) ≡⟨ {!!} ⟩
+    L i ↑ (n' ↓_ $ x₁ ++ i ++ x₂) ≡⟨ {!!} ⟩
+    L i ↑ (L x₁ ↓_ $ x₁ ++ i ++ x₂) ≡⟨ {!!} ⟩
+    L i ↑ (i ++ x₂) ≡⟨ {!!} ⟩
     i ∎
     where
     L = length
     n' = 𝔽.toℕ n
+    x₁ = n' ↑ x
+    x₂ = n' ↓ x
     open ≡-Reasoning
 
   romois : ∀ {a} → {A : Set a}
