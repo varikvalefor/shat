@@ -456,7 +456,8 @@ module InsertVeritas where
     L i ↑ (n' ↓ insert x i (just n)) ≡⟨ refl ⟩
     L i ↑ (n' ↓_ $ x₁ ++ i ++ x₂) ≡⟨ refl ⟩
     _ ≡⟨ finlen x n ▹ cong (λ n → L i ↑ (n ↓_ $ x₁ ++ i ++ x₂)) ⟩
-    L i ↑ (L x₁ ↓_ $ x₁ ++ i ++ x₂) ≡⟨ lendrop x₁ _ ▹ sym ▹ cong (_ ↑_) ⟩
+    L i ↑ (L x₁ ↓_ $ x₁ ++ i ++ x₂) ≡⟨ refl ⟩
+    _ ≡⟨ lendrop x₁ _ ▹ sym ▹ cong (_ ↑_) ⟩
     L i ↑ (i ++ x₂) ≡⟨ lenteik i x₂ ▹ sym ⟩
     i ∎
     where
