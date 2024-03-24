@@ -388,18 +388,20 @@ module InsertVeritas where
          → length x ℕ.+ length i ≡ length (insert x i n)
   lynyrd x i nothing = DLP.length-++ x ▹ sym
   lynyrd x i (just n) = sym $ begin
-    L (insert x i $ just n) ≡⟨ refl ⟩
-    L ((n' ↑ x) ++ i ++ (n' ↓ x)) ≡⟨ DLP.length-++ $ n' ↑ x ⟩
-    L (n' ↑ x) ℕ.+ L (i ++ (n' ↓ x)) ≡⟨ refl ⟩
-    _ ≡⟨ DLP.length-++ i ▹ cong (ℕ._+_ _) ⟩
-    L (n' ↑ x) ℕ.+ (L i ℕ.+ L (n' ↓ x)) ≡⟨ refl ⟩
-    _ ≡⟨ DNP.+-comm (L i) _ ▹ cong (ℕ._+_ $ L $ n' ↑ x) ⟩
-    L (n' ↑ x) ℕ.+ (L (n' ↓ x) ℕ.+ L i) ≡⟨ refl ⟩
-    _ ≡⟨ DNP.+-assoc (L $ n' ↑ x) _ _ ▹ sym ⟩
-    L (n' ↑ x) ℕ.+ L (n' ↓ x) ℕ.+ L i ≡⟨ refl ⟩
-    _ ≡⟨ DLP.length-++ (n' ↑ x) ▹ sym ▹ cong (ℕ._+ L i) ⟩
-    L (n' ↑ x ++ n' ↓ x) ℕ.+ L i ≡⟨ refl ⟩
-    _ ≡⟨ DLP.take++drop n' x ▹ cong ((ℕ._+ L i) ∘ L) ⟩
+    L (insert x i $ just n)
+      ≡⟨ refl ⟩
+    L ((n' ↑ x) ++ i ++ (n' ↓ x))
+      ≡⟨ DLP.length-++ $ n' ↑ x ⟩
+    L (n' ↑ x) ℕ.+ L (i ++ (n' ↓ x))
+      ≡⟨ DLP.length-++ i ▹ cong (ℕ._+_ _) ⟩
+    L (n' ↑ x) ℕ.+ (L i ℕ.+ L (n' ↓ x))
+      ≡⟨ DNP.+-comm (L i) _ ▹ cong (ℕ._+_ $ L $ n' ↑ x) ⟩
+    L (n' ↑ x) ℕ.+ (L (n' ↓ x) ℕ.+ L i)
+      ≡⟨ DNP.+-assoc (L $ n' ↑ x) _ _ ▹ sym ⟩
+    L (n' ↑ x) ℕ.+ L (n' ↓ x) ℕ.+ L i
+      ≡⟨ DLP.length-++ (n' ↑ x) ▹ sym ▹ cong (ℕ._+ L i) ⟩
+    L (n' ↑ x ++ n' ↓ x) ℕ.+ L i
+      ≡⟨ DLP.take++drop n' x ▹ cong ((ℕ._+ L i) ∘ L) ⟩
     L x ℕ.+ L i ∎
     where
     L = length
