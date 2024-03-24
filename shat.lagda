@@ -34,6 +34,7 @@
 \newunicodechar{ᵥ}{\ensuremath{\mathnormal{_\AgdaFontStyle{v}}}}
 \newunicodechar{ₒ}{\ensuremath{\mathnormal{_\AgdaFontStyle{o}}}}
 \newunicodechar{ᵇ}{\ensuremath{\mathnormal{^\AgdaFontStyle{b}}}}
+\newunicodechar{ʳ}{\ensuremath{\mathnormal{^\AgdaFontStyle{r}}}}
 \newunicodechar{ᵘ}{\ensuremath{\mathnormal{^\AgdaFontStyle{u}}}}
 \newunicodechar{₁}{\ensuremath{\mathnormal{_1}}}
 \newunicodechar{₂}{\ensuremath{\mathnormal{_2}}}
@@ -438,7 +439,7 @@ module InsertVeritas where
   remois x i nothing = sym $ begin
     L i ↑ (L x ↓ insert x i nothing) ≡⟨ refl ⟩
     L i ↑ (L x ↓_ $ x ++ i) ≡⟨ lendrop x i ▹ sym ▹ cong (_ ↑_) ⟩
-    L i ↑ i ≡⟨ {!!} ⟩
+    L i ↑ i ≡⟨ DLP.++-identityʳ i ▹ sym ▹ cong (L i ↑_) ⟩
     L i ↑ (i ++ []) ≡⟨ lenteik i [] ▹ sym ⟩
     i ∎
     where
