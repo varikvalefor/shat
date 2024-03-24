@@ -454,7 +454,8 @@ module InsertVeritas where
     open ≡-Reasoning
   remois x i (just n) = sym $ begin
     L i ↑ (n' ↓ insert x i (just n)) ≡⟨ refl ⟩
-    L i ↑ (n' ↓_ $ x₁ ++ i ++ x₂) ≡⟨ finlen x n ▹ cong (λ n → L i ↑ (n ↓_ $ x₁ ++ i ++ x₂)) ⟩
+    L i ↑ (n' ↓_ $ x₁ ++ i ++ x₂) ≡⟨ refl ⟩
+    _ ≡⟨ finlen x n ▹ cong (λ n → L i ↑ (n ↓_ $ x₁ ++ i ++ x₂)) ⟩
     L i ↑ (L x₁ ↓_ $ x₁ ++ i ++ x₂) ≡⟨ {!!} ⟩
     L i ↑ (i ++ x₂) ≡⟨ lenteik i x₂ ▹ sym ⟩
     i ∎
