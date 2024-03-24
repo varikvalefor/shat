@@ -422,7 +422,8 @@ module InsertVeritas where
          → (n : Maybe $ Fin $ length x)
          → let n' = maybe 𝔽.toℕ (length x) n in
            i ≡_ $ length i ↑_ $ n' ↓_ $ insert x i n
-  remois = {!!}
+  remois x i nothing = {!!}
+  remois x i (just n) = {!!}
 
   romois : ∀ {a} → {A : Set a}
          → (x i : List A)
