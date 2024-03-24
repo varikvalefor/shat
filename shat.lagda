@@ -391,7 +391,7 @@ module InsertVeritas where
     L (insert x i $ just n) ≡⟨ refl ⟩
     L ((n' ↑ x) ++ i ++ (n' ↓ x)) ≡⟨ DLP.length-++ $ n' ↑ x ⟩
     L (n' ↑ x) ℕ.+ L (i ++ (n' ↓ x)) ≡⟨ {!!} ⟩
-    L (n' ↑ x) ℕ.+ L i ℕ.+ L (n' ↓ x) ≡⟨ {!!} ⟩
+    L (n' ↑ x) ℕ.+ (L i ℕ.+ L (n' ↓ x)) ≡⟨ {!!} ⟩
     L (n' ↑ x) ℕ.+ L (n' ↓ x) ℕ.+ L i ≡⟨ refl ⟩
     _ ≡⟨ DLP.length-++ (n' ↑ x) ▹ sym ▹ cong (ℕ._+ L i) ⟩
     L (n' ↑ x ++ n' ↓ x) ℕ.+ L i ≡⟨ refl ⟩
