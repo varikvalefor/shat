@@ -365,7 +365,7 @@ data Cmdᵢₒ (x : Buffer) : Set where
 \chapter{le fancu}
 
 \section{la'oi .\F{insert}.}
-ni'o la .varik.\ na birti lo du'u ma kau zabna je cu lojbo je cu velcki la'oi .\F{insert}.
+ni'o la .varik.\ na birti lo du'u ma kau zabna je cu lojbo je cu velcki la'oi .\F{insert}.  .i la .varik.\ cu stidi lo nu lo na jimpe cu tcidu le velcki be le ctaipe be le su'u la'oi .\F{insert}.\ mapti
 
 \begin{code}
 insert : ∀ {a} → {A : Set a}
