@@ -388,6 +388,12 @@ module InsertVeritas where
             → z ≡_ $ length x ↓_ $ x ++ z
     lendrop [] _ = refl
     lendrop (_ ∷ xs) z = lendrop xs z
+
+    lenteik : ∀ {a} → {A : Set a}
+            → (x z : List A)
+            → x ≡_ $ length x ↑_ $ x ++ z
+    lenteik [] _ = refl
+    lenteik (x ∷ xs) z = lenteik xs z ▹ cong (x ∷_)
        
   lynyrd : ∀ {a} → {A : Set a}
          → (x i : List A)
@@ -441,7 +447,7 @@ module InsertVeritas where
     L i ↑ (n' ↓ insert x i (just n)) ≡⟨ refl ⟩
     L i ↑ (n' ↓_ $ x₁ ++ i ++ x₂) ≡⟨ {!!} ⟩
     L i ↑ (L x₁ ↓_ $ x₁ ++ i ++ x₂) ≡⟨ {!!} ⟩
-    L i ↑ (i ++ x₂) ≡⟨ {!!} ⟩
+    L i ↑ (i ++ x₂) ≡⟨ lenteik i x₂ ▹ sym ⟩
     i ∎
     where
     L = length
