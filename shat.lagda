@@ -826,7 +826,8 @@ module Orsygenturfa'iVeritas where
     b𝔽 (just $ 𝔽.toℕ x) ≡⟨ refl ⟩
     just (𝔽.toℕ x) >>= fromℕ? ≡⟨ refl ⟩
     fromℕ? (𝔽.toℕ x) ≡⟨ refl ⟩
-    mapₘ 𝔽.fromℕ< (decToMaybe $ _ ℕ.<? _) ≡⟨ proj₂ DY ▹ cong (mapₘ 𝔽.fromℕ< ∘ decToMaybe) ⟩
+    mapₘ 𝔽.fromℕ< (decToMaybe $ _ ℕ.<? _) ≡⟨ refl ⟩
+    _ ≡⟨ proj₂ DY ▹ cong (mapₘ 𝔽.fromℕ< ∘ decToMaybe) ⟩
     mapₘ 𝔽.fromℕ< (just $ proj₁ DY) ≡⟨ refl ⟩
     just _ ≡⟨ DFP.fromℕ<-toℕ _ _ ▹ cong just ⟩
     just x ∎
