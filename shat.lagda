@@ -509,7 +509,11 @@ ni'o la .varik.\ na jinvi le du'u sarcu fa lo nu ciksi fo lo lojbo fe la'oi .\F{
 dekydu'i₂ : {x n : ℕ}
           → x ℕ.< n
           → ∃ $ λ m → decToMaybe (x ℕ.<? n) ≡ just m
-dekydu'i₂ = {!!}
+dekydu'i₂ m = M₁ ,_ $ M₂ ▹ cong decToMaybe
+  where
+  M = Relation.Nullary.Decidable.dec-yes (_ ℕ.<? _) m
+  M₁ = proj₁ M
+  M₂ = proj₂ M
 \end{code}
 
 \section{la'oi .\F{fromℕ?}.}
