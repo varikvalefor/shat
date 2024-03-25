@@ -502,6 +502,16 @@ dekydu'i {x} {n} {m} = begin
   open ≡-Reasoning
 \end{code}
 
+\section{la'oi .\F{dekydu'i₂}.}
+ni'o la .varik.\ na jinvi le du'u sarcu fa lo nu ciksi fo lo lojbo fe la'oi .\F{dekydu'i₂}.
+
+\begin{code}
+dekydu'i₂ : {x n : ℕ}
+          → x ℕ.< n
+          → ∃ $ λ m → decToMaybe (x ℕ.<? n) ≡ just m
+dekydu'i₂ = {!!}
+\end{code}
+
 \section{la'oi .\F{fromℕ?}.}
 ni'o ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{fromℕ?}\ \B x\ .zoi.\ gi la'o zoi.\ \F{mapₘ} \F{𝔽.toℕ} \OpF \$ \F{fromℕ?}\ \B x\ .zoi.\ me'oi .\IC{just}.\ zo'e poi la'oi .\B x.\ mu'oi zoi.\ \F{𝔽.toℕ}\ .zoi.\ ke'a
 
