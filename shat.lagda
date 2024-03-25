@@ -607,7 +607,9 @@ module DegjygirzuVeritas where
     fineg : {x : Data.Bool.Bool}
           → false ≡ x
           → Data.Bool.T $ Data.Bool.not x
-    fineg = {!!}
+    fineg refl = Data.Unit.tt
+      where
+      import Data.Unit
     open ≡-Reasoning
     uobis : ∀ {a p} → {A : Set a}
           → {P : Pred A p}
