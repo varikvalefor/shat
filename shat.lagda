@@ -538,7 +538,8 @@ module fromℕ?Veritas where
       → nothing ≡ mapₘ 𝔽.toℕ (fromℕ? {n} x)
   rel {n} x J = sym $ begin
     mapₘ 𝔽.toℕ (fromℕ? {n} x) ≡⟨ {!!} ⟩
-    mapₘ (𝔽.toℕ ∘ 𝔽.fromℕ<) (decToMaybe $ x ℕ.<? n) ≡⟨ DN ▹ proj₂ ▹ cong (mapₘ (𝔽.toℕ ∘ 𝔽.fromℕ<) ∘ decToMaybe) ⟩
+    mapₘ (𝔽.toℕ ∘ 𝔽.fromℕ<) (decToMaybe $ x ℕ.<? n) ≡⟨ refl ⟩
+    _ ≡⟨ DN ▹ proj₂ ▹ cong (mapₘ (𝔽.toℕ ∘ 𝔽.fromℕ<) ∘ decToMaybe) ⟩
     mapₘ (𝔽.toℕ ∘ 𝔽.fromℕ<) (decToMaybe $ no N) ≡⟨ refl ⟩
     nothing ∎
     where
