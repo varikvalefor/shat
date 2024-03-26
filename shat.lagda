@@ -484,6 +484,40 @@ _,ₘ_ : ∀ {a} → {A B : Set a}
 _,ₘ_ = Data.Maybe.ap ∘₂ mapₘ $ _,_
 \end{code}
 
+\section{la'o zoi.\ \F{dec-just}\ .zoi.}
+ni'o la .varik.\ na jinvi le du'u sarcu fa lo nu ciksi fo lo lojbo fe la'o zoi.\ \F{dec-just}\ .zoi.
+
+\begin{code}
+dec-just : ∀ {a p} → {A : Set a}
+         → {P : Pred A p}
+         → {x : A}
+         → {P? : Dec $ P x}
+         → (m : P x)
+         → ∃ $ λ m → decToMaybe P? ≡ just m
+dec-just {P? = P?} m = Data.Product.dmap id (cong decToMaybe) M
+  where
+  M = Relation.Nullary.Decidable.dec-yes P? m
+\end{code}
+
+\section{la'o zoi.\ \F{dec-nothing}\ .zoi.}
+ni'o la .varik.\ na jinvi le du'u sarcu fa lo nu ciksi fo lo lojbo fe la'o zoi.\ \F{dec-nothing}\ .zoi.
+
+\begin{code}
+dec-nothing : ∀ {a p} → {A : Set a}
+            → {P : Pred A p}
+            → {x : A}
+            → {P? : Dec $ P x}
+            → (m : ¬ P x)
+            → decToMaybe P? ≡ nothing
+dec-nothing {P? = P?} m = begin
+  decToMaybe P? ≡⟨ M ▹ proj₂ ▹ cong decToMaybe ⟩
+  decToMaybe (no $ proj₁ M) ≡⟨ refl ⟩
+  nothing ∎
+  where
+  M = Relation.Nullary.Decidable.dec-no P? m
+  open ≡-Reasoning
+\end{code}
+
 \section{la \F{dekydu'i}}
 ni'o xu sarcu fa lo nu la .varik.\ cu ciksi la \F{dekydu'i} bau la .lojban.
 
@@ -526,40 +560,6 @@ zmadekydu'i {x} {n} {m} = begin
   iedek {ℕ.suc m} {ℕ.suc n} (ℕ.s≤s x) (ℕ.s≤s z) = I
     where
     I = iedek {m} {n} x z ▹ cong ℕ.s≤s
-  open ≡-Reasoning
-\end{code}
-
-\section{la'o zoi.\ \F{dec-just}\ .zoi.}
-ni'o la .varik.\ na jinvi le du'u sarcu fa lo nu ciksi fo lo lojbo fe la'o zoi.\ \F{dec-just}\ .zoi.
-
-\begin{code}
-dec-just : ∀ {a p} → {A : Set a}
-         → {P : Pred A p}
-         → {x : A}
-         → {P? : Dec $ P x}
-         → (m : P x)
-         → ∃ $ λ m → decToMaybe P? ≡ just m
-dec-just {P? = P?} m = Data.Product.dmap id (cong decToMaybe) M
-  where
-  M = Relation.Nullary.Decidable.dec-yes P? m
-\end{code}
-
-\section{la'o zoi.\ \F{dec-nothing}\ .zoi.}
-ni'o la .varik.\ na jinvi le du'u sarcu fa lo nu ciksi fo lo lojbo fe la'o zoi.\ \F{dec-nothing}\ .zoi.
-
-\begin{code}
-dec-nothing : ∀ {a p} → {A : Set a}
-            → {P : Pred A p}
-            → {x : A}
-            → {P? : Dec $ P x}
-            → (m : ¬ P x)
-            → decToMaybe P? ≡ nothing
-dec-nothing {P? = P?} m = begin
-  decToMaybe P? ≡⟨ M ▹ proj₂ ▹ cong decToMaybe ⟩
-  decToMaybe (no $ proj₁ M) ≡⟨ refl ⟩
-  nothing ∎
-  where
-  M = Relation.Nullary.Decidable.dec-no P? m
   open ≡-Reasoning
 \end{code}
 
