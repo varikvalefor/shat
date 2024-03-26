@@ -507,17 +507,17 @@ dekydu'i {x} {n} {m} = begin
   open ≡-Reasoning
 \end{code}
 
-\section{la'oi .\F{dekydu'i₂}.}
-ni'o la .varik.\ na jinvi le du'u sarcu fa lo nu ciksi fo lo lojbo fe la'oi .\F{dekydu'i₂}.
+\section{la'oi .\F{dec-just}.}
+ni'o la .varik.\ na jinvi le du'u sarcu fa lo nu ciksi fo lo lojbo fe la'oi .\F{dec-just}.
 
 \begin{code}
-dekydu'i₂ : ∀ {a p} → {A : Set a}
-          → {P : Pred A p}
-          → {x : A}
-          → {P? : Dec $ P x}
-          → (m : P x)
-          → ∃ $ λ m → decToMaybe P? ≡ just m
-dekydu'i₂ {P? = P?} m = Data.Product.dmap id (cong decToMaybe) M
+dec-just : ∀ {a p} → {A : Set a}
+         → {P : Pred A p}
+         → {x : A}
+         → {P? : Dec $ P x}
+         → (m : P x)
+         → ∃ $ λ m → decToMaybe P? ≡ just m
+dec-just {P? = P?} m = Data.Product.dmap id (cong decToMaybe) M
   where
   M = Relation.Nullary.Decidable.dec-yes P? m
 \end{code}
