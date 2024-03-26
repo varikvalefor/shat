@@ -529,8 +529,8 @@ zmadekydu'i {x} {n} {m} = begin
   open ≡-Reasoning
 \end{code}
 
-\section{la'oi .\F{dec-just}.}
-ni'o la .varik.\ na jinvi le du'u sarcu fa lo nu ciksi fo lo lojbo fe la'oi .\F{dec-just}.
+\section{la'o zoi.\ \F{dec-just}\ .zoi.}
+ni'o la .varik.\ na jinvi le du'u sarcu fa lo nu ciksi fo lo lojbo fe la'o zoi.\ \F{dec-just}\ .zoi.
 
 \begin{code}
 dec-just : ∀ {a p} → {A : Set a}
