@@ -494,11 +494,16 @@ dekydu'i : {x n : ℕ}
 dekydu'i {x} {n} {m} = begin
   decToMaybe (x ℕ.<? n) ≡⟨ DY ▹ proj₂ ▹ cong decToMaybe ⟩
   decToMaybe (yes $ proj₁ DY) ≡⟨ refl ⟩
-  _ ≡⟨ {!!} ▹ cong (decToMaybe ∘ yes) ⟩
+  _ ≡⟨ iedek (proj₁ DY) m ▹ cong (decToMaybe ∘ yes) ⟩
   decToMaybe (yes m) ≡⟨ refl ⟩
   just m ∎
   where
   DY = Relation.Nullary.Decidable.dec-yes (x ℕ.<? n) m
+  iedek : {m n : ℕ} → (x z : m ℕ.< n) → x ≡ z
+  iedek (ℕ.s≤s ℕ.z≤n) (ℕ.s≤s ℕ.z≤n) = refl
+  iedek {ℕ.suc m} {ℕ.suc n} (ℕ.s≤s x) (ℕ.s≤s z) = I
+    where
+    I = iedek {m} {n} x z ▹ cong ℕ.s≤s
   open ≡-Reasoning
 \end{code}
 
