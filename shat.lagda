@@ -506,12 +506,15 @@ dekydu'i {x} {n} {m} = begin
 ni'o la .varik.\ na jinvi le du'u sarcu fa lo nu ciksi fo lo lojbo fe la'oi .\F{dekydu'i₂}.
 
 \begin{code}
-dekydu'i₂ : {x n : ℕ}
-          → x ℕ.< n
-          → ∃ $ λ m → decToMaybe (x ℕ.<? n) ≡ just m
-dekydu'i₂ m = Data.Product.dmap id (cong decToMaybe) M
+dekydu'i₂ : ∀ {a p} → {A : Set a}
+          → {P : Pred A p}
+          → {x : A}
+          → {P? : Dec $ P x}
+          → (m : P x)
+          → ∃ $ λ m → decToMaybe P? ≡ just m
+dekydu'i₂ {P? = P?} m = Data.Product.dmap id (cong decToMaybe) M
   where
-  M = Relation.Nullary.Decidable.dec-yes (_ ℕ.<? _) m
+  M = Relation.Nullary.Decidable.dec-yes P? m
 \end{code}
 
 \section{la'oi .\F{fromℕ?}.}
