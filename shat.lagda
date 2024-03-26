@@ -1035,11 +1035,11 @@ module Orsygenturfa'i₃Veritas where
     orsispita K ≡⟨ refl ⟩
     L (𝕃.map (w aD?) $ w (_≟ ',') $ K) ≡⟨ {!!} ⟩
     L' (𝕃.map (w' aD?) $ w' (_≟ ',') $ K') ≡⟨ {!!} ⟩
-    L' (𝕃.map (w' aD?) $ s' a ∷ [ s' b ++ x ∷ s' c ]) ≡⟨ refl ⟩
-    L' (w' aD? (s' a) ∷ 𝕃.map (w' aD?) [ s' b ++ x ∷ s' c ]) ≡⟨ refl ⟩
-    _ ≡⟨ uadysas a ▹ cong (L' ∘ (_∷ 𝕃.map (w' aD?) [ s' b ++ x ∷ s' c ])) ⟩
-    L' ([ s' a ] ∷ 𝕃.map (w' aD?) [ s' b ++ x ∷ s' c ]) ≡⟨ refl ⟩
-    L' ([ s' a ] ∷ [ w' aD? $ s' b ++ x ∷ s' c ])  ≡⟨ refl ⟩
+    L' (𝕃.map (w' aD?) $ s' a ∷ [ s'bxs'c ]) ≡⟨ refl ⟩
+    L' (w' aD? (s' a) ∷ 𝕃.map (w' aD?) [ s'bxs'c ]) ≡⟨ refl ⟩
+    _ ≡⟨ uadysas a ▹ cong (L' ∘ (_∷ 𝕃.map (w' aD?) [ s'bxs'c ])) ⟩
+    L' ([ s' a ] ∷ 𝕃.map (w' aD?) [ s'bxs'c ]) ≡⟨ refl ⟩
+    L' ([ s' a ] ∷ [ w' aD? s'bxs'c ])  ≡⟨ refl ⟩
     _ ≡⟨ sabus ▹ cong (L' ∘ _∷_ ([ s' a ]) ∘ [_]) ⟩
     L' ([ s' a ] ∷ [ s' b ∷ [ s' c ] ]) ≡⟨ refl ⟩
     L' (map₂ s' abj) ≡⟨ refl ⟩
@@ -1055,11 +1055,12 @@ module Orsygenturfa'i₃Veritas where
     K = show a ++ "," ++ show b ++ 𝕊.fromChar x ++ show c
     s = show
     s' = 𝕊.toList ∘ show
+    s'bxs'c = s' b ++ x ∷ s' c
     fL∘tL : (x : String) → 𝕊.fromList (𝕊.toList x) ≡ x
     fL∘tL = {!!}
     K' = s' a ++ ',' ∷ s' b ++ x ∷ s' c
     abj = [ a ] ∷ [ b ∷ [ c ] ]
-    sabus : w' aD? (s' b ++ x ∷ s' c) ≡ s' b ∷ [ s' c ]
+    sabus : w' aD? s'bxs'c ≡ s' b ∷ [ s' c ]
     sabus = {!!}
     uadysas : (a : ℕ) → w' aD? (s' a) ≡ [ s' a ]
     uadysas = {!!}
