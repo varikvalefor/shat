@@ -544,6 +544,25 @@ dec-just {P? = P?} m = Data.Product.dmap id (cong decToMaybe) M
   M = Relation.Nullary.Decidable.dec-yes P? m
 \end{code}
 
+\section{la'o zoi.\ \F{dec-nothing}\ .zoi.}
+ni'o la .varik.\ na jinvi le du'u sarcu fa lo nu ciksi fo lo lojbo fe la'o zoi.\ \F{dec-nothing}\ .zoi.
+
+\begin{code}
+dec-nothing : ∀ {a p} → {A : Set a}
+            → {P : Pred A p}
+            → {x : A}
+            → {P? : Dec $ P x}
+            → (m : ¬ P x)
+            → decToMaybe P? ≡ nothing
+dec-nothing {P? = P?} m = begin
+  decToMaybe P? ≡⟨ M ▹ proj₂ ▹ cong decToMaybe ⟩
+  decToMaybe (no $ proj₁ M) ≡⟨ refl ⟩
+  nothing ∎
+  where
+  M = Relation.Nullary.Decidable.dec-no P? m
+  open ≡-Reasoning
+\end{code}
+
 \section{la'oi .\F{fromℕ?}.}
 ni'o ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{fromℕ?}\ \B x\ .zoi.\ gi la'o zoi.\ \F{mapₘ} \F{𝔽.toℕ} \OpF \$ \F{fromℕ?}\ \B x\ .zoi.\ me'oi .\IC{just}.\ zo'e poi la'oi .\B x.\ mu'oi zoi.\ \F{𝔽.toℕ}\ .zoi.\ ke'a
 
