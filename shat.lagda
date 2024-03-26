@@ -492,13 +492,13 @@ dekydu'i : {x n : ℕ}
          → {m : x ℕ.< n}
          → decToMaybe (x ℕ.<? n) ≡ just m
 dekydu'i {x} {n} {m} = begin
-  decToMaybe (x ℕ.<? n) ≡⟨ dec-yes _ m ▹ proj₂ ▹ cong decToMaybe ⟩
-  decToMaybe (yes $ proj₁ $ dec-yes (x ℕ.<? n) m) ≡⟨ refl ⟩
+  decToMaybe (x ℕ.<? n) ≡⟨ DY ▹ proj₂ ▹ cong decToMaybe ⟩
+  decToMaybe (yes $ proj₁ DY) ≡⟨ refl ⟩
   _ ≡⟨ {!!} ▹ cong (decToMaybe ∘ yes) ⟩
   decToMaybe (yes m) ≡⟨ refl ⟩
   just m ∎
   where
-  dec-yes = Relation.Nullary.Decidable.dec-yes
+  DY = Relation.Nullary.Decidable.dec-yes (x ℕ.<? n) m
   open ≡-Reasoning
 \end{code}
 
