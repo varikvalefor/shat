@@ -507,6 +507,28 @@ dekydu'i {x} {n} {m} = begin
   open ≡-Reasoning
 \end{code}
 
+\section{la \F{zmadekydu'i}}
+
+\begin{code}
+zmadekydu'i : {x n : ℕ}
+            → {m : x ℕ.≤ n}
+            → decToMaybe (x ℕ.≤? n) ≡ just m
+zmadekydu'i {x} {n} {m} = begin
+  decToMaybe (x ℕ.≤? n) ≡⟨ DY ▹ proj₂ ▹ cong decToMaybe ⟩
+  decToMaybe (yes $ proj₁ DY) ≡⟨ refl ⟩
+  _ ≡⟨ iedek (proj₁ DY) m ▹ cong (decToMaybe ∘ yes) ⟩
+  decToMaybe (yes m) ≡⟨ refl ⟩
+  just m ∎
+  where
+  DY = Relation.Nullary.Decidable.dec-yes (x ℕ.≤? n) m
+  iedek : {m n : ℕ} → (x z : m ℕ.≤ n) → x ≡ z
+  iedek ℕ.z≤n ℕ.z≤n = refl
+  iedek {ℕ.suc m} {ℕ.suc n} (ℕ.s≤s x) (ℕ.s≤s z) = I
+    where
+    I = iedek {m} {n} x z ▹ cong ℕ.s≤s
+  open ≡-Reasoning
+\end{code}
+
 \section{la'oi .\F{dec-just}.}
 ni'o la .varik.\ na jinvi le du'u sarcu fa lo nu ciksi fo lo lojbo fe la'oi .\F{dec-just}.
 
@@ -882,19 +904,11 @@ module Orsygenturfa'iVeritas where
   pork-du {n} {x} {z} djb = begin
     pork (just x ∷ just z ∷ []) ≡⟨ refl ⟩
     mapₘ (_ ,_) (decToMaybe $ x 𝔽.≤? z) ≡⟨ refl ⟩
-    _ ≡⟨ fizdu djb ▹ cong (mapₘ (_ ,_)) ⟩
+    _ ≡⟨ zmadekydu'i {m = djb} ▹ cong (mapₘ (_ ,_)) ⟩
     mapₘ (_ ,_) (just djb) ≡⟨ refl ⟩
     just ((x , z) , djb) ∎
     where
     open ≡-Reasoning
-    fizdu : {m : ℕ}
-          → {a b : Fin m}
-          → (d : a 𝔽.≤ b)
-          → decToMaybe (a 𝔽.≤? b) ≡ just d
-    fizdu {m} {a} {b} d = begin
-      decToMaybe (a 𝔽.≤? b) ≡⟨ {!!} ⟩
-      decToMaybe (yes d) ≡⟨ refl ⟩
-      just d ∎
 
   pork-nada : {n : ℕ}
             → {x z : Fin n}
