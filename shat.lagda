@@ -288,7 +288,7 @@ showF = record {show = 𝔽.show}
 \chapter{le se ctaipe}
 
 \section{la'oi .\AgdaRecord{Buffer}.}
-ni'o ciksi la'oi .\AgdaRecord{Buffer}.\ fo ma poi ke'a zabna ku'o bau la .lojban.
+ni'o ciksi la'oi .\AgdaRecord{Buffer}.\ bau la .lojban.\ fo ma poi ke'a zabna
 
 \begin{code}
 record Buffer : Set
