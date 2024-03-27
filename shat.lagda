@@ -1400,7 +1400,7 @@ module ReedVeritas where
       → just (Rejgau c∷s) ≡ reed x ("w " ++ c∷s)
   uip unwords∘f x s c n uj = sym $ begin
     reed x ("w " ++ c∷s) ≡⟨ w++s≡w++fs ▹ cong (reed x) ⟩
-    reed x (unwords $ "w" ∷ f c∷s) ≡⟨ {!!} ⟩
+    reed x (unwords $ "w" ∷ f c∷s) ≡⟨ reedx≡k∘f $ unwords $ "w" ∷ f c∷s ⟩
     k (f $ unwords $ "w" ∷ f c∷s) ≡⟨ f∘unwords _ ▹ cong k ⟩
     k ("w" ∷ f c∷s) ≡⟨ f[c∷s]≡v₁∷v₂ ▹ cong (k ∘ _∷_ "w") ⟩
     k ("w" ∷ v₁ ∷ v₂) ≡⟨ refl ⟩
@@ -1433,6 +1433,8 @@ module ReedVeritas where
         open ≡-Reasoning
     unwords = 𝕊.unwords
     open Reed
+    reedx≡k∘f : (s : String) → reed x s ≡ k (f s)
+    reedx≡k∘f = {!!}
     open ≡-Reasoning
     f∘unwords : (x : List String) → f (unwords x) ≡ x
     f∘unwords = {!!}
