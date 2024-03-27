@@ -599,12 +599,13 @@ module fromℕ?Veritas where
       → nothing ≡ mapₘ 𝔽.toℕ (fromℕ? {n} x)
   rel {n} x J = sym $ begin
     mapₘ 𝔽.toℕ (fromℕ? {n} x) ≡⟨ refl ⟩
-    mapₘ 𝔽.toℕ (mapₘ 𝔽.fromℕ< $ decToMaybe $ x ℕ.<? n) ≡⟨ {!!} ⟩
+    mapₘ 𝔽.toℕ (mapₘ 𝔽.fromℕ< $ decToMaybe $ x ℕ.<? n) ≡⟨ MC ▹ sym ⟩
     mapₘ (𝔽.toℕ ∘ 𝔽.fromℕ<) (decToMaybe $ x ℕ.<? n) ≡⟨ refl ⟩
     _ ≡⟨ DN ▹ proj₂ ▹ cong (mapₘ (𝔽.toℕ ∘ 𝔽.fromℕ<) ∘ decToMaybe) ⟩
     mapₘ (𝔽.toℕ ∘ 𝔽.fromℕ<) (decToMaybe $ no N) ≡⟨ refl ⟩
     nothing ∎
     where
+    MC = DMP.map-compose $ decToMaybe $ x ℕ.<? n
     DN = Relation.Nullary.Decidable.dec-no (x ℕ.<? n) J
     N = ¬ (x ℕ.< n) ∋ proj₁ DN
     open ≡-Reasoning
@@ -1377,10 +1378,16 @@ module ReedVeritas where
       → just (Vimcu a b d) ≡ reed x (k₂ x a b 'd')
   vim x a b d = sym $ begin
     reed x (k₂ x a b 'd') ≡⟨ {!!} ⟩
-    Reed.Re.t x (k₂ x a b 'd') ≡⟨ {!!} ⟩
+    Reed.Re.t x (k₂ x a b 'd') ≡⟨ refl ⟩
+    _,ₘ_ (romoi K₂) (o∘r K₂) >>= g' ≡⟨ {!!} ⟩
     Reed.Re.g x a b d 'd' ≡⟨ refl ⟩
     just (Vimcu a b d) ∎
     where
+    K₂ = k₂ x a b 'd'
+    BL = Buffer.lerpinste x
+    romoi = 𝕃.last ∘ 𝕊.toList
+    g' = λ (r' , _ , z) → Reed.Re.g x _ _ z r'
+    o∘r = orsygenturfa'i {n = length BL} ∘ romoivimcu
     open ≡-Reasoning
 
   uip : ((s : String) → s ≡_ $ 𝕊.unwords $ 𝕊.wordsBy (_≟ ' ') s)
