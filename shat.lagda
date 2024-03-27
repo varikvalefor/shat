@@ -1794,7 +1794,18 @@ main = run $ IO.lift snurytcati IO.>> getArgs IO.>>= uic ∘ 𝕃.head
       ... | x' , just (inj₂ z) with z
       ... | Sisti!ᵢₒ = IO.pure _
       ... | Skamiᵢₒ a = {!!}
-      ... | Tciduᵢₒ a b = {!!}
+      ... | Tciduᵢₒ a b = readFile a IO.>>= (⟲ ∘ J x' {!!})
+        where
+        J : (x : Buffer)
+          → (n : Maybe $ Buffer.F x)
+          → (s : String)
+          → Buffer
+        J x n s = record x {
+          citri = Buffer.cninycitri x;
+          lerpinste = insert (BL x) (𝕊.lines s) n;
+          cablerpinsle = {!!}}
+          where
+          BL = Buffer.lerpinste
       ... | Rejgauᵢₒ a b = IO.writeFile b a IO.>> ⟲ x
       ... | Sistiᵢₒ = f $ mapₘ (λ _ → Sisti!) $ decToMaybe $ r ≟ c₁
         where
