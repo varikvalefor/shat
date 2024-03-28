@@ -396,11 +396,20 @@ module InsertVeritas where
     lenteik (x ∷ xs) z = lenteik xs z ▹ cong (x ∷_)
 
     finlen : ∀ {a} → {A : Set a}
-           → (xs : List A)
-           → (n : Fin $ length xs)
-           → 𝔽.toℕ n ≡ length (𝔽.toℕ n ↑ xs)
-    finlen (_ ∷ _) 𝔽.zero = refl
-    finlen (_ ∷ xs) (𝔽.suc n) = finlen xs n ▹ cong ℕ.suc
+           → (x : List A)
+           → (n : Maybe $ Fin $ length x)
+           → let n' = maybe 𝔽.toℕ (length x) n in
+             n' ≡ length (n' ↑ x)
+
+    finlen (_ ∷ xs) (just 𝔽.zero) = refl
+    finlen (_ ∷ xs) (just (𝔽.suc n)) = finlen xs (just n) ▹ cong ℕ.suc
+    finlen x nothing = FL x
+      where
+      FL : ∀ {a} → {A : Set a}
+         → (x : List A)
+         → length x ≡ length (length x ↑ x)
+      FL [] = refl
+      FL (x ∷ xs) = FL xs ▹ cong ℕ.suc
        
   lynyrd : ∀ {a} → {A : Set a}
          → (x i : List A)
@@ -444,21 +453,7 @@ module InsertVeritas where
     where
     n' = maybe 𝔽.toℕ (length x) n
     n'≡l : n' ≡ length (n' ↑ x)
-    n'≡l = F x n
-      where
-      F : ∀ {a} → {A : Set a}
-        → (x : List A)
-        → (n : Maybe $ Fin $ length x)
-        → let n' = maybe 𝔽.toℕ (length x) n in
-          n' ≡ length (n' ↑ x)
-      F x (just n) = finlen x n
-      F x nothing = FL x
-        where
-        FL : ∀ {a} → {A : Set a}
-           → (x : List A)
-           → length x ≡ length (length x ↑ x)
-        FL [] = refl
-        FL (x ∷ xs) = FL xs ▹ cong ℕ.suc
+    n'≡l = finlen x n
     open ≡-Reasoning
 
   remois : ∀ {a} → {A : Set a}
@@ -479,7 +474,7 @@ module InsertVeritas where
   remois x i (just n) = sym $ begin
     L i ↑ (n' ↓ insert x i (just n)) ≡⟨ refl ⟩
     L i ↑ (n' ↓_ $ x₁ ++ i ++ x₂) ≡⟨ refl ⟩
-    _ ≡⟨ finlen x n ▹ cong (L i ↑_ ∘ flip _↓_ (x₁ ++ i ++ x₂)) ⟩
+    _ ≡⟨ finlen x (just n) ▹ cong (L i ↑_ ∘ flip _↓_ (x₁ ++ i ++ x₂)) ⟩
     L i ↑ (L x₁ ↓_ $ x₁ ++ i ++ x₂) ≡⟨ refl ⟩
     _ ≡⟨ lendrop x₁ _ ▹ sym ▹ cong (_ ↑_) ⟩
     L i ↑ (i ++ x₂) ≡⟨ lenteik i x₂ ▹ sym ⟩
