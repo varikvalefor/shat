@@ -433,7 +433,7 @@ module InsertVeritas where
          → (x i : List A)
          → (n : Maybe $ Fin $ length x)
          → let n' = maybe 𝔽.toℕ (length x) n in
-           ((_≡_ on (_↑_ n'))
+           ((_≡_ on (n' ↑_))
              x
              (insert x i n))
   pamois = {!!}
