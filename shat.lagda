@@ -475,7 +475,12 @@ module InsertVeritas where
          → (n : Maybe $ Fin $ length x)
          → let n' = maybe 𝔽.toℕ (length x) n in
            n' ↓ x ≡ (n' ℕ.+ length i) ↓ insert x i n
-  romois = {!!}
+  romois x i n = sym $ begin
+    (n' ℕ.+ length i) ↓ insert x i n ≡⟨ {!!} ⟩
+    n' ↓ x ∎
+    where
+    n' = maybe 𝔽.toℕ (length x) n
+    open ≡-Reasoning
 \end{code}
 
 \section{la'o zoi.\ \F{\AgdaUnderscore{},ₘ\AgdaUnderscore}\ .zoi.}
