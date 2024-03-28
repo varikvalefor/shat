@@ -477,7 +477,7 @@ module InsertVeritas where
            n' ↓ x ≡ (n' ℕ.+ length i) ↓ insert x i n
   romois x i n = sym $ begin
     (n' ℕ.+ length i) ↓ insert x i n ≡⟨ refl ⟩
-    (n' ℕ.+ length i) ↓ (x₁ ++ i ++ x₂) ≡⟨ {!!} ⟩
+    (n' ℕ.+ length i) ↓ (x₁ ++ i ++ x₂) ≡⟨ finlen x n ▹ cong (λ n → (n ℕ.+ length i) ↓ (x₁ ++ i ++ x₂)) ⟩
     (length (n' ↑ x) ℕ.+ length i) ↓ (x₁ ++ i ++ x₂) ≡⟨ {!!} ⟩
     length (x₁ ++ i) ↓ ((x₁ ++ i) ++ x₂) ≡⟨ dropydus (x₁ ++ i) {x₂} ⟩
     x₂ ≡⟨ refl ⟩
