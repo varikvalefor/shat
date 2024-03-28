@@ -434,17 +434,11 @@ module InsertVeritas where
            ((_≡_ on (n' ↑_))
              x
              (insert x i n))
-  pamois x i nothing = sym $ begin
-    n' ↑ insert x i nothing ≡⟨ {!!} ⟩
+  pamois x i n = sym $ begin
+    n' ↑ insert x i n ≡⟨ {!!} ⟩
     n' ↑ x ∎
     where
-    n' = length x
-    open ≡-Reasoning
-  pamois x i (just n) = sym $ begin
-    n' ↑ insert x i (just n) ≡⟨ {!!} ⟩
-    n' ↑ x ∎
-    where
-    n' = 𝔽.toℕ n
+    n' = maybe 𝔽.toℕ (length x) n
     open ≡-Reasoning
 
   remois : ∀ {a} → {A : Set a}
