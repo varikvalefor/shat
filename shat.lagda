@@ -455,27 +455,17 @@ module InsertVeritas where
          → (n : Maybe $ Fin $ length x)
          → let n' = maybe 𝔽.toℕ (length x) n in
            i ≡_ $ length i ↑_ $ n' ↓ insert x i n
-  remois x i nothing = sym $ begin
-    L i ↑ (L x ↓ insert x i nothing) ≡⟨ {!!} ⟩
-    L i ↑ (L x ↓ (x ++ i)) ≡⟨ refl ⟩
-    L i ↑ (L x ↓_ $ x ++ i) ≡⟨ lendrop x i ▹ sym ▹ cong (_ ↑_) ⟩
-    L i ↑ i ≡⟨ DLP.++-identityʳ i ▹ sym ▹ cong (L i ↑_) ⟩
-    L i ↑ (i ++ []) ≡⟨ lenteik i [] ▹ sym ⟩
-    i ∎
-    where
-    L = length
-    open ≡-Reasoning
-  remois x i (just n) = sym $ begin
-    L i ↑ (n' ↓ insert x i (just n)) ≡⟨ refl ⟩
+  remois x i n = sym $ begin
+    L i ↑ (n' ↓ insert x i n) ≡⟨ refl ⟩
     L i ↑ (n' ↓_ $ x₁ ++ i ++ x₂) ≡⟨ refl ⟩
-    _ ≡⟨ finlen x (just n) ▹ cong (L i ↑_ ∘ flip _↓_ (x₁ ++ i ++ x₂)) ⟩
+    _ ≡⟨ finlen x n ▹ cong (L i ↑_ ∘ flip _↓_ (x₁ ++ i ++ x₂)) ⟩
     L i ↑ (L x₁ ↓_ $ x₁ ++ i ++ x₂) ≡⟨ refl ⟩
     _ ≡⟨ lendrop x₁ _ ▹ sym ▹ cong (_ ↑_) ⟩
     L i ↑ (i ++ x₂) ≡⟨ lenteik i x₂ ▹ sym ⟩
     i ∎
     where
     L = length
-    n' = 𝔽.toℕ n
+    n' = maybe 𝔽.toℕ (length x) n
     x₁ = n' ↑ x
     x₂ = n' ↓ x
     open ≡-Reasoning
