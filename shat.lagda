@@ -487,7 +487,7 @@ module InsertVeritas where
     (length (x₁ ++ i)) ↓ (x₁ ++ i ++ x₂)
       ≡⟨ DLP.++-assoc x₁ i x₂ ▹ sym ▹ cong (_↓_ $ length $ x₁ ++ i) ⟩
     length (x₁ ++ i) ↓ ((x₁ ++ i) ++ x₂)
-      ≡⟨ dropydus (x₁ ++ i) ⟩
+      ≡⟨ dropydus $ x₁ ++ i ⟩
     x₂
       ≡⟨ refl ⟩
     n' ↓ x ∎
