@@ -478,6 +478,7 @@ module InsertVeritas where
   romois x i n = sym $ begin
     (n' ℕ.+ length i) ↓ insert x i n ≡⟨ refl ⟩
     (n' ℕ.+ length i) ↓ ((n' ↑ x) ++ i ++ (n' ↓ x)) ≡⟨ {!!} ⟩
+    length ((n' ↑ x) ++ i) ↓ ((n' ↑ x) ++ i ++ (n' ↓ x)) ≡⟨ {!!} ⟩
     n' ↓ x ∎
     where
     n' = maybe 𝔽.toℕ (length x) n
