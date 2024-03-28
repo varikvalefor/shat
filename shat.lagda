@@ -479,11 +479,11 @@ module InsertVeritas where
     (n' ℕ.+ length i) ↓ insert x i n
       ≡⟨ refl ⟩
     (n' ℕ.+ length i) ↓ (x₁ ++ i ++ x₂)
-      ≡⟨ finlen x n ▹ cong (λ n → (n ℕ.+ length i) ↓ (x₁ ++ i ++ x₂)) ⟩
+      ≡⟨ finlen x n ▹ cong (λ n → (n ℕ.+ length i) ↓ K) ⟩
     (length (n' ↑ x) ℕ.+ length i) ↓ (x₁ ++ i ++ x₂)
       ≡⟨ refl ⟩
     (length x₁ ℕ.+ length i) ↓ (x₁ ++ i ++ x₂)
-      ≡⟨ DLP.length-++ x₁ ▹ sym ▹ cong (_↓ (x₁ ++ i ++ x₂)) ⟩
+      ≡⟨ DLP.length-++ x₁ ▹ sym ▹ cong (_↓ K) ⟩
     (length (x₁ ++ i)) ↓ (x₁ ++ i ++ x₂)
       ≡⟨ DLP.++-assoc x₁ i x₂ ▹ sym ▹ cong (_↓_ $ length $ x₁ ++ i) ⟩
     length (x₁ ++ i) ↓ ((x₁ ++ i) ++ x₂)
@@ -495,6 +495,7 @@ module InsertVeritas where
     n' = maybe 𝔽.toℕ (length x) n
     x₁ = n' ↑ x
     x₂ = n' ↓ x
+    K = x₁ ++ i ++ x₂
     dropydus : ∀ {a} → {A : Set a}
              → (x : List A)
              → {z : List A}
