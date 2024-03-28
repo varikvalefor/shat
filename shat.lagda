@@ -444,7 +444,21 @@ module InsertVeritas where
     where
     n' = maybe 𝔽.toℕ (length x) n
     n'≡l : n' ≡ length (n' ↑ x)
-    n'≡l = {!!}
+    n'≡l = F x n
+      where
+      F : ∀ {a} → {A : Set a}
+        → (x : List A)
+        → (n : Maybe $ Fin $ length x)
+        → let n' = maybe 𝔽.toℕ (length x) n in
+          n' ≡ length (n' ↑ x)
+      F x (just n) = finlen x n
+      F x nothing = FL x
+        where
+        FL : ∀ {a} → {A : Set a}
+           → (x : List A)
+           → length x ≡ length (length x ↑ x)
+        FL [] = refl
+        FL (x ∷ xs) = FL xs ▹ cong ℕ.suc
     open ≡-Reasoning
 
   remois : ∀ {a} → {A : Set a}
