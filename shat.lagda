@@ -373,10 +373,9 @@ insert : ∀ {a} → {A : Set a}
        → (x i : List A)
        → Maybe $ Fin $ length x
        → List A
-insert x i nothing = x ++ i
-insert x i (just n) = (n' ↑ x) ++ i ++ (n' ↓ x)
+insert x i n = (n' ↑ x) ++ i ++ (n' ↓ x)
   where
-  n' = 𝔽.toℕ n
+  n' = maybe 𝔽.toℕ (length x) n
 \end{code}
 
 \subsection{le ctaipe be le su'u la'oi .\F{insert}.\ mapti}
@@ -407,9 +406,8 @@ module InsertVeritas where
          → (x i : List A)
          → (n : Maybe $ Fin $ length x)
          → length x ℕ.+ length i ≡ length (insert x i n)
-  lynyrd x i nothing = DLP.length-++ x ▹ sym
-  lynyrd x i (just n) = sym $ begin
-    L (insert x i $ just n)
+  lynyrd x i n = sym $ begin
+    L (insert x i n)
       ≡⟨ refl ⟩
     L ((n' ↑ x) ++ i ++ (n' ↓ x))
       ≡⟨ DLP.length-++ $ n' ↑ x ⟩
@@ -426,7 +424,7 @@ module InsertVeritas where
     L x ℕ.+ L i ∎
     where
     L = length
-    n' = 𝔽.toℕ n
+    n' = maybe 𝔽.toℕ (length x) n
     open ≡-Reasoning
 
   pamois : ∀ {a} → {A : Set a}
@@ -455,7 +453,8 @@ module InsertVeritas where
          → let n' = maybe 𝔽.toℕ (length x) n in
            i ≡_ $ length i ↑_ $ n' ↓ insert x i n
   remois x i nothing = sym $ begin
-    L i ↑ (L x ↓ insert x i nothing) ≡⟨ refl ⟩
+    L i ↑ (L x ↓ insert x i nothing) ≡⟨ {!!} ⟩
+    L i ↑ (L x ↓ (x ++ i)) ≡⟨ refl ⟩
     L i ↑ (L x ↓_ $ x ++ i) ≡⟨ lendrop x i ▹ sym ▹ cong (_ ↑_) ⟩
     L i ↑ i ≡⟨ DLP.++-identityʳ i ▹ sym ▹ cong (L i ↑_) ⟩
     L i ↑ (i ++ []) ≡⟨ lenteik i [] ▹ sym ⟩
