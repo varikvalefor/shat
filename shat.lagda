@@ -436,12 +436,14 @@ module InsertVeritas where
              (insert x i n))
   pamois x i n = sym $ begin
     n' ↑ insert x i n ≡⟨ refl ⟩
-    n' ↑ ((n' ↑ x) ++ i ++ (n' ↓ x)) ≡⟨ {!!} ⟩
+    n' ↑ ((n' ↑ x) ++ i ++ (n' ↓ x)) ≡⟨ n'≡l ▹ cong (_↑ ((n' ↑ x) ++ i ++ (n' ↓ x))) ⟩
     length (n' ↑ x) ↑ ((n' ↑ x) ++ i ++ (n' ↓ x)) ≡⟨ refl ⟩
     _ ≡⟨ lenteik (n' ↑ x) _ ▹ sym ⟩
     n' ↑ x ∎
     where
     n' = maybe 𝔽.toℕ (length x) n
+    n'≡l : n' ≡ length (n' ↑ x)
+    n'≡l = {!!}
     open ≡-Reasoning
 
   remois : ∀ {a} → {A : Set a}
