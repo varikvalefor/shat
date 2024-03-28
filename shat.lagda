@@ -478,12 +478,19 @@ module InsertVeritas where
   romois x i n = sym $ begin
     (n' ℕ.+ length i) ↓ insert x i n ≡⟨ refl ⟩
     (n' ℕ.+ length i) ↓ (x₁ ++ i ++ x₂) ≡⟨ {!!} ⟩
-    length (x₁ ++ i) ↓ (x₁ ++ i ++ x₂) ≡⟨ {!!} ⟩
+    length (x₁ ++ i) ↓ ((x₁ ++ i) ++ x₂) ≡⟨ dropydus (x₁ ++ i) {x₂} ⟩
+    x₂ ≡⟨ refl ⟩
     n' ↓ x ∎
     where
     n' = maybe 𝔽.toℕ (length x) n
     x₁ = n' ↑ x
     x₂ = n' ↓ x
+    dropydus : ∀ {a} → {A : Set a}
+             → (x : List A)
+             → {z : List A}
+             → length x ↓ (x ++ z) ≡ z
+    dropydus [] = refl
+    dropydus (_ ∷ xs) = dropydus xs
     open ≡-Reasoning
 \end{code}
 
