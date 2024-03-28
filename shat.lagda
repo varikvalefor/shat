@@ -484,7 +484,7 @@ module InsertVeritas where
       ≡⟨ refl ⟩
     (length x₁ ℕ.+ length i) ↓ (x₁ ++ i ++ x₂)
       ≡⟨ DLP.length-++ x₁ ▹ sym ▹ cong (_↓ K) ⟩
-    (length (x₁ ++ i)) ↓ (x₁ ++ i ++ x₂)
+    length (x₁ ++ i) ↓ (x₁ ++ i ++ x₂)
       ≡⟨ DLP.++-assoc x₁ i x₂ ▹ sym ▹ cong (_↓_ $ length $ x₁ ++ i) ⟩
     length (x₁ ++ i) ↓ ((x₁ ++ i) ++ x₂)
       ≡⟨ dropydus $ x₁ ++ i ⟩
