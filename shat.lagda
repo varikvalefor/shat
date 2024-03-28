@@ -437,6 +437,8 @@ module InsertVeritas where
   pamois x i n = sym $ begin
     n' ↑ insert x i n ≡⟨ refl ⟩
     n' ↑ ((n' ↑ x) ++ i ++ (n' ↓ x)) ≡⟨ {!!} ⟩
+    length (n' ↑ x) ↑ ((n' ↑ x) ++ i ++ (n' ↓ x)) ≡⟨ refl ⟩
+    _ ≡⟨ lenteik (n' ↑ x) _ ▹ sym ⟩
     n' ↑ x ∎
     where
     n' = maybe 𝔽.toℕ (length x) n
