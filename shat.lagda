@@ -476,7 +476,8 @@ module InsertVeritas where
          → let n' = maybe 𝔽.toℕ (length x) n in
            n' ↓ x ≡ (n' ℕ.+ length i) ↓ insert x i n
   romois x i n = sym $ begin
-    (n' ℕ.+ length i) ↓ insert x i n ≡⟨ {!!} ⟩
+    (n' ℕ.+ length i) ↓ insert x i n ≡⟨ refl ⟩
+    (n' ℕ.+ length i) ↓ ((n' ↑ x) ++ i ++ (n' ↓ x)) ≡⟨ {!!} ⟩
     n' ↓ x ∎
     where
     n' = maybe 𝔽.toℕ (length x) n
