@@ -479,7 +479,8 @@ module InsertVeritas where
     (n' ℕ.+ length i) ↓ insert x i n ≡⟨ refl ⟩
     (n' ℕ.+ length i) ↓ (x₁ ++ i ++ x₂) ≡⟨ refl ⟩
     _ ≡⟨ finlen x n ▹ cong (λ n → (n ℕ.+ length i) ↓ (x₁ ++ i ++ x₂)) ⟩
-    (length (n' ↑ x) ℕ.+ length i) ↓ (x₁ ++ i ++ x₂) ≡⟨ {!!} ⟩
+    (length (n' ↑ x) ℕ.+ length i) ↓ (x₁ ++ i ++ x₂) ≡⟨ refl ⟩
+    (length x₁ ℕ.+ length i) ↓ (x₁ ++ i ++ x₂) ≡⟨ {!!} ⟩
     length (x₁ ++ i) ↓ ((x₁ ++ i) ++ x₂) ≡⟨ dropydus (x₁ ++ i) {x₂} ⟩
     x₂ ≡⟨ refl ⟩
     n' ↓ x ∎
