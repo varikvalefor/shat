@@ -589,6 +589,27 @@ _,ₘ_ : ∀ {a} → {A B : Set a}
 _,ₘ_ = Data.Maybe.ap ∘₂ mapₘ $ _,_
 \end{code}
 
+\subsection{le ctaipe be le su'u la'oi .\F{\AgdaUnderscore{},ₘ\AgdaUnderscore}\ .zoi.\ mapti}
+
+\begin{code}
+module _,ₘ_Veritas where
+  jj : ∀ {a} → {A B : Set a}
+     → (x : A)
+     → (z : B)
+     → (just x ,ₘ just z) ≡ just (x , z)
+  jj _ _ = refl
+
+  n₁ : ∀ {a} → {A B : Set a}
+      → (z : Maybe B)
+      → (nothing {A = A} ,ₘ z) ≡ nothing
+  n₁ _ = refl
+
+  n₂ : ∀ {a} → {A B : Set a}
+      → (x : Maybe A)
+      → (x ,ₘ nothing {A = B}) ≡ nothing
+  n₂ = {!!}
+\end{code}
+
 \section{la'oi .\F{fromℕ?}.}
 ni'o ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{fromℕ?}\ \B x\ .zoi.\ gi la'o zoi.\ \F{mapₘ} \F{𝔽.toℕ} \OpF \$ \F{fromℕ?}\ \B x\ .zoi.\ me'oi .\IC{just}.\ zo'e poi la'oi .\B x.\ mu'oi zoi.\ \F{𝔽.toℕ}\ .zoi.\ ke'a
 
