@@ -1793,7 +1793,23 @@ ni'o la'oi .\F{readFile}.\ smimlu ko'a goi la'o zoi.\ \F{IO.Finite.readFile}\ .z
 
 \begin{code}
 readFile : String → IO $ List String
-readFile "/dev/stdin" = {!!}
+readFile "/dev/stdin" = IO.lift stdin
+  where
+  postulate stdin : ABIO.IO $ List String
+  {-# FOREIGN GHC import Data.Bool #-}
+  {-# FOREIGN GHC import Data.Text #-}
+  {-# FOREIGN GHC import System.IO #-}
+  {-# COMPILE GHC
+      stdin = stdin' []
+      where {
+        stdin' :: [Data.Text.Text] -> IO [Data.Text.Text];
+        stdin' x = isEOF >>= bool getLine' (return x)
+        where {
+          getLine' :: IO [Data.Text.Text];
+          getLine' = getLine >>= f . Data.Text.pack
+          where {
+            f "." = return x;
+            f n = stdin' $ x ++ [n]}}} #-}
 readFile x = 𝕊.lines IO.<$> IO.Finite.readFile x
 \end{code}
 
