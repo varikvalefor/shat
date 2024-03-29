@@ -607,7 +607,8 @@ module _,ₘ_Veritas where
   n₂ : ∀ {a} → {A B : Set a}
       → (x : Maybe A)
       → (x ,ₘ nothing {A = B}) ≡ nothing
-  n₂ = {!!}
+  n₂ nothing = refl
+  n₂ (just _) = refl
 \end{code}
 
 \section{la'oi .\F{fromℕ?}.}
