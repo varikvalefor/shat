@@ -519,10 +519,10 @@ ni'o la .varik.\ na jinvi le du'u sarcu fa lo nu ciksi fo lo lojbo fe la'o zoi.\
 dec-just : ∀ {a p} → {A : Set a}
          → {P : Pred A p}
          → {x : A}
-         → {P? : Dec $ P x}
+         → (P? : Dec $ P x)
          → (m : P x)
          → ∃ $ λ m → decToMaybe P? ≡ just m
-dec-just {P? = P?} m = Data.Product.dmap id (cong decToMaybe) M
+dec-just P? m = Data.Product.dmap id (cong decToMaybe) M
   where
   M = Relation.Nullary.Decidable.dec-yes P? m
 \end{code}
@@ -534,10 +534,10 @@ ni'o la .varik.\ na jinvi le du'u sarcu fa lo nu ciksi fo lo lojbo fe la'o zoi.\
 dec-nothing : ∀ {a p} → {A : Set a}
             → {P : Pred A p}
             → {x : A}
-            → {P? : Dec $ P x}
+            → (P? : Dec $ P x)
             → (m : ¬ P x)
             → decToMaybe P? ≡ nothing
-dec-nothing {P? = P?} m = begin
+dec-nothing P? m = begin
   decToMaybe P? ≡⟨ M ▹ proj₂ ▹ cong decToMaybe ⟩
   decToMaybe (no $ proj₁ M) ≡⟨ refl ⟩
   nothing ∎
