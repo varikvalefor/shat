@@ -1789,12 +1789,12 @@ module KanjyVeritas where
 \chapter{le skami co'e}
 
 \section{la'oi .\F{readFile}.}
-ni'o la'oi .\F{readFile}.\ smimlu ko'a goi la'o zoi.\ \F{IO.Finite.readFile}\ .zoi.\ldots je ku'i cu zmadu ko'a le ka ce'u mapti la'o zoi.\ \datnyveicme{/dev/stdin}\ .zoi.
+ni'o la'oi .\F{readFile}.\ smimlu ko'a goi la'o zoi.\ \F{IO.Finite.readFile}\ .zoi.\ldots je ku'i cu zmadu ko'a le ka ce'u mapti la'o zoi.\ \datnyveicme{/dev/stdin}\ .zoi.  .i ji'a co'e co mu'oi zoi.\ \F{𝕊.lines}\ .zoi.
 
 \begin{code}
-readFile : String → IO String
+readFile : String → IO $ List String
 readFile "/dev/stdin" = {!!}
-readFile = IO.Finite.readFile
+readFile x = 𝕊.lines IO.<$> IO.Finite.readFile x
 \end{code}
 
 \section{la'oi .\F{main}.}
@@ -1826,7 +1826,7 @@ main = run $ IO.lift snurytcati IO.>> getArgs IO.>>= uic ∘ 𝕃.head
       rejgaudatni = nothing
       }
     mkDef : _
-    mkDef c = uit ∘ 𝕊.lines IO.<$> readFile c
+    mkDef c = uit IO.<$> readFile c
       where
       uit : _ → _
       uit [] = record def {datnyveicme = just c}
@@ -1852,11 +1852,11 @@ main = run $ IO.lift snurytcati IO.>> getArgs IO.>>= uic ∘ 𝕃.head
         where
         J : (x : Buffer)
           → (n : Maybe $ Buffer.F x)
-          → (s : String)
+          → (s : List String)
           → Buffer
         J x n s = record x {
           citri = Buffer.cninycitri x;
-          lerpinste = insert (BL x) (𝕊.lines s) n;
+          lerpinste = insert (BL x) s n;
           cablerpinsle = {!!}}
           where
           BL = Buffer.lerpinste
