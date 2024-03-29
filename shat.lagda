@@ -625,12 +625,13 @@ module fromℕ?Veritas where
       → nothing ≡ mapₘ 𝔽.toℕ (fromℕ? {n} x)
   rel {n} x J = sym $ begin
     mapₘ 𝔽.toℕ (fromℕ? {n} x) ≡⟨ refl ⟩
-    mapₘ 𝔽.toℕ (mapₘ 𝔽.fromℕ< $ decToMaybe $ x ℕ.<? n) ≡⟨ MC ▹ sym ⟩
-    mapₘ (𝔽.toℕ ∘ 𝔽.fromℕ<) (decToMaybe $ x ℕ.<? n) ≡⟨ refl ⟩
+    mapₘ 𝔽.toℕ (mapₘ 𝔽.fromℕ< $ d2m $ x ℕ.<? n) ≡⟨ MC ▹ sym ⟩
+    mapₘ (𝔽.toℕ ∘ 𝔽.fromℕ<) (d2m $ x ℕ.<? n) ≡⟨ refl ⟩
     _ ≡⟨ DN ▹ cong (mapₘ $ 𝔽.toℕ ∘ 𝔽.fromℕ<) ⟩
     nothing ∎
     where
-    MC = DMP.map-compose $ decToMaybe $ x ℕ.<? n
+    d2m = decToMaybe
+    MC = DMP.map-compose $ d2m $ x ℕ.<? n
     DN = dec-nothing {P = ℕ._< n} (x ℕ.<? n) J
     open ≡-Reasoning
 \end{code}
