@@ -625,13 +625,11 @@ module fromℕ?Veritas where
     mapₘ 𝔽.toℕ (fromℕ? {n} x) ≡⟨ refl ⟩
     mapₘ 𝔽.toℕ (mapₘ 𝔽.fromℕ< $ decToMaybe $ x ℕ.<? n) ≡⟨ MC ▹ sym ⟩
     mapₘ (𝔽.toℕ ∘ 𝔽.fromℕ<) (decToMaybe $ x ℕ.<? n) ≡⟨ refl ⟩
-    _ ≡⟨ DN ▹ proj₂ ▹ cong (mapₘ (𝔽.toℕ ∘ 𝔽.fromℕ<) ∘ decToMaybe) ⟩
-    mapₘ (𝔽.toℕ ∘ 𝔽.fromℕ<) (decToMaybe $ no N) ≡⟨ refl ⟩
+    _ ≡⟨ DN ▹ cong (mapₘ $ 𝔽.toℕ ∘ 𝔽.fromℕ<) ⟩
     nothing ∎
     where
     MC = DMP.map-compose $ decToMaybe $ x ℕ.<? n
-    DN = Relation.Nullary.Decidable.dec-no (x ℕ.<? n) J
-    N = ¬ (x ℕ.< n) ∋ proj₁ DN
+    DN = dec-nothing {P = ℕ._< n} (x ℕ.<? n) J
     open ≡-Reasoning
 \end{code}
 
@@ -959,11 +957,10 @@ module Orsygenturfa'iVeritas where
   pork-nada {_} {x} {z} j = begin
     pork (just x ∷ just z ∷ []) ≡⟨ refl ⟩
     mapₘ (_ ,_) (decToMaybe $ x 𝔽.≤? z) ≡⟨ refl ⟩
-    _ ≡⟨ DN ▹ proj₂ ▹ cong (mapₘ (_ ,_) ∘ decToMaybe) ⟩
-    mapₘ (_ ,_) (decToMaybe $ no $ proj₁ DN) ≡⟨ refl ⟩
+    _ ≡⟨ DN ▹ cong (mapₘ $ _ ,_) ⟩
     nothing ∎
     where
-    DN = Relation.Nullary.Decidable.dec-no (x 𝔽.≤? z) j
+    DN = dec-nothing {P = 𝔽._≤ z} (x 𝔽.≤? z) j
     open ≡-Reasoning
 
   pav : ((x : ℕ) → readMaybe (show x) ≡ just x)
