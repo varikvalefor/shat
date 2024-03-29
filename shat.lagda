@@ -554,13 +554,11 @@ dekydu'i : {x n : ℕ}
          → {m : x ℕ.< n}
          → decToMaybe (x ℕ.<? n) ≡ just m
 dekydu'i {x} {n} {m} = begin
-  decToMaybe (x ℕ.<? n) ≡⟨ DY ▹ proj₂ ▹ cong decToMaybe ⟩
-  decToMaybe (yes $ proj₁ DY) ≡⟨ refl ⟩
-  _ ≡⟨ iedek (proj₁ DY) m ▹ cong (decToMaybe ∘ yes) ⟩
-  decToMaybe (yes m) ≡⟨ refl ⟩
+  decToMaybe (x ℕ.<? n) ≡⟨ DJ ▹ proj₂ ⟩
+  just (proj₁ DJ) ≡⟨ iedek (proj₁ DJ) m ▹ cong just ⟩
   just m ∎
   where
-  DY = Relation.Nullary.Decidable.dec-yes (x ℕ.<? n) m
+  DJ = dec-just {P = ℕ._< n} (x ℕ.<? n) m
   iedek : {m n : ℕ} → (x z : m ℕ.< n) → x ≡ z
   iedek (ℕ.s≤s ℕ.z≤n) (ℕ.s≤s ℕ.z≤n) = refl
   iedek {ℕ.suc m} {ℕ.suc n} (ℕ.s≤s x) (ℕ.s≤s z) = I
@@ -576,13 +574,11 @@ zmadekydu'i : {x n : ℕ}
             → {m : x ℕ.≤ n}
             → decToMaybe (x ℕ.≤? n) ≡ just m
 zmadekydu'i {x} {n} {m} = begin
-  decToMaybe (x ℕ.≤? n) ≡⟨ DY ▹ proj₂ ▹ cong decToMaybe ⟩
-  decToMaybe (yes $ proj₁ DY) ≡⟨ refl ⟩
-  _ ≡⟨ iedek (proj₁ DY) m ▹ cong (decToMaybe ∘ yes) ⟩
-  decToMaybe (yes m) ≡⟨ refl ⟩
+  decToMaybe (x ℕ.≤? n) ≡⟨ DJ ▹ proj₂ ⟩
+  just (proj₁ DJ) ≡⟨ iedek (proj₁ DJ) m ▹ cong just ⟩
   just m ∎
   where
-  DY = Relation.Nullary.Decidable.dec-yes (x ℕ.≤? n) m
+  DJ = dec-just {P = ℕ._≤ n} (x ℕ.≤? n) m
   iedek : {m n : ℕ} → (x z : m ℕ.≤ n) → x ≡ z
   iedek ℕ.z≤n ℕ.z≤n = refl
   iedek {ℕ.suc m} {ℕ.suc n} (ℕ.s≤s x) (ℕ.s≤s z) = I
