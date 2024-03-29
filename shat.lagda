@@ -446,7 +446,6 @@ module InsertVeritas where
     n' ↑ x ∎
     where
     n' = maybe 𝔽.toℕ (length x) n
-    n'≡l : n' ≡ length (n' ↑ x)
     n'≡l = finlen x n
     open ≡-Reasoning
 
