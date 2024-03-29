@@ -1495,10 +1495,11 @@ kanji {x} (Muvgau a b c _) = x' , nothing
   x' = record x {
     citri = Buffer.cninycitri x;
     cablerpinsle = mink (Buffer.cablerpinsle x) {!!};
-    lerpinste = 𝔽.toℕ a ↑ BL ++ {!!} ++ {!!}
+    lerpinste = 𝔽.toℕ a ↑ BL ++ x₂ ++ {!!}
     }
     where
     BL = Buffer.lerpinste x
+    x₂ = 𝔽.toℕ a ↓_ $ ℕ.suc (𝔽.toℕ b) ↑ BL
 kanji {x} (Vimcu a b _) = x' , nothing
   where
   x' = record x {
