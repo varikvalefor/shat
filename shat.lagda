@@ -933,7 +933,11 @@ module Orsygenturfa'iVeritas where
           → ¬_ $ Σ (∃ Fin) $ _≡_ j ∘ show ∘ proj₂
           → {n : ℕ}
           → nothing ≡ ps {n = n} (𝕊.toList j)
-  ps-nada = {!!}
+  ps-nada j J {n} = sym $ begin
+    ps {n = n} (𝕊.toList j) ≡⟨ {!!} ⟩
+    nothing ∎
+    where
+    open ≡-Reasoning
 
   pork-du : {n : ℕ}
           → {x z : Fin n}
