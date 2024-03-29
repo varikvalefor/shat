@@ -41,6 +41,7 @@
 \newunicodechar{₃}{\ensuremath{\mathnormal{_3}}}
 \newunicodechar{⊎}{\ensuremath{\mathnormal\uplus}}
 \newunicodechar{≡}{\ensuremath{\mathnormal\equiv}}
+\newunicodechar{≢}{\ensuremath{\mathnormal\nequiv}}
 \newunicodechar{≗}{\ensuremath{\mathnormal\circeq}}
 \newunicodechar{∧}{\ensuremath{\mathnormal\land}}
 \newunicodechar{≤}{\ensuremath{\mathnormal\leq}}
@@ -251,6 +252,7 @@ open import Relation.Binary.PropositionalEquality
     cong;
     refl;
     _≗_;
+    _≢_;
     _≡_;
     sym
   )
@@ -887,7 +889,7 @@ module Orsygenturfa'iVeritas where
       → {e : A}
       → {x : List A}
       → e ∉ x
-      → 𝕃.All (¬_ ∘ (_≡ e)) x
+      → 𝕃.All (_≢ e) x
     F = {!!}
     uit : ∀ {a p} → {A : Set a} → {P : Pred A p}
         → (P? : Decidable P)
