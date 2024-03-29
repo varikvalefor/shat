@@ -1245,9 +1245,7 @@ module Reed where
       c = f $ 𝕃.filter aintDigit? $ 𝕊.toList s
         where
         aintDigit? = T? ∘ Data.Bool.not ∘ isDigit
-        f : _ → _
-        f (x ∷ []) = just x
-        f _ = nothing
+        f = λ {(x ∷ []) → just x; _ → nothing}
 
   reed : (x : Buffer) → String → Maybe $ Cmd x
   reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
