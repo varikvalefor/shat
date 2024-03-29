@@ -134,10 +134,6 @@ open import Function
   renaming (
     _|>_ to _▹_
   )
-open import IO.Finite
-  using (
-    readFile
-  )
 open import Data.Bool
   using (
     false;
@@ -257,6 +253,7 @@ open import Relation.Binary.PropositionalEquality
     sym
   )
 
+import IO.Finite
 import Data.Fin.Show
   as 𝔽
 import Agda.Builtin.IO
@@ -1790,6 +1787,15 @@ module KanjyVeritas where
 \end{code}
 
 \chapter{le skami co'e}
+
+\section{la'oi .\F{readFile}.}
+ni'o la'oi .\F{readFile}.\ smimlu ko'a goi la'o zoi.\ \F{IO.Finite.readFile}\ .zoi.\ldots je ku'i cu zmadu ko'a le ka ce'u mapti la'o zoi.\ \datnyveicme{/dev/stdin}\ .zoi.
+
+\begin{code}
+readFile : String → IO String
+readFile "/dev/stdin" = {!!}
+readFile = IO.Finite.readFile
+\end{code}
 
 \section{la'oi .\F{main}.}
 ni'o zabna ciksi la'oi .\F{main}.\ fo ma bau la .lojban.
