@@ -1824,7 +1824,10 @@ main = run $ IO.lift snurytcati IO.>> getArgs IO.>>= uic ∘ 𝕃.head
   where
   postulate snurytcati : ABIO.IO ABU.⊤
   {-# FOREIGN GHC import System.OpenBSD.Plegg #-}
-  {-# COMPILE GHC snurytcati = plegg [CPath, RPath, WPath, Stdio] #-}
+  {-#
+      COMPILE GHC
+      snurytcati = plegg [CPath, RPath, WPath, Stdio]
+  #-}
   uic : Maybe String → IO ⊤
   uic = ⟲ <=<ᵢₒ maybe mkDef (IO.pure def)
     where
