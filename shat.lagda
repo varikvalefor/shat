@@ -76,6 +76,7 @@
 \newcommand\OpF[1]{\AgdaOperator{\F{#1}}}
 
 \newcommand\Xr[2]{\textrm{#1(#2)}}
+\newcommand\datnyveicme\texttt
 
 \title{le me'oi .Agda.\ velcki be la'o zoi.\ \Xr{shat}{1} .zoi.\ noi ke'a smimlu la'o zoi.\ \Xr{ed}{1} .zoi.}
 \author{la .varik.\ .VALefor.}
