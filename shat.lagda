@@ -1599,7 +1599,7 @@ module KanjyVeritas where
          → {m n : Fin a}
          → n 𝔽.≤ m
          → 𝔽.toℕ n ℕ.≤ ℕ.suc (𝔽.toℕ m)
-    flex = {!!}
+    flex = flip DNP.≤-trans $ DNP.n≤1+n _
     open ≡-Reasoning
     v∸x+z≡v∸[x∸z] : {v x z : ℕ}
                  → z ℕ.≤ x
