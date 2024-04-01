@@ -1671,7 +1671,8 @@ module KanjyVeritas where
   nilzilcmip x a b d = begin
     length L ≡⟨ refl ⟩
     length (lines $ unlines S) ≡⟨ {!!} ⟩
-    length S ≡⟨ {!!} ⟩
+    length S ≡⟨ refl ⟩
+    length (a' ↓_ $ ℕ.suc b' ↑ BL) ≡⟨ {!!} ⟩
     ℕ.suc (b' ℕ.∸ a') ∎
     where
     a' = 𝔽.toℕ a
