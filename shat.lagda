@@ -1678,7 +1678,8 @@ module KanjyVeritas where
     b' = 𝔽.toℕ b
     K = proj₂ $ kanji {x} $ Cusku a b d
     L = lines $ from-inj₁ $ from-just K
-    S = a' ↓_ $ ℕ.suc b' ↑_ $ Buffer.lerpinste x
+    BL = Buffer.lerpinste x
+    S = a' ↓_ $ ℕ.suc b' ↑ BL
     open ≡-Reasoning
 
   pindices : (x : Buffer)
