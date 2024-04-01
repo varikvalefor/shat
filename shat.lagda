@@ -1674,7 +1674,7 @@ module KanjyVeritas where
     length S ≡⟨ refl ⟩
     length (a' ↓_ $ ℕ.suc b' ↑ BL) ≡⟨ {!!} ⟩
     length (ℕ.suc b' ↑ BL) ℕ.∸ a' ≡⟨ {!!} ⟩
-    ℕ.suc b' ℕ.∸ a' ≡⟨ {!!} ⟩
+    ℕ.suc b' ℕ.∸ a' ≡⟨ sukmin d ⟩
     ℕ.suc (b' ℕ.∸ a') ∎
     where
     a' = 𝔽.toℕ a
@@ -1684,6 +1684,10 @@ module KanjyVeritas where
     BL = Buffer.lerpinste x
     S = a' ↓_ $ ℕ.suc b' ↑ BL
     open ≡-Reasoning
+    sukmin : {m n : ℕ}
+           → n ℕ.≤ m
+           → ℕ.suc m ℕ.∸ n ≡ ℕ.suc (m ℕ.∸ n)
+    sukmin = {!!}
 
   pindices : (x : Buffer)
            → (a b : Buffer.F x)
