@@ -1674,6 +1674,7 @@ module KanjyVeritas where
     length S ≡⟨ refl ⟩
     length (a' ↓_ $ ℕ.suc b' ↑ BL) ≡⟨ {!!} ⟩
     length (ℕ.suc b' ↑ BL) ℕ.∸ a' ≡⟨ {!!} ⟩
+    ℕ.suc b' ℕ.∸ a' ≡⟨ {!!} ⟩
     ℕ.suc (b' ℕ.∸ a') ∎
     where
     a' = 𝔽.toℕ a
