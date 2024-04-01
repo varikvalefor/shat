@@ -1669,7 +1669,7 @@ module KanjyVeritas where
                let L = lines $ from-inj₁ $ from-just K in
                length L ≡ ℕ.suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a)
   nilzilcmip x a b d = begin
-    length L ≡⟨ {!!} ⟩
+    length L ≡⟨ refl ⟩
     length (lines $ unlines S) ≡⟨ {!!} ⟩
     ℕ.suc (b' ℕ.∸ a') ∎
     where
