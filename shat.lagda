@@ -1668,7 +1668,15 @@ module KanjyVeritas where
              → let K = proj₂ $ kanji {x} $ Cusku a b d in
                let L = lines $ from-inj₁ $ from-just K in
                length L ≡ ℕ.suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a)
-  nilzilcmip = {!!}
+  nilzilcmip x a b d = begin
+    length L ≡⟨ {!!} ⟩
+    ℕ.suc (b' ℕ.∸ a') ∎
+    where
+    a' = 𝔽.toℕ a
+    b' = 𝔽.toℕ b
+    K = proj₂ $ kanji {x} $ Cusku a b d
+    L = lines $ from-inj₁ $ from-just K
+    open ≡-Reasoning
 
   pindices : (x : Buffer)
            → (a b : Buffer.F x)
