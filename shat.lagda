@@ -1670,12 +1670,14 @@ module KanjyVeritas where
                length L ≡ ℕ.suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a)
   nilzilcmip x a b d = begin
     length L ≡⟨ {!!} ⟩
+    length (lines $ unlines S) ≡⟨ {!!} ⟩
     ℕ.suc (b' ℕ.∸ a') ∎
     where
     a' = 𝔽.toℕ a
     b' = 𝔽.toℕ b
     K = proj₂ $ kanji {x} $ Cusku a b d
     L = lines $ from-inj₁ $ from-just K
+    S = a' ↓_ $ ℕ.suc b' ↑_ $ Buffer.lerpinste x
     open ≡-Reasoning
 
   pindices : (x : Buffer)
