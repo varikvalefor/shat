@@ -1676,7 +1676,7 @@ module KanjyVeritas where
                length L ≡ ℕ.suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a)
   nilzilcmip x a b d = begin
     length L ≡⟨ refl ⟩
-    length (lines $ unlines S) ≡⟨ {!!} ⟩
+    length (lines $ unlines S) ≡⟨ lines∘unlines S ▹ cong length ⟩
     length S ≡⟨ refl ⟩
     length (a' ↓_ $ ℕ.suc b' ↑ BL) ≡⟨ {!!} ⟩
     length (ℕ.suc b' ↑ BL) ℕ.∸ a' ≡⟨ {!!} ⟩
@@ -1689,6 +1689,8 @@ module KanjyVeritas where
     L = lines $ from-inj₁ $ from-just K
     BL = Buffer.lerpinste x
     S = a' ↓_ $ ℕ.suc b' ↑ BL
+    lines∘unlines : (x : List String) → lines (unlines S) ≡ S
+    lines∘unlines = {!!}
     open ≡-Reasoning
     sukmin : {m n : ℕ}
            → n ℕ.≤ m
