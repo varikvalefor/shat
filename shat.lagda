@@ -1679,7 +1679,7 @@ module KanjyVeritas where
     length (lines $ unlines S) ≡⟨ lines∘unlines S ▹ cong length ⟩
     length S ≡⟨ refl ⟩
     length (a' ↓_ $ ℕ.suc b' ↑ BL) ≡⟨ DLP.length-drop a' _ ⟩
-    length (ℕ.suc b' ↑ BL) ℕ.∸ a' ≡⟨ {!!} ⟩
+    length (ℕ.suc b' ↑ BL) ℕ.∸ a' ≡⟨ {!!} ▹ cong (ℕ._∸ a') ⟩
     ℕ.suc b' ℕ.∸ a' ≡⟨ sukmin d ⟩
     ℕ.suc (b' ℕ.∸ a') ∎
     where
