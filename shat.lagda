@@ -1581,7 +1581,7 @@ module KanjyVeritas where
     length (a' ↑ Lz) ℕ.+ length (b'+1 ↓ Lz) ≡⟨ refl ⟩
     _ ≡⟨ DLP.length-drop b'+1 Lz ▹ cong (ℕ._+_ _) ⟩
     length (a' ↑ Lz) ℕ.+ (length Lz ℕ.∸ b'+1) ≡⟨ refl ⟩
-    length (a' ↑ Lz) ℕ.+ (lb x ℕ.∸ b'+1) ≡⟨ {!!} ⟩
+    length (a' ↑ Lz) ℕ.+ (lb x ℕ.∸ b'+1) ≡⟨ finlenteik Lz a ▹ cong (ℕ._+ (lb x ℕ.∸ b'+1)) ⟩
     a' ℕ.+ (lb x ℕ.∸ b'+1) ≡⟨ DNP.+-comm a' _ ⟩
     lb x ℕ.∸ b'+1 ℕ.+ a' ≡⟨ v∸x+z≡v∸[x∸z] $ flex d ⟩
     lb x ℕ.∸ (b'+1 ℕ.∸ a') ≡⟨ refl ⟩
@@ -1601,6 +1601,12 @@ module KanjyVeritas where
          → 𝔽.toℕ n ℕ.≤ ℕ.suc (𝔽.toℕ m)
     flex = flip DNP.≤-trans $ DNP.n≤1+n _
     open ≡-Reasoning
+    finlenteik : ∀ {a} → {A : Set a}
+               → (x : List A)
+               → (n : Fin $ length x)
+               → length (𝔽.toℕ n ↑ x) ≡ 𝔽.toℕ n
+    finlenteik (_ ∷ _) 𝔽.zero = refl
+    finlenteik (x ∷ xs) (𝔽.suc n) = finlenteik xs n ▹ cong ℕ.suc
     v∸x+z≡v∸[x∸z] : {v x z : ℕ}
                  → z ℕ.≤ x
                  → v ℕ.∸ x ℕ.+ z ≡ v ℕ.∸ (x ℕ.∸ z)
