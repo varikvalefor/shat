@@ -889,7 +889,8 @@ module Orsygenturfa'iVeritas where
 
   spit-pav : (x : String) → ',' ∉ 𝕊.toList x → spit x ≡ 𝕊.toList x ∷ []
   spit-pav x nin = begin
-    spit x ≡⟨ {!!} ⟩
+    spit x ≡⟨ refl ⟩
+    𝕃.wordsBy (_≟ ',') (𝕊.toList x) ≡⟨ {!!} ⟩
     𝕊.toList x ∷ [] ∎
     where
     open ≡-Reasoning
