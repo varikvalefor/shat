@@ -818,18 +818,18 @@ module RomoivimcuVeritas where
       → let -1↑x = 𝕊.fromList $ (length x ℕ.∸ 1) ↓ 𝕊.toList x in
         x ≡ romoivimcu x ++ -1↑x
   pav x = sym $ begin
-    romoivimcu x ++ 𝕊.fromList r ≡⟨ refl ⟩
-    𝕊.fromList (_↑ x' $ length x' ℕ.∸ 1) ++ 𝕊.fromList r ≡⟨ refl ⟩
-    𝕊.fromList -1↓x' ++ 𝕊.fromList r ≡⟨ frokonk -1↓x' r ⟩
-    𝕊.fromList (-1↓x' ++ r) ≡⟨ refl ⟩
+    romoivimcu x ++ 𝕊.fromList -1↑x ≡⟨ refl ⟩
+    𝕊.fromList (_↑ x' $ length x' ℕ.∸ 1) ++ 𝕊.fromList -1↑x ≡⟨ refl ⟩
+    𝕊.fromList -1↓x' ++ 𝕊.fromList -1↑x ≡⟨ frokonk -1↓x' -1↑x ⟩
+    𝕊.fromList (-1↓x' ++ -1↑x) ≡⟨ refl ⟩
     𝕊.fromList x'' ≡⟨ x''≡x' ▹ cong 𝕊.fromList ⟩
     𝕊.fromList x' ≡⟨ [cev∘vec]² x ▹ sym ⟩
     x ∎
     where
     x' = 𝕊.toList x
-    r = _↓ x' $ length x' ℕ.∸ 1
+    -1↑x = _↓ x' $ length x' ℕ.∸ 1
     -1↓x' = _↑ x' $ length x' ℕ.∸ 1
-    x'' = -1↓x' ++ r
+    x'' = -1↓x' ++ -1↑x
     x''≡x' : x'' ≡ x'
     x''≡x' = DLP.take++drop (length x' ℕ.∸ 1) x'
     frokonk : (a b : List Char)
