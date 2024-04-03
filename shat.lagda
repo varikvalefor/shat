@@ -845,6 +845,9 @@ module RomoivimcuVeritas where
       → (c : Char)
       → romoivimcu (s ++ 𝕊.fromChar c) ≡ 𝕊.fromChar c
   rel = {!!}
+
+  cib : romoivimcu "" ≡ ""
+  cib = refl
 \end{code}
 
 \section{la'oi .\F{orsygenturfa'i}.}
