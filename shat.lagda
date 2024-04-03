@@ -888,7 +888,11 @@ module Orsygenturfa'iVeritas where
   open Orsygenturfa'i
 
   spit-pav : (x : String) → ',' ∉ 𝕊.toList x → spit x ≡ 𝕊.toList x ∷ []
-  spit-pav = {!!}
+  spit-pav x nin = begin
+    spit x ≡⟨ {!!} ⟩
+    𝕊.toList x ∷ [] ∎
+    where
+    open ≡-Reasoning
 
   spit-du : (x z : String)
           → ',' ∉ 𝕊.toList x
