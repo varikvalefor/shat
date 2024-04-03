@@ -840,6 +840,11 @@ module RomoivimcuVeritas where
     [cev∘vec]² : (x : String) → x ≡ 𝕊.fromList (𝕊.toList x)
     [cev∘vec]² = {!!}
     open ≡-Reasoning
+
+  rel : (s : String)
+      → (c : Char)
+      → romoivimcu (s ++ 𝕊.fromChar c) ≡ 𝕊.fromChar c
+  rel = {!!}
 \end{code}
 
 \section{la'oi .\F{orsygenturfa'i}.}
