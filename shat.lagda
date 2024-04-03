@@ -805,7 +805,7 @@ ni'o la .varik.\ na birti lo du'u ciksi la'oi .\F{romoivimcu}.\ fo ma kau poi ke
 
 \begin{code}
 romoivimcu : String → String
-romoivimcu = S $ λ n → _↑ n $ 𝕃.length n ℕ.∸ 1
+romoivimcu = S $ λ L → _↑ L $ 𝕃.length L ℕ.∸ 1
   where
   S = λ f → 𝕊.fromList ∘ f ∘ 𝕊.toList
 \end{code}
