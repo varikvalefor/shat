@@ -887,8 +887,8 @@ ni'o pilno ko'a goi le me'oi .\AgdaKeyword{module}.\ co'e ki'u le su'u tu'a ko'a
 module Orsygenturfa'iVeritas where
   open Orsygenturfa'i
 
-  spit-non : (x : String) → ',' ∉ 𝕊.toList x → spit x ≡ 𝕊.toList x ∷ []
-  spit-non = {!!}
+  spit-pav : (x : String) → ',' ∉ 𝕊.toList x → spit x ≡ 𝕊.toList x ∷ []
+  spit-pav = {!!}
 
   spit-du : (x z : String)
           → ',' ∉ 𝕊.toList x
@@ -903,8 +903,8 @@ module Orsygenturfa'iVeritas where
     _ ≡⟨ tildist "," z ▹ cong (w ∘ _++_ (tL x)) ⟩
     w (tL x ++ tL "," ++ tL z) ≡⟨ refl ⟩
     w (tL x ++ ',' ∷ tL z) ≡⟨ uit _ (tL x) _ (F inx) (F inz) _ refl ⟩
-    w (tL x) ++ w (tL z) ≡⟨ spit-non x inx ▹ cong (_++ _) ⟩
-    (tL x ∷ []) ++ w (tL z) ≡⟨ spit-non z inz ▹ cong (_++_ _) ⟩
+    w (tL x) ++ w (tL z) ≡⟨ spit-pav x inx ▹ cong (_++ _) ⟩
+    (tL x ∷ []) ++ w (tL z) ≡⟨ spit-pav z inz ▹ cong (_++_ _) ⟩
     (tL x ∷ []) ++ (tL z ∷ []) ≡⟨ refl ⟩
     tL x ∷ tL z ∷ [] ∎
     where
