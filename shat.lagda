@@ -815,7 +815,7 @@ romoivimcu = S $ λ L → _↑ L $ 𝕃.length L ℕ.∸ 1
 \begin{code}
 module RomoivimcuVeritas where
   pav : (x : String)
-      → let -1↑x = 𝕊.fromList $ (length x ℕ.∸ 1) ↓_ $ 𝕊.toList x in
+      → let -1↑x = 𝕊.fromList $ (length x ℕ.∸ 1) ↓ 𝕊.toList x in
         x ≡ romoivimcu x ++ -1↑x
   pav x = sym $ begin
     romoivimcu x ++ 𝕊.fromList r ≡⟨ refl ⟩
