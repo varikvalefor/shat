@@ -1838,8 +1838,9 @@ ni'o la'oi .\F{readFile}.\ smimlu ko'a goi la'o zoi.\ \F{IO.Finite.readFile}\ .z
 
 \begin{code}
 readFile : String → IO $ List String
-readFile "/dev/stdin" = IO.lift stdin
+readFile x = if (x ≡ᵇ "/dev/stdin") (IO.lift stdin) generic
   where
+  generic = 𝕊.lines IO.<$> IO.Finite.readFile x
   postulate stdin : ABIO.IO $ List String
   {-# FOREIGN GHC import Data.Bool #-}
   {-# FOREIGN GHC import Data.Text #-}
@@ -1855,7 +1856,6 @@ readFile "/dev/stdin" = IO.lift stdin
           where {
             f "." = return x;
             f n = stdin' $ x ++ [n]}}} #-}
-readFile x = 𝕊.lines IO.<$> IO.Finite.readFile x
 \end{code}
 
 \section{la'oi .\F{main}.}
