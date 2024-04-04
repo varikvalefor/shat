@@ -848,7 +848,11 @@ module RomoivimcuVeritas where
   rel : (s : String)
       → (c : Char)
       → romoivimcu (s ++ 𝕊.fromChar c) ≡ 𝕊.fromChar c
-  rel = {!!}
+  rel s c = begin
+    romoivimcu (s ++ 𝕊.fromChar c) ≡⟨ {!!} ⟩
+    𝕊.fromChar c ∎
+    where
+    open ≡-Reasoning
 
   cib : romoivimcu "" ≡ ""
   cib = refl
