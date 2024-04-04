@@ -1784,9 +1784,9 @@ module KanjyVeritas where
             (_≡_
               (n ↑_ $ 𝔽.toℕ a ↓_ $ Buffer.lerpinste x)
               (n ↑_ $ 𝔽.toℕ c ↓_ $ Buffer.lerpinste x'))
-  muvisez x a b c d = begin
-    n ↑ (a' ↓ BLT x) ≡⟨ {!!} ⟩
-    n ↑ (c' ↓ BLT x') ∎
+  muvisez x a b c d = sym $ begin
+    n ↑ (c' ↓ BLT x') ≡⟨ {!!} ⟩
+    n ↑ (a' ↓ BLT x) ∎
     where
     a' = 𝔽.toℕ a
     b' = 𝔽.toℕ b
