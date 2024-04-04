@@ -890,9 +890,16 @@ module Orsygenturfa'iVeritas where
   spit-pav : (x : String) → ',' ∉ 𝕊.toList x → spit x ≡ 𝕊.toList x ∷ []
   spit-pav x nin = begin
     spit x ≡⟨ refl ⟩
-    𝕃.wordsBy (_≟ ',') (𝕊.toList x) ≡⟨ {!!} ⟩
+    𝕃.wordsBy (_≟ ',') (𝕊.toList x) ≡⟨ ninwords (_≟ ',') _ {!!} ⟩
     𝕊.toList x ∷ [] ∎
     where
+    ninwords : ∀ {a p} → {A : Set a}
+             → {P : Pred A p}
+             → (P? : Decidable P)
+             → (x : List A)
+             → 𝕃.All (¬_ ∘ P) x
+             → 𝕃.wordsBy P? x ≡ x ∷ []
+    ninwords = {!!}
     open ≡-Reasoning
 
   spit-du : (x z : String)
