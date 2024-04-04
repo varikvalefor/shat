@@ -849,9 +849,12 @@ module RomoivimcuVeritas where
       → (c : Char)
       → romoivimcu (s ++ 𝕊.fromChar c) ≡ s
   rel s c = begin
-    romoivimcu (s ++ 𝕊.fromChar c) ≡⟨ {!!} ⟩
+    romoivimcu (s ++ 𝕊.fromChar c) ≡⟨ refl ⟩
+    S -1↓_ (s ++ 𝕊.fromChar c) ≡⟨ {!!} ⟩
     s ∎
     where
+    -1↓_ = λ L → _↑ L $ 𝕃.length L ℕ.∸ 1
+    S = λ f → 𝕊.fromList ∘ f ∘ 𝕊.toList
     open ≡-Reasoning
 
   cib : romoivimcu "" ≡ ""
