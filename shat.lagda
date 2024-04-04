@@ -1600,7 +1600,7 @@ module KanjyVeritas where
            (_≡_
              (kanji {x} $ Jmini a)
              (x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" $ F a))
-  jminic = {!!}
+  jminic _ _ = refl
 
   nilzilcmiv : (x : Buffer)
              → (a b : Buffer.F x)
