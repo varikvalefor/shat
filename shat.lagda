@@ -851,6 +851,7 @@ module RomoivimcuVeritas where
   rel s c = begin
     romoivimcu (s ++ 𝕊.fromChar c) ≡⟨ refl ⟩
     S -1↓_ (s ++ 𝕊.fromChar c) ≡⟨ {!!} ⟩
+    𝕊.fromList (-1↓_ $ 𝕊.toList s ++ c ∷ []) ≡⟨ {!!} ⟩
     s ∎
     where
     -1↓_ = λ L → _↑ L $ 𝕃.length L ℕ.∸ 1
