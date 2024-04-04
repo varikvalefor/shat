@@ -847,10 +847,10 @@ module RomoivimcuVeritas where
 
   rel : (s : String)
       → (c : Char)
-      → romoivimcu (s ++ 𝕊.fromChar c) ≡ 𝕊.fromChar c
+      → romoivimcu (s ++ 𝕊.fromChar c) ≡ s
   rel s c = begin
     romoivimcu (s ++ 𝕊.fromChar c) ≡⟨ {!!} ⟩
-    𝕊.fromChar c ∎
+    s ∎
     where
     open ≡-Reasoning
 
