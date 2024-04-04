@@ -1594,6 +1594,14 @@ module KanjyVeritas where
              (x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" $ just a))
   jminac _ _ = refl
 
+  jminic : (x : Buffer)
+         → (a : Buffer.F x)
+         → let F = λ x → if (𝔽.toℕ x ≡ᵇ 0) nothing $ just $ 𝔽.pred x in
+           (_≡_
+             (kanji {x} $ Jmini a)
+             (x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" $ F a))
+  jminic = {!!}
+
   nilzilcmiv : (x : Buffer)
              → (a b : Buffer.F x)
              → (d : a 𝔽.≤ b)
