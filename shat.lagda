@@ -348,7 +348,11 @@ data Cmd (x : Buffer) : Set where
 ni'o ro da poi ke'a ctaipe la'o zoi.\ \D{Cmdᵢₒ} \B x\ .zoi.\ zo'u\ldots
 \begin{itemize}
 	\item ga jonai ga je da du la'o zoi.\ \IC{Rejgauᵢₒ} \B a \B b\ .zoi.\ gi tu'a da rinka lo nu rejgau benji la'oi .\B a.\ lo datnyvei poi ke'a selcme la'oi .\B b.\ gi
-	\item ga jonai ga je da du la'o zoi.\ \IC{Tciduᵢₒ} \B a \B b\ .zoi.\ gi tu'a da rinka tu'a lo ctaipe be la'oi .\AgdaRecord{Buffer}.\ be'o poi ro de poi ke'a xi pa ctaipe lo me'oi .\F{BufF}.\ be ke'a xi re zo'u ga jonai lo meirmoi be de bei fo ko'e goi lo mu'oi zoi.\ \AgdaField{Buffer.lerpinste}\ .zoi.\ be ke'a cu meirmoi de fo ko'a goi la'o zoi.\ \AgdaField{Buffer.lerpinste} \B x\ .zoi.\ gi ga jonai ga je de zmadu la'oi .\B b.\ je cu dubjavme'a ko'i goi lo nilzilcmi be ko'o goi lo'i ro lerpinsle be lo datnyvei poi ke'a xi re selcme la'oi .\B b.\ gi lo meirmoi be da bei fo ko'e cu meirmoi be lo vujnu be da bei ko'i fo ko'o gi ga je da zmadu la'oi .\B b.\ jenai cu dubjavme'a ko'i gi lo meirmoi be da bei fo ko'e cu meirmoi lo vujnu be da bei la'oi .\B b.\ fo ko'a gi
+	\item ga jonai ga je da du la'o zoi.\ \IC{Tciduᵢₒ} \B a \B b\ .zoi.\ gi\ldots
+	\begin{itemize}
+		\item ga jonai ga je la'oi .\B{b}.\ du la'oi .\IC{nothing}.\ gi tu'a da rinka tu'a lo ctaipe be la'oi .\AgdaRecord{Buffer}.\ be'o poi lo mu'oi zoi.\ \AgdaField{Buffer.lerpinste}\ .zoi.\ be ke'a cu konkatena fi lo mu'oi zoi.\ \AgdaField{Buffer.lerpinste}\ .zoi.\ be la'oi .\B{x}.\ fe ko'a goi lo'i ro lerpinsle pe lo datnyvei poi la'oi .\B{a}.\ cmene ke'a ku'o je poi lo mu'oi zoi.\ \AgdaField{Buffer.cablerpinsle}\ .zoi.\ be ke'a cu nilzilcmi ko'a gi
+                \item ga je la'oi .\B{b}.\ du la'o zoi.\ \IC{just}\ \B n\ .zoi.\ gi tu'a da rinka tu'a lo ctaipe be la'oi .\AgdaRecord{Buffer}.\ be'o poi lo mu'oi zoi.\ \AgdaField{Buffer.lerpinste}\ .zoi.\ be ke'a cu konkatena la'o zoi.\ \IC{ℕ.suc} \Sym(\F{𝔽.toℕ} \B n \OpF\Sym) \OpF ↑ \AgdaField{Buffer.lerpinste} \B x\ .zoi.\ ko'a la'o zoi.\ \IC{ℕ.suc} \Sym(\F{𝔽.toℕ} \B n\Sym) \OpF ↓ \AgdaField{Buffer.lerpinste} \B x\ .zoi.\ je poi lo mu'oi zoi.\ \AgdaField{Buffer.cablerpinsle}\ .zoi.\ be ke'a cu\ldots mo gi
+        \end{itemize}
 	\item ga jonai ga je da du la'oi .\IC{Sistiᵢₒ}.\ gi tu'a da rinka lo nu co'e ja kajde ja cu sisti tu'a la'o zoi.\ \Xr{shat}{1}\ .zoi.\ gi
 	\item ga jonai ga je da du la'oi .\IC{Sisti!ᵢₒ}.\ gi tu'a da rinka lo nu sisti tu'a la'o zoi.\ \Xr{shat}{1}\ .zoi.\ gi
 	\item ga je da du la'o zoi.\ \IC{Skamiᵢₒ} \B x\ .zoi.\ gi tu'a da rinka lo nu .uniks.\ co'e la'oi .\B x.
@@ -357,7 +361,7 @@ ni'o ro da poi ke'a ctaipe la'o zoi.\ \D{Cmdᵢₒ} \B x\ .zoi.\ zo'u\ldots
 \begin{code}
 data Cmdᵢₒ (x : Buffer) : Set where
   Rejgauᵢₒ : String → String → Cmdᵢₒ x
-  Tciduᵢₒ : String → Buffer.F x → Cmdᵢₒ x
+  Tciduᵢₒ : String → Maybe $ Buffer.F x → Cmdᵢₒ x
   Skamiᵢₒ : String → Cmdᵢₒ x
   Sistiᵢₒ : Cmdᵢₒ x
   Sisti!ᵢₒ : Cmdᵢₒ x
@@ -1516,7 +1520,7 @@ kanji : {x : Buffer}
       → Σ Buffer $ Maybe ∘ _⊎_ String ∘ Cmdᵢₒ
 kanji {x} Sisti = x ,_ $ just $ inj₂ Sistiᵢₒ
 kanji {x} Sisti! = x ,_ $ just $ inj₂ Sisti!ᵢₒ
-kanji {x} (Jmina a) = x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" a
+kanji {x} (Jmina a) = x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" $ just a
 kanji {x} (Cusku a b _) = x ,_ $ just $ inj₁ $ unlines $ i BL
   where
   BL = Buffer.lerpinste x
@@ -1547,7 +1551,10 @@ kanji {x} (Vimcu a b _) = x' , nothing
     lerpinste = 𝔽.toℕ a ↑ Lz ++ ℕ.suc (𝔽.toℕ b) ↓ Lz}
     where
     Lz = Buffer.lerpinste x
-kanji {x} (Jmini a) = {!!}
+kanji {x} (Jmini n) = x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" n'
+  where
+  n' : Maybe $ Buffer.F x
+  n' = if (𝔽.toℕ n ≡ᵇ 0) nothing $ just $ 𝔽.pred n
 kanji {x} (Rejgau d) = x ,_ $ just $ inj₂ $ Rejgauᵢₒ xl d
   where
   xl = unlines $ Buffer.lerpinste x
@@ -1584,7 +1591,7 @@ module KanjyVeritas where
          → (a : Buffer.F x)
          → (_≡_
              (kanji {x} $ Jmina a)
-             (x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" a))
+             (x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" $ just a))
   jminac _ _ = refl
 
   nilzilcmiv : (x : Buffer)
@@ -1924,7 +1931,7 @@ main = run $ IO.lift snurytcati IO.>> getArgs IO.>>= uic ∘ 𝕃.head
       ... | x' , just (inj₂ z) with z
       ... | Sisti!ᵢₒ = IO.pure _
       ... | Skamiᵢₒ a = {!!}
-      ... | Tciduᵢₒ a b = readFile a IO.>>= (⟲ ∘ J x' {!!})
+      ... | Tciduᵢₒ a b = readFile a IO.>>= (⟲ ∘ J x' b)
         where
         J : (x : Buffer)
           → (n : Maybe $ Buffer.F x)
