@@ -1777,6 +1777,20 @@ module KanjyVeritas where
                (λ ℓ → L ! n ≡ Lx ! 𝔽.fromℕ< ℓ))
   pindices x a b d n = {!!} , {!!}
 
+  pindiced : (x : Buffer)
+           → (a b : Buffer.F x)
+           → (d : a 𝔽.≤ b)
+           → let K = proj₂ $ kanji {x} $ Basti a b d in
+             (Σ
+               (Σ Buffer Buffer.F)
+               (λ (x' , a') →
+                 (_×_
+                   (𝔽.toℕ a' ≡ {!!})
+                   (_≡_
+                     (kanji {x} $ Basti a b d)
+                     (kanji {x'} $ Jmini a')))))
+  pindiced = {!!}
+
   muvduzilcmi : (x : Buffer)
               → (a b c : Buffer.F x)
               → (d : a 𝔽.≤ b)
