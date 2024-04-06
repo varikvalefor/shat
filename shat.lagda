@@ -853,6 +853,7 @@ module RomoivimcuVeritas where
     S -1↓_ (s ++ fC c) ≡⟨ refl ⟩
     fL (-1↓_ $ tL $ s ++ fC c) ≡⟨ tLkonk s c ▹ cong (fL ∘ -1↓_) ⟩
     fL (-1↓_ $ tL s ++ c ∷ []) ≡⟨ {!!} ⟩
+    fL (tL s) ≡⟨ {!!} ⟩
     s ∎
     where
     tL = 𝕊.toList
