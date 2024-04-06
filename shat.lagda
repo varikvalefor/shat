@@ -879,7 +879,8 @@ module RomoivimcuVeritas where
                  → (xs : List A)
                  → (x : A)
                  → -1↓_ (xs ++ x ∷ []) ≡ xs
-    -1↓_∘konk≡id = {!!}
+    -1↓_∘konk≡id [] _ = refl
+    -1↓_∘konk≡id (x ∷ xs) e = {!!}
 
   cib : romoivimcu "" ≡ ""
   cib = refl
