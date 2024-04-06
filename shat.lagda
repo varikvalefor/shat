@@ -851,7 +851,7 @@ module RomoivimcuVeritas where
   rel s c = begin
     romoivimcu (s ++ fC c) ≡⟨ refl ⟩
     S -1↓_ (s ++ fC c) ≡⟨ refl ⟩
-    fL (-1↓_ $ tL $ s ++ fC c) ≡⟨ {!!} ⟩
+    fL (-1↓_ $ tL $ s ++ fC c) ≡⟨ tLkonk s c ▹ cong (fL ∘ -1↓_) ⟩
     fL (-1↓_ $ tL s ++ c ∷ []) ≡⟨ {!!} ⟩
     s ∎
     where
@@ -861,6 +861,10 @@ module RomoivimcuVeritas where
     -1↓_ = λ L → _↑ L $ 𝕃.length L ℕ.∸ 1
     S = λ f → 𝕊.fromList ∘ f ∘ 𝕊.toList
     open ≡-Reasoning
+    tLkonk : (s : String)
+           → (c : Char)
+           → tL (s ++ fC c) ≡ tL s ++ c ∷ []
+    tLkonk = {!!}
 
   cib : romoivimcu "" ≡ ""
   cib = refl
