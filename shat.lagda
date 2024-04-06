@@ -864,7 +864,10 @@ module RomoivimcuVeritas where
     tLkonk : (s : String)
            → (c : Char)
            → tL (s ++ fC c) ≡ tL s ++ c ∷ []
-    tLkonk = {!!}
+    tLkonk s c = begin
+      tL (s ++ fC c) ≡⟨ {!!} ⟩
+      tL s ++ tL (fC c) ≡⟨ {!!} ⟩
+      tL s ++ c ∷ [] ∎
 
   cib : romoivimcu "" ≡ ""
   cib = refl
