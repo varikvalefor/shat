@@ -852,13 +852,14 @@ module RomoivimcuVeritas where
     romoivimcu (s ++ fC c) ≡⟨ refl ⟩
     S -1↓_ (s ++ fC c) ≡⟨ refl ⟩
     fL (-1↓_ $ tL $ s ++ fC c) ≡⟨ tLkonk s c ▹ cong (fL ∘ -1↓_) ⟩
-    fL (-1↓_ $ tL s ++ c ∷ []) ≡⟨ {!!} ⟩
+    fL (-1↓_ $ tL s ++ c ∷ []) ≡⟨ -1↓_∘konk≡id (tL s) c ▹ cong fL ⟩
     fL (tL s) ≡⟨ {!!} ⟩
     s ∎
     where
     tL = 𝕊.toList
     fC = 𝕊.fromChar
     fL = 𝕊.fromList
+    -1↓_ : ∀ {a} → {A : Set a} → List A → List A
     -1↓_ = λ L → _↑ L $ 𝕃.length L ℕ.∸ 1
     S = λ f → 𝕊.fromList ∘ f ∘ 𝕊.toList
     open ≡-Reasoning
@@ -874,6 +875,11 @@ module RomoivimcuVeritas where
       tL-dist = {!!}
       tL∘fC≡[_] : (c : Char) → tL (fC c) ≡ c ∷ []
       tL∘fC≡[_] = {!!}
+    -1↓_∘konk≡id : ∀ {a} → {A : Set a}
+                 → (xs : List A)
+                 → (x : A)
+                 → -1↓_ (xs ++ x ∷ []) ≡ xs
+    -1↓_∘konk≡id = {!!}
 
   cib : romoivimcu "" ≡ ""
   cib = refl
