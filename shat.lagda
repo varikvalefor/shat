@@ -845,10 +845,10 @@ module RomoivimcuVeritas where
     [cev∘vec]² = {!!}
     open ≡-Reasoning
 
-  rel : (s : String)
-      → (c : Char)
-      → romoivimcu (s ++ 𝕊.fromChar c) ≡ s
-  rel s c = begin
+  vimcykonkydus : (s : String)
+              → (c : Char)
+              → romoivimcu (s ++ 𝕊.fromChar c) ≡ s
+  vimcykonkydus s c = begin
     romoivimcu (s ++ fC c) ≡⟨ refl ⟩
     S -1↓_ (s ++ fC c) ≡⟨ refl ⟩
     fL (-1↓_ $ tL $ s ++ fC c) ≡⟨ tLkonk s c ▹ cong (fL ∘ -1↓_) ⟩
