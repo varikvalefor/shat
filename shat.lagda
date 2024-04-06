@@ -865,9 +865,12 @@ module RomoivimcuVeritas where
            → (c : Char)
            → tL (s ++ fC c) ≡ tL s ++ c ∷ []
     tLkonk s c = begin
-      tL (s ++ fC c) ≡⟨ {!!} ⟩
+      tL (s ++ fC c) ≡⟨ tL-dist s $ fC c ⟩
       tL s ++ tL (fC c) ≡⟨ {!!} ⟩
-      tL s ++ c ∷ [] ∎
+      tL s ++ (c ∷ []) ∎
+      where
+      tL-dist : (x z : String) → tL (x ++ z) ≡ tL x ++ tL z
+      tL-dist = {!!}
 
   cib : romoivimcu "" ≡ ""
   cib = refl
