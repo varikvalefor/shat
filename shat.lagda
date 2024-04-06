@@ -1592,12 +1592,10 @@ kanji {x} (Jmini n) = x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" n'
 kanji {x} (Rejgau d) = x ,_ $ just $ inj₂ $ Rejgauᵢₒ xl d
   where
   xl = unlines $ Buffer.lerpinste x
-kanji {x} (Basti a b d) = kanji {x'} $ Jmina a∸1'
+kanji {x} (Basti a b d) = kanji {x'} $ Jmini a'
   where
-  a∸1' = {!!}
+  a' = {!!}
   x' = proj₁ $ kanji {x} $ Vimcu a b d
-  a∸1'≡z : 𝔽.toℕ a∸1' ≡ 𝔽.toℕ a ℕ.∸ 1
-  a∸1'≡z = {!!}
 kanji {x} (Xruti n) = {!!}
 \end{code}
 
