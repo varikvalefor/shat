@@ -884,8 +884,8 @@ module RomoivimcuVeritas where
     -1↓_∘konk≡id [] _ = refl
     -1↓_∘konk≡id (x ∷ xs) e = {!!}
 
-  cib : romoivimcu "" ≡ ""
-  cib = refl
+  kunti : romoivimcu "" ≡ ""
+  kunti = refl
 \end{code}
 
 \section{la'oi .\F{orsygenturfa'i}.}
