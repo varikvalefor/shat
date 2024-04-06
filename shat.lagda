@@ -818,10 +818,10 @@ romoivimcu = S $ λ L → _↑ L $ 𝕃.length L ℕ.∸ 1
 
 \begin{code}
 module RomoivimcuVeritas where
-  pav : (x : String)
-      → let -1↑x = 𝕊.fromList $ (length x ℕ.∸ 1) ↓ 𝕊.toList x in
-        x ≡ romoivimcu x ++ -1↑x
-  pav x = sym $ begin
+  konkydus : (x : String)
+           → let -1↑x = 𝕊.fromList $ (length x ℕ.∸ 1) ↓ 𝕊.toList x in
+             x ≡ romoivimcu x ++ -1↑x
+  konkydus x = sym $ begin
     romoivimcu x ++ 𝕊.fromList -1↑x ≡⟨ refl ⟩
     𝕊.fromList (_↑ x' $ length x' ℕ.∸ 1) ++ 𝕊.fromList -1↑x ≡⟨ refl ⟩
     𝕊.fromList -1↓x' ++ 𝕊.fromList -1↑x ≡⟨ frokonk -1↓x' -1↑x ⟩
