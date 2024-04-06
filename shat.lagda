@@ -853,7 +853,7 @@ module RomoivimcuVeritas where
     S -1↓_ (s ++ fC c) ≡⟨ refl ⟩
     fL (-1↓_ $ tL $ s ++ fC c) ≡⟨ tLkonk s c ▹ cong (fL ∘ -1↓_) ⟩
     fL (-1↓_ $ tL s ++ c ∷ []) ≡⟨ -1↓_∘konk≡id (tL s) c ▹ cong fL ⟩
-    fL (tL s) ≡⟨ {!!} ⟩
+    fL (tL s) ≡⟨ fL∘tL≡id ▹ cong (_$ s) ⟩
     s ∎
     where
     tL = 𝕊.toList
@@ -862,6 +862,8 @@ module RomoivimcuVeritas where
     -1↓_ : ∀ {a} → {A : Set a} → List A → List A
     -1↓_ = λ L → _↑ L $ 𝕃.length L ℕ.∸ 1
     S = λ f → 𝕊.fromList ∘ f ∘ 𝕊.toList
+    fL∘tL≡id : fL ∘ tL ≡ id
+    fL∘tL≡id = {!!}
     open ≡-Reasoning
     tLkonk : (s : String)
            → (c : Char)
