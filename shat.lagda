@@ -1266,6 +1266,7 @@ module Orsygenturfa'i₃Veritas where
     ax≡justabd = begin
       ax ≡⟨ refl ⟩
       (R >>= λ (a' , b') → mapₘ (_ ,_) $ a' ≤?ₘ b') ≡⟨ {!!} ⟩
+      mapₘ (_ ,_) (just d) ≡⟨ refl ⟩
       just ((a , b) , d) ∎
       where
       _≤?ₘ_ = decToMaybe ∘₂ 𝔽._≤?_
