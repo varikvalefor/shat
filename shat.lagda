@@ -1265,11 +1265,13 @@ module Orsygenturfa'i₃Veritas where
     ax≡justabd : ax ≡ just ((a , b) , d)
     ax≡justabd = begin
       ax ≡⟨ refl ⟩
-      (R >>= λ (a' , b') → mapₘ (_ ,_) $ a' ≤?ₘ b') ≡⟨ {!!} ⟩
+      (R >>= λ (a' , b') → mapₘ (_ ,_) $ a' ≤?ₘ b') ≡⟨ refl ⟩
+      (R >>= jminaCtaipe) ≡⟨ {!!} ⟩
       mapₘ (_ ,_) (just d) ≡⟨ refl ⟩
       just ((a , b) , d) ∎
       where
       _≤?ₘ_ = decToMaybe ∘₂ 𝔽._≤?_
+      jminaCtaipe = λ (a' , b') → mapₘ (_ ,_) $ a' ≤?ₘ b'
       R = readMaybe (show a) ,ₘ readMaybe (show b)
 
   pav : {n : ℕ}
