@@ -459,6 +459,16 @@ readMaybe' : {n : ℕ} → String → Maybe $ Maybe $ Fin n
 readMaybe' "$" = just nothing
 readMaybe' s = readMaybe s ▹ mapₘ just
 \end{code}
+
+\subsection{le ctaipe be le su'u la'oi .\F{readMaybe'}.\ mapti}
+
+\begin{code}
+module ReadMaybe'Veritas where
+  namcu : {n : ℕ}
+        → (f : Fin n)
+        → readMaybe' (show f) ≡ just (just f)
+  namcu = {!!}
+\end{code}
   
 \section{la'oi .\F{insert}.}
 ni'o la .varik.\ na birti lo du'u ma kau zabna lo ka ce'u lojbo je cu velcki la'oi .\F{insert}.  .i la .varik.\ cu stidi lo nu lo na jimpe cu tcidu le velcki be le ctaipe be le su'u la'oi .\F{insert}.\ mapti
