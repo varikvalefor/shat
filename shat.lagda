@@ -468,6 +468,9 @@ module ReadMaybe'Veritas where
         → (f : Fin n)
         → readMaybe' (show f) ≡ just (just f)
   namcu = {!!}
+
+  jdini : {n : ℕ} → readMaybe' {n} "$" ≡ just nothing
+  jdini = refl
 \end{code}
   
 \section{la'oi .\F{insert}.}
