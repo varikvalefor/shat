@@ -1264,7 +1264,9 @@ module Orsygenturfa'i₃Veritas where
     rimcos = ReadMaybe'Veritas.namcu
     open ≡-Reasoning
     ax≡justabd : ax ≡ just ((a , b) , d)
-    ax≡justabd = {!!}
+    ax≡justabd = begin
+      ax ≡⟨ {!!} ⟩
+      just ((a , b) , d) ∎
 
   pav : {n : ℕ}
       → (v x z : Fin n)
