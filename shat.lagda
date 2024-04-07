@@ -1267,6 +1267,7 @@ module Orsygenturfa'i₃Veritas where
       ax ≡⟨ refl ⟩
       (R >>= λ (a' , b') → mapₘ (_ ,_) $ a' ≤?ₘ b') ≡⟨ refl ⟩
       (R >>= jminaCtaipe) ≡⟨ {!!} ⟩
+      (just (a , b) >>= jminaCtaipe) ≡⟨ {!!} ⟩
       mapₘ (_ ,_) (just d) ≡⟨ refl ⟩
       just ((a , b) , d) ∎
       where
