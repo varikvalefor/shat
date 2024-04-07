@@ -321,10 +321,10 @@ ni'o ctaipe ko'a goi la'o zoi.\ \D{Cmd} \B x\ .zoi.\ fa lo co'e be lo midnoi be 
 	\item ga jonai \pavysumti{Jmini}{zo'oi .i.}\ gi
 	\item ga jonai ga je da du la'o zoi.\ \IC{Rejgau} \B v\ .zoi.\ gi da mapti lo konkatena be zo'oi .w.\ bei lo canlu lerfu bei la'oi .\B v.\ gi
 	\item ga jonai \cibysumti{Vimcu}{zo'oi .d.} gi
-	\item ga jonai \cibysumti{Muvgau}{zo'oi .m.} gi
+	\item ga jonai \cibysumti{Basti}{zo'oi .c.} gi
 	\item ga jonai \cibysumti{Cusku}{zo'oi .p.} gi
 	\item ga jonai \cibysumti{Namcusku}{zo'oi .n.} gi
-	\item \vonsumti{Basti}{zo'oi .c.}
+	\item \vonsumti{Muvgau}{zo'oi .m.}
 \end{itemize}
 
 \begin{code}
