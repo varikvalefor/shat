@@ -1258,7 +1258,9 @@ module Orsygenturfa'i₃Veritas where
       where
       f = λ a b x → (a , b) , x
       R = readMaybe (show a) ,ₘ readMaybe (show b)
-    rimcos : {n : ℕ} → (x : Fin n) → readMaybe' (show x) ≡ just (just x)
+    rimcos : {n : ℕ}
+           → (x : Fin n)
+           → readMaybe' (show x) ≡ just (just x)
     rimcos = ReadMaybe'Veritas.namcu
     open ≡-Reasoning
     ax≡justabd : ax ≡ just ((a , b) , d)
