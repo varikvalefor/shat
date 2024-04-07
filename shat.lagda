@@ -471,6 +471,13 @@ module ReadMaybe'Veritas where
 
   jdini : {n : ℕ} → readMaybe' {n} "$" ≡ just nothing
   jdini = refl
+
+  nada : {n : ℕ}
+       → (s : String)
+       → ¬_ $ s ≡ "$"
+       → ¬_ $ Σ (Fin n) $ _≡_ s ∘ show
+       → readMaybe' {n} s ≡ nothing
+  nada = {!!}
 \end{code}
   
 \section{la'oi .\F{insert}.}
