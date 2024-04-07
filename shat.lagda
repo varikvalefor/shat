@@ -1265,8 +1265,12 @@ module Orsygenturfa'i₃Veritas where
     open ≡-Reasoning
     ax≡justabd : ax ≡ just ((a , b) , d)
     ax≡justabd = begin
-      ax ≡⟨ {!!} ⟩
+      ax ≡⟨ refl ⟩
+      (R >>= λ (a' , b') → mapₘ (f a' b') $ decToMaybe $ a' 𝔽.≤? b') ≡⟨ {!!} ⟩
       just ((a , b) , d) ∎
+      where
+      f = λ a b x → (a , b) , x
+      R = readMaybe (show a) ,ₘ readMaybe (show b)
 
   pav : {n : ℕ}
       → (v x z : Fin n)
