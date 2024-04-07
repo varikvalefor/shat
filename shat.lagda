@@ -1254,9 +1254,8 @@ module Orsygenturfa'i₃Veritas where
     just (((a , b) , d) , just c) ∎
     where
     ax : Maybe $ Σ (Fin _ × Fin _) $ uncurry 𝔽._≤_
-    ax = R >>= λ (a' , b') → mapₘ (f a' b') $ decToMaybe $ a' 𝔽.≤? b'
+    ax = R >>= λ (a' , b') → mapₘ (_ ,_) $ decToMaybe $ a' 𝔽.≤? b'
       where
-      f = λ a b x → (a , b) , x
       R = readMaybe (show a) ,ₘ readMaybe (show b)
     rimcos : {n : ℕ}
            → (x : Fin n)
@@ -1266,11 +1265,10 @@ module Orsygenturfa'i₃Veritas where
     ax≡justabd : ax ≡ just ((a , b) , d)
     ax≡justabd = begin
       ax ≡⟨ refl ⟩
-      (R >>= λ (a' , b') → mapₘ (f a' b') $ a' ≤?ₘ b') ≡⟨ {!!} ⟩
+      (R >>= λ (a' , b') → mapₘ (_ ,_) $ a' ≤?ₘ b') ≡⟨ {!!} ⟩
       just ((a , b) , d) ∎
       where
       _≤?ₘ_ = decToMaybe ∘₂ 𝔽._≤?_
-      f = λ a b x → (a , b) , x
       R = readMaybe (show a) ,ₘ readMaybe (show b)
 
   pav : {n : ℕ}
