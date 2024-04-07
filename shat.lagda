@@ -466,7 +466,11 @@ module ReadMaybe'Veritas where
   namcu : {n : ℕ}
         → (f : Fin n)
         → readMaybe' (show f) ≡ just (just f)
-  namcu = {!!}
+  namcu f = begin
+    readMaybe' (show f) ≡⟨ {!!} ⟩
+    just (just f) ∎
+    where
+    open ≡-Reasoning
 
   jdini : {n : ℕ} → readMaybe' {n} "$" ≡ just nothing
   jdini = refl
