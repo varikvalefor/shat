@@ -1266,9 +1266,10 @@ module Orsygenturfa'i₃Veritas where
     ax≡justabd : ax ≡ just ((a , b) , d)
     ax≡justabd = begin
       ax ≡⟨ refl ⟩
-      (R >>= λ (a' , b') → mapₘ (f a' b') $ decToMaybe $ a' 𝔽.≤? b') ≡⟨ {!!} ⟩
+      (R >>= λ (a' , b') → mapₘ (f a' b') $ a' ≤?ₘ b') ≡⟨ {!!} ⟩
       just ((a , b) , d) ∎
       where
+      _≤?ₘ_ = decToMaybe ∘₂ 𝔽._≤?_
       f = λ a b x → (a , b) , x
       R = readMaybe (show a) ,ₘ readMaybe (show b)
 
