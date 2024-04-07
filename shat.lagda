@@ -456,8 +456,7 @@ ni'o la .varik.\ na birti lo du'u ma kau zabna je cu lojbo je cu velcki la'oi .\
 
 \begin{code}
 readMaybe' : {n : ℕ} → String → Maybe $ Maybe $ Fin n
-readMaybe' "$" = just nothing
-readMaybe' s = readMaybe s ▹ mapₘ just
+readMaybe' s = if (s ≡ᵇ "$") (just nothing) $ readMaybe s ▹ mapₘ just
 \end{code}
 
 \subsection{le ctaipe be le su'u la'oi .\F{readMaybe'}.\ mapti}
