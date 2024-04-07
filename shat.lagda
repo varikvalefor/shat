@@ -324,7 +324,11 @@ ni'o ctaipe ko'a goi la'o zoi.\ \D{Cmd} \B x\ .zoi.\ fa lo co'e be lo midnoi be 
 	\item ga jonai \cibysumti{Basti}{zo'oi .c.} gi
 	\item ga jonai \cibysumti{Cusku}{zo'oi .p.} gi
 	\item ga jonai \cibysumti{Namcusku}{zo'oi .n.} gi
-	\item \vonsumti{Muvgau}{zo'oi .m.}
+	\item ga je da du la'o zoi.\ \IC{Muvgau} \B v \B x \B z\ \AgdaUnderscore{}\ .zoi.\ gi\ldots
+	\begin{itemize}
+		\item ga jonai ga je la'oi .\B z.\ du la'o zoi.\ \IC{just}\ \B j\ .zoi.\ gi tu'a da rinka tu'a lo smimlu be lo jalge be lo nu mu'oi zoi.\ \Xr{ed}{1}\ .zoi.\ co'e lo konkatena be lo sinxa be lo sumji be la'oi .\B v\ .zoi.\ bei li pa be'o be'o bei lo me'oi .comma.\ bei lo sinxa be lo sumji be la'oi .\B x.\ bei li pa be'o be'o bei zo'oi .m.\ bei lo sinxa be lo sumji be la'oi .\B z.\ bei li pa gi
+		\item ga je la'oi .\B z.\ du la'oi .\IC{nothing}.\ gi tu'a da rinka tu'a lo smimlu be lo jalge be lo nu mu'oi zoi.\ \Xr{ed}{1}\ .zoi.\ co'e lo konkatena be lo sinxa be lo sumji be la'oi .\B v\ .zoi.\ bei li pa be'o be'o bei lo me'oi .comma.\ bei lo sinxa be lo sumji be la'oi .\B x.\ bei li pa be'o be'o bei zo'oi .m0.
+	\end{itemize}
 \end{itemize}
 
 \begin{code}
@@ -340,7 +344,10 @@ data Cmd (x : Buffer) : Set where
   Namcusku : typeOf Vimcu
   Basti : typeOf Vimcu
   Cusku : typeOf Vimcu
-  Muvgau : (a b c : Buffer.F x) → a 𝔽.≤ b → Cmd x
+  Muvgau : (a b : Buffer.F x)
+         → Maybe $ Buffer.F x
+         → a 𝔽.≤ b
+         → Cmd x
   Xruti : Fin $ length $ Buffer.citri x → Cmd x
 \end{code}
 
@@ -1096,6 +1103,10 @@ ni'o ro da xi pa poi ke'a ctaipe ko'a goi la'o zoi.\ \D{Fin} \B n\ .zoi.\ zo'u r
 
 \begin{code}
 module Orsygenturfa'i₃ where
+  readMaybe' : {n : ℕ} → String → Maybe $ Maybe $ Fin n
+  readMaybe' "$" = just nothing
+  readMaybe' s = readMaybe s ▹ mapₘ just
+  
   lispork : List $ List String → Maybe $ (String × String) × String
   lispork ((a ∷ []) ∷ (b ∷ c ∷ []) ∷ []) = just $ (a , b) , c
   lispork _ = nothing
@@ -1108,8 +1119,8 @@ module Orsygenturfa'i₃ where
 
   pork : {n : ℕ}
        → (String × String) × String
-       → Maybe $ Σ (Fin n × Fin n) (uncurry 𝔽._≤_) × Fin n
-  pork ((a , b) , c)= ax ,ₘ readMaybe c
+       → Maybe $ Σ (Fin n × Fin n) (uncurry 𝔽._≤_) × Maybe (Fin n)
+  pork ((a , b) , c)= ax ,ₘ readMaybe' c
     where
     ax = R >>= λ (a' , b') → mapₘ (f a' b') $ decToMaybe $ a' 𝔽.≤? b'
       where
@@ -1120,7 +1131,7 @@ module Orsygenturfa'i₃ where
                   → String
                   → (Maybe $ _×_
                       (Σ (Fin n × Fin n) (uncurry 𝔽._≤_))
-                      (Fin n))
+                      (Maybe $ Fin n))
   orsygenturfa'i₃ = pork <=< orsispita
 
 open Orsygenturfa'i₃
@@ -1205,20 +1216,20 @@ module Orsygenturfa'i₃Veritas where
           → (c : Fin n)
           → (_≡_
               (pork $ (show a , show b) , show c)
-              (just $ ((a , b) , d) , c))
+              (just $ ((a , b) , d) , just c))
   porkcos a b d c = begin
     pork ((show a , show b) , show c) ≡⟨ refl ⟩
-    _,ₘ_ ax (readMaybe $ show c) ≡⟨ rimcos c ▹ cong (_,ₘ_ ax) ⟩
-    _,ₘ_ ax (just c) ≡⟨ ax≡justabd ▹ cong (flip _,ₘ_ $ just c) ⟩
-    _,ₘ_ (just $ (a , b) , d) (just c) ≡⟨ refl ⟩
-    just (((a , b) , d) , c) ∎
+    _,ₘ_ ax (readMaybe' $ show c) ≡⟨ rimcos c ▹ cong (_,ₘ_ ax) ⟩
+    _,ₘ_ ax (just $ just c) ≡⟨ ax≡justabd ▹ cong (flip _,ₘ_ $ just $ just c) ⟩
+    _,ₘ_ (just $ (a , b) , d) (just $ just c) ≡⟨ refl ⟩
+    just (((a , b) , d) , just c) ∎
     where
     ax : Maybe $ Σ (Fin _ × Fin _) $ uncurry 𝔽._≤_
     ax = R >>= λ (a' , b') → mapₘ (f a' b') $ decToMaybe $ a' 𝔽.≤? b'
       where
       f = λ a b x → (a , b) , x
       R = readMaybe (show a) ,ₘ readMaybe (show b)
-    rimcos : {n : ℕ} → (x : Fin n) → readMaybe (show x) ≡ just x
+    rimcos : {n : ℕ} → (x : Fin n) → readMaybe' (show x) ≡ just (just x)
     rimcos = {!!}
     open ≡-Reasoning
     ax≡justabd : ax ≡ just ((a , b) , d)
@@ -1230,7 +1241,7 @@ module Orsygenturfa'i₃Veritas where
       → (c : Char)
       → false ≡ isDigit c
       → (_≡_
-          (just $ ((v , x) , d) , z)
+          (just $ ((v , x) , d) , just z)
           (orsygenturfa'i₃
             (let c' = 𝕊.fromChar c in
              show v ++ "," ++ show x ++ c' ++ show z)))
@@ -1242,7 +1253,7 @@ module Orsygenturfa'i₃Veritas where
     just ((show (t v) , show (t x)) , show (t z)) >>= pork ≡⟨ refl ⟩
     pork ((show (t v) , show (t x)) , show (t z)) ≡⟨ refl ⟩
     pork ((show v , show x) , show z) ≡⟨ porkcos v x d z ⟩
-    just (((v , x) , d) , z) ∎
+    just (((v , x) , d) , just z) ∎
     where
     t = 𝔽.toℕ
     k₃ : ∀ {a b c} → {A : Set a} → {B : Set b} → {C : Set c}
@@ -1307,7 +1318,8 @@ module Reed where
 
   module Ci where
     g : {x : Buffer}
-      → (a b c : Buffer.F x)
+      → (a b : Buffer.F x)
+      → Maybe $ Buffer.F x
       → (a 𝔽.≤ b)
       → Char
       → Maybe $ Cmd x
@@ -1472,7 +1484,7 @@ module ReedVeritas where
   mixer : (x : Buffer)
         → (a b c : Buffer.F x)
         → (d : a 𝔽.≤ b)
-        → just (Muvgau a b c d) ≡ reed x (k₂ x a b 'm')
+        → just (Muvgau a b (just c) d) ≡ reed x (k₂ x a b 'm')
   mixer x a b c d = {!!}
 
   vim : (x : Buffer)
@@ -1796,13 +1808,13 @@ module KanjyVeritas where
               → (d : a 𝔽.≤ b)
               → ((_≡_ on (length ∘ Buffer.lerpinste))
                   x
-                  (proj₁ $ kanji {x} $ Muvgau a b c d))
+                  (proj₁ $ kanji {x} $ Muvgau a b (just c) d))
   muvduzilcmi x a b c d = sym $ begin
     𝓁 (proj₁ K) ≡⟨ {!!} ⟩
     length x'₁ ℕ.+ length x'₂ ℕ.+ length x'₃ ≡⟨ {!!} ⟩
     𝓁 x ∎
     where
-    K = kanji {x} $ Muvgau a b c d
+    K = kanji {x} $ Muvgau a b (just c) d
     𝓁 = length ∘ Buffer.lerpinste
     x' = Buffer.lerpinste x
     x'₁ = 𝔽.toℕ a ↑ x'
@@ -1815,7 +1827,7 @@ module KanjyVeritas where
           → (d : a 𝔽.≤ b)
           → ((_≡_ on_ $ 𝔽.toℕ a ↑_ ∘ Buffer.lerpinste)
               x
-              (proj₁ $ kanji {x} $ Muvgau a b c d))
+              (proj₁ $ kanji {x} $ Muvgau a b (just c) d))
   muvipas x a b c d = sym $ begin
     T (BL x') ≡⟨ DLP.take++drop (𝔽.toℕ a) (BL x') ▹ sym ▹ cong T ⟩
     T (T (BL x') ++ D (BL x')) ≡⟨ refl ⟩
@@ -1826,7 +1838,7 @@ module KanjyVeritas where
     T = 𝔽.toℕ a ↑_
     D = 𝔽.toℕ a ↓_
     BL = Buffer.lerpinste
-    x' = proj₁ $ kanji {x} $ Muvgau a b c d
+    x' = proj₁ $ kanji {x} $ Muvgau a b (just c) d
     open ≡-Reasoning
     teikteik : ∀ {a} → {A : Set a}
              → (x : List A)
@@ -1841,7 +1853,7 @@ module KanjyVeritas where
           → (a b c : Buffer.F x)
           → (d : a 𝔽.≤ b)
           → let n = ℕ.suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a) in
-            let x' = proj₁ $ kanji {x} $ Muvgau a b c d in
+            let x' = proj₁ $ kanji {x} $ Muvgau a b (just c) d in
             (_≡_
               (n ↑_ $ 𝔽.toℕ a ↓_ $ Buffer.lerpinste x)
               (n ↑_ $ 𝔽.toℕ c ↓_ $ Buffer.lerpinste x'))
@@ -1853,14 +1865,14 @@ module KanjyVeritas where
     b' = 𝔽.toℕ b
     c' = 𝔽.toℕ c
     n = ℕ.suc $ b' ℕ.∸ a'
-    x' = proj₁ $ kanji {x} $ Muvgau a b c d
+    x' = proj₁ $ kanji {x} $ Muvgau a b (just c) d
     BLT = Buffer.lerpinste
     open ≡-Reasoning
 
   muviros : (x : Buffer)
           → (a b c : Buffer.F x)
           → (d : a 𝔽.≤ b)
-          → let x₂ = proj₂ $ kanji {x} $ Muvgau a b c d in
+          → let x₂ = proj₂ $ kanji {x} $ Muvgau a b (just c) d in
             (_≡_
               ((𝔽.toℕ b) ↓ Buffer.lerpinste x)
               {!!})
@@ -1870,7 +1882,7 @@ module KanjyVeritas where
              → (a b c : Buffer.F x)
              → (d : a 𝔽.≤ b)
              → let n = ℕ.suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a) in
-               let x' = proj₁ $ kanji {x} $ Muvgau a b c d in
+               let x' = proj₁ $ kanji {x} $ Muvgau a b (just c) d in
                let L = Buffer.lerpinste in
                (_≡_
                  (𝔽.toℕ a ↑ L x ++ ℕ.suc (𝔽.toℕ b) ↓ L x)
@@ -1880,7 +1892,7 @@ module KanjyVeritas where
   muvdusin : (x : Buffer)
            → (a b : Buffer.F x)
            → let R = DFP.≤-reflexive refl in
-             let K = kanji {x} $ Muvgau a a b R in
+             let K = kanji {x} $ Muvgau a a (just b) R in
              Data.Maybe.Is-nothing (proj₂ K)
            × let x' = proj₁ K in
              let L = Buffer.lerpinste in
