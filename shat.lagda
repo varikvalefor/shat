@@ -592,22 +592,23 @@ module InsertVeritas where
          → let n' = maybe 𝔽.toℕ (length x) n in
            n' ↓ x ≡ (n' ℕ.+ length i) ↓ insert x i n
   romois x i n = sym $ begin
-    (n' ℕ.+ length i) ↓ insert x i n
+    (n' ℕ.+ 𝓁 i) ↓ insert x i n
       ≡⟨ refl ⟩
-    (n' ℕ.+ length i) ↓ (x₁ ++ i ++ x₂)
-      ≡⟨ finlen x n ▹ cong (λ n → (n ℕ.+ length i) ↓ K) ⟩
-    (length (n' ↑ x) ℕ.+ length i) ↓ (x₁ ++ i ++ x₂)
+    (n' ℕ.+ 𝓁 i) ↓ (x₁ ++ i ++ x₂)
+      ≡⟨ finlen x n ▹ cong (λ n → (n ℕ.+ 𝓁 i) ↓ K) ⟩
+    (𝓁 (n' ↑ x) ℕ.+ 𝓁 i) ↓ (x₁ ++ i ++ x₂)
       ≡⟨ refl ⟩
-    (length x₁ ℕ.+ length i) ↓ (x₁ ++ i ++ x₂)
+    (𝓁 x₁ ℕ.+ 𝓁 i) ↓ (x₁ ++ i ++ x₂)
       ≡⟨ DLP.length-++ x₁ ▹ sym ▹ cong (_↓ K) ⟩
-    length (x₁ ++ i) ↓ (x₁ ++ i ++ x₂)
-      ≡⟨ DLP.++-assoc x₁ i x₂ ▹ sym ▹ cong (_↓_ $ length $ x₁ ++ i) ⟩
-    length (x₁ ++ i) ↓ ((x₁ ++ i) ++ x₂)
+    𝓁 (x₁ ++ i) ↓ (x₁ ++ i ++ x₂)
+      ≡⟨ DLP.++-assoc x₁ i x₂ ▹ sym ▹ cong (_↓_ $ 𝓁 $ x₁ ++ i) ⟩
+    𝓁 (x₁ ++ i) ↓ ((x₁ ++ i) ++ x₂)
       ≡⟨ dropydus $ x₁ ++ i ⟩
     x₂
       ≡⟨ refl ⟩
     n' ↓ x ∎
     where
+    𝓁 = length
     n' = maybe 𝔽.toℕ (length x) n
     x₁ = n' ↑ x
     x₂ = n' ↓ x
