@@ -451,6 +451,15 @@ zmadekydu'i {x} {n} {m} = begin
   open ≡-Reasoning
 \end{code}
 
+\section{la'oi .\F{readMaybe'}.}
+ni'o la .varik.\ na birti lo du'u ma kau zabna je cu lojbo je cu velcki la'oi .\F{readMaybe'}.
+
+\begin{code}
+readMaybe' : {n : ℕ} → String → Maybe $ Maybe $ Fin n
+readMaybe' "$" = just nothing
+readMaybe' s = readMaybe s ▹ mapₘ just
+\end{code}
+  
 \section{la'oi .\F{insert}.}
 ni'o la .varik.\ na birti lo du'u ma kau zabna lo ka ce'u lojbo je cu velcki la'oi .\F{insert}.  .i la .varik.\ cu stidi lo nu lo na jimpe cu tcidu le velcki be le ctaipe be le su'u la'oi .\F{insert}.\ mapti
 
@@ -1103,10 +1112,6 @@ ni'o ro da xi pa poi ke'a ctaipe ko'a goi la'o zoi.\ \D{Fin} \B n\ .zoi.\ zo'u r
 
 \begin{code}
 module Orsygenturfa'i₃ where
-  readMaybe' : {n : ℕ} → String → Maybe $ Maybe $ Fin n
-  readMaybe' "$" = just nothing
-  readMaybe' s = readMaybe s ▹ mapₘ just
-  
   lispork : List $ List String → Maybe $ (String × String) × String
   lispork ((a ∷ []) ∷ (b ∷ c ∷ []) ∷ []) = just $ (a , b) , c
   lispork _ = nothing
