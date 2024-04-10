@@ -484,11 +484,16 @@ module ReadMaybe'Veritas where
     readMaybe' s ≡⟨ refl ⟩
     if (s ≡ᵇ "$") (just nothing) (readMaybe'' s) ≡⟨ {!!} ⟩
     readMaybe'' s ≡⟨ refl ⟩
-    mapₘ just (readMaybe s) ≡⟨ {!!} ⟩
+    mapₘ just (readMaybe s) ≡⟨ norm s np ▹ cong (mapₘ just) ⟩
     mapₘ just nothing ≡⟨ refl ⟩
     nothing ∎
     where
     readMaybe'' = mapₘ just ∘ readMaybe
+    norm : {n : ℕ}
+         → (s : String)
+         → ¬_ $ Σ (Fin n) $ _≡_ s ∘ show
+         → readMaybe s ≡ nothing {A = Fin n}
+    norm = {!!}
     open ≡-Reasoning
 \end{code}
   
