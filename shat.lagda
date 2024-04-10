@@ -480,7 +480,11 @@ module ReadMaybe'Veritas where
        → ¬_ $ s ≡ "$"
        → ¬_ $ Σ (Fin n) $ _≡_ s ∘ show
        → readMaybe' {n} s ≡ nothing
-  nada = {!!}
+  nada s nj np = begin
+    readMaybe' s ≡⟨ {!!} ⟩
+    nothing ∎
+    where
+    open ≡-Reasoning
 \end{code}
   
 \section{la'oi .\F{insert}.}
