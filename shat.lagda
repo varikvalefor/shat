@@ -485,6 +485,7 @@ module ReadMaybe'Veritas where
     if (s ≡ᵇ "$") (just nothing) (readMaybe'' s) ≡⟨ {!!} ⟩
     readMaybe'' s ≡⟨ refl ⟩
     mapₘ just (readMaybe s) ≡⟨ {!!} ⟩
+    mapₘ just nothing ≡⟨ refl ⟩
     nothing ∎
     where
     readMaybe'' = mapₘ just ∘ readMaybe
