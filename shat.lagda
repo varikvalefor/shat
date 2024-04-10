@@ -381,12 +381,12 @@ ni'o la .varik.\ na jinvi le du'u sarcu fa lo nu ciksi fo lo lojbo fe la'o zoi.\
 
 \begin{code}
 dec-just : ∀ {a p} → {A : Set a}
-         → {P : Pred A p}
+         → (P : Pred A p)
          → {x : A}
          → (P? : Dec $ P x)
          → (m : P x)
          → ∃ $ λ m → decToMaybe P? ≡ just m
-dec-just P? m = Data.Product.dmap id (cong decToMaybe) M
+dec-just _ P? m = Data.Product.dmap id (cong decToMaybe) M
   where
   M = Relation.Nullary.Decidable.dec-yes P? m
 \end{code}
@@ -396,12 +396,12 @@ ni'o la .varik.\ na jinvi le du'u sarcu fa lo nu ciksi fo lo lojbo fe la'o zoi.\
 
 \begin{code}
 dec-nothing : ∀ {a p} → {A : Set a}
-            → {P : Pred A p}
+            → (P : Pred A p)
             → {x : A}
             → (P? : Dec $ P x)
             → (m : ¬ P x)
             → decToMaybe P? ≡ nothing
-dec-nothing P? m = begin
+dec-nothing _ P? m = begin
   decToMaybe P? ≡⟨ M ▹ proj₂ ▹ cong decToMaybe ⟩
   decToMaybe (no $ proj₁ M) ≡⟨ refl ⟩
   nothing ∎
@@ -422,7 +422,7 @@ dekydu'i {x} {n} {m} = begin
   just (proj₁ DJ) ≡⟨ iedek (proj₁ DJ) m ▹ cong just ⟩
   just m ∎
   where
-  DJ = dec-just {P = ℕ._< n} (x ℕ.<? n) m
+  DJ = dec-just (ℕ._< n) (x ℕ.<? n) m
   iedek : {m n : ℕ} → (x z : m ℕ.< n) → x ≡ z
   iedek (ℕ.s≤s ℕ.z≤n) (ℕ.s≤s ℕ.z≤n) = refl
   iedek {ℕ.suc m} {ℕ.suc n} (ℕ.s≤s x) (ℕ.s≤s z) = I
@@ -442,7 +442,7 @@ zmadekydu'i {x} {n} {m} = begin
   just (proj₁ DJ) ≡⟨ iedek (proj₁ DJ) m ▹ cong just ⟩
   just m ∎
   where
-  DJ = dec-just {P = ℕ._≤ n} (x ℕ.≤? n) m
+  DJ = dec-just (ℕ._≤ n) (x ℕ.≤? n) m
   iedek : {m n : ℕ} → (x z : m ℕ.≤ n) → x ≡ z
   iedek ℕ.z≤n ℕ.z≤n = refl
   iedek {ℕ.suc m} {ℕ.suc n} (ℕ.s≤s x) (ℕ.s≤s z) = I
@@ -695,7 +695,7 @@ module fromℕ?Veritas where
     where
     d2m = decToMaybe
     MC = DMP.map-compose $ d2m $ x ℕ.<? n
-    DN = dec-nothing {P = ℕ._< n} (x ℕ.<? n) J
+    DN = dec-nothing (ℕ._< n) (x ℕ.<? n) J
     open ≡-Reasoning
 \end{code}
 
@@ -1084,7 +1084,7 @@ module Orsygenturfa'iVeritas where
     _ ≡⟨ DN ▹ cong (mapₘ $ _ ,_) ⟩
     nothing ∎
     where
-    DN = dec-nothing {P = 𝔽._≤ z} (x 𝔽.≤? z) j
+    DN = dec-nothing (𝔽._≤ z) (x 𝔽.≤? z) j
     open ≡-Reasoning
 
   pav : ((x : ℕ) → readMaybe (show x) ≡ just x)
