@@ -1283,7 +1283,8 @@ module Orsygenturfa'i₃Veritas where
       (R >>= jminaCtaipe) ≡⟨ R≡justab ▹ cong (_>>= jminaCtaipe) ⟩
       (just (a , b) >>= jminaCtaipe) ≡⟨ refl ⟩
       (just (a , b) >>= λ (a' , b') → mapₘ (_ ,_) $ a' ≤?ₘ b') ≡⟨ refl ⟩
-      mapₘ (_ ,_) (a ≤?ₘ b) ≡⟨ {!!} ⟩
+      mapₘ (_ ,_) (a ≤?ₘ b) ≡⟨ refl ⟩
+      mapₘ (_ ,_) (decToMaybe $ a 𝔽.≤? b) ≡⟨ {!!} ⟩
       mapₘ (_ ,_) (just d) ≡⟨ refl ⟩
       just ((a , b) , d) ∎
       where
