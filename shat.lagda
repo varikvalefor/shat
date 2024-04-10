@@ -1293,7 +1293,9 @@ module Orsygenturfa'i₃Veritas where
       jminaCtaipe = λ (a' , b') → mapₘ (_ ,_) $ a' ≤?ₘ b'
       R = readMaybe (show a) ,ₘ readMaybe (show b)
       R≡justab : R ≡ just (a , b)
-      R≡justab = {!!}
+      R≡justab = begin
+        R ≡⟨ {!!} ⟩
+        just (a , b) ∎
 
   pav : {n : ℕ}
       → (v x z : Fin n)
