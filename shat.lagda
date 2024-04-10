@@ -481,9 +481,11 @@ module ReadMaybe'Veritas where
        → ¬_ $ Σ (Fin n) $ _≡_ s ∘ show
        → readMaybe' {n} s ≡ nothing
   nada s nj np = begin
-    readMaybe' s ≡⟨ {!!} ⟩
+    readMaybe' s ≡⟨ refl ⟩
+    if (s ≡ᵇ "$") (just nothing) (readMaybe'' s) ≡⟨ {!!} ⟩
     nothing ∎
     where
+    readMaybe'' = mapₘ just ∘ readMaybe
     open ≡-Reasoning
 \end{code}
   
