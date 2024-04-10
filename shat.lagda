@@ -1280,7 +1280,7 @@ module Orsygenturfa'i₃Veritas where
     ax≡justabd = begin
       ax ≡⟨ refl ⟩
       (R >>= λ (a' , b') → mapₘ (_ ,_) $ a' ≤?ₘ b') ≡⟨ refl ⟩
-      (R >>= jminaCtaipe) ≡⟨ {!!} ⟩
+      (R >>= jminaCtaipe) ≡⟨ R≡justab ▹ cong (_>>= jminaCtaipe) ⟩
       (just (a , b) >>= jminaCtaipe) ≡⟨ refl ⟩
       (just (a , b) >>= λ (a' , b') → mapₘ (_ ,_) $ a' ≤?ₘ b') ≡⟨ refl ⟩
       mapₘ (_ ,_) (a ≤?ₘ b) ≡⟨ {!!} ⟩
@@ -1290,6 +1290,8 @@ module Orsygenturfa'i₃Veritas where
       _≤?ₘ_ = decToMaybe ∘₂ 𝔽._≤?_
       jminaCtaipe = λ (a' , b') → mapₘ (_ ,_) $ a' ≤?ₘ b'
       R = readMaybe (show a) ,ₘ readMaybe (show b)
+      R≡justab : R ≡ just (a , b)
+      R≡justab = {!!}
 
   pav : {n : ℕ}
       → (v x z : Fin n)
