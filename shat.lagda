@@ -482,7 +482,7 @@ module ReadMaybe'Veritas where
        → readMaybe' {n} s ≡ nothing
   nada s nj np = begin
     readMaybe' s ≡⟨ refl ⟩
-    if (s ≡ᵇ "$") (just nothing) (readMaybe'' s) ≡⟨ {!!} ⟩
+    if (s ≡ᵇ "$") (just nothing) (readMaybe'' s) ≡⟨ ifnon nj ⟩
     readMaybe'' s ≡⟨ refl ⟩
     mapₘ just (readMaybe s) ≡⟨ norm s np ▹ cong (mapₘ just) ⟩
     mapₘ just nothing ≡⟨ refl ⟩
@@ -494,6 +494,13 @@ module ReadMaybe'Veritas where
          → ¬_ $ Σ (Fin n) $ _≡_ s ∘ show
          → readMaybe s ≡ nothing {A = Fin n}
     norm = {!!}
+    ifnon : ∀ {a b} → {A : Set a} → {B : Set b}
+          → ⦃ _ : Truthbrary.Record.Eq.Eq A ⦄
+          → {d f : A}
+          → {g j : B}
+          → ¬_ $ d ≡ f
+          → if (d ≡ᵇ f) g j ≡ j
+    ifnon = {!!}
     open ≡-Reasoning
 \end{code}
   
