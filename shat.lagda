@@ -503,10 +503,11 @@ module ReadMaybe'Veritas where
           → if (d ≡ᵇ f) g j ≡ j
     ifnon {d = d} {f = f} {g = g} {j = j} J = begin
       if (d ≡ᵇ f) g j ≡⟨ refl ⟩
-      if (isYes $ d ≟ f) g j ≡⟨ isYes≗does (d ≟ f) ▹ cong (λ b → if b g j) ⟩
-      if (Dec.does $ d ≟ f) g j ≡⟨ dec-false (d ≟ f) J ▹ cong (λ b → if b g j) ⟩
+      if (isYes $ d ≟ f) g j ≡⟨ isYes≗does (d ≟ f) ▹ cong i ⟩
+      if (Dec.does $ d ≟ f) g j ≡⟨ dec-false (d ≟ f) J ▹ cong i ⟩
       j ∎
       where
+      i = λ b → if b g j
       open Relation.Nullary.Decidable
         using (
           isYes≗does;
