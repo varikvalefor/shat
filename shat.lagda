@@ -209,7 +209,8 @@ open import Truthbrary.Data.Fin
 open import Truthbrary.Record.Eq
   using (
     _≡ᵇ_;
-    _≟_
+    _≟_;
+    Eq
   )
 open import Truthbrary.Record.SR
   using (
@@ -496,7 +497,7 @@ module ReadMaybe'Veritas where
     norm = {!!}
     open ≡-Reasoning
     ifnon : ∀ {a b} → {A : Set a} → {B : Set b}
-          → ⦃ _ : Truthbrary.Record.Eq.Eq A ⦄
+          → ⦃ _ : Eq A ⦄
           → {d f : A}
           → {g j : B}
           → ¬_ $ d ≡ f
@@ -1036,7 +1037,7 @@ module Orsygenturfa'iVeritas where
     tildist : (x z : String) → tL (x ++ z) ≡ tL x ++ tL z
     tildist = {!!}
     F : ∀ {a} → {A : Set a}
-      → ⦃ _ : Truthbrary.Record.Eq.Eq A ⦄
+      → ⦃ _ : Eq A ⦄
       → {e : A}
       → {x : List A}
       → e ∉ x
