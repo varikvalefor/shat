@@ -494,14 +494,16 @@ module ReadMaybe'Veritas where
          → ¬_ $ Σ (Fin n) $ _≡_ s ∘ show
          → readMaybe s ≡ nothing {A = Fin n}
     norm = {!!}
+    open ≡-Reasoning
     ifnon : ∀ {a b} → {A : Set a} → {B : Set b}
           → ⦃ _ : Truthbrary.Record.Eq.Eq A ⦄
           → {d f : A}
           → {g j : B}
           → ¬_ $ d ≡ f
           → if (d ≡ᵇ f) g j ≡ j
-    ifnon = {!!}
-    open ≡-Reasoning
+    ifnon {d = d} {f = f} {g = g} {j = j} J = begin
+      if (d ≡ᵇ f) g j ≡⟨ {!!} ⟩
+      j ∎
 \end{code}
   
 \section{la'oi .\F{insert}.}
