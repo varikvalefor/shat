@@ -503,8 +503,13 @@ module ReadMaybe'Veritas where
           → if (d ≡ᵇ f) g j ≡ j
     ifnon {d = d} {f = f} {g = g} {j = j} J = begin
       if (d ≡ᵇ f) g j ≡⟨ {!!} ⟩
-      if (Dec.does $ d ≟ f) g j ≡⟨ {!!} ⟩
+      if (Dec.does $ d ≟ f) g j ≡⟨ dec-false (d ≟ f) J ▹ cong (λ b → if b g j) ⟩
       j ∎
+      where
+      open Relation.Nullary.Decidable
+        using (
+          dec-false
+        )
 \end{code}
   
 \section{la'oi .\F{insert}.}
