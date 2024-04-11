@@ -503,7 +503,13 @@ module ReadMaybe'Veritas where
           → if (d ≡ᵇ f) g j ≡ j
     ifnon {d = d} {f = f} {g = g} {j = j} J = begin
       if (d ≡ᵇ f) g j ≡⟨ {!!} ⟩
+      if (isYes $ d ≟ f) g j ≡⟨ {!!} ⟩
       j ∎
+      where
+      open Relation.Nullary.Decidable
+        using (
+          isYes
+        )
 \end{code}
   
 \section{la'oi .\F{insert}.}
