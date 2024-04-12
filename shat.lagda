@@ -1088,8 +1088,8 @@ module Orsygenturfa'iVeritas where
   ps-nada j J {n} = sym $ begin
     ps {n = n} (tL j) ≡⟨ refl ⟩
     (fromℕ? <=< (readMaybe ∘ fL)) (tL j) ≡⟨ refl ⟩
-    (fromℕ? =<< (readMaybe $ fL $ tL j)) ≡⟨ [fL[tLj]≡j]' ⟩
-    (fromℕ? =<< (readMaybe j)) ≡⟨ {!!} ⟩
+    (fromℕ? =<< readMaybe (fL $ tL j)) ≡⟨ [fL[tLj]≡j]' ⟩
+    (fromℕ? =<< readMaybe j) ≡⟨ {!!} ⟩
     nothing ∎
     where
     tL = 𝕊.toList
