@@ -1086,7 +1086,8 @@ module Orsygenturfa'iVeritas where
           → {n : ℕ}
           → nothing ≡ ps {n = n} (𝕊.toList j)
   ps-nada j J {n} = sym $ begin
-    ps {n = n} (𝕊.toList j) ≡⟨ {!!} ⟩
+    ps {n = n} (𝕊.toList j) ≡⟨ refl ⟩
+    (fromℕ? <=< (readMaybe ∘ 𝕊.fromList)) (𝕊.toList j) ≡⟨ {!!} ⟩
     nothing ∎
     where
     open ≡-Reasoning
