@@ -1088,15 +1088,17 @@ module Orsygenturfa'iVeritas where
   ps-nada j J {n} = sym $ begin
     ps {n = n} (tL j) ≡⟨ refl ⟩
     (fromℕ? <=< (readMaybe ∘ fL)) (tL j) ≡⟨ refl ⟩
-    (fromℕ? =<< readMaybe (fL $ tL j)) ≡⟨ [fL[tLj]≡j]' ⟩
-    (fromℕ? =<< readMaybe j) ≡⟨ {!!} ⟩
-    (fromℕ? =<< nothing) ≡⟨ refl ⟩
+    f? (readMaybe $ fL $ tL j) ≡⟨ [fL[tLj]≡j]' ⟩
+    f? (readMaybe j) ≡⟨ {!!} ⟩
+    f? nothing ≡⟨ refl ⟩
     nothing ∎
     where
     tL = 𝕊.toList
     fL = 𝕊.fromList
+    f? : Maybe ℕ → Maybe $ Fin n
+    f? = fromℕ? {n} =<<_
     open ≡-Reasoning
-    [fL[tLj]≡j]' = fL∘tL≡id j ▹ cong (λ x → fromℕ? {n} =<< readMaybe x)
+    [fL[tLj]≡j]' = fL∘tL≡id j ▹ cong (λ x → f? $ readMaybe x)
       where
       fL∘tL≡id : (s : String) → 𝕊.fromList (𝕊.toList s) ≡ s
       fL∘tL≡id = {!!}
