@@ -1088,12 +1088,17 @@ module Orsygenturfa'iVeritas where
   ps-nada j J {n} = sym $ begin
     ps {n = n} (tL j) ≡⟨ refl ⟩
     (fromℕ? <=< (readMaybe ∘ fL)) (tL j) ≡⟨ refl ⟩
-    (fromℕ? =<< (readMaybe $ fL $ tL j)) ≡⟨ {!!} ⟩
+    (fromℕ? =<< (readMaybe $ fL $ tL j)) ≡⟨ [fL[tLj]≡j]' ⟩
+    (fromℕ? =<< (readMaybe j)) ≡⟨ {!!} ⟩
     nothing ∎
     where
     tL = 𝕊.toList
     fL = 𝕊.fromList
     open ≡-Reasoning
+    [fL[tLj]≡j]' = fL∘tL≡id j ▹ cong (λ x → fromℕ? {n} =<< readMaybe x)
+      where
+      fL∘tL≡id : (s : String) → 𝕊.fromList (𝕊.toList s) ≡ s
+      fL∘tL≡id = {!!}
 
   pork-du : {n : ℕ}
           → {x z : Fin n}
