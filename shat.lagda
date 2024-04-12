@@ -1090,6 +1090,7 @@ module Orsygenturfa'iVeritas where
     (fromℕ? <=< (readMaybe ∘ fL)) (tL j) ≡⟨ refl ⟩
     (fromℕ? =<< readMaybe (fL $ tL j)) ≡⟨ [fL[tLj]≡j]' ⟩
     (fromℕ? =<< readMaybe j) ≡⟨ {!!} ⟩
+    (fromℕ? =<< nothing) ≡⟨ refl ⟩
     nothing ∎
     where
     tL = 𝕊.toList
