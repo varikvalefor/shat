@@ -1086,10 +1086,12 @@ module Orsygenturfa'iVeritas where
           → {n : ℕ}
           → nothing ≡ ps {n = n} (𝕊.toList j)
   ps-nada j J {n} = sym $ begin
-    ps {n = n} (𝕊.toList j) ≡⟨ refl ⟩
-    (fromℕ? <=< (readMaybe ∘ 𝕊.fromList)) (𝕊.toList j) ≡⟨ {!!} ⟩
+    ps {n = n} (tL j) ≡⟨ refl ⟩
+    (fromℕ? <=< (readMaybe ∘ fL)) (tL j) ≡⟨ {!!} ⟩
     nothing ∎
     where
+    tL = 𝕊.toList
+    fL = 𝕊.fromList
     open ≡-Reasoning
 
   pork-du : {n : ℕ}
