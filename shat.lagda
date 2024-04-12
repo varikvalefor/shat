@@ -1098,7 +1098,7 @@ module Orsygenturfa'iVeritas where
     f? : Maybe ℕ → Maybe $ Fin n
     f? = fromℕ? {n} =<<_
     open ≡-Reasoning
-    [fL[tLj]≡j]' = fL∘tL≡id j ▹ cong (λ x → f? $ readMaybe x)
+    [fL[tLj]≡j]' = fL∘tL≡id j ▹ cong (f? ∘ readMaybe)
       where
       fL∘tL≡id : (s : String) → 𝕊.fromList (𝕊.toList s) ≡ s
       fL∘tL≡id = {!!}
