@@ -1017,9 +1017,7 @@ module Orsygenturfa'iVeritas where
   spit-du : (x z : String)
           → ',' ∉ 𝕊.toList x
           → ',' ∉ 𝕊.toList z
-          → (_≡_
-              (spit $ x ++ "," ++ z)
-              (𝕊.toList x ∷ 𝕊.toList z ∷ []))
+          → spit (x ++ "," ++ z) ≡ 𝕊.toList x ∷ 𝕊.toList z ∷ []
   spit-du x z inx inz = begin
     spit (x ++ "," ++ z) ≡⟨ refl ⟩
     w (tL $ x ++ "," ++ z) ≡⟨ tildist x ("," ++ z) ▹ cong w ⟩
