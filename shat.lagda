@@ -1570,7 +1570,27 @@ module ReedVeritas where
   ic : (x : Buffer)
      → (a : Buffer.F x)
      → just (Jmini a) ≡ reed x (k₁ x a 'i')
-  ic = {!!}
+  ic x a = sym $ begin
+    reed x (k₁ x a 'i') ≡⟨ refl ⟩
+    reed x K ≡⟨ {!!} ⟩
+    Reed.Pa.t K ≡⟨ {!!} ⟩
+    _,ₘ_ (pamoinamcu K >>= fromℕ?) (sl "i") >>= g' ≡⟨ {!!} ⟩
+    _,ₘ_ (rms a) (sl "i") >>= g' ≡⟨ refl ⟩
+    _,ₘ_ (rms a) (just 'i') >>= g' ≡⟨ refl ⟩
+    _ ≡⟨ rimco a ▹ cong (λ x → _,ₘ_ x _ >>= g') ⟩
+    _,ₘ_ (just a) (just 'i') >>= g' ≡⟨ refl ⟩
+    just (a , 'i') >>= g' ≡⟨ refl ⟩
+    Reed.Pa.g a 'i' ≡⟨ refl ⟩
+    just (Jmini a) ∎
+    where
+    g' = uncurry Reed.Pa.g
+    K = k₁ x a 'i'
+    rms : {n : ℕ} → Fin n → Maybe $ Fin n
+    rms = readMaybe ∘ show
+    sl = 𝕃.last ∘ 𝕊.toList
+    rimco : {n : ℕ} → (x : Fin n) → rms x ≡ just x
+    rimco = {!!}
+    open ≡-Reasoning
 
   mixer : (x : Buffer)
         → (a b c : Buffer.F x)
