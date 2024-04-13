@@ -1624,26 +1624,26 @@ module ReedVeritas where
       → let c∷s = 𝕊.fromChar c ++ s in
         Data.Maybe.Is-just $ 𝕃.uncons $ 𝕊.wordsBy (_≟ ' ') c∷s
       → just (Rejgau c∷s) ≡ reed x ("w " ++ c∷s)
-  uip unwords∘f x s c n uj = sym $ begin
-    reed x ("w " ++ c∷s) ≡⟨ w++s≡w++fs ▹ cong (reed x) ⟩
-    reed x (unwords $ "w" ∷ f c∷s) ≡⟨ reedx≡k∘f $ unwords $ "w" ∷ f c∷s ⟩
-    k (f $ unwords $ "w" ∷ f c∷s) ≡⟨ f∘unwords _ ▹ cong k ⟩
-    k ("w" ∷ f c∷s) ≡⟨ f[c∷s]≡v₁∷v₂ ▹ cong (k ∘ _∷_ "w") ⟩
+  uip unwords∘w x s c n uj = sym $ begin
+    reed x ("w " ++ c∷s) ≡⟨ w++s≡w++ws ▹ cong (reed x) ⟩
+    reed x (unwords $ "w" ∷ w c∷s) ≡⟨ reedx≡k∘w $ unwords $ "w" ∷ w c∷s ⟩
+    k (w $ unwords $ "w" ∷ w c∷s) ≡⟨ w∘unwords _ ▹ cong k ⟩
+    k ("w" ∷ w c∷s) ≡⟨ w[c∷s]≡v₁∷v₂ ▹ cong (k ∘ _∷_ "w") ⟩
     k ("w" ∷ v₁ ∷ v₂) ≡⟨ refl ⟩
     j∘R (unwords $ v₁ ∷ v₂) ≡⟨ refl ⟩
-    j∘R _ ≡⟨ f[c∷s]≡v₁∷v₂ ▹ sym ▹ cong (j∘R ∘ unwords) ⟩
-    j∘R (unwords $ f c∷s) ≡⟨ unwords∘f c∷s ▹ sym ▹ cong j∘R ⟩
+    j∘R _ ≡⟨ w[c∷s]≡v₁∷v₂ ▹ sym ▹ cong (j∘R ∘ unwords) ⟩
+    j∘R (unwords $ w c∷s) ≡⟨ unwords∘w c∷s ▹ sym ▹ cong j∘R ⟩
     j∘R c∷s ∎
     where
     open Reed.No using (k)
     c∷s = 𝕊.fromChar c ++ s
-    f = 𝕊.wordsBy $ _≟ ' '
+    w = 𝕊.wordsBy $ _≟ ' '
     v = Data.Maybe.to-witness uj
     v₁ = proj₁ v
     v₂ = proj₂ v
     j∘R = just ∘ Rejgau
-    f[c∷s]≡v₁∷v₂ : f c∷s ≡ v₁ ∷ v₂
-    f[c∷s]≡v₁∷v₂ = consunwords uj
+    w[c∷s]≡v₁∷v₂ : w c∷s ≡ v₁ ∷ v₂
+    w[c∷s]≡v₁∷v₂ = consunwords uj
       where
       consunwords : ∀ {a} → {A : Set a}
                   → {xs : List A}
@@ -1659,13 +1659,13 @@ module ReedVeritas where
         open ≡-Reasoning
     unwords = 𝕊.unwords
     open Reed
-    reedx≡k∘f : (s : String) → reed x s ≡ k (f s)
-    reedx≡k∘f = {!!}
+    reedx≡k∘w : (s : String) → reed x s ≡ k (w s)
+    reedx≡k∘w = {!!}
     open ≡-Reasoning
-    f∘unwords : (x : List String) → f (unwords x) ≡ x
-    f∘unwords = {!!}
-    w++s≡w++fs : "w " ++ c∷s ≡ unwords ("w" ∷ f c∷s)
-    w++s≡w++fs = {!!}
+    w∘unwords : (x : List String) → w (unwords x) ≡ x
+    w∘unwords = {!!}
+    w++s≡w++ws : "w " ++ c∷s ≡ unwords ("w" ∷ w c∷s)
+    w++s≡w++ws = {!!}
 \end{code}
 
 \section{la \F{kanji}}
