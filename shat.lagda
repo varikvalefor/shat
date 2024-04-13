@@ -1243,8 +1243,8 @@ module Orsygenturfa'i₃Veritas where
                (show a ++ "," ++ show b ++ x' ++ show c)))
   orspiv a b c x j = sym $ begin
     orsispita K ≡⟨ refl ⟩
-    L (𝕃.map (w aD?) $ w (_≟ ',') $ K) ≡⟨ {!!} ⟩
-    L' (𝕃.map (w' aD?) $ w' (_≟ ',') $ K') ≡⟨ {!!} ⟩
+    L (𝕃.map (w aD?) $ w (_≟ ',') K) ≡⟨ {!!} ⟩
+    L' (𝕃.map (w' aD?) $ w' (_≟ ',') K') ≡⟨ {!!} ⟩
     L' (𝕃.map (w' aD?) $ s' a ∷ [ s'bxs'c ]) ≡⟨ refl ⟩
     L' (w' aD? (s' a) ∷ 𝕃.map (w' aD?) [ s'bxs'c ]) ≡⟨ refl ⟩
     _ ≡⟨ uadysas a ▹ cong (L' ∘ (_∷ 𝕃.map (w' aD?) [ s'bxs'c ])) ⟩
