@@ -1400,8 +1400,8 @@ module Reed where
     ... | 'p' = just $ Cusku a b z
     ... | _ = nothing
 
-    t : (x : Buffer) → String → Maybe $ Cmd x
-    t x s = _>>= g' $ (Data.Maybe.ap ∘₂ mapₘ) _,_ (romoi s) og
+    t : {x : Buffer} → String → Maybe $ Cmd x
+    t {x} s = _>>= g' $ (Data.Maybe.ap ∘₂ mapₘ) _,_ (romoi s) og
       where
       og = orsygenturfa'i $ romoivimcu s
       romoi = 𝕃.last ∘ 𝕊.toList
@@ -1431,7 +1431,7 @@ module Reed where
   reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
     where
     terp : List $ Maybe $ Cmd x
-    terp = No.t s ∷ Pa.t s ∷ Re.t x s ∷ No.k s' ∷ []
+    terp = No.t s ∷ Pa.t s ∷ Re.t s ∷ No.k s' ∷ []
       where
       s' = 𝕊.wordsBy (_≟ ' ') s
 
@@ -1604,7 +1604,7 @@ module ReedVeritas where
       → just (Vimcu a b d) ≡ reed x (k₂ x a b 'd')
   vim x a b d = sym $ begin
     reed x (k₂ x a b 'd') ≡⟨ {!!} ⟩
-    Reed.Re.t x (k₂ x a b 'd') ≡⟨ refl ⟩
+    Reed.Re.t (k₂ x a b 'd') ≡⟨ refl ⟩
     _,ₘ_ (romoi K₂) (o∘r K₂) >>= g' ≡⟨ {!!} ⟩
     Reed.Re.g x a b d 'd' ≡⟨ refl ⟩
     just (Vimcu a b d) ∎
