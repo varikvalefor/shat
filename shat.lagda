@@ -1650,10 +1650,10 @@ module ReedVeritas where
                   → (j : Data.Maybe.Is-just $ 𝕃.uncons xs)
                   → let j' = Data.Maybe.to-witness j in
                     xs ≡ proj₁ j' ∷ proj₂ j'
-      consunwords {xs = X@(x ∷ xs)} j = sym $ begin
+      consunwords {xs = xs@(x ∷ s)} j = sym $ begin
         proj₁ j' ∷ proj₂ j' ≡⟨ {!!} ⟩
-        x ∷ xs ≡⟨ refl ⟩
-        X ∎
+        x ∷ s ≡⟨ refl ⟩
+        xs ∎
         where
         j' = Data.Maybe.to-witness j
         open ≡-Reasoning
