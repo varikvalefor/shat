@@ -1717,7 +1717,7 @@ kanji {x} (Rejgau d) = x ,_ $ just $ inj₂ $ Rejgauᵢₒ xl d
   xl = unlines $ Buffer.lerpinste x
 kanji {x} (Basti a b d) = kanji {x'} $ Jmini a'
   where
-  a' = {!!}
+  a' = 𝔽.fromℕ< {𝔽.toℕ a} {!!}
   x' = proj₁ $ kanji {x} $ Vimcu a b d
 kanji {x} (Xruti n) = {!!}
 \end{code}
