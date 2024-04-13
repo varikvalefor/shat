@@ -1427,13 +1427,13 @@ module Reed where
         aintDigit? = T? ∘ Data.Bool.not ∘ isDigit
         f = λ {(x ∷ []) → just x; _ → nothing}
 
-  reed : (x : Buffer) → String → Maybe $ Cmd x
-  reed x s = 𝕃.head $ 𝕃.mapMaybe id terp
+  terp : {x : Buffer} → String → List $ Maybe $ Cmd x
+  terp s = No.t s ∷ Pa.t s ∷ Re.t s ∷ No.k s' ∷ []
     where
-    terp : List $ Maybe $ Cmd x
-    terp = No.t s ∷ Pa.t s ∷ Re.t s ∷ No.k s' ∷ []
-      where
-      s' = 𝕊.wordsBy (_≟ ' ') s
+    s' = 𝕊.wordsBy (_≟ ' ') s
+
+  reed : (x : Buffer) → String → Maybe $ Cmd x
+  reed x = 𝕃.head ∘ 𝕃.mapMaybe id ∘ terp
 
 open Reed
   using (
