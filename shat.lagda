@@ -1514,6 +1514,7 @@ module ReedVeritas where
       → reed x "u" ≡ just (Xruti $ mink 𝔽.zero $ proj₂ z)
   xon x z = begin
     reed x "u" ≡⟨ refl ⟩
+    𝕃.head (𝕃.mapMaybe id $ Reed.terp "u") ≡⟨ refl ⟩
     𝕃.head (𝕃.mapMaybe id terp') ≡⟨ xedrenod 3 $ Reed.No.t "u" ⟩
     𝕃.head (𝕃.mapMaybe id $ Reed.No.t "u" ∷ []) ≡⟨ noxed _ ▹ sym ⟩
     Reed.No.t "u" ≡⟨ refl ⟩
