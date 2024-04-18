@@ -716,11 +716,11 @@ fromℕ? = mapₘ 𝔽.fromℕ< ∘ decToMaybe ∘ (ℕ._<? _)
 
 \begin{code}
 module fromℕ?Veritas where
-  pav : {n : ℕ}
+  jus : {n : ℕ}
       → (x : ℕ)
       → x ℕ.< n
       → just x ≡ mapₘ 𝔽.toℕ (fromℕ? {n} x)
-  pav {n} x m = sym $ begin
+  jus {n} x m = sym $ begin
     mapₘ 𝔽.toℕ (fromℕ? {n} x) ≡⟨ refl ⟩
     mapₘ 𝔽.toℕ (mapₘ 𝔽.fromℕ< $ c? x) ≡⟨ mapmapi $ c? x ⟩
     mapₘ id' (c? x) ≡⟨ dekydu'i ▹ cong (mapₘ id') ⟩
@@ -734,11 +734,11 @@ module fromℕ?Veritas where
     open ≡-Reasoning
     mapmapi = sym ∘ DMP.map-compose
 
-  rel : {n : ℕ}
-      → (x : ℕ)
-      → ¬_ $ x ℕ.< n
-      → nothing ≡ mapₘ 𝔽.toℕ (fromℕ? {n} x)
-  rel {n} x J = sym $ begin
+  nada : {n : ℕ}
+       → (x : ℕ)
+       → ¬_ $ x ℕ.< n
+       → nothing ≡ mapₘ 𝔽.toℕ (fromℕ? {n} x)
+  nada {n} x J = sym $ begin
     mapₘ 𝔽.toℕ (fromℕ? {n} x) ≡⟨ refl ⟩
     mapₘ 𝔽.toℕ (mapₘ 𝔽.fromℕ< $ d2m $ x ℕ.<? n) ≡⟨ MC ▹ sym ⟩
     mapₘ (𝔽.toℕ ∘ 𝔽.fromℕ<) (d2m $ x ℕ.<? n) ≡⟨ refl ⟩
