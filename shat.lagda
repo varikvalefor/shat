@@ -572,8 +572,8 @@ module InsertVeritas where
              n' ≡ length (n' ↑ x)
     finlen [] nothing = refl
     finlen (_ ∷ xs) (just 𝔽.zero) = refl
-    finlen (_ ∷ xs) (just (𝔽.suc n)) = finlen xs (just n) ▹ cong ℕ.suc
     finlen (_ ∷ xs) nothing = finlen xs nothing ▹ cong ℕ.suc
+    finlen (_ ∷ xs) (just (𝔽.suc n)) = finlen xs (just n) ▹ cong ℕ.suc
        
   lynyrd : ∀ {a} → {A : Set a}
          → (x i : List A)
