@@ -680,7 +680,7 @@ ni'o xu sarcu fa lo nu ciksi bau la .lojban.
 \begin{code}
 _,ₘ_ : ∀ {a} → {A B : Set a}
      → Maybe A → Maybe B → Maybe $ A × B
-_,ₘ_ = Data.Maybe.ap ∘₂ mapₘ $ _,_
+_,ₘ_ = Data.Maybe.ap ∘ mapₘ _,_
 \end{code}
 
 \subsection{le ctaipe be le su'u la'oi .\F{\AgdaUnderscore{},ₘ\AgdaUnderscore}\ .zoi.\ mapti}
