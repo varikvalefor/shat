@@ -570,9 +570,9 @@ module InsertVeritas where
            → (n : Maybe $ Fin $ length x)
            → let n' = maybe 𝔽.toℕ (length x) n in
              n' ≡ length (n' ↑ x)
+    finlen [] nothing = refl
     finlen (_ ∷ xs) (just 𝔽.zero) = refl
     finlen (_ ∷ xs) (just (𝔽.suc n)) = finlen xs (just n) ▹ cong ℕ.suc
-    finlen [] nothing = refl
     finlen (_ ∷ xs) nothing = finlen xs nothing ▹ cong ℕ.suc
        
   lynyrd : ∀ {a} → {A : Set a}
