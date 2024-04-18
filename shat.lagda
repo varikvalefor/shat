@@ -453,7 +453,12 @@ zmadekydu'i {x} {n} {m} = begin
 \end{code}
 
 \section{la'oi .\F{readMaybe'}.}
-ni'o la .varik.\ na birti lo du'u ma kau zabna je cu lojbo je cu velcki la'oi .\F{readMaybe'}.
+ni'o ro da poi ke'a co'e zo'u\ldots
+\begin{itemize}
+	\item ga jonai ga je da du zoi zoi.\ \AgdaString{\$}\ .zoi.\ gi ko'a goi lo me'oi .\F{readMaybe'}.\ be da cu du la'o zoi.\ \IC{just} \IC{nothing}\ .zoi.\ gi\ldots
+	\item ga jonai ga je su'o de poi ke'a ctaipe la'o zoi.\ \D{Fin} \B n\ .zoi.\ zo'u da du lo me'oi .\F{show}.\ be de gi ko'a me'oi .\IC{just}.\ lo se sinxa be da gi
+	\item ko'a du la'oi .\IC{nothing}.
+\end{itemize}
 
 \begin{code}
 readMaybe' : {n : ℕ} → String → Maybe $ Maybe $ Fin n
