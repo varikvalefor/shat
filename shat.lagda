@@ -557,7 +557,7 @@ module InsertVeritas where
             → (x z : List A)
             → z ≡_ $ length x ↓_ $ x ++ z
     lendrop [] _ = refl
-    lendrop (_ ∷ xs) z = lendrop xs z
+    lendrop (_ ∷ xs) = lendrop xs
 
     lenteik : ∀ {a} → {A : Set a}
             → (x z : List A)
