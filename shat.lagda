@@ -478,6 +478,13 @@ module ReadMaybe'Veritas where
     where
     open ≡-Reasoning
 
+  justjust→namcu : {n : ℕ}
+                 → (s : String)
+                 → (f : Fin n)
+                 → readMaybe' s ≡_ $ just $ just f
+                 → s ≡_ $ show f
+  justjust→namcu = {!!}
+
   jdini : {n : ℕ} → readMaybe' {n} "$" ≡ just nothing
   jdini = refl
 
