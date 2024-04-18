@@ -474,6 +474,7 @@ module ReadMaybe'Veritas where
         → readMaybe' (show f) ≡ just (just f)
   namcu f = begin
     readMaybe' (show f) ≡⟨ {!!} ⟩
+    (readMaybe (show f) ▹ mapₘ just) ≡⟨ {!!} ⟩
     just (just f) ∎
     where
     open ≡-Reasoning
