@@ -473,10 +473,13 @@ module ReadMaybe'Veritas where
         → (f : Fin n)
         → readMaybe' (show f) ≡ just (just f)
   namcu f = begin
-    readMaybe' (show f) ≡⟨ {!!} ⟩
+    readMaybe' (show f) ≡⟨ refl ⟩
+    if (show f ≡ᵇ "$") JN (RM $ show f) ≡⟨ {!!} ⟩
     (readMaybe (show f) ▹ mapₘ just) ≡⟨ {!!} ⟩
     just (just f) ∎
     where
+    JN = just nothing
+    RM = mapₘ just ∘ readMaybe
     open ≡-Reasoning
 
   justjust→namcu : {n : ℕ}
