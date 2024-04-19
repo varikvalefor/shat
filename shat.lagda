@@ -477,7 +477,7 @@ module ReadMaybe'Veritas where
     if (show f ≡ᵇ "$") JN (RM $ show f) ≡⟨ refl ⟩
     _ ≡⟨ najdinis f ▹ cong (λ j → if j JN $ RM $ show f) ⟩
     if false JN (RM $ show f) ≡⟨ refl ⟩
-    (readMaybe (show f) ▹ mapₘ just) ≡⟨ {!!} ⟩
+    (readMaybe (show f) ▹ mapₘ just) ≡⟨ rimcos f ▹ cong (mapₘ just) ⟩
     (just f ▹ mapₘ just) ≡⟨ refl ⟩
     just (just f) ∎
     where
@@ -487,6 +487,10 @@ module ReadMaybe'Veritas where
              → (f : Fin n)
              → show f ≡ᵇ "$" ≡ false
     najdinis = {!!}
+    rimcos : {n : ℕ}
+           → (f : Fin n)
+           → readMaybe (show f) ≡ just f
+    rimcos = {!!}
     open ≡-Reasoning
 
   justjust→namcu : {n : ℕ}
