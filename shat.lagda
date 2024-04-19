@@ -475,6 +475,7 @@ module ReadMaybe'Veritas where
   namcu f = begin
     readMaybe' (show f) ≡⟨ refl ⟩
     if (show f ≡ᵇ "$") JN (RM $ show f) ≡⟨ {!!} ⟩
+    if false JN (RM $ show f) ≡⟨ refl ⟩
     (readMaybe (show f) ▹ mapₘ just) ≡⟨ {!!} ⟩
     just (just f) ∎
     where
