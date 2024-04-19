@@ -478,6 +478,7 @@ module ReadMaybe'Veritas where
     _ ≡⟨ najdinis f ▹ cong (λ j → if j JN $ RM $ show f) ⟩
     if false JN (RM $ show f) ≡⟨ refl ⟩
     (readMaybe (show f) ▹ mapₘ just) ≡⟨ {!!} ⟩
+    (just f ▹ mapₘ just) ≡⟨ refl ⟩
     just (just f) ∎
     where
     JN = just nothing
