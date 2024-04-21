@@ -879,13 +879,13 @@ module PamoinamcuVeritas where
   non rimco fL∘tL n = sym $ begin
     pamoinamcu (show n) ≡⟨ refl ⟩
     𝕃.head (s $ show n) >>= readMaybe ≡⟨ refl ⟩
-    𝓰 (s $ show n) ≡⟨ DegjygirzuVeritas.pav fL∘tL n ▹ cong 𝓰 ⟩
-    𝓰 (show n ∷ []) ≡⟨ refl ⟩
+    g (s $ show n) ≡⟨ DegjygirzuVeritas.pav fL∘tL n ▹ cong g ⟩
+    g (show n ∷ []) ≡⟨ refl ⟩
     𝕃.head (show n ∷ []) >>= readMaybe ≡⟨ refl ⟩
     readMaybe (show n) ≡⟨ rimco n ⟩
     just n ∎
     where
-    𝓰 = readMaybe <=< 𝕃.head
+    g = readMaybe <=< 𝕃.head
     s = 𝕊.wordsBy $ T? ∘ Data.Bool.not ∘ Data.Char.isDigit
     open ≡-Reasoning
 
