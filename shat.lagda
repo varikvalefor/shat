@@ -472,7 +472,7 @@ fromList-dist : (x z : List Char)
 fromList-dist = {!!}
 \end{code}
 
-\section{la'o zoi.\ \F{readMaybe∘show}\ .zoi.
+\section{la'o zoi.\ \F{readMaybe∘show}\ .zoi.}
 ni'o xu sarcu fa lo nu ciksi bau la .lojban.
 
 \begin{code}
@@ -482,7 +482,7 @@ readMaybe∘show : {n : ℕ}
 readMaybe∘show = {!!}
 \end{code}
 
-\section{la'o zoi.\ \F{fromList∘toList}\ .zoi.
+\section{la'o zoi.\ \F{fromList∘toList}\ .zoi.}
 ni'o xu sarcu fa lo nu ciksi bau la .lojban.
 
 \begin{code}
