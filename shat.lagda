@@ -854,8 +854,6 @@ module DegjygirzuVeritas where
     d = degjygirzu
     tL = 𝕊.toList
     fL = 𝕊.fromList
-    tildist : (x z : String) → tL (x ++ z) ≡ tL x ++ tL z
-    tildist = {!!}
     d' = 𝕃.map fL ∘_ $ 𝕃.wordsBy $ T? ∘ Data.Bool.not ∘ isDigit
     fL∘tL = {!!}
     open ≡-Reasoning
