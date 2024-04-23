@@ -460,6 +460,16 @@ toList-dist : (x z : String)
 toList-dist = {!!}
 \end{code}
 
+\section{la'o zoi.\ \F{readMaybe∘show}\ .zoi.
+ni'o xu sarcu fa lo nu ciksi bau la .lojban.
+
+\begin{code}
+readMaybe∘show : {n : ℕ}
+               → (f : Fin n)
+               → readMaybe (show f) ≡ just f
+readMaybe∘show = {!!}
+\end{code}
+
 \section{la'oi .\F{readMaybe'}.}
 ni'o ro da poi ke'a co'e zo'u\ldots
 \begin{itemize}
@@ -489,16 +499,13 @@ module ReadMaybe'Veritas where
     (just f ▹ mapₘ just) ≡⟨ refl ⟩
     just (just f) ∎
     where
+    rimcos = readMaybe∘show
     JN = just nothing
     RM = mapₘ just ∘ readMaybe
     najdinis : {n : ℕ}
              → (f : Fin n)
              → show f ≡ᵇ "$" ≡ false
     najdinis = {!!}
-    rimcos : {n : ℕ}
-           → (f : Fin n)
-           → readMaybe (show f) ≡ just f
-    rimcos = {!!}
     open ≡-Reasoning
 
   justjust→namcu : {n : ℕ}
