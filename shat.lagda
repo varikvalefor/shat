@@ -461,6 +461,17 @@ toList-dist : (x z : String)
 toList-dist = {!!}
 \end{code}
 
+\section{la'o zoi.\ \F{fromList-dist}\ .zoi.}
+ni'o xu sarcu fa lo nu ciksi bau la .lojban.
+
+\begin{code}
+fromList-dist : (x z : List Char)
+              → (_≡_
+                  (𝕊.fromList $ x ++ z)
+                  (𝕊.fromList x ++ 𝕊.fromList z))
+fromList-dist = {!!}
+\end{code}
+
 \section{la'o zoi.\ \F{readMaybe∘show}\ .zoi.
 ni'o xu sarcu fa lo nu ciksi bau la .lojban.
 
