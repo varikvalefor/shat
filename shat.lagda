@@ -470,6 +470,14 @@ readMaybe∘show : {n : ℕ}
 readMaybe∘show = {!!}
 \end{code}
 
+\section{la'o zoi.\ \F{fromList∘toList}\ .zoi.
+ni'o xu sarcu fa lo nu ciksi bau la .lojban.
+
+\begin{code}
+fromList∘toList : (x : String) → 𝕊.fromList (𝕊.toList x) ≡ x
+fromList∘toList = {!!}
+\end{code}
+
 \section{la'oi .\F{readMaybe'}.}
 ni'o ro da poi ke'a co'e zo'u\ldots
 \begin{itemize}
