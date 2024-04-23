@@ -452,6 +452,14 @@ zmadekydu'i {x} {n} {m} = begin
   open ≡-Reasoning
 \end{code}
 
+\section{la'o zoi.\ \F{toList-dist}\ .zoi.}
+ni'o xu sarcu fa lo nu ciksi bau la .lojban.
+\begin{code}
+toList-dist : (x z : String)
+            → 𝕊.toList (x ++ z) ≡ 𝕊.toList x ++ 𝕊.toList z
+toList-dist = {!!}
+\end{code}
+
 \section{la'oi .\F{readMaybe'}.}
 ni'o ro da poi ke'a co'e zo'u\ldots
 \begin{itemize}
@@ -803,7 +811,7 @@ module DegjygirzuVeritas where
   rybic s c j = sym $ begin
     degjygirzu (𝕊.fromChar c ++ s) ≡⟨ refl ⟩
     degjygirzu (fC c ++ s) ≡⟨ refl ⟩
-    d' (tL $ fC c ++ s) ≡⟨ tldist (fC c) s ▹ cong d' ⟩
+    d' (tL $ fC c ++ s) ≡⟨ toList-dist (fC c) s ▹ cong d' ⟩
     d' (tL (fC c) ++ tL s) ≡⟨ tilfic c ▹ cong (d' ∘ (_++ tL s)) ⟩
     d' ((c ∷ []) ++ tL s) ≡⟨ refl ⟩
     d' (c ∷ tL s) ≡⟨ refl ⟩
@@ -816,8 +824,6 @@ module DegjygirzuVeritas where
     fL = 𝕊.fromList
     fC = 𝕊.fromChar
     F? = T? ∘ Data.Bool.not
-    tldist : (x z : String) → tL (x ++ z) ≡ tL x ++ tL z
-    tldist = {!!}
     -- | .i cicna finpe
     tilfic : tL ∘ fC ≗ 𝕃.[_]
     tilfic = {!!}
@@ -1051,9 +1057,9 @@ module Orsygenturfa'iVeritas where
           → spit (x ++ "," ++ z) ≡ 𝕊.toList x ∷ 𝕊.toList z ∷ []
   spit-du x z inx inz = begin
     spit (x ++ "," ++ z) ≡⟨ refl ⟩
-    w (tL $ x ++ "," ++ z) ≡⟨ tildist x ("," ++ z) ▹ cong w ⟩
+    w (tL $ x ++ "," ++ z) ≡⟨ toList-dist x ("," ++ z) ▹ cong w ⟩
     w (tL x ++ tL ("," ++ z)) ≡⟨ refl ⟩
-    _ ≡⟨ tildist "," z ▹ cong (w ∘ _++_ (tL x)) ⟩
+    _ ≡⟨ toList-dist "," z ▹ cong (w ∘ _++_ (tL x)) ⟩
     w (tL x ++ tL "," ++ tL z) ≡⟨ refl ⟩
     w (tL x ++ ',' ∷ tL z) ≡⟨ uit _ (tL x) _ (F inx) (F inz) _ refl ⟩
     w (tL x) ++ w (tL z) ≡⟨ spit-pav x inx ▹ cong (_++ _) ⟩
@@ -1063,8 +1069,6 @@ module Orsygenturfa'iVeritas where
     where
     tL = 𝕊.toList
     w = 𝕃.wordsBy $ _≟ ','
-    tildist : (x z : String) → tL (x ++ z) ≡ tL x ++ tL z
-    tildist = {!!}
     F : ∀ {a} → {A : Set a}
       → ⦃ _ : Eq A ⦄
       → {e : A}
