@@ -978,7 +978,7 @@ module RomoivimcuVeritas where
             → (_≡_
                 (𝕊.fromList a ++ 𝕊.fromList b)
                 (𝕊.fromList $ a ++ b))
-    frokonk = {!!}
+    frokonk = sym ∘₂ fromList-dist
     [cev∘vec]² : (x : String) → x ≡ 𝕊.fromList (𝕊.toList x)
     [cev∘vec]² = sym ∘ fromList∘toList
     open ≡-Reasoning
