@@ -876,7 +876,7 @@ module DegjygirzuVeritas where
     tL = 𝕊.toList
     fL = 𝕊.fromList
     d' = 𝕃.map fL ∘_ $ 𝕃.wordsBy $ T? ∘ Data.Bool.not ∘ isDigit
-    fL∘tL = {!!}
+    fL∘tL = fromList∘toList
     open ≡-Reasoning
 \end{code}
 
@@ -968,7 +968,7 @@ module RomoivimcuVeritas where
                 (𝕊.fromList $ a ++ b))
     frokonk = {!!}
     [cev∘vec]² : (x : String) → x ≡ 𝕊.fromList (𝕊.toList x)
-    [cev∘vec]² = {!!}
+    [cev∘vec]² = sym ∘ fromList∘toList
     open ≡-Reasoning
 
   vimcykonkydus : (s : String)
@@ -1151,7 +1151,7 @@ module Orsygenturfa'iVeritas where
     [fL[tLj]≡j]' = fL∘tL≡id j ▹_ $ cong $ f? ∘ readMaybe
       where
       fL∘tL≡id : (s : String) → 𝕊.fromList (𝕊.toList s) ≡ s
-      fL∘tL≡id = {!!}
+      fL∘tL≡id = fromList∘toList
 
   pork-du : {n : ℕ}
           → {x z : Fin n}
@@ -1316,7 +1316,7 @@ module Orsygenturfa'i₃Veritas where
     s' = 𝕊.toList ∘ show
     s'bxs'c = s' b ++ x ∷ s' c
     fL∘tL : (x : String) → 𝕊.fromList (𝕊.toList x) ≡ x
-    fL∘tL = {!!}
+    fL∘tL = fromList∘toList
     K' = s' a ++ ',' ∷ s' b ++ x ∷ s' c
     abj = [ a ] ∷ [ b ∷ [ c ] ]
     sabus : w' aD? s'bxs'c ≡ s' b ∷ [ s' c ]
