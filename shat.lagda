@@ -454,6 +454,7 @@ zmadekydu'i {x} {n} {m} = begin
 
 \section{la'o zoi.\ \F{toList-dist}\ .zoi.}
 ni'o xu sarcu fa lo nu ciksi bau la .lojban.
+
 \begin{code}
 toList-dist : (x z : String)
             → 𝕊.toList (x ++ z) ≡ 𝕊.toList x ++ 𝕊.toList z
