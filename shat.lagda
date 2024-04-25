@@ -1733,7 +1733,8 @@ module ReedVeritas where
     w++s≡w++ws : "w " ++ c∷s ≡ unwords ("w" ∷ w c∷s)
     w++s≡w++ws = sym $ begin
       unwords ("w" ∷ w c∷s) ≡⟨ {!!} ⟩
-      "w " ++ unwords (w c∷s) ≡⟨ unwords∘w c∷s ▹ sym ▹ cong ("w " ++_) ⟩
+      "w " ++ unwords (w c∷s) ≡⟨ refl ⟩
+      _ ≡⟨ unwords∘w c∷s ▹ sym ▹ cong ("w " ++_) ⟩
       "w " ++ c∷s ∎
 \end{code}
 
