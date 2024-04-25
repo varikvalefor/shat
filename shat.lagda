@@ -1732,10 +1732,18 @@ module ReedVeritas where
     w∘unwords = {!!}
     w++s≡w++ws : "w " ++ c∷s ≡ unwords ("w" ∷ w c∷s)
     w++s≡w++ws = sym $ begin
-      unwords ("w" ∷ w c∷s) ≡⟨ {!!} ⟩
+      unwords ("w" ∷ w c∷s) ≡⟨ unwords-dist "w" (w c∷s) {!!} ⟩
       "w " ++ unwords (w c∷s) ≡⟨ refl ⟩
       _ ≡⟨ unwords∘w c∷s ▹ sym ▹ cong ("w " ++_) ⟩
       "w " ++ c∷s ∎
+      where
+      unwords-dist : (x : String)
+                   → (z : List String)
+                   → ¬_ $ z ≡ []
+                   → (_≡_
+                       (unwords $ x ∷ z)
+                       ((x ++ " ") ++ unwords z))
+      unwords-dist = {!!}
 \end{code}
 
 \section{la \F{kanji}}
