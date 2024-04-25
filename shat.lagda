@@ -1731,7 +1731,9 @@ module ReedVeritas where
     w∘unwords : (x : List String) → x ≡ w (unwords x)
     w∘unwords = {!!}
     w++s≡w++ws : "w " ++ c∷s ≡ unwords ("w" ∷ w c∷s)
-    w++s≡w++ws = {!!}
+    w++s≡w++ws = sym $ begin
+      unwords ("w" ∷ w c∷s) ≡⟨ {!!} ⟩
+      "w " ++ c∷s ∎
 \end{code}
 
 \section{la \F{kanji}}
