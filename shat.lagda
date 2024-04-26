@@ -1341,8 +1341,8 @@ module Orsygenturfa'i₃Veritas where
     L' : List $ List $ List $ Char
        → Maybe $ (String × String) × String
     L' = L ∘_ $ 𝕃.map $ 𝕃.map 𝕊.fromList
-    open ≡-Reasoning
     map₂-cong = DLP.map-cong ∘ DLP.map-cong
+    open ≡-Reasoning
 
   porkcos : {n : ℕ}
           → (a b : Fin n)
