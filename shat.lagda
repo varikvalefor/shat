@@ -1340,7 +1340,7 @@ module Orsygenturfa'i₃Veritas where
     map₂ = 𝕃.map ∘ 𝕃.map
     L' : List $ List $ List $ Char
        → Maybe $ (String × String) × String
-    L' = L ∘ 𝕃.map (𝕃.map 𝕊.fromList)
+    L' = L ∘_ $ 𝕃.map $ 𝕃.map 𝕊.fromList
     open ≡-Reasoning
     map₂-cong = DLP.map-cong ∘ DLP.map-cong
 
