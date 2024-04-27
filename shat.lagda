@@ -1155,7 +1155,7 @@ module Orsygenturfa'iVeritas where
     tL = 𝕊.toList
     fL = 𝕊.fromList
     f? : Maybe ℕ → Maybe $ Fin n
-    f? = fromℕ? {n} =<<_
+    f? = fromℕ? =<<_
     [fL[tLj]≡j]' = fromList∘toList j ▹_ $ cong $ f? ∘ readMaybe
     open ≡-Reasoning
     rimnos : (s : String)
