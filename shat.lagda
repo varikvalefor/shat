@@ -2042,7 +2042,7 @@ module KanjyVeritas where
   muvipas x a b c d = sym $ begin
     T (BL x') ≡⟨ DLP.take++drop (𝔽.toℕ a) (BL x') ▹ sym ▹ cong T ⟩
     T (T (BL x') ++ D (BL x')) ≡⟨ refl ⟩
-    _ ≡⟨ teikteik _ _ ▹ cong (T ∘ (_++ D (BL x'))) ⟩
+    _ ≡⟨ teikteik _ _ ▹_ $ cong $ T ∘ (_++ D (BL x')) ⟩
     T (T (BL x) ++ D (BL x')) ≡⟨ teikteik (BL x) a ⟩
     T (BL x) ∎
     where
