@@ -1122,7 +1122,7 @@ module Orsygenturfa'iVeritas where
         → just x ≡ ps (𝕊.toList $ show $ 𝔽.toℕ x)
   ps-du rimco x = sym $ begin
     ps (𝕊.toList $ show x) ≡⟨ refl ⟩
-    b𝔽 (rM $ id' $ show x) ≡⟨ cvd x ▹ cong (b𝔽 ∘ readMaybe) ⟩
+    b𝔽 (rM $ id' $ show x) ≡⟨ cvd x ▹ cong (b𝔽 ∘ rM) ⟩
     b𝔽 (rM $ show x) ≡⟨ rimco (𝔽.toℕ x) ▹ cong b𝔽 ⟩
     b𝔽 (just $ 𝔽.toℕ x) ≡⟨ refl ⟩
     just (𝔽.toℕ x) >>= fromℕ? ≡⟨ refl ⟩
