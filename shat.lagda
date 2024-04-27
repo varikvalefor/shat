@@ -929,15 +929,15 @@ module PamoinamcuVeritas where
   pav rimco n c t j = sym $ begin
    pamoinamcu (show n ++ c' ++ t) ≡⟨ refl ⟩
    𝕃.head (d $ show n ++ c' ++ t) >>= readMaybe ≡⟨ refl ⟩
-   𝓰 (d $ show n ++ c' ++ t) ≡⟨ dvr t n c j ▹ sym ▹ cong 𝓰 ⟩
-   𝓰 (show n ∷ d (c' ++ t)) ≡⟨ refl ⟩
+   g (d $ show n ++ c' ++ t) ≡⟨ dvr t n c j ▹ sym ▹ cong g ⟩
+   g (show n ∷ d (c' ++ t)) ≡⟨ refl ⟩
    𝕃.head (show n ∷ d (c' ++ t)) >>= readMaybe ≡⟨ refl ⟩
    readMaybe (show n) ≡⟨ rimco n ⟩
    just n ∎
    where
    dvr = DegjygirzuVeritas.rel
    c' = 𝕊.fromChar c
-   𝓰 = readMaybe <=< 𝕃.head
+   g = readMaybe <=< 𝕃.head
    d = degjygirzu
    open ≡-Reasoning
 \end{code}
