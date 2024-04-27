@@ -1138,7 +1138,7 @@ module Orsygenturfa'iVeritas where
     id' = 𝕊.fromList ∘ 𝕊.toList
     open ≡-Reasoning
     cvd : {n : ℕ} → (x : Fin n) → id' (show x) ≡ show x
-    cvd x = fromList∘toList $ show x
+    cvd = fromList∘toList ∘ show
 
   ps-nada : (j : String)
           → ¬_ $ Σ (∃ Fin) $ _≡_ j ∘ show ∘ proj₂
