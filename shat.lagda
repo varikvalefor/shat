@@ -1180,33 +1180,34 @@ module Orsygenturfa'iVeritas where
              → readMaybe s ≡ nothing {A = ℕ}
       rimnos = {!!}
 
-  pork-du : {n : ℕ}
-          → {x z : Fin n}
-          → (djb : x 𝔽.≤ z)
-          → (_≡_
-              (pork $ just x ∷ just z ∷ [])
-              (just $ (x , z) , djb))
-  pork-du {n} {x} {z} djb = begin
-    pork (just x ∷ just z ∷ []) ≡⟨ refl ⟩
-    mapₘ ((x , z) ,_) (decToMaybe $ x 𝔽.≤? z) ≡⟨ refl ⟩
-    _ ≡⟨ zmadekydu'i {m = djb} ▹ cong (mapₘ (_ ,_)) ⟩
-    mapₘ ((x , z) ,_) (just djb) ≡⟨ refl ⟩
-    just ((x , z) , djb) ∎
-    where
-    open ≡-Reasoning
+  module Pork where
+    du : {n : ℕ}
+       → {x z : Fin n}
+       → (djb : x 𝔽.≤ z)
+       → (_≡_
+           (pork $ just x ∷ just z ∷ [])
+           (just $ (x , z) , djb))
+    du {n} {x} {z} djb = begin
+      pork (just x ∷ just z ∷ []) ≡⟨ refl ⟩
+      mapₘ ((x , z) ,_) (decToMaybe $ x 𝔽.≤? z) ≡⟨ refl ⟩
+      _ ≡⟨ zmadekydu'i {m = djb} ▹ cong (mapₘ (_ ,_)) ⟩
+      mapₘ ((x , z) ,_) (just djb) ≡⟨ refl ⟩
+      just ((x , z) , djb) ∎
+      where
+      open ≡-Reasoning
 
-  pork-nada : {n : ℕ}
-            → {x z : Fin n}
-            → ¬_ $ x 𝔽.≤ z
-            → pork (just x ∷ just z ∷ []) ≡ nothing
-  pork-nada {_} {x} {z} j = begin
-    pork (just x ∷ just z ∷ []) ≡⟨ refl ⟩
-    mapₘ (_ ,_) (decToMaybe $ x 𝔽.≤? z) ≡⟨ refl ⟩
-    _ ≡⟨ DN ▹ cong (mapₘ $ _ ,_) ⟩
-    nothing ∎
-    where
-    DN = dec-nothing (𝔽._≤ z) (x 𝔽.≤? z) j
-    open ≡-Reasoning
+    nada : {n : ℕ}
+         → {x z : Fin n}
+         → ¬_ $ x 𝔽.≤ z
+         → pork (just x ∷ just z ∷ []) ≡ nothing
+    nada {_} {x} {z} j = begin
+      pork (just x ∷ just z ∷ []) ≡⟨ refl ⟩
+      mapₘ (_ ,_) (decToMaybe $ x 𝔽.≤? z) ≡⟨ refl ⟩
+      _ ≡⟨ DN ▹ cong (mapₘ $ _ ,_) ⟩
+      nothing ∎
+      where
+      DN = dec-nothing (𝔽._≤ z) (x 𝔽.≤? z) j
+      open ≡-Reasoning
 
   pav : ((x : ℕ) → readMaybe (show x) ≡ just x)
       → {n : ℕ}
@@ -1218,7 +1219,7 @@ module Orsygenturfa'iVeritas where
   pav rimco a b djb = begin
     orsygenturfa'i (show a ++ "," ++ show b) ≡⟨ refl ⟩
     pork (𝕃.map ps $ spit a,b) ≡⟨ cong pork mapyjus ⟩
-    pork (just a ∷ just b ∷ []) ≡⟨ pork-du djb ⟩
+    pork (just a ∷ just b ∷ []) ≡⟨ Pork.du djb ⟩
     just ((a , b) , djb) ∎
     where
     a,b = show a ++ "," ++ show b
