@@ -1156,12 +1156,12 @@ module Orsygenturfa'iVeritas where
     fL = 𝕊.fromList
     f? : Maybe ℕ → Maybe $ Fin n
     f? = fromℕ? {n} =<<_
+    [fL[tLj]≡j]' = fromList∘toList j ▹_ $ cong $ f? ∘ readMaybe
     open ≡-Reasoning
     rimnos : (s : String)
            → ¬_ $ Σ (∃ Fin) $ _≡_ s ∘ show ∘ proj₂
            → readMaybe s ≡ nothing {A = ℕ}
     rimnos = {!!}
-    [fL[tLj]≡j]' = fromList∘toList j ▹_ $ cong $ f? ∘ readMaybe
 
   pork-du : {n : ℕ}
           → {x z : Fin n}
