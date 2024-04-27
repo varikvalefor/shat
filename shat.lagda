@@ -2069,13 +2069,11 @@ module KanjyVeritas where
               (n ↑_ $ 𝔽.toℕ a ↓_ $ Buffer.lerpinste x)
               (n ↑_ $ 𝔽.toℕ c ↓_ $ Buffer.lerpinste x'))
   muvisez x a b c d = sym $ begin
-    n ↑ (c' ↓ BLT x') ≡⟨ {!!} ⟩
-    n ↑ (a' ↓ BLT x) ∎
+    n ↑ (f c ↓ BLT x') ≡⟨ {!!} ⟩
+    n ↑ (f a ↓ BLT x) ∎
     where
-    a' = 𝔽.toℕ a
-    b' = 𝔽.toℕ b
-    c' = 𝔽.toℕ c
-    n = ℕ.suc $ b' ℕ.∸ a'
+    f = 𝔽.toℕ
+    n = ℕ.suc $ f b ℕ.∸ f a
     x' = proj₁ $ kanji {x} $ Muvgau a b (just c) d
     BLT = Buffer.lerpinste
     open ≡-Reasoning
