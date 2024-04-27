@@ -1161,10 +1161,7 @@ module Orsygenturfa'iVeritas where
            → ¬_ $ Σ (∃ Fin) $ _≡_ s ∘ show ∘ proj₂
            → readMaybe s ≡ nothing {A = ℕ}
     rimnos = {!!}
-    [fL[tLj]≡j]' = fL∘tL≡id j ▹_ $ cong $ f? ∘ readMaybe
-      where
-      fL∘tL≡id : (s : String) → 𝕊.fromList (𝕊.toList s) ≡ s
-      fL∘tL≡id = fromList∘toList
+    [fL[tLj]≡j]' = fromList∘toList j ▹_ $ cong $ f? ∘ readMaybe
 
   pork-du : {n : ℕ}
           → {x z : Fin n}
