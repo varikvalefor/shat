@@ -1126,6 +1126,11 @@ module Orsygenturfa'iVeritas where
     uit = {!!}
     open ≡-Reasoning
 
+  spit-konk : (x z : String)
+            → ',' ∉ x
+            → spit (x ++ "," ++ z) ≡ 𝕊.toList x ∷ spit z
+  spit-konk = {!!}
+
   ps-du : ((x : ℕ) → readMaybe (show x) ≡ just x)
         → {n : ℕ}
         → (x : Fin n)
