@@ -1136,9 +1136,9 @@ module Orsygenturfa'iVeritas where
     rM = readMaybe
     b𝔽 = _>>= fromℕ?
     id' = 𝕊.fromList ∘ 𝕊.toList
-    open ≡-Reasoning
     cvd : {n : ℕ} → (x : Fin n) → id' (show x) ≡ show x
     cvd = fromList∘toList ∘ show
+    open ≡-Reasoning
 
   ps-nada : (j : String)
           → ¬_ $ Σ (∃ Fin) $ _≡_ j ∘ show ∘ proj₂
