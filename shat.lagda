@@ -1063,73 +1063,74 @@ ni'o pilno ko'a goi le me'oi .\AgdaKeyword{module}.\ co'e ki'u le su'u tu'a ko'a
 module Orsygenturfa'iVeritas where
   open Orsygenturfa'i
 
-  spit-non : spit "" ≡ []
-  spit-non = {!!}
+  module Spit where
+    non : spit "" ≡ []
+    non = {!!}
 
-  spit-pav : (x : String) → ',' ∉ 𝕊.toList x → spit x ≡ 𝕊.toList x ∷ []
-  spit-pav x nin = begin
-    spit x ≡⟨ refl ⟩
-    𝕃.wordsBy (_≟ ',') (𝕊.toList x) ≡⟨ ninwords (_≟ ',') _ $ ninal nin ⟩
-    𝕊.toList x ∷ [] ∎
-    where
-    ninwords : ∀ {a p} → {A : Set a}
-             → {P : Pred A p}
-             → (P? : Decidable P)
-             → (x : List A)
-             → 𝕃.All (¬_ ∘ P) x
-             → 𝕃.wordsBy P? x ≡ x ∷ []
-    ninwords = {!!}
-    ninal : ∀ {a} → {A : Set a}
-          → ⦃ _ : Eq A ⦄
-          → {x : A}
-          → {xs : List A}
-          → x ∉ xs
-          → 𝕃.All (¬_ ∘ (_≡ x)) xs
-    ninal = {!!}
-    open ≡-Reasoning
+    pav : (x : String) → ',' ∉ 𝕊.toList x → spit x ≡ 𝕊.toList x ∷ []
+    pav x nin = begin
+      spit x ≡⟨ refl ⟩
+      𝕃.wordsBy (_≟ ',') (𝕊.toList x) ≡⟨ ninwords (_≟ ',') _ $ ninal nin ⟩
+      𝕊.toList x ∷ [] ∎
+      where
+      ninwords : ∀ {a p} → {A : Set a}
+               → {P : Pred A p}
+               → (P? : Decidable P)
+               → (x : List A)
+               → 𝕃.All (¬_ ∘ P) x
+               → 𝕃.wordsBy P? x ≡ x ∷ []
+      ninwords = {!!}
+      ninal : ∀ {a} → {A : Set a}
+            → ⦃ _ : Eq A ⦄
+            → {x : A}
+            → {xs : List A}
+            → x ∉ xs
+            → 𝕃.All (¬_ ∘ (_≡ x)) xs
+      ninal = {!!}
+      open ≡-Reasoning
 
-  spit-du : (x z : String)
-          → ',' ∉ 𝕊.toList x
-          → ',' ∉ 𝕊.toList z
-          → spit (x ++ "," ++ z) ≡ 𝕊.toList x ∷ 𝕊.toList z ∷ []
-  spit-du x z inx inz = begin
-    spit (x ++ "," ++ z) ≡⟨ refl ⟩
-    w (tL $ x ++ "," ++ z) ≡⟨ toList-dist x ("," ++ z) ▹ cong w ⟩
-    w (tL x ++ tL ("," ++ z)) ≡⟨ refl ⟩
-    _ ≡⟨ toList-dist "," z ▹ cong (w ∘ _++_ (tL x)) ⟩
-    w (tL x ++ tL "," ++ tL z) ≡⟨ refl ⟩
-    w (tL x ++ ',' ∷ tL z) ≡⟨ uit _ (tL x) _ (F inx) (F inz) _ refl ⟩
-    w (tL x) ++ w (tL z) ≡⟨ spit-pav x inx ▹ cong (_++ _) ⟩
-    (tL x ∷ []) ++ w (tL z) ≡⟨ spit-pav z inz ▹ cong (_++_ _) ⟩
-    (tL x ∷ []) ++ (tL z ∷ []) ≡⟨ refl ⟩
-    tL x ∷ tL z ∷ [] ∎
-    where
-    tL = 𝕊.toList
-    w = 𝕃.wordsBy $ _≟ ','
-    F : ∀ {a} → {A : Set a}
-      → ⦃ _ : Eq A ⦄
-      → {e : A}
-      → {x : List A}
-      → e ∉ x
-      → 𝕃.All (_≢ e) x
-    F = {!!}
-    uit : ∀ {a p} → {A : Set a} → {P : Pred A p}
-        → (P? : Decidable P)
-        → (x z : List A)
-        → 𝕃.All (¬_ ∘ P) x
-        → 𝕃.All (¬_ ∘ P) z
-        → (e : A)
-        → P e
-        → (_≡_
-            (𝕃.wordsBy P? $ x ++ e ∷ z)
-            (𝕃.wordsBy P? x ++ 𝕃.wordsBy P? z))
-    uit = {!!}
-    open ≡-Reasoning
+    du : (x z : String)
+       → ',' ∉ 𝕊.toList x
+       → ',' ∉ 𝕊.toList z
+       → spit (x ++ "," ++ z) ≡ 𝕊.toList x ∷ 𝕊.toList z ∷ []
+    du x z inx inz = begin
+      spit (x ++ "," ++ z) ≡⟨ refl ⟩
+      w (tL $ x ++ "," ++ z) ≡⟨ toList-dist x ("," ++ z) ▹ cong w ⟩
+      w (tL x ++ tL ("," ++ z)) ≡⟨ refl ⟩
+      _ ≡⟨ toList-dist "," z ▹ cong (w ∘ _++_ (tL x)) ⟩
+      w (tL x ++ tL "," ++ tL z) ≡⟨ refl ⟩
+      w (tL x ++ ',' ∷ tL z) ≡⟨ uit _ (tL x) _ (F inx) (F inz) _ refl ⟩
+      w (tL x) ++ w (tL z) ≡⟨ pav x inx ▹ cong (_++ _) ⟩
+      (tL x ∷ []) ++ w (tL z) ≡⟨ pav z inz ▹ cong (_++_ _) ⟩
+      (tL x ∷ []) ++ (tL z ∷ []) ≡⟨ refl ⟩
+      tL x ∷ tL z ∷ [] ∎
+      where
+      tL = 𝕊.toList
+      w = 𝕃.wordsBy $ _≟ ','
+      F : ∀ {a} → {A : Set a}
+        → ⦃ _ : Eq A ⦄
+        → {e : A}
+        → {x : List A}
+        → e ∉ x
+        → 𝕃.All (_≢ e) x
+      F = {!!}
+      uit : ∀ {a p} → {A : Set a} → {P : Pred A p}
+          → (P? : Decidable P)
+          → (x z : List A)
+          → 𝕃.All (¬_ ∘ P) x
+          → 𝕃.All (¬_ ∘ P) z
+          → (e : A)
+          → P e
+          → (_≡_
+              (𝕃.wordsBy P? $ x ++ e ∷ z)
+              (𝕃.wordsBy P? x ++ 𝕃.wordsBy P? z))
+      uit = {!!}
+      open ≡-Reasoning
 
-  spit-konk : (x z : String)
-            → ',' ∉ x
-            → spit (x ++ "," ++ z) ≡ 𝕊.toList x ∷ spit z
-  spit-konk = {!!}
+    konk : (x z : String)
+         → ',' ∉ x
+         → spit (x ++ "," ++ z) ≡ 𝕊.toList x ∷ spit z
+    konk = {!!}
 
   ps-du : ((x : ℕ) → readMaybe (show x) ≡ just x)
         → {n : ℕ}
@@ -1244,7 +1245,7 @@ module Orsygenturfa'iVeritas where
              → (_≡_
                  (spit $ show a ++ "," ++ show b)
                  (showF' a ∷ showF' b ∷ []))
-      spidus a b = spit-du (show a) (show b) (nokom a) (nokom b)
+      spidus a b = Spit.du (show a) (show b) (nokom a) (nokom b)
         where
         nokom : {n : ℕ} → (x : Fin n) → ',' ∉ 𝕊.toList (show x)
         nokom = {!!}
