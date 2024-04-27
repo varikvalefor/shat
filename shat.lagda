@@ -1148,7 +1148,7 @@ module Orsygenturfa'iVeritas where
     ps {n = n} (tL j) ≡⟨ refl ⟩
     (fromℕ? <=< (readMaybe ∘ fL)) (tL j) ≡⟨ refl ⟩
     f? (readMaybe $ fL $ tL j) ≡⟨ [fL[tLj]≡j]' ⟩
-    f? (readMaybe j) ≡⟨ {!!} ⟩
+    f? (readMaybe j) ≡⟨ rimnos j J ▹ cong f? ⟩
     f? nothing ≡⟨ refl ⟩
     nothing ∎
     where
@@ -1157,6 +1157,10 @@ module Orsygenturfa'iVeritas where
     f? : Maybe ℕ → Maybe $ Fin n
     f? = fromℕ? {n} =<<_
     open ≡-Reasoning
+    rimnos : (s : String)
+           → ¬_ $ Σ (∃ Fin) $ _≡_ s ∘ show ∘ proj₂
+           → readMaybe s ≡ nothing {A = ℕ}
+    rimnos = {!!}
     [fL[tLj]≡j]' = fL∘tL≡id j ▹_ $ cong $ f? ∘ readMaybe
       where
       fL∘tL≡id : (s : String) → 𝕊.fromList (𝕊.toList s) ≡ s
