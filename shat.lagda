@@ -1332,6 +1332,7 @@ module Orsygenturfa'i₃Veritas where
     L' (map₂ s' abj) ≡⟨ refl ⟩
     L (map₂ (𝕊.fromList ∘ s') abj) ≡⟨ map₂-cong fL∘tL _ ▹ cong L ⟩
     L (map₂ s abj) ≡⟨ refl ⟩
+    L ([ s a ] ∷ [ s b ∷ [ s c ] ]) ≡⟨ refl ⟩
     just ((show a , show b) , show c) ∎
     where
     L = lispork
