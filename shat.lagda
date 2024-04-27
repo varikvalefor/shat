@@ -1171,9 +1171,9 @@ module Orsygenturfa'iVeritas where
               (just $ (x , z) , djb))
   pork-du {n} {x} {z} djb = begin
     pork (just x ∷ just z ∷ []) ≡⟨ refl ⟩
-    mapₘ (_ ,_) (decToMaybe $ x 𝔽.≤? z) ≡⟨ refl ⟩
+    mapₘ ((x , z) ,_) (decToMaybe $ x 𝔽.≤? z) ≡⟨ refl ⟩
     _ ≡⟨ zmadekydu'i {m = djb} ▹ cong (mapₘ (_ ,_)) ⟩
-    mapₘ (_ ,_) (just djb) ≡⟨ refl ⟩
+    mapₘ ((x , z) ,_) (just djb) ≡⟨ refl ⟩
     just ((x , z) , djb) ∎
     where
     open ≡-Reasoning
