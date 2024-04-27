@@ -1063,6 +1063,9 @@ ni'o pilno ko'a goi le me'oi .\AgdaKeyword{module}.\ co'e ki'u le su'u tu'a ko'a
 module Orsygenturfa'iVeritas where
   open Orsygenturfa'i
 
+  spit-non : spit "" ≡ []
+  spit-non = {!!}
+
   spit-pav : (x : String) → ',' ∉ 𝕊.toList x → spit x ≡ 𝕊.toList x ∷ []
   spit-pav x nin = begin
     spit x ≡⟨ refl ⟩
