@@ -2106,7 +2106,7 @@ module KanjyVeritas where
              let e = muvduzilcmi x a a b R in
              L x ! a ≡ L x' ! mink a e
            × (_≡_ on ((𝔽.toℕ a ℕ.⊓ 𝔽.toℕ b) ↑_ ∘ L)) x x'
-           × (_≡_ on ((𝔽.toℕ a ℕ.⊔ 𝔽.toℕ b) ↑_ ∘ L)) x x'
+           × (_≡_ on ((𝔽.toℕ a ℕ.⊔ 𝔽.toℕ b) ↓_ ∘ L)) x x'
   muvdusin = {!!}
 
   xrutis : (x : Buffer)
