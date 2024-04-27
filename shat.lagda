@@ -1132,52 +1132,53 @@ module Orsygenturfa'iVeritas where
          → spit (x ++ "," ++ z) ≡ 𝕊.toList x ∷ spit z
     konk = {!!}
 
-  ps-du : ((x : ℕ) → readMaybe (show x) ≡ just x)
-        → {n : ℕ}
-        → (x : Fin n)
-        → just x ≡ ps (𝕊.toList $ show $ 𝔽.toℕ x)
-  ps-du rimco x = sym $ begin
-    ps (𝕊.toList $ show x) ≡⟨ refl ⟩
-    b𝔽 (rM $ id' $ show x) ≡⟨ cvd x ▹ cong (b𝔽 ∘ rM) ⟩
-    b𝔽 (rM $ show x) ≡⟨ rimco (𝔽.toℕ x) ▹ cong b𝔽 ⟩
-    b𝔽 (just $ 𝔽.toℕ x) ≡⟨ refl ⟩
-    just (𝔽.toℕ x) >>= fromℕ? ≡⟨ refl ⟩
-    fromℕ? (𝔽.toℕ x) ≡⟨ refl ⟩
-    mapₘ 𝔽.fromℕ< (decToMaybe $ 𝔽.toℕ x ℕ.<? _) ≡⟨ refl ⟩
-    _ ≡⟨ zmadekydu'i ▹ cong (mapₘ 𝔽.fromℕ<) ⟩
-    mapₘ 𝔽.fromℕ< (just $ DFP.toℕ<n x) ≡⟨ refl ⟩
-    just _ ≡⟨ DFP.fromℕ<-toℕ _ _ ▹ cong just ⟩
-    just x ∎
-    where
-    rM = readMaybe
-    b𝔽 = _>>= fromℕ?
-    id' = 𝕊.fromList ∘ 𝕊.toList
-    cvd : {n : ℕ} → (x : Fin n) → id' (show x) ≡ show x
-    cvd = fromList∘toList ∘ show
-    open ≡-Reasoning
+  module Ps where
+    du : ((x : ℕ) → readMaybe (show x) ≡ just x)
+       → {n : ℕ}
+       → (x : Fin n)
+       → just x ≡ ps (𝕊.toList $ show $ 𝔽.toℕ x)
+    du rimco x = sym $ begin
+      ps (𝕊.toList $ show x) ≡⟨ refl ⟩
+      b𝔽 (rM $ id' $ show x) ≡⟨ cvd x ▹ cong (b𝔽 ∘ rM) ⟩
+      b𝔽 (rM $ show x) ≡⟨ rimco (𝔽.toℕ x) ▹ cong b𝔽 ⟩
+      b𝔽 (just $ 𝔽.toℕ x) ≡⟨ refl ⟩
+      just (𝔽.toℕ x) >>= fromℕ? ≡⟨ refl ⟩
+      fromℕ? (𝔽.toℕ x) ≡⟨ refl ⟩
+      mapₘ 𝔽.fromℕ< (decToMaybe $ 𝔽.toℕ x ℕ.<? _) ≡⟨ refl ⟩
+      _ ≡⟨ zmadekydu'i ▹ cong (mapₘ 𝔽.fromℕ<) ⟩
+      mapₘ 𝔽.fromℕ< (just $ DFP.toℕ<n x) ≡⟨ refl ⟩
+      just _ ≡⟨ DFP.fromℕ<-toℕ _ _ ▹ cong just ⟩
+      just x ∎
+      where
+      rM = readMaybe
+      b𝔽 = _>>= fromℕ?
+      id' = 𝕊.fromList ∘ 𝕊.toList
+      cvd : {n : ℕ} → (x : Fin n) → id' (show x) ≡ show x
+      cvd = fromList∘toList ∘ show
+      open ≡-Reasoning
 
-  ps-nada : (j : String)
-          → ¬_ $ Σ (∃ Fin) $ _≡_ j ∘ show ∘ proj₂
-          → {n : ℕ}
-          → nothing ≡ ps {n = n} (𝕊.toList j)
-  ps-nada j J {n} = sym $ begin
-    ps {n = n} (tL j) ≡⟨ refl ⟩
-    (fromℕ? <=< (readMaybe ∘ fL)) (tL j) ≡⟨ refl ⟩
-    f? (readMaybe $ fL $ tL j) ≡⟨ [fL[tLj]≡j]' ⟩
-    f? (readMaybe j) ≡⟨ rimnos j J ▹ cong f? ⟩
-    f? nothing ≡⟨ refl ⟩
-    nothing ∎
-    where
-    tL = 𝕊.toList
-    fL = 𝕊.fromList
-    f? : Maybe ℕ → Maybe $ Fin n
-    f? = fromℕ? =<<_
-    [fL[tLj]≡j]' = fromList∘toList j ▹_ $ cong $ f? ∘ readMaybe
-    open ≡-Reasoning
-    rimnos : (s : String)
-           → ¬_ $ Σ (∃ Fin) $ _≡_ s ∘ show ∘ proj₂
-           → readMaybe s ≡ nothing {A = ℕ}
-    rimnos = {!!}
+    nada : (j : String)
+         → ¬_ $ Σ (∃ Fin) $ _≡_ j ∘ show ∘ proj₂
+         → {n : ℕ}
+         → nothing ≡ ps {n = n} (𝕊.toList j)
+    nada j J {n} = sym $ begin
+      ps {n = n} (tL j) ≡⟨ refl ⟩
+      (fromℕ? <=< (readMaybe ∘ fL)) (tL j) ≡⟨ refl ⟩
+      f? (readMaybe $ fL $ tL j) ≡⟨ [fL[tLj]≡j]' ⟩
+      f? (readMaybe j) ≡⟨ rimnos j J ▹ cong f? ⟩
+      f? nothing ≡⟨ refl ⟩
+      nothing ∎
+      where
+      tL = 𝕊.toList
+      fL = 𝕊.fromList
+      f? : Maybe ℕ → Maybe $ Fin n
+      f? = fromℕ? =<<_
+      [fL[tLj]≡j]' = fromList∘toList j ▹_ $ cong $ f? ∘ readMaybe
+      open ≡-Reasoning
+      rimnos : (s : String)
+             → ¬_ $ Σ (∃ Fin) $ _≡_ s ∘ show ∘ proj₂
+             → readMaybe s ≡ nothing {A = ℕ}
+      rimnos = {!!}
 
   pork-du : {n : ℕ}
           → {x z : Fin n}
@@ -1235,7 +1236,7 @@ module Orsygenturfa'iVeritas where
       justF' : {n : ℕ} → Fin n → Maybe $ Fin n
       justF' = ps ∘ showF'
       justF'≡just : {n : ℕ} → (x : Fin n) → justF' x ≡ just x
-      justF'≡just = sym ∘ ps-du rimco
+      justF'≡just = sym ∘ Ps.du rimco
       justymapdu : {n : ℕ}
                  → (L : List $ Fin n)
                  → 𝕃.map justF' L ≡ 𝕃.map just L
