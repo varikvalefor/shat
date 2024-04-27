@@ -1219,7 +1219,7 @@ module Orsygenturfa'iVeritas where
       justF' : {n : ℕ} → Fin n → Maybe $ Fin n
       justF' = ps ∘ showF'
       justF'≡just : {n : ℕ} → (x : Fin n) → justF' x ≡ just x
-      justF'≡just x = sym $ ps-du rimco x
+      justF'≡just = sym ∘ ps-du rimco
       justymapdu : {n : ℕ}
                  → (L : List $ Fin n)
                  → 𝕃.map justF' L ≡ 𝕃.map just L
