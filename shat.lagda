@@ -1872,7 +1872,7 @@ module KanjyVeritas where
     a' ℕ.+ (lb x ℕ.∸ b'+1) ≡⟨ DNP.+-comm a' _ ⟩
     lb x ℕ.∸ b'+1 ℕ.+ a' ≡⟨ v∸x+z≡v∸[x∸z] $ flex d ⟩
     lb x ℕ.∸ (b'+1 ℕ.∸ a') ≡⟨ refl ⟩
-    lb x ℕ.∸ (ℕ.suc b' ℕ.∸ a') ≡⟨ sm-n≡s[m-n] d ▹ cong (lb x ℕ.∸_) ⟩
+    lb x ℕ.∸ (ℕ.suc b' ℕ.∸ a') ≡⟨ suc-dist-∸ d ▹ cong (lb x ℕ.∸_) ⟩
     lb x ℕ.∸ ℕ.suc (b' ℕ.∸ a') ≡⟨ refl ⟩
     lb x ℕ.∸ ℕ.suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a) ∎
     where
@@ -1894,11 +1894,11 @@ module KanjyVeritas where
                → length (𝔽.toℕ n ↑ x) ≡ 𝔽.toℕ n
     finlenteik (_ ∷ _) 𝔽.zero = refl
     finlenteik (_ ∷ xs) (𝔽.suc n) = finlenteik xs n ▹ cong ℕ.suc
-    sm-n≡s[m-n] : {n m : ℕ}
-                → n ℕ.≤ m
-                → ℕ.suc m ℕ.∸ n ≡ ℕ.suc (m ℕ.∸ n)
-    sm-n≡s[m-n] {0} ℕ.z≤n = refl
-    sm-n≡s[m-n] {ℕ.suc m} {ℕ.suc n} (ℕ.s≤s s) = sm-n≡s[m-n] s
+    suc-dist-∸ : {n m : ℕ}
+               → n ℕ.≤ m
+               → ℕ.suc m ℕ.∸ n ≡ ℕ.suc (m ℕ.∸ n)
+    suc-dist-∸ {0} ℕ.z≤n = refl
+    suc-dist-∸ {ℕ.suc m} {ℕ.suc n} (ℕ.s≤s s) = suc-dist-∸ s
     v∸x+z≡v∸[x∸z] : {v x z : ℕ}
                  → z ℕ.≤ x
                  → v ℕ.∸ x ℕ.+ z ≡ v ℕ.∸ (x ℕ.∸ z)
