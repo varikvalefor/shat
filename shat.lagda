@@ -1902,11 +1902,7 @@ module KanjyVeritas where
     v∸x+z≡v∸[x∸z] : {v x z : ℕ}
                  → z ℕ.≤ x
                  → v ℕ.∸ x ℕ.+ z ≡ v ℕ.∸ (x ℕ.∸ z)
-    v∸x+z≡v∸[x∸z] {z = 0} ℕ.z≤n = n+0≡n _
-      where
-      n+0≡n : (n : ℕ) → n ℕ.+ 0 ≡ n
-      n+0≡n 0 = refl
-      n+0≡n (ℕ.suc n) = n+0≡n n ▹ cong ℕ.suc
+    v∸x+z≡v∸[x∸z] {z = 0} ℕ.z≤n = DNP.+-identityʳ _
     v∸x+z≡v∸[x∸z] {v} {x} {z = ℕ.suc z} (ℕ.s≤s s) = begin
       v ℕ.∸ x ℕ.+ ℕ.suc z ≡⟨ {!!} ⟩
       v ℕ.∸ ℕ.suc (x ℕ.+ z) ≡⟨ {!!} ⟩
