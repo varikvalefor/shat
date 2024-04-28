@@ -375,7 +375,7 @@ data Cmdᵢₒ (x : Buffer) : Set where
   Sisti!ᵢₒ : Cmdᵢₒ x
 \end{code}
 
-\chapter{le fancu}
+\chapter{le mapti vrici je fancu}
 
 \section{la'o zoi.\ \F{suc-dist-∸}\ .zoi.}
 ni'o xu sarcu fa lo nu ciksi bau la .lojban.
@@ -1445,6 +1445,8 @@ module Orsygenturfa'i₃Veritas where
       c' = 𝕊.fromChar c
     open ≡-Reasoning
 \end{code}
+
+\chapter{zo'e je le fancu pe la'oi .\D{Cmd}.}
 
 \section{la'oi .\F{reed}.}
 ni'o ga jonai la'oi .\IC{nothing}.\ du ko'a goi la'o zoi.\ \F{reed} \B x \B s\ .zoi.\ gi ga je la'oi .\B s.\ midnoi fo la'o zoi.\ \Xr{ed}{1} .zoi.\ je cu mapti la'o zoi.\ \D{Cmd} \B x\ .zoi.\ gi ko'a me'oi .\IC{just}.\ lo mapti be la'oi .\B s.
