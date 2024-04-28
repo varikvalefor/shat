@@ -1897,7 +1897,8 @@ module KanjyVeritas where
     sm-n≡s[m-n] : {n m : ℕ}
                 → n ℕ.≤ m
                 → ℕ.suc m ℕ.∸ n ≡ ℕ.suc (m ℕ.∸ n)
-    sm-n≡s[m-n] = {!!}
+    sm-n≡s[m-n] {0} ℕ.z≤n = {!!}
+    sm-n≡s[m-n] {ℕ.suc m} {ℕ.suc n} (ℕ.s≤s s) = {!!}
     v∸x+z≡v∸[x∸z] : {v x z : ℕ}
                  → z ℕ.≤ x
                  → v ℕ.∸ x ℕ.+ z ≡ v ℕ.∸ (x ℕ.∸ z)
