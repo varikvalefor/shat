@@ -377,6 +377,17 @@ data Cmdᵢₒ (x : Buffer) : Set where
 
 \chapter{le fancu}
 
+\section{la'o zoi.\ \F{suc-dist-∸}\ .zoi.}
+ni'o xu sarcu fa lo nu ciksi bau la .lojban.
+
+\begin{code}
+suc-dist-∸ : {n m : ℕ}
+           → n ℕ.≤ m
+           → ℕ.suc m ℕ.∸ n ≡ ℕ.suc (m ℕ.∸ n)
+suc-dist-∸ {0} ℕ.z≤n = refl
+suc-dist-∸ {ℕ.suc m} {ℕ.suc n} (ℕ.s≤s s) = suc-dist-∸ s
+\end{code}
+
 \section{la'o zoi.\ \F{dec-just}\ .zoi.}
 ni'o la .varik.\ na jinvi le du'u sarcu fa lo nu ciksi fo lo lojbo fe la'o zoi.\ \F{dec-just}\ .zoi.
 
@@ -1894,11 +1905,6 @@ module KanjyVeritas where
                → length (𝔽.toℕ n ↑ x) ≡ 𝔽.toℕ n
     finlenteik (_ ∷ _) 𝔽.zero = refl
     finlenteik (_ ∷ xs) (𝔽.suc n) = finlenteik xs n ▹ cong ℕ.suc
-    suc-dist-∸ : {n m : ℕ}
-               → n ℕ.≤ m
-               → ℕ.suc m ℕ.∸ n ≡ ℕ.suc (m ℕ.∸ n)
-    suc-dist-∸ {0} ℕ.z≤n = refl
-    suc-dist-∸ {ℕ.suc m} {ℕ.suc n} (ℕ.s≤s s) = suc-dist-∸ s
     v∸x+z≡v∸[x∸z] : {v x z : ℕ}
                  → z ℕ.≤ x
                  → v ℕ.∸ x ℕ.+ z ≡ v ℕ.∸ (x ℕ.∸ z)
