@@ -1894,7 +1894,7 @@ module KanjyVeritas where
                → length (𝔽.toℕ n ↑ x) ≡ 𝔽.toℕ n
     finlenteik (_ ∷ _) 𝔽.zero = refl
     finlenteik (_ ∷ xs) (𝔽.suc n) = finlenteik xs n ▹ cong ℕ.suc
-    sm-n≡s[m-n] : {m n : ℕ}
+    sm-n≡s[m-n] : {n m : ℕ}
                 → n ℕ.≤ m
                 → ℕ.suc m ℕ.∸ n ≡ ℕ.suc (m ℕ.∸ n)
     sm-n≡s[m-n] = {!!}
