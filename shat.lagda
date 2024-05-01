@@ -1399,14 +1399,10 @@ module Orsygenturfa'i₃Veritas where
       ax ≡⟨ refl ⟩
       (R >>= jminaCtaipe) ≡⟨ R≡justab ▹ cong (_>>= jminaCtaipe) ⟩
       (just (a , b) >>= jminaCtaipe) ≡⟨ refl ⟩
-      (just (a , b) >>= λ (a' , b') → mapₘ (_ ,_) $ a' ≤?ₘ b') ≡⟨ refl ⟩
-      mapₘ (_ ,_) (a ≤?ₘ b) ≡⟨ refl ⟩
-      mapₘ (_ ,_) (decToMaybe $ a 𝔽.≤? b) ≡⟨ refl ⟩
-      _ ≡⟨ zmadekydu'i {m = d} ▹ cong (mapₘ (_ ,_)) ⟩
-      mapₘ (_ ,_) (just d) ≡⟨ refl ⟩
+      jminaCtaipe (a , b) ≡⟨ refl ⟩
+      Orsygenturfa'i.pork (just a ∷ just b ∷ []) ≡⟨ Orsygenturfa'iVeritas.Pork.du d ⟩
       just ((a , b) , d) ∎
       where
-      _≤?ₘ_ = decToMaybe ∘₂ 𝔽._≤?_
       jminaCtaipe : {n : ℕ}
                   → Fin n × Fin n
                   → Maybe $ Σ (Fin n × Fin n) $ uncurry 𝔽._≤_
