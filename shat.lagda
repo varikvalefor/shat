@@ -1596,9 +1596,13 @@ module ReedVeritas where
 
   kybin' : (x : Buffer)
          → reed x "Q" ≡ just Sisti!
-  kybin' _ with 𝕃.head (𝕊.toList "Q") >>= Reed.No.g
-  ... | just _ = refl
-  ... | nothing = refl
+  kybin' _ = begin
+    reed _ "Q" ≡⟨ refl ⟩
+    (𝕃.head (𝕊.toList "Q") >>= Reed.No.g) ≡⟨ refl ⟩
+    Reed.No.g 'Q' ≡⟨ refl ⟩
+    just Sisti! ∎
+    where
+    open ≡-Reasoning
 
   xon : (x : Buffer)
       → (z : ∃ λ n → ℕ.suc n ≡ length (Buffer.citri x))
