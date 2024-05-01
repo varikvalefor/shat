@@ -1411,7 +1411,8 @@ module Orsygenturfa'i₃Veritas where
       R = readMaybe (show a) ,ₘ readMaybe (show b)
       R≡justab : R ≡ just (a , b)
       R≡justab = begin
-        R ≡⟨ {!!} ⟩
+        R ≡⟨ refl ⟩
+        readMaybe (show a) ,ₘ readMaybe (show b) ≡⟨ {!!} ⟩
         just (a , b) ∎
 
   pav : {n : ℕ}
