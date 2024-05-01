@@ -1385,10 +1385,9 @@ module Orsygenturfa'i₃Veritas where
     _,ₘ_ (just $ (a , b) , d) (just $ just c) ≡⟨ refl ⟩
     just (((a , b) , d) , just c) ∎
     where
+    R = readMaybe (show a) ,ₘ readMaybe (show b)
     ax : Maybe $ Σ (Fin _ × Fin _) $ uncurry 𝔽._≤_
     ax = R >>= λ (a' , b') → Orsygenturfa'i.pork $ just a' ∷ just b' ∷ []
-      where
-      R = readMaybe (show a) ,ₘ readMaybe (show b)
     rimcos : {n : ℕ}
            → (x : Fin n)
            → readMaybe' (show x) ≡ just (just x)
@@ -1408,7 +1407,6 @@ module Orsygenturfa'i₃Veritas where
                   → Fin n × Fin n
                   → Maybe $ Σ (Fin n × Fin n) $ uncurry 𝔽._≤_
       jminaCtaipe = λ (a , b) → Orsygenturfa'i.pork $ just a ∷ just b ∷ []
-      R = readMaybe (show a) ,ₘ readMaybe (show b)
       R≡justab : R ≡ just (a , b)
       R≡justab = begin
         R ≡⟨ refl ⟩
