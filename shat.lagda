@@ -1284,9 +1284,8 @@ module Orsygenturfa'i₃ where
        → Maybe $ Σ (Fin n × Fin n) (uncurry 𝔽._≤_) × Maybe (Fin n)
   pork ((a , b) , c)= ax ,ₘ readMaybe' c
     where
-    ax = R >>= λ (a' , b') → mapₘ (f a' b') $ decToMaybe $ a' 𝔽.≤? b'
+    ax = R >>= λ (a' , b') → mapₘ (_ ,_) $ decToMaybe $ a' 𝔽.≤? b'
       where
-      f = _,_ ∘₂ _,_
       R = readMaybe a ,ₘ readMaybe b
 
   orsygenturfa'i₃ : {n : ℕ}
