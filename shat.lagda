@@ -1284,7 +1284,7 @@ module Orsygenturfa'i₃ where
        → Maybe $ Σ (Fin n × Fin n) (uncurry 𝔽._≤_) × Maybe (Fin n)
   pork ((a , b) , c)= ax ,ₘ readMaybe' c
     where
-    ax = R >>= λ (a' , b') → mapₘ (_ ,_) $ decToMaybe $ a' 𝔽.≤? b'
+    ax = R >>= λ (a' , b') → Orsygenturfa'i.pork $ just a' ∷ just b' ∷ []
       where
       R = readMaybe a ,ₘ readMaybe b
 
@@ -1386,7 +1386,7 @@ module Orsygenturfa'i₃Veritas where
     just (((a , b) , d) , just c) ∎
     where
     ax : Maybe $ Σ (Fin _ × Fin _) $ uncurry 𝔽._≤_
-    ax = R >>= λ (a' , b') → mapₘ (_ ,_) $ decToMaybe $ a' 𝔽.≤? b'
+    ax = R >>= λ (a' , b') → Orsygenturfa'i.pork $ just a' ∷ just b' ∷ []
       where
       R = readMaybe (show a) ,ₘ readMaybe (show b)
     rimcos : {n : ℕ}
@@ -1397,7 +1397,6 @@ module Orsygenturfa'i₃Veritas where
     ax≡justabd : ax ≡_ $ just $ (a , b) , d
     ax≡justabd = begin
       ax ≡⟨ refl ⟩
-      (R >>= λ (a' , b') → mapₘ (_ ,_) $ a' ≤?ₘ b') ≡⟨ refl ⟩
       (R >>= jminaCtaipe) ≡⟨ R≡justab ▹ cong (_>>= jminaCtaipe) ⟩
       (just (a , b) >>= jminaCtaipe) ≡⟨ refl ⟩
       (just (a , b) >>= λ (a' , b') → mapₘ (_ ,_) $ a' ≤?ₘ b') ≡⟨ refl ⟩
@@ -1408,7 +1407,10 @@ module Orsygenturfa'i₃Veritas where
       just ((a , b) , d) ∎
       where
       _≤?ₘ_ = decToMaybe ∘₂ 𝔽._≤?_
-      jminaCtaipe = λ (a' , b') → mapₘ (_ ,_) $ a' ≤?ₘ b'
+      jminaCtaipe : {n : ℕ}
+                  → Fin n × Fin n
+                  → Maybe $ Σ (Fin n × Fin n) $ uncurry 𝔽._≤_
+      jminaCtaipe = λ (a , b) → Orsygenturfa'i.pork $ just a ∷ just b ∷ []
       R = readMaybe (show a) ,ₘ readMaybe (show b)
       R≡justab : R ≡ just (a , b)
       R≡justab = begin
