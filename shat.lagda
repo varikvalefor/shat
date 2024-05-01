@@ -1617,7 +1617,7 @@ module ReedVeritas where
       dzeroxe (_ , refl) = refl
       noxed : ∀ {a} → {A : Set a}
             → (x : Maybe A)
-            → x ≡ 𝕃.head (𝕃.mapMaybe id $ x ∷ [])
+            → x ≡_ $ 𝕃.head $ 𝕃.mapMaybe id $ x ∷ []
       noxed nothing = refl
       noxed (just _) = refl
       xedrenod : ∀ {a} → {A : Set a}
