@@ -1567,68 +1567,69 @@ module ReedVeritas where
        → String
     k₃ x a b c s = k₂ x a b s ++ show (𝔽.toℕ c)
 
-  uin : (x : Buffer)
-      → reed x "w" ≡ mapₘ Rejgau (Buffer.datnyveicme x)
-  uin x = begin
-    reed x "w" ≡⟨ refl ⟩
-    𝕃.head (𝕃.mapMaybe id L) ≡⟨ duridos ⟩
-    𝕃.head (𝕊.toList "w") >>= Reed.No.g ≡⟨ refl ⟩
-    mapₘ Rejgau (Buffer.datnyveicme x) ∎
-    where
-    open Reed
-    ridos = 𝕃.head (𝕊.toList "w") >>= Reed.No.g
-    L = ridos ∷ _
-    duridos : 𝕃.head (𝕃.mapMaybe id L) ≡ ridos
-    duridos with ridos
-    ... | just _ = refl
-    ... | nothing = refl
-    open ≡-Reasoning
+  module No where
+    uin : (x : Buffer)
+        → reed x "w" ≡ mapₘ Rejgau (Buffer.datnyveicme x)
+    uin x = begin
+      reed x "w" ≡⟨ refl ⟩
+      𝕃.head (𝕃.mapMaybe id L) ≡⟨ duridos ⟩
+      𝕃.head (𝕊.toList "w") >>= Reed.No.g ≡⟨ refl ⟩
+      mapₘ Rejgau (Buffer.datnyveicme x) ∎
+      where
+      open Reed
+      ridos = 𝕃.head (𝕊.toList "w") >>= Reed.No.g
+      L = ridos ∷ _
+      duridos : 𝕃.head (𝕃.mapMaybe id L) ≡ ridos
+      duridos with ridos
+      ... | just _ = refl
+      ... | nothing = refl
+      open ≡-Reasoning
 
-  -- ni'o la .varik. cu stidi lo nu tcidu le velcki be
-  -- la .uin. fa lo na jimpe be fi la .kybin. je la'oi
-  -- .kybin'.
+    -- ni'o la .varik. cu stidi lo nu tcidu le velcki be
+    -- la .uin. fa lo na jimpe be fi la .kybin. je la'oi
+    -- .kybin'.
 
-  kybin : (x : Buffer)
-        → reed x "q" ≡ just Sisti
-  kybin _ = refl
+    kybin : (x : Buffer)
+          → reed x "q" ≡ just Sisti
+    kybin _ = refl
 
-  kybin' : (x : Buffer)
-         → reed x "Q" ≡ just Sisti!
-  kybin' _ = refl
+    kybin' : (x : Buffer)
+           → reed x "Q" ≡ just Sisti!
+    kybin' _ = refl
 
-  xon : (x : Buffer)
-      → (z : ∃ λ n → ℕ.suc n ≡ length (Buffer.citri x))
-      → reed x "u" ≡ just (Xruti $ mink 𝔽.zero $ proj₂ z)
-  xon x z = begin
-    reed x "u" ≡⟨ refl ⟩
-    𝕃.head (𝕃.mapMaybe id $ Reed.terp "u") ≡⟨ refl ⟩
-    𝕃.head (𝕃.mapMaybe id terp') ≡⟨ xedrenod 3 $ Reed.No.t "u" ⟩
-    𝕃.head (𝕃.mapMaybe id $ Reed.No.t "u" ∷ []) ≡⟨ noxed _ ▹ sym ⟩
-    Reed.No.t "u" ≡⟨ refl ⟩
-    mapₘ X (𝕃.head $ 𝕃.allFin _) ≡⟨ dzeroxe z ▹ cong (mapₘ X) ⟩
-    just (X $ mink 𝔽.zero $ proj₂ z) ∎
-    where
-    X = Xruti
-    terp' = Reed.No.t "u" ∷ 𝕃.replicate 3 nothing
-    dzeroxe : {n : ℕ}
-            → (z : ∃ $ (_≡ n) ∘ ℕ.suc)
-            → 𝕃.head (𝕃.allFin n) ≡ just (mink 𝔽.zero $ proj₂ z)
-    dzeroxe (_ , refl) = refl
-    noxed : ∀ {a} → {A : Set a}
-          → (x : Maybe A)
-          → x ≡ 𝕃.head (𝕃.mapMaybe id $ x ∷ [])
-    noxed nothing = refl
-    noxed (just _) = refl
-    xedrenod : ∀ {a} → {A : Set a}
-             → (n : ℕ)
-             → (x : Maybe A)
-             → ((_≡_ on_ $ 𝕃.head ∘ 𝕃.mapMaybe id ∘ _∷_ x)
-                 (𝕃.replicate n nothing)
-                 [])
-    xedrenod _ (just _) = refl
-    xedrenod 0 nothing = refl
-    xedrenod (ℕ.suc n) nothing = xedrenod n nothing
-    open ≡-Reasoning
+    xon : (x : Buffer)
+        → (z : ∃ λ n → ℕ.suc n ≡ length (Buffer.citri x))
+        → reed x "u" ≡ just (Xruti $ mink 𝔽.zero $ proj₂ z)
+    xon x z = begin
+      reed x "u" ≡⟨ refl ⟩
+      𝕃.head (𝕃.mapMaybe id $ Reed.terp "u") ≡⟨ refl ⟩
+      𝕃.head (𝕃.mapMaybe id terp') ≡⟨ xedrenod 3 $ Reed.No.t "u" ⟩
+      𝕃.head (𝕃.mapMaybe id $ Reed.No.t "u" ∷ []) ≡⟨ noxed _ ▹ sym ⟩
+      Reed.No.t "u" ≡⟨ refl ⟩
+      mapₘ X (𝕃.head $ 𝕃.allFin _) ≡⟨ dzeroxe z ▹ cong (mapₘ X) ⟩
+      just (X $ mink 𝔽.zero $ proj₂ z) ∎
+      where
+      X = Xruti
+      terp' = Reed.No.t "u" ∷ 𝕃.replicate 3 nothing
+      dzeroxe : {n : ℕ}
+              → (z : ∃ $ (_≡ n) ∘ ℕ.suc)
+              → 𝕃.head (𝕃.allFin n) ≡ just (mink 𝔽.zero $ proj₂ z)
+      dzeroxe (_ , refl) = refl
+      noxed : ∀ {a} → {A : Set a}
+            → (x : Maybe A)
+            → x ≡ 𝕃.head (𝕃.mapMaybe id $ x ∷ [])
+      noxed nothing = refl
+      noxed (just _) = refl
+      xedrenod : ∀ {a} → {A : Set a}
+               → (n : ℕ)
+               → (x : Maybe A)
+               → ((_≡_ on_ $ 𝕃.head ∘ 𝕃.mapMaybe id ∘ _∷_ x)
+                   (𝕃.replicate n nothing)
+                   [])
+      xedrenod _ (just _) = refl
+      xedrenod 0 nothing = refl
+      xedrenod (ℕ.suc n) nothing = xedrenod n nothing
+      open ≡-Reasoning
 
   ac : (x : Buffer)
      → (a : Buffer.F x)
