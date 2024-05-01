@@ -1590,9 +1590,7 @@ module ReedVeritas where
 
   kybin : (x : Buffer)
         → reed x "q" ≡ just Sisti
-  kybin _ with 𝕃.head (𝕊.toList "q") >>= Reed.No.g
-  ... | just _ = refl
-  ... | nothing = refl
+  kybin _ = refl
 
   kybin' : (x : Buffer)
          → reed x "Q" ≡ just Sisti!
