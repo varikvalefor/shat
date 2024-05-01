@@ -1546,6 +1546,8 @@ ni'o zo .k.\ cmavlaka'i zo konkatena
 
 \begin{code}
 module ReedVeritas where
+  open ≡-Reasoning
+
   private
     k₁ : (x : Buffer)
        → (a : Buffer.F x)
@@ -1583,7 +1585,6 @@ module ReedVeritas where
       duridos with ridos
       ... | just _ = refl
       ... | nothing = refl
-      open ≡-Reasoning
 
     -- ni'o la .varik. cu stidi lo nu tcidu le velcki be
     -- la .uin. fa lo na jimpe be fi la .kybin. je la'oi
@@ -1629,7 +1630,6 @@ module ReedVeritas where
       xedrenod _ (just _) = refl
       xedrenod 0 nothing = refl
       xedrenod (ℕ.suc n) nothing = xedrenod n nothing
-      open ≡-Reasoning
 
   ac : (x : Buffer)
      → (a : Buffer.F x)
@@ -1654,7 +1654,6 @@ module ReedVeritas where
     sl = 𝕃.last ∘ 𝕊.toList
     rimco : {n : ℕ} → (x : Fin n) → rms x ≡ just x
     rimco = {!!}
-    open ≡-Reasoning
 
   ic : (x : Buffer)
      → (a : Buffer.F x)
@@ -1679,7 +1678,6 @@ module ReedVeritas where
     sl = 𝕃.last ∘ 𝕊.toList
     rimco : {n : ℕ} → (x : Fin n) → rms x ≡ just x
     rimco = {!!}
-    open ≡-Reasoning
 
   mixer : (x : Buffer)
         → (a b c : Buffer.F x)
@@ -1704,7 +1702,6 @@ module ReedVeritas where
     romoi = 𝕃.last ∘ 𝕊.toList
     g' = λ (r' , _ , z) → Reed.Re.g x _ _ z r'
     o∘r = orsygenturfa'i {n = length BL} ∘ romoivimcu
-    open ≡-Reasoning
 
   uip : ((s : String) → s ≡_ $ 𝕊.unwords $ 𝕊.wordsBy (_≟ ' ') s)
       → (x : Buffer)
@@ -1748,12 +1745,10 @@ module ReedVeritas where
         xs ∎
         where
         j' = Data.Maybe.to-witness j
-        open ≡-Reasoning
     unwords = 𝕊.unwords
     open Reed
     reedx≡k∘w : (s : String) → reed x s ≡ k (w s)
     reedx≡k∘w = {!!}
-    open ≡-Reasoning
     w∘unwords : (x : List String) → x ≡ w (unwords x)
     w∘unwords = {!!}
     w++s≡w++ws : "w " ++ c∷s ≡ unwords ("w" ∷ w c∷s)
