@@ -1400,7 +1400,8 @@ module Orsygenturfa'i₃Veritas where
       (R >>= jminaCtaipe) ≡⟨ R≡justab ▹ cong (_>>= jminaCtaipe) ⟩
       (just (a , b) >>= jminaCtaipe) ≡⟨ refl ⟩
       jminaCtaipe (a , b) ≡⟨ refl ⟩
-      Orsygenturfa'i.pork (just a ∷ just b ∷ []) ≡⟨ Orsygenturfa'iVeritas.Pork.du d ⟩
+      Orsygenturfa'i.pork (just a ∷ just b ∷ []) ≡⟨ refl ⟩
+      _ ≡⟨ Orsygenturfa'iVeritas.Pork.du d ⟩
       just ((a , b) , d) ∎
       where
       jminaCtaipe : {n : ℕ}
