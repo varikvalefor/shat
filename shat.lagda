@@ -1282,7 +1282,7 @@ module Orsygenturfa'i₃ where
   pork : {n : ℕ}
        → (String × String) × String
        → Maybe $ Σ (Fin n × Fin n) (uncurry 𝔽._≤_) × Maybe (Fin n)
-  pork ((a , b) , c)= ax ,ₘ readMaybe' c
+  pork ((a , b) , c) = ax ,ₘ readMaybe' c
     where
     ax = R >>= λ (a' , b') → Orsygenturfa'i.pork $ just a' ∷ just b' ∷ []
       where
