@@ -1982,7 +1982,8 @@ module KanjyVeritas where
     sukmin : {m n : ℕ}
            → n ℕ.≤ m
            → ℕ.suc m ℕ.∸ n ≡ ℕ.suc (m ℕ.∸ n)
-    sukmin = {!!}
+    sukmin ℕ.z≤n = {!!}
+    sukmin (ℕ.s≤s s) = {!!}
 
   pindices : (x : Buffer)
            → (a b : Buffer.F x)
