@@ -362,7 +362,7 @@ ni'o ro da poi ke'a ctaipe la'o zoi.\ \D{Cmdᵢₒ} \B x\ .zoi.\ zo'u\ldots
 	\item ga jonai ga je da du la'o zoi.\ \IC{Tciduᵢₒ} \B a \B b\ .zoi.\ gi\ldots
 	\begin{itemize}
 		\item ga jonai ga je la'oi .\B{b}.\ du la'oi .\IC{nothing}.\ gi tu'a da rinka tu'a lo ctaipe be la'oi .\AgdaRecord{Buffer}.\ be'o poi lo mu'oi zoi.\ \AgdaField{Buffer.lerpinste}\ .zoi.\ be ke'a cu konkatena fi lo mu'oi zoi.\ \AgdaField{Buffer.lerpinste}\ .zoi.\ be la'oi .\B{x}.\ fe ko'a goi lo'i ro lerpinsle pe lo datnyvei poi la'oi .\B{a}.\ cmene ke'a ku'o je poi lo mu'oi zoi.\ \AgdaField{Buffer.cablerpinsle}\ .zoi.\ be ke'a cu nilzilcmi ko'a gi
-                \item ga je la'oi .\B{b}.\ du la'o zoi.\ \IC{just}\ \B n\ .zoi.\ gi tu'a da rinka tu'a lo ctaipe be la'oi .\AgdaRecord{Buffer}.\ be'o poi lo mu'oi zoi.\ \AgdaField{Buffer.lerpinste}\ .zoi.\ be ke'a cu konkatena la'o zoi.\ \IC{ℕ.suc} \Sym(\F{𝔽.toℕ} \B n \OpF\Sym) \OpF ↑ \AgdaField{Buffer.lerpinste} \B x\ .zoi.\ ko'a la'o zoi.\ \IC{ℕ.suc} \Sym(\F{𝔽.toℕ} \B n\Sym) \OpF ↓ \AgdaField{Buffer.lerpinste} \B x\ .zoi.\ je poi lo mu'oi zoi.\ \AgdaField{Buffer.cablerpinsle}\ .zoi.\ be ke'a cu\ldots mo gi
+                \item ga je la'oi .\B{b}.\ du la'o zoi.\ \IC{just}\ \B n\ .zoi.\ gi tu'a da rinka tu'a lo ctaipe be la'oi .\AgdaRecord{Buffer}.\ be'o poi lo mu'oi zoi.\ \AgdaField{Buffer.lerpinste}\ .zoi.\ be ke'a cu konkatena la'o zoi.\ \IC{suc} \Sym(\F{𝔽.toℕ} \B n \OpF\Sym) \OpF ↑ \AgdaField{Buffer.lerpinste} \B x\ .zoi.\ ko'a la'o zoi.\ \IC{suc} \Sym(\F{𝔽.toℕ} \B n\Sym) \OpF ↓ \AgdaField{Buffer.lerpinste} \B x\ .zoi.\ je poi lo mu'oi zoi.\ \AgdaField{Buffer.cablerpinsle}\ .zoi.\ be ke'a cu\ldots mo gi
         \end{itemize}
 	\item ga jonai ga je da du la'oi .\IC{Sistiᵢₒ}.\ gi tu'a da rinka lo nu co'e ja kajde ja cu sisti tu'a la'o zoi.\ \Xr{shat}{1}\ .zoi.\ gi
 	\item ga jonai ga je da du la'oi .\IC{Sisti!ᵢₒ}.\ gi tu'a da rinka lo nu sisti tu'a la'o zoi.\ \Xr{shat}{1}\ .zoi.\ gi
@@ -386,9 +386,9 @@ ni'o xu sarcu fa lo nu ciksi bau la .lojban.
 \begin{code}
 suc-dist-∸ : {n m : ℕ}
            → n ℕ.≤ m
-           → ℕ.suc m ℕ.∸ n ≡ ℕ.suc (m ℕ.∸ n)
+           → suc m ℕ.∸ n ≡ suc (m ℕ.∸ n)
 suc-dist-∸ {0} ℕ.z≤n = refl
-suc-dist-∸ {ℕ.suc m} {ℕ.suc n} (ℕ.s≤s s) = suc-dist-∸ s
+suc-dist-∸ {suc m} {suc n} (ℕ.s≤s s) = suc-dist-∸ s
 \end{code}
 
 \section{la'o zoi.\ \F{dec-just}\ .zoi.}
@@ -440,7 +440,7 @@ dekydu'i {x} {n} {m} = begin
   DJ = dec-just (ℕ._< n) (x ℕ.<? n) m
   iedek : {m n : ℕ} → (x z : m ℕ.< n) → x ≡ z
   iedek (ℕ.s≤s ℕ.z≤n) (ℕ.s≤s ℕ.z≤n) = refl
-  iedek {ℕ.suc m} {ℕ.suc n} (ℕ.s≤s x) (ℕ.s≤s z) = I
+  iedek {suc m} {suc n} (ℕ.s≤s x) (ℕ.s≤s z) = I
     where
     I = iedek {m} {n} x z ▹ cong ℕ.s≤s
   open ≡-Reasoning
@@ -460,7 +460,7 @@ zmadekydu'i {x} {n} {m} = begin
   DJ = dec-just (ℕ._≤ n) (x ℕ.≤? n) m
   iedek : {m n : ℕ} → (x z : m ℕ.≤ n) → x ≡ z
   iedek ℕ.z≤n ℕ.z≤n = refl
-  iedek {ℕ.suc m} {ℕ.suc n} (ℕ.s≤s x) (ℕ.s≤s z) = I
+  iedek {suc m} {suc n} (ℕ.s≤s x) (ℕ.s≤s z) = I
     where
     I = iedek {m} {n} x z ▹ cong ℕ.s≤s
   open ≡-Reasoning
@@ -636,8 +636,8 @@ module InsertVeritas where
              n' ≡ length (n' ↑ x)
     finlen [] nothing = refl
     finlen (_ ∷ xs) (just 𝔽.zero) = refl
-    finlen (_ ∷ xs) nothing = finlen xs nothing ▹ cong ℕ.suc
-    finlen (_ ∷ xs) (just (𝔽.suc n)) = finlen xs (just n) ▹ cong ℕ.suc
+    finlen (_ ∷ xs) nothing = finlen xs nothing ▹ cong suc
+    finlen (_ ∷ xs) (just (𝔽.suc n)) = finlen xs (just n) ▹ cong suc
        
   lynyrd : ∀ {a} → {A : Set a}
          → (x i : List A)
@@ -1602,7 +1602,7 @@ module ReedVeritas where
     kybin' _ = refl
 
     xon : (x : Buffer)
-        → (z : ∃ λ n → ℕ.suc n ≡ length (Buffer.citri x))
+        → (z : ∃ λ n → suc n ≡ length (Buffer.citri x))
         → reed x "u" ≡ just (Xruti $ mink 𝔽.zero $ proj₂ z)
     xon x z = begin
       reed x "u" ≡⟨ refl ⟩
@@ -1616,7 +1616,7 @@ module ReedVeritas where
       X = Xruti
       terp' = Reed.No.t "u" ∷ 𝕃.replicate 3 nothing
       dzeroxe : {n : ℕ}
-              → (z : ∃ $ (_≡ n) ∘ ℕ.suc)
+              → (z : ∃ $ (_≡ n) ∘ suc)
               → 𝕃.head (𝕃.allFin n) ≡ just (mink 𝔽.zero $ proj₂ z)
       dzeroxe (_ , refl) = refl
       noxed : ∀ {a} → {A : Set a}
@@ -1632,7 +1632,7 @@ module ReedVeritas where
                    [])
       xedrenod _ (just _) = refl
       xedrenod 0 nothing = refl
-      xedrenod (ℕ.suc n) nothing = xedrenod n nothing
+      xedrenod (suc n) nothing = xedrenod n nothing
 
   ac : (x : Buffer)
      → (a : Buffer.F x)
@@ -1783,7 +1783,7 @@ kanji {x} (Jmina a) = x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" $ just a
 kanji {x} (Cusku a b _) = x ,_ $ just $ inj₁ $ unlines $ i BL
   where
   BL = Buffer.lerpinste x
-  i = (𝔽.toℕ a) ↓_ ∘ (ℕ.suc $ 𝔽.toℕ b) ↑_
+  i = (𝔽.toℕ a) ↓_ ∘ (suc $ 𝔽.toℕ b) ↑_
 kanji {x} (Namcusku a b m) = x ,_ $ just $ inj₁ $ viiet kot
   where
   kot = from-inj₁ $ from-just $ proj₂ $ kanji {x} $ Cusku a b m
@@ -1801,13 +1801,13 @@ kanji {x} (Muvgau a b c _) = x' , nothing
     }
     where
     BL = Buffer.lerpinste x
-    x₂ = 𝔽.toℕ a ↓_ $ ℕ.suc (𝔽.toℕ b) ↑ BL
+    x₂ = 𝔽.toℕ a ↓_ $ suc (𝔽.toℕ b) ↑ BL
 kanji {x} (Vimcu a b _) = x' , nothing
   where
   x' = record x {
     citri = Buffer.cninycitri x;
     cablerpinsle = {!!};
-    lerpinste = 𝔽.toℕ a ↑ Lz ++ ℕ.suc (𝔽.toℕ b) ↓ Lz}
+    lerpinste = 𝔽.toℕ a ↑ Lz ++ suc (𝔽.toℕ b) ↓ Lz}
     where
     Lz = Buffer.lerpinste x
 kanji {x} (Jmini n) = x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" n'
@@ -1866,10 +1866,10 @@ module KanjyVeritas where
              → let BLT = length ∘ Buffer.lerpinste in
                (_≡_
                  (BLT $ proj₁ $ kanji {x} $ Vimcu a b d)
-                 (BLT x ℕ.∸_ $ ℕ.suc $ 𝔽.toℕ b ℕ.∸ 𝔽.toℕ a))
+                 (BLT x ℕ.∸_ $ suc $ 𝔽.toℕ b ℕ.∸ 𝔽.toℕ a))
   nilzilcmiv x a b d = begin
     lb x₂ ≡⟨ refl ⟩
-    length (𝔽.toℕ a ↑ Lz ++ ℕ.suc (𝔽.toℕ b) ↓ Lz) ≡⟨ refl ⟩
+    length (𝔽.toℕ a ↑ Lz ++ suc (𝔽.toℕ b) ↓ Lz) ≡⟨ refl ⟩
     length (a' ↑ Lz ++ b'+1 ↓ Lz) ≡⟨ DLP.length-++ $ a' ↑ Lz ⟩
     length (a' ↑ Lz) ℕ.+ length (b'+1 ↓ Lz) ≡⟨ refl ⟩
     _ ≡⟨ DLP.length-drop b'+1 Lz ▹ cong (ℕ._+_ _) ⟩
@@ -1879,12 +1879,12 @@ module KanjyVeritas where
     a' ℕ.+ (lb x ℕ.∸ b'+1) ≡⟨ DNP.+-comm a' _ ⟩
     lb x ℕ.∸ b'+1 ℕ.+ a' ≡⟨ v∸x+z≡v∸[x∸z] $ flex d ⟩
     lb x ℕ.∸ (b'+1 ℕ.∸ a') ≡⟨ refl ⟩
-    lb x ℕ.∸ (ℕ.suc b' ℕ.∸ a') ≡⟨ suc-dist-∸ d ▹ cong (lb x ℕ.∸_) ⟩
-    lb x ℕ.∸ ℕ.suc (b' ℕ.∸ a') ≡⟨ refl ⟩
-    lb x ℕ.∸ ℕ.suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a) ∎
+    lb x ℕ.∸ (suc b' ℕ.∸ a') ≡⟨ suc-dist-∸ d ▹ cong (lb x ℕ.∸_) ⟩
+    lb x ℕ.∸ suc (b' ℕ.∸ a') ≡⟨ refl ⟩
+    lb x ℕ.∸ suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a) ∎
     where
     b' = 𝔽.toℕ b
-    b'+1 = ℕ.suc b'
+    b'+1 = suc b'
     a' = 𝔽.toℕ a
     Lz = Buffer.lerpinste x
     x₂ = proj₁ $ kanji {x} $ Vimcu a b d
@@ -1892,7 +1892,7 @@ module KanjyVeritas where
     flex : {a : ℕ}
          → {m n : Fin a}
          → n 𝔽.≤ m
-         → 𝔽.toℕ n ℕ.≤ ℕ.suc (𝔽.toℕ m)
+         → 𝔽.toℕ n ℕ.≤ suc (𝔽.toℕ m)
     flex = flip DNP.≤-trans $ DNP.n≤1+n _
     open ≡-Reasoning
     finlenteik : ∀ {a} → {A : Set a}
@@ -1900,15 +1900,15 @@ module KanjyVeritas where
                → (n : Fin $ length x)
                → length (𝔽.toℕ n ↑ x) ≡ 𝔽.toℕ n
     finlenteik (_ ∷ _) 𝔽.zero = refl
-    finlenteik (_ ∷ xs) (𝔽.suc n) = finlenteik xs n ▹ cong ℕ.suc
+    finlenteik (_ ∷ xs) (𝔽.suc n) = finlenteik xs n ▹ cong suc
     v∸x+z≡v∸[x∸z] : {v x z : ℕ}
                  → z ℕ.≤ x
                  → v ℕ.∸ x ℕ.+ z ≡ v ℕ.∸ (x ℕ.∸ z)
     v∸x+z≡v∸[x∸z] {z = 0} ℕ.z≤n = DNP.+-identityʳ _
-    v∸x+z≡v∸[x∸z] {v} {x} {z = ℕ.suc z} (ℕ.s≤s s) = begin
-      v ℕ.∸ x ℕ.+ ℕ.suc z ≡⟨ {!!} ⟩
-      v ℕ.∸ ℕ.suc (x ℕ.+ z) ≡⟨ {!!} ⟩
-      v ℕ.∸ (x ℕ.∸ ℕ.suc z) ∎
+    v∸x+z≡v∸[x∸z] {v} {x} {z = suc z} (ℕ.s≤s s) = begin
+      v ℕ.∸ x ℕ.+ suc z ≡⟨ {!!} ⟩
+      v ℕ.∸ suc (x ℕ.+ z) ≡⟨ {!!} ⟩
+      v ℕ.∸ (x ℕ.∸ suc z) ∎
 
   takeduv : (x : Buffer)
           → (a b : Buffer.F x)
@@ -1923,7 +1923,7 @@ module KanjyVeritas where
     where
     BL = Buffer.lerpinste
     BLT = (𝔽.toℕ a) ↑_ ∘ BL
-    BLD = ℕ.suc (𝔽.toℕ b) ↓_ ∘ BL
+    BLD = suc (𝔽.toℕ b) ↓_ ∘ BL
     open ≡-Reasoning
     teikteik : ∀ {a} → {A : Set a}
              → (x : List A)
@@ -1939,12 +1939,12 @@ module KanjyVeritas where
            → (d : a 𝔽.≤ b)
            → let x₂ = proj₁ $ kanji {x} $ Vimcu a b d in
              (_≡_
-               (ℕ.suc (𝔽.toℕ b) ↓ Buffer.lerpinste x)
+               (suc (𝔽.toℕ b) ↓ Buffer.lerpinste x)
                (𝔽.toℕ a ↓ Buffer.lerpinste x₂))
   dropyduv x a b d = sym $ begin
     𝔽.toℕ a ↓ BL x₂ ≡⟨ refl ⟩
-    a' ↓ (a' ↑ BL x ++ ℕ.suc b' ↓ BL x) ≡⟨ teikteikdrop (BL x) _ a ⟩
-    ℕ.suc b' ↓ BL x ∎
+    a' ↓ (a' ↑ BL x ++ suc b' ↓ BL x) ≡⟨ teikteikdrop (BL x) _ a ⟩
+    suc b' ↓ BL x ∎
     where
     a' = 𝔽.toℕ a
     b' = 𝔽.toℕ b
@@ -1963,28 +1963,28 @@ module KanjyVeritas where
              → (d : a 𝔽.≤ b)
              → let K = proj₂ $ kanji {x} $ Cusku a b d in
                let L = lines $ from-inj₁ $ from-just K in
-               length L ≡ ℕ.suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a)
+               length L ≡ suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a)
   nilzilcmip x a b d = begin
     length L ≡⟨ refl ⟩
     length (lines $ unlines S) ≡⟨ lines∘unlines S ▹ cong length ⟩
     length S ≡⟨ refl ⟩
-    length (a' ↓_ $ ℕ.suc b' ↑ BL) ≡⟨ DLP.length-drop a' _ ⟩
-    length (ℕ.suc b' ↑ BL) ℕ.∸ a' ≡⟨ {!!} ▹ cong (ℕ._∸ a') ⟩
-    ℕ.suc b' ℕ.∸ a' ≡⟨ sukmin d ⟩
-    ℕ.suc (b' ℕ.∸ a') ∎
+    length (a' ↓_ $ suc b' ↑ BL) ≡⟨ DLP.length-drop a' _ ⟩
+    length (suc b' ↑ BL) ℕ.∸ a' ≡⟨ {!!} ▹ cong (ℕ._∸ a') ⟩
+    suc b' ℕ.∸ a' ≡⟨ sukmin d ⟩
+    suc (b' ℕ.∸ a') ∎
     where
     a' = 𝔽.toℕ a
     b' = 𝔽.toℕ b
     K = proj₂ $ kanji {x} $ Cusku a b d
     L = lines $ from-inj₁ $ from-just K
     BL = Buffer.lerpinste x
-    S = a' ↓_ $ ℕ.suc b' ↑ BL
+    S = a' ↓_ $ suc b' ↑ BL
     lines∘unlines : (x : List String) → lines (unlines S) ≡ S
     lines∘unlines = {!!}
     open ≡-Reasoning
     sukmin : {m n : ℕ}
            → n ℕ.≤ m
-           → ℕ.suc m ℕ.∸ n ≡ ℕ.suc (m ℕ.∸ n)
+           → suc m ℕ.∸ n ≡ suc (m ℕ.∸ n)
     sukmin ℕ.z≤n = {!!}
     sukmin (ℕ.s≤s s) = {!!}
 
@@ -2029,8 +2029,8 @@ module KanjyVeritas where
     𝓁 = length ∘ Buffer.lerpinste
     x' = Buffer.lerpinste x
     x'₁ = 𝔽.toℕ a ↑ x'
-    x'₂ = ℕ.suc (𝔽.toℕ b) ↓ x'
-    x'₃ = 𝔽.toℕ a ↓_ $ ℕ.suc (𝔽.toℕ b) ↑ x'
+    x'₂ = suc (𝔽.toℕ b) ↓ x'
+    x'₃ = 𝔽.toℕ a ↓_ $ suc (𝔽.toℕ b) ↑ x'
     open ≡-Reasoning
 
   muvipas : (x : Buffer)
@@ -2063,7 +2063,7 @@ module KanjyVeritas where
   muvisez : (x : Buffer)
           → (a b c : Buffer.F x)
           → (d : a 𝔽.≤ b)
-          → let n = ℕ.suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a) in
+          → let n = suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a) in
             let x' = proj₁ $ kanji {x} $ Muvgau a b (just c) d in
             (_≡_
               (n ↑_ $ 𝔽.toℕ a ↓_ $ Buffer.lerpinste x)
@@ -2073,7 +2073,7 @@ module KanjyVeritas where
     n ↑ (f a ↓ BLT x) ∎
     where
     f = 𝔽.toℕ
-    n = ℕ.suc $ f b ℕ.∸ f a
+    n = suc $ f b ℕ.∸ f a
     x' = proj₁ $ kanji {x} $ Muvgau a b (just c) d
     BLT = Buffer.lerpinste
     open ≡-Reasoning
@@ -2090,11 +2090,11 @@ module KanjyVeritas where
   muvivimcus : (x : Buffer)
              → (a b c : Buffer.F x)
              → (d : a 𝔽.≤ b)
-             → let n = ℕ.suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a) in
+             → let n = suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a) in
                let x' = proj₁ $ kanji {x} $ Muvgau a b (just c) d in
                let L = Buffer.lerpinste in
                (_≡_
-                 (𝔽.toℕ a ↑ L x ++ ℕ.suc (𝔽.toℕ b) ↓ L x)
+                 (𝔽.toℕ a ↑ L x ++ suc (𝔽.toℕ b) ↓ L x)
                  (𝔽.toℕ c ↑ L x' ++ n ↓ L x'))
   muvivimcus = {!!}
 
