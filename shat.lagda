@@ -75,6 +75,8 @@
 \newcommand\IC\AgdaInductiveConstructor
 \newcommand\OpF[1]{\AgdaOperator{\F{#1}}}
 
+\newcommand\sds{\spacefactor\sfcode`.\ \space}
+
 \newcommand\Xr[2]{\textrm{#1(#2)}}
 \newcommand\datnyveicme\texttt
 
