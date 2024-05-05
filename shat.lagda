@@ -111,6 +111,7 @@ open import Data.Fin
 open import Data.Nat
   as ℕ
   using (
+    suc;
     ℕ
   )
 open import Data.Sum
