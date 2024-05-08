@@ -1764,7 +1764,7 @@ module ReedVeritas where
       ++-¬[] : (c : Char)
              → (s : String)
              → ¬_ $ w (𝕊.fromChar c ++ s) ≡ []
-      ++-¬[] c s = ∷→¬[] _ {!!}
+      ++-¬[] c s = ∷→¬[] _ $ w-++-∷ c s
         where
         ∷→¬[] : ∀ {a} → {A : Set a}
               → (x : List A)
@@ -1773,6 +1773,12 @@ module ReedVeritas where
                   (λ (z , zs) → x ≡ z ∷ zs))
               → ¬_ $ x ≡ []
         ∷→¬[] _ (_ , refl) ()
+        w-++-∷ : (c : Char)
+               → (s : String)
+               → (Σ
+                   (String × List String)
+                   (λ (x , xs) → w (𝕊.fromChar c ++ s) ≡ x ∷ xs))
+        w-++-∷ = {!!}
       unwords-dist : (x : String)
                    → (z : List String)
                    → ¬_ $ z ≡ []
