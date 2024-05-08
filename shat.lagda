@@ -1764,7 +1764,7 @@ module ReedVeritas where
       ++-¬[] : (c : Char)
              → (s : String)
              → ¬_ $ w (𝕊.fromChar c ++ s) ≡ []
-      ++-¬[] c s = ∷→¬[] _ $ w-++-∷ c s
+      ++-¬[] = ∷→¬[] _ ∘₂ w-++-∷
         where
         ∷→¬[] : ∀ {a} → {A : Set a}
               → (x : List A)
