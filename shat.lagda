@@ -1696,6 +1696,7 @@ module ReedVeritas where
     reed x (k₂ x a b 'd') ≡⟨ {!!} ⟩
     Reed.Re.t (k₂ x a b 'd') ≡⟨ refl ⟩
     _,ₘ_ (romoi K₂) (o∘r K₂) >>= g' ≡⟨ {!!} ⟩
+    _,ₘ_ (just 'd') (o∘r K₂) >>= g' ≡⟨ {!!} ⟩
     _,ₘ_ (just 'd') (just $ (a , b) , d) >>= g' ≡⟨ refl ⟩
     Reed.Re.g x a b d 'd' ≡⟨ refl ⟩
     just (Vimcu a b d) ∎
