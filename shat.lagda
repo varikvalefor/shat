@@ -1772,7 +1772,7 @@ module ReedVeritas where
                   (A × List A)
                   (λ (z , zs) → x ≡ z ∷ zs))
               → ¬_ $ x ≡ []
-        ∷→¬[] = {!!}
+        ∷→¬[] _ (_ , refl) ()
       unwords-dist : (x : String)
                    → (z : List String)
                    → ¬_ $ z ≡ []
