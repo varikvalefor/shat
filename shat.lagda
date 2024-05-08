@@ -1644,7 +1644,7 @@ module ReedVeritas where
     _,ₘ_ (pamoinamcu K >>= fromℕ?) (sl "a") >>= g' ≡⟨ {!!} ⟩
     _,ₘ_ (rms a) (sl "a") >>= g' ≡⟨ refl ⟩
     _,ₘ_ (rms a) (just 'a') >>= g' ≡⟨ refl ⟩
-    _ ≡⟨ rimco a ▹ cong (λ x → _,ₘ_ x _ >>= g') ⟩
+    _ ≡⟨ readMaybe∘show a ▹ cong (λ x → _,ₘ_ x _ >>= g') ⟩
     _,ₘ_ (just a) (just 'a') >>= g' ≡⟨ refl ⟩
     just (a , 'a') >>= g' ≡⟨ refl ⟩
     Reed.Pa.g a 'a' ≡⟨ refl ⟩
@@ -1655,8 +1655,6 @@ module ReedVeritas where
     rms : {n : ℕ} → Fin n → Maybe $ Fin n
     rms = readMaybe ∘ show
     sl = 𝕃.last ∘ 𝕊.toList
-    rimco : {n : ℕ} → (x : Fin n) → rms x ≡ just x
-    rimco = readMaybe∘show
 
   ic : (x : Buffer)
      → (a : Buffer.F x)
