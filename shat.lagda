@@ -1659,6 +1659,7 @@ module ReedVeritas where
     [pK>>=fℕ?]≡rms : pamoinamcu K >>= fromℕ? ≡ rms a
     [pK>>=fℕ?]≡rms = begin
       pamoinamcu K >>= fromℕ? ≡⟨ {!!} ⟩
+      just (𝔽.toℕ a) >>= fromℕ? ≡⟨ {!!} ⟩
       rms a ∎
 
   ic : (x : Buffer)
