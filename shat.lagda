@@ -1887,6 +1887,15 @@ module KanjyVeritas where
              (x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" $ F a))
   jminic _ _ = refl
 
+  vimcablerpinsles : (x : Buffer)
+                   → (a b : Buffer.F x)
+                   → (d : a 𝔽.≤ b)
+                   → let BC = 𝔽.toℕ ∘ Buffer.cablerpinsle in
+                     (_≡_
+                       (BC $ proj₁ $ kanji {x} $ Vimcu a b d)
+                       {!!})
+  vimcablerpinsles = {!!}
+
   nilzilcmiv : (x : Buffer)
              → (a b : Buffer.F x)
              → (d : a 𝔽.≤ b)
