@@ -1657,7 +1657,9 @@ module ReedVeritas where
     rms = readMaybe ∘ show
     sl = 𝕃.last ∘ 𝕊.toList
     [pK>>=fℕ?]≡rms : pamoinamcu K >>= fromℕ? ≡ rms a
-    [pK>>=fℕ?]≡rms = {!!}
+    [pK>>=fℕ?]≡rms = begin
+      pamoinamcu K >>= fromℕ? ≡⟨ {!!} ⟩
+      rms a ∎
 
   ic : (x : Buffer)
      → (a : Buffer.F x)
