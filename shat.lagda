@@ -2011,7 +2011,7 @@ module KanjyVeritas where
     length (lines $ unlines S) ≡⟨ lines∘unlines S ▹ cong length ⟩
     length S ≡⟨ refl ⟩
     length (a' ↓_ $ suc b' ↑ BL) ≡⟨ DLP.length-drop a' _ ⟩
-    length (suc b' ↑ BL) ℕ.∸ a' ≡⟨ {!!} ▹ cong (ℕ._∸ a') ⟩
+    length (suc b' ↑ BL) ℕ.∸ a' ≡⟨ teiklen BL b ▹ cong (ℕ._∸ a') ⟩
     suc b' ℕ.∸ a' ≡⟨ sukmin d ⟩
     suc (b' ℕ.∸ a') ∎
     where
@@ -2029,6 +2029,11 @@ module KanjyVeritas where
            → suc m ℕ.∸ n ≡ suc (m ℕ.∸ n)
     sukmin ℕ.z≤n = refl
     sukmin (ℕ.s≤s s) = sukmin s
+    teiklen : ∀ {a} → {A : Set a}
+            → (x : List A)
+            → (n : Fin $ length x)
+            → length (ℕ.suc (𝔽.toℕ n) ↑ x) ≡ ℕ.suc (𝔽.toℕ n)
+    teiklen = {!!}
 
   pindices : (x : Buffer)
            → (a b : Buffer.F x)
