@@ -560,14 +560,17 @@ module ReadMaybe'Veritas where
                     → (s : String)
                     → readMaybe' {n} s ≡ just nothing
                     → s ≡ "$"
-  justnothing→jdini "$" _ = refl
-  justnothing→jdini s d = d ⇒⇐ rimjdin s {!!}
+  justnothing→jdini s d = F $ s ≟ "$"
     where
-    rimjdin : {n : ℕ}
-            → (s : String)
-            → ¬_ $ s ≡ "$"
-            → ¬_ $ readMaybe' {n} s ≡ just nothing
-    rimjdin = {!!}
+    F : Dec $ s ≡ "$" → s ≡ "$"
+    F (yes j) = j
+    F (no j) = d ⇒⇐ rimjdin s j
+      where
+      rimjdin : {n : ℕ}
+              → (s : String)
+              → ¬_ $ s ≡ "$"
+              → ¬_ $ readMaybe' {n} s ≡ just nothing
+      rimjdin = {!!}
 
   nada : {n : ℕ}
        → (s : String)
