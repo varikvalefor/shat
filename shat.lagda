@@ -243,6 +243,10 @@ open import Truthbrary.Category.Monad
   renaming (
     map to mapₘ
   )
+open import Relation.Nullary.Negation
+  renaming (
+    contradiction to _⇒⇐_
+  )
 open import Truthbrary.Data.List.Split
   using (
     splitOn
@@ -557,7 +561,13 @@ module ReadMaybe'Veritas where
                     → readMaybe' {n} s ≡ just nothing
                     → s ≡ "$"
   justnothing→jdini "$" _ = refl
-  justnothing→jdini s d = {!!}
+  justnothing→jdini s d = d ⇒⇐ rimjdin s {!!}
+    where
+    rimjdin : {n : ℕ}
+            → (s : String)
+            → ¬_ $ s ≡ "$"
+            → ¬_ $ readMaybe' {n} s ≡ just nothing
+    rimjdin = {!!}
 
   nada : {n : ℕ}
        → (s : String)
