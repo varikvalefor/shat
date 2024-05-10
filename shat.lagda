@@ -1093,7 +1093,7 @@ module Orsygenturfa'iVeritas where
 
   module Spit where
     non : spit "" ≡ []
-    non = {!!}
+    non = refl
 
     pav : (x : String) → ',' ∉ 𝕊.toList x → spit x ≡ 𝕊.toList x ∷ []
     pav x nin = begin
