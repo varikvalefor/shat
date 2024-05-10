@@ -566,13 +566,13 @@ module ReadMaybe'Veritas where
        → readMaybe' {n} s ≡ nothing
   nada s nj np = begin
     readMaybe' s ≡⟨ refl ⟩
-    if (s ≡ᵇ "$") (just nothing) (readMaybe'' s) ≡⟨ ifnon nj ⟩
-    readMaybe'' s ≡⟨ refl ⟩
+    if (s ≡ᵇ "$") (just nothing) (jreadMaybe s) ≡⟨ ifnon nj ⟩
+    jreadMaybe s ≡⟨ refl ⟩
     mapₘ just (readMaybe s) ≡⟨ norm s np ▹ cong (mapₘ just) ⟩
     mapₘ just nothing ≡⟨ refl ⟩
     nothing ∎
     where
-    readMaybe'' = mapₘ just ∘ readMaybe
+    jreadMaybe = mapₘ just ∘ readMaybe
     norm : {n : ℕ}
          → (s : String)
          → ¬_ $ Σ (Fin n) $ _≡_ s ∘ show
