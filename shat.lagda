@@ -542,15 +542,15 @@ module ReadMaybe'Veritas where
     najdinis = {!!}
     open ≡-Reasoning
 
+  jdini : {n : ℕ} → readMaybe' {n} "$" ≡ just nothing
+  jdini = refl
+
   justjust→namcu : {n : ℕ}
                  → (s : String)
                  → (f : Fin n)
                  → readMaybe' s ≡_ $ just $ just f
                  → s ≡_ $ show f
   justjust→namcu = {!!}
-
-  jdini : {n : ℕ} → readMaybe' {n} "$" ≡ just nothing
-  jdini = refl
 
   justnothing→jdini : {n : ℕ}
                     → (s : String)
