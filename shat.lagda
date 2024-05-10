@@ -2033,7 +2033,8 @@ module KanjyVeritas where
             → (x : List A)
             → (n : Fin $ length x)
             → length (ℕ.suc (𝔽.toℕ n) ↑ x) ≡ ℕ.suc (𝔽.toℕ n)
-    teiklen = {!!}
+    teiklen (_ ∷ _) 𝔽.zero = {!!}
+    teiklen (_ ∷ _) (𝔽.suc n) = {!!}
 
   pindices : (x : Buffer)
            → (a b : Buffer.F x)
