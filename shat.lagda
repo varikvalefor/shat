@@ -1674,7 +1674,9 @@ module ReedVeritas where
     rms = readMaybe ∘ show
     sl = 𝕃.last ∘ 𝕊.toList
     silkas : sl K ≡ just 'a'
-    silkas = {!!}
+    silkas = begin
+      sl K ≡⟨ {!!} ⟩
+      just 'a' ∎
     [pK>>=fℕ?]≡rms : pamoinamcu K >>= fromℕ? ≡ rms a
     [pK>>=fℕ?]≡rms = begin
       pamoinamcu K >>= fromℕ? ≡⟨ {!!} ⟩
