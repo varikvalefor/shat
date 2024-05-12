@@ -1667,8 +1667,6 @@ module ReedVeritas where
     Reed.Pa.g a 'a' ≡⟨ refl ⟩
     just (Jmina a) ∎
     where
-    pNfℕ : {n : ℕ} → String → Maybe $ Fin n
-    pNfℕ = λ n → pamoinamcu n >>= fromℕ?
     g' = uncurry Reed.Pa.g
     K = k₁ x a 'a'
     rms : {n : ℕ} → Fin n → Maybe $ Fin n
