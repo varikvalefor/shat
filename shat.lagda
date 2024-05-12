@@ -831,7 +831,11 @@ module fromℕ?Veritas where
   fromℕ?∘toℕ : {n : ℕ}
              → (f : Fin n)
              → fromℕ? (𝔽.toℕ f) ≡ just f
-  fromℕ?∘toℕ = {!!}
+  fromℕ?∘toℕ {n} f = begin
+    fromℕ? (𝔽.toℕ f) ≡⟨ {!!} ⟩
+    just f ∎
+    where
+    open ≡-Reasoning
 \end{code}
 
 \section{la'oi .\F{degjygirzu}.}
