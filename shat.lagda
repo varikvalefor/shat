@@ -794,6 +794,8 @@ fromℕ? = mapₘ 𝔽.fromℕ< ∘ decToMaybe ∘ (ℕ._<? _)
 
 \begin{code}
 module fromℕ?Veritas where
+  open ≡-Reasoning
+
   jus : {n : ℕ}
       → (x : ℕ)
       → x ℕ.< n
@@ -809,7 +811,6 @@ module fromℕ?Veritas where
     id' = 𝔽.toℕ ∘ 𝔽.fromℕ<
     c? : (x : ℕ) → Maybe $ x ℕ.< n
     c? = decToMaybe ∘ (ℕ._<? n)
-    open ≡-Reasoning
     mapmapi = sym ∘ DMP.map-compose
 
   nada : {n : ℕ}
@@ -826,7 +827,6 @@ module fromℕ?Veritas where
     d2m = decToMaybe
     MC = DMP.map-compose $ d2m $ x ℕ.<? n
     DN = dec-nothing (ℕ._< n) (x ℕ.<? n) J
-    open ≡-Reasoning
 
   fromℕ?∘toℕ : {n : ℕ}
              → (f : Fin n)
@@ -834,8 +834,6 @@ module fromℕ?Veritas where
   fromℕ?∘toℕ {n} f = begin
     fromℕ? (𝔽.toℕ f) ≡⟨ {!!} ⟩
     just f ∎
-    where
-    open ≡-Reasoning
 \end{code}
 
 \section{la'oi .\F{degjygirzu}.}
