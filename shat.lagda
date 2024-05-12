@@ -1659,7 +1659,8 @@ module ReedVeritas where
     Reed.Pa.t K ≡⟨ refl ⟩
     _,ₘ_ (pamoinamcu K >>= fromℕ?) (sl K) >>= g' ≡⟨ refl ⟩
     _ ≡⟨ [pK>>=fℕ?]≡rms ▹ cong (λ x → _,ₘ_ x (sl K) >>= g') ⟩
-    _,ₘ_ (rms a) (sl K) >>= g' ≡⟨ silkas ▹ cong (λ c → _,ₘ_ (rms a) c >>= g') ⟩
+    _,ₘ_ (rms a) (sl K) >>= g' ≡⟨ refl ⟩
+    _ ≡⟨ silkas ▹ cong (λ c → _,ₘ_ (rms a) c >>= g') ⟩
     _,ₘ_ (rms a) (just 'a') >>= g' ≡⟨ refl ⟩
     _ ≡⟨ readMaybe∘show a ▹ cong (λ x → _,ₘ_ x _ >>= g') ⟩
     _,ₘ_ (just a) (just 'a') >>= g' ≡⟨ refl ⟩
