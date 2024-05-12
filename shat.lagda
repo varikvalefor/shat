@@ -1713,7 +1713,7 @@ module ReedVeritas where
     rms = readMaybe ∘ show
     sl = 𝕃.last ∘ 𝕊.toList
     rimco : {n : ℕ} → (x : Fin n) → rms x ≡ just x
-    rimco = {!!}
+    rimco = readMaybe∘show
 
   mixer : (x : Buffer)
         → (a b c : Buffer.F x)
