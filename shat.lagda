@@ -827,6 +827,11 @@ module fromℕ?Veritas where
     MC = DMP.map-compose $ d2m $ x ℕ.<? n
     DN = dec-nothing (ℕ._< n) (x ℕ.<? n) J
     open ≡-Reasoning
+
+  fromℕ?∘toℕ : {n : ℕ}
+             → (f : Fin n)
+             → fromℕ? (𝔽.toℕ f) ≡ just f
+  fromℕ?∘toℕ = {!!}
 \end{code}
 
 \section{la'oi .\F{degjygirzu}.}
