@@ -1656,7 +1656,8 @@ module ReedVeritas where
   ac x a = sym $ begin
     reed x (k₁ x a 'a') ≡⟨ refl ⟩
     reed x K ≡⟨ {!!} ⟩
-    Reed.Pa.t K ≡⟨ {!!} ⟩
+    Reed.Pa.t K ≡⟨ refl ⟩
+    g' =<< (_,ₘ_ (pNfℕ K) $ 𝕃.last $ 𝕊.toList K) ≡⟨ {!!} ⟩
     _,ₘ_ (pamoinamcu K >>= fromℕ?) (sl "a") >>= g' ≡⟨ refl ⟩
     _ ≡⟨ [pK>>=fℕ?]≡rms ▹ cong (λ x → _,ₘ_ x _ >>= g') ⟩
     _,ₘ_ (rms a) (sl "a") >>= g' ≡⟨ refl ⟩
@@ -1667,6 +1668,8 @@ module ReedVeritas where
     Reed.Pa.g a 'a' ≡⟨ refl ⟩
     just (Jmina a) ∎
     where
+    pNfℕ : {n : ℕ} → String → Maybe $ Fin n
+    pNfℕ = λ n → pamoinamcu n >>= fromℕ?
     g' = uncurry Reed.Pa.g
     K = k₁ x a 'a'
     rms : {n : ℕ} → Fin n → Maybe $ Fin n
