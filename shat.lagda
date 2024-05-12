@@ -1657,7 +1657,8 @@ module ReedVeritas where
     reed x (k₁ x a 'a') ≡⟨ refl ⟩
     reed x K ≡⟨ {!!} ⟩
     Reed.Pa.t K ≡⟨ refl ⟩
-    g' =<< (_,ₘ_ (pNfℕ K) $ 𝕃.last $ 𝕊.toList K) ≡⟨ {!!} ⟩
+    g' =<< (_,ₘ_ (pNfℕ K) $ 𝕃.last $ 𝕊.toList K) ≡⟨ refl ⟩
+    g' =<< (_,ₘ_ (pNfℕ K) $ sl K) ≡⟨ {!!} ⟩
     _,ₘ_ (pamoinamcu K >>= fromℕ?) (sl "a") >>= g' ≡⟨ refl ⟩
     _ ≡⟨ [pK>>=fℕ?]≡rms ▹ cong (λ x → _,ₘ_ x _ >>= g') ⟩
     _,ₘ_ (rms a) (sl "a") >>= g' ≡⟨ refl ⟩
