@@ -567,7 +567,7 @@ module ReadMaybe'Veritas where
               → (s : String)
               → readMaybe' {n} s ≡ just nothing
               → s ≡ "$"
-      rimjdin "$" x = {!!}
+      rimjdin "$" x = refl
       rimjdin s x = {!!}
 
   nada : {n : ℕ}
