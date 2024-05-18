@@ -847,15 +847,15 @@ degjygirzu = 𝕊.wordsBy $ T? ∘ Data.Bool.not ∘ isDigit
 module DegjygirzuVeritas where
   open ≡-Reasoning
 
-  pav : ((x : String) → x ≡ 𝕊.fromList (𝕊.toList x))
-      → (n : ℕ) → degjygirzu (show n) ≡ show n ∷ []
-  pav fL∘tL n = begin
+  pav : (n : ℕ) → degjygirzu (show n) ≡ show n ∷ []
+  pav n = begin
     degjygirzu (show n) ≡⟨ refl ⟩
     𝕃.map 𝕊.fromList (d $ 𝕊.toList $ show n) ≡⟨ refl ⟩
     mL (d $ show' n) ≡⟨ didus n ▹ cong mL ⟩
     mL (show' n ∷ []) ≡⟨ fL∘tL (show n) ▹ sym ▹ cong (_∷ []) ⟩
     show n ∷ [] ∎
     where
+    fL∘tL = sym ∘ fromList∘toList
     mL = 𝕃.map 𝕊.fromList
     show' = 𝕊.toList ∘ show
     d = 𝕃.wordsBy $ T? ∘ Data.Bool.not ∘ isDigit
@@ -912,7 +912,7 @@ module DegjygirzuVeritas where
     d (show t ++ 𝕊.fromChar c ++ s) ≡⟨ {!!} ⟩
     d (show t) ++ d (𝕊.fromChar c ++ s) ≡⟨ refl ⟩
     _ ≡⟨ rybic s c j ▹ sym ▹ cong (_ ++_) ⟩
-    d (show t) ++ d s ≡⟨ pav (sym ∘ fL∘tL) t ▹ cong (_++ d s) ⟩
+    d (show t) ++ d s ≡⟨ pav t ▹ cong (_++ d s) ⟩
     (show t ∷ []) ++ d s ≡⟨ refl ⟩
     show t ∷ d s ∎
     where
@@ -941,7 +941,7 @@ module PamoinamcuVeritas where
   non rimco fL∘tL n = sym $ begin
     pamoinamcu (show n) ≡⟨ refl ⟩
     𝕃.head (s $ show n) >>= readMaybe ≡⟨ refl ⟩
-    g (s $ show n) ≡⟨ DegjygirzuVeritas.pav fL∘tL n ▹ cong g ⟩
+    g (s $ show n) ≡⟨ DegjygirzuVeritas.pav n ▹ cong g ⟩
     g (show n ∷ []) ≡⟨ refl ⟩
     𝕃.head (show n ∷ []) >>= readMaybe ≡⟨ refl ⟩
     readMaybe (show n) ≡⟨ rimco n ⟩
