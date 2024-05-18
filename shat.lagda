@@ -852,10 +852,10 @@ module DegjygirzuVeritas where
     degjygirzu (show n) ≡⟨ refl ⟩
     𝕃.map 𝕊.fromList (d $ 𝕊.toList $ show n) ≡⟨ refl ⟩
     mL (d $ show' n) ≡⟨ didus n ▹ cong mL ⟩
-    mL (show' n ∷ []) ≡⟨ fL∘tL (show n) ▹ sym ▹ cong (_∷ []) ⟩
+    mL (show' n ∷ []) ≡⟨ fL∘tL (show n) ▹ cong (_∷ []) ⟩
     show n ∷ [] ∎
     where
-    fL∘tL = sym ∘ fromList∘toList
+    fL∘tL = fromList∘toList
     mL = 𝕃.map 𝕊.fromList
     show' = 𝕊.toList ∘ show
     d = 𝕃.wordsBy $ T? ∘ Data.Bool.not ∘ isDigit
