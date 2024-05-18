@@ -935,6 +935,8 @@ pamoinamcu = readMaybe <=< (𝕃.head ∘ degjygirzu)
 
 \begin{code}
 module PamoinamcuVeritas where
+  open ≡-Reasoning
+
   non : ((n : ℕ) → readMaybe (show n) ≡ just n)
       → ((x : String) → x ≡ 𝕊.fromList (𝕊.toList x))
       → (n : ℕ) → just n ≡ pamoinamcu (show n)
@@ -949,7 +951,6 @@ module PamoinamcuVeritas where
     where
     g = readMaybe <=< 𝕃.head
     s = degjygirzu
-    open ≡-Reasoning
 
   pav : ((n : ℕ) → readMaybe (show n) ≡ just n)
       → (n : ℕ)
@@ -970,7 +971,6 @@ module PamoinamcuVeritas where
    c' = 𝕊.fromChar c
    g = readMaybe <=< 𝕃.head
    d = degjygirzu
-   open ≡-Reasoning
 \end{code}
 
 \section{la'oi .\F{romoivimcu}.}
