@@ -911,7 +911,7 @@ module DegjygirzuVeritas where
   rel s t c j = sym $ begin
     d (show t ++ 𝕊.fromChar c ++ s) ≡⟨ {!!} ⟩
     d (show t) ++ d (𝕊.fromChar c ++ s) ≡⟨ refl ⟩
-    _ ≡⟨ rybic s c j ▹ sym ▹ cong (_++_ _) ⟩
+    _ ≡⟨ rybic s c j ▹ sym ▹ cong (_ ++_) ⟩
     d (show t) ++ d s ≡⟨ pav (sym ∘ fL∘tL) t ▹ cong (_++ d s) ⟩
     (show t ∷ []) ++ d s ≡⟨ refl ⟩
     show t ∷ d s ∎
