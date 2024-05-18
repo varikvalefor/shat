@@ -831,6 +831,7 @@ module fromℕ?Veritas where
   fromℕ?∘toℕ {n} f = begin
     fromℕ? (𝔽.toℕ f) ≡⟨ refl ⟩
     mapₘ 𝔽.fromℕ< (decToMaybe $ (ℕ._<? _) $ 𝔽.toℕ f) ≡⟨ {!!} ⟩
+    mapₘ (𝔽.fromℕ< {m = 𝔽.toℕ f}) (just {!!}) ≡⟨ {!!} ⟩
     just f ∎
 \end{code}
 
