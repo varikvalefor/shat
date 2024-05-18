@@ -948,7 +948,7 @@ module PamoinamcuVeritas where
     just n ∎
     where
     g = readMaybe <=< 𝕃.head
-    s = 𝕊.wordsBy $ T? ∘ Data.Bool.not ∘ Data.Char.isDigit
+    s = degjygirzu
     open ≡-Reasoning
 
   pav : ((n : ℕ) → readMaybe (show n) ≡ just n)
