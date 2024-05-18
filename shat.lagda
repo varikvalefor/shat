@@ -1821,7 +1821,7 @@ module ReedVeritas where
                   (String × List String)
                   (λ (x , xs) → w s ≡ x ∷ xs))
           ∷-w s n with 𝕊.toList s
-          ... | [] = {!!}
+          ... | [] = {!!} ⇒⇐ n
           ... | x ∷ xs = {!!}
       unwords-dist : (x : String)
                    → (z : List String)
