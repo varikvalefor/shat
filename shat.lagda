@@ -618,6 +618,8 @@ insert x i n = (n' ↑ x) ++ i ++ (n' ↓ x)
 
 \begin{code}
 module InsertVeritas where
+  open ≡-Reasoning
+
   private
     lendrop : ∀ {a} → {A : Set a}
             → (x z : List A)
@@ -664,7 +666,6 @@ module InsertVeritas where
     where
     L = length
     n' = maybe 𝔽.toℕ (length x) n
-    open ≡-Reasoning
 
   pamois : ∀ {a} → {A : Set a}
          → (x i : List A)
@@ -702,7 +703,6 @@ module InsertVeritas where
     n' = maybe 𝔽.toℕ (length x) n
     x₁ = n' ↑ x
     x₂ = n' ↓ x
-    open ≡-Reasoning
 
   romois : ∀ {a} → {A : Set a}
          → (x i : List A)
@@ -737,7 +737,6 @@ module InsertVeritas where
              → length x ↓ (x ++ z) ≡ z
     dropydus [] = refl
     dropydus (_ ∷ xs) = dropydus xs
-    open ≡-Reasoning
 \end{code}
 
 \section{la'o zoi.\ \F{\AgdaUnderscore{},ₘ\AgdaUnderscore}\ .zoi.}
