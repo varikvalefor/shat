@@ -550,7 +550,7 @@ module ReadMaybe'Veritas where
                  → (s : String)
                  → (f : Fin n)
                  → readMaybe' s ≡_ $ just $ just f
-                 → s ≡_ $ show f
+                 → s ≡ show f
   justjust→namcu = {!!}
 
   justnothing→jdini : {n : ℕ}
