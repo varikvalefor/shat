@@ -522,6 +522,8 @@ readMaybe' s = if (s ≡ᵇ "$") (just nothing) $ readMaybe s ▹ mapₘ just
 
 \begin{code}
 module ReadMaybe'Veritas where
+  open ≡-Reasoning
+
   namcu : {n : ℕ}
         → (f : Fin n)
         → readMaybe' (show f) ≡ just (just f)
@@ -541,7 +543,6 @@ module ReadMaybe'Veritas where
              → (f : Fin n)
              → show f ≡ᵇ "$" ≡ false
     najdinis = {!!}
-    open ≡-Reasoning
 
   jdini : {n : ℕ} → readMaybe' {n} "$" ≡ just nothing
   jdini = refl
@@ -579,7 +580,6 @@ module ReadMaybe'Veritas where
          → ¬_ $ Σ (Fin n) $ _≡_ s ∘ show
          → readMaybe s ≡ nothing {A = Fin n}
     norm = {!!}
-    open ≡-Reasoning
     ifnon : ∀ {a b} → {A : Set a} → {B : Set b}
           → ⦃ _ : Eq A ⦄
           → {d f : A}
