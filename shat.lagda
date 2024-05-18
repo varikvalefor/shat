@@ -989,6 +989,8 @@ romoivimcu = S $ λ L → _↑ L $ 𝕃.length L ℕ.∸ 1
 
 \begin{code}
 module RomoivimcuVeritas where
+  open ≡-Reasoning
+
   konkydus : (x : String)
            → let -1↑x = 𝕊.fromList $ (length x ℕ.∸ 1) ↓ 𝕊.toList x in
              x ≡ romoivimcu x ++ -1↑x
@@ -1014,7 +1016,6 @@ module RomoivimcuVeritas where
     frokonk = sym ∘₂ fromList-dist
     [cev∘vec]² : (x : String) → x ≡ 𝕊.fromList (𝕊.toList x)
     [cev∘vec]² = sym ∘ fromList∘toList
-    open ≡-Reasoning
 
   vimcykonkydus : (s : String)
               → (c : Char)
@@ -1035,7 +1036,6 @@ module RomoivimcuVeritas where
     S = λ f → 𝕊.fromList ∘ f ∘ 𝕊.toList
     fL∘tL≡id : fL ∘ tL ≡ id
     fL∘tL≡id = {!!}
-    open ≡-Reasoning
     tLkonk : (s : String)
            → (c : Char)
            → tL (s ++ fC c) ≡ tL s ++ c ∷ []
