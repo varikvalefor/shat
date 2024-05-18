@@ -247,10 +247,6 @@ open import Relation.Nullary.Negation
   renaming (
     contradiction to _⇒⇐_
   )
-open import Truthbrary.Data.List.Split
-  using (
-    splitOn
-  )
 open import Relation.Binary.PropositionalEquality
   using (
     module ≡-Reasoning;
