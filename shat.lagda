@@ -962,7 +962,7 @@ module PamoinamcuVeritas where
    𝕃.head (d $ show n ++ c' ++ t) >>= readMaybe ≡⟨ refl ⟩
    g (d $ show n ++ c' ++ t) ≡⟨ dvr t n c j ▹ sym ▹ cong g ⟩
    g (show n ∷ d (c' ++ t)) ≡⟨ refl ⟩
-   readMaybe =<< (𝕃.head $ show n ∷ d (c' ++ t)) ≡⟨ refl ⟩
+   readMaybe =<< 𝕃.head (show n ∷ d (c' ++ t)) ≡⟨ refl ⟩
    readMaybe (show n) ≡⟨ rimco n ⟩
    just n ∎
    where
