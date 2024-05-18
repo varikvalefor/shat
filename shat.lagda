@@ -561,12 +561,12 @@ module ReadMaybe'Veritas where
     where
     F : Dec $ s ≡ "$" → s ≡ "$"
     F (yes j) = j
-    F (no j) = d ⇒⇐ rimjdin s j
+    F (no j) = d ⇒⇐ (j ∘ rimjdin s)
       where
       rimjdin : {n : ℕ}
               → (s : String)
-              → ¬_ $ s ≡ "$"
-              → ¬_ $ readMaybe' {n} s ≡ just nothing
+              → readMaybe' {n} s ≡ just nothing
+              → s ≡ "$"
       rimjdin = {!!}
 
   nada : {n : ℕ}
