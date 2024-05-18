@@ -141,6 +141,7 @@ open import Function
 open import Data.Bool
   using (
     false;
+    Bool;
     T?
   )
   renaming (
@@ -886,7 +887,7 @@ module DegjygirzuVeritas where
     tilfic : tL ∘ fC ≗ 𝕃.[_]
     tilfic = {!!}
     d' = 𝕃.map fL ∘_ $ 𝕃.wordsBy $ F? ∘ isDigit
-    fineg : {x : Data.Bool.Bool}
+    fineg : {x : Bool}
           → false ≡ x
           → Data.Bool.T $ Data.Bool.not x
     fineg refl = _
