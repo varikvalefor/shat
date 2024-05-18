@@ -845,6 +845,8 @@ degjygirzu = 𝕊.wordsBy $ T? ∘ Data.Bool.not ∘ isDigit
 
 \begin{code}
 module DegjygirzuVeritas where
+  open ≡-Reasoning
+
   pav : ((x : String) → x ≡ 𝕊.fromList (𝕊.toList x))
       → (n : ℕ) → degjygirzu (show n) ≡ show n ∷ []
   pav fL∘tL n = begin
@@ -859,7 +861,6 @@ module DegjygirzuVeritas where
     d = 𝕃.wordsBy $ T? ∘ Data.Bool.not ∘ isDigit
     didus : (n : ℕ) → d (show' n) ≡ show' n ∷ []
     didus = {!!}
-    open ≡-Reasoning
 
   rybic : (s : String)
         → (c : Char)
@@ -891,7 +892,6 @@ module DegjygirzuVeritas where
           → false ≡ x
           → Data.Bool.T $ Data.Bool.not x
     fineg refl = _
-    open ≡-Reasoning
     uobis : ∀ {a p} → {A : Set a}
           → {P : Pred A p}
           → {P? : Decidable P}
@@ -921,7 +921,6 @@ module DegjygirzuVeritas where
     fL = 𝕊.fromList
     d' = 𝕃.map fL ∘_ $ 𝕃.wordsBy $ T? ∘ Data.Bool.not ∘ isDigit
     fL∘tL = fromList∘toList
-    open ≡-Reasoning
 \end{code}
 
 \section{la'oi .\F{pamoinamcu}.}
