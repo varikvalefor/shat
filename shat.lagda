@@ -2180,18 +2180,19 @@ module KanjyVeritas where
              × (_≡_ on ((𝔽.toℕ a ℕ.⊔ 𝔽.toℕ b) ↓_ ∘ L)) x x'
     muvdusin = {!!}
 
-  xrutis : (x : Buffer)
-         → (n : Fin $ length $ Buffer.citri x)
-         → (_≡_
-             (kanji {x} $ Xruti n)
-             (let x' = Buffer.citri x ! n in
-              (_,_
-                record x {
-                  lerpinste = proj₁ x';
-                  cablerpinsle = proj₂ x';
-                  citri = {!!}}
-                nothing)))
-  xrutis = {!!}
+  module Xruti where
+    xrutis : (x : Buffer)
+           → (n : Fin $ length $ Buffer.citri x)
+           → (_≡_
+               (kanji {x} $ Xruti n)
+               (let x' = Buffer.citri x ! n in
+                (_,_
+                  record x {
+                    lerpinste = proj₁ x';
+                    cablerpinsle = proj₂ x';
+                    citri = {!!}}
+                  nothing)))
+    xrutis = {!!}
 \end{code}
 
 \chapter{le skami co'e}
