@@ -834,7 +834,8 @@ module fromℕ?Veritas where
     fromℕ? (𝔽.toℕ f) ≡⟨ refl ⟩
     mapₘ 𝔽.fromℕ< (decToMaybe $ (ℕ._<? _) $ 𝔽.toℕ f) ≡⟨ refl ⟩
     _ ≡⟨ DY ▹ proj₂ ▹ cong (mapₘ 𝔽.fromℕ< ∘ decToMaybe) ⟩
-    mapₘ (𝔽.fromℕ< {m = 𝔽.toℕ f}) (just $ proj₁ DY) ≡⟨ {!!} ⟩
+    mapₘ (𝔽.fromℕ< {m = 𝔽.toℕ f}) (just $ proj₁ DY) ≡⟨ refl ⟩
+    just (𝔽.fromℕ< {m = 𝔽.toℕ f} $ proj₁ DY) ≡⟨ {!!} ⟩
     just f ∎
     where
     DY = Relation.Nullary.Decidable.dec-yes (_ ℕ.<? _) $ DFP.toℕ<n f
