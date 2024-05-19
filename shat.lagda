@@ -2083,13 +2083,13 @@ module KanjyVeritas where
     bindiced = {!!}
 
   module Muvgau where
-    muvduzilcmi : (x : Buffer)
-                → (a b c : Buffer.F x)
-                → (d : a 𝔽.≤ b)
-                → ((_≡_ on (length ∘ Buffer.lerpinste))
-                    x
-                    (proj₁ $ kanji {x} $ Muvgau a b (just c) d))
-    muvduzilcmi x a b c d = sym $ begin
+    nilzilcmi : (x : Buffer)
+              → (a b c : Buffer.F x)
+              → (d : a 𝔽.≤ b)
+              → ((_≡_ on (length ∘ Buffer.lerpinste))
+                  x
+                  (proj₁ $ kanji {x} $ Muvgau a b (just c) d))
+    nilzilcmi x a b c d = sym $ begin
       𝓁 (proj₁ K) ≡⟨ {!!} ⟩
       length x'₁ ℕ.+ length x'₂ ℕ.+ length x'₃ ≡⟨ {!!} ⟩
       𝓁 x ∎
@@ -2174,7 +2174,7 @@ module KanjyVeritas where
                Data.Maybe.Is-nothing (proj₂ K)
              × let x' = proj₁ K in
                let L = Buffer.lerpinste in
-               let e = muvduzilcmi x a a b R in
+               let e = nilzilcmi x a a b R in
                L x ! a ≡ L x' ! mink a e
              × (_≡_ on ((𝔽.toℕ a ℕ.⊓ 𝔽.toℕ b) ↑_ ∘ L)) x x'
              × (_≡_ on ((𝔽.toℕ a ℕ.⊔ 𝔽.toℕ b) ↓_ ∘ L)) x x'
