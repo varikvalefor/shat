@@ -2156,16 +2156,16 @@ module KanjyVeritas where
                 {!!})
     muviros = {!!}
 
-    muvivimcus : (x : Buffer)
-               → (a b c : Buffer.F x)
-               → (d : a 𝔽.≤ b)
-               → let n = suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a) in
-                 let x' = proj₁ $ kanji {x} $ Muvgau a b (just c) d in
-                 let L = Buffer.lerpinste in
-                 (_≡_
-                   (𝔽.toℕ a ↑ L x ++ suc (𝔽.toℕ b) ↓ L x)
-                   (𝔽.toℕ c ↑ L x' ++ n ↓ L x'))
-    muvivimcus = {!!}
+    vimcu : (x : Buffer)
+          → (a b c : Buffer.F x)
+          → (d : a 𝔽.≤ b)
+          → let n = suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a) in
+            let x' = proj₁ $ kanji {x} $ Muvgau a b (just c) d in
+            let L = Buffer.lerpinste in
+            (_≡_
+              (𝔽.toℕ a ↑ L x ++ suc (𝔽.toℕ b) ↓ L x)
+              (𝔽.toℕ c ↑ L x' ++ n ↓ L x'))
+    vimcu = {!!}
 
     muvdusin : (x : Buffer)
              → (a b : Buffer.F x)
