@@ -2082,102 +2082,103 @@ module KanjyVeritas where
                        (kanji {x'} $ Jmini a')))))
     bindiced = {!!}
 
-  muvduzilcmi : (x : Buffer)
-              → (a b c : Buffer.F x)
-              → (d : a 𝔽.≤ b)
-              → ((_≡_ on (length ∘ Buffer.lerpinste))
-                  x
-                  (proj₁ $ kanji {x} $ Muvgau a b (just c) d))
-  muvduzilcmi x a b c d = sym $ begin
-    𝓁 (proj₁ K) ≡⟨ {!!} ⟩
-    length x'₁ ℕ.+ length x'₂ ℕ.+ length x'₃ ≡⟨ {!!} ⟩
-    𝓁 x ∎
-    where
-    K = kanji {x} $ Muvgau a b (just c) d
-    𝓁 = length ∘ Buffer.lerpinste
-    x' = Buffer.lerpinste x
-    x'₁ = 𝔽.toℕ a ↑ x'
-    x'₂ = suc (𝔽.toℕ b) ↓ x'
-    x'₃ = 𝔽.toℕ a ↓_ $ suc (𝔽.toℕ b) ↑ x'
-    open ≡-Reasoning
+  module Muvgau where
+    muvduzilcmi : (x : Buffer)
+                → (a b c : Buffer.F x)
+                → (d : a 𝔽.≤ b)
+                → ((_≡_ on (length ∘ Buffer.lerpinste))
+                    x
+                    (proj₁ $ kanji {x} $ Muvgau a b (just c) d))
+    muvduzilcmi x a b c d = sym $ begin
+      𝓁 (proj₁ K) ≡⟨ {!!} ⟩
+      length x'₁ ℕ.+ length x'₂ ℕ.+ length x'₃ ≡⟨ {!!} ⟩
+      𝓁 x ∎
+      where
+      K = kanji {x} $ Muvgau a b (just c) d
+      𝓁 = length ∘ Buffer.lerpinste
+      x' = Buffer.lerpinste x
+      x'₁ = 𝔽.toℕ a ↑ x'
+      x'₂ = suc (𝔽.toℕ b) ↓ x'
+      x'₃ = 𝔽.toℕ a ↓_ $ suc (𝔽.toℕ b) ↑ x'
+      open ≡-Reasoning
 
-  muvipas : (x : Buffer)
-          → (a b c : Buffer.F x)
-          → (d : a 𝔽.≤ b)
-          → ((_≡_ on_ $ 𝔽.toℕ a ↑_ ∘ Buffer.lerpinste)
-              x
-              (proj₁ $ kanji {x} $ Muvgau a b (just c) d))
-  muvipas x a b c d = sym $ begin
-    T (BL x') ≡⟨ DLP.take++drop (𝔽.toℕ a) (BL x') ▹ sym ▹ cong T ⟩
-    T (T (BL x') ++ D (BL x')) ≡⟨ refl ⟩
-    _ ≡⟨ teikteik _ _ ▹_ $ cong $ T ∘ (_++ D (BL x')) ⟩
-    T (T (BL x) ++ D (BL x')) ≡⟨ teikteik (BL x) a ⟩
-    T (BL x) ∎
-    where
-    T = 𝔽.toℕ a ↑_
-    D = 𝔽.toℕ a ↓_
-    BL = Buffer.lerpinste
-    x' = proj₁ $ kanji {x} $ Muvgau a b (just c) d
-    open ≡-Reasoning
-    teikteik : ∀ {a} → {A : Set a}
-             → (x : List A)
-             → {z : List A}
-             → (n : Fin $ length x)
-             → let n' = 𝔽.toℕ n in
-               n' ↑ (n' ↑ x ++ z) ≡ n' ↑ x
-    teikteik (_ ∷ _) 𝔽.zero = refl
-    teikteik (x ∷ xs) (𝔽.suc n) = teikteik xs n ▹ cong (x ∷_)
+    muvipas : (x : Buffer)
+            → (a b c : Buffer.F x)
+            → (d : a 𝔽.≤ b)
+            → ((_≡_ on_ $ 𝔽.toℕ a ↑_ ∘ Buffer.lerpinste)
+                x
+                (proj₁ $ kanji {x} $ Muvgau a b (just c) d))
+    muvipas x a b c d = sym $ begin
+      T (BL x') ≡⟨ DLP.take++drop (𝔽.toℕ a) (BL x') ▹ sym ▹ cong T ⟩
+      T (T (BL x') ++ D (BL x')) ≡⟨ refl ⟩
+      _ ≡⟨ teikteik _ _ ▹_ $ cong $ T ∘ (_++ D (BL x')) ⟩
+      T (T (BL x) ++ D (BL x')) ≡⟨ teikteik (BL x) a ⟩
+      T (BL x) ∎
+      where
+      T = 𝔽.toℕ a ↑_
+      D = 𝔽.toℕ a ↓_
+      BL = Buffer.lerpinste
+      x' = proj₁ $ kanji {x} $ Muvgau a b (just c) d
+      open ≡-Reasoning
+      teikteik : ∀ {a} → {A : Set a}
+               → (x : List A)
+               → {z : List A}
+               → (n : Fin $ length x)
+               → let n' = 𝔽.toℕ n in
+                 n' ↑ (n' ↑ x ++ z) ≡ n' ↑ x
+      teikteik (_ ∷ _) 𝔽.zero = refl
+      teikteik (x ∷ xs) (𝔽.suc n) = teikteik xs n ▹ cong (x ∷_)
 
-  muvisez : (x : Buffer)
-          → (a b c : Buffer.F x)
-          → (d : a 𝔽.≤ b)
-          → let n = suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a) in
-            let x' = proj₁ $ kanji {x} $ Muvgau a b (just c) d in
-            (_≡_
-              (n ↑_ $ 𝔽.toℕ a ↓_ $ Buffer.lerpinste x)
-              (n ↑_ $ 𝔽.toℕ c ↓_ $ Buffer.lerpinste x'))
-  muvisez x a b c d = sym $ begin
-    n ↑ (f c ↓ BLT x') ≡⟨ {!!} ⟩
-    n ↑ (f a ↓ BLT x) ∎
-    where
-    f = 𝔽.toℕ
-    n = suc $ f b ℕ.∸ f a
-    x' = proj₁ $ kanji {x} $ Muvgau a b (just c) d
-    BLT = Buffer.lerpinste
-    open ≡-Reasoning
+    muvisez : (x : Buffer)
+            → (a b c : Buffer.F x)
+            → (d : a 𝔽.≤ b)
+            → let n = suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a) in
+              let x' = proj₁ $ kanji {x} $ Muvgau a b (just c) d in
+              (_≡_
+                (n ↑_ $ 𝔽.toℕ a ↓_ $ Buffer.lerpinste x)
+                (n ↑_ $ 𝔽.toℕ c ↓_ $ Buffer.lerpinste x'))
+    muvisez x a b c d = sym $ begin
+      n ↑ (f c ↓ BLT x') ≡⟨ {!!} ⟩
+      n ↑ (f a ↓ BLT x) ∎
+      where
+      f = 𝔽.toℕ
+      n = suc $ f b ℕ.∸ f a
+      x' = proj₁ $ kanji {x} $ Muvgau a b (just c) d
+      BLT = Buffer.lerpinste
+      open ≡-Reasoning
 
-  muviros : (x : Buffer)
-          → (a b c : Buffer.F x)
-          → (d : a 𝔽.≤ b)
-          → let x₂ = proj₂ $ kanji {x} $ Muvgau a b (just c) d in
-            (_≡_
-              ((𝔽.toℕ b) ↓ Buffer.lerpinste x)
-              {!!})
-  muviros = {!!}
+    muviros : (x : Buffer)
+            → (a b c : Buffer.F x)
+            → (d : a 𝔽.≤ b)
+            → let x₂ = proj₂ $ kanji {x} $ Muvgau a b (just c) d in
+              (_≡_
+                ((𝔽.toℕ b) ↓ Buffer.lerpinste x)
+                {!!})
+    muviros = {!!}
 
-  muvivimcus : (x : Buffer)
-             → (a b c : Buffer.F x)
-             → (d : a 𝔽.≤ b)
-             → let n = suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a) in
-               let x' = proj₁ $ kanji {x} $ Muvgau a b (just c) d in
+    muvivimcus : (x : Buffer)
+               → (a b c : Buffer.F x)
+               → (d : a 𝔽.≤ b)
+               → let n = suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a) in
+                 let x' = proj₁ $ kanji {x} $ Muvgau a b (just c) d in
+                 let L = Buffer.lerpinste in
+                 (_≡_
+                   (𝔽.toℕ a ↑ L x ++ suc (𝔽.toℕ b) ↓ L x)
+                   (𝔽.toℕ c ↑ L x' ++ n ↓ L x'))
+    muvivimcus = {!!}
+
+    muvdusin : (x : Buffer)
+             → (a b : Buffer.F x)
+             → let R = DFP.≤-reflexive refl in
+               let K = kanji {x} $ Muvgau a a (just b) R in
+               Data.Maybe.Is-nothing (proj₂ K)
+             × let x' = proj₁ K in
                let L = Buffer.lerpinste in
-               (_≡_
-                 (𝔽.toℕ a ↑ L x ++ suc (𝔽.toℕ b) ↓ L x)
-                 (𝔽.toℕ c ↑ L x' ++ n ↓ L x'))
-  muvivimcus = {!!}
-
-  muvdusin : (x : Buffer)
-           → (a b : Buffer.F x)
-           → let R = DFP.≤-reflexive refl in
-             let K = kanji {x} $ Muvgau a a (just b) R in
-             Data.Maybe.Is-nothing (proj₂ K)
-           × let x' = proj₁ K in
-             let L = Buffer.lerpinste in
-             let e = muvduzilcmi x a a b R in
-             L x ! a ≡ L x' ! mink a e
-           × (_≡_ on ((𝔽.toℕ a ℕ.⊓ 𝔽.toℕ b) ↑_ ∘ L)) x x'
-           × (_≡_ on ((𝔽.toℕ a ℕ.⊔ 𝔽.toℕ b) ↓_ ∘ L)) x x'
-  muvdusin = {!!}
+               let e = muvduzilcmi x a a b R in
+               L x ! a ≡ L x' ! mink a e
+             × (_≡_ on ((𝔽.toℕ a ℕ.⊓ 𝔽.toℕ b) ↑_ ∘ L)) x x'
+             × (_≡_ on ((𝔽.toℕ a ℕ.⊔ 𝔽.toℕ b) ↓_ ∘ L)) x x'
+    muvdusin = {!!}
 
   xrutis : (x : Buffer)
          → (n : Fin $ length $ Buffer.citri x)
