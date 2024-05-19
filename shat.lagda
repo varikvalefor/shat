@@ -544,11 +544,10 @@ module ReadMaybe'Veritas where
     if (show f ≡ᵇ "$") JN (RM $ show f) ≡⟨ refl ⟩
     _ ≡⟨ najdinis f ▹ cong (λ j → if j JN $ RM $ show f) ⟩
     if false JN (RM $ show f) ≡⟨ refl ⟩
-    (readMaybe (show f) ▹ mapₘ just) ≡⟨ rimcos f ▹ cong (mapₘ just) ⟩
+    (readMaybe (show f) ▹ mapₘ just) ≡⟨ readMaybe∘show f ▹ cong (mapₘ just) ⟩
     (just f ▹ mapₘ just) ≡⟨ refl ⟩
     just (just f) ∎
     where
-    rimcos = readMaybe∘show
     JN = just nothing
     RM = mapₘ just ∘ readMaybe
     najdinis : {n : ℕ}
