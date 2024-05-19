@@ -505,6 +505,18 @@ fromList∘toList : (x : String) → 𝕊.fromList (𝕊.toList x) ≡ x
 fromList∘toList = {!!}
 \end{code}
 
+\section{la .\F{romoitcar}.}
+ni'o la .varik.\ na jinvi le du'u sarcu fa lo nu ciksi fo lo lojbo
+
+\begin{code}
+romoitcar : (s : String)
+          → (c : Char)
+          → (_≡_
+              (𝕃.last $ 𝕊.toList $ s ++ 𝕊.fromChar c)
+              (just c))
+romoitcar = {!!}
+\end{code}
+
 \section{la'oi .\F{readMaybe'}.}
 ni'o ro da poi ke'a co'e zo'u\ldots
 \begin{itemize}
@@ -559,7 +571,7 @@ module ReadMaybe'Veritas where
                     → readMaybe' {n} s ≡ just nothing
                     → s ≡ "$"
   justnothing→jdini "$" d = refl
-  justnothing→jdini s d = d ⇒⇐ {!!}
+  justnothing→jdini {n} s d = d ⇒⇐ {!!}
 
   nada : {n : ℕ}
        → (s : String)
