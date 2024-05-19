@@ -2072,7 +2072,7 @@ module KanjyVeritas where
            → (d : a 𝔽.≤ b)
            → let K = proj₂ $ kanji {x} $ Basti a b d in
              (Σ
-               (Σ Buffer Buffer.F)
+               (∃ Buffer.F)
                (λ (x' , a') →
                  (_×_
                    (𝔽.toℕ a' ≡ {!!})
