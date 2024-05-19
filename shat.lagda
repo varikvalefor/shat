@@ -559,7 +559,7 @@ module ReadMaybe'Veritas where
                     → readMaybe' {n} s ≡ just nothing
                     → s ≡ "$"
   justnothing→jdini "$" d = refl
-  justnothing→jdini s d = {!!}
+  justnothing→jdini s d = d ⇒⇐ {!!}
 
   nada : {n : ℕ}
        → (s : String)
