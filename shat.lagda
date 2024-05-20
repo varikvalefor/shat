@@ -1347,7 +1347,8 @@ module Orsygenturfa'i₃Veritas where
               (String × String × String)
               (λ (a , b , c) → (x ≡ (a ∷ []) ∷ (b ∷ c ∷ []) ∷ [])))
           → lispork x ≡ nothing
-  lisporn = {!!}
+  lisporn ((a ∷ []) ∷ (b ∷ c ∷ []) ∷ []) N = {!!}
+  lisporn x N = {!!}
 
   orspiv : (a b c : ℕ)
          → (x : Char)
