@@ -1828,9 +1828,9 @@ module ReedVeritas where
               → (Σ
                   (String × List String)
                   (λ (x , xs) → w s ≡ x ∷ xs))
-          ∷-w s n with 𝕊.toList s
-          ... | [] = {!!} ⇒⇐ n
-          ... | x ∷ xs = {!!}
+          ∷-w s n with 𝕊.toList s ≟ []
+          ... | yes d = {!!} ⇒⇐ n
+          ... | no j = {!!}
       unwords-dist : (x : String)
                    → (z : List String)
                    → ¬_ $ z ≡ []
