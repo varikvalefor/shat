@@ -1885,10 +1885,7 @@ kanji {x} (Vimcu a b _) = x' , nothing
     lerpinste = 𝔽.toℕ a ↑ Lz ++ suc (𝔽.toℕ b) ↓ Lz}
     where
     Lz = Buffer.lerpinste x
-kanji {x} (Jmini n) = x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" n'
-  where
-  n' : Maybe $ Buffer.F x
-  n' = if (𝔽.toℕ n ≡ᵇ 0) nothing $ just $ 𝔽.pred n
+kanji {x} (Jmini n) = x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" (just n)
 kanji {x} (Rejgau d) = x ,_ $ just $ inj₂ $ Rejgauᵢₒ xl d
   where
   xl = unlines $ Buffer.lerpinste x
