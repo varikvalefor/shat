@@ -2237,7 +2237,7 @@ readFile x = if (x ≡ᵇ "/dev/stdin") (IO.lift stdin) generic
   {-# FOREIGN GHC import Data.Text #-}
   {-# FOREIGN GHC import System.IO #-}
   {-# COMPILE GHC
-      stdin = stdin' []
+      stdin = const $ stdin' []
       where {
         stdin' :: [Data.Text.Text] -> IO [Data.Text.Text];
         stdin' x = isEOF >>= bool getLine' (return x)
