@@ -1925,7 +1925,8 @@ module KanjyVeritas where
   jminam x a a+ d = begin
     kanji {x} (Jmina a) ≡⟨ refl ⟩
     x , just (inj₂ $ Tciduᵢₒ "/dev/stdin" a') ≡⟨ refl ⟩
-    x , F a' ≡⟨ {!!} ⟩
+    x , F a' ≡⟨ refl ⟩
+    x , F (mapₘ 𝔽.fromℕ< $ decToMaybe $ ℕ.suc (𝔽.toℕ a) ℕ.<? _) ≡⟨ {!!} ⟩
     x , just (inj₂ $ Tciduᵢₒ "/dev/stdin" $ just a+) ∎
     where
     open ≡-Reasoning
