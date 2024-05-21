@@ -1916,13 +1916,13 @@ module KanjyVeritas where
          i Cusku × i Namcusku
   dub₂ _ _ _ _ = refl , refl
 
-  jminac : (x : Buffer)
+  jminam : (x : Buffer)
          → (a a+ : Buffer.F x)
          → 𝔽.toℕ a+ ≡ ℕ.suc (𝔽.toℕ a)
          → (_≡_
              (kanji {x} $ Jmina a)
              (x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" $ just a+))
-  jminac = {!!}
+  jminam = {!!}
 
   jminic : (x : Buffer)
          → (a : Buffer.F x)
