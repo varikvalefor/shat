@@ -1937,7 +1937,7 @@ module KanjyVeritas where
          → (_≡_
              (kanji {x} $ Jmini a)
              (x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" $ just a))
-  jminic = {!!}
+  jminic _ _ = refl
 
   vimcablerpinsles : (x : Buffer)
                    → (a b : Buffer.F x)
