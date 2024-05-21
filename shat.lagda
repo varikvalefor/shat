@@ -1922,7 +1922,11 @@ module KanjyVeritas where
          → (_≡_
              (kanji {x} $ Jmina a)
              (x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" $ just a+))
-  jminam = {!!}
+  jminam x a a+ d = begin
+    kanji {x} (Jmina a) ≡⟨ {!!} ⟩
+    x , just (inj₂ $ Tciduᵢₒ "/dev/stdin" $ just a+) ∎
+    where
+    open ≡-Reasoning
 
   jminaz : (x : Buffer)
          → (a : Buffer.F x)
