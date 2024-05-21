@@ -1788,7 +1788,7 @@ module ReedVeritas where
                   → let j' = Data.Maybe.to-witness j in
                     xs ≡ proj₁ j' ∷ proj₂ j'
       consunwords {xs = xs@(x ∷ s)} (DMA.just j) = sym $ begin
-        proj₁ j' ∷ proj₂ j' ≡⟨ {!!} ⟩
+        proj₁ j' ∷ proj₂ j' ≡⟨ refl ⟩
         x ∷ s ≡⟨ refl ⟩
         xs ∎
         where
