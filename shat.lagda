@@ -1787,7 +1787,7 @@ module ReedVeritas where
                   → (j : Data.Maybe.Is-just $ 𝕃.uncons xs)
                   → let j' = Data.Maybe.to-witness j in
                     xs ≡ proj₁ j' ∷ proj₂ j'
-      consunwords {xs = xs@(x ∷ s)} (DMA.just j) = refl
+      consunwords {xs = _ ∷ _} (DMA.just j) = refl
     unwords = 𝕊.unwords
     open Reed
     reedx≡k∘w : (s : String) → reed x s ≡ k (w s)
