@@ -1924,6 +1924,14 @@ module KanjyVeritas where
              (x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" $ just a+))
   jminam = {!!}
 
+  jminaz : (x : Buffer)
+         → (a : Buffer.F x)
+         → ¬_ $ Σ (Buffer.F x) $ _≡_ (ℕ.suc $ 𝔽.toℕ a) ∘ 𝔽.toℕ
+         → (_≡_
+             (kanji {x} $ Jmina a)
+             (x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" nothing))
+  jminaz = {!!}
+
   jminic : (x : Buffer)
          → (a : Buffer.F x)
          → let is0 = (_≡ᵇ 0) ∘ 𝔽.toℕ in
