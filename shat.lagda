@@ -1928,6 +1928,7 @@ module KanjyVeritas where
     x , F a' ≡⟨ refl ⟩
     x , F (mapₘ 𝔽.fromℕ< $ decToMaybe $ ℕ.suc (𝔽.toℕ a) ℕ.<? _) ≡⟨ {!!} ⟩
     x , F (mapₘ 𝔽.fromℕ< $ just {A = ℕ.suc (𝔽.toℕ a) ℕ.< _} {!!}) ≡⟨ {!!} ⟩
+    x , F (mapₘ 𝔽.fromℕ< $ just {A = 𝔽.toℕ a+ ℕ.< _} {!!}) ≡⟨ {!!} ⟩
     x , F (just a+) ≡⟨ refl ⟩
     x , just (inj₂ $ Tciduᵢₒ "/dev/stdin" $ just a+) ∎
     where
