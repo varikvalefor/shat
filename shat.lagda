@@ -281,6 +281,8 @@ import Data.List.Relation.Unary.All
   using (
     All
   )
+import Data.Maybe.Relation.Unary.Any
+  as DMA
 \end{code}
 
 \chapter{le me'oi .instance.\ pe le na se ciksi fo le velcki be le la'o zoi.\ \Xr{shat}{1}\ .zoi.}
@@ -1785,12 +1787,12 @@ module ReedVeritas where
                   → (j : Data.Maybe.Is-just $ 𝕃.uncons xs)
                   → let j' = Data.Maybe.to-witness j in
                     xs ≡ proj₁ j' ∷ proj₂ j'
-      consunwords {xs = xs@(x ∷ s)} j = sym $ begin
+      consunwords {xs = xs@(x ∷ s)} (DMA.just j) = sym $ begin
         proj₁ j' ∷ proj₂ j' ≡⟨ {!!} ⟩
         x ∷ s ≡⟨ refl ⟩
         xs ∎
         where
-        j' = Data.Maybe.to-witness j
+        j' = Data.Maybe.to-witness $ DMA.just j
     unwords = 𝕊.unwords
     open Reed
     reedx≡k∘w : (s : String) → reed x s ≡ k (w s)
