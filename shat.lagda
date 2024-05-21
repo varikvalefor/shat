@@ -1851,7 +1851,10 @@ kanji : {x : Buffer}
       → Σ Buffer $ Maybe ∘ _⊎_ String ∘ Cmdᵢₒ
 kanji {x} Sisti = x ,_ $ just $ inj₂ Sistiᵢₒ
 kanji {x} Sisti! = x ,_ $ just $ inj₂ Sisti!ᵢₒ
-kanji {x} (Jmina a) = x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" $ just a
+kanji {x} (Jmina a) = x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" a'
+  where
+  a' : Maybe $ Buffer.F x
+  a' = mapₘ 𝔽.fromℕ< $ decToMaybe $ ℕ.suc (𝔽.toℕ a) ℕ.<? _
 kanji {x} (Cusku a b _) = x ,_ $ just $ inj₁ $ unlines $ i BL
   where
   BL = Buffer.lerpinste x
