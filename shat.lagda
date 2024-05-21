@@ -1934,12 +1934,10 @@ module KanjyVeritas where
 
   jminic : (x : Buffer)
          → (a : Buffer.F x)
-         → let is0 = (_≡ᵇ 0) ∘ 𝔽.toℕ in
-           let F = λ x → if (is0 x) nothing $ just $ 𝔽.pred x in
-           (_≡_
+         → (_≡_
              (kanji {x} $ Jmini a)
-             (x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" $ F a))
-  jminic _ _ = refl
+             (x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" $ just a))
+  jminic = {!!}
 
   vimcablerpinsles : (x : Buffer)
                    → (a b : Buffer.F x)
