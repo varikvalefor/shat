@@ -2263,6 +2263,19 @@ readFile x = if (x ≡ᵇ "/dev/stdin") (IO.lift stdin) generic
             f n = stdin' $ x ++ [n]}}} #-}
 \end{code}
 
+\section{la'o zoi.\ \F{\AgdaUnderscore{}<=<ᵢₒ\AgdaUnderscore{}}\ .zoi.}
+ni'o la .varik. na jinvi le du'u sarcu lo nu jimpe kei fa fa lo nu vo'a ciksi fo lo lojbo
+
+\begin{code}
+_<=<ᵢₒ_ : ∀ {a}
+        → {A B C : Set a}
+        → (B → IO C)
+        → (A → IO B)
+        → A
+        → IO C
+_<=<ᵢₒ_ g = _∘_ $ IO._>>= g
+\end{code}
+
 \section{la'oi .\F{main}.}
 ni'o zabna ciksi la'oi .\F{main}.\ fo ma bau la .lojban.
 
@@ -2280,13 +2293,6 @@ main = run $ IO.lift snurytcati IO.>> getArgs IO.>>= uic ∘ 𝕃.head
   uic : Maybe String → IO ⊤
   uic = ⟲ <=<ᵢₒ maybe mkDef (IO.pure def)
     where
-    _<=<ᵢₒ_ : ∀ {a}
-            → {A B C : Set a}
-            → (B → IO C)
-            → (A → IO B)
-            → A
-            → IO C
-    _<=<ᵢₒ_ g = _∘_ $ IO._>>= g
     def = record {
       datnyveicme = nothing;
       lerpinste = "" ∷ List.[];
