@@ -1919,13 +1919,8 @@ module KanjyVeritas where
            → (d : a 𝔽.≤ b)
            → x ≡_ $ proj₁ $ kanji {x} $ C a b d
 
-  dub₂ : (x : Buffer)
-       → (a b : Buffer.F x)
-       → (d : a 𝔽.≤ b)
-       → let K = λ f → kanji $ f a b d in
-         let i = _≡_ x ∘ proj₁ ∘ K in
-         i Cusku × i Namcusku
-  dub₂ _ _ _ _ = refl , refl
+  dub₂ : Dunli₁ Cusku × Dunli₁ Namcusku
+  dub₂ = (λ _ _ _ _ → refl) , (λ _ _ _ _ → refl)
 
   jminam : (x : Buffer)
          → (a a+ : Buffer.F x)
