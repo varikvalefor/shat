@@ -1121,7 +1121,8 @@ module Orsygenturfa'iVeritas where
                → (x : List A)
                → 𝕃.All (¬_ ∘ P) x
                → 𝕃.wordsBy P? x ≡ x ∷ []
-      ninwords = {!!}
+      ninwords P? [] 𝕃.All.[] = {!!}
+      ninwords P? (x ∷ xs) (p 𝕃.All.∷ ps) = {!!}
       ninal : ∀ {a} → {A : Set a}
             → ⦃ _ : Eq A ⦄
             → {x : A}
