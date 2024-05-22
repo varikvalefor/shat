@@ -1127,7 +1127,7 @@ module Orsygenturfa'iVeritas where
             → {x : A}
             → {xs : List A}
             → x ∉ xs
-            → 𝕃.All (¬_ ∘ (_≡ x)) xs
+            → 𝕃.All (_≢ x) xs
       ninal = {!!}
       open ≡-Reasoning
 
