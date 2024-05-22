@@ -2335,7 +2335,7 @@ main = run $ IO.lift snurytcati IO.>> getArgs IO.>>= uic ∘ 𝕃.head
           cablerpinsle = {!!}}
           where
           BL = Buffer.lerpinste
-      ... | Rejgauᵢₒ a b = IO.writeFile b a IO.>> ⟲ x
+      ... | Rejgauᵢₒ a b = IO.writeFile b a IO.>> ⟲ record x {rejgaudatni = {!!}}
       ... | Sistiᵢₒ = f $ mapₘ (λ _ → Sisti!) $ decToMaybe $ r ≟ c₁
         where
         r = Buffer.rejgaudatni x'
