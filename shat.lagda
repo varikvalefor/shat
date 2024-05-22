@@ -1887,9 +1887,9 @@ kanji {x} (Vimcu a b _) = x' , nothing
     where
     Lz = Buffer.lerpinste x
 kanji {x} (Jmini n) = x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" (just n)
-kanji {x} (Rejgau d) = x ,_ $ just $ inj₂ $ Rejgauᵢₒ xl d
+kanji {x} (Rejgau d) = x ,_ $ just $ inj₂ $ Rejgauᵢₒ xul d
   where
-  xl = unlines $ Buffer.lerpinste x
+  xul = unlines $ Buffer.lerpinste x
 kanji {x} (Basti a b d) = kanji {x'} $ Jmini a'
   where
   a' = 𝔽.fromℕ< {𝔽.toℕ a} {!!}
