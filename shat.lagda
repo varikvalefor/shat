@@ -231,6 +231,7 @@ open import Truthbrary.Record.LLC
     liliList;
     length;
     _++_;
+    _∈_;
     _∉_;
     cev;
     vec
@@ -1109,11 +1110,11 @@ module Orsygenturfa'iVeritas where
     non : spit "" ≡ []
     non = refl
 
-    pav : (x : String) → ',' ∉ 𝕊.toList x → spit x ≡ 𝕊.toList x ∷ []
-    pav x nin = begin
-      spit x ≡⟨ refl ⟩
-      𝕃.wordsBy (_≟ ',') (𝕊.toList x) ≡⟨ ninwords (_≟ ',') _ $ ninal nin ⟩
-      𝕊.toList x ∷ [] ∎
+    pav : (x : String)
+        → ',' ∉ 𝕊.toList x
+        → Σ Char $ _∈ 𝕊.toList x
+        → spit x ≡ 𝕊.toList x ∷ []
+    pav x nin inn = {!!}
       where
       ninwords : ∀ {a p} → {A : Set a}
                → {P : Pred A p}
@@ -1144,8 +1145,8 @@ module Orsygenturfa'iVeritas where
       _ ≡⟨ toList-dist "," z ▹ cong (w ∘ _++_ (tL x)) ⟩
       w (tL x ++ tL "," ++ tL z) ≡⟨ refl ⟩
       w (tL x ++ ',' ∷ tL z) ≡⟨ uit _ (tL x) _ (F inx) (F inz) _ refl ⟩
-      w (tL x) ++ w (tL z) ≡⟨ pav x inx ▹ cong (_++ _) ⟩
-      (tL x ∷ []) ++ w (tL z) ≡⟨ pav z inz ▹ cong (_++_ _) ⟩
+      w (tL x) ++ w (tL z) ≡⟨ {!!} ⟩
+      (tL x ∷ []) ++ w (tL z) ≡⟨ {!!} ⟩
       (tL x ∷ []) ++ (tL z ∷ []) ≡⟨ refl ⟩
       tL x ∷ tL z ∷ [] ∎
       where
