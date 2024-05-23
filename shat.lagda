@@ -1114,7 +1114,9 @@ module Orsygenturfa'iVeritas where
         → ',' ∉ 𝕊.toList x
         → Σ Char $ _∈ 𝕊.toList x
         → spit x ≡ 𝕊.toList x ∷ []
-    pav x nin inn = {!!}
+    pav x nin inn = begin
+      spit x ≡⟨ {!!} ⟩
+      𝕊.toList x ∷ [] ∎
       where
       ninwords : ∀ {a p} → {A : Set a}
                → {P : Pred A p}
