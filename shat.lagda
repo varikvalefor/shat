@@ -1115,7 +1115,8 @@ module Orsygenturfa'iVeritas where
         → Σ Char $ _∈ 𝕊.toList x
         → spit x ≡ 𝕊.toList x ∷ []
     pav x nin inn = begin
-      spit x ≡⟨ {!!} ⟩
+      spit x ≡⟨ refl ⟩
+      𝕃.wordsBy (_≟ ',') (𝕊.toList x) ≡⟨ {!!} ⟩
       𝕊.toList x ∷ [] ∎
       where
       ninwords : ∀ {a p} → {A : Set a}
