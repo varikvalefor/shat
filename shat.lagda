@@ -1149,8 +1149,10 @@ module Orsygenturfa'iVeritas where
     du : (x z : String)
        → ',' ∉ 𝕊.toList x
        → ',' ∉ 𝕊.toList z
+       → Σ Char $ _∈ x
+       → Σ Char $ _∈ z
        → spit (x ++ "," ++ z) ≡ 𝕊.toList x ∷ 𝕊.toList z ∷ []
-    du x z inx inz = begin
+    du x z inx inz innx innz = begin
       spit (x ++ "," ++ z) ≡⟨ refl ⟩
       w (tL $ x ++ "," ++ z) ≡⟨ toList-dist x ("," ++ z) ▹ cong w ⟩
       w (tL x ++ tL ("," ++ z)) ≡⟨ refl ⟩
@@ -1304,7 +1306,7 @@ module Orsygenturfa'iVeritas where
              → (_≡_
                  (spit $ show a ++ "," ++ show b)
                  (showF' a ∷ showF' b ∷ []))
-      spidus a b = Spit.du (show a) (show b) (nokom a) (nokom b)
+      spidus a b = Spit.du (show a) (show b) (nokom a) (nokom b) {!!} {!!}
         where
         nokom : {n : ℕ} → (x : Fin n) → ',' ∉ 𝕊.toList (show x)
         nokom = {!!}
