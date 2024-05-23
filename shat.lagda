@@ -1120,10 +1120,11 @@ module Orsygenturfa'iVeritas where
                → {P : Pred A p}
                → (P? : Decidable P)
                → (x : List A)
+               → ¬_ $ x ≡ []
                → 𝕃.All (¬_ ∘ P) x
                → 𝕃.wordsBy P? x ≡ x ∷ []
-      ninwords P? [] 𝕃.All.[] = {!!}
-      ninwords P? (x ∷ xs) (p 𝕃.All.∷ ps) = {!!}
+      ninwords P? [] N 𝕃.All.[] = {!!}
+      ninwords P? (x ∷ xs) N (p 𝕃.All.∷ ps) = {!!}
       ninal : ∀ {a} → {A : Set a}
             → ⦃ _ : Eq A ⦄
             → {x : A}
