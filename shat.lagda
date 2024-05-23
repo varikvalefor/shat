@@ -1129,7 +1129,8 @@ module Orsygenturfa'iVeritas where
             → {xs : List A}
             → x ∉ xs
             → 𝕃.All (_≢ x) xs
-      ninal = {!!}
+      ninal {xs = []} n = {!!}
+      ninal {xs = z ∷ zs} n = {!!}
       open ≡-Reasoning
 
     du : (x z : String)
