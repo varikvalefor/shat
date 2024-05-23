@@ -1135,7 +1135,7 @@ module Orsygenturfa'iVeritas where
             → x ∉ xs
             → 𝕃.All (_≢ x) xs
       ninal {xs = []} n = 𝕃.All.[]
-      ninal {xs = z ∷ zs} n = ∉⇒≢ n 𝕃.All.∷ ninal (∉⇒∉₋₁ {x = z} {xs = zs} n)
+      ninal {xs = z ∷ zs} n = ∉⇒≢ n 𝕃.All.∷ ninal (∉⇒∉₋₁ {xs = zs} n)
         where
         ∉⇒≢ : ∀ {a} → {A : Set a}
             → ⦃ _ : Eq A ⦄
