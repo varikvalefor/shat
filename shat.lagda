@@ -1143,7 +1143,9 @@ module Orsygenturfa'iVeritas where
             → {xs : List A}
             → e ∉_ $ x ∷ xs
             → x ≢ e
-        ∉⇒≢ = {!!}
+        ∉⇒≢ {e = e} {x} {xs} nin with x ≟ e
+        ... | yes d = {!!}
+        ... | no j = {!!}
         ∉⇒∉₋₁ : ∀ {a} → {A : Set a}
               → ⦃ _ : Eq A ⦄
               → {e x : A}
