@@ -1119,12 +1119,11 @@ module Orsygenturfa'iVeritas where
       ninwords : ∀ {a p} → {A : Set a}
                → {P : Pred A p}
                → (P? : Decidable P)
-               → (x : List A)
-               → ¬_ $ x ≡ []
-               → 𝕃.All (¬_ ∘ P) x
-               → 𝕃.wordsBy P? x ≡ x ∷ []
-      ninwords P? [] N 𝕃.All.[] = {!!}
-      ninwords P? (x ∷ xs) N (p 𝕃.All.∷ ps) = {!!}
+               → (x : A)
+               → (xs : List A)
+               → 𝕃.All (¬_ ∘ P) $ x ∷ xs
+               → 𝕃.wordsBy P? (x ∷ xs) ≡ (x ∷ xs) ∷ []
+      ninwords P? x xs L = {!!}
       ninal : ∀ {a} → {A : Set a}
             → ⦃ _ : Eq A ⦄
             → {x : A}
