@@ -1135,7 +1135,7 @@ module Orsygenturfa'iVeritas where
             → x ∉ xs
             → 𝕃.All (_≢ x) xs
       ninal {xs = []} n = 𝕃.All.[]
-      ninal {xs = z ∷ zs} n = ∉⇒≢ n 𝕃.All.∷ ninal {!!}
+      ninal {xs = z ∷ zs} n = ∉⇒≢ n 𝕃.All.∷ ninal (∉⇒∉₋₁ {x = z} {xs = zs} n)
         where
         ∉⇒≢ : ∀ {a} → {A : Set a}
             → ⦃ _ : Eq A ⦄
@@ -1144,6 +1144,13 @@ module Orsygenturfa'iVeritas where
             → e ∉_ $ x ∷ xs
             → x ≢ e
         ∉⇒≢ = {!!}
+        ∉⇒∉₋₁ : ∀ {a} → {A : Set a}
+              → ⦃ _ : Eq A ⦄
+              → {e x : A}
+              → {xs : List A}
+              → e ∉_ $ x ∷ xs
+              → e ∉ xs
+        ∉⇒∉₋₁ = {!!}
       open ≡-Reasoning
 
     du : (x z : String)
