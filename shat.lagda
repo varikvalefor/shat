@@ -1152,7 +1152,7 @@ module Orsygenturfa'iVeritas where
               → {xs : List A}
               → e ∉_ $ x ∷ xs
               → e ∉ xs
-        ∉⇒∉₋₁ {xs = []} d = {!!}
+        ∉⇒∉₋₁ {xs = []} d = refl
         ∉⇒∉₋₁ {xs = z ∷ zs} d = {!!}
       open ≡-Reasoning
 
