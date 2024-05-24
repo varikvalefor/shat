@@ -1144,7 +1144,7 @@ module Orsygenturfa'iVeritas where
             → e ∉_ $ x ∷ xs
             → x ≢ e
         ∉⇒≢ {e = e} {x} {xs} nin with x ≟ e
-        ... | yes d = ≡⇒∈ _ _ xs d ⇒⇐ {!!}
+        ... | yes d = ≡⇒∈ _ _ xs (sym d) ⇒⇐ {!!}
           where
           ≡⇒∈ : ∀ {a} → {A : Set a}
               → ⦃ _ : Eq A ⦄
