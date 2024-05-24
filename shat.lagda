@@ -1144,7 +1144,7 @@ module Orsygenturfa'iVeritas where
             → e ∉_ $ x ∷ xs
             → x ≢ e
         ∉⇒≢ {e = e} {x} {xs} nin with x ≟ e
-        ... | yes d = ≡⇒∈ _ _ xs (sym d) ⇒⇐ {!!}
+        ... | yes d = ≡⇒∈ _ _ xs (sym d) ⇒⇐ ∉⇒¬∈ _ (x ∷ xs) nin
           where
           ≡⇒∈ : ∀ {a} → {A : Set a}
               → ⦃ _ : Eq A ⦄
@@ -1153,6 +1153,13 @@ module Orsygenturfa'iVeritas where
               → e ≡ x
               → e ∈_ $ x ∷ xs
           ≡⇒∈ = {!!}
+          ∉⇒¬∈ : ∀ {a} → {A : Set a}
+               → ⦃ _ : Eq A ⦄
+               → (x : A)
+               → (xs : List A)
+               → x ∉ xs
+               → ¬_ $ x ∈ xs
+          ∉⇒¬∈ = {!!}
         ... | no j = j
         ∉⇒∉₋₁ : ∀ {a} → {A : Set a}
               → ⦃ _ : Eq A ⦄
