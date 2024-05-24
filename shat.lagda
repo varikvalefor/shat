@@ -1153,7 +1153,16 @@ module Orsygenturfa'iVeritas where
               → e ∉_ $ x ∷ xs
               → e ∉ xs
         ∉⇒∉₋₁ {xs = []} d = refl
-        ∉⇒∉₋₁ {xs = z ∷ zs} d = {!!}
+        ∉⇒∉₋₁ {e = e} {xs = z ∷ zs} d = f[x∷xs]≡[]⇒f[xs]≡[] _ _ (_≟_ e) d
+          where
+          f[x∷xs]≡[]⇒f[xs]≡[] : ∀ {a p} → {A : Set a}
+                              → (x : A)
+                              → (xs : List A)
+                              → {P : Pred A p}
+                              → (P? : Decidable P)
+                              → 0 ≡_ $ length $ 𝕃.filter P? $ x ∷ xs
+                              → 0 ≡_ $ length $ 𝕃.filter P? xs
+          f[x∷xs]≡[]⇒f[xs]≡[] = {!!}
       open ≡-Reasoning
 
     du : (x z : String)
