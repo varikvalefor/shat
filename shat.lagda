@@ -23,6 +23,8 @@
 \newunicodechar{⊤}{\ensuremath{\mathnormal\top}}
 \newunicodechar{λ}{\ensuremath{\mathnormal\lambda}}
 \newunicodechar{→}{\ensuremath{\mathnormal\rightarrow}}
+\newunicodechar{⇒}{\ensuremath{\mathnormal\Rightarrow}}
+\newunicodechar{⇐}{\ensuremath{\mathnormal\Leftarrow}}
 \newunicodechar{∃}{\ensuremath{\mathnormal\exists}}
 \newunicodechar{∈}{\ensuremath{\mathnormal\in}}
 \newunicodechar{∉}{\ensuremath{\mathnormal\notin}}
@@ -36,6 +38,7 @@
 \newunicodechar{ᵇ}{\ensuremath{\mathnormal{^\AgdaFontStyle{b}}}}
 \newunicodechar{ʳ}{\ensuremath{\mathnormal{^\AgdaFontStyle{r}}}}
 \newunicodechar{ᵘ}{\ensuremath{\mathnormal{^\AgdaFontStyle{u}}}}
+\newunicodechar{₋}{\ensuremath{\mathnormal{_{--}}}}
 \newunicodechar{₁}{\ensuremath{\mathnormal{_1}}}
 \newunicodechar{₂}{\ensuremath{\mathnormal{_2}}}
 \newunicodechar{₃}{\ensuremath{\mathnormal{_3}}}
