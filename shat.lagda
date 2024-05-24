@@ -1990,7 +1990,8 @@ module KanjyVeritas where
     x , F (mapₘ 𝔽.fromℕ< $ decToMaybe $ ℕ.suc (𝔽.toℕ a) ℕ.<? _) ≡⟨ {!!} ⟩
     x , F (mapₘ 𝔽.fromℕ< $ just {A = ℕ.suc (𝔽.toℕ a) ℕ.< _} {!!}) ≡⟨ {!!} ⟩
     x , F (mapₘ 𝔽.fromℕ< $ just {A = 𝔽.toℕ a+ ℕ.< _} {!!}) ≡⟨ refl ⟩
-    x , F (just $ 𝔽.fromℕ< {m = 𝔽.toℕ a+} _) ≡⟨ DFP.fromℕ<-toℕ _ _ ▹ cong (_,_ x ∘ F ∘ just) ⟩
+    x , F (just $ 𝔽.fromℕ< {m = 𝔽.toℕ a+} _) ≡⟨ refl ⟩
+    _ ≡⟨ DFP.fromℕ<-toℕ _ _ ▹ cong (_,_ x ∘ F ∘ just) ⟩
     x , F (just a+) ≡⟨ refl ⟩
     x , just (inj₂ $ Tciduᵢₒ "/dev/stdin" $ just a+) ∎
     where
