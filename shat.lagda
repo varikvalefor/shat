@@ -1344,10 +1344,9 @@ module Orsygenturfa'iVeritas where
              → (_≡_
                  (spit $ show a ++ "," ++ show b)
                  (showF' a ∷ showF' b ∷ []))
-      spidus a b = Spit.du a' b' (nokom a) (nokom b) {!!} {!!}
+      spidus a b = Spit.du (s a) (s b) (nokom a) (nokom b) {!!} {!!}
         where
-        a' = show a
-        b' = show b
+        s = show
         nokom : {n : ℕ} → (x : Fin n) → ',' ∉ 𝕊.toList (show x)
         nokom = {!!}
 \end{code}
