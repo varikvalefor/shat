@@ -1991,7 +1991,7 @@ module KanjyVeritas where
     _ ≡⟨ DY ▹ proj₂ ▹ cong (F ∘ mapₘ 𝔽.fromℕ< ∘ decToMaybe) ⟩
     F (mapₘ 𝔽.fromℕ< $ decToMaybe $ yes $ proj₁ DY) ≡⟨ refl ⟩
     F (mapₘ 𝔽.fromℕ< $ just {A = ℕ.suc (𝔽.toℕ a) ℕ.< _} $ proj₁ DY) ≡⟨ {!!} ⟩
-    F (mapₘ 𝔽.fromℕ< $ just {!!}) ≡⟨ refl ⟩
+    F (mapₘ 𝔽.fromℕ< $ just $ coerce {!!} $ proj₁ DY) ≡⟨ refl ⟩
     F (just $ 𝔽.fromℕ< {m = 𝔽.toℕ a+} _) ≡⟨ refl ⟩
     _ ≡⟨ DFP.fromℕ<-toℕ _ _ ▹ cong (F ∘ just) ⟩
     F (just a+) ≡⟨ refl ⟩
@@ -2001,6 +2001,11 @@ module KanjyVeritas where
     a' = _
     DY = Relation.Nullary.Decidable.dec-yes (_ ℕ.<? _) {!!}
     F = just ∘ inj₂ ∘ Tciduᵢₒ "/dev/stdin"
+    coerce : ∀ {a} → {A B : Set a}
+           → A ≡ B
+           → A
+           → B
+    coerce refl = id
 
   jminaz : (x : Buffer)
          → (a : Buffer.F x)
