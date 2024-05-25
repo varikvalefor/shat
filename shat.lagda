@@ -1980,10 +1980,11 @@ module KanjyVeritas where
   jminam : (x : Buffer)
          → (a a+ : Buffer.F x)
          → 𝔽.toℕ a+ ≡ ℕ.suc (𝔽.toℕ a)
+         → suc (𝔽.toℕ a) ℕ.< length (Buffer.lerpinste x)
          → (_≡_
              (kanji {x} $ Jmina a)
              (x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" $ just a+))
-  jminam x a a+ d = cong (x ,_) $ begin
+  jminam x a a+ d M = cong (x ,_) $ begin
     proj₂ (kanji {x} $ Jmina a) ≡⟨ refl ⟩
     just (inj₂ $ Tciduᵢₒ "/dev/stdin" a') ≡⟨ refl ⟩
     F a' ≡⟨ refl ⟩
