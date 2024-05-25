@@ -2000,7 +2000,7 @@ module KanjyVeritas where
     where
     open ≡-Reasoning
     a' = _
-    DY = Relation.Nullary.Decidable.dec-yes (_ ℕ.<? _) {!!}
+    DY = Relation.Nullary.Decidable.dec-yes (_ ℕ.<? _) M
     F = just ∘ inj₂ ∘ Tciduᵢₒ "/dev/stdin"
     coerce : ∀ {a} → {A B : Set a}
            → A ≡ B
