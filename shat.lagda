@@ -1983,17 +1983,17 @@ module KanjyVeritas where
          → (_≡_
              (kanji {x} $ Jmina a)
              (x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" $ just a+))
-  jminam x a a+ d = begin
-    kanji {x} (Jmina a) ≡⟨ refl ⟩
-    x , just (inj₂ $ Tciduᵢₒ "/dev/stdin" a') ≡⟨ refl ⟩
-    x , F a' ≡⟨ refl ⟩
-    x , F (mapₘ 𝔽.fromℕ< $ decToMaybe $ ℕ.suc (𝔽.toℕ a) ℕ.<? _) ≡⟨ {!!} ⟩
-    x , F (mapₘ 𝔽.fromℕ< $ just {A = ℕ.suc (𝔽.toℕ a) ℕ.< _} {!!}) ≡⟨ {!!} ⟩
-    x , F (mapₘ 𝔽.fromℕ< $ just {A = 𝔽.toℕ a+ ℕ.< _} {!!}) ≡⟨ refl ⟩
-    x , F (just $ 𝔽.fromℕ< {m = 𝔽.toℕ a+} _) ≡⟨ refl ⟩
-    _ ≡⟨ DFP.fromℕ<-toℕ _ _ ▹ cong (_,_ x ∘ F ∘ just) ⟩
-    x , F (just a+) ≡⟨ refl ⟩
-    x , just (inj₂ $ Tciduᵢₒ "/dev/stdin" $ just a+) ∎
+  jminam x a a+ d = cong (x ,_) $ begin
+    proj₂ (kanji {x} $ Jmina a) ≡⟨ refl ⟩
+    just (inj₂ $ Tciduᵢₒ "/dev/stdin" a') ≡⟨ refl ⟩
+    F a' ≡⟨ refl ⟩
+    F (mapₘ 𝔽.fromℕ< $ decToMaybe $ ℕ.suc (𝔽.toℕ a) ℕ.<? _) ≡⟨ {!!} ⟩
+    F (mapₘ 𝔽.fromℕ< $ just {A = ℕ.suc (𝔽.toℕ a) ℕ.< _} {!!}) ≡⟨ {!!} ⟩
+    F (mapₘ 𝔽.fromℕ< $ just {A = 𝔽.toℕ a+ ℕ.< _} {!!}) ≡⟨ refl ⟩
+    F (just $ 𝔽.fromℕ< {m = 𝔽.toℕ a+} _) ≡⟨ refl ⟩
+    _ ≡⟨ DFP.fromℕ<-toℕ _ _ ▹ cong (F ∘ just) ⟩
+    F (just a+) ≡⟨ refl ⟩
+    just (inj₂ $ Tciduᵢₒ "/dev/stdin" $ just a+) ∎
     where
     open ≡-Reasoning
     a' = _
