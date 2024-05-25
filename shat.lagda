@@ -1991,7 +1991,7 @@ module KanjyVeritas where
     _ ≡⟨ DY ▹ proj₂ ▹ cong (F ∘ mapₘ 𝔽.fromℕ< ∘ decToMaybe) ⟩
     F (mapₘ 𝔽.fromℕ< $ decToMaybe $ yes $ proj₁ DY) ≡⟨ refl ⟩
     F (mapₘ 𝔽.fromℕ< $ just $ proj₁ DY) ≡⟨ refl ⟩
-    F (just $ 𝔽.fromℕ< $ proj₁ DY) ≡⟨ {!!} ⟩
+    F (just $ 𝔽.fromℕ< $ proj₁ DY) ≡⟨ {!!} ▹ cong (F ∘ just ∘ 𝔽.fromℕ<) ⟩
     F (just $ 𝔽.fromℕ< M) ∎
     where
     open ≡-Reasoning
