@@ -1992,7 +1992,7 @@ module KanjyVeritas where
     _ ≡⟨ DY ▹ proj₂ ▹ cong (F ∘ mapₘ 𝔽.fromℕ< ∘ decToMaybe) ⟩
     F (mapₘ 𝔽.fromℕ< $ decToMaybe $ yes $ proj₁ DY) ≡⟨ refl ⟩
     F (mapₘ 𝔽.fromℕ< $ just $ proj₁ DY) ≡⟨ refl ⟩
-    F (just $ 𝔽.fromℕ< $ proj₁ DY) ≡⟨ {!!} ⟩
+    F (just $ 𝔽.fromℕ< $ proj₁ DY) ≡⟨ {!!} ▹ cong (F ∘ just) ⟩
     F (just $ 𝔽.fromℕ< $ coerce {!!} $ proj₁ DY) ≡⟨ refl ⟩
     F (just $ 𝔽.fromℕ< {m = 𝔽.toℕ a+} _) ≡⟨ refl ⟩
     _ ≡⟨ DFP.fromℕ<-toℕ _ _ ▹ cong (F ∘ just) ⟩
