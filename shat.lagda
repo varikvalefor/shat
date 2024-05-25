@@ -1991,7 +1991,7 @@ module KanjyVeritas where
     F (mapₘ 𝔽.fromℕ< $ decToMaybe $ ℕ.suc (𝔽.toℕ a) ℕ.<? _) ≡⟨ refl ⟩
     _ ≡⟨ DY ▹ proj₂ ▹ cong (F ∘ mapₘ 𝔽.fromℕ< ∘ decToMaybe) ⟩
     F (mapₘ 𝔽.fromℕ< $ decToMaybe $ yes $ proj₁ DY) ≡⟨ refl ⟩
-    F (mapₘ 𝔽.fromℕ< $ just {A = ℕ.suc (𝔽.toℕ a) ℕ.< _} $ proj₁ DY) ≡⟨ {!!} ⟩
+    F (mapₘ 𝔽.fromℕ< $ just $ proj₁ DY) ≡⟨ {!!} ⟩
     F (mapₘ 𝔽.fromℕ< $ just $ coerce {!!} $ proj₁ DY) ≡⟨ refl ⟩
     F (just $ 𝔽.fromℕ< {m = 𝔽.toℕ a+} _) ≡⟨ refl ⟩
     _ ≡⟨ DFP.fromℕ<-toℕ _ _ ▹ cong (F ∘ just) ⟩
