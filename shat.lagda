@@ -1978,13 +1978,12 @@ module KanjyVeritas where
   dub = (λ _ _ _ _ → refl) , (λ _ _ _ _ → refl)
 
   jminam : (x : Buffer)
-         → (a a+ : Buffer.F x)
-         → 𝔽.toℕ a+ ≡ ℕ.suc (𝔽.toℕ a)
-         → suc (𝔽.toℕ a) ℕ.< length (Buffer.lerpinste x)
+         → (a : Buffer.F x)
+         → (M : suc (𝔽.toℕ a) ℕ.< length (Buffer.lerpinste x))
          → (_≡_
              (kanji {x} $ Jmina a)
-             (x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" $ just a+))
-  jminam x a a+ d M = cong (x ,_) $ begin
+             (x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" $ just $ 𝔽.fromℕ< M))
+  jminam x a M = cong (x ,_) $ begin
     proj₂ (kanji {x} $ Jmina a) ≡⟨ refl ⟩
     just (inj₂ $ Tciduᵢₒ "/dev/stdin" a') ≡⟨ refl ⟩
     F a' ≡⟨ refl ⟩
@@ -1992,22 +1991,13 @@ module KanjyVeritas where
     _ ≡⟨ DY ▹ proj₂ ▹ cong (F ∘ mapₘ 𝔽.fromℕ< ∘ decToMaybe) ⟩
     F (mapₘ 𝔽.fromℕ< $ decToMaybe $ yes $ proj₁ DY) ≡⟨ refl ⟩
     F (mapₘ 𝔽.fromℕ< $ just $ proj₁ DY) ≡⟨ refl ⟩
-    F (just $ 𝔽.fromℕ< $ proj₁ DY) ≡⟨ {!!} ▹ cong (F ∘ just) ⟩
-    F (just $ 𝔽.fromℕ< $ {!!} $ proj₁ DY) ≡⟨ refl ⟩
-    F (just $ 𝔽.fromℕ< {m = 𝔽.toℕ a+} _) ≡⟨ refl ⟩
-    _ ≡⟨ DFP.fromℕ<-toℕ _ _ ▹ cong (F ∘ just) ⟩
-    F (just a+) ≡⟨ refl ⟩
-    just (inj₂ $ Tciduᵢₒ "/dev/stdin" $ just a+) ∎
+    F (just $ 𝔽.fromℕ< $ proj₁ DY) ≡⟨ {!!} ⟩
+    F (just $ 𝔽.fromℕ< M) ∎
     where
     open ≡-Reasoning
     a' = _
     DY = Relation.Nullary.Decidable.dec-yes (_ ℕ.<? _) M
     F = just ∘ inj₂ ∘ Tciduᵢₒ "/dev/stdin"
-    coerce : ∀ {a} → {A B : Set a}
-           → A ≡ B
-           → A
-           → B
-    coerce refl = id
 
   jminaz : (x : Buffer)
          → (a : Buffer.F x)
