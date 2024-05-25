@@ -1964,15 +1964,16 @@ module KanjyVeritas where
          → kanji {x} Sisti! ≡_ $ x , just (inj₂ Sisti!ᵢₒ)
   sistik x = refl
 
-  Dunli₁ : (_ : {x : Buffer}
-              → (a b : Buffer.F x)
-              → (d : a 𝔽.≤ b)
-              → Cmd x)
-         → Set
-  Dunli₁ C = (x : Buffer)
-           → (a b : Buffer.F x)
-           → (d : a 𝔽.≤ b)
-           → x ≡_ $ proj₁ $ kanji {x} $ C a b d
+  private
+    Dunli₁ : (_ : {x : Buffer}
+                → (a b : Buffer.F x)
+                → (d : a 𝔽.≤ b)
+                → Cmd x)
+           → Set
+    Dunli₁ C = (x : Buffer)
+             → (a b : Buffer.F x)
+             → (d : a 𝔽.≤ b)
+             → x ≡_ $ proj₁ $ kanji {x} $ C a b d
 
   dub : Dunli₁ Cusku × Dunli₁ Namcusku
   dub = (λ _ _ _ _ → refl) , (λ _ _ _ _ → refl)
