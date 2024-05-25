@@ -1991,7 +1991,7 @@ module KanjyVeritas where
     proj₂ (kanji {x} $ Jmina a) ≡⟨ refl ⟩
     just (inj₂ $ Tciduᵢₒ "/dev/stdin" a') ≡⟨ refl ⟩
     F a' ≡⟨ refl ⟩
-    F (mapₘ 𝔽.fromℕ< $ decToMaybe $ ℕ.suc (𝔽.toℕ a) ℕ.<? _) ≡⟨ refl ⟩
+    F (mapₘ 𝔽.fromℕ< $ decToMaybe $ _ ℕ.<? _) ≡⟨ refl ⟩
     _ ≡⟨ DY ▹ proj₂ ▹ cong (F ∘ mapₘ 𝔽.fromℕ< ∘ decToMaybe) ⟩
     F (mapₘ 𝔽.fromℕ< $ decToMaybe $ yes $ proj₁ DY) ≡⟨ refl ⟩
     F (mapₘ 𝔽.fromℕ< $ just $ proj₁ DY) ≡⟨ refl ⟩
