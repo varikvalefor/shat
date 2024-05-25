@@ -1987,7 +1987,8 @@ module KanjyVeritas where
     proj₂ (kanji {x} $ Jmina a) ≡⟨ refl ⟩
     just (inj₂ $ Tciduᵢₒ "/dev/stdin" a') ≡⟨ refl ⟩
     F a' ≡⟨ refl ⟩
-    F (mapₘ 𝔽.fromℕ< $ decToMaybe $ ℕ.suc (𝔽.toℕ a) ℕ.<? _) ≡⟨ {!!} ⟩
+    F (mapₘ 𝔽.fromℕ< $ decToMaybe $ ℕ.suc (𝔽.toℕ a) ℕ.<? _) ≡⟨ DY ▹ proj₂ ▹ cong (F ∘ mapₘ 𝔽.fromℕ< ∘ decToMaybe) ⟩
+    F (mapₘ 𝔽.fromℕ< $ decToMaybe $ yes $ proj₁ DY) ≡⟨ {!!} ⟩
     F (mapₘ 𝔽.fromℕ< $ just {A = ℕ.suc (𝔽.toℕ a) ℕ.< _} {!!}) ≡⟨ {!!} ⟩
     F (mapₘ 𝔽.fromℕ< $ just {A = 𝔽.toℕ a+ ℕ.< _} {!!}) ≡⟨ refl ⟩
     F (just $ 𝔽.fromℕ< {m = 𝔽.toℕ a+} _) ≡⟨ refl ⟩
@@ -1997,6 +1998,7 @@ module KanjyVeritas where
     where
     open ≡-Reasoning
     a' = _
+    DY = Relation.Nullary.Decidable.dec-yes (_ ℕ.<? _) {!!}
     F = just ∘ inj₂ ∘ Tciduᵢₒ "/dev/stdin"
 
   jminaz : (x : Buffer)
