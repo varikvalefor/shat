@@ -1999,7 +1999,7 @@ module KanjyVeritas where
     F (just $ 𝔽.fromℕ< M) ∎
     where
     open ≡-Reasoning
-    a' = _
+    a' = mapₘ 𝔽.fromℕ< $ decToMaybe $ ℕ.suc (𝔽.toℕ a) ℕ.<? _
     DY = Relation.Nullary.Decidable.dec-yes (_ ℕ.<? _) M
     F = just ∘ inj₂ ∘ Tciduᵢₒ "/dev/stdin"
 
