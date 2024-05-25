@@ -1970,13 +1970,13 @@ module KanjyVeritas where
                 → (d : a 𝔽.≤ b)
                 → Cmd x)
            → Set
-    Dunli₁ C = (x : Buffer)
-             → (a b : Buffer.F x)
-             → (d : a 𝔽.≤ b)
+    Dunli₁ C = {x : Buffer}
+             → {a b : Buffer.F x}
+             → {d : a 𝔽.≤ b}
              → x ≡_ $ proj₁ $ kanji {x} $ C a b d
 
   dub : Dunli₁ Cusku × Dunli₁ Namcusku
-  dub = (λ _ _ _ _ → refl) , (λ _ _ _ _ → refl)
+  dub = refl , refl
 
   jminam : (x : Buffer)
          → (a : Buffer.F x)
