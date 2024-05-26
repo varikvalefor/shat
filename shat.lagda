@@ -2033,7 +2033,8 @@ module KanjyVeritas where
   jminaz x a N = cong (x ,_) $ begin
     proj₂ (kanji {x} $ Jmina a) ≡⟨ refl ⟩
     F a' ≡⟨ refl ⟩
-    F (mapₘ 𝔽.fromℕ< $ decToMaybe $ _ ℕ.<? _) ≡⟨ DN ▹ proj₂ ▹ cong (F ∘ mapₘ 𝔽.fromℕ< ∘ decToMaybe) ⟩
+    F (mapₘ 𝔽.fromℕ< $ decToMaybe $ _ ℕ.<? _) ≡⟨ refl ⟩
+    _ ≡⟨ DN ▹ proj₂ ▹ cong (F ∘ mapₘ 𝔽.fromℕ< ∘ decToMaybe) ⟩
     F (mapₘ 𝔽.fromℕ< $ decToMaybe $ no $ proj₁ DN) ≡⟨ {!!} ⟩
     F nothing ∎
     where
