@@ -578,7 +578,7 @@ module ReadMaybe'Veritas where
         rimjdin : {n : ℕ}
                 → {x : Fin n}
                 → readMaybe {A = Fin n} "$" ≢ just x
-        rimjdin = {!!}
+        rimjdin ()
         
 
   jdini : {n : ℕ} → readMaybe' {n} "$" ≡ just nothing
