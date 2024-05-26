@@ -2033,11 +2033,13 @@ module KanjyVeritas where
   jminaz x a N = cong (x ,_) $ begin
     proj₂ (kanji {x} $ Jmina a) ≡⟨ refl ⟩
     F a' ≡⟨ refl ⟩
-    F (mapₘ 𝔽.fromℕ< $ decToMaybe $ _ ℕ.<? _) ≡⟨ {!!} ⟩
+    F (mapₘ 𝔽.fromℕ< $ decToMaybe $ _ ℕ.<? _) ≡⟨ DN ▹ proj₂ ▹ cong (F ∘ mapₘ 𝔽.fromℕ< ∘ decToMaybe) ⟩
+    F (mapₘ 𝔽.fromℕ< $ decToMaybe $ no $ proj₁ DN) ≡⟨ {!!} ⟩
     F nothing ∎
     where
     open ≡-Reasoning
     F = just ∘ inj₂ ∘ Tciduᵢₒ "/dev/stdin"
+    DN = Relation.Nullary.Decidable.dec-no (_ ℕ.<? _) N
     a' = mapₘ 𝔽.fromℕ< $ decToMaybe $ ℕ.suc (𝔽.toℕ a) ℕ.<? _
 
   jminic : (x : Buffer)
