@@ -516,9 +516,7 @@ ni'o xu sarcu fa lo nu ciksi bau la .lojban.
 
 \begin{code}
 toList∘fromChar : (c : Char)
-                → (_≡_
-                    (𝕊.toList $ 𝕊.fromChar c)
-                    (c ∷ []))
+                → 𝕊.toList (𝕊.fromChar c) ≡ c ∷ []
 toList∘fromChar = {!!}
 \end{code}
 
