@@ -2035,7 +2035,7 @@ module KanjyVeritas where
     F a' ≡⟨ refl ⟩
     F (mapₘ 𝔽.fromℕ< $ decToMaybe $ _ ℕ.<? _) ≡⟨ refl ⟩
     _ ≡⟨ DN ▹ proj₂ ▹ cong (F ∘ mapₘ 𝔽.fromℕ< ∘ decToMaybe) ⟩
-    F (mapₘ 𝔽.fromℕ< $ decToMaybe $ no $ proj₁ DN) ≡⟨ {!!} ⟩
+    F (mapₘ 𝔽.fromℕ< $ decToMaybe $ no $ proj₁ DN) ≡⟨ refl ⟩
     F nothing ∎
     where
     open ≡-Reasoning
