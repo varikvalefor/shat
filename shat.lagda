@@ -2026,7 +2026,7 @@ module KanjyVeritas where
 
   jminaz : (x : Buffer)
          → (a : Buffer.F x)
-         → ¬_ $ Σ (Buffer.F x) $ _≡_ (ℕ.suc $ 𝔽.toℕ a) ∘ 𝔽.toℕ
+         → ¬_ $ ℕ.suc (𝔽.toℕ a) ℕ.< length (Buffer.lerpinste x)
          → (_≡_
              (kanji {x} $ Jmina a)
              (x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" nothing))
