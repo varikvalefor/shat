@@ -562,7 +562,7 @@ module ReadMaybe'Veritas where
              → show f ≡ᵇ "$" ≡ false
     najdinis f with show f ≟ "$"
     ... | yes d = {!!}
-    ... | no j = {!!}
+    ... | no j = refl
 
   jdini : {n : ℕ} → readMaybe' {n} "$" ≡ just nothing
   jdini = refl
