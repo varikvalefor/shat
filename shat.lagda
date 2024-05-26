@@ -2154,53 +2154,54 @@ module KanjyVeritas where
     teikteikdrop (_ ∷ xs) z (𝔽.suc n) = teikteikdrop xs z n
     open ≡-Reasoning
 
-  nilzilcmip : (x : Buffer)
+  module Cusku where
+    nilzilcmip : (x : Buffer)
+               → (a b : Buffer.F x)
+               → (d : a 𝔽.≤ b)
+               → let K = proj₂ $ kanji {x} $ Cusku a b d in
+                 let L = lines $ from-inj₁ $ from-just K in
+                 length L ≡ suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a)
+    nilzilcmip x a b d = begin
+      length L ≡⟨ refl ⟩
+      length (lines $ unlines S) ≡⟨ lines∘unlines S ▹ cong length ⟩
+      length S ≡⟨ refl ⟩
+      length (a' ↓_ $ suc b' ↑ BL) ≡⟨ DLP.length-drop a' _ ⟩
+      length (suc b' ↑ BL) ℕ.∸ a' ≡⟨ teiklen BL b ▹ cong (ℕ._∸ a') ⟩
+      suc b' ℕ.∸ a' ≡⟨ sukmin d ⟩
+      suc (b' ℕ.∸ a') ∎
+      where
+      a' = 𝔽.toℕ a
+      b' = 𝔽.toℕ b
+      K = proj₂ $ kanji {x} $ Cusku a b d
+      L = lines $ from-inj₁ $ from-just K
+      BL = Buffer.lerpinste x
+      S = a' ↓_ $ suc b' ↑ BL
+      lines∘unlines : (x : List String) → lines (unlines S) ≡ S
+      lines∘unlines = {!!}
+      open ≡-Reasoning
+      sukmin : {m n : ℕ}
+             → n ℕ.≤ m
+             → suc m ℕ.∸ n ≡ suc (m ℕ.∸ n)
+      sukmin ℕ.z≤n = refl
+      sukmin (ℕ.s≤s s) = sukmin s
+      teiklen : ∀ {a} → {A : Set a}
+              → (x : List A)
+              → (n : Fin $ length x)
+              → length (ℕ.suc (𝔽.toℕ n) ↑ x) ≡ ℕ.suc (𝔽.toℕ n)
+      teiklen (_ ∷ _) 𝔽.zero = refl
+      teiklen (_ ∷ xs) (𝔽.suc n) = teiklen xs n ▹ cong ℕ.suc
+
+    pindices : (x : Buffer)
              → (a b : Buffer.F x)
              → (d : a 𝔽.≤ b)
              → let K = proj₂ $ kanji {x} $ Cusku a b d in
                let L = lines $ from-inj₁ $ from-just K in
-               length L ≡ suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a)
-  nilzilcmip x a b d = begin
-    length L ≡⟨ refl ⟩
-    length (lines $ unlines S) ≡⟨ lines∘unlines S ▹ cong length ⟩
-    length S ≡⟨ refl ⟩
-    length (a' ↓_ $ suc b' ↑ BL) ≡⟨ DLP.length-drop a' _ ⟩
-    length (suc b' ↑ BL) ℕ.∸ a' ≡⟨ teiklen BL b ▹ cong (ℕ._∸ a') ⟩
-    suc b' ℕ.∸ a' ≡⟨ sukmin d ⟩
-    suc (b' ℕ.∸ a') ∎
-    where
-    a' = 𝔽.toℕ a
-    b' = 𝔽.toℕ b
-    K = proj₂ $ kanji {x} $ Cusku a b d
-    L = lines $ from-inj₁ $ from-just K
-    BL = Buffer.lerpinste x
-    S = a' ↓_ $ suc b' ↑ BL
-    lines∘unlines : (x : List String) → lines (unlines S) ≡ S
-    lines∘unlines = {!!}
-    open ≡-Reasoning
-    sukmin : {m n : ℕ}
-           → n ℕ.≤ m
-           → suc m ℕ.∸ n ≡ suc (m ℕ.∸ n)
-    sukmin ℕ.z≤n = refl
-    sukmin (ℕ.s≤s s) = sukmin s
-    teiklen : ∀ {a} → {A : Set a}
-            → (x : List A)
-            → (n : Fin $ length x)
-            → length (ℕ.suc (𝔽.toℕ n) ↑ x) ≡ ℕ.suc (𝔽.toℕ n)
-    teiklen (_ ∷ _) 𝔽.zero = refl
-    teiklen (_ ∷ xs) (𝔽.suc n) = teiklen xs n ▹ cong ℕ.suc
-
-  pindices : (x : Buffer)
-           → (a b : Buffer.F x)
-           → (d : a 𝔽.≤ b)
-           → let K = proj₂ $ kanji {x} $ Cusku a b d in
-             let L = lines $ from-inj₁ $ from-just K in
-             (n : Fin $ length L)
-           → let Lx = Buffer.lerpinste x in
-             (Σ
-               (𝔽.toℕ n ℕ.+ 𝔽.toℕ a ℕ.< length Lx)
-               (λ ℓ → L ! n ≡ Lx ! 𝔽.fromℕ< ℓ))
-  pindices x a b d n = {!!} , {!!}
+               (n : Fin $ length L)
+             → let Lx = Buffer.lerpinste x in
+               (Σ
+                 (𝔽.toℕ n ℕ.+ 𝔽.toℕ a ℕ.< length Lx)
+                 (λ ℓ → L ! n ≡ Lx ! 𝔽.fromℕ< ℓ))
+    pindices x a b d n = {!!} , {!!}
 
   module Basti where
     bindiced : (x : Buffer)
