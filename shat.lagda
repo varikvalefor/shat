@@ -511,6 +511,17 @@ fromList∘toList : (x : String) → 𝕊.fromList (𝕊.toList x) ≡ x
 fromList∘toList = {!!}
 \end{code}
 
+\section{la'o zoi.\ \F{toList∘fromChar}\ .zoi.}
+ni'o xu sarcu fa lo nu ciksi bau la .lojban.
+
+\begin{code}
+toList∘fromChar : (c : Char)
+                → (_≡_
+                    (𝕊.toList $ 𝕊.fromChar c)
+                    (c ∷ []))
+toList∘fromChar = {!!}
+\end{code}
+
 \section{la .\F{romoitcar}.}
 ni'o la .varik.\ na jinvi le du'u sarcu fa lo nu ciksi fo lo lojbo
 
