@@ -575,7 +575,6 @@ module ReadMaybe'Veritas where
           using (
             subst
           )
-        
 
   jdini : {n : ℕ} → readMaybe' {n} "$" ≡ just nothing
   jdini = refl
