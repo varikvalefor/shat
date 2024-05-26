@@ -2030,7 +2030,14 @@ module KanjyVeritas where
          → (_≡_
              (kanji {x} $ Jmina a)
              (x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" nothing))
-  jminaz = {!!}
+  jminaz x a N = cong (x ,_) $ begin
+    proj₂ (kanji {x} $ Jmina a) ≡⟨ refl ⟩
+    F a' ≡⟨ {!!} ⟩
+    F nothing ∎
+    where
+    open ≡-Reasoning
+    F = just ∘ inj₂ ∘ Tciduᵢₒ "/dev/stdin"
+    a' = mapₘ 𝔽.fromℕ< $ decToMaybe $ ℕ.suc (𝔽.toℕ a) ℕ.<? _
 
   jminic : (x : Buffer)
          → (a : Buffer.F x)
