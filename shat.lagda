@@ -568,17 +568,13 @@ module ReadMaybe'Veritas where
                 → {f : Fin n}
                 → show f ≡ "$"
                 → readMaybe (show f) ≢ just f
-      D⇒¬rimcos d = subst (_≢ _) d' rimjdin
+      D⇒¬rimcos d = subst (_≢ _) d' $ λ ()
         where
         d' = d ▹ sym ▹ cong readMaybe
         open Relation.Binary.PropositionalEquality
           using (
             subst
           )
-        rimjdin : {n : ℕ}
-                → {x : Fin n}
-                → readMaybe {A = Fin n} "$" ≢ just x
-        rimjdin ()
         
 
   jdini : {n : ℕ} → readMaybe' {n} "$" ≡ just nothing
