@@ -562,13 +562,13 @@ module ReadMaybe'Veritas where
              → show f ≡ᵇ "$" ≡ false
     najdinis f with show f ≟ "$"
     ... | no j = refl
-    ... | yes d = readMaybe∘show f ⇒⇐ D⇒¬rimcos _ d
+    ... | yes d = readMaybe∘show f ⇒⇐ D⇒¬rimcos d
       where
       D⇒¬rimcos : {n : ℕ}
-                → (f : Fin n)
+                → {f : Fin n}
                 → show f ≡ "$"
                 → readMaybe (show f) ≢ just f
-      D⇒¬rimcos _ d = subst (_≢ _) d' rimjdin
+      D⇒¬rimcos d = subst (_≢ _) d' rimjdin
         where
         d' = d ▹ sym ▹ cong readMaybe
         open Relation.Binary.PropositionalEquality
