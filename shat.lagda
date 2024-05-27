@@ -551,8 +551,8 @@ romoitcar s c = begin
               → (_≡_
                   (𝕃.last $ xs ++ x ∷ [])
                   (𝕃.last $ z ∷ xs ++ x ∷ []))
-    ⊃⌽∘x∷_≡⊃⌽ x z [] = {!!}
-    ⊃⌽∘x∷_≡⊃⌽ v x (z ∷ zs) = {!!}
+    ⊃⌽∘x∷_≡⊃⌽ x z [] = refl
+    ⊃⌽∘x∷_≡⊃⌽ v x (z ∷ zs) = refl
     open Relation.Binary.PropositionalEquality
       using (
         subst
