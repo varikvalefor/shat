@@ -542,7 +542,8 @@ romoitcar s c = begin
           → (x : A)
           → (xs : List A)
           → 𝕃.last (xs ++ x ∷ []) ≡ just x
-  ⊃⌽-just = {!!}
+  ⊃⌽-just x [] = {!!}
+  ⊃⌽-just x (z ∷ zs) = {!!}
 \end{code}
 
 \section{la'oi .\F{readMaybe'}.}
