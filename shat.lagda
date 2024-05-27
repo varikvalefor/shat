@@ -532,10 +532,15 @@ romoitcar : (s : String)
 romoitcar s c = begin
   𝕃.last (𝕊.toList $ s ++ 𝕊.fromChar c) ≡⟨ {!!} ⟩
   𝕃.last (𝕊.toList s ++ 𝕊.toList (𝕊.fromChar c)) ≡⟨ {!!} ⟩
-  𝕃.last (𝕊.toList s ++ c ∷ []) ≡⟨ {!!} ⟩
+  𝕃.last (𝕊.toList s ++ c ∷ []) ≡⟨ ⊃⌽-just c $ 𝕊.toList s ⟩
   just c ∎
   where
   open ≡-Reasoning
+  ⊃⌽-just : ∀ {a} → {A : Set a}
+          → (x : A)
+          → (xs : List A)
+          → 𝕃.last (xs ++ x ∷ []) ≡ just x
+  ⊃⌽-just = {!!}
 \end{code}
 
 \section{la'oi .\F{readMaybe'}.}
