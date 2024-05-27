@@ -529,7 +529,11 @@ romoitcar : (s : String)
           → (flip _≡_
               (just c)
               (𝕃.last $ 𝕊.toList $ s ++ 𝕊.fromChar c))
-romoitcar = {!!}
+romoitcar s c = begin
+  𝕃.last (𝕊.toList $ s ++ 𝕊.fromChar c) ≡⟨ {!!} ⟩
+  just c ∎
+  where
+  open ≡-Reasoning
 \end{code}
 
 \section{la'oi .\F{readMaybe'}.}
