@@ -542,7 +542,7 @@ romoitcar s c = begin
           → (x : A)
           → (xs : List A)
           → 𝕃.last (xs ++ x ∷ []) ≡ just x
-  ⊃⌽-just x [] = {!!}
+  ⊃⌽-just x [] = refl
   ⊃⌽-just x (z ∷ zs) = {!!}
 \end{code}
 
