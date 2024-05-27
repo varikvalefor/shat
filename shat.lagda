@@ -532,6 +532,7 @@ romoitcar : (s : String)
 romoitcar s c = begin
   𝕃.last (𝕊.toList $ s ++ 𝕊.fromChar c) ≡⟨ {!!} ⟩
   𝕃.last (𝕊.toList s ++ 𝕊.toList (𝕊.fromChar c)) ≡⟨ {!!} ⟩
+  𝕃.last (𝕊.toList s ++ c ∷ []) ≡⟨ {!!} ⟩
   just c ∎
   where
   open ≡-Reasoning
