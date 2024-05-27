@@ -543,8 +543,15 @@ romoitcar s c = begin
           → (xs : List A)
           → 𝕃.last (xs ++ x ∷ []) ≡ just x
   ⊃⌽-just x [] = refl
-  ⊃⌽-just x (z ∷ zs) = ⊃⌽-just x zs ▹ subst (_≡ _) {!!}
+  ⊃⌽-just x (z ∷ zs) = ⊃⌽-just x zs ▹ subst (_≡ _) (⊃⌽∘x∷_≡⊃⌽ _ _ zs)
     where
+    ⊃⌽∘x∷_≡⊃⌽ : ∀ {a} → {A : Set a}
+              → (x z : A)
+              → (xs : List A)
+              → (_≡_
+                  (𝕃.last $ xs ++ x ∷ [])
+                  (𝕃.last $ z ∷ xs ++ x ∷ []))
+    ⊃⌽∘x∷_≡⊃⌽ = {!!}
     open Relation.Binary.PropositionalEquality
       using (
         subst
