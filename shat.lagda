@@ -545,15 +545,16 @@ romoitcar s c = begin
   ⊃⌽-just x [] = refl
   ⊃⌽-just x (z ∷ zs) = ⊃⌽-just x zs ▹ subst (_≡ _) D
     where
-    ⊃⌽∘x∷_≡⊃⌽ : ∀ {a} → {A : Set a}
-              → (x z : A)
-              → (xs : List A)
-              → (_≡_
-                  (𝕃.last $ xs ++ x ∷ [])
-                  (𝕃.last $ z ∷ xs ++ x ∷ []))
-    ⊃⌽∘x∷_≡⊃⌽ _ _ [] = refl
-    ⊃⌽∘x∷_≡⊃⌽ _ _ (_ ∷ _) = refl
     D = ⊃⌽∘x∷_≡⊃⌽ _ _ zs
+      where
+      ⊃⌽∘x∷_≡⊃⌽ : ∀ {a} → {A : Set a}
+                → (x z : A)
+                → (xs : List A)
+                → (_≡_
+                    (𝕃.last $ xs ++ x ∷ [])
+                    (𝕃.last $ z ∷ xs ++ x ∷ []))
+      ⊃⌽∘x∷_≡⊃⌽ _ _ [] = refl
+      ⊃⌽∘x∷_≡⊃⌽ _ _ (_ ∷ _) = refl
     open Relation.Binary.PropositionalEquality
       using (
         subst
