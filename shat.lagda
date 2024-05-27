@@ -530,7 +530,7 @@ romoitcar : (s : String)
               (just c)
               (𝕃.last $ 𝕊.toList $ s ++ 𝕊.fromChar c))
 romoitcar s c = begin
-  𝕃.last (𝕊.toList $ s ++ 𝕊.fromChar c) ≡⟨ {!!} ⟩
+  𝕃.last (𝕊.toList $ s ++ 𝕊.fromChar c) ≡⟨ toList-dist s _ ▹ cong 𝕃.last ⟩
   𝕃.last (𝕊.toList s ++ 𝕊.toList (𝕊.fromChar c)) ≡⟨ {!!} ⟩
   𝕃.last (𝕊.toList s ++ c ∷ []) ≡⟨ ⊃⌽-just c $ 𝕊.toList s ⟩
   just c ∎
