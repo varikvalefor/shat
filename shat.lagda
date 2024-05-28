@@ -555,10 +555,7 @@ romoitcar s c = begin
                     (𝕃.last $ z ∷ xs ++ x ∷ []))
       ⊃⌽∘x∷_≡⊃⌽ _ _ [] = refl
       ⊃⌽∘x∷_≡⊃⌽ _ _ (_ ∷ _) = refl
-    open Relation.Binary.PropositionalEquality
-      using (
-        subst
-      )
+    subst = Relation.Binary.PropositionalEquality.subst
 \end{code}
 
 \section{la'oi .\F{readMaybe'}.}
