@@ -1866,7 +1866,7 @@ module ReedVeritas where
       → (x : Buffer)
       → (s : String)
       → (c : Char)
-      → ¬ (c ≡ ' ')
+      → ¬_ $ c ≡ ' '
       → let c∷s = 𝕊.fromChar c ++ s in
         Data.Maybe.Is-just $ 𝕃.uncons $ 𝕊.wordsBy (_≟ ' ') c∷s
       → just (Rejgau c∷s) ≡ reed x ("w " ++ c∷s)
