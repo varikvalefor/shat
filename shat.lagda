@@ -606,10 +606,7 @@ module ReadMaybe'Veritas where
       $⇒¬rimcos d = subst (_≢ _) d' $ λ ()
         where
         d' = d ▹ sym ▹ cong readMaybe
-        open Relation.Binary.PropositionalEquality
-          using (
-            subst
-          )
+        subst = Relation.Binary.PropositionalEquality.subst
 
   jdini : {n : ℕ} → readMaybe' {n} "$" ≡ just nothing
   jdini = refl
