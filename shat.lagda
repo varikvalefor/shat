@@ -577,6 +577,9 @@ readMaybe' s = if (s ≡ᵇ "$") (just nothing) $ readMaybe s ▹ mapₘ just
 module ReadMaybe'Veritas where
   open ≡-Reasoning
 
+  jdini : {n : ℕ} → readMaybe' {n} "$" ≡ just nothing
+  jdini = refl
+
   namcu : {n : ℕ}
         → (f : Fin n)
         → readMaybe' (show f) ≡ just (just f)
@@ -607,9 +610,6 @@ module ReadMaybe'Veritas where
         where
         d' = d ▹ sym ▹ cong readMaybe
         subst = Relation.Binary.PropositionalEquality.subst
-
-  jdini : {n : ℕ} → readMaybe' {n} "$" ≡ just nothing
-  jdini = refl
 
   justjust→namcu : {n : ℕ}
                  → (s : String)
