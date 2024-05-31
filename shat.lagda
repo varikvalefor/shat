@@ -950,7 +950,7 @@ module DegjygirzuVeritas where
     F? = T? ∘ Data.Bool.not
     -- | .i cicna finpe
     tilfic : tL ∘ fC ≗ 𝕃.[_]
-    tilfic = {!!}
+    tilfic = toList∘fromChar
     d' = 𝕃.map fL ∘_ $ 𝕃.wordsBy $ F? ∘ isDigit
     fineg : {x : Bool}
           → false ≡ x
