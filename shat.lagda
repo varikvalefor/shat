@@ -623,7 +623,7 @@ module ReadMaybe'Veritas where
                     → readMaybe' {n} s ≡ just nothing
                     → s ≡ "$"
   justnothing→jdini s d with s ≟ "$"
-  ... | yes d₁ = {!!}
+  ... | yes d₁ = d₁
   ... | no n = {!!}
 
   nada : {n : ℕ}
