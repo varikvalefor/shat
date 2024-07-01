@@ -1924,7 +1924,7 @@ module ReedVeritas where
           ∷-w : (s : String)
               → ¬_ $ s ≡ ""
               → (Σ
-                  (String × List String)
+                  _
                   (_≡_ (w s) ∘ uncurry _∷_))
           ∷-w s n with 𝕊.toList s ≟ []
           ... | yes d = tL≡[]→x≡s[] d ⇒⇐ n
