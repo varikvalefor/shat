@@ -1911,9 +1911,7 @@ module ReedVeritas where
         where
         ∷→¬[] : ∀ {a} → {A : Set a}
               → (x : List A)
-              → (Σ
-                  _
-                  (_≡_ x ∘ uncurry _∷_))
+              → (Σ _ (_≡_ x ∘ uncurry _∷_))
               → ¬_ $ x ≡ []
         ∷→¬[] _ (_ , refl) ()
         w-++-∷ : (c : Char)
