@@ -1912,7 +1912,7 @@ module ReedVeritas where
         ∷→¬[] : ∀ {a} → {A : Set a}
               → (x : List A)
               → (Σ
-                  (A × List A)
+                  _
                   (_≡_ x ∘ uncurry _∷_))
               → ¬_ $ x ≡ []
         ∷→¬[] _ (_ , refl) ()
