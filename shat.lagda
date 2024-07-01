@@ -1132,7 +1132,7 @@ module Orsygenturfa'i where
 
   pork : {n : ℕ}
        → List $ Maybe $ Fin n
-       → Maybe $ Σ (Fin n × Fin n) $ uncurry 𝔽._≤_
+       → Maybe $ ∃ $ uncurry $ 𝔽._≤_ {n}
   pork (just a ∷ just b ∷ []) = mapₘ (_ ,_) $ decToMaybe $ a 𝔽.≤? b
   pork _ = nothing
 
