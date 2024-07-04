@@ -1079,7 +1079,7 @@ module RomoivimcuVeritas where
     fL (-1↓_ $ tL $ s ++ fC c) ≡⟨ refl ⟩
     _ ≡⟨ toList-dist s (fC c) ▹ cong (fL ∘ -1↓_) ⟩
     fL (-1↓_ $ tL s ++ tL (fC c)) ≡⟨ refl ⟩
-    _ ≡⟨ toList∘fromChar c ▹ cong (fL ∘ -1↓_ ∘ _++_ (tL s)) ⟩
+    _ ≡⟨ toList∘fromChar c ▹ cong (fL ∘ -1↓_ ∘ (tL s ++_)) ⟩
     fL (-1↓_ $ tL s ++ c ∷ []) ≡⟨ -1↓_∘konk≡id (tL s) c ▹ cong fL ⟩
     fL (tL s) ≡⟨ fL∘tL≡id ▹ cong (_$ s) ⟩
     s ∎
