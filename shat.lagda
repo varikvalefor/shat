@@ -1098,7 +1098,7 @@ module RomoivimcuVeritas where
       tL s ++ (c ∷ []) ∎
       where
       tL∘fC≡[_] : (c : Char) → tL (fC c) ≡ c ∷ []
-      tL∘fC≡[_] = {!!}
+      tL∘fC≡[_] = toList∘fromChar
     -1↓_∘konk≡id : ∀ {a} → {A : Set a}
                  → (xs : List A)
                  → (x : A)
