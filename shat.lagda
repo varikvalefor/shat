@@ -1093,12 +1093,10 @@ module RomoivimcuVeritas where
            → (c : Char)
            → tL (s ++ fC c) ≡ tL s ++ c ∷ []
     tLkonk s c = begin
-      tL (s ++ fC c) ≡⟨ tL-dist s $ fC c ⟩
+      tL (s ++ fC c) ≡⟨ toList-dist s $ fC c ⟩
       tL s ++ tL (fC c) ≡⟨ tL∘fC≡[_] c ▹ cong (_++_ $ tL s) ⟩
       tL s ++ (c ∷ []) ∎
       where
-      tL-dist : (x z : String) → tL (x ++ z) ≡ tL x ++ tL z
-      tL-dist = toList-dist
       tL∘fC≡[_] : (c : Char) → tL (fC c) ≡ c ∷ []
       tL∘fC≡[_] = {!!}
     -1↓_∘konk≡id : ∀ {a} → {A : Set a}
