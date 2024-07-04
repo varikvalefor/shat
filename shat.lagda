@@ -255,6 +255,7 @@ open import Relation.Nullary.Negation
 open import Relation.Binary.PropositionalEquality
   using (
     module ≡-Reasoning;
+    subst;
     cong;
     refl;
     _≗_;
@@ -555,7 +556,6 @@ romoitcar s c = begin
                     (z ∷ xs ++ x ∷ []))
       ⊃⌽∘x∷_≡⊃⌽ _ _ [] = refl
       ⊃⌽∘x∷_≡⊃⌽ _ _ (_ ∷ _) = refl
-    subst = Relation.Binary.PropositionalEquality.subst
 \end{code}
 
 \section{la'oi .\F{readMaybe'}.}
@@ -603,7 +603,6 @@ module ReadMaybe'Veritas where
     ... | yes d = readMaybe∘show f ⇒⇐ subst (¬_ ∘ (_≡ _)) d' {!!}
       where
       d' = d ▹ sym ▹ cong readMaybe
-      subst = Relation.Binary.PropositionalEquality.subst
 
   justjust→namcu : {n : ℕ}
                  → (s : String)
