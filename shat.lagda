@@ -1098,7 +1098,7 @@ module RomoivimcuVeritas where
       tL s ++ (c ∷ []) ∎
       where
       tL-dist : (x z : String) → tL (x ++ z) ≡ tL x ++ tL z
-      tL-dist = {!!}
+      tL-dist = toList-dist
       tL∘fC≡[_] : (c : Char) → tL (fC c) ≡ c ∷ []
       tL∘fC≡[_] = {!!}
     -1↓_∘konk≡id : ∀ {a} → {A : Set a}
