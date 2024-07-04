@@ -1076,7 +1076,8 @@ module RomoivimcuVeritas where
   vimcykonkydus s c = begin
     romoivimcu (s ++ fC c) ≡⟨ refl ⟩
     S -1↓_ (s ++ fC c) ≡⟨ refl ⟩
-    fL (-1↓_ $ tL $ s ++ fC c) ≡⟨ tLkonk s c ▹ cong (fL ∘ -1↓_) ⟩
+    fL (-1↓_ $ tL $ s ++ fC c) ≡⟨ toList-dist s (fC c) ▹ cong (fL ∘ -1↓_) ⟩
+    fL (-1↓_ $ tL s ++ tL (fC c)) ≡⟨ toList∘fromChar c ▹ cong (fL ∘ -1↓_ ∘ _++_ (tL s)) ⟩
     fL (-1↓_ $ tL s ++ c ∷ []) ≡⟨ -1↓_∘konk≡id (tL s) c ▹ cong fL ⟩
     fL (tL s) ≡⟨ fL∘tL≡id ▹ cong (_$ s) ⟩
     s ∎
@@ -1089,13 +1090,6 @@ module RomoivimcuVeritas where
     S = λ f → 𝕊.fromList ∘ f ∘ 𝕊.toList
     fL∘tL≡id : fL ∘ tL ≡ id
     fL∘tL≡id = {!!}
-    tLkonk : (s : String)
-           → (c : Char)
-           → tL (s ++ fC c) ≡ tL s ++ c ∷ []
-    tLkonk s c = begin
-      tL (s ++ fC c) ≡⟨ toList-dist s $ fC c ⟩
-      tL s ++ tL (fC c) ≡⟨ toList∘fromChar c ▹ cong (_++_ $ tL s) ⟩
-      tL s ++ (c ∷ []) ∎
     -1↓_∘konk≡id : ∀ {a} → {A : Set a}
                  → (xs : List A)
                  → (x : A)
