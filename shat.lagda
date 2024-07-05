@@ -1049,14 +1049,15 @@ module RomoivimcuVeritas where
              x ≡ romoivimcu x ++ -1↑x
   konkydus x = sym $ begin
     romoivimcu x ++ 𝕊.fromList -1↑x ≡⟨ refl ⟩
-    𝕊.fromList (_↑ x' $ length x' ℕ.∸ 1) ++ 𝕊.fromList -1↑x ≡⟨ refl ⟩
-    𝕊.fromList -1↓x' ++ 𝕊.fromList -1↑x ≡⟨ fromList-dist -1↓x' -1↑x ▹ sym ⟩
-    𝕊.fromList (-1↓x' ++ -1↑x) ≡⟨ refl ⟩
-    𝕊.fromList x'' ≡⟨ x''≡x' ▹ cong 𝕊.fromList ⟩
-    𝕊.fromList x' ≡⟨ fromList∘toList x ⟩
+    fL (_↑ x' $ length x' ℕ.∸ 1) ++ 𝕊.fromList -1↑x ≡⟨ refl ⟩
+    fL -1↓x' ++ fL -1↑x ≡⟨ fromList-dist -1↓x' -1↑x ▹ sym ⟩
+    fL (-1↓x' ++ -1↑x) ≡⟨ refl ⟩
+    fL x'' ≡⟨ x''≡x' ▹ cong fL ⟩
+    fL x' ≡⟨ fromList∘toList x ⟩
     x ∎
     where
     x' = 𝕊.toList x
+    fL = 𝕊.fromList
     -1↑x = _↓ x' $ length x' ℕ.∸ 1
     -1↓x' = _↑ x' $ length x' ℕ.∸ 1
     x'' = -1↓x' ++ -1↑x
