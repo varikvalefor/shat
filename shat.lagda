@@ -1122,7 +1122,7 @@ module Orsygenturfa'i where
 
   orsygenturfa'i : {n : ℕ}
                  → String
-                 → Maybe $ Σ (Fin n × Fin n) $ uncurry 𝔽._≤_
+                 → Maybe $ ∃ $ uncurry $ 𝔽._≤_ {n}
   orsygenturfa'i = pork ∘ 𝕃.map ps ∘ spit
 
 open Orsygenturfa'i
