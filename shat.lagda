@@ -1053,7 +1053,7 @@ module RomoivimcuVeritas where
     𝕊.fromList -1↓x' ++ 𝕊.fromList -1↑x ≡⟨ frokonk -1↓x' -1↑x ⟩
     𝕊.fromList (-1↓x' ++ -1↑x) ≡⟨ refl ⟩
     𝕊.fromList x'' ≡⟨ x''≡x' ▹ cong 𝕊.fromList ⟩
-    𝕊.fromList x' ≡⟨ [cev∘vec]² x ▹ sym ⟩
+    𝕊.fromList x' ≡⟨ fromList∘toList x ⟩
     x ∎
     where
     x' = 𝕊.toList x
