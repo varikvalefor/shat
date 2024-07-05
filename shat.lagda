@@ -1099,6 +1099,7 @@ module RomoivimcuVeritas where
     -1↓_∘konk≡id [] _ = refl
     -1↓_∘konk≡id (x ∷ xs) e = begin
       -1↓_ (x ∷ xs ++ e ∷ []) ≡⟨ {!!} ⟩
+      length (x ∷ xs) ↑ (x ∷ xs ++ e ∷ []) ≡⟨ {!!} ⟩
       (x ∷ xs) ∎
 
   kunti : romoivimcu "" ≡ ""
