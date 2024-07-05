@@ -1050,7 +1050,7 @@ module RomoivimcuVeritas where
   konkydus x = sym $ begin
     romoivimcu x ++ 𝕊.fromList -1↑x ≡⟨ refl ⟩
     𝕊.fromList (_↑ x' $ length x' ℕ.∸ 1) ++ 𝕊.fromList -1↑x ≡⟨ refl ⟩
-    𝕊.fromList -1↓x' ++ 𝕊.fromList -1↑x ≡⟨ frokonk -1↓x' -1↑x ⟩
+    𝕊.fromList -1↓x' ++ 𝕊.fromList -1↑x ≡⟨ fromList-dist -1↓x' -1↑x ▹ sym ⟩
     𝕊.fromList (-1↓x' ++ -1↑x) ≡⟨ refl ⟩
     𝕊.fromList x'' ≡⟨ x''≡x' ▹ cong 𝕊.fromList ⟩
     𝕊.fromList x' ≡⟨ fromList∘toList x ⟩
