@@ -1052,7 +1052,7 @@ module RomoivimcuVeritas where
     fL (_↑ x' $ length x' ℕ.∸ 1) ++ 𝕊.fromList -1↑x ≡⟨ refl ⟩
     fL -1↓x' ++ fL -1↑x ≡⟨ fromList-dist -1↓x' -1↑x ▹ sym ⟩
     fL (-1↓x' ++ -1↑x) ≡⟨ refl ⟩
-    fL x'' ≡⟨ x''≡x' ▹ cong fL ⟩
+    fL x'' ≡⟨ DLP.take++drop (length x' ℕ.∸ 1) x' ▹ cong fL ⟩
     fL x' ≡⟨ fromList∘toList x ⟩
     x ∎
     where
@@ -1061,8 +1061,6 @@ module RomoivimcuVeritas where
     -1↑x = _↓ x' $ length x' ℕ.∸ 1
     -1↓x' = _↑ x' $ length x' ℕ.∸ 1
     x'' = -1↓x' ++ -1↑x
-    x''≡x' : x'' ≡ x'
-    x''≡x' = DLP.take++drop (length x' ℕ.∸ 1) x'
 
   vimcykonkydus : (s : String)
               → (c : Char)
