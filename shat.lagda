@@ -1067,8 +1067,6 @@ module RomoivimcuVeritas where
                 (𝕊.fromList a ++ 𝕊.fromList b)
                 (𝕊.fromList $ a ++ b))
     frokonk = sym ∘₂ fromList-dist
-    [cev∘vec]² : (x : String) → x ≡ 𝕊.fromList (𝕊.toList x)
-    [cev∘vec]² = sym ∘ fromList∘toList
 
   vimcykonkydus : (s : String)
               → (c : Char)
