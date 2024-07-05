@@ -1062,11 +1062,6 @@ module RomoivimcuVeritas where
     x'' = -1↓x' ++ -1↑x
     x''≡x' : x'' ≡ x'
     x''≡x' = DLP.take++drop (length x' ℕ.∸ 1) x'
-    frokonk : (a b : List Char)
-            → (_≡_
-                (𝕊.fromList a ++ 𝕊.fromList b)
-                (𝕊.fromList $ a ++ b))
-    frokonk = sym ∘₂ fromList-dist
 
   vimcykonkydus : (s : String)
               → (c : Char)
