@@ -600,9 +600,17 @@ module ReadMaybe'Veritas where
              → show f ≡ᵇ "$" ≡ false
     najdinis f with show f ≟ "$"
     ... | no j = refl
-    ... | yes d = readMaybe∘show f ⇒⇐ subst (¬_ ∘ (_≡ _)) d' {!!}
+    ... | yes d = readMaybe∘show f ⇒⇐ subst (_≢ _) d' (N⇒¬J rM$≡N)
       where
       d' = d ▹ sym ▹ cong readMaybe
+      rM$≡N : {n : ℕ} → readMaybe {A = Fin n} "$" ≡ nothing
+      rM$≡N = {!!}
+      N⇒¬J : ∀ {a} → {A : Set a}
+           → {x : Maybe A}
+           → x ≡ nothing
+           → {z : A}
+           → ¬_ $ x ≡ just z
+      N⇒¬J = {!!}
 
   justjust→namcu : {n : ℕ}
                  → (s : String)
