@@ -2264,7 +2264,7 @@ module KanjyVeritas where
       T (BL x') ≡⟨ DLP.take++drop (𝔽.toℕ a) (BL x') ▹ sym ▹ cong T ⟩
       T (T (BL x') ++ D (BL x')) ≡⟨ refl ⟩
       _ ≡⟨ teikteik _ _ ▹_ $ cong $ T ∘ (_++ D (BL x')) ⟩
-      T (T (BL x) ++ D (BL x')) ≡⟨ teikteik (BL x) a ⟩
+      T (T (BL x) ++ D (BL x')) ≡⟨ teikteik _ a ⟩
       T (BL x) ∎
       where
       T = 𝔽.toℕ a ↑_
