@@ -2287,7 +2287,7 @@ module KanjyVeritas where
             → let n = suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a) in
               let x' = proj₁ $ kanji {x} $ Muvgau a b (just c) d in
               (_≡_
-                (n ↑_ $ 𝔽.toℕ a ↓_ $ Buffer.lerpinste x)
+                (n ↑_ $ 𝔽.toℕ a ↓ Buffer.lerpinste x)
                 (n ↑_ $ 𝔽.toℕ c ↓_ $ Buffer.lerpinste x'))
     muvisez x a b c d = sym $ begin
       n ↑ (f c ↓ BLT x') ≡⟨ {!!} ⟩
