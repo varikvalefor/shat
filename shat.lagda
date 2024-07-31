@@ -2284,7 +2284,7 @@ module KanjyVeritas where
     muvisez : (x : Buffer)
             → (a b c : Buffer.F x)
             → (d : a 𝔽.≤ b)
-            → let n = suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a) in
+            → let n = suc $ 𝔽.toℕ b ℕ.∸ 𝔽.toℕ a in
               let x' = proj₁ $ kanji {x} $ Muvgau a b (just c) d in
               (_≡_
                 (n ↑_ $ 𝔽.toℕ a ↓ Buffer.lerpinste x)
