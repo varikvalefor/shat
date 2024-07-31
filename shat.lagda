@@ -1256,6 +1256,10 @@ module Orsygenturfa'iVeritas where
       uit = {!!}
       open ≡-Reasoning
 
+    konkf : (x z : String)
+          → spit (x ++ "," ++ z) ≡ spit x ++ spit z
+    konkf = {!!}
+
     konk : (x z : String)
          → ',' ∉ x
          → spit (x ++ "," ++ z) ≡ 𝕊.toList x ∷ spit z
