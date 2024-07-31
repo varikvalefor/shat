@@ -595,9 +595,7 @@ module ReadMaybe'Veritas where
     where
     JN = just nothing
     RM = mapₘ just ∘ readMaybe
-    najdinis : {n : ℕ}
-             → (f : Fin n)
-             → show f ≡ᵇ "$" ≡ false
+    najdinis : {n : ℕ} → (f : Fin n) → show f ≡ᵇ "$" ≡ false
     najdinis f with show f ≟ "$"
     ... | no j = refl
     ... | yes d = readMaybe∘show f ⇒⇐ subst (_≢ _) d' (N⇒¬J rM$≡N)
