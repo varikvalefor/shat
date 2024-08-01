@@ -467,10 +467,7 @@ zmadekydu'i {x} {n} {m} = begin
   where
   DJ = dec-just (ℕ._≤ n) (x ℕ.≤? n) m
   iedek : {m n : ℕ} → (x z : m ℕ.≤ n) → x ≡ z
-  iedek ℕ.z≤n ℕ.z≤n = refl
-  iedek {suc m} {suc n} (ℕ.s≤s x) (ℕ.s≤s z) = I
-    where
-    I = iedek {m} {n} x z ▹ cong ℕ.s≤s
+  iedek = DNP.≤-irrelevant
   open ≡-Reasoning
 \end{code}
 
