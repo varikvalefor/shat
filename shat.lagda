@@ -603,7 +603,7 @@ module ReadMaybe'Veritas where
            → x ≡ nothing
            → {z : A}
            → ¬_ $ x ≡ just z
-      N⇒¬J = {!!}
+      N⇒¬J {x = nothing} refl ()
       ¬J = N⇒¬J rM$≡N
 
   justjust→namcu : {n : ℕ}
