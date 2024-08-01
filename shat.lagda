@@ -462,7 +462,7 @@ zmadekydu'i : {x n : ℕ}
             → decToMaybe (x ℕ.≤? n) ≡ just m
 zmadekydu'i {x} {n} {m} = begin
   decToMaybe (x ℕ.≤? n) ≡⟨ DJ ▹ proj₂ ⟩
-  just (proj₁ DJ) ≡⟨ DNP.≤-irrelevant (proj₁ DJ) m ▹ cong just ⟩
+  just (proj₁ DJ) ≡⟨ DNP.≤-irrelevant _ m ▹ cong just ⟩
   just m ∎
   where
   DJ = dec-just (ℕ._≤ n) (x ℕ.≤? n) m
