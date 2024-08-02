@@ -184,6 +184,7 @@ open import Data.String
     lines
   )
 open import Data.Product
+  as Σ
   using (
     uncurry;
     proj₂;
