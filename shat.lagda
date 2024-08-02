@@ -410,9 +410,9 @@ dec-just : ∀ {a p} → {A : Set a}
          → (P? : Dec $ P x)
          → (m : P x)
          → ∃ $ λ m → decToMaybe P? ≡ just m
-dec-just _ P? m = Data.Product.dmap id (cong decToMaybe) M
+dec-just _ P? m = Σ.dmap id (cong decToMaybe) $ dec-yes P? m
   where
-  M = Relation.Nullary.Decidable.dec-yes P? m
+  dec-yes = Relation.Nullary.Decidable.dec-yes
 \end{code}
 
 \section{la'o zoi.\ \F{dec-nothing}\ .zoi.}
