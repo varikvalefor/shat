@@ -745,7 +745,6 @@ module InsertVeritas where
     n' ↑ x ∎
     where
     n' = maybe 𝔽.toℕ (length x) n
-    open ≡-Reasoning
 
   remois : ∀ {a} → {A : Set a}
          → (x i : List A)
