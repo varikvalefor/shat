@@ -1082,7 +1082,7 @@ module RomoivimcuVeritas where
     fC = 𝕊.fromChar
     fL = 𝕊.fromList
     -1↓_ : ∀ {a} → {A : Set a} → List A → List A
-    -1↓_ = λ L → _↑ L $ 𝕃.length L ℕ.∸ 1
+    -1↓_ = λ L → _↑ L $ length L ℕ.∸ 1
     S = λ f → 𝕊.fromList ∘ f ∘ 𝕊.toList
     fL∘tL≡id : fL ∘ tL ≡ id
     fL∘tL≡id = {!!}
@@ -1093,7 +1093,7 @@ module RomoivimcuVeritas where
     -1↓_∘konk≡id [] _ = refl
     -1↓_∘konk≡id x@(_ ∷ _) e = begin
       -1↓_ (x ++ e ∷ []) ≡⟨ {!!} ⟩
-      (_↑ (x ++ e ∷ [])) (𝕃.length (x ++ e ∷ []) ℕ.∸ 1) ≡⟨ {!!} ⟩
+      (_↑ (x ++ e ∷ [])) (length (x ++ e ∷ []) ℕ.∸ 1) ≡⟨ {!!} ⟩
       length x ↑ (x ++ e ∷ []) ≡⟨ {!!} ⟩
       x ∎
 
