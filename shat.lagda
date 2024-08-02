@@ -1092,7 +1092,7 @@ module RomoivimcuVeritas where
                  → -1↓_ (xs ++ x ∷ []) ≡ xs
     -1↓_∘konk≡id [] _ = refl
     -1↓_∘konk≡id x@(_ ∷ _) e = begin
-      -1↓_ (x ++ e ∷ []) ≡⟨ {!!} ⟩
+      -1↓_ (x ++ e ∷ []) ≡⟨ refl ⟩
       (_↑ (x ++ e ∷ [])) (length (x ++ e ∷ []) ℕ.∸ 1) ≡⟨ {!!} ⟩
       length x ↑ (x ++ e ∷ []) ≡⟨ {!!} ⟩
       x ∎
