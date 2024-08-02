@@ -255,6 +255,7 @@ open import Relation.Nullary.Negation
   )
 open import Relation.Nullary.Decidable
   using (
+    dec-yes
   )
 open import Relation.Binary.PropositionalEquality
   using (
@@ -413,8 +414,6 @@ dec-just : ∀ {a p} → {A : Set a}
          → (m : P x)
          → ∃ $ λ m → decToMaybe P? ≡ just m
 dec-just _ = Σ.dmap id (cong decToMaybe) ∘₂ dec-yes
-  where
-  dec-yes = Relation.Nullary.Decidable.dec-yes
 \end{code}
 
 \section{la'o zoi.\ \F{dec-nothing}\ .zoi.}
