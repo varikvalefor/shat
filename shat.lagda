@@ -761,7 +761,7 @@ module InsertVeritas where
     i ∎
     where
     L = length
-    n' = maybe 𝔽.toℕ (length x) n
+    n' = maybe 𝔽.toℕ (L x) n
     x₁ = n' ↑ x
     x₂ = n' ↓ x
 
