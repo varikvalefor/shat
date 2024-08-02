@@ -727,7 +727,7 @@ module InsertVeritas where
     L x ℕ.+ L i ∎
     where
     L = length
-    n' = maybe 𝔽.toℕ (length x) n
+    n' = maybe 𝔽.toℕ (L x) n
 
   pamois : ∀ {a} → {A : Set a}
          → (x i : List A)
