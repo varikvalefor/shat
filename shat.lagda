@@ -1094,8 +1094,13 @@ module RomoivimcuVeritas where
     -1↓_∘konk≡id x@(_ ∷ _) e = begin
       -1↓_ (x ++ e ∷ []) ≡⟨ refl ⟩
       (_↑ (x ++ e ∷ [])) (length (x ++ e ∷ []) ℕ.∸ 1) ≡⟨ {!!} ⟩
-      length x ↑ (x ++ e ∷ []) ≡⟨ {!!} ⟩
+      length x ↑ (x ++ e ∷ []) ≡⟨ l[x]↑[x++z]≡x x $ e ∷ [] ⟩
       x ∎
+      where
+      l[x]↑[x++z]≡x : ∀ {a} → {A : Set a}
+                    → (x z : List A)
+                    → length x ↑ (x ++ z) ≡ x
+      l[x]↑[x++z]≡x = {!!}
 
   kunti : romoivimcu "" ≡ ""
   kunti = refl
