@@ -889,7 +889,7 @@ module fromℕ?Veritas where
     _ ≡⟨ DFP.fromℕ<-toℕ f (proj₁ DY) ▹ cong just ⟩
     just f ∎
     where
-    DY = Relation.Nullary.Decidable.dec-yes (_ ℕ.<? _) $ DFP.toℕ<n f
+    DY = dec-yes (_ ℕ.<? _) $ DFP.toℕ<n f
 \end{code}
 
 \section{la'oi .\F{degjygirzu}.}
@@ -2032,7 +2032,7 @@ module KanjyVeritas where
     where
     open ≡-Reasoning
     a' = mapₘ 𝔽.fromℕ< $ decToMaybe $ ℕ.suc (𝔽.toℕ a) ℕ.<? _
-    DY = Relation.Nullary.Decidable.dec-yes (_ ℕ.<? _) M
+    DY = dec-yes (_ ℕ.<? _) M
     F = just ∘ inj₂ ∘ Tciduᵢₒ "/dev/stdin"
 
   jminaz : (x : Buffer)
