@@ -1094,10 +1094,15 @@ module RomoivimcuVeritas where
     -1↓_∘konk≡id x@(_ ∷ _) e = begin
       -1↓_ (x ++ e ∷ []) ≡⟨ refl ⟩
       (length (x ++ e ∷ []) ℕ.∸ 1) ↑ (x ++ e ∷ []) ≡⟨ refl ⟩
-      _ ≡⟨ {!!} ▹ cong (_↑ (x ++ e ∷ [])) ⟩
+      _ ≡⟨ l[x++e∷[]]∸1≡l[x] x e ▹ cong (_↑ (x ++ e ∷ [])) ⟩
       length x ↑ (x ++ e ∷ []) ≡⟨ l[x]↑[x++z]≡x x $ e ∷ [] ⟩
       x ∎
       where
+      l[x++e∷[]]∸1≡l[x] : ∀ {a} → {A : Set a}
+                       → (x : List A)
+                       → (e : A)
+                       → length (x ++ e ∷ []) ℕ.∸ 1 ≡ length x
+      l[x++e∷[]]∸1≡l[x] = {!!}
       l[x]↑[x++z]≡x : ∀ {a} → {A : Set a}
                     → (x z : List A)
                     → length x ↑ (x ++ z) ≡ x
