@@ -1106,7 +1106,8 @@ module RomoivimcuVeritas where
       l[x]↑[x++z]≡x : ∀ {a} → {A : Set a}
                     → (x z : List A)
                     → length x ↑ (x ++ z) ≡ x
-      l[x]↑[x++z]≡x = {!!}
+      l[x]↑[x++z]≡x x [] = {!!}
+      l[x]↑[x++z]≡x x (z ∷ zs) = {!!}
 
   kunti : romoivimcu "" ≡ ""
   kunti = refl
