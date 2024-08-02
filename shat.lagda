@@ -410,7 +410,7 @@ dec-just : ∀ {a p} → {A : Set a}
          → (P? : Dec $ P x)
          → (m : P x)
          → ∃ $ λ m → decToMaybe P? ≡ just m
-dec-just _ P? m = Σ.dmap id (cong decToMaybe) $ dec-yes P? m
+dec-just _ = Σ.dmap id (cong decToMaybe) ∘₂ dec-yes
   where
   dec-yes = Relation.Nullary.Decidable.dec-yes
 \end{code}
