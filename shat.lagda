@@ -1091,11 +1091,11 @@ module RomoivimcuVeritas where
                  → (x : A)
                  → -1↓_ (xs ++ x ∷ []) ≡ xs
     -1↓_∘konk≡id [] _ = refl
-    -1↓_∘konk≡id (x ∷ xs) e = begin
-      -1↓_ (x ∷ xs ++ e ∷ []) ≡⟨ {!!} ⟩
-      (_↑ (x ∷ xs ++ e ∷ [])) (𝕃.length (x ∷ xs ++ e ∷ []) ℕ.∸ 1) ≡⟨ {!!} ⟩
-      length (x ∷ xs) ↑ (x ∷ xs ++ e ∷ []) ≡⟨ {!!} ⟩
-      (x ∷ xs) ∎
+    -1↓_∘konk≡id x@(_ ∷ _) e = begin
+      -1↓_ (x ++ e ∷ []) ≡⟨ {!!} ⟩
+      (_↑ (x ++ e ∷ [])) (𝕃.length (x ++ e ∷ []) ℕ.∸ 1) ≡⟨ {!!} ⟩
+      length x ↑ (x ++ e ∷ []) ≡⟨ {!!} ⟩
+      x ∎
 
   kunti : romoivimcu "" ≡ ""
   kunti = refl
