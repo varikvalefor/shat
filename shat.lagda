@@ -944,7 +944,7 @@ module DegjygirzuVeritas where
     -- | .i cicna finpe
     tilfic : tL ∘ fC ≗ 𝕃.[_]
     tilfic = toList∘fromChar
-    d' = 𝕃.map fL ∘_ $ 𝕃.wordsBy $ F? ∘ isDigit
+    d' = 𝕃.map fL ∘ (𝕃.wordsBy $ F? ∘ isDigit)
     fineg : {x : Bool}
           → false ≡ x
           → Data.Bool.T $ Data.Bool.not x
