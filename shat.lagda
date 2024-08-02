@@ -253,6 +253,9 @@ open import Relation.Nullary.Negation
   renaming (
     contradiction to _⇒⇐_
   )
+open import Relation.Nullary.Decidable
+  using (
+  )
 open import Relation.Binary.PropositionalEquality
   using (
     module ≡-Reasoning;
@@ -281,7 +284,6 @@ import Data.List.Properties
 import Data.Maybe.Instances
 import Data.Maybe.Properties
   as DMP
-import Relation.Nullary.Decidable
 import Data.List.Relation.Unary.All
   as 𝕃
   using (
