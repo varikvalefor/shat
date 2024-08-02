@@ -796,8 +796,7 @@ module InsertVeritas where
              → (x : List A)
              → {z : List A}
              → length x ↓ (x ++ z) ≡ z
-    dropydus [] = refl
-    dropydus (_ ∷ xs) = dropydus xs
+    dropydus = λ {[] → refl; (_ ∷ xs) → dropydus xs}
 \end{code}
 
 \section{la'o zoi.\ \F{\AgdaUnderscore{},ₘ\AgdaUnderscore}\ .zoi.}
