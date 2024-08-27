@@ -452,7 +452,7 @@ dekydu'i {x} {n} {m} = begin
   iedek (ℕ.s≤s ℕ.z≤n) (ℕ.s≤s ℕ.z≤n) = refl
   iedek {suc m} {suc n} (ℕ.s≤s x) (ℕ.s≤s z) = I
     where
-    I = iedek {m} {n} x z ▹ cong ℕ.s≤s
+    I = iedek x z ▹ cong ℕ.s≤s
   open ≡-Reasoning
 \end{code}
 
