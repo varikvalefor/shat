@@ -984,7 +984,7 @@ ni'o ro da xi pa poi ke'a na'e degji lerfu zo'u ro da xi re poi ke'a ctaipe la'o
 
 \begin{code}
 pamoinamcu : String → Maybe ℕ
-pamoinamcu = readMaybe <=< (𝕃.head ∘ degjygirzu)
+pamoinamcu = readMaybe <=< 𝕃.head ∘ degjygirzu
 \end{code}
 
 \subsection{le ctaipe be le su'u mapti fa la'oi .\F{pamoinamcu}.}
