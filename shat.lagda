@@ -1347,7 +1347,7 @@ module Orsygenturfa'iVeritas where
       _ ≡⟨ DN ▹ cong (mapₘ $ _ ,_) ⟩
       nothing ∎
       where
-      DN = dec-nothing (𝔽._≤ z) (x 𝔽.≤? z) j
+      DN = dec-nothing (𝔽._≤ _) (x 𝔽.≤? z) j
       open ≡-Reasoning
 
   pav : ((x : ℕ) → readMaybe (show x) ≡ just x)
