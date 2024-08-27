@@ -923,7 +923,7 @@ module DegjygirzuVeritas where
   rybic : (s : String)
         → (c : Char)
         → false ≡ isDigit c
-        → ((degjygirzu s) ≡ (degjygirzu $ 𝕊.fromChar c ++ s))
+        → (degjygirzu s) ≡ (degjygirzu $ 𝕊.fromChar c ++ s)
   rybic s c j = sym $ begin
     degjygirzu (𝕊.fromChar c ++ s) ≡⟨ refl ⟩
     degjygirzu (fC c ++ s) ≡⟨ refl ⟩
