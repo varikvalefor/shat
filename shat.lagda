@@ -1212,11 +1212,11 @@ module Orsygenturfa'iVeritas where
               → e ∉_ $ x ∷ xs
               → e ∉ xs
         ∉⇒∉₋₁ {xs = []} d = refl
-        ∉⇒∉₋₁ {e = e} {xs = z ∷ zs} = f[x∷xs]≡[]⇒f[xs]≡[] _ _ $ e ≟_
+        ∉⇒∉₋₁ {e = e} {xs = z ∷ zs} = f[x∷xs]≡[]⇒f[xs]≡[] $ e ≟_
           where
           f[x∷xs]≡[]⇒f[xs]≡[] : ∀ {a p} → {A : Set a}
-                              → (x : A)
-                              → (xs : List A)
+                              → {x : A}
+                              → {xs : List A}
                               → {P : Pred A p}
                               → (P? : Decidable P)
                               → 0 ≡_ $ length $ 𝕃.filter P? $ x ∷ xs
