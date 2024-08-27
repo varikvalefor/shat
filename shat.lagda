@@ -1274,7 +1274,7 @@ module Orsygenturfa'iVeritas where
     konk = {!!}
 
   module Ps where
-    du : (readMaybe ∘ show ≗ just)
+    du : readMaybe ∘ show ≗ just
        → {n : ℕ}
        → (x : Fin n)
        → just x ≡ ps (𝕊.toList $ show $ 𝔽.toℕ x)
