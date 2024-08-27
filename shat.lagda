@@ -917,7 +917,7 @@ module DegjygirzuVeritas where
     mL = 𝕃.map 𝕊.fromList
     show' = 𝕊.toList ∘ show
     d = 𝕃.wordsBy $ T? ∘ Data.Bool.not ∘ isDigit
-    didus : (n : ℕ) → d (show' n) ≡ show' n ∷ []
+    didus : d ∘ show' ≗ (_∷ []) ∘ show'
     didus = {!!}
 
   rybic : (s : String)
