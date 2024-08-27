@@ -440,8 +440,8 @@ ni'o xu sarcu fa lo nu la .varik.\ cu ciksi la \F{dekydu'i} bau la .lojban.
 
 \begin{code}
 dekydu'i : {x n : ℕ}
-         → {m : x ℕ.< n}
-         → decToMaybe (x ℕ.<? n) ≡ just m
+         → {mel : x ℕ.< n}
+         → decToMaybe (x ℕ.<? n) ≡ just mel
 dekydu'i {x} {n} {m} = begin
   decToMaybe (x ℕ.<? n) ≡⟨ DJ ▹ proj₂ ⟩
   just (proj₁ DJ) ≡⟨ iedek (proj₁ DJ) m ▹ cong just ⟩
