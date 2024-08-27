@@ -994,7 +994,7 @@ pamoinamcu = readMaybe <=< (𝕃.head ∘ degjygirzu)
 module PamoinamcuVeritas where
   open ≡-Reasoning
 
-  non : ((n : ℕ) → readMaybe (show n) ≡ just n)
+  non : (readMaybe ∘ show ≗ just)
       → id ≗ 𝕊.fromList ∘ 𝕊.toList
       → just ≗ pamoinamcu ∘ show
   non rimco fL∘tL n = sym $ begin
