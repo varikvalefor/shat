@@ -1186,7 +1186,7 @@ module Orsygenturfa'iVeritas where
             → {xs : List A}
             → e ∉ (x ∷ xs)
             → x ≢ e
-        ∉⇒≢ {e = e} {x} {xs} nin with x ≟ e
+        ∉⇒≢ {e = e} {x} {xs} nin with x ≟ _
         ... | yes d = ≡⇒∈ _ _ xs (sym d) ⇒⇐ ∉⇒¬∈ _ (x ∷ xs) nin
           where
           ≡⇒∈ : ∀ {a} → {A : Set a}
