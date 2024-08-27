@@ -171,6 +171,7 @@ open import Data.Maybe
   using (
     decToMaybe;
     from-just;
+    Is-just;
     nothing;
     Maybe;
     maybe;
@@ -1885,7 +1886,7 @@ module ReedVeritas where
       where
       consunwords : ∀ {a} → {A : Set a}
                   → {xs : List A}
-                  → (j : Data.Maybe.Is-just $ 𝕃.uncons xs)
+                  → (j : Is-just $ 𝕃.uncons xs)
                   → let j' = Data.Maybe.to-witness j in
                     xs ≡ proj₁ j' ∷ proj₂ j'
       consunwords {xs = _ ∷ _} (DMA.just j) = refl
