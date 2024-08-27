@@ -995,7 +995,7 @@ module PamoinamcuVeritas where
   open ≡-Reasoning
 
   non : ((n : ℕ) → readMaybe (show n) ≡ just n)
-      → ((x : String) → x ≡ 𝕊.fromList (𝕊.toList x))
+      → (id ≗ (𝕊.fromList ∘ 𝕊.toList))
       → (n : ℕ) → just n ≡ pamoinamcu (show n)
   non rimco fL∘tL n = sym $ begin
     pamoinamcu (show n) ≡⟨ refl ⟩
