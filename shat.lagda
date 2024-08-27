@@ -996,7 +996,7 @@ module PamoinamcuVeritas where
 
   non : ((n : ℕ) → readMaybe (show n) ≡ just n)
       → id ≗ 𝕊.fromList ∘ 𝕊.toList
-      → (n : ℕ) → just n ≡ pamoinamcu (show n)
+      → just ≗ pamoinamcu ∘ show
   non rimco fL∘tL n = sym $ begin
     pamoinamcu (show n) ≡⟨ refl ⟩
     𝕃.head (s $ show n) >>= readMaybe ≡⟨ refl ⟩
