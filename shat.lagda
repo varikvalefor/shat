@@ -496,7 +496,7 @@ fromList-dist = {!!}
 ni'o xu sarcu fa lo nu ciksi bau la .lojban.
 
 \begin{code}
-readMaybe∘show : {n : ℕ} → (readMaybe ∘ show) ≗ just {A = Fin n}
+readMaybe∘show : {n : ℕ} → readMaybe ∘ show ≗ just {A = Fin n}
 readMaybe∘show = {!!}
 \end{code}
 
