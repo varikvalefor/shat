@@ -513,7 +513,7 @@ fromList∘toList = {!!}
 ni'o xu sarcu fa lo nu ciksi bau la .lojban.
 
 \begin{code}
-toList∘fromChar : (c : Char) → 𝕊.toList (𝕊.fromChar c) ≡ c ∷ []
+toList∘fromChar : 𝕊.toList ∘ 𝕊.fromChar ≗ (_∷ [])
 toList∘fromChar = {!!}
 \end{code}
 
