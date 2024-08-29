@@ -1237,7 +1237,8 @@ module Orsygenturfa'iVeritas where
       w (tL x ++ tL "," ++ tL z) ≡⟨ refl ⟩
       w (tL x ++ ',' ∷ tL z) ≡⟨ uit _ (tL x) _ (F inx) (F inz) _ refl ⟩
       w (tL x) ++ w (tL z) ≡⟨ {!!} ⟩
-      (tL x ∷ []) ++ w (tL z) ≡⟨ (w (tL z) ≡ (tL z ∷ [])) ∋ {!!} ▹ cong ((tL x ∷ []) ++_) ⟩
+      (tL x ∷ []) ++ w (tL z) ≡⟨ refl ⟩
+      _ ≡⟨ (w (tL z) ≡ (tL z ∷ [])) ∋ {!!} ▹ cong ((tL x ∷ []) ++_) ⟩
       (tL x ∷ []) ++ (tL z ∷ []) ≡⟨ refl ⟩
       tL x ∷ tL z ∷ [] ∎
       where
