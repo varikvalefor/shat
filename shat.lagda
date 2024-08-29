@@ -1279,7 +1279,7 @@ module Orsygenturfa'iVeritas where
        → just x ≡ ps (𝕊.toList $ show $ 𝔽.toℕ x)
     du rimco x = sym $ begin
       ps (𝕊.toList $ show x) ≡⟨ refl ⟩
-      b𝔽 (rM $ id' $ show x) ≡⟨ cvd x ▹ cong (b𝔽 ∘ rM) ⟩
+      b𝔽 (rM $ id' $ show x) ≡⟨ id'∘show≡show x ▹ cong (b𝔽 ∘ rM) ⟩
       b𝔽 (rM $ show x) ≡⟨ rimco (𝔽.toℕ x) ▹ cong b𝔽 ⟩
       b𝔽 (just $ 𝔽.toℕ x) ≡⟨ refl ⟩
       just (𝔽.toℕ x) >>= fromℕ? ≡⟨ refl ⟩
@@ -1293,8 +1293,8 @@ module Orsygenturfa'iVeritas where
       rM = readMaybe
       b𝔽 = _>>= fromℕ?
       id' = 𝕊.fromList ∘ 𝕊.toList
-      cvd : {n : ℕ} → (x : Fin n) → id' (show x) ≡ show x
-      cvd = fromList∘toList ∘ show
+      id'∘show≡show : {n : ℕ} → (x : Fin n) → id' (show x) ≡ show x
+      id'∘show≡show = fromList∘toList ∘ show
       open ≡-Reasoning
 
     nada : (j : String)
