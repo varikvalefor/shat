@@ -505,7 +505,7 @@ readMaybe∘show = {!!}
 ni'o xu sarcu fa lo nu ciksi bau la .lojban.
 
 \begin{code}
-fromList∘toList : (x : String) → 𝕊.fromList (𝕊.toList x) ≡ x
+fromList∘toList : 𝕊.fromList ∘ 𝕊.toList ≗ id
 fromList∘toList = {!!}
 \end{code}
 
