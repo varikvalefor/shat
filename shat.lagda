@@ -477,7 +477,7 @@ ni'o xu sarcu fa lo nu ciksi bau la .lojban.
 
 \begin{code}
 toList-dist : (x z : String)
-            → 𝕊.toList (x ++ z) ≡ 𝕊.toList x ++ 𝕊.toList z
+            → 𝕊.toList (x ++ z) ≡ (_++_ on 𝕊.toList) x z
 toList-dist = {!!}
 \end{code}
 
