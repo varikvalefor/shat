@@ -468,7 +468,7 @@ zmadekydu'i {x} {n} {m} = begin
   just _ ≡⟨ DNP.≤-irrelevant _ m ▹ cong just ⟩
   just m ∎
   where
-  DJ = dec-just (ℕ._≤ n) (x ℕ.≤? n) m
+  DJ = dec-just (ℕ._≤ n) (_ ℕ.≤? n) m
   open ≡-Reasoning
 \end{code}
 
