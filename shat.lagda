@@ -1210,7 +1210,7 @@ module Orsygenturfa'iVeritas where
               → {xs : List A}
               → e ∉_ $ x ∷ xs
               → e ∉ xs
-        ∉⇒∉₋₁ {xs = []} d = refl
+        ∉⇒∉₋₁ {xs = []} _ = refl
         ∉⇒∉₋₁ {e = e} {xs = z ∷ zs} = f[x∷xs]≡[]⇒f[xs]≡[] $ e ≟_
           where
           f[x∷xs]≡[]⇒f[xs]≡[] : ∀ {a p} → {A : Set a}
