@@ -1520,8 +1520,7 @@ module Orsygenturfa'i₃Veritas where
     ax : Maybe $ Σ (Fin _ × Fin _) $ uncurry 𝔽._≤_
     ax = R >>= λ (a' , b') → Orsygenturfa'i.pork $ just a' ∷ just b' ∷ []
     rimcos : {n : ℕ}
-           → (x : Fin n)
-           → readMaybe' (show x) ≡ just (just x)
+           → readMaybe' ∘ show ≗ just ∘ just {A = Fin n}
     rimcos = ReadMaybe'Veritas.namcu
     open ≡-Reasoning
     ax≡justabd : ax ≡_ $ just $ (a , b) , d
