@@ -487,7 +487,7 @@ ni'o xu sarcu fa lo nu ciksi bau la .lojban.
 \begin{code}
 fromList-dist : (x z : List Char)
               → (_≡_
-                  (𝕊.fromList $ x ++ z)
+                  (𝕊.fromList $ _++_ x z)
                   ((_++_ on 𝕊.fromList) x z))
 fromList-dist = {!!}
 \end{code}
