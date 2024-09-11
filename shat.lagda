@@ -1263,7 +1263,11 @@ module Orsygenturfa'iVeritas where
 
     konkf : (x z : String)
           → spit (x ++ "," ++ z) ≡ spit x ++ spit z
-    konkf = {!!}
+    konkf = λ x z → begin
+      spit (x ++ "," ++ z) ≡⟨ {!!} ⟩
+      spit x ++ spit z ∎
+      where
+      open ≡-Reasoning
 
     konk : (x z : String)
          → ',' ∉ x
