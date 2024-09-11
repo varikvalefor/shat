@@ -1525,7 +1525,7 @@ module Orsygenturfa'i₃Veritas where
            → readMaybe' ∘ show ≗ just ∘ just {A = Fin n}
     rimcos = ReadMaybe'Veritas.namcu
     open ≡-Reasoning
-    ax≡justabd : ax ≡_ $ just $ (a , b) , d
+    ax≡justabd : ax ≡ just ((a , b) , d)
     ax≡justabd = begin
       ax ≡⟨ refl ⟩
       (R >>= jminaCtaipe) ≡⟨ R≡justab ▹ cong (_>>= jminaCtaipe) ⟩
