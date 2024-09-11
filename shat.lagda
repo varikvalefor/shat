@@ -1104,7 +1104,7 @@ module RomoivimcuVeritas where
         length (e ∷ x ∷ xs) ℕ.∸ 1 ≡⟨ refl ⟩
         length (x ∷ xs) ∎
         where
-        D = length ((x ∷ xs) ++ e ∷ []) ≡ length (e ∷ (x ∷ xs))
+        D = length ((x ∷ xs) ++ e ∷ []) ≡ length (e ∷ x ∷ xs)
       l[x]↑[x++z]≡x : ∀ {a} → {A : Set a}
                     → (x z : List A)
                     → length x ↑ (x ++ z) ≡ x
