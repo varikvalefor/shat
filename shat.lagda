@@ -486,9 +486,9 @@ ni'o xu sarcu fa lo nu ciksi bau la .lojban.
 
 \begin{code}
 fromList-dist : (x z : List Char)
-              → (_≡_
-                  (𝕊.fromList $ _++_ x z)
-                  ((_++_ on 𝕊.fromList) x z))
+              → ((_≡_ on λ f → f x z)
+                  (𝕊.fromList ∘₂ _++_)
+                  ((_++_ on 𝕊.fromList)))
 fromList-dist = {!!}
 \end{code}
 
