@@ -1097,8 +1097,10 @@ module RomoivimcuVeritas where
                        → (x : List A)
                        → (e : A)
                        → length (x ++ e ∷ []) ℕ.∸ 1 ≡ length x
-      l[x++e∷[]]∸1≡l[x] [] e = {!!}
-      l[x++e∷[]]∸1≡l[x] (x ∷ xs) e = {!!}
+      l[x++e∷[]]∸1≡l[x] [] e = refl
+      l[x++e∷[]]∸1≡l[x] (x ∷ xs) e = begin
+        length ((x ∷ xs) ++ e ∷ []) ℕ.∸ 1 ≡⟨ {!!} ⟩
+        length (x ∷ xs) ∎
       l[x]↑[x++z]≡x : ∀ {a} → {A : Set a}
                     → (x z : List A)
                     → length x ↑ (x ++ z) ≡ x
