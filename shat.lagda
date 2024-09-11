@@ -1101,7 +1101,7 @@ module RomoivimcuVeritas where
       l[x++e∷[]]∸1≡l[x] (x ∷ xs) e = begin
         length ((x ∷ xs) ++ e ∷ []) ℕ.∸ 1 ≡⟨ refl ⟩
         _ ≡⟨ D ∋ {!!} ▹ cong (ℕ._∸ 1) ⟩
-        length (e ∷ (x ∷ xs)) ℕ.∸ 1 ≡⟨ refl ⟩
+        length (e ∷ x ∷ xs) ℕ.∸ 1 ≡⟨ refl ⟩
         length (x ∷ xs) ∎
         where
         D = length ((x ∷ xs) ++ e ∷ []) ≡ length (e ∷ (x ∷ xs))
