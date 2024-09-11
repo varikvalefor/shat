@@ -521,10 +521,9 @@ ni'o la .varik.\ na jinvi le du'u sarcu fa lo nu ciksi fo lo lojbo
 
 \begin{code}
 romoitcar : (s : String)
-          → (c : Char)
-          → (flip _≡_
-              (just c)
-              (𝕃.last $ 𝕊.toList $ s ++ 𝕊.fromChar c))
+          → (flip _≗_
+              just
+              (𝕃.last ∘ 𝕊.toList ∘ (s ++_) ∘ 𝕊.fromChar))
 romoitcar s c = begin
   𝕃.last (𝕊.toList $ s ++ 𝕊.fromChar c) ≡⟨ refl ⟩
   _ ≡⟨ toList-dist s _ ▹ cong 𝕃.last ⟩
