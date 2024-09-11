@@ -1100,7 +1100,7 @@ module RomoivimcuVeritas where
       l[x++e∷[]]∸1≡l[x] [] e = refl
       l[x++e∷[]]∸1≡l[x] (x ∷ xs) e = begin
         length ((x ∷ xs) ++ e ∷ []) ℕ.∸ 1 ≡⟨ {!!} ⟩
-        length (e ∷ (x ∷ xs)) ℕ.∸ 1 ≡⟨ {!!} ⟩
+        length (e ∷ (x ∷ xs)) ℕ.∸ 1 ≡⟨ refl ⟩
         length (x ∷ xs) ∎
       l[x]↑[x++z]≡x : ∀ {a} → {A : Set a}
                     → (x z : List A)
