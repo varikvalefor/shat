@@ -198,7 +198,8 @@ open import Data.Product
 open import Relation.Unary
   using (
     Decidable;
-    Pred
+    Pred;
+    _⊆_
   )
 open import Relation.Nullary
   using (
@@ -1930,7 +1931,7 @@ module ReedVeritas where
           ∷-w s n with 𝕊.toList s ≟ []
           ... | yes d = tL≡[]→x≡s[] d ⇒⇐ n
             where
-            tL≡[]→x≡s[] : (λ x → 𝕊.toList x ≡ []) Relation.Unary.⊆ (_≡ "")
+            tL≡[]→x≡s[] : (λ x → 𝕊.toList x ≡ []) ⊆ (_≡ "")
             tL≡[]→x≡s[] = {!!}
           ... | no j = {!!}
       unwords-dist : (x : String)
