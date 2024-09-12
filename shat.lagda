@@ -1932,7 +1932,8 @@ module ReedVeritas where
           ... | yes d = tL≡[]→x≡s[] d ⇒⇐ n
             where
             tL≡[]→x≡s[] : ((_≡ []) ∘ 𝕊.toList) ⊆ (_≡ "")
-            tL≡[]→x≡s[] = {!!}
+            tL≡[]→x≡s[] {""} d = {!!}
+            tL≡[]→x≡s[] {x} d = {!!}
           ... | no j = {!!}
       unwords-dist : (x : String)
                    → (z : List String)
