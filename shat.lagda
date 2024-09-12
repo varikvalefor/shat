@@ -1544,7 +1544,7 @@ module Orsygenturfa'i₃Veritas where
       where
       jminaCtaipe : {n : ℕ}
                   → Fin n × Fin n
-                  → Maybe $ Σ (Fin n × Fin n) $ uncurry 𝔽._≤_
+                  → Maybe $ Σ (Fin n × _) $ uncurry 𝔽._≤_
       jminaCtaipe (a , b) = Orsygenturfa'i.pork $ just a ∷ just b ∷ []
       R≡justab : R ≡ just (a , b)
       R≡justab = begin
