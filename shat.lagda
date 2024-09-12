@@ -1921,7 +1921,7 @@ module ReedVeritas where
                → (s : String)
                → (Σ
                    (String × List String)
-                   (λ (x , xs) → w (𝕊.fromChar c ++ s) ≡ x ∷ xs))
+                   ((w (𝕊.fromChar c ++ s) ≡_) ∘ uncurry _∷_))
         w-++-∷ c s = ∷-w (𝕊.fromChar c ++ s) {!!}
           where
           ∷-w : (s : String)
