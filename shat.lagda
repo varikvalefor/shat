@@ -1930,9 +1930,7 @@ module ReedVeritas where
           ∷-w s n with 𝕊.toList s ≟ []
           ... | yes d = tL≡[]→x≡s[] d ⇒⇐ n
             where
-            tL≡[]→x≡s[] : {x : String}
-                        → 𝕊.toList x ≡ []
-                        → x ≡ ""
+            tL≡[]→x≡s[] : {x : String} → 𝕊.toList x ≡ [] → x ≡ ""
             tL≡[]→x≡s[] = {!!}
           ... | no j = {!!}
       unwords-dist : (x : String)
