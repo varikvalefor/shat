@@ -1922,7 +1922,7 @@ module ReedVeritas where
                → (Σ
                    (String × List String)
                    ((w (𝕊.fromChar c ++ s) ≡_) ∘ uncurry _∷_))
-        w-++-∷ c s = ∷-w (𝕊.fromChar c ++ s) {!!}
+        w-++-∷ c s = ∷-w (𝕊.fromChar c ++ _) {!!}
           where
           ∷-w : (s : String)
               → ¬_ $ s ≡ ""
