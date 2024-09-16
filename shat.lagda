@@ -576,8 +576,7 @@ module ReadMaybe'Veritas where
   jdini = refl
 
   namcu : {n : ℕ}
-        → (f : Fin n)
-        → readMaybe' (show f) ≡ just (just f)
+        → readMaybe' {n} ∘ show ≗ just ∘ just
   namcu f = begin
     readMaybe' (show f) ≡⟨ refl ⟩
     if (show f ≡ᵇ "$") JN (RM $ show f) ≡⟨ refl ⟩
