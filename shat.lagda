@@ -595,7 +595,7 @@ module ReadMaybe'Veritas where
     ... | yes d = readMaybe∘show f ⇒⇐ subst (_≢ _) d' ¬J
       where
       d' = d ▹ sym ▹ cong readMaybe
-      rM$≡N : {n : ℕ} → readMaybe {A = Fin n} "$" ≡ nothing
+      rM$≡N : {n : ℕ} → readMaybe "$" ≡ nothing {A = Fin n} 
       rM$≡N = {!!}
       N⇒¬J : ∀ {a} → {A : Set a}
            → {x : Maybe A}
