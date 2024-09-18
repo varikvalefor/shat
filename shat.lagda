@@ -1645,7 +1645,7 @@ module Reed where
     g : {x : Buffer}
       → (a b : Buffer.F x)
       → Maybe $ Buffer.F x
-      → (a 𝔽.≤ b)
+      → a 𝔽.≤ b
       → Char
       → Maybe $ Cmd x
     g a b c d x with x
