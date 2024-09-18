@@ -1806,7 +1806,7 @@ module ReedVeritas where
       just 'a' ∎
     rms≡[pK>>=fℕ?] : rms a ≡ pamoinamcu K >>= fromℕ?
     rms≡[pK>>=fℕ?] = sym $ begin
-      pamoinamcu K >>= fromℕ? ≡⟨ {!!} ⟩
+      pamoinamcu K >>= fromℕ? ≡⟨ (pamoinamcu K ≡ just (𝔽.toℕ a)) ∋ {!!} ▹ cong (_>>= fromℕ?) ⟩
       just (𝔽.toℕ a) >>= fromℕ? ≡⟨ refl ⟩
       fromℕ? (𝔽.toℕ a) ≡⟨ {!!} ⟩
       just a ≡⟨ {!!} ⟩
