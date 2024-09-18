@@ -1800,6 +1800,7 @@ module ReedVeritas where
     silkas : sl K ≡ just 'a'
     silkas = begin
       sl K ≡⟨ {!!} ⟩
+      𝕃.last (𝕊.toList K) ≡⟨ {!!} ⟩
       just 'a' ∎
     rms≡[pK>>=fℕ?] : rms a ≡ pamoinamcu K >>= fromℕ?
     rms≡[pK>>=fℕ?] = sym $ begin
