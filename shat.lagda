@@ -1803,6 +1803,7 @@ module ReedVeritas where
       pamoinamcu K >>= fromℕ? ≡⟨ {!!} ⟩
       just (𝔽.toℕ a) >>= fromℕ? ≡⟨ refl ⟩
       fromℕ? (𝔽.toℕ a) ≡⟨ {!!} ⟩
+      just a ≡⟨ {!!} ⟩
       rms a ∎
 
   ic : (x : Buffer)
