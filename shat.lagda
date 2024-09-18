@@ -1802,6 +1802,7 @@ module ReedVeritas where
       sl K ≡⟨ {!!} ⟩
       𝕃.last (𝕊.toList K) ≡⟨ {!!} ⟩
       𝕃.last (𝕊.toList $ k₁ x a 'a') ≡⟨ {!!} ⟩
+      𝕃.last (𝕊.toList $ show (𝔽.toℕ a) ++ 𝕊.fromChar 'a') ≡⟨ {!!} ⟩
       just 'a' ∎
     rms≡[pK>>=fℕ?] : rms a ≡ pamoinamcu K >>= fromℕ?
     rms≡[pK>>=fℕ?] = sym $ begin
