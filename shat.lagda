@@ -859,7 +859,7 @@ module fromℕ?Veritas where
 
   jusid : {n : ℕ}
         → (f : Fin n)
-        → _≡_ (fromℕ? {n} $ 𝔽.toℕ f) (just f)
+        → (fromℕ? {n} $ 𝔽.toℕ f) ≡ (just f)
   jusid = {!!}
 
   nada : {n : ℕ}
