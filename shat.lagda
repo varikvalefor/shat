@@ -1779,7 +1779,7 @@ module ReedVeritas where
     reed x K ≡⟨ {!!} ⟩
     Reed.Pa.t K ≡⟨ refl ⟩
     _,ₘ_ (pamoinamcu K >>= fromℕ?) (sl K) >>= g' ≡⟨ refl ⟩
-    _ ≡⟨ [pK>>=fℕ?]≡rms ▹ cong (λ x → _,ₘ_ x (sl K) >>= g') ⟩
+    _ ≡⟨ rms≡[pK>>=fℕ?] ▹ sym ▹ cong (λ x → _,ₘ_ x (sl K) >>= g') ⟩
     _,ₘ_ (rms a) (sl K) >>= g' ≡⟨ refl ⟩
     _ ≡⟨ silkas ▹ cong (λ c → _,ₘ_ (rms a) c >>= g') ⟩
     _,ₘ_ (rms a) (just 'a') >>= g' ≡⟨ refl ⟩
@@ -1798,8 +1798,8 @@ module ReedVeritas where
     silkas = begin
       sl K ≡⟨ {!!} ⟩
       just 'a' ∎
-    [pK>>=fℕ?]≡rms : pamoinamcu K >>= fromℕ? ≡ rms a
-    [pK>>=fℕ?]≡rms = begin
+    rms≡[pK>>=fℕ?] : rms a ≡ pamoinamcu K >>= fromℕ?
+    rms≡[pK>>=fℕ?] = sym $ begin
       pamoinamcu K >>= fromℕ? ≡⟨ {!!} ⟩
       just (𝔽.toℕ a) >>= fromℕ? ≡⟨ refl ⟩
       fromℕ? (𝔽.toℕ a) ≡⟨ {!!} ⟩
