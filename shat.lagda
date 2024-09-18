@@ -854,7 +854,7 @@ module fromℕ?Veritas where
     where
     id' = 𝔽.toℕ ∘ 𝔽.fromℕ<
     c? : (x : ℕ) → Maybe $ x ℕ.< n
-    c? = decToMaybe ∘ (ℕ._<? n)
+    c? = decToMaybe ∘ (ℕ._<? _)
     mapmapi = sym ∘ DMP.map-compose
 
   jusid : {n : ℕ} → just ≗ fromℕ? {n} ∘ 𝔽.toℕ
