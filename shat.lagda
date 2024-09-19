@@ -1456,8 +1456,7 @@ module Orsygenturfa'i₃Veritas where
   lisporv _ _ _ = refl
 
   lisporn : (x : List $ List String)
-          → (¬_ $ Σ
-              _
+          → (¬_ $ ∃
               (λ (a , b , c) → (x ≡ (a ∷ []) ∷ (b ∷ c ∷ []) ∷ [])))
           → lispork x ≡ nothing
   lisporn ((a ∷ []) ∷ (b ∷ c ∷ []) ∷ []) N = (_ , refl) ⇒⇐ N
