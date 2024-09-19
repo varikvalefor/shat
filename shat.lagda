@@ -1939,7 +1939,7 @@ module ReedVeritas where
           ∷-w s n with 𝕊.toList s ≟ []
           ... | yes d = tL≡[]→x≡s[] d ⇒⇐ n
             where
-            tL≡[]→x≡s[] : ((_≡ []) ∘ 𝕊.toList) ⊆ (_≡ "")
+            tL≡[]→x≡s[] : (_≡ []) ∘ 𝕊.toList ⊆ (_≡ "")
             tL≡[]→x≡s[] {""} refl = refl
             tL≡[]→x≡s[] {x} d = {!!}
           ... | no j = {!!}
