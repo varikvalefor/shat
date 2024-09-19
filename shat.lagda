@@ -1073,7 +1073,7 @@ module RomoivimcuVeritas where
     fL (-1↓_ $ tL s ++ tL (fC c)) ≡⟨ refl ⟩
     _ ≡⟨ toList∘fromChar c ▹ cong (fL ∘ -1↓_ ∘ (tL s ++_)) ⟩
     fL (-1↓_ $ tL s ++ c ∷ []) ≡⟨ -1↓_∘konk≡id (tL s) c ▹ cong fL ⟩
-    fL (tL s) ≡⟨ fL∘tL≡id ▹ cong (_$ s) ⟩
+    fL (tL s) ≡⟨ fL∘tL≡id s ⟩
     s ∎
     where
     tL = 𝕊.toList
@@ -1082,7 +1082,7 @@ module RomoivimcuVeritas where
     -1↓_ : ∀ {a} → {A : Set a} → List A → List A
     -1↓_ = λ L → _↑ L $ length L ℕ.∸ 1
     S = λ f → 𝕊.fromList ∘ f ∘ 𝕊.toList
-    fL∘tL≡id : fL ∘ tL ≡ id
+    fL∘tL≡id : fL ∘ tL ≗ id
     fL∘tL≡id = {!!}
     -1↓_∘konk≡id : ∀ {a} → {A : Set a}
                  → (xs : List A)
@@ -2003,7 +2003,7 @@ kanji {x} (Basti a b d) = kanji {x'} $ Jmini a'
   where
   a' = 𝔽.fromℕ< {𝔽.toℕ a} {!!}
   x' = proj₁ $ kanji {x} $ Vimcu a b d
-kanji {x} (Xruti n) = {!!}
+kanji {x} (Xruti n) = {!!} , {!!}
 \end{code}
 
 \subsection{le ctaipe be le su'u la \F{kanji}\ cu mapti}
