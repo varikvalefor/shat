@@ -2406,7 +2406,7 @@ _<=<ᵢₒ_ : ∀ {a}
         → (A → IO B)
         → A
         → IO C
-_<=<ᵢₒ_ g = _∘_ (IO._>>= g)
+_<=<ᵢₒ_ g = _∘_ $ IO._>>= g
 \end{code}
 
 \section{la'oi .\F{main}.}
