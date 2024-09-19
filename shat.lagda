@@ -1433,7 +1433,7 @@ module Orsygenturfa'i₃ where
   orsygenturfa'i₃ : {n : ℕ}
                   → String
                   → (Maybe $ _×_
-                      (Σ (Fin n × _) $ uncurry 𝔽._≤_)
+                      (Σ _ $ uncurry {A = Fin n} 𝔽._≤_)
                       (Maybe $ Fin n))
   orsygenturfa'i₃ = pork <=< orsispita
 
