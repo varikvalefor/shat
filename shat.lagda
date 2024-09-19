@@ -1461,6 +1461,7 @@ module Orsygenturfa'i₃Veritas where
               (λ (a , b , c) → (x ≡ (a ∷ []) ∷ (b ∷ c ∷ []) ∷ [])))
           → lispork x ≡ nothing
   lisporn ((a ∷ []) ∷ (b ∷ c ∷ []) ∷ []) = _⇒⇐_ (_ , refl)
+  lisporn [] N = {!!}
   lisporn x N = {!!}
 
   lisporn' : (x : List $ List String)
