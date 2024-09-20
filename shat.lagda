@@ -876,8 +876,7 @@ module fromℕ?Veritas where
     MC = DMP.map-compose $ d2m $ x ℕ.<? n
     DN = dec-nothing (ℕ._< _) (x ℕ.<? n) J
 
-  fromℕ?∘toℕ : {n : ℕ}
-             → fromℕ? ∘ 𝔽.toℕ ≗ just {A = Fin n}
+  fromℕ?∘toℕ : {n : ℕ} → fromℕ? ∘ 𝔽.toℕ ≗ just {A = Fin n}
   fromℕ?∘toℕ {n} f = begin
     fromℕ? (𝔽.toℕ f) ≡⟨ refl ⟩
     mapₘ 𝔽.fromℕ< (decToMaybe $ (ℕ._<? _) $ 𝔽.toℕ f) ≡⟨ refl ⟩
