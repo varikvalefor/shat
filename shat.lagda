@@ -877,8 +877,7 @@ module fromℕ?Veritas where
     DN = dec-nothing (ℕ._< _) (x ℕ.<? n) J
 
   fromℕ?∘toℕ : {n : ℕ}
-             → (f : Fin n)
-             → fromℕ? (𝔽.toℕ f) ≡ just f
+             → fromℕ? ∘ 𝔽.toℕ ≗ just {A = Fin n}
   fromℕ?∘toℕ {n} f = begin
     fromℕ? (𝔽.toℕ f) ≡⟨ refl ⟩
     mapₘ 𝔽.fromℕ< (decToMaybe $ (ℕ._<? _) $ 𝔽.toℕ f) ≡⟨ refl ⟩
