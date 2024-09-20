@@ -59,6 +59,7 @@
 \newunicodechar{ℓ}{\ensuremath{\mathnormal\ell}}
 \newunicodechar{χ}{\ensuremath{\mathnormal\chi}}
 \newunicodechar{⊃}{\ensuremath{\mathnormal\supset}}
+\newunicodechar{⊆}{\ensuremath{\mathnormal\subseteq}}
 \newunicodechar{▹}{\ensuremath{\mathnormal\triangleright}}
 \newunicodechar{⊔}{\ensuremath{\mathnormal\sqcup}}
 \newunicodechar{⊓}{\ensuremath{\mathnormal\sqcap}}
