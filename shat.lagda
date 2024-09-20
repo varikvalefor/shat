@@ -980,7 +980,7 @@ module DegjygirzuVeritas where
        → (c : Char)
        → (_≡_
            (d $ s₁ ++ 𝕊.fromChar c ++ s₂)
-           (d (s₁) ++ d (𝕊.fromChar c ++ s₂)))
+           (d s₁ ++ d (𝕊.fromChar c ++ s₂)))
     dc = {!!}
 \end{code}
 
