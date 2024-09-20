@@ -976,8 +976,8 @@ module DegjygirzuVeritas where
     fL = 𝕊.fromList
     d' = 𝕃.map fL ∘_ $ 𝕃.wordsBy $ T? ∘ Data.Bool.not ∘ isDigit
     fL∘tL = fromList∘toList
-    dc : (s₁ s₂ : String)
-       → {c : Char}
+    dc : {c : Char}
+       → (s₁ s₂ : String)
        → (_≡_
            (d $ s₁ ++ 𝕊.fromChar c ++ s₂)
            (d s₁ ++ d (𝕊.fromChar c ++ s₂)))
