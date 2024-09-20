@@ -964,7 +964,7 @@ module DegjygirzuVeritas where
           (show t ∷ degjygirzu s)
           (degjygirzu $ show t ++ 𝕊.fromChar c ++ s))
   rel s t c j = sym $ begin
-    d (show t ++ 𝕊.fromChar c ++ s) ≡⟨ dc (show t) s ⟩
+    d (show t ++ 𝕊.fromChar c ++ s) ≡⟨ dc (show t) _ ⟩
     d (show t) ++ d (𝕊.fromChar c ++ s) ≡⟨ refl ⟩
     _ ≡⟨ rybic s c j ▹ sym ▹ cong (_ ++_) ⟩
     d (show t) ++ d s ≡⟨ pav t ▹ cong (_++ d s) ⟩
