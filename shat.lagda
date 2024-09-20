@@ -850,7 +850,7 @@ module fromℕ?Veritas where
     mapₘ 𝔽.toℕ (mapₘ 𝔽.fromℕ< c?) ≡⟨ mapmapi c? ⟩
     mapₘ id' c? ≡⟨ dekydu'i ▹ cong (mapₘ id') ⟩
     mapₘ id' (just m) ≡⟨ refl ⟩
-    just (id' m) ≡⟨ DFP.toℕ-fromℕ< m ▹ cong just ⟩
+    just (id' m) ≡⟨ DFP.toℕ-fromℕ< _ ▹ cong just ⟩
     just x ∎
     where
     id' = 𝔽.toℕ ∘ 𝔽.fromℕ<
