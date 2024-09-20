@@ -1360,7 +1360,7 @@ module Orsygenturfa'iVeritas where
          → pork (just x ∷ just z ∷ []) ≡ nothing
     nada {x = x} {z} j = begin
       pork (just x ∷ just z ∷ []) ≡⟨ refl ⟩
-      mapₘ (_ ,_) (decToMaybe $ x 𝔽.≤? z) ≡⟨ refl ⟩
+      mapₘ Σ.-,_ (decToMaybe $ x 𝔽.≤? z) ≡⟨ refl ⟩
       _ ≡⟨ DN ▹ cong (mapₘ $ Σ.-,_) ⟩
       nothing ∎
       where
