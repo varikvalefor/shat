@@ -964,7 +964,7 @@ module DegjygirzuVeritas where
           (show t ∷ degjygirzu s)
           (degjygirzu $ show t ++ 𝕊.fromChar c ++ s))
   rel s t c j = sym $ begin
-    d (show t ++ 𝕊.fromChar c ++ s) ≡⟨ dc (show t) s _ ⟩
+    d (show t ++ 𝕊.fromChar c ++ s) ≡⟨ dc (show t) s ⟩
     d (show t) ++ d (𝕊.fromChar c ++ s) ≡⟨ refl ⟩
     _ ≡⟨ rybic s c j ▹ sym ▹ cong (_ ++_) ⟩
     d (show t) ++ d s ≡⟨ pav t ▹ cong (_++ d s) ⟩
@@ -977,7 +977,7 @@ module DegjygirzuVeritas where
     d' = 𝕃.map fL ∘_ $ 𝕃.wordsBy $ T? ∘ Data.Bool.not ∘ isDigit
     fL∘tL = fromList∘toList
     dc : (s₁ s₂ : String)
-       → (c : Char)
+       → {c : Char}
        → (_≡_
            (d $ s₁ ++ 𝕊.fromChar c ++ s₂)
            (d s₁ ++ d (𝕊.fromChar c ++ s₂)))
