@@ -1361,7 +1361,7 @@ module Orsygenturfa'iVeritas where
     nada {x = x} {z} j = begin
       pork (just x ∷ just z ∷ []) ≡⟨ refl ⟩
       mapₘ (_ ,_) (decToMaybe $ x 𝔽.≤? z) ≡⟨ refl ⟩
-      _ ≡⟨ DN ▹ cong (mapₘ $ _ ,_) ⟩
+      _ ≡⟨ DN ▹ cong (mapₘ $ Σ.-,_) ⟩
       nothing ∎
       where
       DN = dec-nothing (𝔽._≤ _) (_ 𝔽.≤? _) j
