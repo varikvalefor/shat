@@ -847,7 +847,7 @@ module fromℕ?Veritas where
       → just x ≡ mapₘ 𝔽.toℕ (fromℕ? {n} x)
   jus {n} x m = sym $ begin
     mapₘ 𝔽.toℕ (fromℕ? {n} x) ≡⟨ refl ⟩
-    mapₘ 𝔽.toℕ (mapₘ 𝔽.fromℕ< $ c?) ≡⟨ mapmapi c? ⟩
+    mapₘ 𝔽.toℕ (mapₘ 𝔽.fromℕ< c?) ≡⟨ mapmapi c? ⟩
     mapₘ id' (c?) ≡⟨ dekydu'i ▹ cong (mapₘ id') ⟩
     mapₘ id' (just m) ≡⟨ refl ⟩
     just (id' m) ≡⟨ DFP.toℕ-fromℕ< m ▹ cong just ⟩
