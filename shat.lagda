@@ -874,7 +874,7 @@ module fromℕ?Veritas where
     where
     d2m = decToMaybe
     MC = DMP.map-compose $ d2m $ x ℕ.<? n
-    DN = dec-nothing (ℕ._< n) (x ℕ.<? n) J
+    DN = dec-nothing (ℕ._< _) (x ℕ.<? n) J
 
   fromℕ?∘toℕ : {n : ℕ}
              → (f : Fin n)
