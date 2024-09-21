@@ -640,7 +640,7 @@ module ReadMaybe'Veritas where
          → (s : String)
          → ¬_ $ Σ (Fin n) $ _≡_ s ∘ show
          → readMaybe s ≡ nothing {A = Fin n}
-    norm = λ s N → ¬J⇒N $ N ∘ J⇒Σ s
+    norm s N = ¬J⇒N $ N ∘ J⇒Σ s
       where
       J⇒Σ : {n : ℕ}
           → (s : String)
