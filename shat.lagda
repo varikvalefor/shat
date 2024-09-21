@@ -939,9 +939,7 @@ module DegjygirzuVeritas where
     tilfic : tL ∘ fC ≗ 𝕃.[_]
     tilfic = toList∘fromChar
     d' = 𝕃.map fL ∘ (𝕃.wordsBy $ F? ∘ isDigit)
-    fineg : {x : Bool}
-          → false ≡ x
-          → Data.Bool.T $ Data.Bool.not x
+    fineg : (false ≡_) ⊆ Data.Bool.T ∘ Data.Bool.not
     fineg refl = _
     uobis : ∀ {a p} → {A : Set a}
           → {P : Pred A p}
