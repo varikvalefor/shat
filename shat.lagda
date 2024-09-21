@@ -858,9 +858,6 @@ module fromℕ?Veritas where
     c? {x} = decToMaybe $ (ℕ._<? _) x
     mapmapi = sym ∘ DMP.map-compose
 
-  jusid : {n : ℕ} → just ≗ fromℕ? {n} ∘ 𝔽.toℕ
-  jusid = {!!}
-
   nada : {n : ℕ}
        → (x : ℕ)
        → ¬_ $ x ℕ.< n
