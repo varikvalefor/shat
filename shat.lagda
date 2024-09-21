@@ -900,7 +900,7 @@ degjygirzu = 𝕊.wordsBy $ T? ∘ Data.Bool.not ∘ isDigit
 module DegjygirzuVeritas where
   open ≡-Reasoning
 
-  pav : (n : ℕ) → degjygirzu (show n) ≡ show n ∷ []
+  pav : degjygirzu ∘ show ≗ (_∷ []) ∘ show {A = ℕ}
   pav n = begin
     degjygirzu (show n) ≡⟨ refl ⟩
     𝕃.map 𝕊.fromList (d $ 𝕊.toList $ show n) ≡⟨ refl ⟩
