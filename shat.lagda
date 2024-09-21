@@ -2451,7 +2451,7 @@ main = run $ IO.lift snurytcati IO.>> getArgs IO.>>= uic ∘ 𝕃.head
         datnyveicme = just c;
         lerpinste = x;
         cablerpinsle = 𝔽.opposite 𝔽.zero;
-        citri = List.[];
+        citri = 𝕃.[];
         rejgaudatni = just c
         }
     ⟲ : Buffer → IO ⊤
