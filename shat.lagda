@@ -880,7 +880,7 @@ module fromℕ?Veritas where
     _ ≡⟨ DY ▹ proj₂ ▹ cong (mapₘ 𝔽.fromℕ< ∘ decToMaybe) ⟩
     mapₘ (𝔽.fromℕ<) (just $ proj₁ DY) ≡⟨ refl ⟩
     just (𝔽.fromℕ< {m = 𝔽.toℕ f} $ proj₁ DY) ≡⟨ refl ⟩
-    _ ≡⟨ DFP.fromℕ<-toℕ f (proj₁ DY) ▹ cong just ⟩
+    _ ≡⟨ DFP.fromℕ<-toℕ _ (proj₁ DY) ▹ cong just ⟩
     just f ∎
     where
     DY = dec-yes (_ ℕ.<? _) $ DFP.toℕ<n f
