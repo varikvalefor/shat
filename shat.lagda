@@ -143,6 +143,7 @@ open import Function
     _|>_ to _▹_
   )
 open import Data.Bool
+  as 𝔹
   using (
     false;
     Bool;
@@ -891,7 +892,7 @@ ni'o la .varik.\ na birti lo du'u ciksi bau la .lojban.\ fe la \F{degjygirzu}\ f
 
 \begin{code}
 degjygirzu : String → List String
-degjygirzu = 𝕊.wordsBy $ T? ∘ Data.Bool.not ∘ isDigit
+degjygirzu = 𝕊.wordsBy $ T? ∘ 𝔹.not ∘ isDigit
 \end{code}
 
 \subsection{le ctaipe be le su'u la \F{degjygirzu}\ cu mapti}
@@ -911,7 +912,7 @@ module DegjygirzuVeritas where
     fL∘tL = fromList∘toList
     mL = 𝕃.map 𝕊.fromList
     show' = 𝕊.toList ∘ show
-    d = 𝕃.wordsBy $ T? ∘ Data.Bool.not ∘ isDigit
+    d = 𝕃.wordsBy $ T? ∘ 𝔹.not ∘ isDigit
     didus : d ∘ show' ≗ (_∷ []) ∘ show'
     didus = {!!}
 
@@ -934,12 +935,12 @@ module DegjygirzuVeritas where
     tL = 𝕊.toList
     fL = 𝕊.fromList
     fC = 𝕊.fromChar
-    F? = T? ∘ Data.Bool.not
+    F? = T? ∘ 𝔹.not
     -- | .i cicna finpe
     tilfic : tL ∘ fC ≗ 𝕃.[_]
     tilfic = toList∘fromChar
     d' = 𝕃.map fL ∘ (𝕃.wordsBy $ F? ∘ isDigit)
-    fineg : _≡_ false ⊆ Data.Bool.T ∘ Data.Bool.not
+    fineg : _≡_ false ⊆ 𝔹.T ∘ 𝔹.not
     fineg refl = _
     uobis : ∀ {a p} → {A : Set a}
           → {P : Pred A p}
@@ -968,7 +969,7 @@ module DegjygirzuVeritas where
     d = degjygirzu
     tL = 𝕊.toList
     fL = 𝕊.fromList
-    d' = 𝕃.map fL ∘_ $ 𝕃.wordsBy $ T? ∘ Data.Bool.not ∘ isDigit
+    d' = 𝕃.map fL ∘_ $ 𝕃.wordsBy $ T? ∘ 𝔹.not ∘ isDigit
     fL∘tL = fromList∘toList
     dc : {c : Char}
        → (s₁ s₂ : String)
@@ -1419,7 +1420,7 @@ module Orsygenturfa'i₃ where
   orsispita = lispork ∘ 𝕃.map (w aintDigit?) ∘ w (_≟ ',')
     where
     w = 𝕊.wordsBy
-    aintDigit? = T? ∘ Data.Bool.not ∘ isDigit
+    aintDigit? = T? ∘ 𝔹.not ∘ isDigit
 
   pork : {n : ℕ}
        → (String × String) × String
@@ -1500,7 +1501,7 @@ module Orsygenturfa'i₃Veritas where
     [_] = 𝕃.[_]
     w = 𝕊.wordsBy
     w' = 𝕃.wordsBy
-    aD? = T? ∘ Data.Bool.not ∘ isDigit
+    aD? = T? ∘ 𝔹.not ∘ isDigit
     K = show a ++ "," ++ show b ++ 𝕊.fromChar x ++ show c
     s = show
     s' = 𝕊.toList ∘ show
@@ -1666,7 +1667,7 @@ module Reed where
       g' = λ (z , (_ , d) , c) → g _ _ c d z
       c = f $ 𝕃.filter aintDigit? $ 𝕊.toList s
         where
-        aintDigit? = T? ∘ Data.Bool.not ∘ isDigit
+        aintDigit? = T? ∘ 𝔹.not ∘ isDigit
         f = λ {(x ∷ []) → just x; _ → nothing}
 
   terp : {x : Buffer} → String → List $ Maybe $ Cmd x
