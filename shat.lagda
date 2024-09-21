@@ -2443,11 +2443,11 @@ main = run $ IO.lift snurytcati IO.>> getArgs IO.>>= uic ∘ 𝕃.head
       rejgaudatni = nothing
       }
     mkDef : _
-    mkDef c = uit IO.<$> readFile c
+    mkDef c = uit c IO.<$> readFile c
       where
-      uit : _ → _
-      uit [] = record def {datnyveicme = just c}
-      uit x@(_ ∷ _) = record {
+      uit : _ → _ → _
+      uit c [] = record def {datnyveicme = just c}
+      uit c x@(_ ∷ _) = record {
         datnyveicme = just c;
         lerpinste = x;
         cablerpinsle = 𝔽.opposite 𝔽.zero;
