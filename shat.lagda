@@ -2465,7 +2465,7 @@ main = run $ IO.lift snurytcati IO.>> getArgs IO.>>= uic ∘ 𝕃.head
       ... | x' , just (inj₂ z) with z
       ... | Sisti!ᵢₒ = IO.pure _
       ... | Skamiᵢₒ a = {!!}
-      ... | Tciduᵢₒ a b = readFile a IO.>>= (⟲ ∘ J x' b)
+      ... | Tciduᵢₒ a b = readFile a IO.>>= ⟲ ∘ J x' b
         where
         J : (x : Buffer)
           → (n : Maybe $ Buffer.F x)
