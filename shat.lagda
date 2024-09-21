@@ -649,7 +649,7 @@ module ReadMaybe'Veritas where
       J⇒Σ = {!!}
       ¬J⇒N : ∀ {a} → {A : Set a}
            → {x : Maybe A}
-           → (¬_ $ ∃ $ λ z → x ≡ just z)
+           → ¬ (∃ $ λ z → x ≡ just z)
            → x ≡ nothing
       ¬J⇒N = {!!}
     ifnon : ∀ {a b} → {A : Set a} → {B : Set b}
