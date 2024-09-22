@@ -599,13 +599,14 @@ module ReadMaybe'Veritas where
       d' = d ▹ sym ▹ cong readMaybe
       rM$≡N : {n : ℕ} → readMaybe "$" ≡ nothing {A = Fin n} 
       rM$≡N = {!!}
-      N⇒¬J : ∀ {a} → {A : Set a}
-           → {x : Maybe A}
-           → x ≡ nothing
-           → {z : A}
-           → ¬_ $ x ≡ just z
-      N⇒¬J refl ()
       ¬J = N⇒¬J rM$≡N
+        where
+        N⇒¬J : ∀ {a} → {A : Set a}
+             → {x : Maybe A}
+             → x ≡ nothing
+             → {z : A}
+             → ¬_ $ x ≡ just z
+        N⇒¬J refl ()
 
   justjust→namcu : {n : ℕ}
                  → (s : String)
