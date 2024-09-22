@@ -635,7 +635,6 @@ module ReadMaybe'Veritas where
     mapₘ just nothing ≡⟨ refl ⟩
     nothing ∎
     where
-    jreadMaybe = mapₘ just ∘ readMaybe
     norm : {n : ℕ}
          → (s : String)
          → ¬_ $ Σ (Fin n) $ _≡_ s ∘ show
