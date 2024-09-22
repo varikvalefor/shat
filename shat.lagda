@@ -452,8 +452,8 @@ dekydu'i {x} {n} {m} = begin
   just m ∎
   where
   DJ = dec-just (ℕ._< _) (x ℕ.<? n) m
-  iedek : {m n : ℕ} → (x z : m ℕ.< n) → x ≡ z
-  iedek (ℕ.s≤s ℕ.z≤n) (ℕ.s≤s ℕ.z≤n) = refl
+  iedek : {m n : ℕ} → (x z : m ℕ.≤ n) → x ≡ z
+  iedek (ℕ.z≤n) (ℕ.z≤n) = refl
   iedek {suc _} (ℕ.s≤s x) (ℕ.s≤s z) = iedek x z ▹ cong ℕ.s≤s
   open ≡-Reasoning
 \end{code}
