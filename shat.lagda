@@ -652,7 +652,8 @@ module ReadMaybe'Veritas where
            → {x : Maybe A}
            → ¬ (∃ $ _≡_ x ∘ just)
            → x ≡ nothing
-      ¬J⇒N = {!!}
+      ¬J⇒N {x = nothing} N = refl
+      ¬J⇒N {x = just x} N = {!!}
     ifnon : ∀ {a b} → {A : Set a} → {B : Set b}
           → ⦃ _ : Eq A ⦄
           → {d f : A}
