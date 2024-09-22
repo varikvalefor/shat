@@ -451,7 +451,7 @@ dekydu'i {x} {n} {m} = begin
   just (proj₁ DJ) ≡⟨ iedek (proj₁ DJ) m ▹ cong just ⟩
   just m ∎
   where
-  DJ = dec-just (ℕ._< n) (x ℕ.<? n) m
+  DJ = dec-just (ℕ._< _) (x ℕ.<? n) m
   iedek : {m n : ℕ} → (x z : m ℕ.< n) → x ≡ z
   iedek (ℕ.s≤s ℕ.z≤n) (ℕ.s≤s ℕ.z≤n) = refl
   iedek {suc m} {suc n} (ℕ.s≤s x) (ℕ.s≤s z) = I
