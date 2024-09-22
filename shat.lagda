@@ -645,7 +645,7 @@ module ReadMaybe'Veritas where
       where
       J⇒Σ : {n : ℕ}
           → (s : String)
-          → ∃ (λ x → readMaybe s ≡ just {A = Fin n} x)
+          → ∃ ((readMaybe s ≡_) ∘ just {A = Fin n})
           → Σ (Fin n) $ _≡_ s ∘ show
       J⇒Σ = {!!}
       ¬J⇒N : ∀ {a} → {A : Set a}
