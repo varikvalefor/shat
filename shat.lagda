@@ -2156,7 +2156,7 @@ module KanjyVeritas where
                  → z ℕ.≤ x
                  → v ℕ.∸ x ℕ.+ z ≡ v ℕ.∸ (x ℕ.∸ z)
     v∸x+z≡v∸[x∸z] {z = 0} ℕ.z≤n = DNP.+-identityʳ _
-    v∸x+z≡v∸[x∸z] {v} {x} {z = suc z} (ℕ.s≤s s) = begin
+    v∸x+z≡v∸[x∸z] {v} {x} {suc z} (ℕ.s≤s s) = begin
       v ℕ.∸ x ℕ.+ suc z ≡⟨ {!!} ⟩
       v ℕ.∸ (x ℕ.∸ suc z) ∎
 
