@@ -2226,9 +2226,7 @@ module KanjyVeritas where
       lines∘unlines : (x : List String) → lines (unlines x) ≡ x
       lines∘unlines = {!!}
       open ≡-Reasoning
-      sukmin : {m n : ℕ}
-             → n ℕ.≤ m
-             → suc m ℕ.∸ n ≡ suc (m ℕ.∸ n)
+      sukmin : {m n : ℕ} → n ℕ.≤ m → suc m ℕ.∸ n ≡ suc (m ℕ.∸ n)
       sukmin ℕ.z≤n = refl
       sukmin (ℕ.s≤s s) = sukmin s
       teiklen : ∀ {a} → {A : Set a}
