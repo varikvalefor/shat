@@ -2350,10 +2350,10 @@ module KanjyVeritas where
       (𝔽.toℕ a ↑ L x ++ suc (𝔽.toℕ b) ↓ L x) ≡⟨ {!!} ⟩
       (𝔽.toℕ c ↑ L x' ++ n ↓ L x') ∎
       where
-      open ≡-Reasoning
       n = suc $ 𝔽.toℕ b ℕ.∸ 𝔽.toℕ a
       x' = proj₁ $ kanji {x} $ Muvgau a b (just c) d
       L = Buffer.lerpinste
+      open ≡-Reasoning
 
     muvdusin : (x : Buffer)
              → (a b : Buffer.F x)
