@@ -2234,7 +2234,7 @@ module KanjyVeritas where
               → (n : Fin $ length x)
               → length (ℕ.suc (𝔽.toℕ n) ↑ x) ≡ ℕ.suc (𝔽.toℕ n)
       teiklen (_ ∷ _) 𝔽.zero = refl
-      teiklen (_ ∷ xs) (𝔽.suc n) = teiklen xs n ▹ cong ℕ.suc
+      teiklen (_ ∷ xs) (𝔽.suc n) = teiklen xs n ▹ cong suc
 
     pindices : (x : Buffer)
              → (a b : Buffer.F x)
