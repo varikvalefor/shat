@@ -2349,7 +2349,7 @@ module KanjyVeritas where
     vimcu x a b c d = begin
       (𝔽.toℕ a ↑ L x ++ suc (𝔽.toℕ b) ↓ L x) ≡⟨ refl ⟩
       _ ≡⟨ (𝔽.toℕ a ↑ L x ≡ 𝔽.toℕ c ↑ L x') ∋ {!!} ▹ cong (_++ _) ⟩
-      (𝔽.toℕ c ↑ L x' ++ suc (𝔽.toℕ b) ↓ L x) ≡⟨ {!!} ⟩
+      (𝔽.toℕ c ↑ L x' ++ suc (𝔽.toℕ b) ↓ L x) ≡⟨ (suc (𝔽.toℕ b) ↓ L x ≡ n ↓ L x') ∋ {!!} ▹ cong (_ ++_) ⟩
       (𝔽.toℕ c ↑ L x' ++ n ↓ L x') ∎
       where
       n = suc $ 𝔽.toℕ b ℕ.∸ 𝔽.toℕ a
