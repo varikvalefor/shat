@@ -2273,6 +2273,7 @@ module KanjyVeritas where
     nilzilcmi x a b c d = sym $ begin
       𝓁 (proj₁ K) ≡⟨ {!!} ⟩
       length x'₁ ℕ.+ length x'₂ ℕ.+ length x'₃ ≡⟨ {!!} ⟩
+      𝔽.toℕ a ℕ.+ length x'₂ ℕ.+ length x'₃ ≡⟨ {!!} ⟩
       𝓁 x ∎
       where
       K = kanji {x} $ Muvgau a b (just c) d
