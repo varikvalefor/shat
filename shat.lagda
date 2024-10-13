@@ -2351,7 +2351,7 @@ module KanjyVeritas where
       (f a ↑ L x ++ suc (f b) ↓ L x) ≡⟨ refl ⟩
       _ ≡⟨ (f a ↑ L x ≡ f c ↑ L x') ∋ {!!} ▹ cong (_++ _) ⟩
       (f c ↑ L x' ++ suc (f b) ↓ L x) ≡⟨ refl ⟩
-      _ ≡⟨ (suc (f b) ↓ L x ≡ n ↓ L x') ∋ {!!} ▹ cong (_ ++_) ⟩
+      _ ≡⟨ (suc (f b) ↓ L x ≡ n ↓ L x') ∋ {!!} ▹ cong ((f c ↑ L x') ++_) ⟩
       (f c ↑ L x' ++ n ↓ L x') ∎
       where
       f = 𝔽.toℕ
