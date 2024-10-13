@@ -2128,7 +2128,7 @@ module KanjyVeritas where
     length (a' ↑ Lz) ℕ.+ (lb x ℕ.∸ b'+1) ≡⟨ refl ⟩
     _ ≡⟨ finlenteik Lz a ▹ cong (ℕ._+ (lb x ℕ.∸ b'+1)) ⟩
     a' ℕ.+ (lb x ℕ.∸ b'+1) ≡⟨ DNP.+-comm a' _ ⟩
-    lb x ℕ.∸ b'+1 ℕ.+ a' ≡⟨ v∸x+z≡v∸[x∸z] $ flex d ⟩
+    lb x ℕ.∸ b'+1 ℕ.+ a' ≡⟨ {!!} ⟩
     lb x ℕ.∸ (b'+1 ℕ.∸ a') ≡⟨ refl ⟩
     lb x ℕ.∸ (suc b' ℕ.∸ a') ≡⟨ suc-dist-∸ d ▹ cong (lb x ℕ.∸_) ⟩
     lb x ℕ.∸ suc (b' ℕ.∸ a') ≡⟨ refl ⟩
