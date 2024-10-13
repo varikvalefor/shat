@@ -2347,13 +2347,14 @@ module KanjyVeritas where
               (𝔽.toℕ a ↑ L x ++ suc (𝔽.toℕ b) ↓ L x)
               (𝔽.toℕ c ↑ L x' ++ n ↓ L x'))
     vimcu x a b c d = begin
-      (𝔽.toℕ a ↑ L x ++ suc (𝔽.toℕ b) ↓ L x) ≡⟨ refl ⟩
-      _ ≡⟨ (𝔽.toℕ a ↑ L x ≡ 𝔽.toℕ c ↑ L x') ∋ {!!} ▹ cong (_++ _) ⟩
-      (𝔽.toℕ c ↑ L x' ++ suc (𝔽.toℕ b) ↓ L x) ≡⟨ refl ⟩
-      _ ≡⟨ (suc (𝔽.toℕ b) ↓ L x ≡ n ↓ L x') ∋ {!!} ▹ cong (_ ++_) ⟩
-      (𝔽.toℕ c ↑ L x' ++ n ↓ L x') ∎
+      (f a ↑ L x ++ suc (f b) ↓ L x) ≡⟨ refl ⟩
+      _ ≡⟨ (f a ↑ L x ≡ f c ↑ L x') ∋ {!!} ▹ cong (_++ _) ⟩
+      (f c ↑ L x' ++ suc (f b) ↓ L x) ≡⟨ refl ⟩
+      _ ≡⟨ (suc (f b) ↓ L x ≡ n ↓ L x') ∋ {!!} ▹ cong (_ ++_) ⟩
+      (f c ↑ L x' ++ n ↓ L x') ∎
       where
-      n = suc $ 𝔽.toℕ b ℕ.∸ 𝔽.toℕ a
+      f = 𝔽.toℕ
+      n = suc $ f b ℕ.∸ f a
       x' = proj₁ $ kanji {x} $ Muvgau a b (just c) d
       L = Buffer.lerpinste
       open ≡-Reasoning
