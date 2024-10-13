@@ -2168,7 +2168,7 @@ module KanjyVeritas where
   takeduv x a b d = sym $ begin
     BLT (proj₁ $ kanji {x} $ Vimcu a b d) ≡⟨ refl ⟩
     𝔽.toℕ a ↑ (BLT x ++ BLD x) ≡⟨ refl ⟩
-    𝔽.toℕ a ↑ ((𝔽.toℕ a ↑ BL x) ++ BLD x) ≡⟨ teikteik _ _ ⟩
+    𝔽.toℕ a ↑ ((𝔽.toℕ a ↑ BL x) ++ BLD x) ≡⟨ teikteik _ ⟩
     BLT x ∎
     where
     BL = Buffer.lerpinste
@@ -2176,13 +2176,13 @@ module KanjyVeritas where
     BLD = suc (𝔽.toℕ b) ↓_ ∘ BL
     open ≡-Reasoning
     teikteik : ∀ {a} → {A : Set a}
-             → (x : List A)
+             → {x : List A}
              → {z : List A}
              → (n : Fin $ length x)
              → let n' = 𝔽.toℕ n in
                n' ↑ (n' ↑ x ++ z) ≡ n' ↑ x
-    teikteik (_ ∷ _) 𝔽.zero = refl
-    teikteik (_ ∷ _) (𝔽.suc _) = teikteik _ _ ▹ cong (_ ∷_)
+    teikteik {x = _ ∷ _} 𝔽.zero = refl
+    teikteik {x = _ ∷ _} (𝔽.suc _) = teikteik _ ▹ cong (_ ∷_)
 
   dropyduv : (x : Buffer)
            → (a b : Buffer.F x)
