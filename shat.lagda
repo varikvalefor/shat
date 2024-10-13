@@ -2346,7 +2346,14 @@ module KanjyVeritas where
             (_≡_
               (𝔽.toℕ a ↑ L x ++ suc (𝔽.toℕ b) ↓ L x)
               (𝔽.toℕ c ↑ L x' ++ n ↓ L x'))
-    vimcu = {!!}
+    vimcu x a b c d = begin
+      (𝔽.toℕ a ↑ L x ++ suc (𝔽.toℕ b) ↓ L x) ≡⟨ {!!} ⟩
+      (𝔽.toℕ c ↑ L x' ++ n ↓ L x') ∎
+      where
+      open ≡-Reasoning
+      n = suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a)
+      x' = proj₁ $ kanji {x} $ Muvgau a b (just c) d
+      L = Buffer.lerpinste
 
     muvdusin : (x : Buffer)
              → (a b : Buffer.F x)
