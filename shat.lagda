@@ -2223,7 +2223,7 @@ module KanjyVeritas where
       L = lines $ from-inj₁ $ from-just K
       BL = Buffer.lerpinste x
       S = a' ↓_ $ suc b' ↑ BL
-      lines∘unlines : (x : List String) → lines (unlines S) ≡ S
+      lines∘unlines : (x : List String) → lines (unlines x) ≡ x
       lines∘unlines = {!!}
       open ≡-Reasoning
       sukmin : {m n : ℕ}
