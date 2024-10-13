@@ -100,7 +100,7 @@ ni'o skicu bau la'oi .Agda.\ fe ko'a goi le milxe be le ka ce'u smimlu be la'o z
 
 \begin{code}
 {-# OPTIONS --guardedness #-}
-{-# OPTIONS --overlapping-instances #-}
+{-# OPTIONS --backtracking-instance-search #-}
 {-# OPTIONS --instance-search-depth=2 #-}
 
 open import IO
