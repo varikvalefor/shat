@@ -2157,7 +2157,7 @@ module KanjyVeritas where
   takeduv x a b d = sym $ begin
     BLT (proj₁ $ kanji {x} $ Vimcu a b d) ≡⟨ refl ⟩
     𝔽.toℕ a ↑ ((𝔽.toℕ a ↑ BL x) ++ BLD x) ≡⟨ teikteik _ ⟩
-    BLT x ∎
+    𝔽.toℕ a ↑ BL x ∎
     where
     BL = Buffer.lerpinste
     BLT = 𝔽.toℕ a ↑_ ∘ BL
