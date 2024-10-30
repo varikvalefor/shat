@@ -2304,7 +2304,7 @@ module KanjyVeritas where
                → let n' = 𝔽.toℕ n in
                  n' ↑ (n' ↑ x ++ z) ≡ n' ↑ x
       teikteik (_ ∷ _) 𝔽.zero = refl
-      teikteik (x ∷ xs) (𝔽.suc n) = teikteik xs n ▹ cong (x ∷_)
+      teikteik (x ∷ xs) (𝔽.suc n) = teikteik xs n ▹ cong (_ ∷_)
 
     muvisez : (x : Buffer)
             → (a b c : Buffer.F x)
