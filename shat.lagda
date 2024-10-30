@@ -2165,7 +2165,7 @@ module KanjyVeritas where
     BLT x ∎
     where
     BL = Buffer.lerpinste
-    BLT = (𝔽.toℕ a) ↑_ ∘ BL
+    BLT = 𝔽.toℕ a ↑_ ∘ BL
     BLD = suc (𝔽.toℕ b) ↓_ ∘ BL
     open ≡-Reasoning
     teikteik : ∀ {a} → {A : Set a}
