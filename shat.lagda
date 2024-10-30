@@ -2146,13 +2146,13 @@ module KanjyVeritas where
          → n 𝔽.≤ m
          → 𝔽.toℕ n ℕ.≤ suc (𝔽.toℕ m)
     flex = flip DNP.≤-trans $ DNP.n≤1+n _
-    open ≡-Reasoning
     finlenteik : ∀ {a} → {A : Set a}
                → (x : List A)
                → (n : Fin $ length x)
                → length (𝔽.toℕ n ↑ x) ≡ 𝔽.toℕ n
     finlenteik (_ ∷ _) 𝔽.zero = refl
     finlenteik (_ ∷ xs) (𝔽.suc n) = finlenteik xs n ▹ cong suc
+    open ≡-Reasoning
 
   takeduv : (x : Buffer)
           → (a b : Buffer.F x)
