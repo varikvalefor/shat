@@ -2008,10 +2008,11 @@ kanji {x} (Vimcu a b _) = x' , nothing
   where
   x' = record x {
     citri = Buffer.cninycitri x;
-    cablerpinsle = {!!};
+    cablerpinsle = i;
     lerpinste = 𝔽.toℕ a ↑ Lz ++ suc (𝔽.toℕ b) ↓ Lz}
     where
     Lz = Buffer.lerpinste x
+    i = {!!}
 kanji {x} (Jmini n) = x ,_ $ just $ inj₂ $ Tciduᵢₒ "/dev/stdin" (just n)
 kanji {x} (Rejgau d) = x ,_ $ just $ inj₂ $ Rejgauᵢₒ xul d
   where
