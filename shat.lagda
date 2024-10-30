@@ -2122,7 +2122,7 @@ module KanjyVeritas where
   nilzilcmiv x a b d = begin
     lb x₂ ≡⟨ refl ⟩
     length (𝔽.toℕ a ↑ Lz ++ suc (𝔽.toℕ b) ↓ Lz) ≡⟨ refl ⟩
-    length (a' ↑ Lz ++ b'+1 ↓ Lz) ≡⟨ DLP.length-++ $ a' ↑ Lz ⟩
+    length (a' ↑ Lz ++ b'+1 ↓ Lz) ≡⟨ DLP.length-++ $ a' ↑ _ ⟩
     length (a' ↑ Lz) ℕ.+ length (b'+1 ↓ Lz) ≡⟨ refl ⟩
     _ ≡⟨ DLP.length-drop b'+1 Lz ▹ cong (ℕ._+_ _) ⟩
     length (a' ↑ Lz) ℕ.+ (length Lz ℕ.∸ b'+1) ≡⟨ refl ⟩
