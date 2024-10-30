@@ -2181,7 +2181,8 @@ module KanjyVeritas where
                (𝔽.toℕ a ↓ Buffer.lerpinste x₂))
   dropyduv x a b d = sym $ begin
     𝔽.toℕ a ↓ BL x₂ ≡⟨ refl ⟩
-    a' ↓ (a' ↑ BL x ++ suc b' ↓ BL x) ≡⟨ teikteikdrop (BL x) _ a ▹ sym ⟩
+    a' ↓ (a' ↑ BL x ++ suc b' ↓ BL x) ≡⟨ refl ⟩
+    _ ≡⟨ teikteikdrop (BL x) _ a ▹ sym ⟩
     suc b' ↓ BL x ∎
     where
     a' = 𝔽.toℕ a
