@@ -2030,7 +2030,7 @@ kanji {x} (Xruti n) = {!!} , {!!}
 module KanjyVeritas where
   sistid : (x : Buffer)
          → kanji {x} Sisti ≡_ $ x , just (inj₂ Sistiᵢₒ)
-  sistid x = refl
+  sistid _ = refl
 
   sistik : (x : Buffer)
          → kanji {x} Sisti! ≡_ $ x , just (inj₂ Sisti!ᵢₒ)
