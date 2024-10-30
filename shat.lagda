@@ -2141,11 +2141,6 @@ module KanjyVeritas where
     Lz = Buffer.lerpinste x
     x₂ = proj₁ $ kanji {x} $ Vimcu a b d
     lb = length ∘ Buffer.lerpinste
-    flex : {a : ℕ}
-         → {m n : Fin a}
-         → n 𝔽.≤ m
-         → 𝔽.toℕ n ℕ.≤ suc (𝔽.toℕ m)
-    flex = flip DNP.≤-trans $ DNP.n≤1+n _
     finlenteik : ∀ {a} → {A : Set a}
                → (x : List A)
                → (n : Fin $ length x)
