@@ -1959,7 +1959,7 @@ module ReedVeritas where
             tL≡[]→x≡s[] : (_≡ []) ∘ 𝕊.toList ⊆ (_≡ "")
             tL≡[]→x≡s[] {""} refl = refl
             tL≡[]→x≡s[] {x} d = {!!}
-          ... | no j = {!!}
+          ... | no j = {!!} , {!!}
       unwords-dist : (x : String)
                    → (z : List String)
                    → ¬_ $ z ≡ []
