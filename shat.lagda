@@ -2193,7 +2193,7 @@ module KanjyVeritas where
                  → (n : Fin $ length x)
                  → 𝔽.toℕ n ↓ (𝔽.toℕ n ↑ x ++ z) ≡ z
     teikteikdrop (_ ∷ _) _ 𝔽.zero = refl
-    teikteikdrop (_ ∷ xs) z (𝔽.suc n) = teikteikdrop xs z n
+    teikteikdrop (_ ∷ xs) z (𝔽.suc n) = teikteikdrop xs _ n
     open ≡-Reasoning
 
   module Cusku where
