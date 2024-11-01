@@ -1823,13 +1823,14 @@ module ReedVeritas where
       just 'a' ∎
     rms≡[pK>>=fℕ?] : rms a ≡ pamoinamcu K >>= fromℕ?
     rms≡[pK>>=fℕ?] = sym $ begin
-      pamoinamcu K >>= fromℕ? ≡⟨ D ∋ {!!} ▹ cong (_>>= fromℕ?) ⟩
+      pamoinamcu K >>= fromℕ? ≡⟨ D ▹ cong (_>>= fromℕ?) ⟩
       just (𝔽.toℕ a) >>= fromℕ? ≡⟨ refl ⟩
       fromℕ? (𝔽.toℕ a) ≡⟨ {!!} ⟩
       just a ≡⟨ {!!} ⟩
       rms a ∎
       where
-      D = pamoinamcu K ≡ just (𝔽.toℕ a)
+      D : pamoinamcu K ≡ just (𝔽.toℕ a)
+      D = {!!}
 
   ic : (x : Buffer)
      → (a : Buffer.F x)
