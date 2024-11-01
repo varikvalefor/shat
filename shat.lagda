@@ -2219,7 +2219,6 @@ module KanjyVeritas where
       a' = 𝔽.toℕ a
       b' = 𝔽.toℕ b
       K = proj₂ $ kanji {x} $ Cusku a b d
-      L = lines $ from-inj₁ $ from-just K
       BL = Buffer.lerpinste x
       S = a' ↓_ $ suc b' ↑ BL
       lines∘unlines : (x : List String) → lines (unlines x) ≡ x
