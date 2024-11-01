@@ -2208,7 +2208,7 @@ module KanjyVeritas where
                  let L = lines $ from-inj₁ $ from-just K in
                  length L ≡ suc (𝔽.toℕ b ℕ.∸ 𝔽.toℕ a)
     nilzilcmip x a b d = begin
-      length L ≡⟨ refl ⟩
+      length (lines $ from-inj₁ $ from-just K) ≡⟨ refl ⟩
       length (lines $ unlines S) ≡⟨ lines∘unlines S ▹ cong length ⟩
       length S ≡⟨ refl ⟩
       length (a' ↓_ $ suc b' ↑ BL) ≡⟨ DLP.length-drop a' _ ⟩
