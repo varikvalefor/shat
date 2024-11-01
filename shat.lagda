@@ -1860,7 +1860,9 @@ module ReedVeritas where
         → (a b c : Buffer.F x)
         → (d : a 𝔽.≤ b)
         → just (Muvgau a b (just c) d) ≡ reed x (k₂ x a b 'm')
-  mixer x a b c d = {!!}
+  mixer x a b c d = sym $ begin
+    reed x (k₂ x a b 'm') ≡⟨ {!!} ⟩
+    just (Muvgau a b (just c) d) ∎
 
   vim : (x : Buffer)
       → (a b : Buffer.F x)
