@@ -1853,7 +1853,7 @@ module ReedVeritas where
     rms : {n : ℕ} → Fin n → Maybe $ Fin n
     rms = readMaybe ∘ show
     sl = 𝕃.last ∘ 𝕊.toList
-    rimco : {n : ℕ} → (x : Fin n) → rms x ≡ just x
+    rimco : {n : ℕ} → rms {n = n} ≗ just
     rimco = readMaybe∘show
 
   mixer : (x : Buffer)
