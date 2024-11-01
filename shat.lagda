@@ -2221,7 +2221,7 @@ module KanjyVeritas where
       K = proj₂ $ kanji {x} $ Cusku a b d
       BL = Buffer.lerpinste x
       S = a' ↓_ $ suc b' ↑ BL
-      lines∘unlines : (x : List String) → (lines ∘ unlines) x ≡ x
+      lines∘unlines : (x : List String) → (lines ∘ unlines) x ≡ id x
       lines∘unlines = {!!}
       open ≡-Reasoning
       sukmin : {m n : ℕ} → n ℕ.≤ m → suc m ℕ.∸ n ≡ suc (m ℕ.∸ n)
