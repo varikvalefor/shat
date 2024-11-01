@@ -1830,7 +1830,9 @@ module ReedVeritas where
       rms a ∎
       where
       D : pamoinamcu K ≡ just (𝔽.toℕ a)
-      D = {!!}
+      D = begin
+        pamoinamcu K ≡⟨ {!!} ⟩
+        just (𝔽.toℕ a) ∎
 
   ic : (x : Buffer)
      → (a : Buffer.F x)
