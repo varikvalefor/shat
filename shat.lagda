@@ -1825,7 +1825,7 @@ module ReedVeritas where
     rms≡[pK>>=fℕ?] = sym $ begin
       pamoinamcu K >>= fromℕ? ≡⟨ D ▹ cong (_>>= fromℕ?) ⟩
       just (𝔽.toℕ a) >>= fromℕ? ≡⟨ refl ⟩
-      fromℕ? (𝔽.toℕ a) ≡⟨ {!!} ⟩
+      fromℕ? (𝔽.toℕ a) ≡⟨ fromℕ?Veritas.fromℕ?∘toℕ a ▹ sym ⟩
       just a ≡⟨ {!!} ⟩
       rms a ∎
       where
