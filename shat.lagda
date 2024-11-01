@@ -1850,7 +1850,7 @@ module ReedVeritas where
     where
     g' = uncurry Reed.Pa.g
     K = k₁ x a 'i'
-    rms : {n : ℕ} → Fin n → Maybe $ Fin n
+    rms : {n : ℕ} → Fin n → (Maybe ∘  Fin) n
     rms = readMaybe ∘ show
     sl = 𝕃.last ∘ 𝕊.toList
     rimco : {n : ℕ} → rms {n = n} ≗ just
