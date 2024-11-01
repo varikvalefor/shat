@@ -1839,7 +1839,7 @@ module ReedVeritas where
     reed x K ≡⟨ {!!} ⟩
     Reed.Pa.t K ≡⟨ {!!} ⟩
     _,ₘ_ (pamoinamcu K >>= fromℕ?) (sl "i") >>= g' ≡⟨ refl ⟩
-    _ ≡⟨ (D) ∋ {!!} ▹ cong (λ x → _,ₘ_ x _ >>= g') ⟩
+    _ ≡⟨ D ∋ {!!} ▹ cong (λ x → _,ₘ_ x _ >>= g') ⟩
     _,ₘ_ (rms a) (sl "i") >>= g' ≡⟨ refl ⟩
     _,ₘ_ (rms a) (just 'i') >>= g' ≡⟨ refl ⟩
     _ ≡⟨ rimco a ▹ cong (λ x → _,ₘ_ x _ >>= g') ⟩
