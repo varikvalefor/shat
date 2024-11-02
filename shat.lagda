@@ -2374,7 +2374,13 @@ module KanjyVeritas where
              × L x ! a ≡ L x' ! mink a e
              × (_≡_ on ((𝔽.toℕ a ℕ.⊓ 𝔽.toℕ b) ↑_ ∘ L)) x x'
              × (_≡_ on ((𝔽.toℕ a ℕ.⊔ 𝔽.toℕ b) ↓_ ∘ L)) x x'
-    muvdusin = {!!}
+    muvdusin x a b = {!!}
+      where
+      R = DFP.≤-reflexive refl
+      K = kanji {x} $ Muvgau a a (just b) R
+      L = Buffer.lerpinste
+      e = nilzilcmi x a a b R
+      x' = proj₁ K
 
   module Xruti where
     xrutis : (x : Buffer)
