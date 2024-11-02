@@ -2374,7 +2374,7 @@ module KanjyVeritas where
              × L x ! a ≡ L x' ! mink a e
              × (_≡_ on ((𝔽.toℕ a ℕ.⊓ 𝔽.toℕ b) ↑_ ∘ L)) x x'
              × (_≡_ on ((𝔽.toℕ a ℕ.⊔ 𝔽.toℕ b) ↓_ ∘ L)) x x'
-    muvdusin x a b = {!!} , {!!}
+    muvdusin x a b = {!!} , ({!!} , {!!})
       where
       R = DFP.≤-reflexive refl
       K = kanji {x} $ Muvgau a a (just b) R
