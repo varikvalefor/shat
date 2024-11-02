@@ -448,7 +448,7 @@ dekydu'i : {x n : ℕ}
          → decToMaybe (x ℕ.<? n) ≡ just mel
 dekydu'i {x} {n} {m} = begin
   decToMaybe (x ℕ.<? n) ≡⟨ DJ ▹ proj₂ ⟩
-  just (proj₁ DJ) ≡⟨ iedek _ m ▹ cong just ⟩
+  just (proj₁ DJ) ≡⟨ iedek _ _ ▹ cong just ⟩
   just m ∎
   where
   DJ = dec-just (ℕ._< _) (x ℕ.<? n) m
