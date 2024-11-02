@@ -2337,7 +2337,7 @@ module KanjyVeritas where
             → (d : a 𝔽.≤ b)
             → let x₂ = proj₂ $ kanji {x} $ Muvgau a b (just c) d in
               (_≡_
-                ((𝔽.toℕ b) ↓ Buffer.lerpinste x)
+                (𝔽.toℕ b ↓ Buffer.lerpinste x)
                 {!!})
     muviros = {!!}
 
