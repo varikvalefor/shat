@@ -2367,11 +2367,11 @@ module KanjyVeritas where
              → (a b : Buffer.F x)
              → let R = DFP.≤-reflexive refl in
                let K = kanji {x} $ Muvgau a a (just b) R in
-               Data.Maybe.Is-nothing (proj₂ K)
-             × let x' = proj₁ K in
                let L = Buffer.lerpinste in
                let e = nilzilcmi x a a b R in
-               L x ! a ≡ L x' ! mink a e
+               let x' = proj₁ K in
+               Data.Maybe.Is-nothing (proj₂ K)
+             × L x ! a ≡ L x' ! mink a e
              × (_≡_ on ((𝔽.toℕ a ℕ.⊓ 𝔽.toℕ b) ↑_ ∘ L)) x x'
              × (_≡_ on ((𝔽.toℕ a ℕ.⊔ 𝔽.toℕ b) ↓_ ∘ L)) x x'
     muvdusin = {!!}
