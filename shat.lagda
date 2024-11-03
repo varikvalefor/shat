@@ -100,8 +100,8 @@ ni'o skicu bau la'oi .Agda.\ fe ko'a goi le milxe be le ka ce'u smimlu be la'o z
 
 \begin{code}
 {-# OPTIONS --guardedness #-}
-{-# OPTIONS --backtracking-instance-search #-}
 {-# OPTIONS --instance-search-depth=2 #-}
+{-# OPTIONS --backtracking-instance-search #-}
 
 open import IO
   using (
