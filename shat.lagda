@@ -1576,7 +1576,7 @@ module Orsygenturfa'i₃Veritas where
         readMaybe (show a) ,ₘ readMaybe (show b) ≡⟨ refl ⟩
         _ ≡⟨ readMaybe∘show a ▹ cong (_,ₘ readMaybe (show b)) ⟩
         just a ,ₘ readMaybe (show b) ≡⟨ refl ⟩
-        _ ≡⟨ readMaybe∘show b ▹ cong (just a ,ₘ_) ⟩
+        _ ≡⟨ readMaybe∘show b ▹ cong (just _ ,ₘ_) ⟩
         just a ,ₘ just b ≡⟨ refl ⟩
         just (a , b) ∎
 
