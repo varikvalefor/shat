@@ -1545,7 +1545,7 @@ module Orsygenturfa'i₃Veritas where
     _,ₘ_ (just $ (a , b) , d) (just $ just c) ≡⟨ refl ⟩
     just (((a , b) , d) , just c) ∎
     where
-    R = (Rr) a b
+    R = Rr a b
       where
       Rr = _,ₘ_ on (readMaybe ∘ show)
     ax : Maybe $ Σ (Fin _ × Fin _) $ uncurry 𝔽._≤_
