@@ -1541,7 +1541,7 @@ module Orsygenturfa'i₃Veritas where
   porkcos a b d c = begin
     pork ((show a , show b) , show c) ≡⟨ refl ⟩
     _,ₘ_ ax (readMaybe' $ show c) ≡⟨ refl ⟩
-    _ ≡⟨ ReadMaybe'Veritas.namcu c ▹ cong (_,ₘ_ ax) ⟩
+    _ ≡⟨ ReadMaybe'Veritas.namcu c ▹ cong (ax ,ₘ_) ⟩
     _,ₘ_ ax (just $ just c) ≡⟨ ax≡justabd ▹ cong (_,ₘ just (just c)) ⟩
     _,ₘ_ (just $ (a , b) , d) (just $ just c) ≡⟨ refl ⟩
     just (((a , b) , d) , just c) ∎
