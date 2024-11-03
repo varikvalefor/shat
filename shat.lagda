@@ -1549,7 +1549,7 @@ module Orsygenturfa'i₃Veritas where
       where
       Rr = _,ₘ_ on (readMaybe ∘ show)
     ax : Maybe $ Σ (Fin _ × Fin _) $ uncurry 𝔽._≤_
-    ax = R >>= λ (a' , b') → Orsygenturfa'i.pork $ (toList on just) (a') (b')
+    ax = R >>= λ (a' , b') → Orsygenturfa'i.pork $ (toList on just) (a') b'
       where
       toList : ∀ {a} → {A : Set a} → A → A → List A
       toList x z = x ∷ z ∷ []
