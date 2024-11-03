@@ -1553,8 +1553,6 @@ module Orsygenturfa'i₃Veritas where
       where
       toList : ∀ {a} → {A : Set a} → A → A → List A
       toList x z = x ∷ z ∷ []
-    rimcos : {n : ℕ} → readMaybe' ∘ show ≗ just ∘ just {A = Fin n}
-    rimcos = ReadMaybe'Veritas.namcu
     open ≡-Reasoning
     ax≡justabd : ax ≡ just ((a , b) , d)
     ax≡justabd = begin
