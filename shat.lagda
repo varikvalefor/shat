@@ -1549,12 +1549,11 @@ module Orsygenturfa'i₃Veritas where
       where
       Rr = _,ₘ_ on (readMaybe ∘ show)
     ax : Maybe $ Σ (Fin _ × Fin _) $ uncurry 𝔽._≤_
-    ax = R >>= Orsygenturfa'i.pork ∘ uncurry (toList on just)
+    ax = R >>= (Orsygenturfa'i.pork ∘ uncurry (toList on just))
       where
       toList : ∀ {a} → {A : Set a} → A → A → List A
       toList x z = x ∷ z ∷ []
-    rimcos : {n : ℕ}
-           → readMaybe' ∘ show ≗ just ∘ just {A = Fin n}
+    rimcos : {n : ℕ} → readMaybe' ∘ show ≗ just ∘ just {A = Fin n}
     rimcos = ReadMaybe'Veritas.namcu
     open ≡-Reasoning
     ax≡justabd : ax ≡ just ((a , b) , d)
