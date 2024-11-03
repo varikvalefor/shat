@@ -1545,7 +1545,7 @@ module Orsygenturfa'i₃Veritas where
     _,ₘ_ (just $ (a , b) , d) (just $ just c) ≡⟨ refl ⟩
     just (((a , b) , d) , just c) ∎
     where
-    R = (_,ₘ_ on readMaybe) (show a) $ show b
+    R = (_,ₘ_ on readMaybe ∘ show) (a) $ b
     ax : Maybe $ Σ (Fin _ × Fin _) $ uncurry 𝔽._≤_
     ax = R >>= λ (a' , b') → Orsygenturfa'i.pork $ just a' ∷ just b' ∷ []
     rimcos : {n : ℕ}
