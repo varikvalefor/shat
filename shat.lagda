@@ -1210,7 +1210,12 @@ module Orsygenturfa'iVeritas where
               → (xs : List A)
               → e ≡ x
               → e ∈_ $ x ∷ xs
-          ≡⇒∈ = {!!}
+          ≡⇒∈ = λ e x xs d → begin
+            1 ≡⟨ {!!} ⟩
+            𝕃.length (𝕃.take 1 $ 𝕃.filter (e ≟_) (Data.Vec.toList $ Data.Vec.fromList $ x ∷ xs)) ∎
+            where
+            import Data.Vec
+            open ≡-Reasoning
           ∉⇒¬∈ : ∀ {a} → {A : Set a}
                → ⦃ _ : Eq A ⦄
                → (x : A)
