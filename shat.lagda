@@ -1500,7 +1500,7 @@ module Orsygenturfa'i₃Veritas where
     _ ≡⟨ uadysas a ▹ cong (L' ∘ (_∷ 𝕃.map (w' aD?) [ s'bxs'c ])) ⟩
     L' ([ s' a ] ∷ 𝕃.map (w' aD?) [ s'bxs'c ]) ≡⟨ refl ⟩
     L' ([ s' a ] ∷ [ w' aD? s'bxs'c ])  ≡⟨ refl ⟩
-    _ ≡⟨ sabus ▹ cong (L' ∘ _∷_ ([ s' a ]) ∘ [_]) ⟩
+    _ ≡⟨ sabus ▹ cong (L' ∘ ([ s' a ] ∷_) ∘ [_]) ⟩
     L' ([ s' a ] ∷ [ s' b ∷ [ s' c ] ]) ≡⟨ refl ⟩
     L' (map₂ s' abj) ≡⟨ refl ⟩
     L (map₂ (𝕊.fromList ∘ s') abj) ≡⟨ map₂-cong fL∘tL _ ▹ cong L ⟩
