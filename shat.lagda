@@ -867,7 +867,7 @@ module fromℕ?Veritas where
     where
     id' = 𝔽.toℕ ∘ 𝔽.fromℕ<
     c? : {x : ℕ} → Maybe $ x ℕ.< n
-    c? {_} = decToMaybe $ (ℕ._<? _) _
+    c? = decToMaybe $ (ℕ._<? _) _
 
   nada : {n : ℕ}
        → (x : ℕ)
