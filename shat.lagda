@@ -1063,7 +1063,7 @@ module RomoivimcuVeritas where
     fL (_↑ x' $ length x' ℕ.∸ 1) ++ 𝕊.fromList -1↑x ≡⟨ refl ⟩
     fL -1↓x' ++ fL -1↑x ≡⟨ fromList-dist -1↓x' -1↑x ▹ sym ⟩
     fL (-1↓x' ++ -1↑x) ≡⟨ refl ⟩
-    fL x'' ≡⟨ DLP.take++drop (length x' ℕ.∸ 1) x' ▹ cong fL ⟩
+    _ ≡⟨ DLP.take++drop (length x' ℕ.∸ 1) x' ▹ cong fL ⟩
     fL x' ≡⟨ fromList∘toList x ⟩
     x ∎
     where
