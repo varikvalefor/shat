@@ -1071,7 +1071,6 @@ module RomoivimcuVeritas where
     fL = 𝕊.fromList
     -1↑x = _↓ x' $ length x' ℕ.∸ 1
     -1↓x' = _↑ x' $ length x' ℕ.∸ 1
-    x'' = -1↓x' ++ -1↑x
 
   vimcykonkydus : (s : String)
               → (c : Char)
