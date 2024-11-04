@@ -1093,7 +1093,6 @@ module RomoivimcuVeritas where
     -1↓_ : ∀ {a} → {A : Set a} → List A → List A
     -1↓_ = λ L → _↑ L $ length L ℕ.∸ 1
     S = λ f → 𝕊.fromList ∘ f ∘ 𝕊.toList
-    fL∘tL≡id : fL ∘ tL ≗ id
     fL∘tL≡id = fromList∘toList
     -1↓_∘konk≡id : ∀ {a} → {A : Set a}
                  → (xs : List A)
