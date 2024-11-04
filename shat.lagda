@@ -1523,7 +1523,7 @@ module Orsygenturfa'i₃Veritas where
     abj = [ a ] ∷ [ b ∷ [ c ] ]
     sabus : w' aD? s'bxs'c ≡ s' b ∷ [ s' c ]
     sabus = {!!}
-    uadysas : (a : ℕ) → w' aD? (s' a) ≡ [ s' a ]
+    uadysas : (a : ℕ) → (w' aD? ∘ s') a ≡ [ s' a ]
     uadysas = {!!}
     map₂ : ∀ {a b} → {A : Set a} → {B : Set b}
          → (A → B) → List $ List A → List $ List B
