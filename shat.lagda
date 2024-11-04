@@ -1084,7 +1084,7 @@ module RomoivimcuVeritas where
     fL (-1↓_ $ tL s ++ tL (fC c)) ≡⟨ refl ⟩
     _ ≡⟨ toList∘fromChar c ▹ cong (fL ∘ -1↓_ ∘ (tL s ++_)) ⟩
     fL (-1↓_ $ tL s ++ c ∷ []) ≡⟨ -1↓_∘konk≡id (tL s) c ▹ cong fL ⟩
-    fL (tL s) ≡⟨ fL∘tL≡id s ⟩
+    fL (tL s) ≡⟨ fromList∘toList s ⟩
     s ∎
     where
     tL = 𝕊.toList
