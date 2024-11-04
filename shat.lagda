@@ -1059,17 +1059,17 @@ module RomoivimcuVeritas where
            → let -1↑x = 𝕊.fromList $ (length x ℕ.∸ 1) ↓ 𝕊.toList x in
              x ≡ romoivimcu x ++ -1↑x
   konkydus x = sym $ begin
-    romoivimcu x ++ 𝕊.fromList -1↑x ≡⟨ refl ⟩
-    fL (_↑ x' $ length x' ℕ.∸ 1) ++ 𝕊.fromList -1↑x ≡⟨ refl ⟩
-    fL -1↓x' ++ fL -1↑x ≡⟨ fromList-dist -1↓x' -1↑x ▹ sym ⟩
-    fL (-1↓x' ++ -1↑x) ≡⟨ refl ⟩
+    romoivimcu x ++ 𝕊.fromList (-1↑ x') ≡⟨ refl ⟩
+    fL (_↑ x' $ length x' ℕ.∸ 1) ++ 𝕊.fromList (-1↑ x') ≡⟨ refl ⟩
+    fL -1↓x' ++ fL (-1↑ x') ≡⟨ fromList-dist -1↓x' (-1↑ x') ▹ sym ⟩
+    fL (-1↓x' ++ (-1↑ x')) ≡⟨ refl ⟩
     _ ≡⟨ DLP.take++drop (length x' ℕ.∸ 1) x' ▹ cong fL ⟩
     fL x' ≡⟨ fromList∘toList x ⟩
     x ∎
     where
     x' = 𝕊.toList x
     fL = 𝕊.fromList
-    -1↑x = _↓ x' $ length x' ℕ.∸ 1
+    -1↑_ = λ x' → _↓ x' $ length x' ℕ.∸ 1
     -1↓x' = _↑ x' $ length x' ℕ.∸ 1
 
   vimcykonkydus : (s : String)
