@@ -1234,7 +1234,7 @@ module Orsygenturfa'iVeritas where
               → e ∉_ $ x ∷ xs
               → e ∉ xs
         ∉⇒∉₋₁ {xs = []} _ = refl
-        ∉⇒∉₋₁ {e = e} {xs = z ∷ _} = f[x∷xs]≡[]⇒f[xs]≡[] $ e ≟_
+        ∉⇒∉₋₁ {e = e} {xs = _ ∷ _} = f[x∷xs]≡[]⇒f[xs]≡[] $ e ≟_
           where
           f[x∷xs]≡[]⇒f[xs]≡[] : ∀ {a p} → {A : Set a}
                               → {x : A}
