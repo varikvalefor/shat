@@ -1357,7 +1357,7 @@ module Orsygenturfa'iVeritas where
     du {x = x} {z} djb = begin
       pork (just x ∷ just z ∷ []) ≡⟨ refl ⟩
       mapₘ ((x , z) ,_) (decToMaybe $ x 𝔽.≤? z) ≡⟨ refl ⟩
-      _ ≡⟨ zmadekydu'i {m = djb} ▹ cong (mapₘ (Σ.-,_)) ⟩
+      _ ≡⟨ zmadekydu'i {m = djb} ▹ cong (mapₘ Σ.-,_) ⟩
       mapₘ ((x , z) ,_) (just djb) ≡⟨ refl ⟩
       just ((x , z) , djb) ∎
       where
