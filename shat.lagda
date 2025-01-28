@@ -1851,8 +1851,6 @@ module ReedVeritas where
     rms : Fin ⊆ Maybe ∘ Fin
     rms = readMaybe ∘ show
     sl = 𝕃.last ∘ 𝕊.toList
-    rimco : {n : ℕ} → rms {n} ≗ just
-    rimco = readMaybe∘show
     D : pamoinamcu K >>= fromℕ? ≡ rms a
     D = {!!}
 
