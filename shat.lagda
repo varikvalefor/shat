@@ -1715,7 +1715,7 @@ module ReedVeritas where
   open ≡-Reasoning
 
   private
-    k₁ : (x : Buffer) → (_ : Buffer.F x) → Char → String
+    k₁ : (x : Buffer) → (Buffer.F x) → Char → String
     k₁ _ a c = show (𝔽.toℕ a) ++ 𝕊.fromChar c
 
     k₂ : (x : Buffer) → (a b : Buffer.F x) → Char → String
