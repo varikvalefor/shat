@@ -1840,7 +1840,7 @@ module ReedVeritas where
     _ ≡⟨ D ▹ cong (λ x → _,ₘ_ x _ >>= g') ⟩
     _,ₘ_ (rms a) (sl "i") >>= g' ≡⟨ refl ⟩
     _,ₘ_ (rms a) (just 'i') >>= g' ≡⟨ refl ⟩
-    _ ≡⟨ readMaybe∘show a ▹ cong (λ x → g' =<< ((_,ₘ _) x)) ⟩
+    _ ≡⟨ readMaybe∘show a ▹ cong (g' <=< ((_,ₘ _))) ⟩
     _,ₘ_ (just a) (just 'i') >>= g' ≡⟨ refl ⟩
     just (a , 'i') >>= g' ≡⟨ refl ⟩
     Reed.Pa.g a 'i' ≡⟨ refl ⟩
