@@ -1747,8 +1747,7 @@ module ReedVeritas where
     -- la .uin. fa lo na jimpe be fi la .kybin. je la'oi
     -- .kybin'.
 
-    kybin : (x : Buffer)
-          → reed x "q" ≡ just Sisti
+    kybin : (x : Buffer) → reed x "q" ≡ just Sisti
     kybin _ = refl
 
     kybin' : (x : Buffer)
