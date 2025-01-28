@@ -1784,7 +1784,7 @@ module ReedVeritas where
                    (𝕃.replicate n nothing))
       xedrenod _ (just _) = refl
       xedrenod 0 nothing = refl
-      xedrenod (suc n) nothing = xedrenod n nothing
+      xedrenod (suc n) nothing = xedrenod n _
 
   ac : (x : Buffer)
      → (a : Buffer.F x)
