@@ -1747,7 +1747,7 @@ module ReedVeritas where
       open Reed
       ridos = 𝕃.head (𝕊.toList "w") >>= Reed.No.g
       L = ridos ∷ _
-      duridos : 𝕃.head (𝕃.mapMaybe id L) ≡ ridos
+      duridos : (_≡ ridos) $ 𝕃.head (𝕃.mapMaybe id L)
       duridos with ridos
       ... | just _ = refl
       ... | nothing = refl
