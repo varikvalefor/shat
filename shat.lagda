@@ -1724,7 +1724,7 @@ module ReedVeritas where
       f = show ∘ 𝔽.toℕ
 
     k₃ : (x : Buffer)
-       → (a b c : Buffer.F x)
+       → (a b _ : Buffer.F x)
        → Char
        → String
     k₃ x a b c s = k₂ x a b s ++ show (𝔽.toℕ c)
