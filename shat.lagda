@@ -1718,7 +1718,7 @@ module ReedVeritas where
     k₁ : (x : Buffer) → Buffer.F x → Char → String
     k₁ _ a c = show (𝔽.toℕ a) ++ 𝕊.fromChar c
 
-    k₂ : (x : Buffer) → (a _ : Buffer.F x) → Char → String
+    k₂ : (x : Buffer) → (_ _ : Buffer.F x) → Char → String
     k₂ _ a b c = f a ++ "," ++ f b ++ 𝕊.fromChar c
       where
       f = show ∘ 𝔽.toℕ
