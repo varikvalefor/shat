@@ -1851,7 +1851,7 @@ module ReedVeritas where
     rms : Fin ⊆ Maybe ∘ Fin
     rms = readMaybe ∘ show
     sl = 𝕃.last ∘ 𝕊.toList
-    D : pamoinamcu K >>= fromℕ? ≡ rms a
+    D : (_≡ rms a) $ pamoinamcu K >>= fromℕ?
     D = {!!}
 
   mixer : (x : Buffer)
