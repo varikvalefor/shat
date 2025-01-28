@@ -1750,8 +1750,7 @@ module ReedVeritas where
     kybin : (x : Buffer) → reed x "q" ≡ just Sisti
     kybin _ = refl
 
-    kybin' : (x : Buffer)
-           → reed x "Q" ≡ just Sisti!
+    kybin' : (x : Buffer) → reed x "Q" ≡ just Sisti!
     kybin' _ = refl
 
     xon : (x : Buffer)
