@@ -431,7 +431,7 @@ dec-nothing : ∀ {a p} → {A : Set a}
             → (P : Pred A p)
             → {x : A}
             → (P? : Dec $ P x)
-            → (_ : ¬ P x)
+            → (¬ P x)
             → decToMaybe P? ≡ nothing
 dec-nothing _ P? m = begin
   decToMaybe P? ≡⟨ M ▹ proj₂ ▹ cong decToMaybe ⟩
