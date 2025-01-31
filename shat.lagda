@@ -703,7 +703,7 @@ module InsertVeritas where
             → (x z : List A)
             → x ≡_ $ length x ↑_ $ x ++ z
     lenteik [] _ = refl
-    lenteik (x ∷ xs) z = lenteik xs z ▹ cong (x ∷_)
+    lenteik (x ∷ xs) z = lenteik xs z ▹ cong (_ ∷_)
 
     finlen : ∀ {a} → {A : Set a}
            → (x : List A)
