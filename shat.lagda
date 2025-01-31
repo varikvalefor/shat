@@ -542,7 +542,7 @@ romoitcar s c = begin
           → (xs : List A)
           → 𝕃.last (xs ++ x ∷ []) ≡ just x
   ⊃⌽-just x [] = refl
-  ⊃⌽-just x (_ ∷ zs) = ⊃⌽-just x zs ▹ subst (_≡ _) D
+  ⊃⌽-just x (_ ∷ zs) = ⊃⌽-just _ zs ▹ subst (_≡ _) D
     where
     D = ⊃⌽∘x∷_≡⊃⌽ _ _ zs
       where
