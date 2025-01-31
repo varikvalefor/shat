@@ -649,7 +649,7 @@ module ReadMaybe'Veritas where
       J⇒Σ = λ s (f , d) → f , {!!}
       ¬J⇒N : ∀ {a} → {A : Set a}
            → {x : Maybe A}
-           → (Σ.∄ $ _≡_ x ∘ just)
+           → Σ.∄ $ _≡_ x ∘ just
            → x ≡ nothing
       ¬J⇒N {x = nothing} _ = refl
       ¬J⇒N {x = just _} = _⇒⇐_ (_ , refl)
