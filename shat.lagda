@@ -659,7 +659,7 @@ module ReadMaybe'Veritas where
           → {g j : B}
           → ¬_ $ d ≡ f
           → if (d ≡ᵇ f) g j ≡ j
-    ifnon {d = d} {f} {g} {j = j} J = begin
+    ifnon {d = d} {f} {g} {j} J = begin
       if (d ≡ᵇ f) g j ≡⟨ refl ⟩
       if (isYes $ d ≟ f) g j ≡⟨ isYes≗does (d ≟ f) ▹ cong i ⟩
       if (Dec.does $ d ≟ f) g j ≡⟨ dec-false (d ≟ f) J ▹ cong i ⟩
