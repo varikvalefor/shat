@@ -1285,7 +1285,7 @@ module Orsygenturfa'iVeritas where
 
     konkf : (x z : String)
           → spit (x ++ "," ++ z) ≡ spit x ++ spit z
-    konkf = λ x z → begin
+    konkf x z = begin
       spit (x ++ "," ++ z) ≡⟨ {!!} ⟩
       spit x ++ spit z ∎
       where
