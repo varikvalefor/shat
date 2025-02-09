@@ -1399,7 +1399,7 @@ module Orsygenturfa'iVeritas where
       showF' = 𝕊.toList ∘ show
       justF' : {n : ℕ} → Fin n → Maybe $ Fin n
       justF' = ps ∘ showF'
-      justF'≡just : {n : ℕ} → (x : Fin n) → justF' x ≡ just x
+      justF'≡just : {n : ℕ} → (x : Fin n) → justF' {n} x ≡ just x
       justF'≡just = sym ∘ Ps.du rimco
       spidus : {n : ℕ}
              → (a b : Fin n)
