@@ -1410,7 +1410,7 @@ module Orsygenturfa'iVeritas where
              → (_≡_
                  (spit $ show a ++ "," ++ show b)
                  (showF' a ∷ showF' b ∷ []))
-      spidus a b = Spit.du (s a) (s b) (,∉ a) (,∉ b) (_ , m10∈𝔽 a) {!!}
+      spidus a b = Spit.du (s a) (s b) (,∉ a) (,∉ b) (_ , m10∈𝔽 a) (_ , m10∈𝔽 b)
         where
         s = show
         ,∉ : {n : ℕ} → (x : Fin n) → ',' ∉ 𝕊.toList (show x)
