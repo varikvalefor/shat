@@ -1391,7 +1391,7 @@ module Orsygenturfa'iVeritas where
     mapyjus = begin
       𝕃.map ps (spit a,b) ≡⟨ spidus a b ▹ cong (𝕃.map ps) ⟩
       𝕃.map ps (showF' a ∷ showF' b ∷ []) ≡⟨ refl ⟩
-      𝕃.map justF' (a ∷ b ∷ []) ≡⟨ justymapdu _ ⟩
+      𝕃.map justF' (a ∷ b ∷ []) ≡⟨ DLP.map-cong justF'≡just _ ⟩
       𝕃.map just (a ∷ b ∷ []) ≡⟨ refl ⟩
       just a ∷  just b ∷ [] ∎
       where
