@@ -1422,7 +1422,7 @@ module Orsygenturfa'iVeritas where
           c = {!!}
           m10∈𝔽 : {n : ℕ}
                 → (x : Fin n)
-                → c (𝔽.toℕ x mod 10) ∈ show x
+                → c (𝔽.toℕ x mod 10) ∈ s x
           m10∈𝔽 = {!!}
 \end{code}
 
