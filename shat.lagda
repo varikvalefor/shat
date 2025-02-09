@@ -1325,7 +1325,7 @@ module Orsygenturfa'iVeritas where
          → {n : ℕ}
          → nothing ≡ ps {n = n} (𝕊.toList j)
     nada j J {n} = sym $ begin
-      ps {n = n} (tL j) ≡⟨ refl ⟩
+      ps {n = _} (tL j) ≡⟨ refl ⟩
       (fromℕ? <=< (readMaybe ∘ fL)) (tL j) ≡⟨ refl ⟩
       f? (readMaybe $ fL $ tL j) ≡⟨ [fL[tLj]≡j]' ⟩
       f? (readMaybe j) ≡⟨ rimnos j J ▹ cong f? ⟩
