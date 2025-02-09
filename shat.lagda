@@ -1012,7 +1012,7 @@ module PamoinamcuVeritas where
     g (s $ show n) ≡⟨ DegjygirzuVeritas.pav n ▹ cong g ⟩
     g (show n ∷ []) ≡⟨ refl ⟩
     𝕃.head (show n ∷ []) >>= readMaybe ≡⟨ refl ⟩
-    readMaybe (show n) ≡⟨ rimco n ⟩
+    readMaybe (show n) ≡⟨ rimco _ ⟩
     just n ∎
     where
     g = readMaybe <=< 𝕃.head
