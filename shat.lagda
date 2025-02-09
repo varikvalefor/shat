@@ -1410,17 +1410,20 @@ module Orsygenturfa'iVeritas where
              → (_≡_
                  (spit $ show a ++ "," ++ show b)
                  (showF' a ∷ showF' b ∷ []))
-      spidus a b = Spit.du (s a) (s b) (,∉ a) (,∉ b) (_ , m10∈𝔽 a) (_ , m10∈𝔽 b)
+      spidus a b = Spit.du (s a) (s b) (,∉ a) (,∉ b) (f a) (f b)
         where
         s = show
         ,∉ : {n : ℕ} → (x : Fin n) → ',' ∉ 𝕊.toList (show x)
         ,∉ = {!!}
-        c : Fin 10 → Char
-        c = {!!}
-        m10∈𝔽 : {n : ℕ}
-              → (x : Fin n)
-              → c (𝔽.toℕ x mod 10) ∈ show x
-        m10∈𝔽 = {!!}
+        f : {n : ℕ} → (x : Fin n) → Σ Char (_∈ s x)
+        f = λ x → _ , m10∈𝔽 x
+          where
+          c : Fin 10 → Char
+          c = {!!}
+          m10∈𝔽 : {n : ℕ}
+                → (x : Fin n)
+                → c (𝔽.toℕ x mod 10) ∈ show x
+          m10∈𝔽 = {!!}
 \end{code}
 
 \section{la'oi .\F{orsygenturfa'i₃}.}
