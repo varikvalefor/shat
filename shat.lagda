@@ -1406,11 +1406,11 @@ module Orsygenturfa'iVeritas where
              → (_≡_
                  (spit $ show a ++ "," ++ show b)
                  (showF' a ∷ showF' b ∷ []))
-      spidus a b = Spit.du (s a) (s b) (nokom a) (nokom b) {!!} {!!}
+      spidus a b = Spit.du (s a) (s b) (,∉ a) (,∉ b) {!!} {!!}
         where
         s = show
-        nokom : {n : ℕ} → (x : Fin n) → ',' ∉ 𝕊.toList (show x)
-        nokom = {!!}
+        ,∉ : {n : ℕ} → (x : Fin n) → ',' ∉ 𝕊.toList (show x)
+        ,∉ = {!!}
 \end{code}
 
 \section{la'oi .\F{orsygenturfa'i₃}.}
