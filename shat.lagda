@@ -1073,8 +1073,8 @@ module RomoivimcuVeritas where
     -1↓_ = λ x' → _↑ x' $ length x' ℕ.∸ 1
 
   vimcykonkydus : (s : String)
-              → (c : Char)
-              → romoivimcu (s ++ 𝕊.fromChar c) ≡ s
+                → (c : Char)
+                → romoivimcu (s ++ 𝕊.fromChar c) ≡ s
   vimcykonkydus s c = begin
     romoivimcu (s ++ fC c) ≡⟨ refl ⟩
     S -1↓_ (s ++ fC c) ≡⟨ refl ⟩
