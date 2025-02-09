@@ -206,6 +206,10 @@ open import Relation.Unary
     Pred;
     _⊆_
   )
+open import Data.Nat.DivMod
+  using (
+    _mod_
+  )
 open import Relation.Nullary
   using (
     Dec;
@@ -1406,11 +1410,17 @@ module Orsygenturfa'iVeritas where
              → (_≡_
                  (spit $ show a ++ "," ++ show b)
                  (showF' a ∷ showF' b ∷ []))
-      spidus a b = Spit.du (s a) (s b) (,∉ a) (,∉ b) {!!} {!!}
+      spidus a b = Spit.du (s a) (s b) (,∉ a) (,∉ b) (_ , m10∈𝔽 a) {!!}
         where
         s = show
         ,∉ : {n : ℕ} → (x : Fin n) → ',' ∉ 𝕊.toList (show x)
         ,∉ = {!!}
+        c : Fin 10 → Char
+        c = {!!}
+        m10∈𝔽 : {n : ℕ}
+              → (x : Fin n)
+              → c (𝔽.toℕ x mod 10) ∈ show x
+        m10∈𝔽 = {!!}
 \end{code}
 
 \section{la'oi .\F{orsygenturfa'i₃}.}
