@@ -1299,8 +1299,7 @@ module Orsygenturfa'iVeritas where
   module Ps where
     du : readMaybe ∘ show ≗ just
        → {n : ℕ}
-       → (x : Fin n)
-       → just x ≡ (ps ∘ 𝕊.toList ∘ show ∘ 𝔽.toℕ) x
+       → (x : Fin n) → just x ≡ (ps ∘ 𝕊.toList ∘ show ∘ 𝔽.toℕ) x
     du rimco x = sym $ begin
       ps (𝕊.toList $ show x) ≡⟨ refl ⟩
       b𝔽 (rM $ id' $ show x) ≡⟨ id'∘show≡show x ▹ cong (b𝔽 ∘ rM) ⟩
