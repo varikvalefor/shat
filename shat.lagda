@@ -1415,7 +1415,7 @@ module Orsygenturfa'iVeritas where
         s = show
         ,∉ : {n : ℕ} → (x : Fin n) → ',' ∉ 𝕊.toList (show x)
         ,∉ = {!!}
-        f : {n : ℕ} → (x : Fin n) → Σ Char (_∈ s x)
+        f : {n : ℕ} → (x : Fin n) → Σ Char $ _∈ s x
         f = Σ.-,_ ∘ m10∈𝔽
           where
           c : Fin 10 → Char
