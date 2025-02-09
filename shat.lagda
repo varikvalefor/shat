@@ -1402,8 +1402,7 @@ module Orsygenturfa'iVeritas where
       justF'≡just : {n : ℕ} → (x : Fin n) → justF' x ≡ just x
       justF'≡just = sym ∘ Ps.du rimco
       justymapdu : {n : ℕ}
-                 → (L : List $ Fin n)
-                 → 𝕃.map {A = Fin n} justF' L ≡ 𝕃.map just L
+                 → (L : List $ Fin n) → 𝕃.map {A = Fin n} justF' L ≡ 𝕃.map just L
       justymapdu = DLP.map-cong justF'≡just
       spidus : {n : ℕ}
              → (a b : Fin n)
