@@ -1935,7 +1935,7 @@ module ReedVeritas where
     reedx≡k∘w : (s : String) → reed x s ≡ k (w s)
     reedx≡k∘w = {!!}
     w∘unwords : id ≗ (w ∘ unwords)
-    w∘unwords [] = {!!}
+    w∘unwords [] = refl
     w∘unwords (x ∷ []) = {!!}
     w∘unwords (x ∷ xs) = {!!}
     w++s≡w++ws : "w " ++ c∷s ≡ unwords ("w" ∷ w c∷s)
