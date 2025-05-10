@@ -1937,9 +1937,12 @@ module ReedVeritas where
     w∘unwords : 𝕃.All (' ' ∉_) ⊆′ (λ x → x ≡ w (unwords x))
     w∘unwords [] a = refl
     w∘unwords (x ∷ []) a = sym $ begin
-      w (unwords $ x ∷ []) ≡⟨ {!!} ▹ cong w ⟩
+      w (unwords $ x ∷ []) ≡⟨ ((unwords (x ∷ []) ≡ x) ∋ {!!}) ▹ cong w ⟩
       w x ≡⟨ {!!} ⟩
       x ∷ [] ∎
+      where
+      c∉x⇒wx≡[x] : (' ' ∉_) ⊆′ (λ x → (x ∷ []) ≡ w x)
+      c∉x⇒wx≡[x] = {!!}
     w∘unwords (x ∷ xs) = {!!}
     w++s≡w++ws : "w " ++ c∷s ≡ unwords ("w" ∷ w c∷s)
     w++s≡w++ws = sym $ begin
