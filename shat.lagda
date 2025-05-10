@@ -1915,7 +1915,6 @@ module ReedVeritas where
     j∘R c∷s ∎
     where
     open Reed.No using (k)
-    rx = reed x
     c∷s = 𝕊.fromChar c ++ s
     w = 𝕊.wordsBy $ _≟ ' '
     v = Data.Maybe.to-witness uj
