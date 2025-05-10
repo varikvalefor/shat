@@ -1936,7 +1936,7 @@ module ReedVeritas where
     reedx≡k∘w = {!!}
     w∘unwords : (x : List String)
               → 𝕃.All (' ' ∉_) x
-              → id x ≡ (w ∘ unwords) x
+              → x ≡ (w ∘ unwords) x
     w∘unwords [] a = refl
     w∘unwords (x ∷ []) a = sym $ begin
       w (unwords (x ∷ [])) ≡⟨ {!!} ⟩
