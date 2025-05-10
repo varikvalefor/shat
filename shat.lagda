@@ -1934,9 +1934,7 @@ module ReedVeritas where
     open Reed
     reedx≡k∘w : (s : String) → reed x s ≡ k (w s)
     reedx≡k∘w = {!!}
-    w∘unwords : (x : _)
-              → 𝕃.All (' ' ∉_) x
-              → x ≡ w (unwords x)
+    w∘unwords : (x : _) → 𝕃.All (' ' ∉_) x → x ≡ w (unwords x)
     w∘unwords [] a = refl
     w∘unwords (x ∷ []) a = sym $ begin
       w (unwords (x ∷ [])) ≡⟨ {!!} ⟩
