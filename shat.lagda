@@ -204,6 +204,7 @@ open import Data.Product
 open import Relation.Unary
   using (
     Decidable;
+    _⊆′_;
     Pred;
     _⊆_
   )
@@ -1934,7 +1935,7 @@ module ReedVeritas where
     open Reed
     reedx≡k∘w : (s : String) → reed x s ≡ k (w s)
     reedx≡k∘w = {!!}
-    w∘unwords : 𝕃.All (' ' ∉_) Relation.Unary.⊆′ (λ x →  x ≡ w (unwords x))
+    w∘unwords : 𝕃.All (' ' ∉_) ⊆′ (λ x →  x ≡ w (unwords x))
     w∘unwords [] a = refl
     w∘unwords (x ∷ []) a = sym $ begin
       w (unwords (x ∷ [])) ≡⟨ {!!} ⟩
