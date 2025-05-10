@@ -1905,7 +1905,7 @@ module ReedVeritas where
     reed x ("w " ++ c∷s) ≡⟨ w++s≡w++ws ▹ cong (reed x) ⟩
     reed x (unwords $ "w" ∷ w c∷s) ≡⟨ refl ⟩
     rx (unwords $ "w" ∷ w c∷s) ≡⟨ reedx≡k∘w $ unwords $ "w" ∷ w c∷s ⟩
-    k (w $ unwords $ "w" ∷ w c∷s) ≡⟨ w∘unwords _ ▹ sym ▹ cong k ⟩
+    k (w $ unwords $ "w" ∷ w c∷s) ≡⟨ w∘unwords _ {!!} ▹ sym ▹ cong k ⟩
     k ("w" ∷ w c∷s) ≡⟨ w[c∷s]≡v₁∷v₂ ▹ cong (k ∘ _∷_ "w") ⟩
     k ("w" ∷ v₁ ∷ v₂) ≡⟨ refl ⟩
     j∘R (unwords $ v₁ ∷ v₂) ≡⟨ refl ⟩
@@ -1934,9 +1934,9 @@ module ReedVeritas where
     open Reed
     reedx≡k∘w : (s : String) → reed x s ≡ k (w s)
     reedx≡k∘w = {!!}
-    w∘unwords : id ≗ (w ∘ unwords)
-    w∘unwords [] = refl
-    w∘unwords (x ∷ []) = sym $ begin
+    w∘unwords : (x : List String) → 𝕃.All (' ' ∉_) x → id x ≡ (w ∘ unwords) x
+    w∘unwords [] a = refl
+    w∘unwords (x ∷ []) a = sym $ begin
       w (unwords (x ∷ [])) ≡⟨ {!!} ⟩
       x ∷ [] ∎
     w∘unwords (x ∷ xs) = {!!}
