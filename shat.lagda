@@ -1938,7 +1938,7 @@ module ReedVeritas where
     w∘unwords [] a = refl
     w∘unwords (x ∷ []) a = sym $ begin
       w (unwords $ x ∷ []) ≡⟨ ((unwords (x ∷ []) ≡ x) ∋ {!!}) ▹ cong w ⟩
-      w x ≡⟨ {!!} ⟩
+      w x ≡⟨ c∉x⇒wx≡[x] x {!!} ▹ sym ⟩
       x ∷ [] ∎
       where
       c∉x⇒wx≡[x] : (' ' ∉_) ⊆′ (λ x → (x ∷ []) ≡ w x)
