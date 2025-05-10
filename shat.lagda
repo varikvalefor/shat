@@ -1934,7 +1934,7 @@ module ReedVeritas where
     open Reed
     reedx≡k∘w : (s : String) → reed x s ≡ k (w s)
     reedx≡k∘w = {!!}
-    w∘unwords : (x : _) → id x ≡ (w ∘ unwords) x
+    w∘unwords : id ≗ (w ∘ unwords)
     w∘unwords = {!!}
     w++s≡w++ws : "w " ++ c∷s ≡ unwords ("w" ∷ w c∷s)
     w++s≡w++ws = sym $ begin
