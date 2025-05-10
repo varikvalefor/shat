@@ -1933,7 +1933,7 @@ module ReedVeritas where
       consunwords {xs = _ ∷ _} (DMA.just j) = refl
     unwords = 𝕊.unwords
     open Reed
-    reedx≡k∘w : (s : _) → reed x s ≡ k (w s)
+    reedx≡k∘w : (s : _) → reed x s ≡ (k ∘ w) s
     reedx≡k∘w = {!!}
     w∘unwords : 𝕃.All (' ' ∉_) ⊆′ (λ x →  x ≡ w (unwords x))
     w∘unwords [] a = refl
