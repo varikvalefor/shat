@@ -129,6 +129,7 @@ open import Data.Sum
     _⊎_
   )
 open import Data.Vec
+  as 𝕍
   using (
   )
 open import Function
@@ -1215,7 +1216,7 @@ module Orsygenturfa'iVeritas where
               → e ∈_ $ x ∷ xs
           ≡⇒∈ e x xs d = begin
             1 ≡⟨ {!!} ⟩
-            𝕃.length (𝕃.take 1 $ 𝕃.filter (e ≟_) (Data.Vec.toList $ Data.Vec.fromList $ x ∷ xs)) ∎
+            𝕃.length (𝕃.take 1 $ 𝕃.filter (e ≟_) (𝕍.toList $ 𝕍.fromList $ x ∷ xs)) ∎
             where
             open ≡-Reasoning
           ∉⇒¬∈ : ∀ {a} → {A : Set a}
