@@ -1935,7 +1935,7 @@ module ReedVeritas where
     reedx≡k∘w : (s : String) → reed x s ≡ k (w s)
     reedx≡k∘w = {!!}
     w∘unwords : id ≗ (w ∘ unwords)
-    w∘unwords = λ x → sym $ begin
+    w∘unwords x = sym $ begin
       w (unwords x) ≡⟨ {!!} ⟩
       x ∎
     w++s≡w++ws : "w " ++ c∷s ≡ unwords ("w" ∷ w c∷s)
