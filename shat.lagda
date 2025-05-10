@@ -1936,9 +1936,9 @@ module ReedVeritas where
     reedx≡k∘w = {!!}
     w∘unwords : 𝕃.All (' ' ∉_) ⊆′ (λ x → x ≡ w (unwords x))
     w∘unwords [] a = refl
-    w∘unwords (x ∷ []) a = sym $ begin
+    w∘unwords (x ∷ []) (a 𝕃.All.∷ _) = sym $ begin
       w (unwords $ x ∷ []) ≡⟨ ((unwords (x ∷ []) ≡ x) ∋ {!!}) ▹ cong w ⟩
-      w x ≡⟨ c∉x⇒wx≡[x] x {!!} ▹ sym ⟩
+      w x ≡⟨ c∉x⇒wx≡[x] x a ▹ sym ⟩
       x ∷ [] ∎
       where
       c∉x⇒wx≡[x] : (' ' ∉_) ⊆′ (λ x → (x ∷ []) ≡ w x)
