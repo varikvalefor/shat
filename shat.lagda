@@ -1943,7 +1943,7 @@ module ReedVeritas where
       where
       c∉x⇒wx≡[x] : (' ' ∉_) ⊆′ (λ x → (x ∷ []) ≡ w x)
       c∉x⇒wx≡[x] = {!!}
-      unwords[] : (s : String) → unwords (𝕃.[_] s) ≡ s
+      unwords[] : (s : String) → (unwords ∘ 𝕃.[_]) s ≡ s
       unwords[] = {!!}
     w∘unwords (x ∷ xs) = {!!}
     w++s≡w++ws : "w " ++ c∷s ≡ unwords ("w" ∷ w c∷s)
