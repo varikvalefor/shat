@@ -1936,7 +1936,9 @@ module ReedVeritas where
     reedx≡k∘w = {!!}
     w∘unwords : id ≗ (w ∘ unwords)
     w∘unwords [] = refl
-    w∘unwords (x ∷ []) = {!!}
+    w∘unwords (x ∷ []) = sym $ begin
+      w (unwords (x ∷ [])) ≡⟨ {!!} ⟩
+      x ∷ [] ∎
     w∘unwords (x ∷ xs) = {!!}
     w++s≡w++ws : "w " ++ c∷s ≡ unwords ("w" ∷ w c∷s)
     w++s≡w++ws = sym $ begin
