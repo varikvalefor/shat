@@ -1489,7 +1489,7 @@ module Orsygenturfa'i₃Veritas where
            → lispork x ≡ nothing
            → (¬_ $ Σ
                (String × String × String)
-               (λ (a , b , c) → (x ≡ (a ∷ []) ∷ (b ∷ c ∷ []) ∷ [])))
+               (λ (a , b , c) → x ≡ (a ∷ []) ∷ (b ∷ c ∷ []) ∷ []))
   lisporn' = {!!}
 
   orspiv : (a b c : ℕ)
